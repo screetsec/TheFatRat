@@ -50,11 +50,12 @@ Be sure to check out the [Changelog] and Read CHANGELOG.txt
 
 
 ## :octocat: Credits
-1. Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
-2. http://www.kali.org/"
-3. Miffly @Edo -m-  developer of lalin  
-4. And another open sources tool in github
-5. Uptodate new tools hacking visit http://www.kitploit.com
+1.Thanks to allah and Screetsec [ Edo -maland- ] <Me> 
+2.Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
+3. http://www.kali.org/"   
+4. Jack Wilder admin in http://www.linuxsec.org
+5. And another open sources tool in github
+6. Uptodate new tools hacking visit http://www.kitploit.com
 
 ## Disclaimer
 
