@@ -51,12 +51,12 @@ Be sure to check out the [Changelog] and Read CHANGELOG.txt
 
 ## :octocat: Credits
 
-1.Thanks to allah and Screetsec [ Edo -maland- ] <Me> 
-2.Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
-3.http://www.kali.org/"   
-4.Jack Wilder admin in http://www.linuxsec.org
-5.And another open sources tool in github
-6.Uptodate new tools hacking visit http://www.kitploit.com
+- Thanks to allah and Screetsec [ Edo -maland- ] <Me> 
+- Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
+- http://www.kali.org/"   
+- Jack Wilder admin in http://www.linuxsec.org
+- And another open sources tool in github
+- Uptodate new tools hacking visit http://www.kitploit.com
 
 ## Disclaimer
 
