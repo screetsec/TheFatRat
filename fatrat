@@ -62,7 +62,7 @@ echo " | |   | '_ \ / _ \/ __| |/ / | '_ \ / _\ |            "
 echo " | |___| | | |  __/ (__|   <| | | | | (_| |  _   _   _ "
 echo "  \____|_| |_|\___|\___|_|\_\_|_| |_|\__/ | (_) (_) (_)"
 echo "                                     	|___/    "
-echo -e $lightgreen'-- -- +=[(c) 2016-2017 | DracOS | Linux Indonesia | Hacker Indonesia '
+echo -e $lightgreen'-- -- +=[(c) 2016-2017 | DracOS | Linuxsec.org | Hacker Indonesia '
 echo -e $cyan'-- -- +=[ Author: Screetsec < Edo Maland >  ]=+ -- -- '
 echo -e " "
 
