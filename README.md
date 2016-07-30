@@ -48,7 +48,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.txt
 
 - Must install metasploit framework 
 
-- required gcc program , i586-mingw32msvc-gcc or i686-w64-mingw32-gcc 
+- required gcc program , i586-mingw32msvc-gcc or i686-w64-mingw32-gcc ( apt-get install mingw32 ) for fix error
 
 
 
