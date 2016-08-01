@@ -1,6 +1,6 @@
 #TheFatRat ( will be update to next version ) 
 
-#i will update >> add msfvenom custom encoding for bypass av
+# ADD ANOTHER THECNIC FOR BYPASS AV
 
 What is FatRat ?? 
 
