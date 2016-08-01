@@ -1,5 +1,7 @@
 #TheFatRat ( will be update to next version ) 
 
+#i will update >> add msfvenom custom encoding for bypass av
+
 What is FatRat ?? 
 
 Easy tool for generate backdoor with msfvenom ( part of metasploit framework ) and program compiles a C program with a meterpreter reverse_tcp payload In it that can then be executed on a windows host Program to create a C program after it is compiled that will bypass most AV
