@@ -47,6 +47,17 @@ else
     else
     echo ""
     echo -e "\e[01;31m[!]\e[00m Unable to find the required gcc program, install i586-mingw32msvc-gcc or i686-w64-mingw32-gcc (Arch) and try again"
+    echo""
+    echo "Do you want install mingw tool in the system for fix problem [Y/n]" ; 
+read bebe
+if [ $bebe == "y" ] ; 
+  then
+    apt-get update
+    clear
+    apt-get install mingw32
+  else
+    exit
+fi
     echo ""
     exit 1
     fi
