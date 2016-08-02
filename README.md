@@ -1,6 +1,10 @@
-#TheFatRat ( will be update to next version ) 
+#TheFatRat 
 
-# ADD ANOTHER THECNIC FOR BYPASS AV
+# WILL BE UPDATE
+
+- Add zenity to fatrat
+- Add another technic for bypass av
+
 
 What is FatRat ?? 
 
