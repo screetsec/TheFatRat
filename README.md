@@ -1,10 +1,9 @@
-#TheFatRat 
-
-# WILL BE UPDATE
+# will be update in august
 
 - Add zenity to fatrat
 - Add another technic for bypass av
 
+#TheFatRat 
 
 What is FatRat ?? 
 
