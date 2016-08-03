@@ -1,6 +1,5 @@
 # Will be update in August ( 2016 )
 
-- Add zenity to fatrat
 - Add another technic for bypass av
 
 #TheFatRat 
