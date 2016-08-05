@@ -2,6 +2,17 @@
 
 - Add another technic for bypass av
 
+<img src=https://cloud.githubusercontent.com/assets/17976841/17427069/ff996f20-5b07-11e6-8245-5427bff1dbf4.png)width="90%"></img> 
+
+- This tool is avoid.sh but i remake this and update to next version . you can visit the original tools ( https://github.com/nccgroup ) 
+- Will be update into fatrat
+
+
+
+
+ 
+
+
 #TheFatRat 
 
 What is FatRat ?? 
