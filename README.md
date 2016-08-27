@@ -2,7 +2,7 @@
  
 
 #TheFatRat ( Unit for bypass av )
-Will be update add backdoor using powershell combine with unicorn
+Will be update , watch this tool dude ::)
 
 ##update 1.2 : Xenogenesis
 
