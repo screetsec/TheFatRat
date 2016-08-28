@@ -75,6 +75,9 @@ Be sure to check out the [Changelog] and Read CHANGELOG.txt
 
 - required gcc program , i586-mingw32msvc-gcc or i686-w64-mingw32-gcc ( apt-get install mingw32 ) for fix error
 
+## Tutorial ? 
+
+you can visit my channel  : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
 
 
 
