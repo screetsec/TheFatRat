@@ -9,6 +9,8 @@
 * V1.5 - Added autorun script when create listener 
 * v1.5 - Remove cd "output"
 * v1.5 - Change the script ouput when msfvenom create
+* v1.5 - Change name ( optional ) ouput when you create backdoor
+* v1.5 - Added script for Cleanning 
 * v1.4 - Fixed fatrat ( cd output not found ) 
 * v1.4 - Fixed powerfull.sh
 * v1.4 - Fixed fatrat
@@ -21,3 +23,10 @@
 * v1.1 - Add multi encoder in msfvenom
 * v1.1 - Fixed Bug
 * v1.0 - Release TheFatRat
+
+##FUTURE
+
+* Added Backdoor powershell ( with unicorn form trustedsec ) 
+* Powershel compile to exe
+* backdoor with macro  ( office )
+* bypass uac with powershell 
