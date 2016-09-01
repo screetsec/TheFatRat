@@ -51,7 +51,7 @@ Easy tool for generate backdoor with msfvenom ( part of metasploit framework ) a
 
 
 ## :scroll: Changelog
-Be sure to check out the [Changelog] and Read CHANGELOG.txt
+Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 
 ## Getting Started
