@@ -27,6 +27,10 @@ Easy tool for generate backdoor with msfvenom ( part of metasploit framework ) a
 
 - Bypass AV
 
+- Create backdoor with another techniq
+
+- Autorunscript for listeners ( easy to use )
+
 - Drop into Msfconsole
 
 - Some other fun stuff :)
