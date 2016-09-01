@@ -61,6 +61,8 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 ## Getting Started
 1. ```git clone https://github.com/Screetsec/TheFatRat.git```
 2. ```cd Fatrat```
+3. ```apt-get update``` 
+4. ```apt-get install mingw32 backdoor-factory```
  
 ## :book: How it works
 
