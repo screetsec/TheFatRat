@@ -79,6 +79,9 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 - required gcc program , i586-mingw32msvc-gcc or i686-w64-mingw32-gcc ( apt-get install mingw32 ) for fix error
 
+##  :heavy_exclamation_mark: READ
+- if prog.c file to large when create backdoor with powerfull.sh , you can use prog.c.backup and create another backup when you running option 2
+
 ## Tutorial ? 
 
 you can visit my channel  : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
