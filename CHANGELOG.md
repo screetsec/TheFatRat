@@ -1,5 +1,6 @@
 ## CHANGELOG:
 
+* v1.5 - Add PE file for example
 * v1.5 - Add featrues embed backdoor with backdoor-factory
 * v1.5 - Recoded fucntion cmsfvenom
 * v1.5 - Add some Variables ( pwd , Version ,Codename )
