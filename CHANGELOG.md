@@ -31,3 +31,4 @@
 * Powershel compile to exe
 * backdoor with macro  ( office )
 * bypass uac with powershell 
+* EMBED BACKDOOR FOR ANDROID 
