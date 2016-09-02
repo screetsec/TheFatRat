@@ -1204,7 +1204,7 @@ echo
 			cd .. 
 			cd ..
 			echo ""
-			echo -e $red"  [*] $cyan Folders cleaned, press any key to return to the main menu."
+			echo -ne $red"  [*] $cyan Folders cleaned, press any key to return to the main menu."
 			read anjeng
 			menu
 
