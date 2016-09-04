@@ -63,10 +63,11 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 2. ```cd Fatrat```
 3. ```apt-get update``` 
 4. ```apt-get install mingw32 backdoor-factory```
-- In kali linux 2016.2 if failed install mingw or Unable to locate package , do this`
-5. ``` echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.listt```
-6. ``` apt-get update  ```
-7. ``` apt-get install mingw32 ``
+
+##In kali linux 2016.2 if failed install mingw or Unable to locate package , do this`
+1. ``` echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list```
+2. ``` apt-get update  ```
+3. ``` apt-get install mingw32 ``
 
 
  
