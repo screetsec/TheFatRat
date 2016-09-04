@@ -63,6 +63,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 2. ```cd Fatrat```
 3. ```apt-get update``` 
 4. ```apt-get install mingw32 backdoor-factory```
+
  
 ## :book: How it works
 
@@ -81,8 +82,14 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 - required gcc program , i586-mingw32msvc-gcc or i686-w64-mingw32-gcc ( apt-get install mingw32 ) for fix error
 
+- In kali linux 2016.2 if failed install mingw or Unable to locate package , do this
+  ``` echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.listt```
+  ``` apt-get update  ```
+  ``` apt-get install mingw32 ```
+
 ##  :heavy_exclamation_mark: READ
 - if prog.c file to large when create backdoor with powerfull.sh , you can use prog.c.backup and create another backup when you running option 2
+
 
 ## Tutorial ? 
 
