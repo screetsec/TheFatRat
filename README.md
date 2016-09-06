@@ -2,7 +2,7 @@
  
 
 #TheFatRat ( Unit for bypass av )
- ##Will be update 1.6 added Embed backdoor apk 
+###Will be update 1.6 , added Embed backdoor apk & autorun script for post exploitation when you create liseners
 
 ##Update: Version 1.5 , Codename Unity 
 
