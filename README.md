@@ -65,10 +65,10 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 4. ```apt-get install mingw32 backdoor-factory```
 
 ## if failed install mingw or Unable to locate package 
-1. ``` echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list```
+1. ``` echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list```
 2. ``` apt-get update  ```
-3. ``` apt-get install mingw32 ```
-
+3. ``` apt-get install mingw32 && backdoor-factory```
+4. ``` when done update and install , remove repo (1) in your sources.list or repo ```
 
  
 ## :book: How it works
