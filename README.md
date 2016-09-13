@@ -8,7 +8,8 @@
 
 What is FatRat ?? 
 
-Easy tool for generate backdoor with msfvenom ( part of metasploit framework ) and program compiles a C program with a meterpreter reverse_tcp payload In it that can then be executed on a windows host Program to create a C program after it is compiled that will bypass most AV . 
+An easy tool to generate backdoor with msfvenom (a part from metasploit framework). This tool compiles a malware with popular payload and then the compiled malware can be execute on windows, android, mac . The malware that created with this tool also have an ability to bypass most AV software protection
+
 #Screenshot
 <img src="https://cloud.githubusercontent.com/assets/17976841/18155659/f28f3912-7039-11e6-8d5d-7d0ed85dbdda.png" width="70%"></img> 
 #------------------------------------------------------------------
