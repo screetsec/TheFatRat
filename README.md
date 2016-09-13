@@ -3,7 +3,7 @@
 
 #TheFatRat ( Unit for bypass av )
 
-##Update: Version 1.5 , Codename Unity 
+##Update: Version 1.6 , Codename: Tasty 
 
 What is FatRat ?? 
 
@@ -60,14 +60,8 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 ## Getting Started
 1. ```git clone https://github.com/Screetsec/TheFatRat.git```
 2. ```cd Fatrat```
-3. ```apt-get update``` 
-4. ```apt-get install mingw32 backdoor-factory```
-
-## if failed install mingw or Unable to locate package 
-1. ``` echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list```
-2. ``` apt-get update  ```
-3. ``` apt-get install mingw32 && backdoor-factory```
-4. ``` when done update and install , remove repo (1) in your sources.list or repo ```
+3. ```cd install``` 
+4. ```chmod +x setup.sh && ./setup.sh```
 
  
 ## :book: How it works
@@ -85,7 +79,6 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 - Must install metasploit framework 
 
-- required gcc program , i586-mingw32msvc-gcc or i686-w64-mingw32-gcc ( apt-get install mingw32 ) for fix error
 
 
 ##  :heavy_exclamation_mark: READ
