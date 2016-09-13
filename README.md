@@ -2,7 +2,6 @@
  
 
 #TheFatRat ( Unit for bypass av )
-###Will be update 1.6 , added Embed backdoor apk & autorun script for post exploitation when you create liseners
 
 ##Update: Version 1.5 , Codename Unity 
 
@@ -11,7 +10,7 @@ What is FatRat ??
 An easy tool to generate backdoor with msfvenom (a part from metasploit framework). This tool compiles a malware with popular payload and then the compiled malware can be execute on windows, android, mac . The malware that created with this tool also have an ability to bypass most AV software protection
 
 #Screenshot
-<img src="https://cloud.githubusercontent.com/assets/17976841/18155659/f28f3912-7039-11e6-8d5d-7d0ed85dbdda.png" width="70%"></img> 
+<img src="https://cloud.githubusercontent.com/assets/17976841/18483870/39cb46ba-7a10-11e6-859b-1c1baa3c1b0a.png" width="70%"></img> 
 #------------------------------------------------------------------
 
 <img src="https://cloud.githubusercontent.com/assets/17976841/18156182/937271d8-703e-11e6-8d5a-c922f645e7f1.png" width="23%"></img>
