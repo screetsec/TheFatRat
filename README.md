@@ -60,9 +60,8 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## Getting Started
 1. ```git clone https://github.com/Screetsec/TheFatRat.git```
-2. ```cd Fatrat```
-3. ```cd install``` 
-4. ```chmod +x setup.sh && ./setup.sh```
+2. ```cd TehFatrat/Setup```
+3. ```chmod +x setup.sh && ./setup.sh```
 
  
 ## :book: How it works
