@@ -1717,9 +1717,9 @@ echo
 			cd ..
 			sleep 2
 			echo ""
-      echo -e $red"  [*] $cyan Cleaning /TheFatRat/*.exe or apk"
-      rm *.exe *.apk  >/dev/null 2>&1
-      sleep 2
+			echo -e $red"  [*] $cyan Cleaning /TheFatRat/*.exe or apk"
+			rm *.exe *.apk  >/dev/null 2>&1
+			sleep 2
 			echo ""
 			echo -e $red"  [*] $cyan Cleaning /TheFatRat/backdoored/output/"
 			cd backdoored/output
