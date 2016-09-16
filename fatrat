@@ -787,7 +787,7 @@ echo ""
 echo -ne $okegreen "SET LPORT : ";tput sgr0
 read yourport
 echo ""
-echo -ne $okegreen "Located Original Apk file for embed (example:/TheFatRat/PE/instagram.apk) :" ;tput sgr0
+echo -ne $okegreen "Located Original Apk file for embed (example:$path/PE/instagram.apk) :" ;tput sgr0
 read copyfile
 cp $copyfile $path/output/fatrat.apk
 echo ""
