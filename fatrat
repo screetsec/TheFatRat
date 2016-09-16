@@ -807,6 +807,7 @@ echo ""
 cp $path/output/output/fatrat_backdoored.apk backdoored/apkembed.apk
 rm -rf $path/output/*
 java -jar $bundle $cert $key $path/backdoored/apkembed.apk $path/output/Apk_embed_backdoor.apk
+rm backdoored/apkembed.apk
 echo -ne $okegreen" Your payload has been successfully embed with sign and is located here ( output folder )  "
 read loveyou
 echo
