@@ -114,7 +114,7 @@ sleep 2
 else
 echo "[ X ] mingw32 compiler  -> not found            ]"
 echo "[ ! ] Download compiler ........................."
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "apt-get install mingw32 -y"
+xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 -y"
 echo "[ ✔ ] Done installing .... "
 sleep 2
 fi
@@ -127,7 +127,7 @@ sleep 2
 else
 echo "[ X ] backdoor-factory  -> not found            ]"
 echo "[ ! ] Download compiler ........................."
-xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "apt-get install backdoor-factory -y"
+xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
 fi
@@ -141,7 +141,7 @@ sleep 2
 else
 echo "[ X ] Monodevelop  -> not found            ]"
 echo "[ ! ] Download Monodevelop ........................."
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "apt-get install monodevelop -y"
+xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install monodevelop -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
 fi
@@ -154,7 +154,7 @@ sleep 2
 else
 echo "[ X ] ruby  -> not found            ]"
 echo "[ ! ] Download ruby ........................."
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "apt-get install ruby -y"
+xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install ruby -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
 fi
@@ -167,7 +167,7 @@ sleep 2
 else
 echo "[ X ] ruby  -> not found            ]"
 echo "[ ! ] Download apache2 ........................."
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "apt-get install apache2 -y"
+xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install apache2 -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
 fi
