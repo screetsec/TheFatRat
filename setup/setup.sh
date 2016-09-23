@@ -102,12 +102,9 @@ echo "[ X ] mingw32 compiler  -> not found            ]"
 echo "[ ! ] Download compiler ........................."
 echo "[ ! ] Create backup your sources.list for packages kali sana ( temporary )"
 cd /etc/apt && cp sources.list sources.list.backup
-rm /etc/apt/sources.list
-echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
+rm sources.list
+echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get update && apt-get install mingw32 -y"
 echo "[ ✔ ] Done installing,now wait for rebackup your sources.list & update packages"
 rm /etc/apt/sources.list
@@ -127,11 +124,8 @@ echo "[ ! ] Download compiler ........................."
 echo "[ ! ] Create backup your sources.list for packages kali sana ( temporary )"
 cd /etc/apt && cp sources.list sources.list.backup
 rm sources.list
-echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
+echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get update && apt-get install backdoor-factory -y"
 echo "[ ✔ ] Done installing,now wait for rebackup your sources.list & update packages"
 rm sources.list
@@ -152,11 +146,8 @@ echo "[ ! ] Download Monodevelop ........................."
 echo "[ ! ] Create backup your sources.list for packages kali sana ( temporary )"
 cd /etc/apt && cp sources.list sources.list.backup
 rm sources.list
-echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
+echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get update && apt-get install monodevelop -y"
 echo "[ ✔ ] Done installing,now wait for rebackup your sources.list & update packages"
 rm sources.list
@@ -176,11 +167,8 @@ echo "[ ! ] Download ruby ........................."
 echo "[ ! ] Create backup your sources.list for packages kali sana ( temporary )"
 cd /etc/apt && cp sources.list sources.list.backup
 rm sources.list
-echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
+echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get update && apt-get install ruby -y"
 echo "[ ✔ ] Done installing,now wait for rebackup your sources.list & update packages"
 rm sources.list
@@ -200,11 +188,8 @@ echo "[ ! ] Download apache2 ........................."
 echo "[ ! ] Create backup your sources.list for packages kali sana ( temporary )"
 cd /etc/apt && cp sources.list sources.list.backup
 rm sources.list
-echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
+echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get update && apt-get install apache2 -y"
 echo "[ ✔ ] Done installing,now wait for rebackup your sources.list & update packages"
 rm sources.list
