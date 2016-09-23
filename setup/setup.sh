@@ -107,8 +107,8 @@ echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/
 echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get update && apt-get install mingw32 -y"
 echo "[ ✔ ] Done installing,now wait for rebackup your sources.list & update packages"
-rm /etc/apt/sources.list
-mv /etc/apt/sources.list.backup sources.list && cd $path
+rm sources.list
+mv sources.list.backup sources.list && cd $path
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 sleep 2
 fi
