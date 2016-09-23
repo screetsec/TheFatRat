@@ -20,6 +20,7 @@ white='\e[1;37m'
 red='\e[1;31m'
 yellow='\e[1;33m'
 BlueF='\e[1;34m'
+path=`pwd`
 
 #Banner dong biar keren
 echo -e $cyan ""
@@ -100,7 +101,7 @@ else
 echo "[ X ] mingw32 compiler  -> not found            ]"
 echo "[ ! ] Download compiler ........................."
 echo "[ ! ] Create backup your sources.list for packages kali sana ( temporary )"
-cp /etc/apt/sources.list sources.list.backup
+cd /etc/apt && cp sources.list sources.list.backup
 rm /etc/apt/sources.list
 echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
 echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
@@ -110,7 +111,7 @@ echo 'deb-src http://repo.kali.org/kali kali-rolling main non-free contrib' >> /
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get update && apt-get install mingw32 -y"
 echo "[ ✔ ] Done installing,now wait for rebackup your sources.list & update packages"
 rm /etc/apt/sources.list
-mv /etc/apt/sources.list.backup sources.list
+mv /etc/apt/sources.list.backup sources.list && cd $path
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 sleep 2
 fi
@@ -124,8 +125,8 @@ else
 echo "[ X ] backdoor-factory  -> not found            ]"
 echo "[ ! ] Download compiler ........................."
 echo "[ ! ] Create backup your sources.list for packages kali sana ( temporary )"
-cp /etc/apt/sources.list sources.list.backup
-rm /etc/apt/sources.list
+cd /etc/apt && cp sources.list sources.list.backup
+rm sources.list
 echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
 echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
 echo 'deb-src http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
@@ -133,8 +134,8 @@ echo 'deb http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/
 echo 'deb-src http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
 xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get update && apt-get install backdoor-factory -y"
 echo "[ ✔ ] Done installing,now wait for rebackup your sources.list & update packages"
-rm /etc/apt/sources.list
-mv /etc/apt/sources.list.backup sources.list
+rm sources.list
+mv sources.list.backup sources.list && cd $path
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 sleep 2
 fi
@@ -149,8 +150,8 @@ else
 echo "[ X ] Monodevelop  -> not found            ]"
 echo "[ ! ] Download Monodevelop ........................."
 echo "[ ! ] Create backup your sources.list for packages kali sana ( temporary )"
-cp /etc/apt/sources.list sources.list.backup
-rm /etc/apt/sources.list
+cd /etc/apt && cp sources.list sources.list.backup
+rm sources.list
 echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
 echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
 echo 'deb-src http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
@@ -158,8 +159,8 @@ echo 'deb http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/
 echo 'deb-src http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get update && apt-get install monodevelop -y"
 echo "[ ✔ ] Done installing,now wait for rebackup your sources.list & update packages"
-rm /etc/apt/sources.list
-mv /etc/apt/sources.list.backup sources.list
+rm sources.list
+mv sources.list.backup sources.list && cd $path
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 sleep 2
 fi
@@ -173,8 +174,8 @@ else
 echo "[ X ] ruby  -> not found            ]"
 echo "[ ! ] Download ruby ........................."
 echo "[ ! ] Create backup your sources.list for packages kali sana ( temporary )"
-cp /etc/apt/sources.list sources.list.backup
-rm /etc/apt/sources.list
+cd /etc/apt && cp sources.list sources.list.backup
+rm sources.list
 echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
 echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
 echo 'deb-src http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
@@ -182,8 +183,8 @@ echo 'deb http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/
 echo 'deb-src http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get update && apt-get install ruby -y"
 echo "[ ✔ ] Done installing,now wait for rebackup your sources.list & update packages"
-rm /etc/apt/sources.list
-mv /etc/apt/sources.list.backup sources.list
+rm sources.list
+mv sources.list.backup sources.list && cd $path
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 sleep 2
 fi
@@ -197,8 +198,8 @@ else
 echo "[ X ] ruby  -> not found            ]"
 echo "[ ! ] Download apache2 ........................."
 echo "[ ! ] Create backup your sources.list for packages kali sana ( temporary )"
-cp /etc/apt/sources.list sources.list.backup
-rm /etc/apt/sources.list
+cd /etc/apt && cp sources.list sources.list.backup
+rm sources.list
 echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
 echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
 echo 'deb-src http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
@@ -206,8 +207,8 @@ echo 'deb http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/
 echo 'deb-src http://repo.kali.org/kali kali-rolling main non-free contrib' >> /etc/apt/sources.list
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get update && apt-get install apache2 -y"
 echo "[ ✔ ] Done installing,now wait for rebackup your sources.list & update packages"
-rm /etc/apt/sources.list
-mv /etc/apt/sources.list.backup sources.list
+rm sources.list
+mv sources.list.backup sources.list && cd $path
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 sleep 2
 fi
