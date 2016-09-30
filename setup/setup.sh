@@ -42,12 +42,15 @@ echo ""
 
 cd /etc/apt && cp sources.list sources.list.backup # backup
 rm sources.list
-echo 'deb http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://http.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
+echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
+echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
 echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 sleep 2
+
+
+
 
 
 # check if msfconsole its installed
