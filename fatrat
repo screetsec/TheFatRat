@@ -122,6 +122,22 @@ pdfcom='output/pdf.c'
 apachecom='output/apache_com.c'
 out='output/ip.txt'
 
+###################################################
+# CTRL C
+###################################################
+trap ctrl_c INT
+ctrl_c() {
+clear	
+echo -e $red"[*] (Ctrl + C ) Detected, Trying To Exit ..."
+sleep 1
+echo ""
+Stop
+echo -e $red"[*] Stop all service , Wait  ..."
+sleep 1
+echo ""
+echo -e $yellow"[*] Thank You For Using  =)."
+exit 
+}
 
 
 
@@ -263,25 +279,6 @@ fi
 sleep 2
 
 
-# check mingw if exists
-      which i586-mingw32msvc-gcc > /dev/null 2>&1
-      if [ "$?" -eq "0" ]; then
-      echo [✔]::[mingw32]: installation found!;
-      COMPILER="i586-mingw32msvc-gcc"
-else
-      which i686-w64-mingw32-gcc > /dev/null 2>&1
-      if [ $? -eq 0 ]; then
-              echo ""
-      COMPILER="i686-w64-mingw32-gcc"
-   echo [x]::[warning]:this script require mingw32 installed to work ;
-   echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
-   sleep 2
-   exit
- fi
-fi
-sleep 2
-
 # check backdoor-factory if exists
       which backdoor-factory > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
@@ -330,6 +327,21 @@ else
    exit
 fi
 sleep 2
+
+# check xterm if exists
+      which xterm > /dev/null 2>&1
+      if [ -d $find ]; then
+      echo [✔]::[xterm]: installation found!;
+
+else
+
+   echo [x]::[warning]:this script require xterm to work ;
+   echo ""
+   echo [!]::[please wait]: please install xterm .... ;
+   echo ""
+   sleep 2
+   exit
+fi
 
 
 #WARNING !!!
