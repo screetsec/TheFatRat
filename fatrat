@@ -135,7 +135,9 @@ Stop
 echo -e $red"[*] Stop all service , Wait  ..."
 sleep 1
 echo ""
-echo -e $yellow"[*] Thank You For Using  =)."
+echo -e $yellow"[*] Thank You For Using TheFatRat  =)."
+echo ""
+echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P."
 exit 
 }
 
