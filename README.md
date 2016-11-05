@@ -3,8 +3,8 @@
 
 #TheFatRat ( Unit for bypass av )
 
-##Update: Version 1.6 
-##Codename: Tasty 
+##Update: Version 1.7 
+##Codename: Keris 
 
 What is TheFatRat ?? 
 
