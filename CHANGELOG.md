@@ -1,5 +1,9 @@
 ## CHANGELOG
 
+* v1.7 - add backdoor ( rar files )
+* v1.7 - Add backdoor ( doc not macro attack)
+* v1.7 - Add new features in optional 1 ( create backdoor with msfvenom )
+* v1.7 - Fix any bug 
 * v1.6 - Add new features create backdoor with PwnWinds ( FUD++ )
 * v1.6 - Add some script for checking monodevelop and apache server
 * v1.6 - Add new features backdooring original apk with metasploit
