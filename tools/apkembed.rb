@@ -183,7 +183,7 @@ print "[*] Signing payload..\n"
 
 `cp #{apkfile} output/original.apk`
 
-print "[*] Decompiling orignal APK..\n"
+print "[*] Decompiling original APK..\n"
 `apktool d output/original.apk -o output/original`
 print "[*] Decompiling payload APK..\n"
 `apktool d output/payload.apk -o output/payload`
