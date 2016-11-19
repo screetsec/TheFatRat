@@ -90,8 +90,10 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 you can visit my channel  : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
 
 ## BUG ? 
+
 - Submit new issue 
 - pm me
+- Hey sup ? do you want ask about all my tools ? you can join me in telegram.me/offscreetsec
 
 
 ## :octocat: Credits
