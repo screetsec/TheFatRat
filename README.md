@@ -87,7 +87,17 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## Tutorial ? 
 
-you can visit my channel  : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
+Screetsec Channel : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
+Embed Backdoor Apk Andoird : https://www.youtube.com/watch?v=bZg3gPuLvgs&feature=youtu.be
+Create Backdoor Php and Reconnect With TheFatRat : https://www.youtube.com/watch?v=gfS55fjd8Fg
+Exploit Windows 7/8/10 using Thefatrat ( option 2 ) : https://www.youtube.com/watch?v=-WbKOxIl_f4
+How to hack android device with FatRat on kali linux 2 :https://www.youtube.com/watch?v=yUuwnu-NUXE
+Kali Linux Tools - TheFatRat Tool For Generate Backdoor with MsfVenom : https://www.youtube.com/watch?v=7PMfPbrM0o4
+FUD 100 % Backdoor With TheFatRat pt.1 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=8lJBwclFwJI
+FUD 100 % Backdoor With TheFatRat pt.2 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=t7E6DZPhLLk&t=17s
+FUD 100 % Backdoor With TheFatRat pt.3 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=wCzsD6vt9CQ
+
+
 
 ## BUG ? 
 
