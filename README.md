@@ -87,23 +87,23 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## Tutorial ? 
 
-Screetsec Channel : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
-Kali linux 2016.2 | Setup FatRat and Bypass Windows 10 :https://www.youtube.com/watch?v=mkfKSCxvPec
-Embed Backdoor Apk Andoird : https://www.youtube.com/watch?v=bZg3gPuLvgs&feature=youtu.be
-Create Backdoor Php and Reconnect With TheFatRat : https://www.youtube.com/watch?v=gfS55fjd8Fg
-THEFATRAT:BACKDOOR CREATOR & BYPASS ANTIVIRUS AND INSTALL. : https://www.youtube.com/watch?v=C4YHVKPw6Zo
-Exploit Windows 7/8/10 using Thefatrat ( option 2 ) : https://www.youtube.com/watch?v=-WbKOxIl_f4
-How to hack android device with FatRat on kali linux 2 :https://www.youtube.com/watch?v=yUuwnu-NUXE
-Kali Linux Tools - TheFatRat Tool For Generate Backdoor with MsfVenom : https://www.youtube.com/watch?v=7PMfPbrM0o4
-FUD 100 % Backdoor With TheFatRat pt.1 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=8lJBwclFwJI
-FUD 100 % Backdoor With TheFatRat pt.2 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=t7E6DZPhLLk&t=17s
-FUD 100 % Backdoor With TheFatRat pt.3 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=wCzsD6vt9CQ
-TheFatrat Backdoor Undetectable by Antivirus Kali linux part 3 :https://www.youtube.com/watch?v=wuOCDn0NvWc
-1000 % FUD Backdoor with TheFatRat Tool : https://www.youtube.com/watch?v=vPXWv0jaBEQ
-How To Use TheFatRat To Create Backdoor In Kali Rolling [FUD 100%] : https://www.youtube.com/watch?v=26tSOuPcpZk
-Backdoor (Virus) 100% Indetectable | TheFatRat : https://www.youtube.com/watch?v=26tSOuPcpZk
-Backdooring Android with TheFatRat Tool- Kali Linux Tutorial :https://www.youtube.com/watch?v=1SQW9lujjT8
-ALL VIDEO IN HERE : https://www.youtube.com/results?search_query=thefatrat+backdoor
+* Screetsec Channel : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
+* Kali linux 2016.2 | Setup FatRat and Bypass Windows 10 :https://www.youtube.com/watch?v=mkfKSCxvPec
+* Embed Backdoor Apk Andoird : https://www.youtube.com/watch?v=bZg3gPuLvgs&feature=youtu.be
+* Create Backdoor Php and Reconnect With TheFatRat : https://www.youtube.com/watch?v=gfS55fjd8Fg
+* THEFATRAT:BACKDOOR CREATOR & BYPASS ANTIVIRUS AND INSTALL. : https://www.youtube.com/watch?v=C4YHVKPw6Zo
+* Exploit Windows 7/8/10 using Thefatrat ( option 2 ) : https://www.youtube.com/watch?v=-WbKOxIl_f4
+* How to hack android device with FatRat on kali linux 2 :https://www.youtube.com/watch?v=yUuwnu-NUXE
+* Kali Linux Tools - TheFatRat Tool For Generate Backdoor with MsfVenom : https://www.youtube.com/watch?v=7PMfPbrM0o4
+* FUD 100 % Backdoor With TheFatRat pt.1 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=8lJBwclFwJI
+* FUD 100 % Backdoor With TheFatRat pt.2 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=t7E6DZPhLLk&t=17s
+* FUD 100 % Backdoor With TheFatRat pt.3 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=wCzsD6vt9CQ
+* TheFatrat Backdoor Undetectable by Antivirus Kali linux part 3 :https://www.youtube.com/watch?v=wuOCDn0NvWc
+* 1000 % FUD Backdoor with TheFatRat Tool : https://www.youtube.com/watch?v=vPXWv0jaBEQ
+* How To Use TheFatRat To Create Backdoor In Kali Rolling [FUD 100%] : https://www.youtube.com/watch?v=26tSOuPcpZk
+* Backdoor (Virus) 100% Indetectable | TheFatRat : https://www.youtube.com/watch?v=26tSOuPcpZk
+* Backdooring Android with TheFatRat Tool- Kali Linux Tutorial :https://www.youtube.com/watch?v=1SQW9lujjT8
+* ALL VIDEO IN HERE : https://www.youtube.com/results?search_query=thefatrat+backdoor
 
 ## BUG ? 
 
