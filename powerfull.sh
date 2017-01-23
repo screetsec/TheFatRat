@@ -142,11 +142,26 @@ fi
 
 # Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
 # You may need to install the following on Kali Linux to compile the C to an Exe - "apt-get install gcc-mingw32"
-if [[ ! -f /usr/bin/i586-mingw32msvc-gcc ]]; then
-	echo "The gcc-mingw32 package appears to not be installed because /usr/bin/i586-mingw32msvc-gcc is missing."
-	echo "Run 'apt-get install gcc-mingw32' to install it on Kali linux"
-	echo ""
+# check mingw if exists
+      which i586-mingw32msvc-gcc > /dev/null 2>&1
+      if [ "$?" -eq "0" ]; then
+      echo [✔]::[mingw32]: installation found!;
+      COMPILER="i586-mingw32msvc-gcc"
+else
+      which i686-w64-mingw32-gcc > /dev/null 2>&1
+      if [ $? -eq 0 ]; then
+      echo [✔]::[mingw32]: installation found!;
+      COMPILER="i686-w64-mingw32-gcc"
+else
+   echo [x]::[warning]:this script require mingw32 installed to work ;
+   echo ""
+   echo [!]::[please wait]: please run setup.sh .... ;
+   sleep 2
+   exit
+ fi
 fi
+sleep 2
+
 
 # Until the Powerfull.exe is compiled successfully loop until it is
 while [[ ! -f "$outputExe" ]]; do
