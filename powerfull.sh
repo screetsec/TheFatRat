@@ -204,7 +204,7 @@ while [[ ! -f "$outputExe" ]]; do
     cat $cProg | sed "s/buf/${randomBufName}/g" > $cProgTemp
     mv -f $cProgTemp $cProg
     # To install the following program on Kali Linux - "apt-get install gcc-mingw32"
-    i586-mingw32msvc-gcc -o $outputExe $cProg
+    $COMPILER -o $outputExe $cProg
 
 done
 
