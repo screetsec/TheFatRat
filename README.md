@@ -120,6 +120,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 - Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
 - http://www.kali.org/"   
 - Jack Wilder admin in http://www.linuxsec.org
+- source for c program https://github.com/rsmudge
 - And another open sources tool in github
 - Uptodate new tools hacking visit http://www.kitploit.com
 
