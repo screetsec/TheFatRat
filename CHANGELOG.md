@@ -1,5 +1,11 @@
 ## CHANGELOG
 
+* v1.8 - add file pumper in TFR
+* v1.8 - Backdoor with c program for meterpreter reverse_tcp
+* v1.8 - Metasploit staging protocol ( c program )
+* v1.8 - add new features andd update pwnwinds 
+* v1.8 - add some function
+* v1.8 - Fixed bug in fatrat
 * v1.7 - add backdoor ( rar files )
 * v1.7 - Add backdoor ( doc not macro attack)
 * v1.7 - Add new features in optional 1 ( create backdoor with msfvenom )
