@@ -124,6 +124,8 @@ out='output/ip.txt'
 pump='tools/pump.py'
 reverse1='temp/reverse1.c'
 stag='temp/stag.c'
+raw="https://raw.githubusercontent.com/Screetsec/TheFatRat/master/fatrat"
+curl=`curl -si $raw | grep Versi= | cut -d"=" -f2`
 
 ###################################################
 # CTRL C
@@ -1810,26 +1812,28 @@ echo
 menu () {
   clear
   resize -s 46 76 > /dev/null
-  echo -e $okegreen""
-  echo -e $okegreen"         ____							"
-  echo -e $okegreen"        |    | 							"
-  echo -e $okegreen"        |____| 							"
-  echo -e $okegreen"       _|____|_      $okegreen _____ _       _____     _   _____     _       "
-  echo -e $okegreen"        /  $white"ee"\_      $okegreen|_   _| |_ ___|   __|___| |_| __  |___| |_     "
-  echo -e $okegreen"      .<     __O     $okegreen  | | |   | -_|   __| .'|  _|    -| .'|  _|	"
-  echo -e $okegreen"     /\ \.-.' \      $okegreen  |_| |_|_|___|__|  |___|_| |__|__|___|_|  	"
-  echo -e $okegreen"    J  \.|'.\/ \                  				"
-  echo -e $okegreen"    | |_.|. | | |   $white"[$okegreen--$white] $cyan " $white"Backdoor" Creator for Remote Acces $white[$okegreen--$white] 	"
-  echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"
-  echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"             $white[$okegreen--$white]	"
-  echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"           $white[$okegreen--$white]    "
-  echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"
-  echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Dracos Linux : $red@dracos-linux.org  $white[$okegreen--$white]	"
-  echo -e $okegreen"     |/         /   $white"[$okegreen--$white] $cyan"   				     $white[$okegreen--$white]		"
-  echo -e $okegreen"       \      .'\.  $white"[$okegreen--$white]$white "    SELECT AN OPTION TO BEGIN:      $white[$okegreen--$white]  "
-  echo -e $okegreen"    ____)_/\_(___\. $white"[$okegreen--$white] ".___________________________________$white[$okegreen--$white]	"
-  echo -e $okegreen"   (___._/  \_.___)'$white\_.-----------------------------------------/	"
-  echo
+echo -e $okegreen""
+echo -e $okegreen"         ____							"
+echo -e $okegreen"        |    | 							"
+echo -e $okegreen"        |____| 							"
+echo -e $okegreen"       _|____|_      $okegreen _____ _       _____     _   _____     _       "
+echo -e $okegreen"        /  $white"ee"\_      $okegreen|_   _| |_ ___|   __|___| |_| __  |___| |_     "
+echo -e $okegreen"      .<     __O     $okegreen  | | |   | -_|   __| .'|  _|    -| .'|  _|	"
+echo -e $okegreen"     /\ \.-.' \      $okegreen  |_| |_|_|___|__|  |___|_| |__|__|___|_|  	"
+echo -e $okegreen"    J  \.|'.\/ \                  				"
+echo -e $okegreen"    | |_.|. | | |   $white"[$okegreen--$white] $cyan " $white"Backdoor" Creator for Remote Acces $white[$okegreen--$white] 	"
+echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"
+echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"             $white[$okegreen--$white]	"
+echo -e $okegreen"     L   / v'--'\   $white"[$okegreen--$white] $cyan"       Current Version: $red"$curl"         $white[$okegreen--$white]	"
+echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"           $white[$okegreen--$white]    "
+echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"
+echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Dracos Linux : $red@dracos-linux.org  $white[$okegreen--$white]	"
+echo -e $okegreen"     |/         /   $white"[$okegreen--$white] $cyan"   				     $white[$okegreen--$white]		"
+echo -e $okegreen"       \      .'\.  $white"[$okegreen--$white]$white "    SELECT AN OPTION TO BEGIN:      $white[$okegreen--$white]  "
+echo -e $okegreen"    ____)_/\_(___\. $white"[$okegreen--$white] ".___________________________________$white[$okegreen--$white]	"
+echo -e $okegreen"   (___._/  \_.___)'$white\_.-----------------------------------------/	"
+echo
+
 
 
   		echo -e $white " "
@@ -2020,6 +2024,7 @@ echo -e $okegreen"    J  \.|'.\/ \                  				"
 echo -e $okegreen"    | |_.|. | | |   $white"[$okegreen--$white] $cyan " $white"Backdoor" Creator for Remote Acces $white[$okegreen--$white] 	"
 echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"
 echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"             $white[$okegreen--$white]	"
+echo -e $okegreen"     L   / v'--'\   $white"[$okegreen--$white] $cyan"       Current Version: $red"$curl"         $white[$okegreen--$white]	"
 echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"           $white[$okegreen--$white]    "
 echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"
 echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Dracos Linux : $red@dracos-linux.org  $white[$okegreen--$white]	"
@@ -2028,6 +2033,7 @@ echo -e $okegreen"       \      .'\.  $white"[$okegreen--$white]$white "    SELE
 echo -e $okegreen"    ____)_/\_(___\. $white"[$okegreen--$white] ".___________________________________$white[$okegreen--$white]	"
 echo -e $okegreen"   (___._/  \_.___)'$white\_.-----------------------------------------/	"
 echo
+
 
 
 		echo -e $white " "
