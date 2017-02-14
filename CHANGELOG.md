@@ -1,6 +1,5 @@
 ## CHANGELOG
 
-* v1.8.1 - add some variable { Current Version }
 * v1.8 - add file pumper in TFR
 * v1.8 - Backdoor with c program for meterpreter reverse_tcp
 * v1.8 - Metasploit staging protocol ( c program )
