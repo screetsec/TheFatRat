@@ -1,27 +1,27 @@
 
- 
+
 
 #TheFatRat ( Unit for bypass av )
 
 ##Update: Version 1.8
-##Codename: Spark 
+##Codename: Spark
 
-What is TheFatRat ?? 
+What is TheFatRat ??
 
 An easy tool to generate backdoor and easy tool to post exploitation attack like browser attack,dll . This tool compiles a malware with popular payload and then the compiled malware can be execute on windows, android, mac . The malware that created with this tool also have an ability to bypass most AV software protection .
 
 #Screenshot
-<img src="https://cloud.githubusercontent.com/assets/17976841/22401700/f08098ae-e60f-11e6-8e01-f2380f1b7c29.png" width="55%"></img> 
+<img src="https://cloud.githubusercontent.com/assets/17976841/22401700/f08098ae-e60f-11e6-8e01-f2380f1b7c29.png" width="55%"></img>
 #---------------------------------------------------------------
 
-<img src="https://cloud.githubusercontent.com/assets/17976841/18483870/39cb46ba-7a10-11e6-859b-1c1baa3c1b0a.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483871/39cb81ca-7a10-11e6-84f3-1683067fa4f5.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483873/39d54372-7a10-11e6-890f-41803a33b9c9.png" width="32%"></img> 
-#Automating metasploit functions 
+<img src="https://cloud.githubusercontent.com/assets/17976841/18483870/39cb46ba-7a10-11e6-859b-1c1baa3c1b0a.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483871/39cb81ca-7a10-11e6-84f3-1683067fa4f5.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483873/39d54372-7a10-11e6-890f-41803a33b9c9.png" width="32%"></img>
+#Automating metasploit functions
 
 - Checks for metasploit service and starts if not present
 
 - Easily craft meterpreter reverse_tcp payloads for Windows, Linux, Android and Mac and another
 
-- Start multiple meterpreter reverse_tcp listners 
+- Start multiple meterpreter reverse_tcp listners
 
 - Fast Search in searchsploit
 
@@ -41,19 +41,19 @@ An easy tool to generate backdoor and easy tool to post exploitation attack like
 
 #Autorun Backdoor
 
-- Autorun work if the victim disabled uac ( user acces control ) or low uac ( WINDOWS ) 
-- What is uac ? you can visit ( http://www.digitalcitizen.life/uac-why-you-should-never-turn-it-off ) 
+- Autorun work if the victim disabled uac ( user acces control ) or low uac ( WINDOWS )
+- What is uac ? you can visit ( http://www.digitalcitizen.life/uac-why-you-should-never-turn-it-off )
 - I have also created 3 AutoRun files
 - Simply copy these files to a CD or USB
 - You can change the icon autorun file or exe in folder icon ( replace your another ico and replace name with autorun.ico )
 
 
-#HOW CHANGE THE ICONS ? 
+#HOW CHANGE THE ICONS ?
 
 - Copy your icon picture to folder /TheFatrat/icons
-- Change the name into autorun.ico 
-- And Replace 
-- Done 
+- Change the name into autorun.ico
+- And Replace
+- Done
 
 
 ## :scroll: Changelog
@@ -65,7 +65,17 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 2. ```cd TheFatRat/setup```
 3. ```chmod +x setup.sh && ./setup.sh```
 
- 
+## Alternative: Docker
+
+```bash
+$ git clone https://github.com/Screetsec/TheFatRat.git
+$ cd TheFatRat
+$ docker build -t=thefatrat .
+$ docker run -it --name "thefatrat" thefatrat
+```
+
+And it's up & running.
+
 ## :book: How it works
 
 * Extract The lalin-master to your home or another folder
@@ -77,9 +87,9 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ##  :heavy_exclamation_mark: Requirements
 
-- A linux operating system. We recommend Kali Linux 2 or Kali 2016.1 rolling / Cyborg / Parrot / Dracos / BackTrack / Backbox / and another operating system ( linux ) 
+- A linux operating system. We recommend Kali Linux 2 or Kali 2016.1 rolling / Cyborg / Parrot / Dracos / BackTrack / Backbox / and another operating system ( linux )
 
-- Must install metasploit framework 
+- Must install metasploit framework
 
 
 
@@ -87,7 +97,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 - if prog.c file to large when create backdoor with powerfull.sh , you can use prog.c.backup and create another backup when you running option 2
 
 
-## Tutorial ? 
+## Tutorial ?
 
 * Screetsec Channel : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
 * Udate thefatrat v1.8 https://youtu.be/6skLV6zPnec?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
@@ -110,19 +120,19 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 * Hacking Windows using TheFatRat + Apache2 Server + Ettercap + Metasploit on Kali Linux 2016.2 https://www.youtube.com/watch?v=FlXMslSjnGw
 * ALL VIDEO IN HERE : https://www.youtube.com/results?search_query=thefatrat+backdoor
 
-## BUG ? 
+## BUG ?
 
-- Submit new issue 
+- Submit new issue
 - pm me
 - Hey sup ? do you want ask about all my tools ? you can join me in telegram.me/offscreetsec
 
 
 ## :octocat: Credits
 
-- Thanks to allah and Screetsec [ Edo -maland- ] <Me> 
-- Dracos Linux from Scratch Indonesia ( Penetration os ) Thanksyou , you can see in http://dracos-linux.org/ 
+- Thanks to allah and Screetsec [ Edo -maland- ] <Me>
+- Dracos Linux from Scratch Indonesia ( Penetration os ) Thanksyou , you can see in http://dracos-linux.org/
 - Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
-- http://www.kali.org/"   
+- http://www.kali.org/"
 - Jack Wilder admin in http://www.linuxsec.org
 - source for c program https://github.com/rsmudge
 - And another open sources tool in github
