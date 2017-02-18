@@ -1908,7 +1908,7 @@ menu () {
 
   		elif test $fatrat == '8'
    			then
-   			xterm -fa monaco -fs 13 -bg black $msfconsole
+   			xterm -fa monaco -fs 13 -bg black -e "$msfconsole"
 
   		elif test $fatrat == '9'
    			then
