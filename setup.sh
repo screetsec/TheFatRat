@@ -75,14 +75,13 @@ xterm -T "☣ INSTALL GCC COMPILLER ☣" -geometry 100x30 -e "sudo apt-get insta
 sleep 2
 fi
 
-
 # check if mingw32 exists
 which i586-mingw32msvc-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] mingw32 compiler..................[ found ]"
 sleep 2
 else
-echo "[ X ] mingw32 compiler  -> not found            ]"
+echo "[ X ] mingw32 compiler  -> not found             ]"
 echo "[ ! ] Download compiler ........................."
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 -y"
 echo "[ ✔ ] Done installing .... "
@@ -95,9 +94,9 @@ if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] monodevelop ......................[ found ]"
 sleep 2
 else
-echo "[ X ] Monodevelop  -> not found            ]"
+echo "[ X ] Monodevelop  -> not found                  ]"
 echo "[ ! ] Download Monodevelop ........................."
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install monodevelop -y"
+xterm -T "☣ INSTALL MONODEVELOP ☣" -geometry 100x30 -e "sudo apt-get install monodevelop -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
 fi
@@ -108,9 +107,9 @@ if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] Ruby .............................[ found ]"
 sleep 2
 else
-echo "[ X ] ruby  -> not found            ]"
-echo "[ ! ] Download ruby ........................."
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install ruby -y"
+echo "[ X ] ruby  -> not found                         ]"
+echo "[ ! ] Download ruby .............................."
+xterm -T "☣ INSTALL RUBY ☣" -geometry 100x30 -e "sudo apt-get install ruby -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
 fi
@@ -121,9 +120,24 @@ if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] apache2 ..........................[ found ]"
 sleep 2
 else
-echo "[ X ] ruby  -> not found            ]"
+echo "[ X ] apache2 -> not found          ]"
 echo "[ ! ] Download apache2 ........................."
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install apache2 -y"
+xterm -T "☣ INSTALL APACHE2 ☣" -geometry 100x30 -e "sudo apt-get install apache2 -y"
+echo "[ ✔ ] Done installing ...."
+sleep 2
+fi
+
+#check if gnome terminal exists
+#added this new install option because user may be running a distro that may not have gnome terminal installed by default
+#gnome terminal is used in main script to run searchsploit
+which gnome-terminal > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo "[ ✔ ] Gnome Terminal....................[ found ]"
+sleep 2
+else
+echo "[ X ] gnome-terminal-> not found     ]"
+echo "[ ! ] Download gnome-terminal....................."
+xterm -T "☣ INSTALL GNOME-TERMINAL ☣" -geometry 100x30 -e "sudo apt-get install gnome-terminal -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
 fi
@@ -203,7 +217,7 @@ fi
 ;;
 
  n|N) xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
-xterm -T "☣ INSTALL Metasploit-Framework" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
+xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 rm -f config.path
 touch config.path
@@ -285,7 +299,7 @@ fi
 
 n|N )
 echo "[ ! ] Download Searchsploit ........................."
-xterm -T "☣ INSTALL Searchsploit ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
+xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 echo "searchsploit" >> config.path
 sleep 2
