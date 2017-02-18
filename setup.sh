@@ -120,6 +120,15 @@ fi
 #################################
 
 cp /etc/apt/sources.list /etc/apt/sources.list.backup # backup
+# Second backup created in case user stops the script after this point , then on next startup this script will
+# copy the already changed sources file before as backup , and user lost his original sources lists
+file="/etc/apt/sources.list.fatrat"
+if [ -f "$file" ]
+then
+echo ""
+else
+cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
+fi
 rm -f /etc/apt/sources.list
 touch /etc/apt/sources.list
 echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
@@ -269,6 +278,8 @@ fi
 echo "reactivating repositories"
 rm -f /etc/apt/sources.list
 mv /etc/apt/sources.list.backup /etc/apt/sources.list
+#now we can remove the emergency backup securely
+rm -f /etc/apt/sources.list.fatrat
 apt-get clean
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 clear
