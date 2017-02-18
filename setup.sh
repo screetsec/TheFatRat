@@ -142,6 +142,19 @@ echo "[ ✔ ] Done installing ...."
 sleep 2
 fi
 
+#Checking if upx compressor exists
+which upx > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo "[ ✔ ] UPX Compressor....................[ found ]"
+sleep 2
+else
+echo "[ X ] upx compressor  -> not found     ]"
+echo "[ ! ] Download upx compressor...................."
+xterm -T "☣ INSTALL UPX COMPRESSOR ☣" -geometry 100x30 -e "sudo apt-get install upx -y"
+echo "[ ✔ ] Done installing ...."
+sleep 2
+fi
+
 #################################
 #inputrepo
 #################################
