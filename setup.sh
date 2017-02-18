@@ -285,7 +285,7 @@ fi
 
 n|N )
 echo "[ ! ] Download Searchsploit ........................."
-xterm -T "☣ INSTALL Searchsploit ☣" -geometry 100x30 -e "sudo apt-get install searchsploit --force-yes -y"
+xterm -T "☣ INSTALL Searchsploit ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 echo "searchsploit" >> config.path
 sleep 2
