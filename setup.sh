@@ -247,7 +247,7 @@ fi
 
  n|N )
 echo "[ ! ] Download Backdoor-Factory ........................."
-xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory -y"
+xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 echo "backdoor-factory" >> config.path
 ;;
@@ -285,7 +285,7 @@ fi
 
 n|N )
 echo "[ ! ] Download Searchsploit ........................."
-xterm -T "☣ INSTALL Searchsploit ☣" -geometry 100x30 -e "sudo apt-get install searchsploit -y"
+xterm -T "☣ INSTALL Searchsploit ☣" -geometry 100x30 -e "sudo apt-get install searchsploit --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 echo "searchsploit" >> config.path
 sleep 2
