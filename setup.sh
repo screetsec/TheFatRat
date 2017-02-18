@@ -220,7 +220,7 @@ echo "msfvenom" >> config.path
 *) echo "Invalid Input (Choose y/Y or n/N only)"
 ;;
 esac ;
-
+fi
 # check if backdoor-factory exists
 which backdoor-factory > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
