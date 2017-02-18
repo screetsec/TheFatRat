@@ -279,7 +279,7 @@ read -p "Path: " searchsploit
 if [[ -z "$searchsploit" ]]; then
 echo "searchsploit" >> config.path
 else
-echo ".$searchsploit" >> config.path
+echo "bash $searchsploit" >> config.path
 fi
 ;;
 
