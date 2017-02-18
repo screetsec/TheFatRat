@@ -329,6 +329,7 @@ echo "";
   echo "[ ] Script Created!! Write: fatrat , on your terminal anywhere   :) !  [ ]";
   echo "[ ]====================================================================[ ]";
   echo "";
+  chmod +x fatrat
   sleep 2 
 ;;
 
