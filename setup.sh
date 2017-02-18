@@ -203,7 +203,7 @@ fi
 ;;
 
  n|N) xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
-xterm -T "☣ INSTALL Metasploit-Framework" -geometry 100x30 -e "sudo apt-get install metasploit-framework -y"
+xterm -T "☣ INSTALL Metasploit-Framework" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 rm -f config.path
 touch config.path
