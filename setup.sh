@@ -247,7 +247,7 @@ read -p "[Press Y/y to config searchsploit path or N/n to install it from Kali r
 case "$choice2" in
   
   y|Y )
-echo "Enter the path for searchsploit ex:(/opt/searchsploit/searchsploit) or (searchsploit) for default and press [ENTER]: "
+echo "Enter the path for searchsploit ex:(/opt/searchsploit/searchsploit) or just press [ENTER] for default config : "
 read -p "Path: " searchsploit
 if [[ -z "$searchsploit" ]]; then
 echo "searchsploit" >> config.path
