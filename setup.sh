@@ -1,4 +1,17 @@
 #!/bin/bash
+#Fail safe for original user sources.list in case setup was interrupted in middle last time
+file="/etc/apt/sources.list.fatrat"
+if [ -f "$file" ]
+then
+echo "Setup Detected that your previous run was interrupted in middle , fixing your original repositories list ."
+sleep 4s
+rm -f /etc/apt/sources.list
+mv /etc/apt/sources.list.fatrat /etc/apt/sources.list
+echo "Your Original repository list was recovered. ;) ..... beginning setup"
+sleep 3s
+else
+echo ""
+fi
 
 # setup.sh Author : Edo maland ( Screetsec )
 # Install all dependencies nedded
@@ -141,7 +154,10 @@ sleep 2
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] msfconsole........................[ found ]"
+# msf was detected , removing config file in case setup was already configured before
 rm -f config.path
+
+#Creating new config file based on last detection of msf
 touch config.path
 echo "********************************************************************************************************" >> config.path
 echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> config.path
@@ -153,7 +169,10 @@ sleep 2
 else
 echo ""
 echo "[ X ] msfconsole -> not found                   ]"
+
+# Providing manual input to user in case metasploit was installed from git and is not on system path
 echo -e $yellow "[This script requires msfconsole , do you want to setup its path manually ?]";
+echo ""
 read -p "Press Y/y to config metasploit paths for (msfconsole & msfvenom) or N/n to install it from Kali repositories. :" choice
 case "$choice" in
 
@@ -164,6 +183,7 @@ echo "**************************************************************************
 echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> config.path
 echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> config.path
 echo "********************************************************************************************************" >> config.path
+clear
 echo -e $yellow "Enter the path for msfconsole ex:(/opt/metasploit-framework/msfconsole) or just press [ENTER] for default config : ";
 read -p "Path:" msfc
 if [[ -z "$msfc" ]]; then
@@ -171,7 +191,8 @@ echo "msfconsole" >> config.path
 else
 echo "ruby $msfc" >> config.path
 fi
-echo -e $green "Enter the path for msfvenom ex:(/opt/metasploit-framework/msfvenom) or just press [ENTER] for default config : ";
+echo ""
+echo -e $yellow "Enter the path for msfvenom ex:(/opt/metasploit-framework/msfvenom) or just press [ENTER] for default config : ";
 echo "Path:"
 read msfv
 if [[ -z "$msfv" ]]; then 
@@ -190,6 +211,8 @@ echo "**************************************************************************
 echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> config.path
 echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> config.path
 echo "********************************************************************************************************" >> config.path
+
+# adding the msf startups automatically to config file
 echo "msfconsole" >> config.path
 echo "msfvenom" >> config.path
 ;;
@@ -206,12 +229,14 @@ echo "backdoor-factory" >> config.path
 sleep 2
 else
 echo "[ X ] backdoor-factory  -> not found            ]"
-echo "[This script requires backdoor-factory , do you want to setup its path manually ?]"
+echo ""
+echo -e $yellow"[This script requires backdoor-factory , do you want to setup its path manually ?]"
 read -p "[Press Y/y to setup backdoor-factory path or N/n to install it from Kali repositories .]" choice1
 case "$choice1" in
   
  y|Y )
-echo "Enter the path for backdoor.py ex:(/opt/backdoor-factory/backdoor.py) or just press [ENTER] for default config : "
+ clear
+echo -e $yellow "Enter the path for backdoor.py ex:(/opt/backdoor-factory/backdoor.py) or just press [ENTER] for default config : "
 read -p "Path:" backdoor
 if [[ -z "$backdoor" ]]; then
 echo "backdoor-factory" >> config.path
@@ -241,13 +266,15 @@ echo "[ ✔ ] searchsploit..................[ found ]"
 echo "searchsploit" >> config.path
 sleep 2
 else
-echo "[ X ] searchsploit  -> not found            ]"
-echo "[This script requires searchsploit , do you want to setup its path manually ?]"
+echo "[ X ] searchsploit  -> not found]"
+echo ""
+echo -e $yellow "[This script requires searchsploit , do you want to setup its path manually ?]"
 read -p "[Press Y/y to config searchsploit path or N/n to install it from Kali repositories .]" choice2
 case "$choice2" in
   
   y|Y )
-echo "Enter the path for searchsploit ex:(/opt/searchsploit/searchsploit) or just press [ENTER] for default config : "
+  clear
+echo -e $yellow "Enter the path for searchsploit ex:(/opt/searchsploit/searchsploit) or just press [ENTER] for default config : "
 read -p "Path: " searchsploit
 if [[ -z "$searchsploit" ]]; then
 echo "searchsploit" >> config.path
@@ -275,7 +302,7 @@ fi
 ################################
 # rebackyo repo
 ################################
-echo "reactivating repositories"
+echo "Reactivating you original repositories"
 rm -f /etc/apt/sources.list
 mv /etc/apt/sources.list.backup /etc/apt/sources.list
 #now we can remove the emergency backup securely
