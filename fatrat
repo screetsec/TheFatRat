@@ -1503,8 +1503,8 @@ clear
 
 # User options
 PAYLOAD="windows/meterpreter/reverse_tcp" # The payload to use
-MSFVENOM=`$msfvenom` # Path to the msfvenom script
-MSFCONSOLE=`$msfconsole` # Path to the msfconsole script
+MSFVENOM="$msfvenom" # Path to the msfvenom script
+MSFCONSOLE="$msfconsole" # Path to the msfconsole script
 
 #Checking
 [[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
