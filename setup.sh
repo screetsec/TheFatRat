@@ -57,7 +57,7 @@ sleep 2
 else
 echo ""
 echo "[ X ] xterm -> not found!                        ]"
-echo "[ ! ] This script requires zenity                ]"
+echo "[ ! ] This script requires xterm                 ]"
 sleep 2
 sudo apt-get install xterm -y
 echo "[ ✔ ] Done installing .... "
