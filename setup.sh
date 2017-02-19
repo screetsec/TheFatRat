@@ -49,6 +49,20 @@ echo "         [ ]              Install all dependencies           [ ]"
 echo "         [ ]=================================================[ ]";
 echo ""
 
+#check if xterm is installed
+which xterm > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo "[ ✔ ] xterm.............................[ found ]"
+sleep 2
+else
+echo ""
+echo "[ X ] xterm -> not found!                        ]"
+echo "[ ! ] This script requires zenity                ]"
+sleep 2
+sudo apt-get install xterm -y
+echo "[ ✔ ] Done installing .... "
+fi
+
 #check if zenity its installed
 which zenity > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -56,33 +70,35 @@ echo "[ ✔ ] zenity............................[ found ]"
 sleep 2
 else
 echo ""
-echo "[ X ] zenity -> not found!                      ]"
-echo "[ ! ] This script requires zenity               ]"
+echo "[ X ] zenity -> not found!                       ]"
+echo "[ ! ]  This script requires zenity               ]"
 sleep 2
-echo "[ ! ] Installing zenity from your apt sources   ]"
+echo "[ ! ]  Installing zenity from your apt sources   ]"
 xterm -T "☣ INSTALL ZENITY ☣" -geometry 100x30 -e "sudo apt-get install zenity -y"
+echo "[ ✔ ] Done installing .... "
 fi
 
 # check if gcc exists
 which gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] gcc compiler......................[ found ]"
+echo "[ ✔ ] gcc compiler.......................[ found ]"
 sleep 2
 else
-echo "[ X ] gcc compiler      -> not found            ]"
-echo "[ ! ] Download compiler -> apt-get install gcc  ]"
+echo "[ X ] gcc compiler      -> not found              ]"
+echo "[ ! ]   Installing gcc from your apt sources      ]"
 xterm -T "☣ INSTALL GCC COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install gcc -y"
+echo "[ ✔ ] Done installing .... "
 sleep 2
 fi
 
 # check if mingw32 exists
 which i586-mingw32msvc-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] mingw32 compiler..................[ found ]"
+echo "[ ✔ ] mingw32 compiler....................[ found ]"
 sleep 2
 else
-echo "[ X ] mingw32 compiler  -> not found             ]"
-echo "[ ! ] Download compiler ........................."
+echo "[ X ] mingw32 compiler  -> not found               ]"
+echo "[ ! ]   Installing zenity from your apt sources    ]"
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 -y"
 echo "[ ✔ ] Done installing .... "
 sleep 2
@@ -91,11 +107,11 @@ fi
 # check if monodevelop exists
 which monodevelop > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] monodevelop ......................[ found ]"
+echo "[ ✔ ] monodevelop .........................[ found ]"
 sleep 2
 else
-echo "[ X ] Monodevelop  -> not found                  ]"
-echo "[ ! ] Download Monodevelop ........................."
+echo "[ X ] Monodevelop  -> not found                     ]"
+echo "[ ! ]  Installing monodevelop from your apt sources ]"
 xterm -T "☣ INSTALL MONODEVELOP ☣" -geometry 100x30 -e "sudo apt-get install monodevelop -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
@@ -104,11 +120,11 @@ fi
 # check if ruby exists
 which ruby > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] Ruby .............................[ found ]"
+echo "[ ✔ ] Ruby .................................[ found ]"
 sleep 2
 else
-echo "[ X ] ruby  -> not found                         ]"
-echo "[ ! ] Download ruby .............................."
+echo "[ X ] Ruby  -> not found                             ]"
+echo "[ ! ]     Installing ruby from your apt sources      ]"
 xterm -T "☣ INSTALL RUBY ☣" -geometry 100x30 -e "sudo apt-get install ruby -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
@@ -117,11 +133,11 @@ fi
 #check if apache2 exists
 which apache2 > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] apache2 ..........................[ found ]"
+echo "[ ✔ ] Apache2 ...............................[ found ]"
 sleep 2
 else
-echo "[ X ] apache2 -> not found          ]"
-echo "[ ! ] Download apache2 ........................."
+echo "[ X ] Apache2 -> not found                            ]"
+echo "[ ! ]    Installing apache2 from your apt sources     ]"
 xterm -T "☣ INSTALL APACHE2 ☣" -geometry 100x30 -e "sudo apt-get install apache2 -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
@@ -132,11 +148,11 @@ fi
 #gnome terminal is used in main script to run searchsploit
 which gnome-terminal > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] Gnome Terminal....................[ found ]"
+echo "[ ✔ ] Gnome Terminal.........................[ found ]"
 sleep 2
 else
-echo "[ X ] gnome-terminal-> not found     ]"
-echo "[ ! ] Download gnome-terminal....................."
+echo "[ X ] Gnome-terminal-> not found                      ]"
+echo "[ ! ] Installing gnome-terminal from your apt sources ]"
 xterm -T "☣ INSTALL GNOME-TERMINAL ☣" -geometry 100x30 -e "sudo apt-get install gnome-terminal -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
@@ -145,11 +161,11 @@ fi
 #Checking if upx compressor exists
 which upx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] UPX Compressor....................[ found ]"
+echo "[ ✔ ] UPX Compressor.........................[ found ]"
 sleep 2
 else
-echo "[ X ] upx compressor  -> not found     ]"
-echo "[ ! ] Download upx compressor...................."
+echo "[ X ] Upx compressor  -> not found                    ]"
+echo "[ ! ] Installing upx-compressor from your apt sources ]"
 xterm -T "☣ INSTALL UPX COMPRESSOR ☣" -geometry 100x30 -e "sudo apt-get install upx -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
@@ -180,7 +196,7 @@ sleep 2
 # check if msfconsole its installed
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] msfconsole........................[ found ]"
+echo "[ ✔ ] msfconsole.............................[ found ]"
 # msf was detected , removing config file in case setup was already configured before
 rm -f config.path
 
@@ -195,9 +211,10 @@ echo "msfvenom" >> config.path
 sleep 2
 else
 echo ""
-echo "[ X ] msfconsole -> not found                   ]"
+echo "[ X ] msfconsole -> not found                         ]"
 
 # Providing manual input to user in case metasploit was installed from git and is not on system path
+echo ""
 echo -e $yellow "[This script requires msfconsole , do you want to setup its path manually ?]";
 echo ""
 read -p "Press Y/y to config metasploit paths for (msfconsole & msfvenom) or N/n to install it from Kali repositories. :" choice
@@ -229,7 +246,8 @@ echo "ruby $msfv" >> config.path
 fi
 ;;
 
- n|N) xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
+ n|N) xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update "
+echo "[ ! ] Installing metasploit-framework from kali repositories ]
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 rm -f config.path
@@ -251,14 +269,14 @@ fi
 # check if backdoor-factory exists
 which backdoor-factory > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] backdoor-factory..................[ found ]"
+echo "[ ✔ ] backdoor-factory.......................[ found ]"
 echo "backdoor-factory" >> config.path
 sleep 2
 else
-echo "[ X ] backdoor-factory  -> not found            ]"
+echo "[ X ] backdoor-factory  -> not found                  ]"
 echo ""
 echo -e $yellow"[This script requires backdoor-factory , do you want to setup its path manually ?]"
-read -p "[Press Y/y to setup backdoor-factory path or N/n to install it from Kali repositories .]" choice1
+read -p "[Press Y/y to setup backdoor-factory path or N/n to install it from Kali repositories . ]" choice1
 case "$choice1" in
   
  y|Y )
@@ -273,7 +291,7 @@ fi
 ;;
 
  n|N )
-echo "[ ! ] Download Backdoor-Factory ........................."
+echo "[ ! ]   Installing backdoor-factory from kali repositories   ]
 xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 echo "backdoor-factory" >> config.path
@@ -311,7 +329,7 @@ fi
 ;;
 
 n|N )
-echo "[ ! ] Download Searchsploit ........................."
+echo "[ ! ]    Installing searchsploit from kali repositories      ]
 xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 echo "searchsploit" >> config.path
