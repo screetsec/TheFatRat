@@ -60,6 +60,7 @@ echo "[ X ] xterm -> not found!                        ]"
 echo "[ ! ] This script requires xterm                 ]"
 sleep 2
 sudo apt-get install xterm -y
+clear
 echo "[ ✔ ] Done installing .... "
 fi
 
