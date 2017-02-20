@@ -82,7 +82,7 @@ fi
 # check if gcc exists
 which gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] gcc compiler.......................[ found ]"
+echo "[ ✔ ] gcc compiler......................[ found ]"
 sleep 2
 else
 echo "[ X ] gcc compiler      -> not found              ]"
@@ -95,7 +95,7 @@ fi
 # check if mingw32 exists
 which i586-mingw32msvc-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] mingw32 compiler....................[ found ]"
+echo "[ ✔ ] mingw32 compiler..................[ found ]"
 sleep 2
 else
 echo "[ X ] mingw32 compiler  -> not found               ]"
@@ -108,7 +108,7 @@ fi
 # check if monodevelop exists
 which monodevelop > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] monodevelop .........................[ found ]"
+echo "[ ✔ ] monodevelop ......................[ found ]"
 sleep 2
 else
 echo "[ X ] Monodevelop  -> not found                     ]"
@@ -121,7 +121,7 @@ fi
 # check if ruby exists
 which ruby > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] Ruby .................................[ found ]"
+echo "[ ✔ ] Ruby .............................[ found ]"
 sleep 2
 else
 echo "[ X ] Ruby  -> not found                             ]"
@@ -134,7 +134,7 @@ fi
 #check if apache2 exists
 which apache2 > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] Apache2 ...............................[ found ]"
+echo "[ ✔ ] Apache2 ..........................[ found ]"
 sleep 2
 else
 echo "[ X ] Apache2 -> not found                            ]"
@@ -149,7 +149,7 @@ fi
 #gnome terminal is used in main script to run searchsploit
 which gnome-terminal > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] Gnome Terminal.........................[ found ]"
+echo "[ ✔ ] Gnome Terminal....................[ found ]"
 sleep 2
 else
 echo "[ X ] Gnome-terminal-> not found                      ]"
@@ -162,7 +162,7 @@ fi
 #Checking if upx compressor exists
 which upx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] UPX Compressor.........................[ found ]"
+echo "[ ✔ ] UPX Compressor....................[ found ]"
 sleep 2
 else
 echo "[ X ] Upx compressor  -> not found                    ]"
@@ -247,8 +247,8 @@ echo "ruby $msfv" >> config.path
 fi
 ;;
 
- n|N) xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update "
-echo "[ ! ] Installing metasploit-framework from kali repositories ]
+ n|N) xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update"
+echo "[ ! ] Installing metasploit-framework from kali repositories ]"
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 rm -f config.path
@@ -263,10 +263,12 @@ echo "msfconsole" >> config.path
 echo "msfvenom" >> config.path
 ;;
 
-*) echo "Invalid Input (Choose y/Y or n/N only)"
+ *)
+ echo "Invalid Input (Choose y/Y or n/N only)"
 ;;
 esac ;
 fi
+
 # check if backdoor-factory exists
 which backdoor-factory > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
