@@ -197,7 +197,7 @@ sleep 2
 # check if msfconsole its installed
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] msfconsole.............................[ found ]"
+echo "[ ✔ ] msfconsole........................[ found ]"
 # msf was detected , removing config file in case setup was already configured before
 rm -f config.path
 
@@ -272,7 +272,7 @@ fi
 # check if backdoor-factory exists
 which backdoor-factory > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] backdoor-factory.......................[ found ]"
+echo "[ ✔ ] backdoor-factory..................[ found ]"
 echo "backdoor-factory" >> config.path
 sleep 2
 else
@@ -294,7 +294,7 @@ fi
 ;;
 
  n|N )
-echo "[ ! ]   Installing backdoor-factory from kali repositories   ]
+echo "[ ! ]   Installing backdoor-factory from kali repositories   ]"
 xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 echo "backdoor-factory" >> config.path
@@ -310,7 +310,7 @@ sleep 2
 # check if searchsploit exists
 which searchsploit > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] searchsploit..................[ found ]"
+echo "[ ✔ ] searchsploit......................[ found ]"
 echo "searchsploit" >> config.path
 sleep 2
 else
@@ -332,7 +332,7 @@ fi
 ;;
 
 n|N )
-echo "[ ! ]    Installing searchsploit from kali repositories      ]
+echo "[ ! ]    Installing searchsploit from kali repositories      ]"
 xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 echo "searchsploit" >> config.path
