@@ -52,7 +52,7 @@ echo ""
 #check if xterm is installed
 which xterm > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] xterm.............................[ found ]"
+echo "[ ✔ ] Xterm.............................[ found ]"
 sleep 2
 else
 echo ""
@@ -67,7 +67,7 @@ fi
 #check if zenity its installed
 which zenity > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] zenity............................[ found ]"
+echo "[ ✔ ] Zenity............................[ found ]"
 sleep 2
 else
 echo ""
@@ -82,7 +82,7 @@ fi
 # check if gcc exists
 which gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] gcc compiler......................[ found ]"
+echo "[ ✔ ] Gcc compiler......................[ found ]"
 sleep 2
 else
 echo "[ X ] gcc compiler      -> not found              ]"
@@ -95,7 +95,7 @@ fi
 # check if mingw32 exists
 which i586-mingw32msvc-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] mingw32 compiler..................[ found ]"
+echo "[ ✔ ] Mingw32 Compiler..................[ found ]"
 sleep 2
 else
 echo "[ X ] mingw32 compiler  -> not found               ]"
@@ -108,7 +108,7 @@ fi
 # check if monodevelop exists
 which monodevelop > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] monodevelop ......................[ found ]"
+echo "[ ✔ ] Monodevelop ......................[ found ]"
 sleep 2
 else
 echo "[ X ] Monodevelop  -> not found                     ]"
@@ -194,10 +194,10 @@ echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/
 echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 sleep 2
 
-# check if msfconsole its installed
+# check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] msfconsole........................[ found ]"
+echo "[ ✔ ] Metasploit-Framework..............[ found ]"
 # msf was detected , removing config file in case setup was already configured before
 rm -f config.path
 
@@ -212,7 +212,7 @@ echo "msfvenom" >> config.path
 sleep 2
 else
 echo ""
-echo "[ X ] msfconsole -> not found                         ]"
+echo "[ X ] metasploit-framework -> not found                         ]"
 
 # Providing manual input to user in case metasploit was installed from git and is not on system path
 echo ""
@@ -272,7 +272,7 @@ fi
 # check if backdoor-factory exists
 which backdoor-factory > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] backdoor-factory..................[ found ]"
+echo "[ ✔ ] Backdoor-Factory..................[ found ]"
 echo "backdoor-factory" >> config.path
 sleep 2
 else
@@ -310,7 +310,7 @@ sleep 2
 # check if searchsploit exists
 which searchsploit > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] searchsploit......................[ found ]"
+echo "[ ✔ ] Searchsploit......................[ found ]"
 echo "searchsploit" >> config.path
 sleep 2
 else
