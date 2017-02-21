@@ -7,7 +7,7 @@ msfvenom=`sed -n 6p config.path`
 backdoor=`sed -n 7p config.path`
 searchsploit=`sed -n 8p config.path`
 else
-	echo "$file does not exists , run setup.sh first ."
+	echo "Configuration file does not exists , run setup.sh first ."
 exit 1
 fi
 #============================================================================================================
@@ -36,7 +36,7 @@ BlueF='\e[1;34m'
 
 
 #Checking
-[[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
+[[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
 resize -s 33 84 > /dev/null
 clear
 
@@ -210,15 +210,15 @@ fi
 # check apache if exists
       which apache2 > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[apache2 Server $distro ]: installation found!;
+      echo [✔]::[Apache2 Server $distro ]: installation found!;
 else
 
-   echo [x]::[warning]:this script require monodevelop & dmcs to work ;
+   echo [x]::[warning]:this script require apache2 to work ;
    echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
+   echo [!]::Run setup.sh to install apache2 ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 sleep 2
 
@@ -236,26 +236,28 @@ sleep 2
 # check msfconsole
       which $msfconsole > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[msfconsole]: installation found!;
+      echo [✔]::[Msfconsole]: installation found!;
 else
 
-   echo [x]::[warning]:this script require  msfconsole installed to work ;
+   echo [x]::[warning]:this script require msfconsole installed to work ;
    echo ""
-   echo [!]::[please wait]: Downloading from network... ;
+   echo [!]::Run setup.sh to install metasploit-framework ;
    sleep 3
+exit 1
 fi
 sleep 2
 
 # check if msfvenom exists
       which $msfvenom > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[msfvenom]: installation found!;
+      echo [✔]::[Msfvenom]: installation found!;
 else
 
-   echo [x]::[warning]:this script require  msfvenom installed to work ;
+   echo [x]::[warning]:this script require msfvenom installed to work ;
    echo ""
-   echo [!]::[please wait]: Downloading from network... ;
+   echo [!]::Run setup.sh to install metasploit-framework ;
    sleep 3
+exit 1
 fi
 sleep 2
 
@@ -268,30 +270,29 @@ else
 
    echo [x]::[warning]:this script require zenity installed to work ;
    echo ""
-   echo [!]::[please wait]: please Download Zenity.... ;
-   su $user -c "xdg-open http://www.tecmint.com/zenity-creates-graphical-gtk-dialog-boxes-in-command-line-and-shell-scripts/" > /dev/null 2>&1
+   echo [!]::Run setup.sh to install zenity ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 sleep 2
 
 # check mingw if exists
       which i586-mingw32msvc-gcc > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[mingw32]: installation found!;
+      echo [✔]::[Mingw32]: installation found!;
       COMPILER="i586-mingw32msvc-gcc"
 else
       which i686-w64-mingw32-gcc > /dev/null 2>&1
       if [ $? -eq 0 ]; then
-      echo [✔]::[mingw32]: installation found!;
+      echo [✔]::[Mingw32]: installation found!;
       COMPILER="i686-w64-mingw32-gcc"
 else
    echo [x]::[warning]:this script require mingw32 installed to work ;
    echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
+   echo [!]::Run setup.sh to install ming32 ;
    sleep 2
-   exit
+   exit 1
  fi
 fi
 sleep 2
@@ -300,32 +301,32 @@ sleep 2
 # check backdoor-factory if exists
       which $backdoor > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[backdoor-factory]: installation found!;
+      echo [✔]::[Backdoor-factory]: installation found!;
 
 else
 
    echo [x]::[warning]:this script require backdoor-factory installed to work ;
    echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
+   echo [!]::Run setup.sh to install backdoor-factory ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 sleep 2
 
 # check ruby if exists
       which ruby > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[ruby]: installation found!;
+      echo [✔]::[Ruby]: installation found!;
 
 else
 
-   echo [x]::[warning]:this script require rubyinstalled to work ;
+   echo [x]::[warning]:this script require ruby installed to work ;
    echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
+   echo [!]::Run setup.sh to install ruby ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 sleep 2
 
@@ -333,34 +334,78 @@ sleep 2
       which monodevelop > /dev/null 2>&1
       which dmcs > /dev/null 2>&1
       if [ -d $find ]; then
-      echo [✔]::[monodevelop]: installation found!;
+      echo [✔]::[Monodevelop]: installation found!;
 
 else
 
    echo [x]::[warning]:this script require monodevelop to work ;
    echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
+   echo [!]::Run setup.sh to install monodevelop ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 sleep 2
 
 # check xterm if exists
       which xterm > /dev/null 2>&1
       if [ -d $find ]; then
-      echo [✔]::[xterm]: installation found!;
+      echo [✔]::[Xterm]: installation found!;
 
 else
 
    echo [x]::[warning]:this script require xterm to work ;
    echo ""
-   echo [!]::[please wait]: please install xterm .... ;
+   echo [!]::Run setup.sh to install xterm ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 
+# check gnome-terminal if exists
+      which gnome-terminal > /dev/null 2>&1
+      if [ -d $find ]; then
+      echo [✔]::[Gnome-terminal]: installation found!;
+
+else
+
+   echo [x]::[warning]:this script require gnome-terminal to work ;
+   echo ""
+   echo [!]::Run setup.sh to install gnome-terminal ;
+   echo ""
+   sleep 2
+   exit 1
+fi
+
+# check apktool if exists
+      which apktool > /dev/null 2>&1
+      if [ -d $find ]; then
+      echo [✔]::[Apktool]: installation found!;
+
+else
+
+   echo [x]::[warning]:this script require apktool to work ;
+   echo ""
+   echo [!]::Run setup.sh to install apktool ;
+   echo ""
+   sleep 2
+   exit 1
+fi
+
+# check upx if exists
+      which upx > /dev/null 2>&1
+      if [ -d $find ]; then
+      echo [✔]::[Upx]: installation found!;
+
+else
+
+   echo [x]::[warning]:this script require upx to work ;
+   echo ""
+   echo [!]::Run setup.sh to install upx ;
+   echo ""
+   sleep 2
+   exit 1
+fi
 
 #WARNING !!!
 clear
@@ -442,6 +487,7 @@ if [ "$distro" = "Kali" ]; then
 /etc/init.d/metasploit start > /dev/null 2>&1
 /etc/init.d/apache2 start > /dev/null 2>&1
 else
+/etc/init.d/postgresql start > /dev/null 2>&1
 /etc/init.d/metasploit start > /dev/null 2>&1
 /etc/init.d/apache2 start > /dev/null 2>&1
 fi
@@ -457,6 +503,7 @@ function Stop() {
   else
   /etc/init.d/metasploit stop > /dev/null 2>&1
   /etc/init.d/apache2 stop > /dev/null 2>&1
+  /etc/init.d/postgresql stop > /dev/null 2>&1
   fi
 
 }
