@@ -7,7 +7,7 @@ msfvenom=`sed -n 6p config.path`
 backdoor=`sed -n 7p config.path`
 searchsploit=`sed -n 8p config.path`
 else
-	echo "$file does not exists , run setup.sh first ."
+	echo "Configuration file does not exists , run setup.sh first ."
 exit 1
 fi
 
@@ -165,11 +165,27 @@ else
 else
    echo [x]::[warning]:this script require mingw32 installed to work ;
    echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
+   echo [!]::Run setup.sh to install mingw32 ;
    sleep 2
-   exit
+   exit 1
  fi
 fi
+
+# check upx if exists
+      which upx > /dev/null 2>&1
+      if [ -d $find ]; then
+      echo [✔]::[Upx]: installation found!;
+
+else
+
+   echo [x]::[warning]:this script require upx to work ;
+   echo ""
+   echo [!]::Run setup.sh to install upx ;
+   echo ""
+   sleep 2
+   exit 1
+fi
+
 sleep 2
 
 
