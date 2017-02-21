@@ -167,7 +167,7 @@ sleep 2
 else
 echo "[ X ] Upx compressor  -> not found                    ]"
 echo "[ ! ] Installing upx-compressor from your apt sources ]"
-xterm -T "☣ INSTALL UPX COMPRESSOR ☣" -geometry 100x30 -e "sudo apt-get install upx -y"
+xterm -T "☣ INSTALL UPX COMPRESSOR ☣" -geometry 100x30 -e "sudo apt-get install upx-ucl -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
 fi
