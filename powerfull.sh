@@ -173,7 +173,7 @@ fi
 
 # check upx if exists
       which upx > /dev/null 2>&1
-      if [ -d $find ]; then
+      if [ $? -eq 0 ]; then
       echo [✔]::[Upx]: installation found!;
 
 else
