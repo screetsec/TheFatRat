@@ -193,6 +193,21 @@ echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/s
 echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 sleep 2
+xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update"
+
+#Checking if apktool compressor exists
+which apktool > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo "[ ✔ ] Apktool...........................[ found ]"
+sleep 2
+else
+echo "[ X ] Apktool  -> not found                    ]"
+echo "[ ! ] Installing apktool from Kali repositories ]"
+xterm -T "☣ INSTALL APKTOOOL ☣" -geometry 100x30 -e "sudo apt-get install apktool --force-yes -y"
+echo "[ ✔ ] Done installing ...."
+sleep 2
+fi
+
 
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
@@ -216,7 +231,7 @@ echo "[ X ] metasploit-framework -> not found                         ]"
 
 # Providing manual input to user in case metasploit was installed from git and is not on system path
 echo ""
-echo -e $yellow "[This script requires msfconsole , do you want to setup its path manually ?]";
+echo -e $white "[This script requires msfconsole , do you want to setup its path manually ?]";
 echo ""
 read -p "Press Y/y to config metasploit paths for (msfconsole & msfvenom) or N/n to install it from Kali repositories. :" choice
 case "$choice" in
@@ -229,7 +244,7 @@ echo "** Configuration Paths for TheFatRat , do not delete anything from this fi
 echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> config.path
 echo "********************************************************************************************************" >> config.path
 clear
-echo -e $yellow "Enter the path for msfconsole ex:(/opt/metasploit-framework/msfconsole) or just press [ENTER] for default config : ";
+echo -e $white "Enter the path for msfconsole ex:(/opt/metasploit/msfconsole) or just press [ENTER] for default config : ";
 read -p "Path:" msfc
 if [[ -z "$msfc" ]]; then
 echo "msfconsole" >> config.path
@@ -237,7 +252,7 @@ else
 echo "ruby $msfc" >> config.path
 fi
 echo ""
-echo -e $yellow "Enter the path for msfvenom ex:(/opt/metasploit-framework/msfvenom) or just press [ENTER] for default config : ";
+echo -e $white "Enter the path for msfvenom ex:(/opt/metasploit/msfvenom) or just press [ENTER] for default config : ";
 echo "Path:"
 read msfv
 if [[ -z "$msfv" ]]; then 
@@ -247,7 +262,7 @@ echo "ruby $msfv" >> config.path
 fi
 ;;
 
- n|N) xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update"
+ n|N) 
 echo "[ ! ] Installing metasploit-framework from kali repositories ]"
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
 echo "[ ✔ ] Done installing ...."
@@ -266,7 +281,7 @@ echo "msfvenom" >> config.path
  *)
  echo "Invalid Input (Choose y/Y or n/N only)"
 ;;
-esac ;
+esac;
 fi
 
 # check if backdoor-factory exists
@@ -278,13 +293,15 @@ sleep 2
 else
 echo "[ X ] backdoor-factory  -> not found                  ]"
 echo ""
-echo -e $yellow"[This script requires backdoor-factory , do you want to setup its path manually ?]"
+echo -e $white "[This script requires backdoor-factory 
+ , do you want to setup its path manually ?]";
 read -p "[Press Y/y to setup backdoor-factory path or N/n to install it from Kali repositories . ]" choice1
 case "$choice1" in
   
  y|Y )
  clear
-echo -e $yellow "Enter the path for backdoor.py ex:(/opt/backdoor-factory/backdoor.py) or just press [ENTER] for default config : "
+echo -e $white "Enter the path for backdoor.py ex:(/opt/backdoor-factory/backdoor.py) 
+, or just press [ENTER] for default config : ";
 read -p "Path:" backdoor
 if [[ -z "$backdoor" ]]; then
 echo "backdoor-factory" >> config.path
@@ -316,13 +333,14 @@ sleep 2
 else
 echo "[ X ] searchsploit  -> not found]"
 echo ""
-echo -e $yellow "[This script requires searchsploit , do you want to setup its path manually ?]"
+echo -e $white "[This script requires searchsploit , do you want to setup its path manually ?]";
 read -p "[Press Y/y to config searchsploit path or N/n to install it from Kali repositories .]" choice2
 case "$choice2" in
   
   y|Y )
   clear
-echo -e $yellow "Enter the path for searchsploit ex:(/opt/searchsploit/searchsploit) or just press [ENTER] for default config : "
+echo -e $yellow "Enter the path for searchsploit ex:(/opt/searchsploit/searchsploit) 
+, or just press [ENTER] for default config : "
 read -p "Path: " searchsploit
 if [[ -z "$searchsploit" ]]; then
 echo "searchsploit" >> config.path
@@ -358,7 +376,8 @@ rm -f /etc/apt/sources.list.fatrat
 apt-get clean
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 clear
-echo "Do you want to create a shortcut for (fatrat) on your (/usr/local/sbin) , so you can run the script from anywhere ?"
+echo -e $yellow "Do you want to create a shortcut for (fatrat) on your (/usr/local/sbin) 
+, so you can run the script from anywhere ?";
 read -p "Press y/Y to create the script , or press n/N to cancel : " choice4
 case "$choice4" in
 
