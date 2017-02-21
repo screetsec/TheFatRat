@@ -201,7 +201,7 @@ if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] Apktool...........................[ found ]"
 sleep 2
 else
-echo "[ X ] Apktool  -> not found                    ]"
+echo "[ X ] Apktool  -> not found                     ]"
 echo "[ ! ] Installing apktool from Kali repositories ]"
 xterm -T "☣ INSTALL APKTOOOL ☣" -geometry 100x30 -e "sudo apt-get install apktool --force-yes -y"
 echo "[ ✔ ] Done installing ...."
