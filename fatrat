@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
-file="config.path"
-if [ -f "$file" ]
-then
-msfconsole=`sed -n 5p config.path`	
-msfvenom=`sed -n 6p config.path`
-backdoor=`sed -n 7p config.path`
-searchsploit=`sed -n 8p config.path`
-else
-	echo "Configuration file does not exists , run setup.sh first ."
-exit 1
-fi
+
 #============================================================================================================
 #	THEFATRAT
 #
@@ -40,6 +30,17 @@ BlueF='\e[1;34m'
 resize -s 33 84 > /dev/null
 clear
 
+file="config.path"
+if [ -f "$file" ]
+then
+msfconsole=`sed -n 5p config.path`	
+msfvenom=`sed -n 6p config.path`
+backdoor=`sed -n 7p config.path`
+searchsploit=`sed -n 8p config.path`
+else
+	echo "Configuration file does not exists , run setup.sh first ."
+exit 1
+fi
 
 # spinner for Metasploit Generator
 spinlong ()
