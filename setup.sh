@@ -231,9 +231,9 @@ echo "[ X ] metasploit-framework -> not found                         ]"
 
 # Providing manual input to user in case metasploit was installed from git and is not on system path
 echo ""
-echo -e $white "[This script requires msfconsole , do you want to setup its path manually ?]";
+echo -e $white "This script requires Metasploit-Framework do you want to setup its path manually ?";
 echo ""
-read -p "Press Y/y to config metasploit paths for (msfconsole & msfvenom) or N/n to install it from Kali repositories. :" choice
+read -p "Press Y/y to config metasploit-framework path or N/n to install it from Kali repositories. :" choice
 case "$choice" in
 
   y|Y)
@@ -244,21 +244,15 @@ echo "** Configuration Paths for TheFatRat , do not delete anything from this fi
 echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> config.path
 echo "********************************************************************************************************" >> config.path
 clear
-echo -e $white "Enter the path for msfconsole ex:(/opt/metasploit/msfconsole) or just press [ENTER] for default config : ";
+echo "Enter the path of your Metasploit Instalation or just press enter for default config ."
+echo -e $white "Ex:(/opt/metasploit-framework)";
 read -p "Path:" msfc
 if [[ -z "$msfc" ]]; then
 echo "msfconsole" >> config.path
-else
-echo "ruby $msfc" >> config.path
-fi
-echo ""
-echo -e $white "Enter the path for msfvenom ex:(/opt/metasploit/msfvenom) or just press [ENTER] for default config : ";
-echo "Path:"
-read msfv
-if [[ -z "$msfv" ]]; then 
 echo "msfvenom" >> config.path
 else
-echo "ruby $msfv" >> config.path
+echo "ruby $msfc/msfconsole" >> config.path
+echo "ruby $msfc/msfvenom" >> config.path
 fi
 ;;
 
