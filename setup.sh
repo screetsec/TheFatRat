@@ -419,7 +419,7 @@ n|N )
 echo "[ ! ]    Installing searchsploit from kali repositories      ]"
 xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
 echo "[ ✔ ] Done installing ...."
-echo "searchsploit" | tee -a $configh $log > /dev/null 2>&1
+echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 echo ""
 echo "Configuration and tool installed with success!";
