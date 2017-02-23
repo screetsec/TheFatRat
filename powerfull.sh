@@ -1,11 +1,11 @@
 #!/bin/bash
-file="config.path"
+file="config/config.path"
 if [ -f "$file" ]
 then
-msfconsole=`sed -n 5p config.path`	
-msfvenom=`sed -n 6p config.path`
-backdoor=`sed -n 7p config.path`
-searchsploit=`sed -n 8p config.path`
+msfconsole=`sed -n 5p $file`	
+msfvenom=`sed -n 6p $file`
+backdoor=`sed -n 7p $file`
+searchsploit=`sed -n 8p $file`
 else
 	echo "Configuration file does not exists , run setup.sh first ."
 exit 1
