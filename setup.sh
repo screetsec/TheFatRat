@@ -16,7 +16,7 @@ path=`pwd`
 log=$path/logs/setup.log
 
 #Removing any previous setup log created
-rm -f $log > /dev/null 2>&1
+rm -f $log 
 # setup.sh Author : Edo maland ( Screetsec )
 # Install all dependencies nedded
 # configuration all file for fixing all problem
@@ -287,7 +287,7 @@ which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] Metasploit-Framework..............[ found ]"
 # msf was detected , removing config file in case setup was already configured before
-rm -f config/config.path /dev/null 2>&1
+rm -f config/config.path 
 
 #Creating new config file based on last detection of msf
 touch config/config.path
@@ -310,7 +310,7 @@ read -p "Press Y/y to config metasploit-framework path or N/n to install it from
 case "$choice" in
 
   y|Y)
-rm -f config/config.path /dev/null 2>&1
+rm -f config/config.path
 touch config/config.path
 echo "********************************************************************************************************" >> config.path
 echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> config.path
@@ -333,7 +333,7 @@ fi
 echo "[ ! ] Installing metasploit-framework from kali repositories ]"
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
 echo "[ ✔ ] Done installing ...."
-rm -f config/config.path /dev/null 2>&1
+rm -f config/config.path
 touch config/config.path
 echo "********************************************************************************************************" >> config.path
 echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> config.path
