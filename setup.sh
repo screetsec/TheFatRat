@@ -16,7 +16,7 @@ path=`pwd`
 log=$path/logs/setup.log
 
 #Removing any previous setup log created
-rm -r $log
+rm -r $log > /dev/null 2>&1
 # setup.sh Author : Edo maland ( Screetsec )
 # Install all dependencies nedded
 # configuration all file for fixing all problem
