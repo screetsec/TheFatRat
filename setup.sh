@@ -58,7 +58,7 @@ echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> $log
 echo "------------------------------------------------------" >> $log
 echo "                                                       " >> $log
 #check if xterm is installed
-which xterm > $log 2>&1
+which xterm > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] Xterm.............................[ found ]"
 which xterm >> $log 2>&1
