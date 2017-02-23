@@ -14,6 +14,7 @@ echo ""
 fi 
 path=`pwd`
 log=$path/logs/setup.log
+config=$path/config/config.path
 
 #Removing any previous setup log created
 rm -f $log 
@@ -56,7 +57,7 @@ touch $log
 echo "------------------------------------------------------" >> $log
 echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> $log
 echo "------------------------------------------------------" >> $log
-echo "                                                       " >> $log
+echo "                                                      " >> $log
 #check if xterm is installed
 which xterm > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -281,22 +282,21 @@ which apktool >> $log 2>&1
 sleep 2
 fi
 
-
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] Metasploit-Framework..............[ found ]"
 # msf was detected , removing config file in case setup was already configured before
-rm -f config/config.path 
+rm -f $config
 
 #Creating new config file based on last detection of msf
-touch config/config.path
-echo "********************************************************************************************************" >> config.path
-echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> config.path
-echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> config.path
-echo "********************************************************************************************************" >> config.path
-echo "msfconsole" >> config/config.path >> $log 2>&1
-echo "msfvenom" >> config/config.path >> $log 2>&1
+touch $config
+echo "********************************************************************************************************" >> $config
+echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
+echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> $config
+echo "********************************************************************************************************" >> $config
+echo "msfconsole" | tee -a $config $log > /dev/null 2>&1
+echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 else
 echo ""
@@ -310,22 +310,22 @@ read -p "Press Y/y to config metasploit-framework path or N/n to install it from
 case "$choice" in
 
   y|Y)
-rm -f config/config.path
-touch config/config.path
-echo "********************************************************************************************************" >> config.path
-echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> config.path
-echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> config.path
-echo "********************************************************************************************************" >> config.path
+rm -f $config
+touch $config
+echo "********************************************************************************************************" >> $config
+echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
+echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> $config
+echo "********************************************************************************************************" >> $config
 clear
 echo "Enter the path of your Metasploit Instalation or just press enter for default config ."
 echo -e $white "Ex:(/opt/metasploit-framework)";
 read -p "Path:" msfc
 if [[ -z "$msfc" ]]; then
-echo "msfconsole" >> config/config.path >> $log 2>&1
-echo "msfvenom" >> config/config.path >> $log 2>&1
+echo "msfconsole" | tee -a $config $log > /dev/null 2>&1
+echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 else
-echo "ruby $msfc/msfconsole" >> config/config.path >> $log 2>&1
-echo "ruby $msfc/msfvenom" >> config/config.path >> $log 2>&1
+echo "ruby $msfc/msfconsole" | tee -a $config $log > /dev/null 2>&1
+echo "ruby $msfc/msfvenom" | tee -a $config $log > /dev/null 2>&1
 fi
 ;;
 
@@ -333,16 +333,16 @@ fi
 echo "[ ! ] Installing metasploit-framework from kali repositories ]"
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
 echo "[ ✔ ] Done installing ...."
-rm -f config/config.path
-touch config/config.path
-echo "********************************************************************************************************" >> config.path
-echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> config.path
-echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> config.path
-echo "********************************************************************************************************" >> config.path
+rm -f $config
+touch $config
+echo "********************************************************************************************************" >> $config
+echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
+echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> $config
+echo "********************************************************************************************************" >> $config
 
 # adding the msf startups automatically to config file
-echo "msfconsole" >> config/config.path >> $log 2>&1
-echo "msfvenom" >> config/config.path >> $log 2>&1
+echo "msfconsole" | tee -a $config $log > /dev/null 2>&1
+echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 ;;
 
  *)
@@ -355,7 +355,7 @@ fi
 which backdoor-factory > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] Backdoor-Factory..................[ found ]"
-echo "backdoor-factory" >> config/config.path
+echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 else
 echo "[ X ] backdoor-factory  -> not found                  ]"
@@ -370,9 +370,9 @@ echo -e $white "Enter the path for backdoor.py , or just press [ENTER] for defau
 ex:(/opt/backdoor-factory/backdoor.py)";
 read -p "Path:" backdoor
 if [[ -z "$backdoor" ]]; then
-echo "backdoor-factory" >> config/config.path >> $log 2>&1
+echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
 else
-echo "python2 $backdoor" >> config/config.path >> $log 2>&1
+echo "python2 $backdoor" | tee -a $config $log > /dev/null 2>&1
 fi
 ;;
 
@@ -380,7 +380,7 @@ fi
 echo "[ ! ]   Installing backdoor-factory from kali repositories   ]"
 xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory --force-yes -y"
 echo "[ ✔ ] Done installing ...."
-echo "backdoor-factory" >> config/config.path >> $log 2>&1
+echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
 ;;
 
 *) 
@@ -394,7 +394,7 @@ sleep 2
 which searchsploit > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] Searchsploit......................[ found ]"
-echo "searchsploit" >> config/config.path >> $log 2>&1
+echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 else
 echo "[ X ] searchsploit  -> not found]"
@@ -409,9 +409,9 @@ echo -e $white "Enter the path for searchsploit , or just press [ENTER] for defa
 ex:(/opt/searchsploit/searchsploit) "
 read -p "Path: " searchsploit
 if [[ -z "$searchsploit" ]]; then
-echo "searchsploit" >> config/config.path >> $log 2>&1
+echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
 else
-echo "bash $searchsploit" >> config/config.path >> $log 2>&1
+echo "bash $searchsploit" | tee -a $config $log > /dev/null 2>&1
 fi
 ;;
 
@@ -419,7 +419,7 @@ n|N )
 echo "[ ! ]    Installing searchsploit from kali repositories      ]"
 xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
 echo "[ ✔ ] Done installing ...."
-echo "searchsploit" >> config/config.path >> $log 2>&1
+echo "searchsploit" | tee -a $configh $log > /dev/null 2>&1
 sleep 2
 echo ""
 echo "Configuration and tool installed with success!";
@@ -455,7 +455,7 @@ rm -f /usr/local/sbin/fatrat
 touch /usr/local/sbin/fatrat
 echo "#!/bin/bash" > /usr/local/sbin/fatrat
 echo $scrp >> /usr/local/sbin/fatrat
-chmod +x /usr/local/sbin/fatrat >> $log 2>&1
+chmod +x /usr/local/sbin/fatrat 
 clear
 echo "";
   echo "[ ]====================================================================[ ]";
