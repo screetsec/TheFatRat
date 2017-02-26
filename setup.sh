@@ -263,8 +263,8 @@ sleep 2
 fi
 
 #Installing dependencies for Zipalign
-echo "[ ! ] Installing Zipalign & Android-sdk dependencies from your apt sources"
-xterm -T "☣ INSTALL ZIPALING & ANDROID-SDK DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install lib32stdc++6 lib32z1 lib32z1-dev -y "
+echo "[ ! ] Installing Zipalign dependencies from your apt sources"
+xterm -T "☣ INSTALL ZIPALING ☣" -geometry 100x30 -e "sudo apt-get install lib32stdc++6 lib32z1 lib32z1-dev -y "
 echo "[ ✔ ] Done installing ...."
 sleep 2
 
