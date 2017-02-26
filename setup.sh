@@ -8,6 +8,9 @@ sleep 4s
 rm -f /etc/apt/sources.list
 mv /etc/apt/sources.list.fatrat /etc/apt/sources.list
 echo "Your Original repository list was recovered. ;) ..... beginning setup"
+echo ""
+echo "Cleaning previous repositories cache & updating your repository ."
+sudo apt-get clean && apt-get update -y
 sleep 3s
 else
 echo ""
@@ -244,6 +247,42 @@ which unzip >> $log 2>&1
 sleep 2
 fi
 
+#Checking if Aapt exists
+which aapt > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo "[ ✔ ] Aapt..............................[ found ]"
+which aapt >> $log 2>&1
+sleep 2
+else
+echo "[ X ] Aapt -> not found                    ]"
+echo "[ ! ] Installing Aapt from your apt sources ]"
+xterm -T "☣ INSTALL AAPT ☣" -geometry 100x30 -e "sudo apt-get install aapt -y "
+echo "[ ✔ ] Done installing ...."
+which aapt >> $log 2>&1
+sleep 2
+fi
+
+#Installing dependencies for Zipalign
+echo "[ ! ] Installing Zipalign & Android-sdk dependencies from your apt sources"
+xterm -T "☣ INSTALL ZIPALING & ANDROID-SDK DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install lib32stdc++6 lib32z1 lib32z1-dev -y "
+echo "[ ✔ ] Done installing ...."
+sleep 2
+
+#Checking if Zipalign exists
+which zipalign > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo "[ ✔ ] Zipalign..........................[ found ]"
+which zipalign >> $log 2>&1
+sleep 2
+else
+echo "[ X ] Zipalign -> not found                    ]"
+echo "[ ! ] Installing Zipalign from your apt sources "
+xterm -T "☣ INSTALL ZIPALIGN ☣" -geometry 100x30 -e "sudo apt-get install zipalign -y "
+echo "[ ✔ ] Done installing ...."
+which zipalign >> $log 2>&1
+sleep 2
+fi
+
 #################################
 #inputrepo
 #################################
@@ -274,13 +313,34 @@ echo "[ ✔ ] Apktool...........................[ found ]"
 which apktool >> $log 2>&1
 sleep 2
 else
-echo "[ X ] Apktool  -> not found                     ]"
-echo "[ ! ] Installing apktool from Kali repositories ]"
+echo "[ X ] Apktool  -> not found                     "
+echo "[ ! ] Installing apktool from Kali repositories "
 xterm -T "☣ INSTALL APKTOOOL ☣" -geometry 100x30 -e "sudo apt-get install apktool --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 which apktool >> $log 2>&1
 sleep 2
 fi
+
+#Checking if dex2jar exists
+which d2j-jar2dex > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo "[ ✔ ] Dex2Jar...........................[ found ]"
+which d2j-jar2dex >> $log 2>&1
+sleep 2
+else
+echo "[ X ] Dex2jar  -> not found                     "
+echo "[ ! ] Installing dex2jar from Kali repositories "
+xterm -T "☣ INSTALL APKTOOOL ☣" -geometry 100x30 -e "sudo apt-get install dex2jar --force-yes -y"
+echo "[ ✔ ] Done installing ...."
+which d2j-jar2dex >> $log 2>&1
+sleep 2
+fi
+
+#installing dependencies for ruby script
+echo "[ ! ] Installing dedepndencies for ruby script from Kali repositories "
+xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick  -y"
+echo "[ ✔ ] Done installing ...."
+sleep 2
 
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
@@ -300,7 +360,7 @@ echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 else
 echo ""
-echo "[ X ] metasploit-framework -> not found                         ]"
+echo "[ X ] metasploit-framework -> not found                         "
 
 # Providing manual input to user in case metasploit was installed from git and is not on system path
 echo ""
@@ -317,9 +377,9 @@ echo "** Configuration Paths for TheFatRat , do not delete anything from this fi
 echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> $config
 echo "********************************************************************************************************" >> $config
 clear
-echo "Enter the path of your Metasploit Instalation or just press enter for default config ."
-echo -e $white "Ex:(/opt/metasploit-framework)";
-read -p "Path:" msfc
+echo -e $white "Enter the path of your Metasploit Instalation or just press enter for default config :
+ex:(/opt/metasploit-framework)";
+read -p "Path: " msfc
 if [[ -z "$msfc" ]]; then
 echo "msfconsole" | tee -a $config $log > /dev/null 2>&1
 echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
@@ -330,7 +390,7 @@ fi
 ;;
 
  n|N) 
-echo "[ ! ] Installing metasploit-framework from kali repositories ]"
+echo "[ ! ] Installing metasploit-framework from kali repositories "
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 rm -f $config
@@ -358,7 +418,7 @@ echo "[ ✔ ] Backdoor-Factory..................[ found ]"
 echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 else
-echo "[ X ] backdoor-factory  -> not found                  ]"
+echo "[ X ] backdoor-factory  -> not found                  "
 echo ""
 echo -e $white "[This script requires backdoor-factory , do you want to setup its path manually ?]";
 read -p "[Press Y/y to setup backdoor-factory path or N/n to install it from Kali repositories . ]" choice1
@@ -368,7 +428,7 @@ case "$choice1" in
  clear
 echo -e $white "Enter the path for backdoor.py , or just press [ENTER] for default config : 
 ex:(/opt/backdoor-factory/backdoor.py)";
-read -p "Path:" backdoor
+read -p "Path: " backdoor
 if [[ -z "$backdoor" ]]; then
 echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
 else
@@ -388,7 +448,6 @@ echo "Invalid Input (Choose y/Y or n/N only)"
 ;;
 esac;
 fi
-sleep 2
 
 # check if searchsploit exists
 which searchsploit > /dev/null 2>&1
