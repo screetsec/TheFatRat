@@ -3,7 +3,7 @@
 
 #TheFatRat ( Unit for bypass av )
 
-##Update: Version 1.8
+##Update: Version 1.8.1
 ##Codename: Spark
 
 What is TheFatRat ??
@@ -87,7 +87,8 @@ And it's up & running.
 
 ##  :heavy_exclamation_mark: Requirements
 
-- A linux operating system. We recommend Kali Linux 2 or Kali 2016.1 rolling / Cyborg / Parrot / Dracos / BackTrack / Backbox / and another operating system ( linux )
+- A linux operating system. We recommend Kali Linux 2 or Kali 2016.1 rolling 
+ Cyborg / Parrot / Dracos / BackTrack / Backbox / Devuan and another operating system ( linux )
 
 - Must install metasploit framework
 
