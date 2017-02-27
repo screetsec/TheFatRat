@@ -17,7 +17,20 @@ RUN echo 'APT::Get::Install-Recommends "false";' >> /etc/apt/apt.conf \
  		backdoor-factory \
  		monodevelop \
  		ruby \
- 		apache2
+ 		apache2 \
+   upx-ucl \
+   xterm \
+   gnome-terminal \
+   default-jre \
+   default-jdk \
+   unzip \
+   aapt \ 
+   apktool \
+   dex2jar \
+   zlib1g-dev \
+   libmagickwand-dev \
+   imagemagick \
+   zipalign
 
 WORKDIR /root/TheFatRat
 ADD . ./
