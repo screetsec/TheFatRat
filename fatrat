@@ -112,7 +112,7 @@ cat << !
 #  Some Variables
 #####################
 path=`pwd`
-Versi=1.8
+Versi=1.8.1
 codename=Sparta
 OS=`uname` #
 distro=`awk '{print $1}' /etc/issue`
