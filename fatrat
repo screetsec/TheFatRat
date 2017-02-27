@@ -982,8 +982,9 @@ cp $path/output/fatrat_backdoored.apk $path/backdoored/apkembed.apk >/dev/null 2
 varopt="$path/backdoored/apkembed.apk"
 if [ ! -f $varopt ]; then
     echo "[!] There was an error in the creation of your RAT APK file , the possible reasons are :
+- The architecture of the file is not for android 
 - The original APK is protected
-- It was not possible to inject the payload in the hook you selected "
+- It was not possible to inject the payload in the hook you selected (in this case select a different hook point)"
     read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
 menu
 fi
