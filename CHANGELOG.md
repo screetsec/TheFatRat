@@ -1,8 +1,8 @@
 ## CHANGELOG
 
 * v1.8.1 - added possibility to configure metasploit , backdoor-factory & searchsploit with manual inputs
-*        - added more packages instalations needed for non-pentest distribution
- *       - some bugs fixed
+
+*  - added more packages instalations needed for non-pentest distribution & some bugs fixed
 
 * v1.8 - add file pumper in TFR
 * v1.8 - Backdoor with c program for meterpreter reverse_tcp
