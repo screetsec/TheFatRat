@@ -136,7 +136,7 @@ echo "[ ! ]  Installing monodevelop from your apt sources ]"
 xterm -T "☣ INSTALL MONODEVELOP ☣" -geometry 100x30 -e "sudo apt-get install monodevelop -y"
 echo "[ ✔ ] Done installing ...."
 which monodevelop >> $log 2>&1
-#sleep 2
+sleep 2
 fi
 
 # check if ruby exists
@@ -228,7 +228,7 @@ echo "[ ! ] Installing Java from your apt sources ]"
 xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo apt-get install default-jdk -y "
 echo "[ ✔ ] Done installing ...."
 which jarsigner >> $log 2>&1
-#sleep 2
+sleep 2
 fi
 
 #Checking if Unzip exists
@@ -344,7 +344,7 @@ sleep 2
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] Metasploit-Framework..............[ found ]"
+echo -e $cyan "[ ✔ ] Metasploit-Framework..............[ found ]"
 # msf was detected , removing config file in case setup was already configured before
 rm -f $config
 
@@ -359,7 +359,7 @@ echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 else
 echo ""
-echo "[ X ] metasploit-framework -> not found                         "
+echo -e $cyan "[ X ] metasploit-framework -> not found                         "
 
 # Providing manual input to user in case metasploit was installed from git and is not on system path
 
@@ -388,9 +388,9 @@ fi
 ;;
 
 "Install Metasploit from Repository")
-echo "[ ! ] Installing Metasploit-Framework  "
+echo -e $cyan "[ ! ] Installing Metasploit-Framework  "
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
-echo "[ ✔ ] Done installing ...."
+echo -e $cyan "[ ✔ ] Done installing ...."
 rm -f $config
 touch $config
 echo "********************************************************************************************************" >> $config
@@ -417,11 +417,11 @@ fi
 
 which backdoor-factory > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] Backdoor-Factory..................[ found ]"
+echo -e $cyan "[ ✔ ] Backdoor-Factory..................[ found ]"
 echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 else
-echo "[ X ] backdoor-factory  -> not found                  "
+echo -e $cyan "[ X ] backdoor-factory  -> not found                  "
 echo ""
 
 q2=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Backdoor-Factory path manually" FALSE "Install Backdoor-Factory from Repository" FALSE "Use default config" --text="`printf "Metasploit-Framework was not detected in your system path ! \n Choose one of the options bellow ."`");
@@ -441,9 +441,9 @@ fi
 ;;
 
 "Install Backdoor-Factory from Repository")
-echo "[ ! ]   Installing backdoor-factory from kali repositories   ]"
+echo -e $cyan "[ ! ]   Installing backdoor-factory from kali repositories   ]"
 xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory --force-yes -y"
-echo "[ ✔ ] Done installing ...."
+echo -e $cyan "[ ✔ ] Done installing ...."
 echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
 ;;
 
@@ -456,11 +456,11 @@ fi
 
 which searchsploit > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] Searchsploit......................[ found ]"
+echo -e $cyan "[ ✔ ] Searchsploit......................[ found ]"
 echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 else
-echo "[ X ] searchsploit  -> not found]"
+echo -e $cyan "[ X ] searchsploit  -> not found]"
 echo ""
 q3=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Searchsploit path manually" FALSE "Install Searchsploit from Repository" FALSE "Use default config" --text="`printf "Metasploit-Framework was not detected in your system path ! \n Choose one of the options bellow ."`");
 case $q3 in 
@@ -479,13 +479,13 @@ fi
 ;;
 
 "Install Searchsploit from Repository")
-echo "[ ! ]    Installing searchsploit from kali repositories      ]"
+echo -e $cyan "[ ! ]    Installing searchsploit from kali repositories      ]"
 xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
-echo "[ ✔ ] Done installing ...."
+echo -e $cyan "[ ✔ ] Done installing ...."
 echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 echo ""
-echo "Configuration and tool installed with success!";
+echo -e $cyan "Configuration and tool installed with success!";
 sleep 2
 ;;
 
@@ -522,13 +522,13 @@ which fatrat >> $log 2>&1
 clear
 zenity --info --width=100 --height=100 --no-wrap --text="FatRat shorcut created , write (fatrat) anywhere in terminal to open it ."
 sleep 2 
-echo "Instalation completed"
+echo -e $green "Instalation completed"
 exit
 fi
 if [ $lnk ==  "1" ];then
 chmod +x fatrat
 zenity --width=100 --height=100 --no-wrap --info --text="To execute fatrat write in fatrat directory (./fatrat) to execute it."
 sleep2
-echo "Instalation completed"
+echo -e $green "Instalation completed"
 fi
 exit
