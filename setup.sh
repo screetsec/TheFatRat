@@ -342,10 +342,10 @@ fi
 
 #installing dependencies for ruby script 
 #i think this dont need to
-#echo "[ ! ] Installing dedepndencies for ruby script from Kali repositories "
-#xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick --force-yes -y"
-#echo "[ ✔ ] Done installing ...."
-#sleep 2
+echo "[ ! ] Installing dedepndencies for ruby script from Kali repositories "
+xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick --force-yes -y"
+echo "[ ✔ ] Done installing ...."
+sleep 2
 
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
