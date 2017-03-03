@@ -285,30 +285,6 @@ which aapt >> $log 2>&1
 sleep 2
 fi
 
-#i think dont need 
-
-#Installing dependencies for Zipalign
-#echo "[ ! ] Installing Zipalign dependencies from your apt sources"
-#xterm -T "☣ INSTALL ZIPALING ☣" -geometry 100x30 -e "sudo apt-get install lib32stdc++6 lib32z1 lib32z1-dev -y "
-#echo "[ ✔ ] Done installing ...."
-#sleep 2
-
-#Checking if Zipalign exists
-#which zipalign > /dev/null 2>&1
-#if [ "$?" -eq "0" ]; then
-#echo "[ ✔ ] Zipalign..........................[ found ]"
-#which zipalign >> $log 2>&1
-#sleep 2
-#else
-#echo "[ X ] Zipalign -> not found                    ]"
-#echo "[ ! ] Installing Zipalign from your apt sources "
-#xterm -T "☣ INSTALL ZIPALIGN ☣" -geometry 100x30 -e "sudo apt-get install zipalign -y "
-#echo "[ ✔ ] Done installing ...."
-#which zipalign >> $log 2>&1
-#sleep 2
-#fi
-
-
 #Checking if apktool exists
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -340,12 +316,11 @@ which d2j-jar2dex >> $log 2>&1
 sleep 2
 fi
 
-#installing dependencies for ruby script 
-#i think this dont need to
-#echo "[ ! ] Installing dedepndencies for ruby script from Kali repositories "
-#xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick --force-yes -y"
-#echo "[ ✔ ] Done installing ...."
-#sleep 2
+#ruby script call require fileutils wich is main dependency is imagemaick
+echo "[ ! ] Installing dedepndencies for ruby script from Kali repositories "
+xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install libmagickwand-dev imagemagick --force-yes -y"
+echo "[ ✔ ] Done installing ...."
+sleep 2
 
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
