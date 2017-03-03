@@ -26,12 +26,6 @@ rm -f $log
 # configuration all file for fixing all problem
 # --------------------------------------------------------
 
-#Check root dulu
-[[ `id -u` -eq 0 ]] || { echo -e "\e[31m Must be root to run script"; exit 1; }
-resize -s 30 73 > /dev/null 2>&1
-clear
-
-
 #This colour
 cyan='\e[0;36m'
 green='\e[0;34m'
@@ -42,6 +36,11 @@ red='\e[1;31m'
 yellow='\e[1;33m'
 BlueF='\e[1;34m'
 path=`pwd`
+
+#Check root dulu
+[[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
+resize -s 30 73 > /dev/null 2>&1
+clear
 
 #Banner dong biar keren
 echo -e $cyan ""
@@ -338,14 +337,14 @@ fi
 
 #installing dependencies for ruby script
 echo "[ ! ] Installing dedepndencies for ruby script from Kali repositories "
-xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick  -y"
+xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick --force-yes -y"
 echo "[ ✔ ] Done installing ...."
 sleep 2
 
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] Metasploit-Framework..............[ found ]"
+echo -e $cyan "[ ✔ ] Metasploit-Framework..............[ found ]"
 # msf was detected , removing config file in case setup was already configured before
 rm -f $config
 
@@ -360,136 +359,142 @@ echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 else
 echo ""
-echo "[ X ] metasploit-framework -> not found                         "
+echo -e $cyan "[ X ] metasploit-framework -> not found                         "
 
 # Providing manual input to user in case metasploit was installed from git and is not on system path
-echo ""
-echo -e $white "This script requires Metasploit-Framework do you want to setup its path manually ?";
-echo ""
-read -p "Press Y/y to config metasploit-framework path or N/n to install it from Kali repositories. :" choice
-case "$choice" in
 
-  y|Y)
+q1=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Metasploit path manually" FALSE "Install Metasploit from Repository" FALSE "Use default config" --text="`printf "Metasploit-Framework was not detected in your system path ! \n Choose one of the options bellow ."`");
+case $q1 in 
+ 
+"Setup Metasploit path manually")
 rm -f $config
 touch $config
 echo "********************************************************************************************************" >> $config
 echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
 echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> $config
 echo "********************************************************************************************************" >> $config
-clear
-echo -e $white "Enter the path of your Metasploit Instalation or just press enter for default config :
-ex:(/opt/metasploit-framework)";
-read -p "Path: " msfc
-if [[ -z "$msfc" ]]; then
+minpm=$(zenity --entry --title="Metasploit Path Manual Input" --width=100 --height=100 --text="Write the location of your Metasploit Path?" --entry-text="/opt/metasploit-framework");
+ret=$?
+
+if [ $ret = "0" ]; then
+echo "ruby $minpm/msfconsole" | tee -a $config $log > /dev/null 2>&1
+echo "ruby $minpm/msfvenom" | tee -a $config $log > /dev/null 2>&1
+fi
+
+if [ $ret = "1" ]; then
 echo "msfconsole" | tee -a $config $log > /dev/null 2>&1
 echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
-else
-echo "ruby $msfc/msfconsole" | tee -a $config $log > /dev/null 2>&1
-echo "ruby $msfc/msfvenom" | tee -a $config $log > /dev/null 2>&1
 fi
 ;;
 
- n|N) 
-echo "[ ! ] Installing metasploit-framework from kali repositories "
+"Install Metasploit from Repository")
+echo -e $cyan "[ ! ] Installing Metasploit-Framework  "
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
-echo "[ ✔ ] Done installing ...."
+echo -e $cyan "[ ✔ ] Done installing ...."
 rm -f $config
 touch $config
 echo "********************************************************************************************************" >> $config
 echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
 echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> $config
 echo "********************************************************************************************************" >> $config
-
 # adding the msf startups automatically to config file
 echo "msfconsole" | tee -a $config $log > /dev/null 2>&1
 echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 ;;
-
- *)
- echo "Invalid Input (Choose y/Y or n/N only)"
-;;
-esac;
-fi
-
-# check if backdoor-factory exists
-which backdoor-factory > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] Backdoor-Factory..................[ found ]"
-echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
-sleep 2
-else
-echo "[ X ] backdoor-factory  -> not found                  "
-echo ""
-echo -e $white "[This script requires backdoor-factory , do you want to setup its path manually ?]";
-read -p "[Press Y/y to setup backdoor-factory path or N/n to install it from Kali repositories . ]" choice1
-case "$choice1" in
-  
- y|Y )
- clear
-echo -e $white "Enter the path for backdoor.py , or just press [ENTER] for default config : 
-ex:(/opt/backdoor-factory/backdoor.py)";
-read -p "Path: " backdoor
-if [[ -z "$backdoor" ]]; then
-echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
-else
-echo "python2 $backdoor" | tee -a $config $log > /dev/null 2>&1
-fi
-;;
-
- n|N )
-echo "[ ! ]   Installing backdoor-factory from kali repositories   ]"
-xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory --force-yes -y"
-echo "[ ✔ ] Done installing ...."
-echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
-;;
-
-*) 
-echo "Invalid Input (Choose y/Y or n/N only)"
-;;
-esac;
-fi
-
-# check if searchsploit exists
-which searchsploit > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo "[ ✔ ] Searchsploit......................[ found ]"
-echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
-sleep 2
-else
-echo "[ X ] searchsploit  -> not found]"
-echo ""
-echo -e $white "[This script requires searchsploit , do you want to setup its path manually ?]";
-read -p "[Press Y/y to config searchsploit path or N/n to install it from Kali repositories .]" choice2
-case "$choice2" in
-  
-  y|Y )
-  clear
-echo -e $white "Enter the path for searchsploit , or just press [ENTER] for default config : 
-ex:(/opt/searchsploit/searchsploit) "
-read -p "Path: " searchsploit
-if [[ -z "$searchsploit" ]]; then
-echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
-else
-echo "bash $searchsploit" | tee -a $config $log > /dev/null 2>&1
-fi
-;;
-
-n|N )
-echo "[ ! ]    Installing searchsploit from kali repositories      ]"
-xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
-echo "[ ✔ ] Done installing ...."
-echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
-sleep 2
-echo ""
-echo "Configuration and tool installed with success!";
-sleep 2
-;;
-
-*) 
-echo "Invalid Input (Choose y/Y or n/N only)"
+"Use default config")
+rm -f $config
+touch $config
+echo "********************************************************************************************************" >> $config
+echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
+echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> $config
+echo "********************************************************************************************************" >> $config
+echo "msfconsole" | tee -a $config $log > /dev/null 2>&1
+echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 ;;
 esac
 fi
+# Check if backdoor-factory exists
+
+which backdoor-factory > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $cyan "[ ✔ ] Backdoor-Factory..................[ found ]"
+echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
+sleep 2
+else
+echo -e $cyan "[ X ] backdoor-factory  -> not found                  "
+echo ""
+
+q2=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Backdoor-Factory path manually" FALSE "Install Backdoor-Factory from Repository" FALSE "Use default config" --text="`printf "Backdoor-Factory was not detected in your system path ! \n Choose one of the options bellow ."`");
+case $q2 in 
+ 
+"Setup Backdoor-Factory path manually")
+minpb=$(zenity --entry --title="Backdoor-Factory Path Manual Input" --width=100 --height=100 --text="Write the location of your Backdoor-Factory Path?" --entry-text="/opt/backdoor-factory/backdoor.py");
+ret=$?
+
+if [ $ret = "0" ]; then
+echo "python2 $minpb" | tee -a $config $log > /dev/null 2>&1
+fi
+
+if [ $ret = "1" ]; then
+echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
+fi
+;;
+
+"Install Backdoor-Factory from Repository")
+echo -e $cyan "[ ! ]   Installing backdoor-factory from kali repositories   ]"
+xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory --force-yes -y"
+echo -e $cyan "[ ✔ ] Done installing ...."
+echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
+;;
+
+"Use default config")
+echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
+;;
+esac
+fi
+# check if searchsploit exists
+
+which searchsploit > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $cyan "[ ✔ ] Searchsploit......................[ found ]"
+echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
+sleep 2
+else
+echo -e $cyan "[ X ] searchsploit  -> not found]"
+echo ""
+q3=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Searchsploit path manually" FALSE "Install Searchsploit from Repository" FALSE "Use default config" --text="`printf "Searchsploit was not detected in your system path ! \n Choose one of the options bellow ."`");
+case $q3 in 
+ 
+"Setup Searchsploit path manually")
+minpc=$(zenity --entry --title="Searchsploit Path Manual Input" --width=100 --height=100 --text="Write the location of your Searchsploit Path?" --entry-text="/opt/searchsploit/searchsploit");
+ret=$?
+
+if [ $ret = "0" ]; then
+echo "bash $minpc" | tee -a $config $log > /dev/null 2>&1
+fi
+
+if [ $ret = "1" ]; then
+echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
+fi
+;;
+
+"Install Searchsploit from Repository")
+echo -e $cyan "[ ! ]    Installing searchsploit from kali repositories      ]"
+xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
+echo -e $cyan "[ ✔ ] Done installing ...."
+echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
+sleep 2
+echo ""
+echo -e $cyan "Configuration and tool installed with success!";
+sleep 2
+;;
+
+"Use default config")
+echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
+;;
+esac
+fi
+
 ################################
 # rebackyo repo
 ################################
@@ -501,13 +506,10 @@ rm -f /etc/apt/sources.list.fatrat
 apt-get clean
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 clear
-echo -e $yellow "Do you want to create a shortcut for (fatrat) on your (/usr/local/sbin) 
-, so you can run the script from anywhere ?";
-read -p "Press y/Y to create the script , or press n/N to cancel : " choice4
-case "$choice4" in
 
-  y|Y)
-
+zenity --width=100 --height=100 --no-wrap --title="FatRat Shorcut Creation" --question --ok-label="Yes" --cancel-label="No" --text="`printf "Do you wish to create a fatrat shortcut in your system path ? \n So you can call fatrat from anywhere in terminal ."`";
+lnk=$?
+if [ $lnk ==  "0" ];then
 dir=`pwd` 
 scrp="cd $dir && ./fatrat"
 rm -f /usr/local/sbin/fatrat
@@ -515,28 +517,18 @@ touch /usr/local/sbin/fatrat
 echo "#!/bin/bash" > /usr/local/sbin/fatrat
 echo $scrp >> /usr/local/sbin/fatrat
 chmod +x /usr/local/sbin/fatrat 
+chmod +x fatrat
+which fatrat >> $log 2>&1
 clear
-echo "";
-  echo "[ ]====================================================================[ ]";
-  echo "[ ] Script Created!! Write: fatrat , on your terminal anywhere   :) !  [ ]";
-  echo "[ ]====================================================================[ ]";
-  echo "";
-  chmod +x fatrat
-  which fatrat >> $log 2>&1
-  sleep 2 
-;;
-
- n|N)
-echo "[ ]=================================================================[ ]";
-echo "[ ]              To execute Fatrat , write ./fatrat                 [ ]";
-echo "[ ]=================================================================[ ]";
+zenity --info --width=100 --height=100 --no-wrap --text="FatRat shorcut created , write (fatrat) anywhere in terminal to open it ."
+sleep 2 
+echo -e $green "Instalation completed"
+exit
+fi
+if [ $lnk ==  "1" ];then
 chmod +x fatrat
-;;
-
-*)
-echo "[ ]=================================================================[ ]";
-echo "[ ]              To execute Fatrat , write ./fatrat                 [ ]";
-echo "[ ]=================================================================[ ]";
-chmod +x fatrat
-;;
-esac
+zenity --width=100 --height=100 --no-wrap --info --text="To execute fatrat write in fatrat directory (./fatrat) to execute it."
+sleep2
+echo -e $green "Instalation completed"
+fi
+exit
