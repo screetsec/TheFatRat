@@ -1,55 +1,6 @@
 #!/bin/bash
-
-#-----------------------------------------
-# setup.sh Author : Edo maland ( Screetsec )
-# Install all dependencies nedded
-# configuration all file for fixing all problem
-# ----------------------------------------
-
-
-#This 
-cyan='\e[0;36m'
-green='\e[0;34m'
-okegreen='\033[92m'
-lightgreen='\e[1;32m'
-white='\e[1;37m'
-red='\e[1;31m'
-yellow='\e[1;33m'
-BlueF='\e[1;34m'
-file="/etc/apt/sources.list.fatrat"
-path=`pwd`
-log=$path/logs/setup.log
-config=$path/config/config.path
-
-
-#Removing any previous setup log created
-rm -f $log  > /dev/null 2>&1
-
-#Check root dulu
-[[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
-resize -s 30 73 > /dev/null 2>&1
-clear
-
-
-#inputrepo
-
-if [ -f "$file" ]
-then
-echo ""
-else
-cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
-fi
-rm -f /etc/apt/sources.list
-touch /etc/apt/sources.list
-echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
-echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
-sleep 2
-xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update" >>$log 2>&1
-
-
 #Fail safe for original user sources.list in case setup was interrupted in middle last time
+file="/etc/apt/sources.list.fatrat"
 if [ -f "$file" ]
 then
 echo "Setup Detected that your previous run was interrupted in middle , fixing your original repositories list ."
@@ -59,12 +10,37 @@ mv /etc/apt/sources.list.fatrat /etc/apt/sources.list
 echo "Your Original repository list was recovered. ;) ..... beginning setup"
 echo ""
 echo "Cleaning previous repositories cache & updating your repository ."
-sudo  apt-get clean && apt-get update -y
+sudo apt-get clean && apt-get update -y
 sleep 3s
 else
 echo ""
 fi 
+path=`pwd`
+log=$path/logs/setup.log
+config=$path/config/config.path
 
+#Removing any previous setup log created
+rm -f $log 
+# setup.sh Author : Edo maland ( Screetsec )
+# Install all dependencies nedded
+# configuration all file for fixing all problem
+# --------------------------------------------------------
+
+#This colour
+cyan='\e[0;36m'
+green='\e[0;34m'
+okegreen='\033[92m'
+lightgreen='\e[1;32m'
+white='\e[1;37m'
+red='\e[1;31m'
+yellow='\e[1;33m'
+BlueF='\e[1;34m'
+path=`pwd`
+
+#Check root dulu
+[[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
+resize -s 30 73 > /dev/null 2>&1
+clear
 
 #Banner dong biar keren
 echo -e $cyan ""
@@ -285,29 +261,28 @@ which aapt >> $log 2>&1
 sleep 2
 fi
 
-#i think dont need 
+#################################
+#inputrepo
+#################################
 
-#Installing dependencies for Zipalign
-#echo "[ ! ] Installing Zipalign dependencies from your apt sources"
-#xterm -T "☣ INSTALL ZIPALING ☣" -geometry 100x30 -e "sudo apt-get install lib32stdc++6 lib32z1 lib32z1-dev -y "
-#echo "[ ✔ ] Done installing ...."
-#sleep 2
-
-#Checking if Zipalign exists
-#which zipalign > /dev/null 2>&1
-#if [ "$?" -eq "0" ]; then
-#echo "[ ✔ ] Zipalign..........................[ found ]"
-#which zipalign >> $log 2>&1
-#sleep 2
-#else
-#echo "[ X ] Zipalign -> not found                    ]"
-#echo "[ ! ] Installing Zipalign from your apt sources "
-#xterm -T "☣ INSTALL ZIPALIGN ☣" -geometry 100x30 -e "sudo apt-get install zipalign -y "
-#echo "[ ✔ ] Done installing ...."
-#which zipalign >> $log 2>&1
-#sleep 2
-#fi
-
+cp /etc/apt/sources.list /etc/apt/sources.list.backup # backup
+# Second backup created in case user stops the script after this point , then on next startup this script will
+# copy the already changed sources file before as backup , and user lost his original sources lists
+file="/etc/apt/sources.list.fatrat"
+if [ -f "$file" ]
+then
+echo ""
+else
+cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
+fi
+rm -f /etc/apt/sources.list
+touch /etc/apt/sources.list
+echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
+echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
+echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+sleep 2
+xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update" >>$log 2>&1
 
 #Checking if apktool exists
 which apktool > /dev/null 2>&1
@@ -325,7 +300,6 @@ sleep 2
 fi
 
 #Checking if dex2jar exists
-#for what ? we have apktool
 which d2j-jar2dex > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo "[ ✔ ] Dex2Jar...........................[ found ]"
@@ -340,12 +314,11 @@ which d2j-jar2dex >> $log 2>&1
 sleep 2
 fi
 
-#installing dependencies for ruby script 
-#i think this dont need to
-#echo "[ ! ] Installing dedepndencies for ruby script from Kali repositories "
-#xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick --force-yes -y"
-#echo "[ ✔ ] Done installing ...."
-#sleep 2
+#installing dependencies for ruby script
+echo "[ ! ] Installing dedepndencies for ruby script from Kali repositories "
+xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install libmagickwand-dev imagemagick --force-yes -y"
+echo "[ ✔ ] Done installing ...."
+sleep 2
 
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
@@ -383,8 +356,14 @@ minpm=$(zenity --entry --title="Metasploit Path Manual Input" --width=100 --heig
 ret=$?
 
 if [ $ret = "0" ]; then
-echo "ruby $minpm/msfconsole" | tee -a $config $log > /dev/null 2>&1
-echo "ruby $minpm/msfvenom" | tee -a $config $log > /dev/null 2>&1
+#Creation of symlinks to metasploit manual path in /usr/local/sbin to avoid changes in fatrat scripts
+
+unlink /usr/local/sbin/msfconsole > /dev/null 2>&1
+unlink /usr/local/sbin/msfvenom > /dev/null 2>&1
+ln -s $minpm/msfconsole /usr/local/sbin/msfconsole > /dev/null 2>&1
+ln -s $minpm/msfvenom /usr/local/sbin/msfvenom > /dev/null 2>&1
+echo "msfconsole" | tee -a $config $log > /dev/null 2>&1
+echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 fi
 
 if [ $ret = "1" ]; then
@@ -407,7 +386,7 @@ echo "**************************************************************************
 echo "msfconsole" | tee -a $config $log > /dev/null 2>&1
 echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 ;;
-"Use default config")
+"Use default config")cd
 rm -f $config
 touch $config
 echo "********************************************************************************************************" >> $config
@@ -534,7 +513,7 @@ fi
 if [ $lnk ==  "1" ];then
 chmod +x fatrat
 zenity --width=100 --height=100 --no-wrap --info --text="To execute fatrat write in fatrat directory (./fatrat) to execute it."
-sleep 2
+sleep2
 echo -e $green "Instalation completed"
 fi
 exit
