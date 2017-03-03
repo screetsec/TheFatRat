@@ -1,5 +1,7 @@
 ## CHANGELOG
 
+
+* v1.8.5 - fixed some bugs and double function in setup.sh
 * v1.8.1 - added possibility to configure metasploit , backdoor-factory & searchsploit with manual inputs
 
 *  - added more packages instalations needed for non-pentest distribution & some bugs fixed
