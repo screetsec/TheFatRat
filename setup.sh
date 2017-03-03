@@ -424,7 +424,7 @@ else
 echo -e $cyan "[ X ] backdoor-factory  -> not found                  "
 echo ""
 
-q2=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Backdoor-Factory path manually" FALSE "Install Backdoor-Factory from Repository" FALSE "Use default config" --text="`printf "Metasploit-Framework was not detected in your system path ! \n Choose one of the options bellow ."`");
+q2=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Backdoor-Factory path manually" FALSE "Install Backdoor-Factory from Repository" FALSE "Use default config" --text="`printf "Backdoor-Factory was not detected in your system path ! \n Choose one of the options bellow ."`");
 case $q2 in 
  
 "Setup Backdoor-Factory path manually")
@@ -462,7 +462,7 @@ sleep 2
 else
 echo -e $cyan "[ X ] searchsploit  -> not found]"
 echo ""
-q3=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Searchsploit path manually" FALSE "Install Searchsploit from Repository" FALSE "Use default config" --text="`printf "Metasploit-Framework was not detected in your system path ! \n Choose one of the options bellow ."`");
+q3=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Searchsploit path manually" FALSE "Install Searchsploit from Repository" FALSE "Use default config" --text="`printf "Searchsploit was not detected in your system path ! \n Choose one of the options bellow ."`");
 case $q3 in 
  
 "Setup Searchsploit path manually")
