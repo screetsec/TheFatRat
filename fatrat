@@ -1003,12 +1003,8 @@ sleep 2
 echo "Removing temporary files from output"
 sleep 2
 rm -rf $path/output/* >/dev/null 2>&1
-echo "Signing your APK file"
-sleep 2
-java -jar $bundle $cert $key $path/backdoored/apkembed.apk Apk_embed_backdoor.apk
-rm $path/backdoored/apkembed.apk >/dev/null 2>&1
-mv $path/Apk_embed_backdoor.apk $path/backdoored/output/ >/dev/null 2>&1
-outapk="$path/backdoored/output/Apk_embed_backdoor.apk"
+mv $path/backdoored/apkembed.apk $path/backdoored/output/Apk_embed_backdoor.apk >/dev/null 2>&1
+outapk="$path/backdoored/output/"
 if [ ! -f $outapk ]; then
     echo "[!] APK Rat file was not found in : $path/backdoored/output/"
     read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
