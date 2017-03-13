@@ -298,7 +298,11 @@ xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update" 
 #Adding Dx & Aapt path to config 
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ X ] Aapt...........................[ found ]"
+echo -e $red "[ X ] Aapt..........................."
+
+# Removing current installed aapt version on user system and setting aapt 25.0.2 in thirdparty tools
+# This must be done because apktool 2.2.2 will conflict with an old aapt version on building apk files
+# Aapt is not a variable that could be set automatically , calls to aapt are made by apktool internally
 xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y" >>$log 2>&1
 unlink /usr/local/sbin/aapt > /dev/null 2>&1
 unlink /usr/bin/aapt > /dev/null 2>&1
