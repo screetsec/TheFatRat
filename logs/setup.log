@@ -1,0 +1,26 @@
+------------------------------------------------------
+| Tools paths configured in (setup.sh) for TheFatRat |
+------------------------------------------------------
+                                                      
+/usr/bin/xterm
+/usr/bin/zenity
+/usr/bin/gcc
+/usr/bin/i586-mingw32msvc-gcc
+/usr/bin/monodevelop
+/usr/sbin/apache2
+/usr/bin/gnome-terminal
+/usr/bin/upx
+/usr/bin/jarsigner
+/usr/bin/unzip
+/usr/bin/keytool
+/TheFatRat/tools/android-sdk-25.0.2/zipalign
+/TheFatRat/tools/proguard5.3.2/lib/proguard
+/TheFatRat/tools/android-sdk-25.0.2/dx
+/TheFatRat/tools/android-sdk-25.0.2/aapt
+/TheFatRat/tools/apktool2.2.2/apktool
+/usr/bin/d2j-jar2dex
+msfconsole
+msfvenom
+python2 /opt/backdoor-factory/backdoor.py
+bash /opt/searchsploit/ss
+/usr/local/sbin/fatrat

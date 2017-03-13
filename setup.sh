@@ -1,4 +1,12 @@
 #!/bin/bash
+
+# setup.sh Original Author : Edo maland ( Screetsec )
+# Script rebuilded by peterpt
+# Install all dependencies nedded
+# configuration all file for fixing all problems
+# --------------------------------------------------------
+
+
 #Fail safe for original user sources.list in case setup was interrupted in middle last time
 file="/etc/apt/sources.list.fatrat"
 if [ -f "$file" ]
@@ -20,11 +28,7 @@ log=$path/logs/setup.log
 config=$path/config/config.path
 
 #Removing any previous setup log created
-rm -f $log 
-# setup.sh Author : Edo maland ( Screetsec )
-# Install all dependencies nedded
-# configuration all file for fixing all problem
-# --------------------------------------------------------
+rm -f $log > /dev/null 2>&1
 
 #This colour
 cyan='\e[0;36m'

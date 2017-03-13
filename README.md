@@ -65,13 +65,6 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 2. ```cd TheFatRat/setup```
 3. ```chmod +x setup.sh && ./setup.sh```
 
-## Alternative: Docker
-
-```bash
-$ git clone https://github.com/Screetsec/TheFatRat.git
-$ cd TheFatRat
-$ docker build -t=thefatrat .
-$ docker run -it --name "thefatrat" thefatrat
 ```
 
 And it's up & running.
@@ -138,6 +131,7 @@ And it's up & running.
 - source for c program https://github.com/rsmudge
 - And another open sources tool in github
 - Uptodate new tools hacking visit http://www.kitploit.com
+- Apkcreation script by : https://github.com/dana-at-cp/backdoor-apk  , adapted by peterpt
 
 ## Disclaimer
 

