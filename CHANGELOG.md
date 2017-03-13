@@ -1,6 +1,7 @@
 ## CHANGELOG
 
-
+* v1.9b - Implemented Backdoor-apk from Dana James Traversie in this version .
+       - Less tools to install during setup.sh
 * v1.8.5 - fixed some bugs and double function in setup.sh
 * v1.8.1 - added possibility to configure metasploit , backdoor-factory & searchsploit with manual inputs
 

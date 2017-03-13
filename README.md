@@ -3,8 +3,8 @@
 
 #TheFatRat ( Unit for bypass av )
 
-##Update: Version 1.8.5
-##Codename: Spark
+##Update: Version 1.9b
+##Codename: Whistle
 
 What is TheFatRat ??
 
@@ -90,7 +90,7 @@ And it's up & running.
 - A linux operating system. We recommend Kali Linux 2 or Kali 2016.1 rolling 
  Cyborg / Parrot / Dracos / BackTrack / Backbox / Devuan and another operating system ( linux )
 
-- Must install metasploit framework
+- Must install or have already installed metasploit framework
 
 
 

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* //device/apps/common/assets/res/any/colors.xml
+**
+** Copyright 2006, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources>
+    <drawable name="screen_background_light">#ffffffff</drawable>
+    <drawable name="screen_background_dark">#ff000000</drawable>
+    <drawable name="status_bar_closed_default_background">#ff000000</drawable>
+    <drawable name="status_bar_opened_default_background">#ff000000</drawable>
+    <drawable name="search_bar_default_color">#ff000000</drawable>
+    <drawable name="safe_mode_background">#60000000</drawable>
+    <!-- Background drawable that can be used for a transparent activity to
+         be able to display a dark UI: this darkens its background to make
+         a dark (default theme) UI more visible. -->
+    <drawable name="screen_background_dark_transparent">#80000000</drawable>
+    <!-- Background drawable that can be used for a transparent activity to
+         be able to display a light UI: this lightens its background to make
+         a light UI more visible. -->
+    <drawable name="screen_background_light_transparent">#80ffffff</drawable>
+    <color name="safe_mode_text">#80ffffff</color>
+    <color name="white">#ffffffff</color>
+    <color name="black">#ff000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="background_dark">#ff000000</color>
+    <color name="background_light">#ffffffff</color>
+    <color name="bright_foreground_dark">@android:color/background_light</color>
+    <color name="bright_foreground_light">@android:color/background_dark</color>
+    <color name="bright_foreground_dark_disabled">#80ffffff</color>
+    <color name="bright_foreground_light_disabled">#80000000</color>
+    <color name="bright_foreground_dark_inverse">@android:color/bright_foreground_light</color>
+    <color name="bright_foreground_light_inverse">@android:color/bright_foreground_dark</color>
+    <color name="dim_foreground_dark">#bebebe</color>
+    <color name="dim_foreground_dark_disabled">#80bebebe</color>
+    <color name="dim_foreground_dark_inverse">#323232</color>
+    <color name="dim_foreground_dark_inverse_disabled">#80323232</color>
+    <color name="hint_foreground_dark">#808080</color>
+    <color name="dim_foreground_light">#323232</color>
+    <color name="dim_foreground_light_disabled">#80323232</color>
+    <color name="dim_foreground_light_inverse">#bebebe</color>
+    <color name="dim_foreground_light_inverse_disabled">#80bebebe</color>
+    <color name="hint_foreground_light">#808080</color>
+    <color name="highlighted_text_dark">#9983CC39</color>
+    <color name="highlighted_text_light">#9983CC39</color>
+    <color name="link_text_dark">#5c5cff</color>
+    <color name="link_text_light">#0000ee</color>
+    <color name="suggestion_highlight_text">#177bbd</color>
+
+    <drawable name="stat_notify_sync_noanim">@drawable/stat_notify_sync_anim0</drawable>
+    <drawable name="stat_sys_download_done">@drawable/stat_sys_download_done_static</drawable>
+    <drawable name="stat_sys_upload_done">@drawable/stat_sys_upload_anim0</drawable>
+    <drawable name="dialog_frame">@drawable/panel_background</drawable>
+    <drawable name="alert_dark_frame">@drawable/popup_full_dark</drawable>
+    <drawable name="alert_light_frame">@drawable/popup_full_bright</drawable>
+    <drawable name="menu_frame">@drawable/menu_background</drawable>
+    <drawable name="menu_full_frame">@drawable/menu_background_fill_parent_width</drawable>
+    <drawable name="editbox_dropdown_dark_frame">@drawable/editbox_dropdown_background_dark</drawable>
+    <drawable name="editbox_dropdown_light_frame">@drawable/editbox_dropdown_background</drawable>
+
+    <drawable name="input_method_fullscreen_background">#fff9f9f9</drawable>
+    <color name="input_method_navigation_guard">#ff000000</color>
+
+    <color name="system_error">#fff4511e</color> <!-- deep orange 600 -->
+
+    <!-- For date picker widget -->
+    <drawable name="selected_day_background">#ff0092f4</drawable>
+
+    <!-- For settings framework -->
+    <color name="lighter_gray">#ddd</color>
+    <color name="darker_gray">#aaa</color>
+
+    <!-- For security permissions -->
+    <color name="perms_dangerous_grp_color">#33b5e5</color>
+    <color name="perms_dangerous_perm_color">#33b5e5</color>
+    <color name="shadow">#cc222222</color>
+    <color name="perms_costs_money">#fff4511e</color>
+    
+    <!-- For search-related UIs -->
+    <color name="search_url_text_normal">#7fa87f</color>
+    <color name="search_url_text_selected">@android:color/black</color>
+    <color name="search_url_text_pressed">@android:color/black</color>
+    <color name="search_widget_corpus_item_background">@android:color/lighter_gray</color>
+
+    <!-- SlidingTab -->
+    <color name="sliding_tab_text_color_active">@android:color/black</color>
+    <color name="sliding_tab_text_color_shadow">@android:color/black</color>
+
+    <!-- keyguard tab -->
+    <color name="keyguard_text_color_normal">#ffffff</color>
+    <color name="keyguard_text_color_unlock">#a7d84c</color>
+    <color name="keyguard_text_color_soundoff">#ffffff</color>
+    <color name="keyguard_text_color_soundon">#e69310</color>
+    <color name="keyguard_text_color_decline">#fe0a5a</color>
+
+    <!-- keyguard clock -->
+    <color name="lockscreen_clock_background">#ffffffff</color>
+    <color name="lockscreen_clock_foreground">#ffffffff</color>
+    <color name="lockscreen_clock_am_pm">#ffffffff</color>
+    <color name="lockscreen_owner_info">#ff9a9a9a</color>
+
+    <!-- keyguard overscroll widget pager -->
+    <color name="kg_multi_user_text_active">#ffffffff</color>
+    <color name="kg_multi_user_text_inactive">#ff808080</color>
+    <color name="kg_widget_pager_gradient">#ffffffff</color>
+
+    <!-- LockPatternView -->
+    <color name="lock_pattern_view_regular_color">#ffffffff</color>
+    <color name="lock_pattern_view_success_color">#ffffffff</color>
+    <color name="lock_pattern_view_error_color">@color/system_error</color>
+
+    <!-- FaceLock -->
+    <color name="facelock_spotlight_mask">#CC000000</color>
+
+    <color name="micro_text_light">#434343</color>
+
+    <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
+    <drawable name="notification_template_icon_low_bg">#0cffffff</drawable>
+    <drawable name="notification_template_divider">#29000000</drawable>
+    <drawable name="notification_template_divider_media">#29ffffff</drawable>
+
+    <color name="notification_material_background_color">#ffffffff</color>
+
+    <color name="notification_default_color">#757575</color> <!-- Gray 600 -->
+    <color name="notification_icon_default_color">@color/notification_default_color</color>
+
+    <color name="notification_progress_background_color">@color/secondary_text_material_light</color>
+
+    <color name="notification_action_list">#ffeeeeee</color>
+    <color name="notification_action_list_dark">#ffe0e0e0</color>
+
+    <!-- Keyguard colors -->
+    <color name="keyguard_avatar_frame_color">#ffffffff</color>
+    <color name="keyguard_avatar_frame_shadow_color">#80000000</color>
+    <color name="keyguard_avatar_nick_color">#ffffffff</color>
+    <color name="keyguard_avatar_frame_pressed_color">#ff35b5e5</color>
+
+    <color name="accessibility_focus_highlight">#bf39b500</color>
+
+    <color name="system_notification_accent_color">#ff607D8B</color>
+    <color name="battery_saver_mode_color">#fff4511e</color><!-- deep orange 600 -->
+
+    <!-- Default user icon colors -->
+    <color name="user_icon_1">#ff00bcd4</color><!-- cyan 500 -->
+    <color name="user_icon_2">#ff3f51b5</color><!-- indigo 500 -->
+    <color name="user_icon_3">#ff4285f4</color><!-- blue 500 -->
+    <color name="user_icon_4">#ffe91e63</color><!-- pink 500 -->
+    <color name="user_icon_5">#ff0f9d58</color><!-- green 500 -->
+    <color name="user_icon_6">#ff8bc34a</color><!-- light green 500 -->
+    <color name="user_icon_7">#ffff9800</color><!-- orange 500 -->
+    <color name="user_icon_8">#ffff5722</color><!-- deep orange 500 -->
+    <color name="user_icon_default_gray">#ff9e9e9e</color><!-- gray 500 -->
+    <color name="user_icon_default_white">#ffffffff</color><!-- white -->
+
+    <!-- Multi-sim sim colors -->
+    <color name="Teal_700">#ff00796b</color>
+    <color name="Teal_800">#ff00695c</color>
+    <color name="Blue_700">#ff3367d6</color>
+    <color name="Blue_800">#ff2a56c6</color>
+    <color name="Indigo_700">#ff303f9f</color>
+    <color name="Indigo_800">#ff283593</color>
+    <color name="Purple_700">#ff7b1fa2</color>
+    <color name="Purple_800">#ff6a1b9a</color>
+    <color name="Pink_700">#ffc2185b</color>
+    <color name="Pink_800">#ffad1457</color>
+    <color name="Red_700">#ffc53929</color>
+    <color name="Red_800">#ffb93221</color>
+
+    <color name="chooser_service_row_background_color">#fff5f5f5</color>
+
+    <!-- Status bar color for semi transparent mode. -->
+    <color name="system_bar_background_semi_transparent">#66000000</color> <!-- 40% black -->
+
+    <color name="resize_shadow_start_color">#2a000000</color>
+    <color name="resize_shadow_end_color">#00000000</color>
+</resources>

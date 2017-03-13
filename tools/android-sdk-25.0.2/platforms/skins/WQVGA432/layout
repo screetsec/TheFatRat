@@ -1,0 +1,438 @@
+parts {
+    portrait {
+        background {
+            image   background_port.png
+        }
+    }
+    landscape {
+        background {
+            image   background_land.png
+        }
+    }
+
+    device {
+        display {
+            width   240
+            height  432
+            x       0
+            y       0
+        }
+    }
+    
+    controls {
+        background {
+            image   controls.png
+        }
+        buttons {
+            soft-left {
+                    image button.png
+                    x 56
+                    y 142
+            }
+            home {
+                    image button.png
+                    x 0
+                    y 142
+            }
+            back {
+                    image button.png
+                    x 112
+                    y 142
+            }
+            dpad-up {
+                    image arrow_up.png
+                    x 77
+                    y 53
+            }
+            dpad-down {
+                    image arrow_down.png
+                    x 77
+                    y 106
+            }
+            dpad-left {
+                    image arrow_left.png
+                    x 53
+                    y 53
+            }
+            dpad-right {
+                    image arrow_right.png
+                    x 123
+                    y 53
+            }
+            dpad-center {
+                    image select.png
+                    x 77
+                    y 81
+            }
+            phone-dial {
+                    image button.png
+                    x 0
+                    y 71
+            }
+            phone-hangup {
+                    image button.png
+                    x 168
+                    y 71
+            }
+
+            power {
+                    image button.png
+                    x 168
+                    y 0
+            }
+
+            volume-up {
+                    image button.png
+                    x 112
+                    y 0
+            }
+
+            volume-down {
+                    image button.png
+                    x 56
+                    y 0
+            }
+
+            search {
+                    image button.png
+                    x 168
+                    y 142
+            }
+
+        }
+    }
+
+    keyboard {
+        background {
+            image   keyboard.png
+        }
+        buttons {
+            1 {
+                image  key.png
+                x  5
+                y  5
+            }
+            2 {
+                image  key.png
+                x 42
+                y 5
+            }
+            3 {
+                image  key.png
+                x 79
+                y 5
+            }
+            4 {
+                image  key.png
+                x 116
+                y 5
+            }
+            5 {
+                image  key.png
+                x 153
+                y 5
+            }
+            6 {
+                image  key.png
+                x 190
+                y 5
+            }
+            7 {
+                image  key.png
+                x 227
+                y 5
+            }
+            8 {
+                image  key.png
+                x 264
+                y 5
+            }
+            9 {
+                image  key.png
+                x 301
+                y 5
+            }
+            0 {
+                image  key.png
+                x 338
+                y 5
+            }
+
+            q {
+                image  key.png
+                x  5
+                y  41
+            }
+            w {
+                image  key.png
+                x 42
+                y 41
+            }
+            e {
+                image  key.png
+                x 79
+                y 41
+            }
+            r {
+                image  key.png
+                x 116
+                y 41
+            }
+            t {
+                image  key.png
+                x 153
+                y 41
+            }
+            y {
+                image  key.png
+                x 190
+                y 41
+            }
+            u {
+                image  key.png
+                x 227
+                y 41
+            }
+            i {
+                image  key.png
+                x 264
+                y 41
+            }
+            o {
+                image  key.png
+                x 301
+                y 41
+            }
+            p {
+                image  key.png
+                x 338
+                y 41
+            }
+
+            a {
+                image  key.png
+                x  5
+                y 77
+            }
+            s {
+                image  key.png
+                x 42
+                y 77
+            }
+            d {
+                image  key.png
+                x 79
+                y 77
+            }
+            f {
+                image  key.png
+                x 116
+                y 77
+            }
+            g {
+                image  key.png
+                x 153
+                y 77
+            }
+            h {
+                image  key.png
+                x 190
+                y 77
+            }
+            j {
+                image  key.png
+                x 227
+                y 77
+            }
+            k {
+                image  key.png
+                x 264
+                y 77
+            }
+            l {
+                image  key.png
+                x 301
+                y 77
+            }
+            DEL {
+                image  key.png
+                x 338
+                y 77
+            }
+
+            CAP {
+                image  key.png
+                x  5
+                y 113
+            }
+            z {
+                image  key.png
+                x 42
+                y 113
+            }
+            x {
+                image  key.png
+                x 79
+                y 113
+            }
+            c {
+                image  key.png
+                x 116
+                y 113
+            }
+            v {
+                image  key.png
+                x 153
+                y 113
+            }
+            b {
+                image  key.png
+                x 190
+                y 113
+            }
+            n {
+                image  key.png
+                x 227
+                y 113
+            }
+            m {
+                image  key.png
+                x 264
+                y 113
+            }
+            PERIOD {
+                image  key.png
+                x 301
+                y 113
+            }
+            ENTER {
+                image  key.png
+                x 338
+                y 113
+            }
+
+            ALT {
+                image  key.png
+                x  5
+                y 149
+            }
+            SYM {
+                image  key.png
+                x 42
+                y 149
+            }
+            AT {
+                image  key.png
+                x 79
+                y 149
+            }
+            SPACE {
+                image  spacebar.png
+                x 116
+                y 149
+            }
+            SLASH {
+                image  key.png
+                x 264
+                y 149
+            }
+            COMMA {
+                image  key.png
+                x 301
+                y 149
+            }
+            ALT2 {
+                image  key.png
+                x 338
+                y 149
+            }
+
+        }
+    }
+}
+
+layouts {
+    portrait {
+        width     711
+        height    486
+        color     0xe0e0e0
+        event     EV_SW:0:1
+        
+        part1 {
+            name    portrait
+            x       0
+            y       0
+        }
+
+        part2 {
+            name    landscape
+            x       800
+            y       0
+        }
+
+        part3 {
+            name    device
+            x       28
+            y       27
+        }
+        part4 {
+            name     controls
+            x        396
+            y        53
+        }
+        part5 {
+            name     keyboard
+            x        315
+            y        280
+        }
+    }
+
+    landscape {
+        width     640
+        height    522
+        color     0xe0e0e0
+        event     EV_SW:0:0
+
+        dpad-rotation 3
+
+        part1 {
+            name    portrait
+            x       800
+            y       0
+        }
+
+        part2 {
+            name    landscape
+            x       0
+            y       0
+        }
+
+        part3 {
+            name      device
+            x         104
+            y         270
+            rotation  3
+        }
+
+        part4 {
+            name     controls
+            x        410
+            y        317
+        }
+
+        part5 {
+            name     keyboard
+            x        18
+            y        317
+        }
+    }
+}
+
+keyboard {
+    charmap qwerty2
+}
+
+network {
+    speed  full
+    delay  none
+}

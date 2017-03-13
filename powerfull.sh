@@ -2,10 +2,10 @@
 file="config/config.path"
 if [ -f "$file" ]
 then
-msfconsole=`sed -n 5p $file`	
-msfvenom=`sed -n 6p $file`
-backdoor=`sed -n 7p $file`
-searchsploit=`sed -n 8p $file`
+msfconsole=`sed -n 14p $file`	
+msfvenom=`sed -n 15p $file`
+backdoor=`sed -n 16p $file`
+searchsploit=`sed -n 17p $file`
 else
 	echo "Configuration file does not exists , run setup.sh first ."
 exit 1

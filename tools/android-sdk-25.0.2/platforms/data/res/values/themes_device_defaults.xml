@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!--
+===============================================================
+                        PLEASE READ
+===============================================================
+This file contains the themes that are the Device Defaults.
+If you want to edit themes to skin your device, do it here.
+We recommend that you do not edit themes.xml and instead edit
+this file.
+
+Editing this file instead of themes.xml will greatly simplify
+merges for future platform versions and CTS compliance will be
+easier.
+===============================================================
+                        PLEASE READ
+===============================================================
+ -->
+<resources>
+
+    <!-- The default theme for apps that target API level XX and higher.
+         <p>The DeviceDefault themes are aliases for a specific device’s native look and feel. The
+         DeviceDefault theme family and widget style family offer ways for you to target your app
+         to a device’s native theme with all device customizations intact.</p>
+         <p>For example, when you set your app's {@code targetSdkVersion} to XX or higher, this
+         theme is applied to your application by default. As such, your app might appear with the
+         {@link #Theme_Material Material} styles on one device, but with a different set of styles on
+         another device. This is great if you want your app to fit with the device's native look and
+         feel. If, however, you prefer to keep your UI style the same across all devices, you should
+         apply a specific theme such as {@link #Theme_Material Material} or one of your own design.
+         For more information, read <a
+         href="http://android-developers.blogspot.com/20XX/XX/material-everywhere.html">Material
+         Everywhere</a>.</p>
+         <p>Styles used by the DeviceDefault theme are named using the convention
+         Type.DeviceDefault.Etc (for example, {@code Widget.DeviceDefault.Button} and
+         {@code TextAppearance.DeviceDefault.Widget.PopupMenu.Large}).</p>
+          -->
+    <style name="Theme.DeviceDefault" parent="Theme.Material" >
+        <!-- Text styles -->
+        <item name="textAppearance">@style/TextAppearance.DeviceDefault</item>
+        <item name="textAppearanceInverse">@style/TextAppearance.DeviceDefault.Inverse</item>
+
+        <item name="textAppearanceLarge">@style/TextAppearance.DeviceDefault.Large</item>
+        <item name="textAppearanceMedium">@style/TextAppearance.DeviceDefault.Medium</item>
+        <item name="textAppearanceSmall">@style/TextAppearance.DeviceDefault.Small</item>
+        <item name="textAppearanceLargeInverse">@style/TextAppearance.DeviceDefault.Large.Inverse</item>
+        <item name="textAppearanceMediumInverse">@style/TextAppearance.DeviceDefault.Medium.Inverse</item>
+        <item name="textAppearanceSmallInverse">@style/TextAppearance.DeviceDefault.Small.Inverse</item>
+        <item name="textAppearanceSearchResultTitle">@style/TextAppearance.DeviceDefault.SearchResult.Title</item>
+        <item name="textAppearanceSearchResultSubtitle">@style/TextAppearance.DeviceDefault.SearchResult.Subtitle</item>
+
+        <item name="textAppearanceButton">@style/TextAppearance.DeviceDefault.Widget.Button</item>
+
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.DeviceDefault.Widget.PopupMenu.Large</item>
+        <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.DeviceDefault.Widget.PopupMenu.Small</item>
+
+        <!-- Button styles -->
+        <item name="buttonStyle">@style/Widget.DeviceDefault.Button</item>
+
+        <item name="buttonStyleSmall">@style/Widget.DeviceDefault.Button.Small</item>
+        <item name="buttonStyleInset">@style/Widget.DeviceDefault.Button.Inset</item>
+
+        <item name="buttonStyleToggle">@style/Widget.DeviceDefault.Button.Toggle</item>
+        <item name="switchStyle">@style/Widget.DeviceDefault.CompoundButton.Switch</item>
+
+        <item name="borderlessButtonStyle">@style/Widget.DeviceDefault.Button.Borderless</item>
+
+        <item name="listSeparatorTextViewStyle">@style/Widget.DeviceDefault.TextView.ListSeparator</item>
+
+        <!-- Window attributes -->
+        <item name="windowTitleStyle">@style/WindowTitle.DeviceDefault</item>
+        <item name="windowTitleBackgroundStyle">@style/WindowTitleBackground.DeviceDefault</item>
+        <item name="windowAnimationStyle">@style/Animation.DeviceDefault.Activity</item>
+
+        <!-- Dialog attributes -->
+        <item name="dialogTheme">@style/Theme.DeviceDefault.Dialog</item>
+
+        <!-- AlertDialog attributes -->
+        <item name="alertDialogTheme">@style/Theme.DeviceDefault.Dialog.Alert</item>
+        <item name="alertDialogStyle">@style/AlertDialog.DeviceDefault</item>
+
+        <!-- Presentation attributes -->
+        <item name="presentationTheme">@style/Theme.DeviceDefault.Dialog.Presentation</item>
+
+        <!-- Text selection handle attributes -->
+        <item name="textSelectHandleWindowStyle">@style/Widget.DeviceDefault.TextSelectHandle</item>
+
+        <!-- Widget styles -->
+        <item name="absListViewStyle">@style/Widget.DeviceDefault.AbsListView</item>
+        <item name="autoCompleteTextViewStyle">@style/Widget.DeviceDefault.AutoCompleteTextView</item>
+        <item name="checkboxStyle">@style/Widget.DeviceDefault.CompoundButton.CheckBox</item>
+        <item name="checkedTextViewStyle">@style/Widget.DeviceDefault.CheckedTextView</item>
+        <item name="dropDownListViewStyle">@style/Widget.DeviceDefault.ListView.DropDown</item>
+        <item name="editTextStyle">@style/Widget.DeviceDefault.EditText</item>
+        <item name="expandableListViewStyle">@style/Widget.DeviceDefault.ExpandableListView</item>
+        <item name="expandableListViewWhiteStyle">@style/Widget.DeviceDefault.ExpandableListView.White</item>
+        <item name="galleryStyle">@style/Widget.DeviceDefault.Gallery</item>
+        <item name="gestureOverlayViewStyle">@style/Widget.DeviceDefault.GestureOverlayView</item>
+        <item name="gridViewStyle">@style/Widget.DeviceDefault.GridView</item>
+        <item name="imageButtonStyle">@style/Widget.DeviceDefault.ImageButton</item>
+        <item name="imageWellStyle">@style/Widget.DeviceDefault.ImageWell</item>
+        <item name="listViewStyle">@style/Widget.DeviceDefault.ListView</item>
+        <item name="listViewWhiteStyle">@style/Widget.DeviceDefault.ListView.White</item>
+        <item name="popupWindowStyle">@style/Widget.DeviceDefault.PopupWindow</item>
+        <item name="progressBarStyle">@style/Widget.DeviceDefault.ProgressBar</item>
+        <item name="progressBarStyleHorizontal">@style/Widget.DeviceDefault.ProgressBar.Horizontal</item>
+        <item name="progressBarStyleSmall">@style/Widget.DeviceDefault.ProgressBar.Small</item>
+        <item name="progressBarStyleSmallTitle">@style/Widget.DeviceDefault.ProgressBar.Small.Title</item>
+        <item name="progressBarStyleLarge">@style/Widget.DeviceDefault.ProgressBar.Large</item>
+        <item name="progressBarStyleInverse">@style/Widget.DeviceDefault.ProgressBar.Inverse</item>
+        <item name="progressBarStyleSmallInverse">@style/Widget.DeviceDefault.ProgressBar.Small.Inverse</item>
+        <item name="progressBarStyleLargeInverse">@style/Widget.DeviceDefault.ProgressBar.Large.Inverse</item>
+        <item name="seekBarStyle">@style/Widget.DeviceDefault.SeekBar</item>
+        <item name="ratingBarStyle">@style/Widget.DeviceDefault.RatingBar</item>
+        <item name="ratingBarStyleIndicator">@style/Widget.DeviceDefault.RatingBar.Indicator</item>
+        <item name="ratingBarStyleSmall">@style/Widget.DeviceDefault.RatingBar.Small</item>
+        <item name="radioButtonStyle">@style/Widget.DeviceDefault.CompoundButton.RadioButton</item>
+        <item name="scrollViewStyle">@style/Widget.DeviceDefault.ScrollView</item>
+        <item name="horizontalScrollViewStyle">@style/Widget.DeviceDefault.HorizontalScrollView</item>
+        <item name="dropDownSpinnerStyle">@style/Widget.DeviceDefault.Spinner.DropDown</item>
+        <item name="starStyle">@style/Widget.DeviceDefault.CompoundButton.Star</item>
+        <item name="tabWidgetStyle">@style/Widget.DeviceDefault.TabWidget</item>
+        <item name="textViewStyle">@style/Widget.DeviceDefault.TextView</item>
+        <item name="webTextViewStyle">@style/Widget.DeviceDefault.WebTextView</item>
+        <item name="webViewStyle">@style/Widget.DeviceDefault.WebView</item>
+        <item name="dropDownItemStyle">@style/Widget.DeviceDefault.DropDownItem</item>
+        <item name="spinnerDropDownItemStyle">@style/Widget.DeviceDefault.DropDownItem.Spinner</item>
+        <item name="spinnerItemStyle">@style/Widget.DeviceDefault.TextView.SpinnerItem</item>
+        <item name="dropDownHintAppearance">@style/TextAppearance.DeviceDefault.Widget.DropDownHint</item>
+        <item name="keyboardViewStyle">@style/Widget.DeviceDefault.KeyboardView</item>
+        <item name="quickContactBadgeStyleWindowSmall">@style/Widget.DeviceDefault.QuickContactBadge.WindowSmall</item>
+        <item name="quickContactBadgeStyleWindowMedium">@style/Widget.DeviceDefault.QuickContactBadge.WindowMedium</item>
+        <item name="quickContactBadgeStyleWindowLarge">@style/Widget.DeviceDefault.QuickContactBadge.WindowLarge</item>
+        <item name="quickContactBadgeStyleSmallWindowSmall">@style/Widget.DeviceDefault.QuickContactBadgeSmall.WindowSmall</item>
+        <item name="quickContactBadgeStyleSmallWindowMedium">@style/Widget.DeviceDefault.QuickContactBadgeSmall.WindowMedium</item>
+        <item name="quickContactBadgeStyleSmallWindowLarge">@style/Widget.DeviceDefault.QuickContactBadgeSmall.WindowLarge</item>
+        <item name="listPopupWindowStyle">@style/Widget.DeviceDefault.ListPopupWindow</item>
+        <item name="popupMenuStyle">@style/Widget.DeviceDefault.PopupMenu</item>
+        <item name="stackViewStyle">@style/Widget.DeviceDefault.StackView</item>
+
+        <!-- Preference styles -->
+        <item name="preferenceScreenStyle">@style/Preference.DeviceDefault.PreferenceScreen</item>
+        <item name="preferenceCategoryStyle">@style/Preference.DeviceDefault.Category</item>
+        <item name="preferenceStyle">@style/Preference.DeviceDefault</item>
+        <item name="preferenceInformationStyle">@style/Preference.DeviceDefault.Information</item>
+        <item name="checkBoxPreferenceStyle">@style/Preference.DeviceDefault.CheckBoxPreference</item>
+        <item name="switchPreferenceStyle">@style/Preference.DeviceDefault.SwitchPreference</item>
+        <item name="seekBarPreferenceStyle">@style/Preference.DeviceDefault.SeekBarPreference</item>
+        <item name="yesNoPreferenceStyle">@style/Preference.DeviceDefault.DialogPreference.YesNoPreference</item>
+        <item name="dialogPreferenceStyle">@style/Preference.DeviceDefault.DialogPreference</item>
+        <item name="editTextPreferenceStyle">@style/Preference.DeviceDefault.DialogPreference.EditTextPreference</item>
+        <item name="ringtonePreferenceStyle">@style/Preference.DeviceDefault.RingtonePreference</item>
+
+        <!-- Action bar styles -->
+        <item name="actionDropDownStyle">@style/Widget.DeviceDefault.Spinner.DropDown.ActionBar</item>
+        <item name="actionButtonStyle">@style/Widget.DeviceDefault.ActionButton</item>
+        <item name="actionOverflowButtonStyle">@style/Widget.DeviceDefault.ActionButton.Overflow</item>
+        <item name="actionBarTabStyle">@style/Widget.DeviceDefault.ActionBar.TabView</item>
+        <item name="actionBarTabBarStyle">@style/Widget.DeviceDefault.ActionBar.TabBar</item>
+        <item name="actionBarTabTextStyle">@style/Widget.DeviceDefault.ActionBar.TabText</item>
+        <item name="actionModeStyle">@style/Widget.DeviceDefault.ActionMode</item>
+        <item name="actionModeCloseButtonStyle">@style/Widget.DeviceDefault.ActionButton.CloseMode</item>
+        <item name="actionBarStyle">@style/Widget.DeviceDefault.ActionBar.Solid</item>
+        <item name="actionModePopupWindowStyle">@style/Widget.DeviceDefault.PopupWindow.ActionMode</item>
+
+        <item name="buttonBarStyle">@style/DeviceDefault.ButtonBar</item>
+        <item name="segmentedButtonStyle">@style/DeviceDefault.SegmentedButton</item>
+
+        <item name="searchDialogTheme">@style/Theme.DeviceDefault.SearchBar</item>
+
+        <!-- PreferenceFrameLayout attributes -->
+        <item name="preferenceFrameLayoutStyle">@style/Widget.DeviceDefault.PreferenceFrameLayout</item>
+
+        <!-- NumberPicker style-->
+        <item name="numberPickerStyle">@style/Widget.DeviceDefault.NumberPicker</item>
+
+        <!-- CalendarView style-->
+        <item name="calendarViewStyle">@style/Widget.DeviceDefault.CalendarView</item>
+
+        <!-- TimePicker style -->
+        <item name="timePickerStyle">@style/Widget.DeviceDefault.TimePicker</item>
+
+        <!-- DatePicker style -->
+        <item name="datePickerStyle">@style/Widget.DeviceDefault.DatePicker</item>
+
+        <item name="mediaRouteButtonStyle">@style/Widget.DeviceDefault.MediaRouteButton</item>
+
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault} with no action bar -->
+    <style name="Theme.DeviceDefault.NoActionBar" parent="Theme.Material.NoActionBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault} with no action bar and no status bar.  This theme
+         sets {@link android.R.attr#windowFullscreen} to true.  -->
+    <style name="Theme.DeviceDefault.NoActionBar.Fullscreen" parent="Theme.Material.NoActionBar.Fullscreen">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault} with no action bar and no status bar and
+    extending in to overscan region.  This theme
+    sets {@link android.R.attr#windowFullscreen} and {@link android.R.attr#windowOverscan}
+    to true. -->
+    <style name="Theme.DeviceDefault.NoActionBar.Overscan" parent="Theme.Material.NoActionBar.Overscan">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault} that has no title bar and translucent
+         system decor.  This theme sets {@link android.R.attr#windowTranslucentStatus} and
+         {@link android.R.attr#windowTranslucentNavigation} to true. -->
+    <style name="Theme.DeviceDefault.NoActionBar.TranslucentDecor" parent="Theme.Material.NoActionBar.TranslucentDecor">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for dialog windows and activities. This changes the window to be
+    floating (not fill the entire screen), and puts a frame around its contents. You can set this
+    theme on an activity if you would like to make an activity that looks like a Dialog. -->
+    <style name="Theme.DeviceDefault.Dialog" parent="Theme.Material.Dialog" >
+        <item name="windowTitleStyle">@style/DialogWindowTitle.DeviceDefault</item>
+        <item name="windowAnimationStyle">@style/Animation.DeviceDefault.Dialog</item>
+
+        <item name="buttonBarStyle">@style/DeviceDefault.ButtonBar.AlertDialog</item>
+        <item name="borderlessButtonStyle">@style/Widget.DeviceDefault.Button.Borderless.Small</item>
+
+        <item name="textAppearance">@style/TextAppearance.DeviceDefault</item>
+        <item name="textAppearanceInverse">@style/TextAppearance.DeviceDefault.Inverse</item>
+
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Dialog} that has a nice minimum width for a
+    regular dialog. -->
+    <style name="Theme.DeviceDefault.Dialog.MinWidth" parent="Theme.Material.Dialog.MinWidth">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Dialog} without an action bar -->
+    <style name="Theme.DeviceDefault.Dialog.NoActionBar" parent="Theme.Material.Dialog.NoActionBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Dialog_NoActionBar} that has a nice minimum width
+    for a regular dialog. -->
+    <style name="Theme.DeviceDefault.Dialog.NoActionBar.MinWidth" parent="Theme.Material.Dialog.NoActionBar.MinWidth">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- Variant of Theme.DeviceDefault.Dialog that has a fixed size. -->
+    <style name="Theme.DeviceDefault.Dialog.FixedSize">
+        <item name="windowFixedWidthMajor">@dimen/dialog_fixed_width_major</item>
+        <item name="windowFixedWidthMinor">@dimen/dialog_fixed_width_minor</item>
+        <item name="windowFixedHeightMajor">@dimen/dialog_fixed_height_major</item>
+        <item name="windowFixedHeightMinor">@dimen/dialog_fixed_height_minor</item>
+    </style>
+
+    <!-- Variant of Theme.DeviceDefault.Dialog.NoActionBar that has a fixed size. -->
+    <style name="Theme.DeviceDefault.Dialog.NoActionBar.FixedSize">
+        <item name="windowFixedWidthMajor">@dimen/dialog_fixed_width_major</item>
+        <item name="windowFixedWidthMinor">@dimen/dialog_fixed_width_minor</item>
+        <item name="windowFixedHeightMajor">@dimen/dialog_fixed_height_major</item>
+        <item name="windowFixedHeightMinor">@dimen/dialog_fixed_height_minor</item>
+    </style>
+
+    <!-- DeviceDefault theme for a window that will be displayed either full-screen on smaller
+    screens (small, normal) or as a dialog on larger screens (large, xlarge). -->
+    <style name="Theme.DeviceDefault.DialogWhenLarge" parent="Theme.Material.DialogWhenLarge">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for a window without an action bar that will be displayed either
+    full-screen on smaller screens (small, normal) or as a dialog on larger screens (large,
+    xlarge). -->
+    <style name="Theme.DeviceDefault.DialogWhenLarge.NoActionBar" parent="Theme.Material.DialogWhenLarge.NoActionBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for a presentation window on a secondary display. -->
+    <style name="Theme.DeviceDefault.Dialog.Presentation" parent="Theme.Material.Dialog.Presentation">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for panel windows. This removes all extraneous window
+    decorations, so you basically have an empty rectangle in which to place your content. It makes
+    the window floating, with a transparent background, and turns off dimming behind the window. -->
+    <style name="Theme.DeviceDefault.Panel" parent="Theme.Material.Panel">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for windows that want to have the user's selected wallpaper appear
+    behind them. -->
+    <style name="Theme.DeviceDefault.Wallpaper" parent="Theme.Material.Wallpaper">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for windows that want to have the user's selected wallpaper appear
+    behind them and without an action bar. -->
+    <style name="Theme.DeviceDefault.Wallpaper.NoTitleBar" parent="Theme.Material.Wallpaper.NoTitleBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault style for input methods, which is used by the
+         {@link android.inputmethodservice.InputMethodService} class.-->
+    <style name="Theme.DeviceDefault.InputMethod" parent="Theme.Material.InputMethod">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- DeviceDefault style for input methods, which is used by the
+         {@link android.service.voice.VoiceInteractionSession} class.-->
+    <style name="Theme.DeviceDefault.VoiceInteractionSession" parent="Theme.Material.VoiceInteractionSession">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Dialog.Alert" parent="Theme.Material.Dialog.Alert">
+        <item name="windowTitleStyle">@style/DialogWindowTitle.DeviceDefault</item>
+
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.SearchBar" parent="Theme.Material.SearchBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Dialog.NoFrame" parent="Theme.Material.Dialog.NoFrame">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault} with a light-colored style -->
+    <style name="Theme.DeviceDefault.Light" parent="Theme.Material.Light" >
+        <!-- Text styles -->
+        <item name="textAppearance">@style/TextAppearance.DeviceDefault</item>
+        <item name="textAppearanceInverse">@style/TextAppearance.DeviceDefault.Inverse</item>
+
+        <item name="textAppearanceLarge">@style/TextAppearance.DeviceDefault.Large</item>
+        <item name="textAppearanceMedium">@style/TextAppearance.DeviceDefault.Medium</item>
+        <item name="textAppearanceSmall">@style/TextAppearance.DeviceDefault.Small</item>
+        <item name="textAppearanceLargeInverse">@style/TextAppearance.DeviceDefault.Large.Inverse</item>
+        <item name="textAppearanceMediumInverse">@style/TextAppearance.DeviceDefault.Medium.Inverse</item>
+        <item name="textAppearanceSmallInverse">@style/TextAppearance.DeviceDefault.Small.Inverse</item>
+        <item name="textAppearanceSearchResultTitle">@style/TextAppearance.DeviceDefault.SearchResult.Title</item>
+        <item name="textAppearanceSearchResultSubtitle">@style/TextAppearance.DeviceDefault.SearchResult.Subtitle</item>
+
+        <item name="textAppearanceButton">@style/TextAppearance.DeviceDefault.Widget.Button</item>
+
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.DeviceDefault.Widget.PopupMenu.Large</item>
+        <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.DeviceDefault.Widget.PopupMenu.Small</item>
+
+        <!-- Button styles -->
+        <item name="buttonStyle">@style/Widget.DeviceDefault.Light.Button</item>
+
+        <item name="buttonStyleSmall">@style/Widget.DeviceDefault.Light.Button.Small</item>
+        <item name="buttonStyleInset">@style/Widget.DeviceDefault.Light.Button.Inset</item>
+
+        <item name="buttonStyleToggle">@style/Widget.DeviceDefault.Light.Button.Toggle</item>
+
+        <item name="borderlessButtonStyle">@style/Widget.DeviceDefault.Light.Button.Borderless</item>
+
+        <item name="listSeparatorTextViewStyle">@style/Widget.DeviceDefault.Light.TextView.ListSeparator</item>
+
+        <item name="windowTitleStyle">@style/WindowTitle.DeviceDefault</item>
+        <item name="windowTitleBackgroundStyle">@style/WindowTitleBackground.DeviceDefault</item>
+        <item name="windowAnimationStyle">@style/Animation.DeviceDefault.Activity</item>
+
+        <!-- Dialog attributes -->
+        <item name="dialogTheme">@style/Theme.DeviceDefault.Light.Dialog</item>
+
+        <!-- AlertDialog attributes -->
+        <item name="alertDialogTheme">@style/Theme.DeviceDefault.Light.Dialog.Alert</item>
+        <item name="alertDialogStyle">@style/AlertDialog.DeviceDefault.Light</item>
+
+        <!-- Presentation attributes -->
+        <item name="presentationTheme">@style/Theme.DeviceDefault.Light.Dialog.Presentation</item>
+
+        <!-- Text selection handle attributes -->
+        <item name="textSelectHandleWindowStyle">@style/Widget.DeviceDefault.TextSelectHandle</item>
+
+        <!-- Widget styles -->
+        <item name="absListViewStyle">@style/Widget.DeviceDefault.Light.AbsListView</item>
+        <item name="autoCompleteTextViewStyle">@style/Widget.DeviceDefault.Light.AutoCompleteTextView</item>
+        <item name="checkboxStyle">@style/Widget.DeviceDefault.Light.CompoundButton.CheckBox</item>
+        <item name="checkedTextViewStyle">@style/Widget.DeviceDefault.Light.CheckedTextView</item>
+        <item name="dropDownListViewStyle">@style/Widget.DeviceDefault.Light.ListView.DropDown</item>
+        <item name="editTextStyle">@style/Widget.DeviceDefault.Light.EditText</item>
+        <item name="expandableListViewStyle">@style/Widget.DeviceDefault.Light.ExpandableListView</item>
+        <item name="expandableListViewWhiteStyle">@style/Widget.DeviceDefault.Light.ExpandableListView.White</item>
+        <item name="galleryStyle">@style/Widget.DeviceDefault.Light.Gallery</item>
+        <item name="gestureOverlayViewStyle">@style/Widget.DeviceDefault.Light.GestureOverlayView</item>
+        <item name="gridViewStyle">@style/Widget.DeviceDefault.Light.GridView</item>
+        <item name="imageButtonStyle">@style/Widget.DeviceDefault.Light.ImageButton</item>
+        <item name="imageWellStyle">@style/Widget.DeviceDefault.Light.ImageWell</item>
+        <item name="listViewStyle">@style/Widget.DeviceDefault.Light.ListView</item>
+        <item name="listViewWhiteStyle">@style/Widget.DeviceDefault.Light.ListView.White</item>
+        <item name="popupWindowStyle">@style/Widget.DeviceDefault.Light.PopupWindow</item>
+        <item name="progressBarStyle">@style/Widget.DeviceDefault.Light.ProgressBar</item>
+        <item name="progressBarStyleHorizontal">@style/Widget.DeviceDefault.Light.ProgressBar.Horizontal</item>
+        <item name="progressBarStyleSmall">@style/Widget.DeviceDefault.Light.ProgressBar.Small</item>
+        <item name="progressBarStyleSmallTitle">@style/Widget.DeviceDefault.Light.ProgressBar.Small.Title</item>
+        <item name="progressBarStyleLarge">@style/Widget.DeviceDefault.Light.ProgressBar.Large</item>
+        <item name="progressBarStyleInverse">@style/Widget.DeviceDefault.Light.ProgressBar.Inverse</item>
+        <item name="progressBarStyleSmallInverse">@style/Widget.DeviceDefault.Light.ProgressBar.Small.Inverse</item>
+        <item name="progressBarStyleLargeInverse">@style/Widget.DeviceDefault.Light.ProgressBar.Large.Inverse</item>
+        <item name="seekBarStyle">@style/Widget.DeviceDefault.Light.SeekBar</item>
+        <item name="ratingBarStyle">@style/Widget.DeviceDefault.Light.RatingBar</item>
+        <item name="ratingBarStyleIndicator">@style/Widget.DeviceDefault.Light.RatingBar.Indicator</item>
+        <item name="ratingBarStyleSmall">@style/Widget.DeviceDefault.Light.RatingBar.Small</item>
+        <item name="radioButtonStyle">@style/Widget.DeviceDefault.Light.CompoundButton.RadioButton</item>
+        <item name="scrollViewStyle">@style/Widget.DeviceDefault.Light.ScrollView</item>
+        <item name="horizontalScrollViewStyle">@style/Widget.DeviceDefault.Light.HorizontalScrollView</item>
+        <item name="dropDownSpinnerStyle">@style/Widget.DeviceDefault.Light.Spinner.DropDown</item>
+        <item name="starStyle">@style/Widget.DeviceDefault.Light.CompoundButton.Star</item>
+        <item name="tabWidgetStyle">@style/Widget.DeviceDefault.Light.TabWidget</item>
+        <item name="textViewStyle">@style/Widget.DeviceDefault.Light.TextView</item>
+        <item name="webTextViewStyle">@style/Widget.DeviceDefault.Light.WebTextView</item>
+        <item name="webViewStyle">@style/Widget.DeviceDefault.Light.WebView</item>
+        <item name="dropDownItemStyle">@style/Widget.DeviceDefault.Light.DropDownItem</item>
+        <item name="spinnerDropDownItemStyle">@style/Widget.DeviceDefault.Light.DropDownItem.Spinner</item>
+        <item name="spinnerItemStyle">@style/Widget.DeviceDefault.Light.TextView.SpinnerItem</item>
+        <item name="dropDownHintAppearance">@style/TextAppearance.DeviceDefault.Widget.DropDownHint</item>
+        <item name="keyboardViewStyle">@style/Widget.DeviceDefault.KeyboardView</item>
+        <item name="quickContactBadgeStyleWindowSmall">@style/Widget.DeviceDefault.QuickContactBadge.WindowSmall</item>
+        <item name="quickContactBadgeStyleWindowMedium">@style/Widget.DeviceDefault.QuickContactBadge.WindowMedium</item>
+        <item name="quickContactBadgeStyleWindowLarge">@style/Widget.DeviceDefault.QuickContactBadge.WindowLarge</item>
+        <item name="quickContactBadgeStyleSmallWindowSmall">@style/Widget.DeviceDefault.QuickContactBadgeSmall.WindowSmall</item>
+        <item name="quickContactBadgeStyleSmallWindowMedium">@style/Widget.DeviceDefault.QuickContactBadgeSmall.WindowMedium</item>
+        <item name="quickContactBadgeStyleSmallWindowLarge">@style/Widget.DeviceDefault.QuickContactBadgeSmall.WindowLarge</item>
+        <item name="listPopupWindowStyle">@style/Widget.DeviceDefault.Light.ListPopupWindow</item>
+        <item name="popupMenuStyle">@style/Widget.DeviceDefault.Light.PopupMenu</item>
+        <item name="stackViewStyle">@style/Widget.DeviceDefault.Light.StackView</item>
+
+        <!-- Preference styles -->
+        <item name="preferenceScreenStyle">@style/Preference.DeviceDefault.PreferenceScreen</item>
+        <item name="preferenceCategoryStyle">@style/Preference.DeviceDefault.Category</item>
+        <item name="preferenceStyle">@style/Preference.DeviceDefault</item>
+        <item name="preferenceInformationStyle">@style/Preference.DeviceDefault.Information</item>
+        <item name="checkBoxPreferenceStyle">@style/Preference.DeviceDefault.CheckBoxPreference</item>
+        <item name="switchPreferenceStyle">@style/Preference.DeviceDefault.SwitchPreference</item>
+        <item name="seekBarPreferenceStyle">@style/Preference.DeviceDefault.SeekBarPreference</item>
+        <item name="yesNoPreferenceStyle">@style/Preference.DeviceDefault.DialogPreference.YesNoPreference</item>
+        <item name="dialogPreferenceStyle">@style/Preference.DeviceDefault.DialogPreference</item>
+        <item name="editTextPreferenceStyle">@style/Preference.DeviceDefault.DialogPreference.EditTextPreference</item>
+        <item name="ringtonePreferenceStyle">@style/Preference.DeviceDefault.RingtonePreference</item>
+
+        <!-- Action bar styles -->
+        <item name="actionDropDownStyle">@style/Widget.DeviceDefault.Light.Spinner.DropDown.ActionBar</item>
+        <item name="actionButtonStyle">@style/Widget.DeviceDefault.Light.ActionButton</item>
+        <item name="actionOverflowButtonStyle">@style/Widget.DeviceDefault.Light.ActionButton.Overflow</item>
+        <item name="actionBarTabStyle">@style/Widget.DeviceDefault.Light.ActionBar.TabView</item>
+        <item name="actionBarTabBarStyle">@style/Widget.DeviceDefault.Light.ActionBar.TabBar</item>
+        <item name="actionBarTabTextStyle">@style/Widget.DeviceDefault.Light.ActionBar.TabText</item>
+        <item name="actionModeStyle">@style/Widget.DeviceDefault.Light.ActionMode</item>
+        <item name="actionModeCloseButtonStyle">@style/Widget.DeviceDefault.Light.ActionButton.CloseMode</item>
+        <item name="actionBarStyle">@style/Widget.DeviceDefault.Light.ActionBar.Solid</item>
+        <item name="actionModePopupWindowStyle">@style/Widget.DeviceDefault.Light.PopupWindow.ActionMode</item>
+
+        <item name="buttonBarStyle">@style/DeviceDefault.Light.ButtonBar</item>
+        <item name="segmentedButtonStyle">@style/DeviceDefault.Light.SegmentedButton</item>
+
+        <item name="searchDialogTheme">@style/Theme.DeviceDefault.Light.SearchBar</item>
+
+        <!-- NumberPicker style -->
+        <item name="numberPickerStyle">@style/Widget.DeviceDefault.Light.NumberPicker</item>
+
+        <!-- CalendarView style-->
+        <item name="calendarViewStyle">@style/Widget.DeviceDefault.Light.CalendarView</item>
+
+        <!-- TimePicker style -->
+        <item name="timePickerStyle">@style/Widget.DeviceDefault.Light.TimePicker</item>
+
+        <!-- DatePicker style -->
+        <item name="datePickerStyle">@style/Widget.DeviceDefault.Light.DatePicker</item>
+
+        <item name="mediaRouteButtonStyle">@style/Widget.DeviceDefault.Light.MediaRouteButton</item>
+
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- Variant of the DeviceDefault (light) theme that has a solid (opaque) action bar with an
+    inverse color profile. -->
+    <style name="Theme.DeviceDefault.Light.DarkActionBar" parent="Theme.Material.Light.DarkActionBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Light} with no action bar -->
+    <style name="Theme.DeviceDefault.Light.NoActionBar" parent="Theme.Material.Light.NoActionBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Light} with no action bar and no status bar.
+         This theme sets {@link android.R.attr#windowFullscreen} to true.  -->
+    <style name="Theme.DeviceDefault.Light.NoActionBar.Fullscreen" parent="Theme.Material.Light.NoActionBar.Fullscreen">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Light} with no action bar and no status bar
+    and extending in to overscan region.  This theme
+    sets {@link android.R.attr#windowFullscreen} and {@link android.R.attr#windowOverscan}
+    to true. -->
+    <style name="Theme.DeviceDefault.Light.NoActionBar.Overscan" parent="Theme.Material.Light.NoActionBar.Overscan">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Light} that has no title bar and translucent
+         system decor.  This theme sets {@link android.R.attr#windowTranslucentStatus} and
+         {@link android.R.attr#windowTranslucentNavigation} to true. -->
+    <style name="Theme.DeviceDefault.Light.NoActionBar.TranslucentDecor" parent="Theme.Material.Light.NoActionBar.TranslucentDecor">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- DeviceDefault light theme for dialog windows and activities. This changes the window to be
+    floating (not fill the entire screen), and puts a frame around its contents. You can set this
+    theme on an activity if you would like to make an activity that looks like a Dialog.-->
+    <style name="Theme.DeviceDefault.Light.Dialog" parent="Theme.Material.Light.Dialog">
+        <item name="windowTitleStyle">@style/DialogWindowTitle.DeviceDefault.Light</item>
+        <item name="windowAnimationStyle">@style/Animation.DeviceDefault.Dialog</item>
+
+        <item name="buttonBarStyle">@style/DeviceDefault.Light.ButtonBar.AlertDialog</item>
+        <item name="borderlessButtonStyle">@style/Widget.DeviceDefault.Light.Button.Borderless.Small</item>
+
+        <item name="textAppearance">@style/TextAppearance.DeviceDefault</item>
+        <item name="textAppearanceInverse">@style/TextAppearance.DeviceDefault.Inverse</item>
+
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Light_Dialog} that has a nice minimum width for a
+    regular dialog. -->
+    <style name="Theme.DeviceDefault.Light.Dialog.MinWidth" parent="Theme.Material.Light.Dialog.MinWidth">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+     <!-- Variant of {@link #Theme_DeviceDefault_Light_Dialog} without an action bar -->
+    <style name="Theme.DeviceDefault.Light.Dialog.NoActionBar" parent="Theme.Material.Light.Dialog.NoActionBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Light_Dialog_NoActionBar} that has a nice minimum
+    width for a regular dialog. -->
+    <style name="Theme.DeviceDefault.Light.Dialog.NoActionBar.MinWidth" parent="Theme.Material.Light.Dialog.NoActionBar.MinWidth">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- Variant of Theme.DeviceDefault.Dialog that has a fixed size. -->
+    <style name="Theme.DeviceDefault.Light.Dialog.FixedSize">
+        <item name="windowFixedWidthMajor">@dimen/dialog_fixed_width_major</item>
+        <item name="windowFixedWidthMinor">@dimen/dialog_fixed_width_minor</item>
+        <item name="windowFixedHeightMajor">@dimen/dialog_fixed_height_major</item>
+        <item name="windowFixedHeightMinor">@dimen/dialog_fixed_height_minor</item>
+
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- Variant of Theme.DeviceDefault.Dialog.NoActionBar that has a fixed size. -->
+    <style name="Theme.DeviceDefault.Light.Dialog.NoActionBar.FixedSize">
+        <item name="windowFixedWidthMajor">@dimen/dialog_fixed_width_major</item>
+        <item name="windowFixedWidthMinor">@dimen/dialog_fixed_width_minor</item>
+        <item name="windowFixedHeightMajor">@dimen/dialog_fixed_height_major</item>
+        <item name="windowFixedHeightMinor">@dimen/dialog_fixed_height_minor</item>
+
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- DeviceDefault light theme for a window that will be displayed either full-screen on smaller
+    screens (small, normal) or as a dialog on larger screens (large, xlarge). -->
+    <style name="Theme.DeviceDefault.Light.DialogWhenLarge" parent="Theme.Material.Light.DialogWhenLarge">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- DeviceDefault light theme for a window without an action bar that will be displayed either
+    full-screen on smaller screens (small, normal) or as a dialog on larger screens (large,
+    xlarge). -->
+    <style name="Theme.DeviceDefault.Light.DialogWhenLarge.NoActionBar" parent="Theme.Material.Light.DialogWhenLarge.NoActionBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- DeviceDefault light theme for a presentation window on a secondary display. -->
+    <style name="Theme.DeviceDefault.Light.Dialog.Presentation" parent="Theme.Material.Light.Dialog.Presentation">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- DeviceDefault light theme for panel windows. This removes all extraneous window
+    decorations, so you basically have an empty rectangle in which to place your content. It makes
+    the window floating, with a transparent background, and turns off dimming behind the window. -->
+    <style name="Theme.DeviceDefault.Light.Panel" parent="Theme.Material.Light.Panel">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Light.Dialog.Alert" parent="Theme.Material.Light.Dialog.Alert">
+        <item name="windowTitleStyle">@style/DialogWindowTitle.DeviceDefault.Light</item>
+
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Light.SearchBar" parent="Theme.Material.Light.SearchBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Light.Voice" parent="Theme.Material.Light.Voice">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- DeviceDefault theme for a window that should look like the Settings app.  -->
+    <style name="Theme.DeviceDefault.Settings" parent="Theme.Material.Settings">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_settings</item>
+        <item name="colorSecondary">@color/secondary_device_default_settings</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- DeviceDefault theme for a window that should use Settings theme colors but has
+         a full dark palette (instead of Light with dark action bar like
+         Theme.DeviceDefault.Settings.  -->
+    <style name="Theme.DeviceDefault.Settings.Dark" parent="Theme.Material">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_settings</item>
+        <item name="colorSecondary">@color/secondary_device_default_settings</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Settings_Dark} with no action bar -->
+    <style name="Theme.DeviceDefault.Settings.Dark.NoActionBar" parent="Theme.Material.NoActionBar">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_settings</item>
+        <item name="colorSecondary">@color/secondary_device_default_settings</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Settings.Dialog" parent="Theme.Material.Settings.Dialog">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_settings</item>
+        <item name="colorSecondary">@color/secondary_device_default_settings</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Settings.DialogWhenLarge" parent="Theme.Material.Settings.DialogWhenLarge">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_settings</item>
+        <item name="colorSecondary">@color/secondary_device_default_settings</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Settings.Dialog.Alert" parent="Theme.Material.Settings.Dialog.Alert">
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_settings</item>
+        <item name="colorSecondary">@color/secondary_device_default_settings</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- Theme used for the intent picker activity. -->
+    <style name="Theme.DeviceDefault.Resolver" parent="Theme.Material.Light">
+        <item name="windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowBackground">@color/transparent</item>
+        <item name="backgroundDimEnabled">true</item>
+        <item name="statusBarColor">@color/transparent</item>
+        <item name="windowContentOverlay">@null</item>
+        <item name="colorControlActivated">?attr/colorControlHighlight</item>
+        <item name="listPreferredItemPaddingStart">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingEnd">?attr/dialogPreferredPadding</item>
+
+        <!-- Color palette -->
+        <item name="colorPrimary">@color/primary_device_default_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <!-- DeviceDefault theme for the default system theme.  -->
+    <style name="Theme.DeviceDefault.System" parent="Theme.DeviceDefault.Light.DarkActionBar" />
+
+    <style name="ThemeOverlay.DeviceDefault" />
+
+    <style name="ThemeOverlay.DeviceDefault.Accent">
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+    <style name="ThemeOverlay.DeviceDefault.Accent.Light">
+        <item name="colorAccent">@color/accent_device_default_light</item>
+    </style>
+
+    <style name="ThemeOverlay.DeviceDefault.Dark.ActionBar.Accent" parent="ThemeOverlay.Material.Dark.ActionBar">
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+    </style>
+
+</resources>

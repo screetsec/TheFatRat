@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="month_day_year">%-e. %B %Y</string>
+    <string name="time_of_day">%H:%M:%S</string>
+    <string name="date_and_time">%H:%M:%S, %-e. %b %Y</string>
+    <string name="date_time">%2$s, %1$s</string>
+</resources>

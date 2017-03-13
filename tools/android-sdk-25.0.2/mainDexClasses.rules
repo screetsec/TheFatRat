@@ -1,0 +1,27 @@
+  -keep public class * extends android.app.Instrumentation {
+    <init>();
+  }
+  -keep public class * extends android.app.Application {
+    <init>();
+    void attachBaseContext(android.content.Context);
+  }
+  -keep public class * extends android.app.Activity {
+    <init>();
+  }
+  -keep public class * extends android.app.Service {
+    <init>();
+  }
+  -keep public class * extends android.content.ContentProvider {
+   <init>();
+  }
+  -keep public class * extends android.content.BroadcastReceiver {
+   <init>();
+  }
+  -keep public class * extends android.app.backup.BackupAgent {
+   <init>();
+  }
+# We need to keep all annotation classes because proguard does not trace annotation attribute
+# it just filter the annotation attributes according to annotation classes it already kept.
+  -keep public class * extends java.lang.annotation.Annotation {
+   *;
+  }
