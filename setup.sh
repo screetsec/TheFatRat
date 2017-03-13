@@ -298,7 +298,7 @@ xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update" 
 #Adding Dx & Aapt path to config 
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Dex2Jar...........................[ found ]"
+echo -e $green "[ X ] Aapt...........................[ found ]"
 xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y" >>$log 2>&1
 unlink /usr/local/sbin/aapt > /dev/null 2>&1
 unlink /usr/bin/aapt > /dev/null 2>&1
