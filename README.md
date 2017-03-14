@@ -97,7 +97,7 @@ And it's up & running.
 * Udate thefatrat v1.8 https://youtu.be/6skLV6zPnec?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
 * file Pumper in linux with fatrat https://youtu.be/rHuh5DJ476M?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
 * Kali linux 2016.2 | Setup FatRat and Bypass Windows 10 :https://www.youtube.com/watch?v=mkfKSCxvPec
-* Embed Backdoor Apk Andoird : https://www.youtube.com/watch?v=bZg3gPuLvgs&feature=youtu.be
+* Embed Backdoor Apk Andoird : https://www.youtube.com/watch?v=jukXCvxlBmc
 * Create Backdoor Php and Reconnect With TheFatRat : https://www.youtube.com/watch?v=gfS55fjd8Fg
 * THEFATRAT:BACKDOOR CREATOR & BYPASS ANTIVIRUS AND INSTALL. : https://www.youtube.com/watch?v=C4YHVKPw6Zo
 * Exploit Windows 7/8/10 using Thefatrat ( option 2 ) : https://www.youtube.com/watch?v=-WbKOxIl_f4
