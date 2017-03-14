@@ -1,0 +1,8 @@
+[
+  {
+    "name": "org.apache.http.legacy",
+    "jar": "org.apache.http.legacy.jar",
+    "manifest": false
+  }
+]
+

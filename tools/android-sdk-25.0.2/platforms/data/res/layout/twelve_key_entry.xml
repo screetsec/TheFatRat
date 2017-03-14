@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2008, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<!-- This is not a standalone element it can be included into apps that need 12-key input -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="64dip"
+        android:layout_marginStart="2dip"
+        android:layout_marginEnd="2dip"
+        android:orientation="horizontal">
+
+        <Button android:id="@+id/one"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+        />
+
+        <Button android:id="@+id/two"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+        />
+
+        <Button android:id="@+id/three"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="64dip"
+        android:layout_marginStart="2dip"
+        android:layout_marginEnd="2dip"
+        android:orientation="horizontal">
+
+        <Button android:id="@+id/four"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+        />
+
+        <Button android:id="@+id/five"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+        />
+
+        <Button android:id="@+id/six"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="64dip"
+        android:layout_marginStart="2dip"
+        android:layout_marginEnd="2dip"
+        android:orientation="horizontal">
+
+        <Button android:id="@+id/seven"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+        />
+
+        <Button android:id="@+id/eight"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+        />
+
+        <Button android:id="@+id/nine"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="64dip"
+        android:layout_marginStart="2dip"
+        android:layout_marginEnd="2dip"
+        android:orientation="horizontal">
+
+        <Button android:id="@+id/cancel"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:text="@android:string/cancel"
+        />
+
+        <Button android:id="@+id/zero"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textStyle="bold"
+        />
+
+        <Button android:id="@+id/ok"
+            android:layout_width="0sp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:layout_marginStart="2dip"
+            android:layout_marginEnd="2dip"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textStyle="bold"
+            android:text="@android:string/ok"
+        />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <style name="AlertDialog.Leanback" parent="AlertDialog.Material">
+        <item name="buttonPanelSideLayout">@android:layout/alert_dialog_leanback_button_panel_side</item>
+    </style>
+
+    <style name="AlertDialog.Leanback.Light">
+    </style>
+
+    <style name="Widget.Leanback.TimePicker" parent="Widget.Material.TimePicker">
+        <item name="timePickerMode">spinner</item>
+    </style>
+
+    <style name="Widget.Leanback.DatePicker" parent="Widget.Material.DatePicker">
+        <item name="datePickerMode">spinner</item>
+    </style>
+
+    <style name="Widget.Leanback.NumberPicker" parent="Widget.Material.NumberPicker">
+        <item name="hideWheelUntilFocused">true</item>
+    </style>
+
+    <!-- Setup and form wizard themes -->
+    <style name="TextAppearance.Leanback.FormWizard" parent="@style/TextAppearance.Material">
+        <item name="textSize">18sp</item>
+        <item name="lineSpacingExtra">24sp</item>
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Leanback.FormWizard.Small" parent="@style/TextAppearance.Material.Small">
+        <item name="textSize">14sp</item>
+        <item name="lineSpacingExtra">24sp</item>
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Leanback.FormWizard.Medium" parent="@style/TextAppearance.Material.Medium">
+        <item name="textSize">36sp</item>
+        <item name="lineSpacingExtra">40sp</item>
+        <item name="fontFamily">sans-serif-thin</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Leanback.FormWizard.Large" parent="@style/TextAppearance.Material.Large">
+        <item name="textSize">42sp</item>
+        <item name="lineSpacingExtra">48sp</item>
+        <item name="fontFamily">sans-serif-thin</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Leanback.FormWizard.ListItem" parent="@style/TextAppearance.Material.Subhead">
+        <item name="textSize">16sp</item>
+        <item name="fontFamily">sans-serif-condensed</item>
+    </style>
+
+    <style name="WindowAnimationStyle.Leanback.Setup" parent="@style/Animation.Material.Activity">
+        <item name="android:fragmentOpenEnterAnimation">@animator/leanback_setup_fragment_open_enter</item>
+        <item name="android:fragmentOpenExitAnimation">@animator/leanback_setup_fragment_open_exit</item>
+        <item name="android:fragmentCloseEnterAnimation">@animator/leanback_setup_fragment_close_enter</item>
+        <item name="android:fragmentCloseExitAnimation">@animator/leanback_setup_fragment_close_exit</item>
+    </style>
+</resources>
