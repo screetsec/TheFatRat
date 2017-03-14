@@ -1,6 +1,13 @@
 ## CHANGELOG
 
 
+* v1.9.0 - update script setu.sh
+* v1.9.0 - del some variable and function
+* v1.9.0 - fixed typo and bugs
+* v1.9.0 - Backdoor APKS have a new payload hiding method in rat apk to not be detected .
+* v1.9.0 - APK (5) rat rebuild totally changed .(adapted backdoor-apk script to fatrat to both work together)
+* v1.9.0 - Apktool will not be installed no more by setup.sh , the same thing applies to : dx , zipalign (apktool on debian repo is 2.2.1 , and that version have a bug that gives error on compiling the apks , so , apktool and android tools were updated to latest version 25.0.2 and embeded in (tools) directory of fatrat .
+
 * v1.8.5 - fixed some bugs and double function in setup.sh
 * v1.8.1 - added possibility to configure metasploit , backdoor-factory & searchsploit with manual inputs
 
