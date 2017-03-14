@@ -3,8 +3,8 @@
 
 #TheFatRat ( Unit for bypass av )
 
-##Update: Version 1.8.5
-##Codename: Spark
+##Update: Version 1.9.0
+##Codename: Whistle
 
 What is TheFatRat ??
 
@@ -17,6 +17,10 @@ An easy tool to generate backdoor and easy tool to post exploitation attack like
 <img src="https://cloud.githubusercontent.com/assets/17976841/18483870/39cb46ba-7a10-11e6-859b-1c1baa3c1b0a.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483871/39cb81ca-7a10-11e6-84f3-1683067fa4f5.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483873/39d54372-7a10-11e6-890f-41803a33b9c9.png" width="32%"></img>
 #Automating metasploit functions
 
+- create backdoor windows , mac , linux , android
+
+- bypass antivirus 
+
 - Checks for metasploit service and starts if not present
 
 - Easily craft meterpreter reverse_tcp payloads for Windows, Linux, Android and Mac and another
@@ -25,7 +29,7 @@ An easy tool to generate backdoor and easy tool to post exploitation attack like
 
 - Fast Search in searchsploit
 
-- Bypass AV
+- Bypass AV 
 
 - File pumper
 
@@ -134,6 +138,7 @@ And it's up & running.
 - Dracos Linux from Scratch Indonesia ( Penetration os ) Thanksyou , you can see in http://dracos-linux.org/
 - Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
 - http://www.kali.org/"
+- my friends peterpt for give me some inspiration
 - Jack Wilder admin in http://www.linuxsec.org
 - source for c program https://github.com/rsmudge
 - And another open sources tool in github
