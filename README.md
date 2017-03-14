@@ -1,11 +1,9 @@
-
-
 #TheFatRat ( Unit for bypass av )
 
 ##Update: Version 1.9.0
 ##Codename: Whistle
 
-What is TheFatRat ??
+#What is TheFatRat ??
 
 An easy tool to generate backdoor and easy tool to post exploitation attack like browser attack,dll . This tool compiles a malware with popular payload and then the compiled malware can be execute on windows, android, mac . The malware that created with this tool also have an ability to bypass most AV software protection .
 
