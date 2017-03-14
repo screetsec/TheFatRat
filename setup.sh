@@ -499,8 +499,14 @@ rm -f /usr/local/sbin/fatrat
 touch /usr/local/sbin/fatrat
 echo "#!/bin/bash" > /usr/local/sbin/fatrat
 echo $scrp >> /usr/local/sbin/fatrat
-chmod +x /usr/local/sbin/fatrat 
+chmod +x /usr/local/sbin/fatrat
 chmod +x fatrat
+chmod +x backdoor_apk
+chmod +x $path/tools/android-sdk-25.0.2/zipalign
+chmod +x $path/tools/proguard5.3.2/lib/proguard
+chmod +x $path/tools/android-sdk-25.0.2/dx
+chmod +x $path/tools/android-sdk-25.0.2/aapt
+chmod +x $path/tools/apktool2.2.2/apktool
 which fatrat >> $log 2>&1
 clear
 zenity --info --width=100 --height=100 --no-wrap --text="FatRat shorcut created , write (fatrat) anywhere in terminal to open it ."
@@ -510,6 +516,7 @@ exit
 fi
 if [ $lnk ==  "1" ];then
 chmod +x fatrat
+chmod +x backdoor_apk
 chmod +x $path/tools/android-sdk-25.0.2/zipalign
 chmod +x $path/tools/proguard5.3.2/lib/proguard
 chmod +x $path/tools/android-sdk-25.0.2/dx
