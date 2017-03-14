@@ -921,11 +921,11 @@ rm -rf host1.tmp >/dev/null 2>&1
 if [[ -z $yourip ]] 
 then
 zenity --no-wrap --error --text="Your LHOST was empty ."
-embedapk
+menu
 elif [[ -z $yourport ]]
 then
 zenity --no-wrap --error --text="Your LPORT was empty ."
-embedapk
+menu
 fi
 copyfile=$(zenity --file-selection --file-filter='APK files (apk) | *.apk' --title="Select your app/game apk file");
 cp $copyfile $path/temp/app.apk >/dev/null 2>&1
