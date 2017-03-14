@@ -3,10 +3,11 @@
 #-------------------------------------------------
 # setup.sh Author :
 # Edo maland ( Screetsec )
-# peterpt 
+# peterpt for add some variable and function
 # Install all dependencies nedded
 # configuration all file for fixing all problem
 # -------------------------------------------------
+
 
 
 #This
@@ -25,6 +26,35 @@ config=$path/config/config.path
 
 
 
+#Fail safe for original user sources.list in case setup was interrupted in middle last time
+file="/etc/apt/sources.list.fatrat"
+if [ -f "$file" ]
+then
+echo "Setup Detected that your previous run was interrupted in middle , fixing your original repositories list ."
+sleep 4s
+rm -f /etc/apt/sources.list
+mv /etc/apt/sources.list.fatrat /etc/apt/sources.list
+echo "Your Original repository list was recovered. ;) ..... beginning setup"
+echo ""
+echo "Cleaning previous repositories cache & updating your repository ."
+xterm -T "☣ UPDATING REPO ☣" -geometry 100x30 -e "sudo apt-get clean && apt-get update -y" >>$log 2>&1
+sleep 3s
+else
+echo ""
+fi 
+
+#buatrepoo ya dulu biar aman
+echo ""
+cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
+fi
+rm -f /etc/apt/sources.list
+touch /etc/apt/sources.list
+echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
+echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
+echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+sleep 2
+xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get clean && apt-get update -y" >>$log 2>&1
 
 #Removing any previous setup log created
 rm -f $log  > /dev/null 2>&1
