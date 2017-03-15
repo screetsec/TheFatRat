@@ -34,7 +34,6 @@ echo ""
 echo "Cleaning previous repositories cache & updating your repository ."
 xterm -T "☣ UPDATING REPO ☣" -geometry 100x30 -e "sudo apt-get clean && apt-get update -y" >>$log 2>&1
 sleep 3s
-else
 echo ""
 fi 
 
