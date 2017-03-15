@@ -1,7 +1,7 @@
 ## CHANGELOG
 
-
-* v1.9.0 - update script setu.sh
+* v1.9b - Implemented Backdoor-apk from Dana James Traversie in this version .{  Less tools to install during setup.sh }
+* v1.9.0 - update script setup.sh
 * v1.9.0 - del some variable and function
 * v1.9.0 - fixed typo and bugs
 * v1.9.0 - Backdoor APKS have a new payload hiding method in rat apk to not be detected .
