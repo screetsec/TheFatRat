@@ -3,7 +3,7 @@
 #-------------------------------------------------
 # setup.sh Author :
 # Edo maland ( Screetsec )
-# peterpt for add some variable and function
+# rebuild setup.sh peterpt
 # Install all dependencies nedded
 # configuration all file for fixing all problem
 # -------------------------------------------------
@@ -54,7 +54,7 @@ echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/s
 echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 sleep 2
-xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get clean && apt-get update -y" >>$log 2>&1
+xterm -T "☣ UPDATING YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get clean && apt-get update -y" >>$log 2>&1
 
 #Removing any previous setup log created
 rm -f $log  > /dev/null 2>&1
@@ -67,18 +67,21 @@ clear
 
 
 #Banner dong biar keren
-echo -e $okegreen ""
-echo "         [ ]=================================================[ ]";
-echo "         [ ]      ________       ____     __  ___       __   [ ]";
-echo "         [ ]     /_  __/ /  ___ / __/__ _/ /_/ _ \___ _/ /_  [ ]";
-echo "         [ ]      / / / _ \/ -_) _// _ \`/ __/ , _/ _ \`/ __/  [ ]";
-echo "         [ ]     /_/ /_//_/\__/_/  \_,_/\__/_/|_|\_,_/\__/   [ ]";
-echo "         [ ]=================================================[ ] ";
-echo "         [ ]          Setup.sh - configuration script        [ ]"
-echo "         [ ]        Use this script to configure fatrat      [ ]"
-echo "         [ ]              Install all dependencies           [ ]"
-echo "         [ ]=================================================[ ]";
+echo -e $green ""
+echo "___________         __  __________          __    "
+echo "\_   _____/_____  _/  |_\______   \_____  _/  |_  "
+echo " |    __)  \__  \ \   __\|       _/\__  \ \   __\ "
+echo " |     \    / __ \_|  |  |    |   \ / __ \_|  |   "
+echo " \___  /   (____  /|__|  |____|_  /(____  /|__|   "
+echo "     \/         \/              \/      \/        "
+echo "                 ____    ________                 "
+echo "                /_   |  /   __   \                "
+echo "                 |   |  \____    /                "
+echo "                 |   |     /    /                 "
+echo "                 |___| /\ /____/                  "
+echo "                       \/                         "
 echo ""
+echo -e $green "         Setup Script for FATRAT 1.9       "
 touch $log
 echo "------------------------------------------------------" >> $log
 echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> $log
@@ -290,59 +293,42 @@ echo "$path/tools/proguard5.3.2/lib/proguard" | tee -a $config >> /dev/null 2>&1
 sleep 2
 xterm -T "☣ INSTALL APKCREATION DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install lib32z1 lib32ncurses5 lib32stdc++6 -y"
 
-
-#i think dont need
-
-#Installing dependencies for Zipalign
-#echo "[ ! ] Installing Zipalign dependencies from your apt sources"
-#xterm -T "☣ INSTALL ZIPALING ☣" -geometry 100x30 -e "sudo apt-get install lib32stdc++6 lib32z1 lib32z1-dev -y "
-#echo "[ ✔ ] Done installing ...."
-#sleep 2
-
-#Checking if Zipalign exists
-#which zipalign > /dev/null 2>&1
-#if [ "$?" -eq "0" ]; then
-#echo "[ ✔ ] Zipalign..........................[ found ]"
-#which zipalign >> $log 2>&1
-#sleep 2
-#else
-#echo "[ X ] Zipalign -> not found                    ]"
-#echo "[ ! ] Installing Zipalign from your apt sources "
-#xterm -T "☣ INSTALL ZIPALIGN ☣" -geometry 100x30 -e "sudo apt-get install zipalign -y "
-#echo "[ ✔ ] Done installing ...."
-#which zipalign >> $log 2>&1
-#sleep 2
-#fi
-
-
-#Adding Dx & Aapt path to config
-#which aapt > /dev/null 2>&1
-#if [ "$?" -eq "0" ]; then
-#echo -e $red "[ X ] Aapt {Settin Up }..........................."
+#Adding Dx & Aapt path to config 
+which aapt > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $red "[ X ] Aapt..........................."
 
 # Removing current installed aapt version on user system and setting aapt 25.0.2 in thirdparty tools
 # This must be done because apktool 2.2.2 will conflict with an old aapt version on building apk files
 # Aapt is not a variable that could be set automatically , calls to aapt are made by apktool internally
-
-#we do not remove that because we using aapt and apktool with ( already tools in tools/apktool and etc)
-#xterm -T "☣ Removing Your Cur  rent Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y" >>$log 2>&1
-#unlink /usr/local/sbin/aapt > /dev/null 2>&1
-#unlink /usr/bin/aapt > /dev/null 2>&1
-#ln -s $path/tools/android-sdk-25.0.2/aapt /usr/local/sbin/aapt > /dev/null 2>&1
-
-#Dx && Aapt
-echo -e $okegreen "[ ✔ ] Dx & Aapt.........................[ found ]"
+xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y" >>$log 2>&1
+unlink /usr/local/sbin/aapt > /dev/null 2>&1
+unlink /usr/bin/aapt > /dev/null 2>&1
+ln -s $path/tools/android-sdk-25.0.2/aapt /usr/local/sbin/aapt > /dev/null 2>&1
+echo -e $green "[ ✔ ] Dx & Aapt.........................[ found ]"
 echo "$path/tools/android-sdk-25.0.2/dx" >> $log 2>&1
 echo "$path/tools/android-sdk-25.0.2/dx" | tee -a $config >> /dev/null 2>&1
 echo "$path/tools/android-sdk-25.0.2/aapt" >> $log 2>&1
 echo "$path/tools/android-sdk-25.0.2/aapt" | tee -a $config >> /dev/null 2>&1
 sleep 2
+else
+echo -e $green "[ ✔ ] Dx & Aapt.........................[ found ]"
+echo "$path/tools/android-sdk-25.0.2/dx" >> $log 2>&1
+echo "$path/tools/android-sdk-25.0.2/dx" | tee -a $config >> /dev/null 2>&1
+echo "$path/tools/android-sdk-25.0.2/aapt" >> $log 2>&1
+echo "$path/tools/android-sdk-25.0.2/aapt" | tee -a $config >> /dev/null 2>&1
+sleep 2
+fi
 
 
 #Adding Apktool path to config
+xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
 echo -e $okegreen "[ ✔ ] Apktool 2.2.2.....................[ found ]"
 echo "$path/tools/apktool2.2.2/apktool" >> $log 2>&1
 echo "$path/tools/apktool2.2.2/apktool" | tee -a $config >> /dev/null 2>&1
+unlink /usr/local/sbin/apktool > /dev/null 2>&1
+unlink /usr/bin/apktool > /dev/null 2>&1
+ln -s $path/tools/apktool2.2.2/apktool /usr/local/sbin/apktool > /dev/null 2>&1
 sleep 2
 
 #Checking if dex2jar exists
