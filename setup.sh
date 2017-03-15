@@ -487,16 +487,17 @@ fi
 ################################
 echo -e $blue "Reactivating you original repositories"
 rm -f /etc/apt/sources.list
-mv /etc/apt/sources.list.fatrat /etc/apt/sources.list
+mv /etc/apt/sources.list.backup /etc/apt/sources.list
 #now we can remove the emergency backup securely
+rm -f /etc/apt/sources.list.fatrat
 apt-get clean
-xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get clean && apt-get update "
+xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 clear
 
 zenity --width=100 --height=100 --no-wrap --title="FatRat Shorcut Creation" --question --ok-label="Yes" --cancel-label="No" --text="`printf "Do you wish to create a fatrat shortcut in your system path ? \n So you can call fatrat from anywhere in terminal ."`";
 lnk=$?
 if [ $lnk ==  "0" ];then
-dir=`pwd`
+dir=`pwd` 
 scrp="cd $dir && ./fatrat"
 rm -f /usr/local/sbin/fatrat
 touch /usr/local/sbin/fatrat
@@ -504,15 +505,22 @@ echo "#!/bin/bash" > /usr/local/sbin/fatrat
 echo $scrp >> /usr/local/sbin/fatrat
 chmod +x /usr/local/sbin/fatrat
 chmod +x fatrat
+chmod +x backdoor_apk
+chmod +x $path/tools/android-sdk-25.0.2/zipalign
+chmod +x $path/tools/proguard5.3.2/lib/proguard
+chmod +x $path/tools/android-sdk-25.0.2/dx
+chmod +x $path/tools/android-sdk-25.0.2/aapt
+chmod +x $path/tools/apktool2.2.2/apktool
 which fatrat >> $log 2>&1
 clear
 zenity --info --width=100 --height=100 --no-wrap --text="FatRat shorcut created , write (fatrat) anywhere in terminal to open it ."
-sleep 2
-echo -e $okegreen "Instalation completed"
+sleep 2 
+echo -e $green "Instalation completed"
 exit
 fi
 if [ $lnk ==  "1" ];then
 chmod +x fatrat
+chmod +x backdoor_apk
 chmod +x $path/tools/android-sdk-25.0.2/zipalign
 chmod +x $path/tools/proguard5.3.2/lib/proguard
 chmod +x $path/tools/android-sdk-25.0.2/dx
@@ -520,6 +528,6 @@ chmod +x $path/tools/android-sdk-25.0.2/aapt
 chmod +x $path/tools/apktool2.2.2/apktool
 zenity --width=100 --height=100 --no-wrap --info --text="To execute fatrat write in fatrat directory (./fatrat) to execute it."
 sleep 2
-echo -e $okegreen "Instalation completed"
+echo -e $green "Instalation completed"
 fi
 exit
