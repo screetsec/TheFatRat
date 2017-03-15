@@ -341,6 +341,7 @@ echo "$path/tools/android-sdk-25.0.2/dx" >> $log 2>&1
 echo "$path/tools/android-sdk-25.0.2/dx" | tee -a $config >> /dev/null 2>&1
 echo "$path/tools/android-sdk-25.0.2/aapt" >> $log 2>&1
 echo "$path/tools/android-sdk-25.0.2/aapt" | tee -a $config >> /dev/null 2>&1
+ln -s $path/tools/android-sdk-25.0.2/aapt /usr/local/sbin/aapt > /dev/null 2>&1
 sleep 2
 fi
 
