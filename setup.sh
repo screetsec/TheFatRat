@@ -275,7 +275,7 @@ sleep 2
 fi
 
 #installing dependencies for ruby script 
-echo -e $green "[ ! ] Installing dedepndencies for ruby script"
+echo -e $green "[ ! ] Installing dedendencies for ruby script"
 xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick -y"
 echo -e $green "[ ✔ ] Done installing ...."
 sleep 2
