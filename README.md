@@ -15,6 +15,7 @@ An easy tool to generate backdoor and easy tool to post exploitation attack like
 # ---------------------------------------------------------------
 
 <img src="https://cloud.githubusercontent.com/assets/17976841/18483870/39cb46ba-7a10-11e6-859b-1c1baa3c1b0a.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483871/39cb81ca-7a10-11e6-84f3-1683067fa4f5.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483873/39d54372-7a10-11e6-890f-41803a33b9c9.png" width="32%"></img>
+
 # Automating metasploit functions
 
 - Create backdoor for windows , linux , mac and android
@@ -69,17 +70,6 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 2. ```cd TheFatRat/setup```
 3. ```chmod +x setup.sh && ./setup.sh```
 
-## Alternative: Docker
-
-```bash
-$ git clone https://github.com/Screetsec/TheFatRat.git
-$ cd TheFatRat
-$ docker build -t=thefatrat .
-$ docker run -it --name "thefatrat" thefatrat
-```
-
-And it's up & running.
-
 ## :book: How it works
 
 * Extract The lalin-master to your home or another folder
@@ -93,8 +83,6 @@ And it's up & running.
 
 - A linux operating system. We recommend Kali Linux 2 or Kali 2016.1 rolling 
  Cyborg / Parrot / Dracos / BackTrack / Backbox / Devuan and another operating system ( linux )
-
-- Must install metasploit framework
 
 
 
@@ -128,7 +116,7 @@ And it's up & running.
 ## BUG ?
 
 - Submit new issue
-- pm me
+- pm me in gmail
 - Hey sup ? do you want ask about all my tools ? you can join me in telegram.me/offscreetsec
 
 
@@ -137,6 +125,8 @@ And it's up & running.
 - Thanks to allah and Screetsec [ Edo -maland- ] <Me>
 - Dracos Linux from Scratch Indonesia ( Penetration os ) Thanksyou , you can see in http://dracos-linux.org/
 - Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
+- peterpt
+- Dana James Traversie https://github.com/dana-at-cp/backdoor-apk 
 - http://www.kali.org/"
 - Jack Wilder admin in http://www.linuxsec.org
 - source for c program https://github.com/rsmudge
