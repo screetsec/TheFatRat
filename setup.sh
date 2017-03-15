@@ -7,22 +7,8 @@
 # --------------------------------------------------------
 
 
-#This
-cyan='\e[0;36m'
-green='\e[0;34m'
-okegreen='\033[92m'
-lightgreen='\e[1;32m'
-white='\e[1;37m'
-red='\e[1;31m'
-yellow='\e[1;33m'
-BlueF='\e[1;34m'
-file="/etc/apt/sources.list.fatrat"
-path=`pwd`
-log=$path/logs/setup.log
-config=$path/config/config.path
-
-
 #Fail safe for original user sources.list in case setup was interrupted in middle last time
+file="/etc/apt/sources.list.fatrat"
 if [ -f "$file" ]
 then
 echo "Setup Detected that your previous run was interrupted in middle , fixing your original repositories list ."
@@ -32,26 +18,27 @@ mv /etc/apt/sources.list.fatrat /etc/apt/sources.list
 echo "Your Original repository list was recovered. ;) ..... beginning setup"
 echo ""
 echo "Cleaning previous repositories cache & updating your repository ."
-xterm -T "☣ UPDATING REPO ☣" -geometry 100x30 -e "sudo apt-get clean && apt-get update -y" >>$log 2>&1
+sudo apt-get clean && apt-get update -y
 sleep 3s
+else
 echo ""
 fi 
+path=`pwd`
+log=$path/logs/setup.log
+config=$path/config/config.path
 
+#Removing any previous setup log created
+rm -f $log > /dev/null 2>&1
 
-# Second backup created in case user stops the script after this point , then on next startup this script will
-cp /etc/apt/sources.list /etc/apt/sources.list.backup 
-
-#buatrepoo ya dulu biar aman
-echo ""
-cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
-rm -f /etc/apt/sources.list
-touch /etc/apt/sources.list
-echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
-echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
-sleep 2
-xterm -T "☣ UPDATING YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get clean && apt-get update -y" >>$log 2>&1
+#This colour
+cyan='\e[0;36m'
+green='\e[0;32m'
+lightgreen='\e[1;32m'
+white='\e[1;37m'
+red='\e[1;31m'
+yellow='\e[1;33m'
+blue='\e[1;34m'
+path=`pwd`
 
 #Check root dulu
 [[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
@@ -288,7 +275,7 @@ sleep 2
 fi
 
 #installing dependencies for ruby script 
-echo -e $green "[ ! ] Installing dedepndencies for ruby script"
+echo -e $green "[ ! ] Installing dedendencies for ruby script"
 xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick -y"
 echo -e $green "[ ✔ ] Done installing ...."
 sleep 2
@@ -307,6 +294,28 @@ echo "$path/tools/proguard5.3.2/lib/proguard" | tee -a $config >> /dev/null 2>&1
 sleep 2
 
 xterm -T "☣ INSTALL APKCREATION DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install lib32z1 lib32ncurses5 lib32stdc++6 -y"
+#################################
+#inputrepo
+#################################
+
+cp /etc/apt/sources.list /etc/apt/sources.list.backup # backup
+# Second backup created in case user stops the script after this point , then on next startup this script will
+# copy the already changed sources file before as backup , and user lost his original sources lists
+file="/etc/apt/sources.list.fatrat"
+if [ -f "$file" ]
+then
+echo ""
+else
+cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
+fi
+rm -f /etc/apt/sources.list
+touch /etc/apt/sources.list
+echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
+echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
+echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+sleep 2
+xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update" >>$log 2>&1
 
 #Adding Dx & Aapt path to config 
 which aapt > /dev/null 2>&1
@@ -320,14 +329,14 @@ xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get 
 unlink /usr/local/sbin/aapt > /dev/null 2>&1
 unlink /usr/bin/aapt > /dev/null 2>&1
 ln -s $path/tools/android-sdk-25.0.2/aapt /usr/local/sbin/aapt > /dev/null 2>&1
-echo -e $green "[ ✔ ] Dx & Aapt.........................[ found ]"
+echo -e $green "[ ✔ ] Dx & Aapt"
 echo "$path/tools/android-sdk-25.0.2/dx" >> $log 2>&1
 echo "$path/tools/android-sdk-25.0.2/dx" | tee -a $config >> /dev/null 2>&1
 echo "$path/tools/android-sdk-25.0.2/aapt" >> $log 2>&1
 echo "$path/tools/android-sdk-25.0.2/aapt" | tee -a $config >> /dev/null 2>&1
 sleep 2
 else
-echo -e $green "[ ✔ ] Dx & Aapt.........................[ found ]"
+echo -e $green "[ ✔ ] Dx & Aapt"
 echo "$path/tools/android-sdk-25.0.2/dx" >> $log 2>&1
 echo "$path/tools/android-sdk-25.0.2/dx" | tee -a $config >> /dev/null 2>&1
 echo "$path/tools/android-sdk-25.0.2/aapt" >> $log 2>&1
@@ -338,7 +347,7 @@ fi
 
 #Adding Apktool path to config
 xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
-echo -e $green "[ ✔ ] Apktool 2.2.2.....................[ found ]"
+echo -e $green "[ ✔ ] Apktool 2.2.2 "
 echo "$path/tools/apktool2.2.2/apktool" >> $log 2>&1
 echo "$path/tools/apktool2.2.2/apktool" | tee -a $config >> /dev/null 2>&1
 unlink /usr/local/sbin/apktool > /dev/null 2>&1

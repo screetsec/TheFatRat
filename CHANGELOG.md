@@ -1,5 +1,6 @@
 ## CHANGELOG
 
+* v1.9.1 - Implemented Microsploit (Office Exploitation Tool)
 * v1.9b - Implemented Backdoor-apk from Dana James Traversie in this version .{  Less tools to install during setup.sh }
 * v1.9.0 - update script setup.sh
 * v1.9.0 - del some variable and function
