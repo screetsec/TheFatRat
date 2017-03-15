@@ -193,6 +193,22 @@ which upx >> $log 2>&1
 sleep 2
 fi
 
+#Checking if Ruby exists
+which ruby > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Ruby..............................[ found ]"
+which upx >> $log 2>&1
+sleep 2
+else
+echo -e $red "[ X ] Ruby  -> not found "
+echo -e $yellow "[ ! ] Installing Ruby "
+xterm -T "☣ INSTALL Ruby ☣" -geometry 100x30 -e "sudo apt-get install ruby -y"
+echo -e $green "[ ✔ ] Done installing ...."
+which upx >> $log 2>&1
+sleep 2
+fi
+
+
 #Checking if Jarsigner exists
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -257,6 +273,12 @@ which keytool >> $log 2>&1
 echo "keytool" | tee -a $config >> /dev/null 2>&1
 sleep 2
 fi
+
+#installing dependencies for ruby script 
+echo -e $green "[ ! ] Installing dedepndencies for ruby script"
+xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick -y"
+echo -e $green "[ ✔ ] Done installing ...."
+sleep 2
 
 #Adding zipalign path to config
 echo -e $green "[ ✔ ] Zipalign "
@@ -323,9 +345,13 @@ sleep 2
 fi
 
 #Adding Apktool path to config
+xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
 echo -e $green "[ ✔ ] Apktool 2.2.2 "
 echo "$path/tools/apktool2.2.2/apktool" >> $log 2>&1
 echo "$path/tools/apktool2.2.2/apktool" | tee -a $config >> /dev/null 2>&1
+unlink /usr/local/sbin/apktool > /dev/null 2>&1
+unlink /usr/bin/apktool > /dev/null 2>&1
+ln -s $path/tools/apktool2.2.2/apktool /usr/local/sbin/apktool > /dev/null 2>&1
 sleep 2
 
 #Checking if dex2jar exists
