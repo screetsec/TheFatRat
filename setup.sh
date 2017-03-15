@@ -1,13 +1,10 @@
 #!/bin/bash
 
-#-------------------------------------------------
-# setup.sh Author :
-# Edo maland ( Screetsec )
-# rebuild setup.sh peterpt
+# setup.sh Original Author : Edo maland ( Screetsec )
+# Script rebuilded by peterpt
 # Install all dependencies nedded
-# configuration all file for fixing all problem
-# -------------------------------------------------
-
+# configuration all file for fixing all problems
+# --------------------------------------------------------
 
 
 #This
@@ -25,9 +22,7 @@ log=$path/logs/setup.log
 config=$path/config/config.path
 
 
-
 #Fail safe for original user sources.list in case setup was interrupted in middle last time
-file="/etc/apt/sources.list.fatrat"
 if [ -f "$file" ]
 then
 echo "Setup Detected that your previous run was interrupted in middle , fixing your original repositories list ."
@@ -46,7 +41,6 @@ fi
 #buatrepoo ya dulu biar aman
 echo ""
 cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
-fi
 rm -f /etc/apt/sources.list
 touch /etc/apt/sources.list
 echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
@@ -56,15 +50,10 @@ echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /
 sleep 2
 xterm -T "☣ UPDATING YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get clean && apt-get update -y" >>$log 2>&1
 
-#Removing any previous setup log created
-rm -f $log  > /dev/null 2>&1
-
 #Check root dulu
 [[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
-resize -s 30 73 > /dev/null 2>&1
+resize -s 80 103 > /dev/null 2>&1
 clear
-
-
 
 #Banner dong biar keren
 echo -e $green ""
@@ -81,7 +70,7 @@ echo "                 |   |     /    /                 "
 echo "                 |___| /\ /____/                  "
 echo "                       \/                         "
 echo ""
-echo -e $green "         Setup Script for FATRAT 1.9       "
+echo -e $blue "         Setup Script for FATRAT 1.9       "
 touch $log
 echo "------------------------------------------------------" >> $log
 echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> $log
@@ -90,7 +79,7 @@ echo "                                                      " >> $log
 #check if xterm is installed
 which xterm > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Xterm.............................[ found ]"
+echo -e $green "[ ✔ ] Xterm.............................[ found ]"
 which xterm >> $log 2>&1
 sleep 2
 else
@@ -99,17 +88,17 @@ echo -e $red "[ X ] xterm -> not found! "
 sleep 2
 echo -e $yellow "[ ! ] Installing Xterm                     "
 sleep 2
-echo -e $okegreen ""
+echo -e $green ""
 sudo apt-get install xterm -y
 clear
-echo -e $okegreen "[ ✔ ] Done installing .... "
+echo -e $green "[ ✔ ] Done installing .... "
 which xterm >> $log 2>&1
 fi
 
 #check if zenity its installed
 which zenity > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Zenity............................[ found ]"
+echo -e $green "[ ✔ ] Zenity............................[ found ]"
 which zenity >> $log 2>&1
 sleep 2
 else
@@ -118,21 +107,21 @@ echo -e $red "[ X ] zenity -> not found! "
 sleep 2
 echo -e $yellow "[ ! ]  Installing zenity                   "
 xterm -T "☣ INSTALL ZENITY ☣" -geometry 100x30 -e "sudo apt-get install zenity -y"
-echo -e $okegreen "[ ✔ ] Done installing .... "
+echo -e $green "[ ✔ ] Done installing .... "
 which zenity >> $log 2>&1
 fi
 
 # check if gcc exists
 which gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Gcc compiler......................[ found ]"
+echo -e $green "[ ✔ ] Gcc compiler......................[ found ]"
 which gcc >> $log 2>&1
 sleep 2
 else
 echo -e $red "[ X ] gcc compiler      -> not found "
 echo -e $yellow "[ ! ]   Installing gcc "
 xterm -T "☣ INSTALL GCC COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install gcc -y"
-echo -e $okegreen "[ ✔ ] Done installing .... "
+echo -e $green "[ ✔ ] Done installing .... "
 which gcc >> $log 2>&1
 sleep 2
 fi
@@ -140,14 +129,14 @@ fi
 # check if mingw32 exists
 which i586-mingw32msvc-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Mingw32 Compiler..................[ found ]"
+echo -e $green "[ ✔ ] Mingw32 Compiler..................[ found ]"
 which i586-mingw32msvc-gcc >> $log 2>&1
 sleep 2
 else
 echo -e $red "[ X ] mingw32 compiler  -> not found "
 echo -e $yellow "[ ! ]   Installing Mingw32 "
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 -y"
-echo -e $okegreen "[ ✔ ] Done installing .... "
+echo -e $green "[ ✔ ] Done installing .... "
 which i586-mingw32msvc-gcc >> $log 2>&1
 sleep 2
 fi
@@ -155,14 +144,14 @@ fi
 # check if monodevelop exists
 which monodevelop > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Monodevelop ......................[ found ]"
+echo -e $green "[ ✔ ] Monodevelop ......................[ found ]"
 which monodevelop >> $log 2>&1
 sleep 2
 else
 echo -e $red "[ X ] Monodevelop  -> not found "
 echo -e $yellow "[ ! ]  Installing monodevelop "
 xterm -T "☣ INSTALL MONODEVELOP ☣" -geometry 100x30 -e "sudo apt-get install monodevelop -y"
-echo -e $okegreen "[ ✔ ] Done installing ...."
+echo -e $green "[ ✔ ] Done installing ...."
 which monodevelop >> $log 2>&1
 sleep 2
 fi
@@ -170,14 +159,14 @@ fi
 #check if apache2 exists
 which apache2 > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Apache2 ..........................[ found ]"
+echo -e $green "[ ✔ ] Apache2 ..........................[ found ]"
 which apache2 >> $log 2>&1
 sleep 2
 else
 echo -e $red "[ X ] Apache2 -> not found  "
 echo -e $yellow "[ ! ]    Installing apache2 "
 xterm -T "☣ INSTALL APACHE2 ☣" -geometry 100x30 -e "sudo apt-get install apache2 -y"
-echo -e $okegreen "[ ✔ ] Done installing ...."
+echo -e $green "[ ✔ ] Done installing ...."
 which apache2 >> $log 2>&1
 sleep 2
 fi
@@ -187,14 +176,14 @@ fi
 #gnome terminal is used in main script to run searchsploit
 which gnome-terminal > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Gnome Terminal....................[ found ]"
+echo -e $green "[ ✔ ] Gnome Terminal....................[ found ]"
 which gnome-terminal >> $log 2>&1
 sleep 2
 else
 echo -e $red "[ X ] Gnome-terminal-> not found "
 echo -e $yellow "[ ! ] Installing gnome-terminal "
 xterm -T "☣ INSTALL GNOME-TERMINAL ☣" -geometry 100x30 -e "sudo apt-get install gnome-terminal -y"
-echo -e $okegreen "[ ✔ ] Done installing ...."
+echo -e $green "[ ✔ ] Done installing ...."
 which gnome-terminal >> $log 2>&1
 sleep 2
 fi
@@ -202,25 +191,41 @@ fi
 #Checking if upx compressor exists
 which upx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] UPX Compressor....................[ found ]"
+echo -e $green "[ ✔ ] UPX Compressor....................[ found ]"
 which upx >> $log 2>&1
 sleep 2
 else
 echo -e $red "[ X ] Upx compressor  -> not found "
 echo -e $yellow "[ ! ] Installing upx-compressor "
 xterm -T "☣ INSTALL UPX COMPRESSOR ☣" -geometry 100x30 -e "sudo apt-get install upx-ucl -y"
-echo -e $okegreen "[ ✔ ] Done installing ...."
+echo -e $green "[ ✔ ] Done installing ...."
 which upx >> $log 2>&1
 sleep 2
 fi
 
+#Checking if Ruby exists
+which ruby > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Ruby..............................[ found ]"
+which upx >> $log 2>&1
+sleep 2
+else
+echo -e $red "[ X ] Ruby  -> not found "
+echo -e $yellow "[ ! ] Installing Ruby "
+xterm -T "☣ INSTALL Ruby ☣" -geometry 100x30 -e "sudo apt-get install ruby -y"
+echo -e $green "[ ✔ ] Done installing ...."
+which upx >> $log 2>&1
+sleep 2
+fi
+
+
 #Checking if Jarsigner exists
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Jarsigner (java)..................[ found ]"
+echo -e $green "[ ✔ ] Jarsigner (java)..................[ found ]"
 which jarsigner >> $log 2>&1
 rm -f $config
-#Creating new config file
+#Creating new config file 
 touch $config
 echo "********************************************************************************************************" >> $config
 echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
@@ -232,10 +237,10 @@ else
 echo -e $red "[ X ] Jarsigner (java) -> not found "
 echo -e $yellow "[ ! ] Installing Java "
 xterm -T "☣ INSTALL OPENJDK-8 ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jre openjdk-8-jdk -y "
-echo -e $okegreen "[ ✔ ] Done installing ...."
+echo -e $green "[ ✔ ] Done installing ...."
 which jarsigner >> $log 2>&1
 rm -f $config
-#Creating new config file
+#Creating new config file 
 touch $config
 echo "********************************************************************************************************" >> $config
 echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
@@ -248,7 +253,7 @@ fi
 #Checking if Unzip exists
 which unzip > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Unzip.............................[ found ]"
+echo -e $green "[ ✔ ] Unzip.............................[ found ]"
 which unzip >> $log 2>&1
 echo "unzip" | tee -a $config >> /dev/null 2>&1
 sleep 2
@@ -256,7 +261,7 @@ else
 echo -e $red "[ X ] Unzip -> not found "
 echo -e $yellow "[ ! ] Installing Unzip "
 xterm -T "☣ INSTALL UNZIP ☣" -geometry 100x30 -e "sudo apt-get install unzip -y "
-echo -e $okegreen "[ ✔ ] Done installing ...."
+echo -e $green "[ ✔ ] Done installing ...."
 which unzip >> $log 2>&1
 echo "unzip" | tee -a $config >> /dev/null 2>&1
 sleep 2
@@ -265,7 +270,7 @@ fi
 #Checking if keytool exists
 which keytool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Keytool (java)....................[ found ]"
+echo -e $green "[ ✔ ] Keytool (java)....................[ found ]"
 which keytool >> $log 2>&1
 echo "keytool" | tee -a $config >> /dev/null 2>&1
 sleep 2
@@ -273,25 +278,54 @@ else
 echo -e $red "[ X ] Keytool (java) -> not found  "
 echo -e $yellow "[ ! ] Installing Java "
 xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk -y "
-echo -e $okegreen "[ ✔ ] Done installing ...."
+echo -e $green "[ ✔ ] Done installing ...."
 which keytool >> $log 2>&1
 echo "keytool" | tee -a $config >> /dev/null 2>&1
 sleep 2
 fi
 
+#installing dependencies for ruby script 
+echo -e $green "[ ! ] Installing dedepndencies for ruby script"
+xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick -y"
+echo -e $green "[ ✔ ] Done installing ...."
+sleep 2
+
 #Adding zipalign path to config
-echo -e $okegreen "[ ✔ ] Zipalign..........................[ found ]"
+echo -e $green "[ ✔ ] Zipalign "
 echo "$path/tools/android-sdk-25.0.2/zipalign" >> $log 2>&1
 echo "$path/tools/android-sdk-25.0.2/zipalign" | tee -a $config >> /dev/null 2>&1
 sleep 2
 
 
 #Adding Proguard path to config
-echo -e $okegreen "[ ✔ ] Proguard..........................[ found ]"
+echo -e $green "[ ✔ ] Proguard "
 echo "$path/tools/proguard5.3.2/lib/proguard" >> $log 2>&1
 echo "$path/tools/proguard5.3.2/lib/proguard" | tee -a $config >> /dev/null 2>&1
 sleep 2
+
 xterm -T "☣ INSTALL APKCREATION DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install lib32z1 lib32ncurses5 lib32stdc++6 -y"
+#################################
+#inputrepo
+#################################
+
+cp /etc/apt/sources.list /etc/apt/sources.list.backup # backup
+# Second backup created in case user stops the script after this point , then on next startup this script will
+# copy the already changed sources file before as backup , and user lost his original sources lists
+file="/etc/apt/sources.list.fatrat"
+if [ -f "$file" ]
+then
+echo ""
+else
+cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
+fi
+rm -f /etc/apt/sources.list
+touch /etc/apt/sources.list
+echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
+echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
+echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+sleep 2
+xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update" >>$log 2>&1
 
 #Adding Dx & Aapt path to config 
 which aapt > /dev/null 2>&1
@@ -317,13 +351,13 @@ echo "$path/tools/android-sdk-25.0.2/dx" >> $log 2>&1
 echo "$path/tools/android-sdk-25.0.2/dx" | tee -a $config >> /dev/null 2>&1
 echo "$path/tools/android-sdk-25.0.2/aapt" >> $log 2>&1
 echo "$path/tools/android-sdk-25.0.2/aapt" | tee -a $config >> /dev/null 2>&1
+ln -s $path/tools/android-sdk-25.0.2/aapt /usr/local/sbin/aapt > /dev/null 2>&1
 sleep 2
 fi
 
-
 #Adding Apktool path to config
 xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
-echo -e $okegreen "[ ✔ ] Apktool 2.2.2.....................[ found ]"
+echo -e $green "[ ✔ ] Apktool 2.2.2.....................[ found ]"
 echo "$path/tools/apktool2.2.2/apktool" >> $log 2>&1
 echo "$path/tools/apktool2.2.2/apktool" | tee -a $config >> /dev/null 2>&1
 unlink /usr/local/sbin/apktool > /dev/null 2>&1
@@ -334,7 +368,7 @@ sleep 2
 #Checking if dex2jar exists
 which d2j-jar2dex > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Dex2Jar...........................[ found ]"
+echo -e $green "[ ✔ ] Dex2Jar...........................[ found ]"
 which d2j-jar2dex >> $log 2>&1
 echo "d2j-jar2dex" | tee -a $config >> /dev/null 2>&1
 sleep 2
@@ -342,7 +376,7 @@ else
 echo -e $red "[ X ] Dex2jar  -> not found "
 echo -e $yellow "[ ! ] Installing dex2jar "
 xterm -T "☣ INSTALL DEX2JAR ☣" -geometry 100x30 -e "sudo apt-get install dex2jar --force-yes -y"
-echo -e $okegreen "[ ✔ ] Done installing ...."
+echo -e $green "[ ✔ ] Done installing ...."
 which d2j-jar2dex >> $log 2>&1
 echo "d2j-jar2dex" | tee -a $config >> /dev/null 2>&1
 sleep 2
@@ -351,7 +385,7 @@ fi
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Metasploit-Framework..............[ found ]"
+echo -e $green "[ ✔ ] Metasploit-Framework..............[ found ]"
 echo "msfconsole" | tee -a $config $log >> /dev/null 2>&1
 echo "msfvenom" | tee -a $config $log >> /dev/null 2>&1
 sleep 2
@@ -362,8 +396,8 @@ echo -e $red "[ X ] metasploit-framework -> not found "
 # Providing manual input to user in case metasploit was installed from git and is not on system path
 
 q1=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Metasploit path manually" FALSE "Install Metasploit from Repository" FALSE "Use default config" --text="`printf "Metasploit-Framework was not detected in your system path ! \n Choose one of the options bellow ."`");
-case $q1 in
-
+case $q1 in 
+ 
 "Setup Metasploit path manually")
 
 minpm=$(zenity --entry --title="Metasploit Path Manual Input" --width=100 --height=100 --text="Write the location of your Metasploit Path?" --entry-text="/opt/metasploit-framework");
@@ -389,7 +423,7 @@ fi
 "Install Metasploit from Repository")
 echo -e $yellow "[ ! ] Installing Metasploit-Framework  "
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
-echo -e $okegreen "[ ✔ ] Done installing ...."
+echo -e $green "[ ✔ ] Done installing ...."
 echo "msfconsole" | tee -a $config $log > /dev/null 2>&1
 echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 ;;
@@ -399,12 +433,11 @@ echo "msfvenom" | tee -a $config $log > /dev/null 2>&1
 ;;
 esac
 fi
-
 # Check if backdoor-factory exists
 
 which backdoor-factory > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Backdoor-Factory..................[ found ]"
+echo -e $green "[ ✔ ] Backdoor-Factory..................[ found ]"
 echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 else
@@ -412,8 +445,8 @@ echo -e $red "[ X ] backdoor-factory  -> not found "
 echo ""
 
 q2=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Backdoor-Factory path manually" FALSE "Install Backdoor-Factory from Repository" FALSE "Use default config" --text="`printf "Backdoor-Factory was not detected in your system path ! \n Choose one of the options bellow ."`");
-case $q2 in
-
+case $q2 in 
+ 
 "Setup Backdoor-Factory path manually")
 minpb=$(zenity --entry --title="Backdoor-Factory Path Manual Input" --width=100 --height=100 --text="Write the location of your Backdoor-Factory Path?" --entry-text="/opt/backdoor-factory/backdoor.py");
 ret=$?
@@ -430,7 +463,7 @@ fi
 "Install Backdoor-Factory from Repository")
 echo -e $yellow "[ ! ]   Installing backdoor-factory "
 xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory --force-yes -y"
-echo -e $okegreen "[ ✔ ] Done installing ...."
+echo -e $green "[ ✔ ] Done installing ...."
 echo "backdoor-factory" | tee -a $config $log > /dev/null 2>&1
 ;;
 
@@ -443,15 +476,15 @@ fi
 
 which searchsploit > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $okegreen "[ ✔ ] Searchsploit......................[ found ]"
+echo -e $green "[ ✔ ] Searchsploit......................[ found ]"
 echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 else
 echo -e $red "[ X ] searchsploit  -> not found"
 echo ""
 q3=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Setup Searchsploit path manually" FALSE "Install Searchsploit from Repository" FALSE "Use default config" --text="`printf "Searchsploit was not detected in your system path ! \n Choose one of the options bellow ."`");
-case $q3 in
-
+case $q3 in 
+ 
 "Setup Searchsploit path manually")
 minpc=$(zenity --entry --title="Searchsploit Path Manual Input" --width=100 --height=100 --text="Write the location of your Searchsploit Path?" --entry-text="/opt/searchsploit/searchsploit");
 ret=$?
@@ -468,11 +501,11 @@ fi
 "Install Searchsploit from Repository")
 echo -e $yellow "[ ! ]    Installing searchsploit "
 xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
-echo -e $okegreen "[ ✔ ] Done installing ...."
+echo -e $green "[ ✔ ] Done installing ...."
 echo "searchsploit" | tee -a $config $log > /dev/null 2>&1
 sleep 2
 echo ""
-echo -e $okegreen "Configuration and tool installed with success!";
+echo -e $green "Configuration and tool installed with success!";
 sleep 2
 ;;
 
