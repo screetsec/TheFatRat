@@ -38,6 +38,10 @@ else
 echo ""
 fi 
 
+
+# Second backup created in case user stops the script after this point , then on next startup this script will
+cp /etc/apt/sources.list /etc/apt/sources.list.backup 
+
 #buatrepoo ya dulu biar aman
 echo ""
 cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
@@ -304,28 +308,6 @@ echo "$path/tools/proguard5.3.2/lib/proguard" | tee -a $config >> /dev/null 2>&1
 sleep 2
 
 xterm -T "☣ INSTALL APKCREATION DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install lib32z1 lib32ncurses5 lib32stdc++6 -y"
-#################################
-#inputrepo
-#################################
-
-cp /etc/apt/sources.list /etc/apt/sources.list.backup # backup
-# Second backup created in case user stops the script after this point , then on next startup this script will
-# copy the already changed sources file before as backup , and user lost his original sources lists
-file="/etc/apt/sources.list.fatrat"
-if [ -f "$file" ]
-then
-echo ""
-else
-cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
-fi
-rm -f /etc/apt/sources.list
-touch /etc/apt/sources.list
-echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
-echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
-sleep 2
-xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update" >>$log 2>&1
 
 #Adding Dx & Aapt path to config 
 which aapt > /dev/null 2>&1
