@@ -3,7 +3,7 @@
 
 # TheFatRat ( Unit for bypass av )
 
-## Update: Version 1.9.1
+## Update: Version 1.9.2
 ## Codename: Whistle
 
 What is TheFatRat ??
