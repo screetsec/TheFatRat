@@ -1,5 +1,6 @@
 ## CHANGELOG
 
+* v1.9.2 - Added effective way to detect user linux distribution
 * v1.9.2 - Setup.sh ( patched )
 * v1.9.2 - bug in microsploit ( patched )
 * v1.9.2 - delt some function and variable 
