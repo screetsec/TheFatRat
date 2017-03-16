@@ -27,14 +27,30 @@ BlueF='\e[1;34m' #Biru
 RESET="\033[00m" #normal
 orange='\e[38;5;166m'
 
+#Accurate method to detect user Distro
+lnx="Linux"
+lsb_release -i > temp/distro.tmp
+lsb_release -c > temp/codename.tmp
+rlname=`awk '{print $2}' temp/codename.tmp`
+dist=`awk '{print $3}' temp/distro.tmp`
+dist1=`awk '{print $4}' temp/distro.tmp`
+rm -f temp/codename.tmp >/dev/null
+rm -f temp/distro.tmp >/dev/null
+if [ "$dist" == "$lnx" ];
+then 
+dist0=$dist1  
+else
+dist0=$dist
+fi
+
 #SAMARAN TAMPAN
 
 path=`pwd`
 Versi=1.9.2
 codename=Whistle
 OS=`uname` #
-distro="$(awk -F '=' '/^ID=/ {print $2}' /etc/os-release 2>&-)"
-disrov="$(awk -F '=' '/^VERSION_ID=/ {print $2}' /etc/os-release 2>&-)"
+distro=$dist0
+disrov=$rlname
 SERVICE=service;
 apkembed='tools/apkembed.rb' # exec script path
 pwned='python tools/pw_exec.py'
@@ -133,7 +149,7 @@ cat << !
 resize -s 33 84 > /dev/null
 clear
 
-#cek config
+#check config
 
 if [ -f "$file" ]
 then
@@ -190,6 +206,7 @@ if [ $(id -u) != "0" ]; then
       sleep 2
       echo [✔]::[Check User]: $USER ;
       echo [✔]::[Distro]: $distro ;
+      echo [✔]::[Release]: $rlname ;
       sleep 1
       echo [x]::[not root]: you need to be [root] to run this script.;
       echo ""
@@ -202,6 +219,7 @@ else
    echo [!]::[Check Dependencies]: ;
    sleep 1
    echo [✔]::[Distro]: $distro ;
+   echo [✔]::[Release]: $rlname ;
    echo [✔]::[Check User]: $USER ;
 
 

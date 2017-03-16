@@ -197,14 +197,14 @@ fi
 which ruby > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Ruby..............................[ found ]"
-which upx >> $log 2>&1
+which ruby >> $log 2>&1
 sleep 2
 else
 echo -e $red "[ X ] Ruby  -> not found "
 echo -e $yellow "[ ! ] Installing Ruby "
 xterm -T "☣ INSTALL Ruby ☣" -geometry 100x30 -e "sudo apt-get install ruby -y"
 echo -e $green "[ ✔ ] Done installing ...."
-which upx >> $log 2>&1
+which ruby >> $log 2>&1
 sleep 2
 fi
 
