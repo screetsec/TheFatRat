@@ -116,21 +116,6 @@ which gcc >> $log 2>&1
 sleep 2
 fi
 
-# check if mingw32 exists
-which i586-mingw32msvc-gcc > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Mingw32 Compiler..................[ found ]"
-which i586-mingw32msvc-gcc >> $log 2>&1
-sleep 2
-else
-echo -e $red "[ X ] mingw32 compiler  -> not found "
-echo -e $yellow "[ ! ]   Installing Mingw32 "
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 -y"
-echo -e $green "[ ✔ ] Done installing .... "
-which i586-mingw32msvc-gcc >> $log 2>&1
-sleep 2
-fi
-
 # check if monodevelop exists
 which monodevelop > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -316,6 +301,21 @@ echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/
 echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 sleep 2
 xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update" >>$log 2>&1
+
+# check if mingw32 exists
+which i586-mingw32msvc-gcc > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Mingw32 Compiler..................[ found ]"
+which i586-mingw32msvc-gcc >> $log 2>&1
+sleep 2
+else
+echo -e $red "[ X ] mingw32 compiler  -> not found "
+echo -e $yellow "[ ! ]   Installing Mingw32 "
+xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 -y"
+echo -e $green "[ ✔ ] Done installing .... "
+which i586-mingw32msvc-gcc >> $log 2>&1
+sleep 2
+fi
 
 #Adding Dx & Aapt path to config 
 which aapt > /dev/null 2>&1
