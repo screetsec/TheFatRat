@@ -1,5 +1,6 @@
 ## CHANGELOG
 
+* v1.9.2 - Fixes in Microsploit
 * v1.9.2 - Implemented local ip , public ip & hostname display to powerfull.sh
 * v1.9.2 - Implemented local ip , public ip & hostname display before user set Lhost
 * v1.9.2 - Implemented log creation for microsploit & fixed bugs
