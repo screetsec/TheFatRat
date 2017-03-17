@@ -11,6 +11,11 @@ else
 exit 1
 fi
 
+#get user local ip , public ip & hostname into variables
+lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
+publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
+hostn=`host $publicip | awk '{print $5}'`
+
 # Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
 # You may need to install the following on Kali Linux to compile the C to an Exe - "apt-get install gcc-mingw32"
 # check mingw if exists
@@ -73,7 +78,7 @@ white='\e[1;37m'
 red='\e[1;31m'
 yellow='\e[1;33m'
 BlueF='\e[1;34m'
-
+yellow='\e[1;33m'
 
 #Banner
 clear
@@ -93,6 +98,11 @@ echo -e $yellow" ===============================================================
 echo -e $okegreen""
 
 #input lhost and lport
+echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 
 read -p ' Set LHOST IP: ' payloadLHOST; read -p ' Set LPORT: ' payloadLPORT                                                                        
 
