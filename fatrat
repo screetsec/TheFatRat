@@ -1382,7 +1382,7 @@ fi
 ;;
 
       5)
-                   microsploecho -e $red"   Apache OpenOffice on Linux (PSH) "
+                   echo -e $red"   Apache OpenOffice on Linux (PSH) "
 					echo -e $okegreen""
 					echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
