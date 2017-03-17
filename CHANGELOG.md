@@ -1,5 +1,6 @@
 ## CHANGELOG
 
+* v1.9.2 - Implemented log creation for microsploit & fixed bugs
 * v1.9.2 - Added effective way to detect user linux distribution
 * v1.9.2 - Setup.sh ( patched )
 * v1.9.2 - bug in microsploit ( patched )
