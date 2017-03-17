@@ -85,6 +85,22 @@ echo -e $green "[ ✔ ] Done installing .... "
 which xterm >> $log 2>&1
 fi
 
+#check if dig its installed
+which dig > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Dns-Utils ........................[ found ]"
+which dig >> $log 2>&1
+sleep 2
+else
+echo ""
+echo -e $red "[ X ] dnsutils -> not found! "
+sleep 2
+echo -e $yellow "[ ! ]  Installing dnsutils"
+xterm -T "☣ INSTALL DNSUTILS ☣" -geometry 100x30 -e "sudo apt-get install dnsutils -y"
+echo -e $green "[ ✔ ] Done installing .... "
+which dig >> $log 2>&1
+fi
+
 #check if zenity its installed
 which zenity > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
