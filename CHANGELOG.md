@@ -1,5 +1,6 @@
 ## CHANGELOG
 
+* v1.9.2 - New signing process in old method backdoor apk & option to create listener
 * v1.9.2 - Implemented possibility for user to save msfconsole listeners
 * v1.9.2 - Fixes in Microsploit
 * v1.9.2 - Implemented local ip , public ip & hostname display to powerfull.sh

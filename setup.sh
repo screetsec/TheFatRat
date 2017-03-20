@@ -209,7 +209,6 @@ which ruby >> $log 2>&1
 sleep 2
 fi
 
-
 #Checking if Jarsigner exists
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then

