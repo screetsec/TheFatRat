@@ -76,7 +76,7 @@ outf="app_backdoor.apk"
 msploit=$path/logs/msploit.log
 lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
 publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
-hostn=`host $publicip | awk '{print $5}'`
+hostn=`host $publicip | awk '{print $5}' | sed 's/.$//'`
 list=$path/config/listeners
 log=$path/logs/apk-old.log
 pwind=$path/logs/pwind.log
@@ -1712,6 +1712,8 @@ echo -e $red ""
 echo "[x] There was an error in the creation of the payload .
 Check log file at : $log"
 rm -rf temp/* > /dev/null 2>&1
+read -rsp $'Press any key to continue to return to fatrat menu\n' -n 1 key
+clear
 menu
 fi
 sleep 2
