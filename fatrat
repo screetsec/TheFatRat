@@ -617,7 +617,8 @@ echo ""
 			echo -e $okegreen"	[13] rar >> bacdoor.rar "$yellow"( Winrar old version)"
 			echo -e $okegreen"        [14] Back to Menu "
  			echo -e " "
- 			echo -n -e $red'  \033[4mCreator@fatrat:\033[0m>> '; tput sgr0 #insert your choice
+  	 		echo -e $okegreen" ┌─["$red"TheFatRat$okegreen]──[$red~$okegreen]─["$yellow"creator$okegreen]:"	
+			echo -ne $okegreen" └─────► " ;tput sgr0
  			read fatrat1
 			if test $fatrat1 == '1'
 				then
@@ -944,7 +945,8 @@ echo -e $okegreen"  ============================================================
                         echo -e "	[5]  Load a saved Listener"
 			echo -e "        [6]  Back to Menu "
  			echo -e " "
- 			echo -n -e $red'  \033[4mListeners@fatrat:\033[0m>> '; tput sgr0 #insert your choice
+  	 		echo -e $okegreen" ┌─["$red"TheFatRat$okegreen]──[$red~$okegreen]─["$yellow"listener$okegreen]:"	
+			echo -ne $okegreen" └─────► " ;tput sgr0
  			read fatrat1
 
 			if test $fatrat1 == '1' #LINUX
@@ -1137,7 +1139,8 @@ CODENAME='Mario Bros'
 
 # Seems to fix some metasploit bugs
 rm -rf ~/.msf4/local/* >/dev/null 2>&1
-echo -n -e $red'  \033[4mMicrosploit@fatrat:\033[0m>> '; tput sgr0
+echo -e $okegreen" ┌─["$red"TheFatRat$okegreen]──[$red~$okegreen]─["$yellow"microsploit$okegreen]:"	
+echo -ne $okegreen" └─────► " ;tput sgr0
 read choice
 case $choice in
    1)
@@ -1873,7 +1876,8 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
  			echo -e $yellow"	[7] $okegreen Create Backdoor with C / Metasploit Staging Protocol (FUD 98%)"
 			echo -e $yellow"        [8] $okegreen Back to Menu "
  			echo -e $yellow" "
- 			echo -n -e $red'  \033[4mPwnWind@fatrat:\033[0m>> '; tput sgr0 #insert your choice
+  	 		echo -e $okegreen" ┌─["$red"TheFatRat$okegreen]──[$red~$okegreen]─["$yellow"pwnwind$okegreen]:"	
+			echo -ne $okegreen" └─────► " ;tput sgr0
  			read fatrat1
 
 			if test $fatrat1 == '1' #NUMBER 1 BEBE
@@ -2811,7 +2815,8 @@ menu () {
   		echo -e $white"	[$okegreen"14"$white]$okegreen  Credits  "
   		echo -e $white"	[$okegreen"15"$white]$okegreen  Exit  "
   		echo -e " "
-  		echo -n -e $red'  \033[4mScreetsec@Fatrat:\033[0m '; tput sgr0 #insert your choice
+    	 	echo -e $okegreen" ┌─["$red"TheFatRat$okegreen]──[$red~$okegreen]─["$yellow"menu$okegreen]:"	
+		echo -ne $okegreen" └─────► " ;tput sgr0
   		read fatrat
 
   		if test $fatrat == '1'
@@ -3024,7 +3029,8 @@ echo
     echo -e $white"	[$okegreen"14"$white]$okegreen  Credits  "
     echo -e $white"	[$okegreen"15"$white]$okegreen  Exit  "
     echo -e " "
-    echo -n -e $red'  \033[4mScreetsec@Fatrat:\033[0m '; tput sgr0 #insert your choice
+    echo -e $okegreen" ┌─["$red"TheFatRat$okegreen]──[$red~$okegreen]─["$yellow"menu$okegreen]:"	
+    echo -ne $okegreen" └─────► " ;tput sgr0
     read fatrat
 
     if test $fatrat == '1'
