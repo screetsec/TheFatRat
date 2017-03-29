@@ -1,5 +1,6 @@
 ## CHANGELOG
 
+* v1.9.2 - Implemented Default Lhost & Lport config to fatrat
 * v1.9.2 - Fixed payload in pnwinds option2
 * v1.9.2 - Implemented Stop functions in pnwinds 
 * v1.9.2 - New signing process in old method backdoor apk & option to create listener

