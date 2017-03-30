@@ -1,5 +1,6 @@
 ## CHANGELOG
 
+* v1.9.2 - Implemented option to create only apk payload in backdoored menu
 * v1.9.2 - Implemented Default Lhost & Lport config to fatrat
 * v1.9.2 - Fixed payload in pnwinds option2
 * v1.9.2 - Implemented Stop functions in pnwinds 
