@@ -14,7 +14,7 @@ fi
 #get user local ip , public ip & hostname into variables
 lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
 publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
-hostn=`host $publicip | awk '{print $5}'`
+hostn=`host $publicip | awk '{print $5}' | sed 's/.$//'`
 
 # Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
 # You may need to install the following on Kali Linux to compile the C to an Exe - "apt-get install gcc-mingw32"
