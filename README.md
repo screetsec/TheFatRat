@@ -9,6 +9,11 @@
 ### Thefatrat a massive exploiting tool revealed
 An easy tool to generate backdoor and easy tool to post exploitation attack like browser attack,dll . This tool compiles a malware with popular payload and then the compiled malware can be execute on windows, android, mac . The malware that created with this tool also have an ability to bypass most AV software protection .
 
+
+#### New Changes in fatrat 1.9.2
+Lhost & Lport Automatic Input / signed android Payload | link : https://www.youtube.com/watch?v=AyzsSaRE7ZQ
+
+
 # Screenshot
 <img src="https://s14.postimg.org/3yutjrkrl/frnew.png" width="55%"></img>
 # ---------------------------------------------------------------
