@@ -204,7 +204,7 @@ for i in `seq 1 4`; do
   placeholder="$placeholder$hex"
 done
 echo "placeholder value: $placeholder" >>$LOG_FILE 2>&1
-tmp_perms_file=$MY_PATH/perms.tmp
+tmp_perms_file=$MY_PATH/temp/perms.tmp
 original_manifest_file=$MY_PATH/temp/original/AndroidManifest.xml
 payload_manifest_file=$MY_PATH/temp/payload/AndroidManifest.xml
 merged_manifest_file=$MY_PATH/temp/original/AndroidManifest.xml.merged
