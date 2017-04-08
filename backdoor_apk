@@ -186,7 +186,7 @@ if [ $rc != 0 ]; then
 fi
 
 echo -e $green "[*] Decompiling original APK file..."
-$APKTOOL d -f -o $MY_PATH/temp/payload $MY_PATH/temp/$RAT_APK_FILE >>$LOG_FILE 2>&1
+$APKTOOL d -f -o $MY_PATH/temp/original $MY_PATH/temp/$RAT_APK_FILE >>$LOG_FILE 2>&1
 rc=$?
 echo "done."
 if [ $rc != 0 ]; then
