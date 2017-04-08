@@ -23,7 +23,7 @@ def findlauncheractivity(amanifest)
         end
         for cat in category
             categoryname = cat.attribute('name')
-            if (categoryname.to_s == 'android.intent.category.LAUNCHER' || categoryname.to_s == 'android.intent.action.MAIN' || categoryname.to_s == 'android.intent.category.DEFAULT')
+            if (categoryname.to_s == 'android.intent.category.LAUNCHER' || categoryname.to_s == 'android.intent.action.MAIN')
                 activityname = activityname.to_s
                 unless activityname.start_with?(package)
                     activityname = package + activityname

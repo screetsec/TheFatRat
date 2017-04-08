@@ -209,6 +209,21 @@ which ruby >> $log 2>&1
 sleep 2
 fi
 
+#Checking if Openssl exists
+which openssl > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Openssl...........................[ found ]"
+which openssl >> $log 2>&1
+sleep 2
+else
+echo -e $red "[ X ] Openssl  -> not found "
+echo -e $yellow "[ ! ] Installing Openssl "
+xterm -T "☣ INSTALL OPENSSL ☣" -geometry 100x30 -e "sudo apt-get install openssl -y"
+echo -e $green "[ ✔ ] Done installing ...."
+which openssl >> $log 2>&1
+sleep 2
+fi
+
 #Checking if Jarsigner exists
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then

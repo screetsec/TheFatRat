@@ -3,15 +3,11 @@
 
 # TheFatRat ( Unit for bypass av )
 
-## Update: Version 1.9.2
+## Update: Version 1.9.3
 ## Codename: Whistle
 
 ### Thefatrat a massive exploiting tool revealed
 An easy tool to generate backdoor and easy tool to post exploitation attack like browser attack,dll . This tool compiles a malware with popular payload and then the compiled malware can be execute on windows, android, mac . The malware that created with this tool also have an ability to bypass most AV software protection .
-
-
-#### New Changes in fatrat 1.9.2
-Lhost & Lport Automatic Input / signed android Payload | link : https://www.youtube.com/watch?v=AyzsSaRE7ZQ
 
 
 # Screenshot

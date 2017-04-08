@@ -46,7 +46,7 @@ fi
 #SAMARAN TAMPAN
 
 path=`pwd`
-Versi=1.9.2
+Versi=1.9.3
 codename=Whistle
 OS=`uname` #
 distro=$dist0

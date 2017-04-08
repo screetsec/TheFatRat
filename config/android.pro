@@ -157,6 +157,7 @@
 
 -keep,allowobfuscation public class net.dirtybox.util.obfuscation.StringObfuscator {
     public static java.lang.String obfuscate(java.lang.String);
+    public static java.lang.String unobfuscate(java.lang.String);
 }
 
 # If you wish, you can let the optimization step remove Android logging calls.

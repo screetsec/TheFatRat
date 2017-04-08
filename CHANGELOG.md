@@ -1,5 +1,6 @@
 ## CHANGELOG
 
+* v1.9.3 - Updated dana travis backdoor-apk to 2.2.2 into fatrat / added openssl in setup
 * v1.9.2 - Msfvenom Android rat will be signed with android certificate , so it can be installed properly
 * v1.9.2 - Implemented Default Lhost & Lport config to fatrat & powerfull shell creator
 * v1.9.2 - Fixed payload in pnwinds option2
