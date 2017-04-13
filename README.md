@@ -125,6 +125,10 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 - Donation: Send to [bitcoin](https://blockchain.info/id/address/1NuNTXo7Aato7XguFkvwYnTAFV2immXmjS)
 
+- Addres Bitcoin : 1NuNTXo7Aato7XguFkvwYnTAFV2immXmjS
+
+- <img src="https://cloud.githubusercontent.com/assets/17976841/25007109/75380fa6-2089-11e7-8a4a-4a8ae9c06e24.png" width="30%"></img>
+
 
 
 ## :octocat: Credits
