@@ -1,8 +1,5 @@
 
 
-# This is a denvelope git , you should not clone from this git , use original Screetsec git .
-## This git may have some bugs that i am fixing .
-
 # TheFatRat ( Unit for bypass av )
 
 ## Update: Version 1.9.3
