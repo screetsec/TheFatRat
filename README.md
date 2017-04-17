@@ -88,10 +88,10 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ##  Update Fatrat
 - To update fatrat go to your TheFatRat folder and execute :
-git pull && chmod +x setup.sh && ./setup.sh
+```git pull && chmod +x setup.sh && ./setup.sh```
 
 - To Update from 1.9.3 Version and up , execute on your fatrat folder : 
-./update && chmod +x setup.sh && ./setup.sh
+```./update && chmod +x setup.sh && ./setup.sh```
 
 ## Tutorial ?
 
