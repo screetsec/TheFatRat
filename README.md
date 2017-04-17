@@ -86,13 +86,12 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 ##  :heavy_exclamation_mark: READ
 - if prog.c file to large when create backdoor with powerfull.sh , you can use prog.c.backup and create another backup when you running option 2
 
-##  :Update Fatrat
+##  Update Fatrat
 - To update fatrat go to your TheFatRat folder and execute :
-- git pull && chmod +x setup.sh && ./setup.sh
+git pull && chmod +x setup.sh && ./setup.sh
 
-* To Update from 1.9.3 Version and up , execute on your fatrat folder : 
-- ./update
-- chmod +x setup.sh &&./setup.sh
+- To Update from 1.9.3 Version and up , execute on your fatrat folder : 
+./update && chmod +x setup.sh && ./setup.sh
 
 ## Tutorial ?
 
