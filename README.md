@@ -1,9 +1,3 @@
-To update your current Fatrat , run on your fatrat directory the command 
-./update
-
-and then execute :
-./setup.sh
-
 # TheFatRat ( Unit for bypass av )
 
 ## Update: Version 1.9.3
@@ -70,7 +64,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## Getting Started
 1. ```git clone https://github.com/Screetsec/TheFatRat.git```
-2. ```cd TheFatRat/setup```
+2. ```cd TheFatRat```
 3. ```chmod +x setup.sh && ./setup.sh```
 
 ## :book: How it works
@@ -92,6 +86,13 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 ##  :heavy_exclamation_mark: READ
 - if prog.c file to large when create backdoor with powerfull.sh , you can use prog.c.backup and create another backup when you running option 2
 
+##  :Update Fatrat
+- To update fatrat go to your TheFatRat folder and execute :
+- git pull && chmod +x setup.sh && ./setup.sh
+
+* To Update from 1.9.3 Version and up , execute on your fatrat folder : 
+- ./update
+- chmod +x setup.sh &&./setup.sh
 
 ## Tutorial ?
 
