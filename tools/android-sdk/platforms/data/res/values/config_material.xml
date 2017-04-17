@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2016 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds, only for Material theme.  Do not translate.
+
+     NOTE: The naming convention is "config_camelCaseValue".  -->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- True if the device supports action bars. -->
+    <bool name="config_windowActionBarSupported">true</bool>
+
+    <!-- True if the device should have titles by default. -->
+    <bool name="config_windowNoTitleDefault">false</bool>
+
+    <!-- The alert controller to use for alert dialogs. -->
+    <integer name="config_alertDialogController">0</integer>
+
+    <!-- True if windowOverscan should be on by default. -->
+    <bool name="config_windowOverscanByDefault">false</bool>
+
+    <!-- Max number of lines for the dialog title. -->
+    <integer name="config_dialogWindowTitleMaxLines">1</integer>
+
+    <!-- True if preference fragment should clip to padding. -->
+    <bool name="config_preferenceFragmentClipToPadding">true</bool>
+</resources>

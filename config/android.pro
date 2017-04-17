@@ -12,7 +12,7 @@
 -injars  ../temp/libs
 -outjars  ../temp/bin/classes-processed.jar
 
--libraryjars ../tools/android-sdk-25.0.2/platforms/android.jar
+-libraryjars ../tools/android-sdk/platforms/android.jar
 #-libraryjars /usr/local/android-sdk/add-ons/google_apis-7_r01/libs/maps.jar
 # ...
 

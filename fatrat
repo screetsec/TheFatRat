@@ -331,7 +331,7 @@ echo -e " "
 if [ $(id -u) != "0" ]; then
 
       echo [!]::[Check Dependencies] ;
-      sleep 2
+      sleep 1
       echo [✔]::[Check User]: $USER ;
       echo [✔]::[Distro]: $distro ;
       echo [✔]::[Release]: $rlname ;
@@ -360,12 +360,12 @@ then
 
     echo [✔]::[Internet Connection]: DONE!;
     echo [x]::[warning]: This Script Needs An Active Internet Connection;
-    sleep 2
+    sleep 1
 
 else
 
     echo [✔]::[Internet Connection]: connected!;
-    sleep 2
+    sleep 1
 fi
 
 # check apache if exists
@@ -378,7 +378,7 @@ else
    echo ""
    echo [!]::Run setup.sh to install apache2 ;
    echo ""
-   sleep 2
+   sleep 1
    exit 1
 fi
 sleep 2
@@ -393,7 +393,7 @@ else
    echo ""
    echo [!]::Run setup.sh to install ruby ;
    echo ""
-   sleep 2
+   sleep 1
    exit 1
 fi
 sleep 2
@@ -408,7 +408,7 @@ else
    echo ""
    echo [!]::Run setup.sh to install apktool ;
    echo ""
-   sleep 2
+   sleep 1
    exit 1
 fi
 sleep 2
@@ -423,7 +423,7 @@ else
    echo ""
    echo [!]::Run setup.sh to install aapt ;
    echo ""
-   sleep 2
+   sleep 1
    exit 1
 fi
 sleep 2
@@ -448,7 +448,7 @@ else
    echo [x]::[warning]:this script require msfconsole installed to work ;
    echo ""
    echo [!]::Run setup.sh to install metasploit-framework ;
-   sleep 3
+   sleep 1
 exit 1
 fi
 sleep 2
@@ -462,10 +462,10 @@ else
    echo [x]::[warning]:this script require msfvenom installed to work ;
    echo ""
    echo [!]::Run setup.sh to install metasploit-framework ;
-   sleep 3
+   sleep 1
 exit 1
 fi
-sleep 2
+sleep 1
 
 # check zenity if exists
       which zenity > /dev/null 2>&1
@@ -478,7 +478,7 @@ else
    echo ""
    echo [!]::Run setup.sh to install zenity ;
    echo ""
-   sleep 2
+   sleep 1
    exit 1
 fi
 sleep 2
@@ -497,7 +497,7 @@ else
    echo [x]::[warning]:this script require mingw32 or 64 installed to work ;
    echo ""
    echo [!]::Run setup.sh to install ming32 ;
-   sleep 2
+   sleep 1
    exit 1
  fi
 fi
@@ -515,7 +515,7 @@ else
    echo ""
    echo [!]::Run setup.sh to install backdoor-factory ;
    echo ""
-   sleep 2
+   sleep 1
    exit 1
 fi
 sleep 2
@@ -532,7 +532,7 @@ else
    echo ""
    echo [!]::Run setup.sh to install monodevelop ;
    echo ""
-   sleep 2
+   sleep 1
    exit 1
 fi
 sleep 2
@@ -548,7 +548,7 @@ else
    echo ""
    echo [!]::Run setup.sh to install xterm ;
    echo ""
-   sleep 2
+   sleep 1
    exit 1
 fi
 
@@ -563,7 +563,7 @@ else
    echo ""
    echo [!]::Run setup.sh to install gnome-terminal ;
    echo ""
-   sleep 2
+   sleep 1
    exit 1
 fi
 
@@ -578,7 +578,7 @@ else
    echo ""
    echo [!]::Run setup.sh to install upx ;
    echo ""
-   sleep 2
+   sleep 1
    exit 1
 fi
 
@@ -630,7 +630,7 @@ then
         echo -e $cyan":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
     	echo -e $white":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
    	echo -e $cyan":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::"
-	sleep 2
+	sleep 1
 
 else
     resize -s 33 73 > /dev/null

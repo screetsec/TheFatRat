@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <!-- Use the default title sizes on tablets. -->
+    <dimen name="text_size_title_material_toolbar">20dp</dimen>
+    <!-- Use the default subtitle sizes on tablets. -->
+    <dimen name="text_size_subtitle_material_toolbar">16dp</dimen>
+    <!-- Default height of an action bar. -->
+    <dimen name="action_bar_default_height_material">64dp</dimen>
+    <!-- Default content inset of an action bar. -->
+    <dimen name="action_bar_content_inset_material">24dp</dimen>
+    <!-- Default content inset of an action bar with navigation present. -->
+    <dimen name="action_bar_content_inset_with_nav">80dp</dimen>
+
+    <!-- Default start padding of an action bar. -->
+    <dimen name="action_bar_default_padding_start_material">8dp</dimen>
+    <!-- Default end padding of an action bar. -->
+    <dimen name="action_bar_default_padding_end_material">8dp</dimen>
+</resources>

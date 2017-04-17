@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* //device/apps/common/assets/res/any/colors.xml
+**
+** Copyright 2006, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Do not translate. These are all of the drawable resources that should be preloaded by
+         the zygote process before it starts forking application processes. -->
+    <array name="preloaded_drawables">
+        <item>@drawable/ab_share_pack_material</item>
+        <item>@drawable/ab_solid_shadow_material</item>
+        <item>@drawable/action_bar_item_background_material</item>
+        <item>@drawable/activated_background_material</item>
+        <item>@drawable/btn_borderless_material</item>
+        <item>@drawable/btn_check_material_anim</item>
+        <item>@drawable/btn_colored_material</item>
+        <item>@drawable/btn_default_material</item>
+        <item>@drawable/btn_group_holo_dark</item>
+        <item>@drawable/btn_group_holo_light</item>
+        <item>@drawable/btn_radio_material_anim</item>
+        <item>@drawable/btn_star_material</item>
+        <item>@drawable/btn_toggle_material</item>
+        <item>@drawable/button_inset</item>
+        <item>@drawable/cab_background_bottom_material</item>
+        <item>@drawable/cab_background_top_material</item>
+        <item>@drawable/control_background_32dp_material</item>
+        <item>@drawable/control_background_40dp_material</item>
+        <item>@drawable/dialog_background_material</item>
+        <item>@drawable/editbox_dropdown_background_dark</item>
+        <item>@drawable/edit_text_material</item>
+        <item>@drawable/expander_group_material</item>
+        <item>@drawable/fastscroll_label_left_material</item>
+        <item>@drawable/fastscroll_label_right_material</item>
+        <item>@drawable/fastscroll_thumb_material</item>
+        <item>@drawable/fastscroll_track_material</item>
+        <item>@drawable/floating_popup_background_dark</item>
+        <item>@drawable/floating_popup_background_light</item>
+        <item>@drawable/gallery_item_background</item>
+        <item>@drawable/ic_ab_back_material</item>
+        <item>@drawable/ic_ab_back_material_dark</item>
+        <item>@drawable/ic_ab_back_material_light</item>
+        <item>@drawable/ic_account_circle</item>
+        <item>@drawable/ic_arrow_drop_right_black_24dp</item>
+        <item>@drawable/ic_clear</item>
+        <item>@drawable/ic_clear_disabled</item>
+        <item>@drawable/ic_clear_material</item>
+        <item>@drawable/ic_clear_normal</item>
+        <item>@drawable/ic_commit_search_api_material</item>
+        <item>@drawable/ic_dialog_alert_material</item>
+        <item>@drawable/ic_find_next_material</item>
+        <item>@drawable/ic_find_previous_material</item>
+        <item>@drawable/ic_go</item>
+        <item>@drawable/ic_go_search_api_material</item>
+        <item>@drawable/ic_media_route_connecting_material</item>
+        <item>@drawable/ic_media_route_material</item>
+        <item>@drawable/ic_menu_close_clear_cancel</item>
+        <item>@drawable/ic_menu_copy_material</item>
+        <item>@drawable/ic_menu_cut_material</item>
+        <item>@drawable/ic_menu_find_material</item>
+        <item>@drawable/ic_menu_more</item>
+        <item>@drawable/ic_menu_moreoverflow_material</item>
+        <item>@drawable/ic_menu_paste_material</item>
+        <item>@drawable/ic_menu_search_material</item>
+        <item>@drawable/ic_menu_selectall_material</item>
+        <item>@drawable/ic_menu_share_material</item>
+        <item>@drawable/ic_search_api_material</item>
+        <item>@drawable/ic_voice_search_api_material</item>
+        <item>@drawable/indicator_check_mark_dark</item>
+        <item>@drawable/indicator_check_mark_light</item>
+        <item>@drawable/item_background_borderless_material</item>
+        <item>@drawable/item_background_borderless_material_dark</item>
+        <item>@drawable/item_background_borderless_material_light</item>
+        <item>@drawable/item_background_material</item>
+        <item>@drawable/item_background_material_dark</item>
+        <item>@drawable/item_background_material_light</item>
+        <item>@drawable/list_choice_background_material</item>
+        <item>@drawable/list_divider_material</item>
+        <item>@drawable/list_section_divider_material</item>
+        <item>@drawable/menu_background_fill_parent_width</item>
+        <item>@drawable/notification_material_action_background</item>
+        <item>@drawable/notification_material_media_action_background</item>
+        <item>@drawable/number_picker_divider_material</item>
+        <item>@drawable/popup_background_material</item>
+        <item>@drawable/popup_inline_error_above_holo_dark</item>
+        <item>@drawable/popup_inline_error_above_holo_light</item>
+        <item>@drawable/popup_inline_error_holo_dark</item>
+        <item>@drawable/popup_inline_error_holo_light</item>
+        <item>@drawable/progress_horizontal_material</item>
+        <item>@drawable/progress_indeterminate_horizontal_material</item>
+        <item>@drawable/progress_large_material</item>
+        <item>@drawable/progress_medium_material</item>
+        <item>@drawable/progress_small_material</item>
+        <item>@drawable/quickcontact_badge_overlay_dark</item>
+        <item>@drawable/quickcontact_badge_overlay_light</item>
+        <item>@drawable/quickcontact_badge_overlay_normal_dark</item>
+        <item>@drawable/quickcontact_badge_overlay_normal_light</item>
+        <item>@drawable/quickcontact_badge_overlay_pressed_dark</item>
+        <item>@drawable/quickcontact_badge_overlay_pressed_light</item>
+        <item>@drawable/ratingbar_indicator_material</item>
+        <item>@drawable/ratingbar_material</item>
+        <item>@drawable/ratingbar_small_material</item>
+        <item>@drawable/screen_background_dark</item>
+        <item>@drawable/screen_background_dark_transparent</item>
+        <item>@drawable/screen_background_light</item>
+        <item>@drawable/screen_background_light_transparent</item>
+        <item>@drawable/screen_background_selector_dark</item>
+        <item>@drawable/screen_background_selector_light</item>
+        <item>@drawable/scrollbar_handle_material</item>
+        <item>@drawable/seekbar_thumb_material_anim</item>
+        <item>@drawable/seekbar_tick_mark_material</item>
+        <item>@drawable/seekbar_track_material</item>
+        <item>@drawable/spinner_background_material</item>
+        <item>@drawable/spinner_textfield_background_material</item>
+        <item>@drawable/switch_thumb_material_anim</item>
+        <item>@drawable/switch_track_material</item>
+        <item>@drawable/tab_indicator_material</item>
+        <item>@drawable/text_cursor_material</item>
+        <item>@drawable/text_edit_paste_window</item>
+        <item>@drawable/textfield_search_material</item>
+        <item>@drawable/text_select_handle_left_material</item>
+        <item>@drawable/text_select_handle_middle_material</item>
+        <item>@drawable/text_select_handle_right_material</item>
+        <item>@drawable/toast_frame</item>
+    </array>
+
+    <!-- Do not translate. These are all of the color state list resources that should be
+         preloaded by the zygote process before it starts forking application processes. -->
+    <array name="preloaded_color_state_lists">
+        <item>@color/primary_text_dark</item>
+        <item>@color/primary_text_dark_disable_only</item>
+        <item>@color/primary_text_dark_nodisable</item>
+        <item>@color/primary_text_disable_only_holo_dark</item>
+        <item>@color/primary_text_disable_only_holo_light</item>
+        <item>@color/primary_text_holo_dark</item>
+        <item>@color/primary_text_holo_light</item>
+        <item>@color/primary_text_light</item>
+        <item>@color/primary_text_light_disable_only</item>
+        <item>@color/primary_text_light_nodisable</item>
+        <item>@color/primary_text_nodisable_holo_dark</item>
+        <item>@color/primary_text_nodisable_holo_light</item>
+        <item>@color/secondary_text_dark</item>
+        <item>@color/secondary_text_dark_nodisable</item>
+        <item>@color/secondary_text_holo_dark</item>
+        <item>@color/secondary_text_holo_light</item>
+        <item>@color/secondary_text_light</item>
+        <item>@color/secondary_text_light_nodisable</item>
+        <item>@color/secondary_text_nodisable_holo_dark</item>
+        <item>@color/secondary_text_nodisable_holo_light</item>
+        <item>@color/secondary_text_nofocus</item>
+        <item>@color/hint_foreground_dark</item>
+        <item>@color/hint_foreground_holo_dark</item>
+        <item>@color/hint_foreground_holo_light</item>
+        <item>@color/hint_foreground_light</item>
+        <item>@color/bright_foreground_light</item>
+        <item>@color/bright_foreground_dark</item>
+        <item>@color/tab_indicator_text</item>
+        <item>#ff000000</item>
+        <item>#00000000</item>
+        <item>#ffffffff</item>
+
+        <!-- Material color state lists -->
+       <item>@color/background_cache_hint_selector_material_dark</item>
+       <item>@color/background_cache_hint_selector_material_light</item>
+       <item>@color/btn_default_material_dark</item>
+       <item>@color/btn_default_material_light</item>
+       <item>@color/primary_text_disable_only_material_dark</item>
+       <item>@color/primary_text_disable_only_material_light</item>
+       <item>@color/primary_text_material_dark</item>
+       <item>@color/primary_text_material_light</item>
+       <item>@color/search_url_text_material_dark</item>
+       <item>@color/search_url_text_material_light</item>
+    </array>
+
+   <array name="preloaded_freeform_multi_window_drawables">
+      <item>@drawable/decor_maximize_button_dark</item>
+      <item>@drawable/decor_maximize_button_light</item>
+   </array>
+
+    <!-- Used in LocalePicker -->
+    <string-array translatable="false" name="special_locale_codes">
+        <!-- http://b/17150708 - ensure that the list of languages says "Arabic"
+             rather than "Arabic (Egypt)". If you're an OEM supporting multiple
+             Arabic locales, you should remove this entry so that ar_EG is shown
+             as "Arabic (Egypt)" in Settings. -->
+        <item>ar_EG</item>
+
+        <item>zh_CN</item>
+        <item>zh_TW</item>
+    </string-array>
+
+    <!-- Used in LocalePicker -->
+    <string-array translatable="false" name="special_locale_names">
+        <!-- http://b/17150708 - ensure that the list of languages says "Arabic"
+             rather than "Arabic (Egypt)". If you're an OEM supporting multiple
+             Arabic locales, you should remove this entry so that ar_EG is shown
+             as "Arabic (Egypt)" in Settings. -->
+        <item>العربية</item>
+
+        <item>中文 (简体)</item>
+        <item>中文 (繁體)</item>
+    </string-array>
+
+    <array name="sim_colors">
+        <item>@color/Teal_700</item>
+        <item>@color/Blue_700</item>
+        <item>@color/Indigo_700</item>
+        <item>@color/Purple_700</item>
+        <item>@color/Pink_700</item>
+        <item>@color/Red_700</item>
+    </array>
+
+    <!-- Used in ResolverTargetActionsDialogFragment -->
+    <string-array name="resolver_target_actions_pin">
+        <item>@string/pin_target</item>
+        <item>@string/app_info</item>
+    </string-array>
+
+    <string-array name="resolver_target_actions_unpin">
+        <item>@string/unpin_target</item>
+        <item>@string/app_info</item>
+    </string-array>
+
+</resources>

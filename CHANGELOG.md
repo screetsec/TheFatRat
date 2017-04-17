@@ -1,5 +1,7 @@
 ## CHANGELOG
-
+* v1.9.3 - Added update script
+* v1.9.3 - Dex2Jar will be installed from now on from Fatrat setup manually on user system (reason: Kali repo still uses old version)
+* v1.9.3 - Updated Android build tools to V.26 RC1 & Android Platform V. 25-R03
 * v1.9.3 - Updated dana travis backdoor-apk to 0.2.2 into fatrat / added openssl in setup
 * v1.9.2 - Msfvenom Android rat will be signed with android certificate , so it can be installed properly
 * v1.9.2 - Implemented Default Lhost & Lport config to fatrat & powerfull shell creator
