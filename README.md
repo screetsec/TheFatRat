@@ -1,4 +1,8 @@
+To update your current Fatrat , run on your fatrat directory the command 
+./update
 
+and then execute :
+./setup.sh
 
 # TheFatRat ( Unit for bypass av )
 
