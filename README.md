@@ -1,19 +1,14 @@
-
-
-
 # TheFatRat ( Unit for bypass av )
 
-## Update: Version 1.9.2
+## Update: Version 1.9.3
 ## Codename: Whistle
-### Donate
-- If this project very help you to penetration testing  and u want support me , you can give me a cup of coffee :)
-- [![Donation](https://img.shields.io/badge/bitcoin-donate-yellow.svg)](https://blockchain.info/id/address/1NuNTXo7Aato7XguFkvwYnTAFV2immXmjS)
 
 ### Thefatrat a massive exploiting tool revealed
 An easy tool to generate backdoor and easy tool to post exploitation attack like browser attack,dll . This tool compiles a malware with popular payload and then the compiled malware can be execute on windows, android, mac . The malware that created with this tool also have an ability to bypass most AV software protection .
 
+
 # Screenshot
-<img src="https://cloud.githubusercontent.com/assets/17976841/24345475/9065b3ec-12fa-11e7-80f8-2fb2172781c7.png" width="55%"></img>
+<img src="https://s29.postimg.org/y9etytlpz/193.png" width="55%"></img>
 # ---------------------------------------------------------------
 
 <img src="https://cloud.githubusercontent.com/assets/17976841/18483870/39cb46ba-7a10-11e6-859b-1c1baa3c1b0a.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483871/39cb81ca-7a10-11e6-84f3-1683067fa4f5.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483873/39d54372-7a10-11e6-890f-41803a33b9c9.png" width="32%"></img>
@@ -69,7 +64,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## Getting Started
 1. ```git clone https://github.com/Screetsec/TheFatRat.git```
-2. ```cd TheFatRat/setup```
+2. ```cd TheFatRat```
 3. ```chmod +x setup.sh && ./setup.sh```
 
 ## :book: How it works
@@ -91,6 +86,12 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 ##  :heavy_exclamation_mark: READ
 - if prog.c file to large when create backdoor with powerfull.sh , you can use prog.c.backup and create another backup when you running option 2
 
+##  Update Fatrat
+- To update fatrat go to your TheFatRat folder and execute :
+```git pull && chmod +x setup.sh && ./setup.sh```
+
+- To Update from 1.9.3 Version and up , execute on your fatrat folder : 
+```./update && chmod +x setup.sh && ./setup.sh```
 
 ## Tutorial ?
 
@@ -120,15 +121,6 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 - Submit new issue
 - pm me in gmail
 - Hey sup ? do you want ask about all my tools ? you can join me in telegram.me/offscreetsec
-
-## Donations 
-
-- Donation: Send to [bitcoin](https://blockchain.info/id/address/1NuNTXo7Aato7XguFkvwYnTAFV2immXmjS)
-
-- Addres Bitcoin : 1NuNTXo7Aato7XguFkvwYnTAFV2immXmjS
-
-- <img src="https://cloud.githubusercontent.com/assets/17976841/25007109/75380fa6-2089-11e7-8a4a-4a8ae9c06e24.png" width="30%"></img>
-
 
 
 ## :octocat: Credits
