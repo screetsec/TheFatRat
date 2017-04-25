@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:constantSize="true">
+    <item android:state_enabled="false" android:id="@+id/off">
+        <nine-patch
+            android:src="@drawable/btn_switch_to_on_mtrl_00001"
+            android:gravity="center"
+            android:tintMode="multiply"
+            android:tint="?attr/colorSwitchThumbNormal" />
+    </item>
+    <item
+        android:state_checked="true"
+        android:id="@+id/on">
+        <nine-patch
+            android:src="@drawable/btn_switch_to_on_mtrl_00012"
+            android:gravity="center"
+            android:tintMode="multiply"
+            android:tint="?attr/colorControlActivated" />
+    </item>
+    <item android:id="@+id/off">
+        <nine-patch
+            android:src="@drawable/btn_switch_to_on_mtrl_00001"
+            android:gravity="center"
+            android:tintMode="multiply"
+            android:tint="?attr/colorSwitchThumbNormal" />
+    </item>
+    <transition
+        android:fromId="@+id/off"
+        android:toId="@+id/on">
+        <animation-list>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00001" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00002" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00003" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00004" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00005" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00006" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00007" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00008" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00009" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00010" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00011" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_on_mtrl_00012" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+        </animation-list>
+    </transition>
+    <transition android:fromId="@+id/on" android:toId="@+id/off">
+        <animation-list>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00001" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00002" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00003" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00004" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00005" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00006" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorControlActivated" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00007" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00008" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00009" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00010" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00011" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+            <item android:duration="15">
+                <nine-patch android:src="@drawable/btn_switch_to_off_mtrl_00012" android:gravity="center" android:tintMode="multiply" android:tint="?attr/colorSwitchThumbNormal" />
+            </item>
+        </animation-list>
+    </transition>
+</animated-selector>

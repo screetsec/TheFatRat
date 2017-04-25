@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!--
+===============================================================
+                        PLEASE READ
+===============================================================
+This file contains the themes that are the Device Defaults.
+If you want to edit styles to skin your device, do it here.
+We recommend that you do not edit styles.xml and instead edit
+this file.
+
+Editing this file instead of styles.xml will greatly simplify
+merges for future platform versions and CTS compliance will be
+easier.
+===============================================================
+                        PLEASE READ
+===============================================================
+ -->
+<resources>
+    <!-- Widget Styles -->
+    <style name="Widget.DeviceDefault" parent="Widget.Material"/>
+    <style name="Widget.DeviceDefault.Button" parent="Widget.Material.Button"/>
+    <style name="Widget.DeviceDefault.Button.Small" parent="Widget.Material.Button.Small"/>
+    <style name="Widget.DeviceDefault.Button.Inset" parent="Widget.Material.Button.Inset"/>
+    <style name="Widget.DeviceDefault.Button.Toggle" parent="Widget.Material.Button.Toggle"/>
+    <style name="Widget.DeviceDefault.TextView" parent="Widget.Material.TextView"/>
+    <style name="Widget.DeviceDefault.CheckedTextView" parent="Widget.Material.CheckedTextView"/>
+    <style name="Widget.DeviceDefault.AutoCompleteTextView" parent="Widget.Material.AutoCompleteTextView"/>
+    <style name="Widget.DeviceDefault.CompoundButton.CheckBox" parent="Widget.Material.CompoundButton.CheckBox"/>
+    <style name="Widget.DeviceDefault.ListView.DropDown" parent="Widget.Material.ListView.DropDown"/>
+    <style name="Widget.DeviceDefault.EditText" parent="Widget.Material.EditText"/>
+    <style name="Widget.DeviceDefault.ExpandableListView" parent="Widget.Material.ExpandableListView"/>
+    <style name="Widget.DeviceDefault.GridView" parent="Widget.Material.GridView"/>
+    <style name="Widget.DeviceDefault.ImageButton" parent="Widget.Material.ImageButton"/>
+    <style name="Widget.DeviceDefault.ListView" parent="Widget.Material.ListView"/>
+    <style name="Widget.DeviceDefault.PopupWindow" parent="Widget.Material.PopupWindow"/>
+    <style name="Widget.DeviceDefault.ProgressBar" parent="Widget.Material.ProgressBar"/>
+    <style name="Widget.DeviceDefault.ProgressBar.Horizontal" parent="Widget.Material.ProgressBar.Horizontal"/>
+    <style name="Widget.DeviceDefault.ProgressBar.Small" parent="Widget.Material.ProgressBar.Small"/>
+    <style name="Widget.DeviceDefault.ProgressBar.Small.Title" parent="Widget.Material.ProgressBar.Small.Title"/>
+    <style name="Widget.DeviceDefault.ProgressBar.Large" parent="Widget.Material.ProgressBar.Large"/>
+    <style name="Widget.DeviceDefault.SeekBar" parent="Widget.Material.SeekBar"/>
+    <style name="Widget.DeviceDefault.RatingBar" parent="Widget.Material.RatingBar"/>
+    <style name="Widget.DeviceDefault.RatingBar.Indicator" parent="Widget.Material.RatingBar.Indicator"/>
+    <style name="Widget.DeviceDefault.RatingBar.Small" parent="Widget.Material.RatingBar.Small"/>
+    <style name="Widget.DeviceDefault.CompoundButton.RadioButton" parent="Widget.Material.CompoundButton.RadioButton"/>
+    <style name="Widget.DeviceDefault.ScrollView" parent="Widget.Material.ScrollView"/>
+    <style name="Widget.DeviceDefault.HorizontalScrollView" parent="Widget.Material.HorizontalScrollView"/>
+    <style name="Widget.DeviceDefault.Spinner" parent="Widget.Material.Spinner"/>
+    <style name="Widget.DeviceDefault.CompoundButton.Star" parent="Widget.Material.CompoundButton.Star"/>
+    <style name="Widget.DeviceDefault.TabWidget" parent="Widget.Material.TabWidget"/>
+    <style name="Widget.DeviceDefault.WebTextView" parent="Widget.Material.WebTextView"/>
+    <style name="Widget.DeviceDefault.WebView" parent="Widget.Material.WebView"/>
+    <style name="Widget.DeviceDefault.DropDownItem" parent="Widget.Material.DropDownItem"/>
+    <style name="Widget.DeviceDefault.DropDownItem.Spinner" parent="Widget.Material.DropDownItem.Spinner"/>
+    <style name="Widget.DeviceDefault.TextView.SpinnerItem" parent="Widget.Material.TextView.SpinnerItem"/>
+    <style name="Widget.DeviceDefault.ListPopupWindow" parent="Widget.Material.ListPopupWindow"/>
+    <style name="Widget.DeviceDefault.PopupMenu" parent="Widget.Material.PopupMenu"/>
+    <style name="Widget.DeviceDefault.ActionButton" parent="Widget.Material.ActionButton"/>
+    <style name="Widget.DeviceDefault.ActionButton.Overflow" parent="Widget.Material.ActionButton.Overflow"/>
+    <style name="Widget.DeviceDefault.ActionButton.TextButton" parent="Widget.Material.ActionButton"/>
+    <style name="Widget.DeviceDefault.ActionMode" parent="Widget.Material.ActionMode"/>
+    <style name="Widget.DeviceDefault.ActionButton.CloseMode" parent="Widget.Material.ActionButton.CloseMode"/>
+    <style name="Widget.DeviceDefault.ActionBar" parent="Widget.Material.ActionBar"/>
+    <style name="Widget.DeviceDefault.Button.Borderless" parent="Widget.Material.Button.Borderless"/>
+    <style name="Widget.DeviceDefault.Tab" parent="Widget.Material.Tab"/>
+    <style name="Widget.DeviceDefault.CalendarView" parent="Widget.Material.CalendarView"/>
+    <style name="Widget.DeviceDefault.DatePicker" parent="Widget.Material.DatePicker"/>
+    <style name="Widget.DeviceDefault.ActionBar.TabView" parent="Widget.Material.ActionBar.TabView"/>
+    <style name="Widget.DeviceDefault.ActionBar.TabText" parent="Widget.Material.ActionBar.TabText"/>
+    <style name="Widget.DeviceDefault.ActionBar.TabBar" parent="Widget.Material.ActionBar.TabBar"/>
+    <style name="Widget.DeviceDefault.ActionBar.Solid" parent="Widget.Material.ActionBar.Solid"/>
+    <style name="Widget.DeviceDefault.Button.Borderless.Small" parent="Widget.Material.Button.Borderless.Small"/>
+    <style name="Widget.DeviceDefault.AbsListView" parent="Widget.Material.AbsListView"/>
+    <style name="Widget.DeviceDefault.Spinner.DropDown.ActionBar" parent="Widget.Material.Spinner.DropDown.ActionBar"/>
+    <style name="Widget.DeviceDefault.PopupWindow.ActionMode" parent="Widget.Material.PopupWindow.ActionMode"/>
+    <style name="Widget.DeviceDefault.CompoundButton.Switch" parent="Widget.Material.CompoundButton.Switch"/>
+    <style name="Widget.DeviceDefault.ExpandableListView.White" parent="Widget.Material.ExpandableListView.White"/>
+    <style name="Widget.DeviceDefault.FastScroll" parent="Widget.Material.FastScroll"/>
+    <!-- The FragmentBreadCrumbs widget is deprecated starting in API level 21 ({@link android.os.Build.VERSION_CODES#.L}). -->
+    <style name="Widget.DeviceDefault.FragmentBreadCrumbs" parent="Widget.Holo.FragmentBreadCrumbs"/>
+    <style name="Widget.DeviceDefault.Gallery" parent="Widget.Material.Gallery"/>
+    <style name="Widget.DeviceDefault.GestureOverlayView" parent="Widget.Material.GestureOverlayView"/>
+    <style name="Widget.DeviceDefault.ImageWell" parent="Widget.Material.ImageWell"/>
+    <style name="Widget.DeviceDefault.KeyboardView" parent="Widget.Material.KeyboardView"/>
+    <style name="Widget.DeviceDefault.ListView.White" parent="Widget.Material.ListView.White"/>
+    <style name="Widget.DeviceDefault.MediaRouteButton" parent="Widget.Material.MediaRouteButton" />
+    <style name="Widget.DeviceDefault.NumberPicker" parent="Widget.Material.NumberPicker"/>
+    <style name="Widget.DeviceDefault.PreferenceFrameLayout" parent="Widget.Material.PreferenceFrameLayout"/>
+    <style name="Widget.DeviceDefault.ProgressBar.Inverse" parent="Widget.Material.ProgressBar.Inverse"/>
+    <style name="Widget.DeviceDefault.ProgressBar.Large.Inverse" parent="Widget.Material.ProgressBar.Large.Inverse"/>
+    <style name="Widget.DeviceDefault.ProgressBar.Small.Inverse" parent="Widget.Material.ProgressBar.Small.Inverse"/>
+    <style name="Widget.DeviceDefault.QuickContactBadge.WindowLarge" parent="Widget.Material.QuickContactBadge.WindowLarge"/>
+    <style name="Widget.DeviceDefault.QuickContactBadge.WindowMedium" parent="Widget.Material.QuickContactBadge.WindowMedium"/>
+    <style name="Widget.DeviceDefault.QuickContactBadge.WindowSmall" parent="Widget.Material.QuickContactBadge.WindowSmall"/>
+    <style name="Widget.DeviceDefault.QuickContactBadgeSmall.WindowLarge" parent="Widget.Material.QuickContactBadgeSmall.WindowLarge"/>
+    <style name="Widget.DeviceDefault.QuickContactBadgeSmall.WindowMedium" parent="Widget.Material.QuickContactBadgeSmall.WindowMedium"/>
+    <style name="Widget.DeviceDefault.QuickContactBadgeSmall.WindowSmall" parent="Widget.Material.QuickContactBadgeSmall.WindowSmall"/>
+    <style name="Widget.DeviceDefault.Spinner.DropDown" parent="Widget.Material.Spinner.DropDown"/>
+    <style name="Widget.DeviceDefault.StackView" parent="Widget.Material.StackView"/>
+    <style name="Widget.DeviceDefault.TextSelectHandle" parent="Widget.Material.TextSelectHandle"/>
+    <style name="Widget.DeviceDefault.TextView.ListSeparator" parent="Widget.Material.TextView.ListSeparator"/>
+    <style name="Widget.DeviceDefault.TimePicker" parent="Widget.Material.TimePicker"/>
+
+    <style name="Widget.DeviceDefault.Light" parent="Widget.Material.Light"/>
+    <style name="Widget.DeviceDefault.Light.Button" parent="Widget.Material.Light.Button"/>
+    <style name="Widget.DeviceDefault.Light.Button.Small" parent="Widget.Material.Light.Button.Small"/>
+    <style name="Widget.DeviceDefault.Light.Button.Inset" parent="Widget.Material.Light.Button.Inset"/>
+    <style name="Widget.DeviceDefault.Light.Button.Toggle" parent="Widget.Material.Light.Button.Toggle"/>
+    <style name="Widget.DeviceDefault.Light.StackView" parent="Widget.Material.Light.StackView"/>
+    <style name="Widget.DeviceDefault.Light.TextView" parent="Widget.Material.Light.TextView"/>
+    <style name="Widget.DeviceDefault.Light.CheckedTextView" parent="Widget.Material.Light.CheckedTextView"/>
+    <style name="Widget.DeviceDefault.Light.AutoCompleteTextView" parent="Widget.Material.Light.AutoCompleteTextView"/>
+    <style name="Widget.DeviceDefault.Light.CompoundButton.CheckBox" parent="Widget.Material.Light.CompoundButton.CheckBox"/>
+    <style name="Widget.DeviceDefault.Light.ListView.DropDown" parent="Widget.Material.Light.ListView.DropDown"/>
+    <style name="Widget.DeviceDefault.Light.EditText" parent="Widget.Material.Light.EditText"/>
+    <style name="Widget.DeviceDefault.Light.ExpandableListView" parent="Widget.Material.Light.ExpandableListView"/>
+    <style name="Widget.DeviceDefault.Light.FastScroll" parent="Widget.Material.Light.FastScroll"/>
+    <!-- The FragmentBreadCrumbs widget is deprecated starting in API level 21 ({@link android.os.Build.VERSION_CODES#.L}). -->
+    <style name="Widget.DeviceDefault.Light.FragmentBreadCrumbs" parent="Widget.Holo.Light.FragmentBreadCrumbs"/>
+    <style name="Widget.DeviceDefault.Light.GridView" parent="Widget.Material.Light.GridView"/>
+    <style name="Widget.DeviceDefault.Light.ImageButton" parent="Widget.Material.Light.ImageButton"/>
+    <style name="Widget.DeviceDefault.Light.ListView" parent="Widget.Material.Light.ListView"/>
+    <style name="Widget.DeviceDefault.Light.MediaRouteButton" parent="Widget.Material.Light.MediaRouteButton" />
+    <style name="Widget.DeviceDefault.Light.PopupWindow" parent="Widget.Material.Light.PopupWindow"/>
+    <style name="Widget.DeviceDefault.Light.ProgressBar" parent="Widget.Material.Light.ProgressBar"/>
+    <style name="Widget.DeviceDefault.Light.ProgressBar.Horizontal" parent="Widget.Material.Light.ProgressBar.Horizontal"/>
+    <style name="Widget.DeviceDefault.Light.ProgressBar.Small" parent="Widget.Material.Light.ProgressBar.Small"/>
+    <style name="Widget.DeviceDefault.Light.ProgressBar.Small.Title" parent="Widget.Material.Light.ProgressBar.Small.Title"/>
+    <style name="Widget.DeviceDefault.Light.ProgressBar.Large" parent="Widget.Material.Light.ProgressBar.Large"/>
+    <style name="Widget.DeviceDefault.Light.ProgressBar.Inverse" parent="Widget.Material.Light.ProgressBar.Inverse"/>
+    <style name="Widget.DeviceDefault.Light.ProgressBar.Small.Inverse" parent="Widget.Material.Light.ProgressBar.Small.Inverse"/>
+    <style name="Widget.DeviceDefault.Light.ProgressBar.Large.Inverse" parent="Widget.Material.Light.ProgressBar.Large.Inverse"/>
+    <style name="Widget.DeviceDefault.Light.SeekBar" parent="Widget.Material.Light.SeekBar"/>
+    <style name="Widget.DeviceDefault.Light.RatingBar" parent="Widget.Material.Light.RatingBar"/>
+    <style name="Widget.DeviceDefault.Light.RatingBar.Indicator" parent="Widget.Material.Light.RatingBar.Indicator"/>
+    <style name="Widget.DeviceDefault.Light.RatingBar.Small" parent="Widget.Material.Light.RatingBar.Small"/>
+    <style name="Widget.DeviceDefault.Light.CompoundButton.RadioButton" parent="Widget.Material.Light.CompoundButton.RadioButton"/>
+    <style name="Widget.DeviceDefault.Light.ScrollView" parent="Widget.Material.Light.ScrollView"/>
+    <style name="Widget.DeviceDefault.Light.HorizontalScrollView" parent="Widget.Material.Light.HorizontalScrollView"/>
+    <style name="Widget.DeviceDefault.Light.Spinner" parent="Widget.Material.Light.Spinner"/>
+    <style name="Widget.DeviceDefault.Light.CompoundButton.Star" parent="Widget.Material.Light.CompoundButton.Star"/>
+    <style name="Widget.DeviceDefault.Light.TabWidget" parent="Widget.Material.Light.TabWidget"/>
+    <style name="Widget.DeviceDefault.Light.WebTextView" parent="Widget.Material.Light.WebTextView"/>
+    <style name="Widget.DeviceDefault.Light.WebView" parent="Widget.Material.Light.WebView"/>
+    <style name="Widget.DeviceDefault.Light.DropDownItem" parent="Widget.Material.Light.DropDownItem"/>
+    <style name="Widget.DeviceDefault.Light.DropDownItem.Spinner" parent="Widget.Material.Light.DropDownItem.Spinner"/>
+    <style name="Widget.DeviceDefault.Light.TextView.SpinnerItem" parent="Widget.Material.Light.TextView.SpinnerItem"/>
+    <style name="Widget.DeviceDefault.Light.ListPopupWindow" parent="Widget.Material.Light.ListPopupWindow"/>
+    <style name="Widget.DeviceDefault.Light.PopupMenu" parent="Widget.Material.Light.PopupMenu"/>
+    <style name="Widget.DeviceDefault.Light.Tab" parent="Widget.Material.Light.Tab"/>
+    <style name="Widget.DeviceDefault.Light.CalendarView" parent="Widget.Material.Light.CalendarView"/>
+    <style name="Widget.DeviceDefault.Light.Button.Borderless.Small" parent="Widget.Material.Light.Button.Borderless.Small"/>
+    <style name="Widget.DeviceDefault.Light.ActionButton" parent="Widget.Material.Light.ActionButton"/>
+    <style name="Widget.DeviceDefault.Light.ActionButton.Overflow" parent="Widget.Material.Light.ActionButton.Overflow"/>
+    <style name="Widget.DeviceDefault.Light.ActionMode" parent="Widget.Material.Light.ActionMode"/>
+    <style name="Widget.DeviceDefault.Light.ActionButton.CloseMode" parent="Widget.Material.Light.ActionButton.CloseMode"/>
+    <style name="Widget.DeviceDefault.Light.ActionBar" parent="Widget.Material.Light.ActionBar"/>
+    <style name="Widget.DeviceDefault.Light.ActionBar.TabView" parent="Widget.Material.Light.ActionBar.TabView"/>
+    <style name="Widget.DeviceDefault.Light.ActionBar.TabText" parent="Widget.Material.Light.ActionBar.TabText"/>
+    <style name="Widget.DeviceDefault.Light.ActionBar.TabBar" parent="Widget.Material.Light.ActionBar.TabBar"/>
+    <style name="Widget.DeviceDefault.Light.ActionBar.Solid" parent="Widget.Material.Light.ActionBar.Solid"/>
+    <!-- @deprecated Action bars are now themed using the inheritable android:theme attribute. -->
+    <style name="Widget.DeviceDefault.Light.ActionBar.Solid.Inverse" parent="Widget.Holo.Light.ActionBar.Solid.Inverse"/>
+    <!-- @deprecated Action bars are now themed using the inheritable android:theme attribute. -->
+    <style name="Widget.DeviceDefault.Light.ActionBar.TabBar.Inverse" parent="Widget.Holo.Light.ActionBar.TabBar.Inverse"/>
+    <!-- @deprecated Action bars are now themed using the inheritable android:theme attribute. -->
+    <style name="Widget.DeviceDefault.Light.ActionBar.TabView.Inverse" parent="Widget.Holo.Light.ActionBar.TabView.Inverse"/>
+    <!-- @deprecated Action bars are now themed using the inheritable android:theme attribute. -->
+    <style name="Widget.DeviceDefault.Light.ActionBar.TabText.Inverse" parent="Widget.Holo.Light.ActionBar.TabText.Inverse"/>
+    <!-- @deprecated Action bars are now themed using the inheritable android:theme attribute. -->
+    <style name="Widget.DeviceDefault.Light.ActionMode.Inverse" parent="Widget.Holo.Light.ActionMode.Inverse"/>
+    <style name="Widget.DeviceDefault.Light.AbsListView" parent="Widget.Material.Light.AbsListView"/>
+    <style name="Widget.DeviceDefault.Light.Spinner.DropDown.ActionBar" parent="Widget.Material.Light.Spinner.DropDown.ActionBar"/>
+    <style name="Widget.DeviceDefault.Light.PopupWindow.ActionMode" parent="Widget.Material.Light.PopupWindow.ActionMode"/>
+    <style name="Widget.DeviceDefault.Light.Button.Borderless" parent="Widget.Material.Light.Button.Borderless"/>
+    <style name="Widget.DeviceDefault.Light.DatePicker" parent="Widget.Material.Light.DatePicker"/>
+    <style name="Widget.DeviceDefault.Light.ExpandableListView.White" parent="Widget.Material.Light.ExpandableListView.White"/>
+    <style name="Widget.DeviceDefault.Light.Gallery" parent="Widget.Material.Light.Gallery"/>
+    <style name="Widget.DeviceDefault.Light.GestureOverlayView" parent="Widget.Material.Light.GestureOverlayView"/>
+    <style name="Widget.DeviceDefault.Light.ImageWell" parent="Widget.Material.Light.ImageWell"/>
+    <style name="Widget.DeviceDefault.Light.ListView.White" parent="Widget.Material.Light.ListView.White"/>
+    <style name="Widget.DeviceDefault.Light.NumberPicker" parent="Widget.Material.Light.NumberPicker"/>
+    <style name="Widget.DeviceDefault.Light.Spinner.DropDown" parent="Widget.Material.Light.Spinner.DropDown"/>
+    <style name="Widget.DeviceDefault.Light.TextView.ListSeparator" parent="Widget.Material.Light.TextView.ListSeparator"/>
+    <style name="Widget.DeviceDefault.Light.TimePicker" parent="Widget.Material.Light.TimePicker"/>
+
+    <!-- Text Appearance Styles -->
+    <style name="TextAppearance.DeviceDefault" parent="TextAppearance.Material"/>
+    <style name="TextAppearance.DeviceDefault.Inverse" parent="TextAppearance.Material.Inverse"/>
+    <style name="TextAppearance.DeviceDefault.Large" parent="TextAppearance.Material.Large"/>
+    <style name="TextAppearance.DeviceDefault.Large.Inverse" parent="TextAppearance.Material.Large.Inverse"/>
+    <style name="TextAppearance.DeviceDefault.Medium" parent="TextAppearance.Material.Medium"/>
+    <style name="TextAppearance.DeviceDefault.Medium.Inverse" parent="TextAppearance.Material.Medium.Inverse"/>
+    <style name="TextAppearance.DeviceDefault.Small" parent="TextAppearance.Material.Small"/>
+    <style name="TextAppearance.DeviceDefault.Small.Inverse" parent="TextAppearance.Material.Small.Inverse"/>
+    <style name="TextAppearance.DeviceDefault.SearchResult.Title" parent="TextAppearance.Material.SearchResult.Title"/>
+    <style name="TextAppearance.DeviceDefault.SearchResult.Subtitle" parent="TextAppearance.Material.SearchResult.Subtitle"/>
+    <style name="TextAppearance.DeviceDefault.Widget" parent="TextAppearance.Material.Widget"/>
+    <style name="TextAppearance.DeviceDefault.Widget.Button" parent="TextAppearance.Material.Widget.Button"/>
+    <style name="TextAppearance.DeviceDefault.Widget.IconMenu.Item" parent="TextAppearance.Material.Widget.IconMenu.Item"/>
+    <style name="TextAppearance.DeviceDefault.Widget.TabWidget" parent="TextAppearance.Material.Widget.TabWidget"/>
+    <style name="TextAppearance.DeviceDefault.Widget.TextView" parent="TextAppearance.Material.Widget.TextView"/>
+    <style name="TextAppearance.DeviceDefault.Widget.TextView.PopupMenu" parent="TextAppearance.Material.Widget.TextView.PopupMenu"/>
+    <style name="TextAppearance.DeviceDefault.Widget.DropDownHint" parent="TextAppearance.Material.Widget.DropDownHint"/>
+    <style name="TextAppearance.DeviceDefault.Widget.DropDownItem" parent="TextAppearance.Material.Widget.DropDownItem"/>
+    <style name="TextAppearance.DeviceDefault.Widget.TextView.SpinnerItem" parent="TextAppearance.Material.Widget.TextView.SpinnerItem"/>
+    <style name="TextAppearance.DeviceDefault.Widget.EditText" parent="TextAppearance.Material.Widget.EditText"/>
+    <style name="TextAppearance.DeviceDefault.Widget.PopupMenu" parent="TextAppearance.Material.Widget.PopupMenu"/>
+    <style name="TextAppearance.DeviceDefault.Widget.PopupMenu.Large" parent="TextAppearance.Material.Widget.PopupMenu.Large"/>
+    <style name="TextAppearance.DeviceDefault.Widget.PopupMenu.Small" parent="TextAppearance.Material.Widget.PopupMenu.Small"/>
+    <style name="TextAppearance.DeviceDefault.Widget.ActionBar.Title" parent="TextAppearance.Material.Widget.ActionBar.Title"/>
+    <style name="TextAppearance.DeviceDefault.Widget.ActionBar.Subtitle" parent="TextAppearance.Material.Widget.ActionBar.Subtitle"/>
+    <style name="TextAppearance.DeviceDefault.Widget.ActionMode.Title" parent="TextAppearance.Material.Widget.ActionMode.Title"/>
+    <style name="TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle" parent="TextAppearance.Material.Widget.ActionMode.Subtitle"/>
+    <style name="TextAppearance.DeviceDefault.WindowTitle" parent="TextAppearance.Material.WindowTitle"/>
+    <style name="TextAppearance.DeviceDefault.DialogWindowTitle" parent="TextAppearance.Material.DialogWindowTitle"/>
+    <!-- @deprecated Action bars are now themed using the inheritable android:theme attribute. -->
+    <style name="TextAppearance.DeviceDefault.Widget.ActionBar.Title.Inverse" parent="TextAppearance.Material.Widget.ActionBar.Title.Inverse"/>
+    <!-- @deprecated Action bars are now themed using the inheritable android:theme attribute. -->
+    <style name="TextAppearance.DeviceDefault.Widget.ActionBar.Subtitle.Inverse" parent="TextAppearance.Material.Widget.ActionBar.Subtitle.Inverse"/>
+    <!-- @deprecated Action bars are now themed using the inheritable android:theme attribute. -->
+    <style name="TextAppearance.DeviceDefault.Widget.ActionMode.Title.Inverse" parent="TextAppearance.Material.Widget.ActionMode.Title.Inverse"/>
+    <!-- @deprecated Action bars are now themed using the inheritable android:theme attribute. -->
+    <style name="TextAppearance.DeviceDefault.Widget.ActionMode.Subtitle.Inverse" parent="TextAppearance.Material.Widget.ActionMode.Subtitle.Inverse"/>
+    <style name="TextAppearance.DeviceDefault.Widget.ActionBar.Menu" parent="TextAppearance.Material.Widget.ActionBar.Menu"/>
+
+    <!-- Preference Styles -->
+    <style name="Preference.DeviceDefault" parent="Preference.Material"/>
+    <style name="Preference.DeviceDefault.Category" parent="Preference.Material.Category"/>
+    <style name="Preference.DeviceDefault.CheckBoxPreference" parent="Preference.Material.CheckBoxPreference"/>
+    <style name="Preference.DeviceDefault.DialogPreference" parent="Preference.Material.DialogPreference"/>
+    <style name="Preference.DeviceDefault.DialogPreference.EditTextPreference" parent="Preference.Material.DialogPreference.EditTextPreference"/>
+    <style name="Preference.DeviceDefault.DialogPreference.YesNoPreference" parent="Preference.Material.DialogPreference.YesNoPreference"/>
+    <style name="Preference.DeviceDefault.Information" parent="Preference.Material.Information"/>
+    <style name="Preference.DeviceDefault.PreferenceScreen" parent="Preference.Material.PreferenceScreen"/>
+    <style name="Preference.DeviceDefault.RingtonePreference" parent="Preference.Material.RingtonePreference"/>
+    <style name="Preference.DeviceDefault.SwitchPreference" parent="Preference.Material.SwitchPreference"/>
+    <style name="Preference.DeviceDefault.SeekBarPreference" parent="Preference.Material.SeekBarPreference"/>
+
+    <!-- AlertDialog Styles -->
+    <style name="AlertDialog.DeviceDefault" parent="AlertDialog.Material"/>
+    <style name="AlertDialog.DeviceDefault.Light" parent="AlertDialog.Material.Light"/>
+
+    <!-- Animation Styles -->
+    <style name="Animation.DeviceDefault.Activity" parent="Animation.Material.Activity"/>
+    <style name="Animation.DeviceDefault.Dialog" parent="Animation.Material.Dialog"/>
+
+    <!-- DialogWindowTitle Styles -->
+    <style name="DialogWindowTitle.DeviceDefault" parent="DialogWindowTitle.Material"/>
+    <style name="DialogWindowTitle.DeviceDefault.Light" parent="DialogWindowTitle.Material.Light"/>
+
+    <!-- WindowTitle Styles -->
+    <style name="WindowTitle.DeviceDefault" parent="WindowTitle.Material"/>
+    <style name="WindowTitleBackground.DeviceDefault" parent="WindowTitleBackground.Material"/>
+
+    <!-- Other Styles -->
+    <style name="DeviceDefault.ButtonBar" parent="Widget.Material.ButtonBar"/>
+    <style name="DeviceDefault.ButtonBar.AlertDialog" parent="Widget.Material.ButtonBar.AlertDialog"/>
+    <style name="DeviceDefault.SegmentedButton" parent="Widget.Material.SegmentedButton"/>
+
+    <style name="DeviceDefault.Light.ButtonBar" parent="Widget.Material.Light.ButtonBar"/>
+    <style name="DeviceDefault.Light.ButtonBar.AlertDialog" parent="Widget.Material.Light.ButtonBar.AlertDialog"/>
+    <style name="DeviceDefault.Light.SegmentedButton" parent="Widget.Material.Light.SegmentedButton"/>
+
+</resources>

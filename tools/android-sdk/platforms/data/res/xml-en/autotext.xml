@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+** Copyright 2008, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License")
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<words>
+    <word src="abouta">about a</word>
+    <word src="aboutit">about it</word>
+    <word src="aboutthe">about the</word>
+    <word src="acheive">achieve</word>
+    <word src="acheived">achieved</word>
+    <word src="acheiving">achieving</word>
+    <word src="acomodate">accommodate</word>
+    <word src="accomodate">accommodate</word>
+    <word src="acn">can</word>
+    <word src="adn">and</word>
+    <word src="agian">again</word>
+    <word src="ahd">had</word>
+    <word src="ahve">have</word>
+    <word src="aint">ain't</word>
+    <word src="alot">a lot</word>
+    <word src="amde">made</word>
+    <word src="amke">make</word>
+    <word src="andone">and one</word>
+    <word src="andteh">and the</word>
+    <word src="anothe">another</word>
+    <word src="arent">aren't</word>
+    <word src="asthe">as the</word>
+    <word src="atthe">at the</word>
+    <word src="bakc">back</word>
+    <word src="beacuse">because</word>
+    <word src="becasue">because</word>
+    <word src="becaus">because</word>
+    <word src="becausea">because a</word>
+    <word src="becauseof">because of</word>
+    <word src="becausethe">because the</word>
+    <word src="becauseyou">because you</word>
+    <word src="becuase">because</word>
+    <word src="becuse">because</word>
+    <word src="beleive">believe</word>
+    <word src="butthe">but the</word>
+    <word src="cant">can't</word>
+    <word src="certian">certain</word>
+    <word src="changable">changeable</word>
+    <word src="chekc">check</word>
+    <word src="chnage">change</word>
+    <word src="couldnt">couldn't</word>
+    <word src="couldthe">could the</word>
+    <word src="couldve">could've</word>
+    <word src="cna">can</word>
+    <word src="committment">commitment</word>
+    <word src="committments">commitments</word>
+    <word src="companys">company's</word>
+    <word src="cxan">can</word>
+    <word src="didint">didn't</word>
+    <word src="didnot">did not</word>
+    <word src="didnt">didn't</word>
+    <word src="doesnt">doesn't</word>
+    <word src="dont">don't</word>
+    <word src="eyt">yet</word>
+    <word src="fidn">find</word>
+    <word src="fora">for a</word>
+    <word src="freind">friend</word>
+    <word src="friday">Friday</word>
+    <word src="hadbeen">had been</word>
+    <word src="hadnt">hadn't</word>
+    <word src="haev">have</word>
+    <word src="hasbeen">has been</word>
+    <word src="hasnt">hasn't</word>
+    <word src="havent">haven't</word>
+    <word src="hed">he'd</word>
+    <word src="hel">he'll</word>
+    <word src="heres">here's</word>
+    <word src="hes">he's</word>
+    <word src="hlep">help</word>
+    <word src="howd">how'd</word>
+    <word src="howll">how'll</word>
+    <word src="hows">how's</word>
+    <word src="howve">how've</word>
+    <word src="hte">the</word>
+    <word src="htis">this</word>
+    <word src="hvae">have</word>
+    <word src="i">I</word>
+    <word src="il">I'll</word>
+    <word src="im">I'm</word>
+    <word src="i'm">I'm</word>
+    <word src="i'll">I'll</word>
+    <word src="i've">I've</word>
+    <word src="inteh">in the</word>
+    <word src="isnt">isn't</word>
+    <word src="isthe">is the</word>
+    <word src="itd">it'd</word>
+    <word src="itis">it is</word>
+    <word src="itll">it'll</word>
+    <word src="itsa">it's a</word>
+    <word src="ive">I've</word>
+    <word src="lets">let's</word>
+    <word src="maam">ma'am</word>
+    <word src="mkae">make</word>
+    <word src="mkaes">makes</word>
+    <word src="monday">Monday</word>
+    <word src="mustnt">mustn't</word>
+    <word src="neednt">needn't</word>
+    <word src="oclock">o'clock</word>
+    <word src="ofits">of its</word>
+    <word src="ofthe">of the</word>
+    <word src="omre">more</word>
+    <word src="oneof">one of</word>
+    <word src="otehr">other</word>
+    <word src="outof">out of</word>
+    <word src="overthe">over the</word>
+    <word src="owrk">work</word>
+    <word src="percentof">percent of</word>
+    <word src="recieve">receive</word>
+    <word src="recieved">received</word>
+    <word src="recieving">receiving</word>
+    <word src="saidthat">said that</word>
+    <word src="saidthe">said the</word>
+    <word src="saturday">Saturday</word>
+    <word src="seh">she</word>
+    <word src="shant">shan't</word>
+    <word src="she'">she'll</word>
+    <word src="shel">she'll</word>
+    <word src="shes">she's</word>
+    <word src="shouldent">shouldn't</word>
+    <word src="shouldnt">shouldn't</word>
+    <word src="shouldve">should've</word>
+    <word src="sunday">Sunday</word>
+    <word src="tahn">than</word>
+    <word src="taht">that</word>
+    <word src="teh">the</word>
+    <word src="thatd">that'd</word>
+    <word src="thatll">that'll</word>
+    <word src="thats">that's</word>
+    <word src="thatthe">that the</word>
+    <word src="theres">there's</word>
+    <word src="theyd">they'd</word>
+    <word src="theyll">they'll</word>
+    <word src="theyre">they're</word>
+    <word src="theyve">they've</word>
+    <word src="thier">their</word>
+    <word src="thsi">this</word>
+    <word src="thursday">Thursday</word>
+    <word src="tothe">to the</word>
+    <word src="tuesday">Tuesday</word>
+    <word src="UnitedStates">United States</word>
+    <word src="unitedstates">United States</word>
+    <word src="visavis">vis-a-vis</word>
+    <word src="wasnt">wasn't</word>
+    <word src="wednesday">Wednesday</word>
+    <word src="wierd">weird</word>
+    <word src="wel">we'll</word>
+    <word src="wer">we're</word>
+    <word src="werent">weren't</word>
+    <word src="weve">we've</word>
+    <word src="whatd">what'd</word>
+    <word src="whatll">what'll</word>
+    <word src="whatm">what'm</word>
+    <word src="whatre">what're</word>
+    <word src="whats">what's</word>
+    <word src="whens">when's</word>
+    <word src="whered">where'd</word>
+    <word src="wherell">where'll</word>
+    <word src="wheres">where's</word>
+    <word src="whod">who'd</word>
+    <word src="wholl">who'll</word>
+    <word src="whos">who's</word>
+    <word src="whove">who've</word>
+    <word src="whyd">why'd</word>
+    <word src="whyll">why'll</word>
+    <word src="whys">why's</word>
+    <word src="whyve">why've</word>
+    <word src="witha">with a</word>
+    <word src="wont">won't</word>
+    <word src="wouldnt">wouldn't</word>
+    <word src="wouldve">would've</word>
+    <word src="yall">y'all</word>
+    <word src="youd">you'd</word>
+    <word src="youll">you'll</word>
+    <word src="youre">you're</word>
+    <word src="youve">you've</word>
+</words>

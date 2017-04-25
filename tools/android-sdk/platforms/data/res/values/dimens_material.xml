@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <!-- Preference activity, vertical padding for the header list -->
+    <dimen name="preference_screen_header_vertical_padding_material">0dp</dimen>
+
+    <!-- Preference activity side margins -->
+    <dimen name="preference_screen_side_margin_material">0dp</dimen>
+    <!-- Preference activity side margins negative-->
+    <dimen name="preference_screen_side_margin_negative_material">0dp</dimen>
+
+    <!-- Preference fragment padding, sides -->
+    <dimen name="preference_fragment_padding_side_material">0dp</dimen>
+    <!-- Preference fragment padding, vertical -->
+    <dimen name="preference_fragment_padding_vertical_material">0dp</dimen>
+
+    <!-- Preference breadcrumbs padding, start padding -->
+    <dimen name="preference_breadcrumbs_padding_start_material">12dp</dimen>
+
+    <!-- Preference breadcrumbs padding, end padding -->
+    <dimen name="preference_breadcrumbs_padding_end_material">24dp</dimen>
+
+    <dimen name="preference_screen_header_padding_side_material">0dp</dimen>
+
+    <!-- Default height of an action bar. -->
+    <dimen name="action_bar_default_height_material">56dp</dimen>
+    <!-- Default start padding of an action bar. -->
+    <dimen name="action_bar_default_padding_start_material">0dp</dimen>
+    <!-- Default end padding of an action bar. -->
+    <dimen name="action_bar_default_padding_end_material">0dp</dimen>
+    <!-- Default content inset of an action bar. -->
+    <dimen name="action_bar_content_inset_material">16dp</dimen>
+    <!-- Default content inset of an action bar when a navigation button is present. -->
+    <dimen name="action_bar_content_inset_with_nav">72dp</dimen>
+    <!-- Vertical padding around action bar icons. -->
+    <dimen name="action_bar_icon_vertical_padding_material">16dp</dimen>
+    <!-- Top margin for action bar subtitles -->
+    <dimen name="action_bar_subtitle_top_margin_material">-3dp</dimen>
+    <!-- Bottom margin for action bar subtitles -->
+    <dimen name="action_bar_subtitle_bottom_margin_material">5dp</dimen>
+
+    <!-- Default padding for list items. This should match the action bar
+         content inset so that ListActivity items line up correctly. -->
+    <dimen name="list_item_padding_horizontal_material">@dimen/action_bar_content_inset_material</dimen>
+    <dimen name="list_item_padding_start_material">@dimen/action_bar_content_inset_material</dimen>
+    <dimen name="list_item_padding_end_material">@dimen/action_bar_content_inset_material</dimen>
+
+    <!-- Padding to add to the start of the overflow action button. -->
+    <dimen name="action_bar_overflow_padding_start_material">6dp</dimen>
+    <!-- Padding to add to the end of the overflow action button. -->
+    <dimen name="action_bar_overflow_padding_end_material">10dp</dimen>
+    <dimen name="action_bar_elevation_material">4dp</dimen>
+
+    <dimen name="action_button_min_width_overflow_material">36dp</dimen>
+    <dimen name="action_button_min_width_material">48dp</dimen>
+    <dimen name="action_button_min_height_material">48dp</dimen>
+
+    <dimen name="text_size_display_4_material">112sp</dimen>
+    <dimen name="text_size_display_3_material">56sp</dimen>
+    <dimen name="text_size_display_2_material">45sp</dimen>
+    <dimen name="text_size_display_1_material">34sp</dimen>
+    <dimen name="text_size_headline_material">24sp</dimen>
+    <dimen name="text_size_title_material">20sp</dimen>
+    <dimen name="text_size_subhead_material">16sp</dimen>
+    <dimen name="text_size_title_material_toolbar">20dp</dimen>
+    <dimen name="text_size_subtitle_material_toolbar">16dp</dimen>
+    <dimen name="text_size_menu_material">16sp</dimen>
+    <dimen name="text_size_menu_header_material">14sp</dimen>
+    <dimen name="text_size_body_2_material">14sp</dimen>
+    <dimen name="text_size_body_1_material">14sp</dimen>
+    <dimen name="text_size_caption_material">12sp</dimen>
+    <dimen name="text_size_button_material">14sp</dimen>
+
+    <dimen name="text_size_large_material">22sp</dimen>
+    <dimen name="text_size_medium_material">18sp</dimen>
+    <dimen name="text_size_small_material">14sp</dimen>
+
+    <item name="text_line_spacing_multiplier_material" format="float" type="dimen">1.0</item>
+
+    <dimen name="text_edit_floating_toolbar_elevation">2dp</dimen>
+    <dimen name="text_edit_floating_toolbar_margin">20dp</dimen>
+
+    <dimen name="floating_window_z">16dp</dimen>
+    <dimen name="floating_window_margin_left">16dp</dimen>
+    <dimen name="floating_window_margin_top">8dp</dimen>
+    <dimen name="floating_window_margin_right">16dp</dimen>
+    <dimen name="floating_window_margin_bottom">32dp</dimen>
+
+    <!-- Elevation when button is pressed -->
+    <dimen name="button_elevation_material">2dp</dimen>
+    <!-- Z translation to apply when button is pressed -->
+    <dimen name="button_pressed_z_material">4dp</dimen>
+    <!-- Default insets (outer padding) around buttons -->
+    <dimen name="button_inset_vertical_material">6dp</dimen>
+    <dimen name="button_inset_horizontal_material">@dimen/control_inset_material</dimen>
+    <!-- Default inner padding within buttons -->
+    <dimen name="button_padding_vertical_material">@dimen/control_padding_material</dimen>
+    <dimen name="button_padding_horizontal_material">8dp</dimen>
+
+    <!-- Default insets (outer padding) around controls -->
+    <dimen name="control_inset_material">4dp</dimen>
+    <!-- Default inner padding within controls -->
+    <dimen name="control_padding_material">4dp</dimen>
+    <!-- Default rounded corner for controls -->
+    <dimen name="control_corner_material">2dp</dimen>
+
+    <dimen name="edit_text_inset_horizontal_material">4dp</dimen>
+    <dimen name="edit_text_inset_top_material">10dp</dimen>
+    <dimen name="edit_text_inset_bottom_material">7dp</dimen>
+
+    <dimen name="dialog_padding_material">24dp</dimen>
+    <dimen name="dialog_padding_top_material">18dp</dimen>
+    <dimen name="dialog_title_divider_material">8dp</dimen>
+    <dimen name="dialog_list_padding_top_no_title">8dp</dimen>
+    <dimen name="dialog_list_padding_bottom_no_buttons">8dp</dimen>
+
+    <!-- Dialog padding minus control padding, used to fix alignment. -->
+    <dimen name="select_dialog_padding_start_material">20dp</dimen>
+
+    <dimen name="seekbar_track_background_height_material">2dp</dimen>
+    <dimen name="seekbar_track_progress_height_material">2dp</dimen>
+
+    <dimen name="progress_bar_height_material">4dp</dimen>
+
+    <!-- Material time picker dimensions. -->
+    <!-- Text size for the time picker header HH:MM label. This value is large
+         enough that we don't need to use scaled pixels, dp is fine. -->
+    <dimen name="timepicker_time_label_size">60dp</dimen>
+    <dimen name="timepicker_ampm_label_size">16dp</dimen>
+    <dimen name="timepicker_ampm_horizontal_padding">16dp</dimen>
+    <dimen name="timepicker_am_top_padding">4dp</dimen>
+    <dimen name="timepicker_pm_top_padding">4dp</dimen>
+    <dimen name="timepicker_separator_padding">2dp</dimen>
+    <dimen name="timepicker_header_height">96dp</dimen>
+    <dimen name="timepicker_radial_picker_dimen">296dp</dimen>
+    <dimen name="timepicker_radial_picker_top_margin">16dp</dimen>
+    <dimen name="timepicker_radial_picker_horizontal_margin">16dp</dimen>
+
+    <!-- Used by RadialTimePicker in clock-style TimePicker. -->
+    <dimen name="timepicker_selector_radius">20dp</dimen>
+    <dimen name="timepicker_selector_stroke">2dp</dimen>
+    <dimen name="timepicker_center_dot_radius">3dp</dimen>
+    <dimen name="timepicker_selector_dot_radius">2dp</dimen>
+    <dimen name="timepicker_text_inset_normal">22dp</dimen>
+    <dimen name="timepicker_text_inset_inner">58dp</dimen>
+    <dimen name="timepicker_text_size_normal">16sp</dimen>
+    <dimen name="timepicker_text_size_inner">12sp</dimen>
+
+    <!-- Material date picker dimensions. -->
+    <dimen name="datepicker_year_label_height">64dp</dimen>
+    <dimen name="datepicker_component_width">260dp</dimen>
+    <dimen name="datepicker_dialog_width">520dp</dimen>
+    <dimen name="datepicker_selected_date_day_size">88dp</dimen>
+    <dimen name="datepicker_selected_date_month_size">24dp</dimen>
+    <dimen name="datepicker_selected_date_year_size">24dp</dimen>
+    <dimen name="datepicker_header_height">30dp</dimen>
+    <dimen name="datepicker_header_text_size">14dp</dimen>
+
+    <dimen name="datepicker_list_year_label_size">16sp</dimen>
+    <dimen name="datepicker_list_year_activated_label_size">26sp</dimen>
+
+    <dimen name="date_picker_year_label_size">16sp</dimen>
+    <dimen name="date_picker_date_label_size">34dp</dimen>
+
+    <!-- Used by Material-style SimpleMonthView -->
+    <dimen name="date_picker_month_text_size">14sp</dimen>
+    <dimen name="date_picker_day_of_week_text_size">12sp</dimen>
+    <dimen name="date_picker_day_text_size">12sp</dimen>
+    <dimen name="date_picker_month_height">56dp</dimen>
+    <dimen name="date_picker_day_of_week_height">36dp</dimen>
+    <dimen name="date_picker_day_height">40dp</dimen>
+    <dimen name="date_picker_day_width">44dp</dimen>
+    <dimen name="date_picker_day_selector_radius">20dp</dimen>
+    <dimen name="day_picker_padding_horizontal">20dp</dimen>
+    <dimen name="day_picker_padding_top">6dp</dimen>
+    <dimen name="day_picker_button_margin_top">0dp</dimen>
+
+    <dimen name="datepicker_view_animator_height">226dp</dimen>
+</resources>

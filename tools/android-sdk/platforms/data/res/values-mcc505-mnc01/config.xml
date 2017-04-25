@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2013, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You my obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<!-- These resources are around just to allow their values to be customized
+     for different hardware and product builds. -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
+    <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
+    <!== [0,1,5,7] for TYPE_MOBILE, TYPE_WIFI, TYPE_MOBILE_HIPRI and TYPE_BLUETOOTH -->
+    <integer-array translatable="false" name="config_tether_upstream_types">
+      <item>1</item>
+      <item>4</item>
+      <item>7</item>
+      <item>9</item>
+    </integer-array>
+
+    <!-- String containing the apn value for tethering.  May be overriden by secure settings
+         TETHER_DUN_APN.  Value is a comma separated series of strings:
+         "name,apn,proxy,port,username,password,server,mmsc,mmsproxy,mmsport,mcc,mnc,auth,type",
+         Or string format of ApnSettingV3.
+         note that empty fields can be ommitted: "name,apn,,,,,,,,,310,260,,DUN" -->
+    <string-array translatable="false" name="config_tether_apndata">
+      <item>Telstra Tethering,telstra.internet,,,,,,,,,505,01,,DUN</item>
+    </string-array>
+
+    <!-- Configure mobile network MTU. Carrier specific value is set here.
+    -->
+    <integer name="config_mobile_mtu">1400</integer>
+
+</resources>

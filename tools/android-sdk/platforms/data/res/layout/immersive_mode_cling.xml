@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/colorAccent"
+        android:gravity="center_vertical"
+        android:paddingBottom="24dp">
+
+    <FrameLayout
+            android:id="@+id/immersive_cling_chevron"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_marginTop="-24dp"
+            android:layout_centerHorizontal="true">
+
+        <ImageView
+                android:id="@+id/immersive_cling_back_bg_light"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@drawable/immersive_cling_light_bg_circ" />
+
+        <ImageView
+                android:id="@+id/immersive_cling_back_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="center"
+                android:src="@drawable/immersive_cling_bg_circ" />
+
+        <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="8dp"
+                android:scaleType="center"
+                android:src="@drawable/ic_expand_more_48dp"
+                android:tint="?android:attr/colorAccent"/>
+    </FrameLayout>
+
+    <TextView
+            android:id="@+id/immersive_cling_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/immersive_cling_chevron"
+            android:paddingEnd="48dp"
+            android:paddingStart="48dp"
+            android:paddingTop="40dp"
+            android:text="@string/immersive_cling_title"
+            android:textColor="@color/primary_text_default_material_light"
+            android:textSize="24sp" />
+
+    <TextView
+            android:id="@+id/immersive_cling_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/immersive_cling_title"
+            android:paddingEnd="48dp"
+            android:paddingStart="48dp"
+            android:paddingTop="12.6dp"
+            android:text="@string/immersive_cling_description"
+            android:textColor="@color/primary_text_default_material_light"
+            android:textSize="16sp" />
+
+    <Button
+            android:id="@+id/ok"
+            style="@style/Widget.Material.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/immersive_cling_description"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="18dp"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:text="@string/immersive_cling_positive"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+</RelativeLayout>

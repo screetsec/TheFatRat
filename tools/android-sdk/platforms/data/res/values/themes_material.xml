@@ -1,0 +1,1376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!--
+===============================================================
+                        PLEASE READ
+===============================================================
+
+The Material themes must not be modified in order to pass CTS.
+Many related themes and styles depend on other values defined in this file.
+If you would like to provide custom themes and styles for your device,
+please see themes_device_defaults.xml.
+
+===============================================================
+                        PLEASE READ
+===============================================================
+ -->
+<resources>
+
+    <!-- Material theme (dark version).
+         <p>If you want to ensure that your
+         app consistently uses the Material theme at all times, you must explicitly declare it in your
+         manifest. For example, {@code <application android:theme="@style/Theme.Material">}.
+
+         <p>Styles used by the Material theme are named using the convention Type.Material.Etc
+         (for example, {@code Widget.Material.Button} and {@code
+         TextAppearance.Material.Widget.PopupMenu.Large}).
+         Specific resources used by Material are named using the convention @type/foo_bar_baz_material
+         with trailing _dark or _light specifiers if they are not shared between both light and
+         dark versions of the theme. -->
+    <style name="Theme.Material">
+        <item name="colorForeground">@color/foreground_material_dark</item>
+        <item name="colorForegroundInverse">@color/foreground_material_light</item>
+        <item name="colorBackground">@color/background_material_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_material_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_material_dark</item>
+        <item name="disabledAlpha">@dimen/disabled_alpha_material_dark</item>
+        <item name="backgroundDimAmount">0.6</item>
+
+        <!-- Text styles -->
+        <item name="textAppearance">@style/TextAppearance.Material</item>
+        <item name="textAppearanceInverse">@style/TextAppearance.Material.Inverse</item>
+
+        <item name="textColorPrimary">@color/primary_text_material_dark</item>
+        <item name="textColorPrimaryInverse">@color/primary_text_material_light</item>
+        <item name="textColorPrimaryActivated">@color/primary_text_inverse_when_activated_material</item>
+        <item name="textColorPrimaryDisableOnly">@color/primary_text_disable_only_material_dark</item>
+        <item name="textColorSecondary">@color/secondary_text_material_dark</item>
+        <item name="textColorSecondaryInverse">@color/secondary_text_material_light</item>
+        <item name="textColorSecondaryActivated">@color/secondary_text_inverse_when_activated_material</item>
+        <item name="textColorTertiary">@color/secondary_text_material_dark</item>
+        <item name="textColorTertiaryInverse">@color/secondary_text_material_light</item>
+        <item name="textColorHint">@color/hint_foreground_material_dark</item>
+        <item name="textColorHintInverse">@color/hint_foreground_material_light</item>
+        <item name="textColorHighlight">@color/highlighted_text_material</item>
+        <item name="textColorHighlightInverse">@color/highlighted_text_material</item>
+        <item name="textColorLink">?attr/colorAccent</item>
+        <item name="textColorLinkInverse">?attr/colorAccent</item>
+        <item name="textColorSearchUrl">@color/search_url_text_material_dark</item>
+        <item name="textColorAlertDialogListItem">@color/primary_text_material_dark</item>
+
+        <item name="textAppearanceLarge">@style/TextAppearance.Material.Large</item>
+        <item name="textAppearanceLargeInverse">@style/TextAppearance.Material.Large.Inverse</item>
+        <item name="textAppearanceMedium">@style/TextAppearance.Material.Medium</item>
+        <item name="textAppearanceMediumInverse">@style/TextAppearance.Material.Medium.Inverse</item>
+        <item name="textAppearanceSmall">@style/TextAppearance.Material.Small</item>
+        <item name="textAppearanceSmallInverse">@style/TextAppearance.Material.Small.Inverse</item>
+        <item name="textAppearanceSearchResultTitle">@style/TextAppearance.Material.SearchResult.Title</item>
+        <item name="textAppearanceSearchResultSubtitle">@style/TextAppearance.Material.SearchResult.Subtitle</item>
+
+        <item name="textAppearanceButton">@style/TextAppearance.Material.Widget.Button</item>
+
+        <item name="editTextColor">?attr/textColorPrimary</item>
+        <item name="editTextBackground">@drawable/edit_text_material</item>
+
+        <item name="candidatesTextStyleSpans">@string/candidates_style</item>
+
+        <item name="textCheckMark">@drawable/indicator_check_mark_dark</item>
+        <item name="textCheckMarkInverse">@drawable/indicator_check_mark_light</item>
+
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.Material.Widget.PopupMenu.Large</item>
+        <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.Material.Widget.PopupMenu.Small</item>
+        <item name="textAppearancePopupMenuHeader">@style/TextAppearance.Material.Widget.PopupMenu.Header</item>
+
+        <!-- Button styles -->
+        <item name="buttonStyle">@style/Widget.Material.Button</item>
+        <item name="buttonStyleSmall">@style/Widget.Material.Button.Small</item>
+        <item name="buttonStyleInset">@style/Widget.Material.Button.Inset</item>
+        <item name="buttonStyleToggle">@style/Widget.Material.Button.Toggle</item>
+
+        <item name="switchStyle">@style/Widget.Material.CompoundButton.Switch</item>
+        <item name="mediaRouteButtonStyle">@style/Widget.Material.MediaRouteButton</item>
+
+        <item name="selectableItemBackground">@drawable/item_background_material</item>
+        <item name="selectableItemBackgroundBorderless">@drawable/item_background_borderless_material</item>
+        <item name="borderlessButtonStyle">@style/Widget.Material.Button.Borderless</item>
+        <item name="homeAsUpIndicator">@drawable/ic_ab_back_material</item>
+
+        <!-- List attributes -->
+        <item name="listPreferredItemHeight">64dip</item>
+        <item name="listPreferredItemHeightSmall">48dip</item>
+        <item name="listPreferredItemHeightLarge">80dip</item>
+        <item name="dropdownListPreferredItemHeight">?attr/listPreferredItemHeightSmall</item>
+        <item name="textAppearanceListItem">@style/TextAppearance.Material.Subhead</item>
+        <item name="textAppearanceListItemSmall">@style/TextAppearance.Material.Subhead</item>
+        <item name="textAppearanceListItemSecondary">@style/TextAppearance.Material.Body1</item>
+        <item name="listPreferredItemPaddingLeft">@dimen/list_item_padding_horizontal_material</item>
+        <item name="listPreferredItemPaddingRight">@dimen/list_item_padding_horizontal_material</item>
+        <item name="listPreferredItemPaddingStart">@dimen/list_item_padding_start_material</item>
+        <item name="listPreferredItemPaddingEnd">@dimen/list_item_padding_end_material</item>
+
+        <!-- @hide -->
+        <item name="searchResultListItemHeight">58dip</item>
+        <item name="listDivider">@drawable/list_divider_material</item>
+        <item name="listSeparatorTextViewStyle">@style/Widget.Material.TextView.ListSeparator</item>
+
+        <item name="listChoiceIndicatorSingle">@drawable/btn_radio_material_anim</item>
+        <item name="listChoiceIndicatorMultiple">@drawable/btn_check_material_anim</item>
+
+        <item name="listChoiceBackgroundIndicator">@drawable/list_choice_background_material</item>
+        <item name="activatedBackgroundIndicator">@drawable/activated_background_material</item>
+
+        <item name="listDividerAlertDialog">@null</item>
+
+        <item name="expandableListPreferredItemPaddingLeft">40dip</item>
+        <item name="expandableListPreferredChildPaddingLeft">?attr/expandableListPreferredItemPaddingLeft</item>
+
+        <item name="expandableListPreferredItemIndicatorLeft">3dip</item>
+        <item name="expandableListPreferredItemIndicatorRight">0dip</item>
+        <item name="expandableListPreferredChildIndicatorLeft">?attr/expandableListPreferredItemIndicatorLeft</item>
+        <item name="expandableListPreferredChildIndicatorRight">?attr/expandableListPreferredItemIndicatorRight</item>
+
+        <item name="findOnPageNextDrawable">@drawable/ic_find_next_material</item>
+        <item name="findOnPagePreviousDrawable">@drawable/ic_find_previous_material</item>
+
+        <!-- Gallery attributes -->
+        <item name="galleryItemBackground">@drawable/gallery_item_background</item>
+
+        <!-- Window attributes -->
+        <item name="windowBackground">?attr/colorBackground</item>
+        <item name="windowClipToOutline">true</item>
+        <item name="windowFrame">@null</item>
+        <item name="windowNoTitle">@bool/config_windowNoTitleDefault</item>
+        <item name="windowFullscreen">false</item>
+        <item name="windowOverscan">@bool/config_windowOverscanByDefault</item>
+        <item name="windowIsFloating">false</item>
+        <item name="windowContentOverlay">@null</item>
+        <item name="windowShowWallpaper">false</item>
+        <item name="windowTitleStyle">@style/WindowTitle.Material</item>
+        <item name="windowTitleSize">@dimen/action_bar_default_height_material</item>
+        <item name="windowTitleBackgroundStyle">@style/WindowTitleBackground.Material</item>
+        <item name="windowAnimationStyle">@style/Animation.Material.Activity</item>
+        <item name="windowSoftInputMode">stateUnspecified|adjustUnspecified</item>
+        <item name="windowActionBar">@bool/config_windowActionBarSupported</item>
+        <item name="windowActionModeOverlay">false</item>
+        <item name="windowDrawsSystemBarBackgrounds">true</item>
+        <item name="windowActionBarFullscreenDecorLayout">@layout/screen_toolbar</item>
+        <item name="statusBarColor">?attr/colorPrimaryDark</item>
+        <item name="navigationBarColor">@color/black</item>
+        <item name="windowEnterTransition">@transition/fade</item>
+        <item name="windowSharedElementEnterTransition">@transition/move</item>
+        <item name="windowSharedElementExitTransition">@transition/move</item>
+        <item name="windowContentTransitions">false</item>
+        <item name="windowActivityTransitions">true</item>
+
+        <!-- Dialog attributes -->
+        <item name="dialogTheme">@style/ThemeOverlay.Material.Dialog</item>
+        <item name="dialogTitleIconsDecorLayout">@layout/dialog_title_icons_material</item>
+        <item name="dialogCustomTitleDecorLayout">@layout/dialog_custom_title_material</item>
+        <item name="dialogTitleDecorLayout">@layout/dialog_title_material</item>
+        <item name="dialogPreferredPadding">@dimen/dialog_padding_material</item>
+
+        <!-- AlertDialog attributes -->
+        <item name="alertDialogTheme">@style/ThemeOverlay.Material.Dialog.Alert</item>
+        <item name="alertDialogStyle">@style/AlertDialog.Material</item>
+        <item name="alertDialogCenterButtons">false</item>
+        <item name="alertDialogIcon">@drawable/ic_dialog_alert_material</item>
+
+        <!-- Presentation attributes -->
+        <item name="presentationTheme">@style/Theme.Material.Dialog.Presentation</item>
+
+        <!-- Toast attributes -->
+        <item name="toastFrameBackground">@drawable/toast_frame</item>
+
+        <!-- Panel attributes -->
+        <item name="panelBackground">?attr/colorBackground</item>
+        <item name="panelFullBackground">@drawable/menu_background_fill_parent_width</item>
+        <!-- These three attributes do not seems to be used by the framework. Declared public though -->
+        <item name="panelColorBackground">#000</item>
+        <item name="panelColorForeground">?attr/textColorPrimary</item>
+        <item name="panelTextAppearance">?attr/textAppearance</item>
+
+        <item name="panelMenuIsCompact">true</item>
+        <item name="panelMenuListWidth">250dip</item>
+        <item name="panelMenuListTheme">@style/Theme.Material.CompactMenu</item>
+
+        <!-- Scrollbar attributes -->
+        <item name="scrollbarFadeDuration">250</item>
+        <item name="scrollbarDefaultDelayBeforeFade">400</item>
+        <item name="scrollbarSize">10dp</item>
+        <item name="scrollbarThumbHorizontal">@drawable/scrollbar_handle_material</item>
+        <item name="scrollbarThumbVertical">@drawable/scrollbar_handle_material</item>
+        <item name="scrollbarTrackHorizontal">@null</item>
+        <item name="scrollbarTrackVertical">@null</item>
+
+        <!-- Text selection handle attributes -->
+        <item name="textSelectHandleLeft">@drawable/text_select_handle_left_material</item>
+        <item name="textSelectHandleRight">@drawable/text_select_handle_right_material</item>
+        <item name="textSelectHandle">@drawable/text_select_handle_middle_material</item>
+        <item name="textSelectHandleWindowStyle">@style/Widget.Material.TextSelectHandle</item>
+        <item name="textEditSuggestionItemLayout">@layout/text_edit_suggestion_item_material</item>
+        <item name="textEditSuggestionContainerLayout">@layout/text_edit_suggestion_container_material</item>
+        <item name="textEditSuggestionHighlightStyle">@style/TextAppearance.Material.TextSuggestionHighlight</item>
+        <item name="textCursorDrawable">@drawable/text_cursor_material</item>
+
+        <!-- Widget styles -->
+        <item name="absListViewStyle">@style/Widget.Material.AbsListView</item>
+        <item name="autoCompleteTextViewStyle">@style/Widget.Material.AutoCompleteTextView</item>
+        <item name="checkboxStyle">@style/Widget.Material.CompoundButton.CheckBox</item>
+        <item name="checkedTextViewStyle">@style/Widget.Material.CheckedTextView</item>
+        <item name="dropDownListViewStyle">@style/Widget.Material.ListView.DropDown</item>
+        <item name="editTextStyle">@style/Widget.Material.EditText</item>
+        <item name="expandableListViewStyle">@style/Widget.Material.ExpandableListView</item>
+        <item name="expandableListViewWhiteStyle">@style/Widget.Material.ExpandableListView.White</item>
+        <item name="fastScrollStyle">@style/Widget.Material.FastScroll</item>
+        <item name="galleryStyle">@style/Widget.Material.Gallery</item>
+        <item name="gestureOverlayViewStyle">@style/Widget.Material.GestureOverlayView</item>
+        <item name="gridViewStyle">@style/Widget.Material.GridView</item>
+        <item name="imageButtonStyle">@style/Widget.Material.ImageButton</item>
+        <item name="imageWellStyle">@style/Widget.Material.ImageWell</item>
+        <item name="listMenuViewStyle">@style/Widget.Material.ListMenuView</item>
+        <item name="listViewStyle">@style/Widget.Material.ListView</item>
+        <item name="listViewWhiteStyle">@style/Widget.Material.ListView.White</item>
+        <item name="popupWindowStyle">@style/Widget.Material.PopupWindow</item>
+        <item name="progressBarStyle">@style/Widget.Material.ProgressBar</item>
+        <item name="progressBarStyleHorizontal">@style/Widget.Material.ProgressBar.Horizontal</item>
+        <item name="progressBarStyleSmall">@style/Widget.Material.ProgressBar.Small</item>
+        <item name="progressBarStyleSmallTitle">@style/Widget.Material.ProgressBar.Small.Title</item>
+        <item name="progressBarStyleLarge">@style/Widget.Material.ProgressBar.Large</item>
+        <item name="progressBarStyleInverse">@style/Widget.Material.ProgressBar.Inverse</item>
+        <item name="progressBarStyleSmallInverse">@style/Widget.Material.ProgressBar.Small.Inverse</item>
+        <item name="progressBarStyleLargeInverse">@style/Widget.Material.ProgressBar.Large.Inverse</item>
+        <item name="seekBarStyle">@style/Widget.Material.SeekBar</item>
+        <item name="ratingBarStyle">@style/Widget.Material.RatingBar</item>
+        <item name="ratingBarStyleIndicator">@style/Widget.Material.RatingBar.Indicator</item>
+        <item name="ratingBarStyleSmall">@style/Widget.Material.RatingBar.Small</item>
+        <item name="radioButtonStyle">@style/Widget.Material.CompoundButton.RadioButton</item>
+        <item name="scrollViewStyle">@style/Widget.Material.ScrollView</item>
+        <item name="horizontalScrollViewStyle">@style/Widget.Material.HorizontalScrollView</item>
+        <item name="spinnerStyle">?attr/dropDownSpinnerStyle</item>
+        <item name="dropDownSpinnerStyle">@style/Widget.Material.Spinner.DropDown</item>
+        <item name="starStyle">@style/Widget.Material.CompoundButton.Star</item>
+        <item name="tabWidgetStyle">@style/Widget.Material.TabWidget</item>
+        <item name="textViewStyle">@style/Widget.Material.TextView</item>
+        <item name="errorMessageBackground">@drawable/popup_inline_error_holo_dark</item>
+        <item name="errorMessageAboveBackground">@drawable/popup_inline_error_above_holo_dark</item>
+        <item name="webTextViewStyle">@style/Widget.Material.WebTextView</item>
+        <item name="webViewStyle">@style/Widget.Material.WebView</item>
+        <item name="dropDownItemStyle">@style/Widget.Material.DropDownItem</item>
+        <item name="spinnerDropDownItemStyle">@style/Widget.Material.DropDownItem.Spinner</item>
+        <item name="spinnerItemStyle">@style/Widget.Material.TextView.SpinnerItem</item>
+        <item name="dropDownHintAppearance">@style/TextAppearance.Material.Widget.DropDownHint</item>
+        <item name="keyboardViewStyle">@style/Widget.Material.KeyboardView</item>
+        <item name="quickContactBadgeStyleWindowSmall">@style/Widget.Material.QuickContactBadge.WindowSmall</item>
+        <item name="quickContactBadgeStyleWindowMedium">@style/Widget.Material.QuickContactBadge.WindowMedium</item>
+        <item name="quickContactBadgeStyleWindowLarge">@style/Widget.Material.QuickContactBadge.WindowLarge</item>
+        <item name="quickContactBadgeStyleSmallWindowSmall">@style/Widget.Material.QuickContactBadgeSmall.WindowSmall</item>
+        <item name="quickContactBadgeStyleSmallWindowMedium">@style/Widget.Material.QuickContactBadgeSmall.WindowMedium</item>
+        <item name="quickContactBadgeStyleSmallWindowLarge">@style/Widget.Material.QuickContactBadgeSmall.WindowLarge</item>
+        <item name="listPopupWindowStyle">@style/Widget.Material.ListPopupWindow</item>
+        <item name="popupMenuStyle">@style/Widget.Material.PopupMenu</item>
+        <item name="popupTheme">@null</item>
+        <item name="stackViewStyle">@style/Widget.Material.StackView</item>
+        <item name="activityChooserViewStyle">@style/Widget.Material.ActivityChooserView</item>
+        <item name="fragmentBreadCrumbsStyle">@style/Widget.Material.FragmentBreadCrumbs</item>
+        <item name="contextPopupMenuStyle">@style/Widget.Material.ContextPopupMenu</item>
+
+        <!-- Preference styles -->
+        <item name="preferenceScreenStyle">@style/Preference.Material.PreferenceScreen</item>
+        <item name="preferenceActivityStyle">@style/PreferenceActivity.Material</item>
+        <item name="preferenceFragmentStyle">@style/PreferenceFragment.Material</item>
+        <item name="preferenceCategoryStyle">@style/Preference.Material.Category</item>
+        <item name="preferenceStyle">@style/Preference.Material</item>
+        <item name="preferenceInformationStyle">@style/Preference.Material.Information</item>
+        <item name="checkBoxPreferenceStyle">@style/Preference.Material.CheckBoxPreference</item>
+        <item name="switchPreferenceStyle">@style/Preference.Material.SwitchPreference</item>
+        <item name="seekBarPreferenceStyle">@style/Preference.Material.SeekBarPreference</item>
+        <item name="yesNoPreferenceStyle">@style/Preference.Material.DialogPreference.YesNoPreference</item>
+        <item name="dialogPreferenceStyle">@style/Preference.Material.DialogPreference</item>
+        <item name="seekBarDialogPreferenceStyle">@style/Preference.Material.DialogPreference.SeekBarPreference</item>
+        <item name="editTextPreferenceStyle">@style/Preference.Material.DialogPreference.EditTextPreference</item>
+        <item name="ringtonePreferenceStyle">@style/Preference.Material.RingtonePreference</item>
+        <item name="preferenceLayoutChild">@layout/preference_child_material</item>
+        <item name="preferencePanelStyle">@style/PreferencePanel.Material</item>
+        <item name="preferenceHeaderPanelStyle">@style/PreferenceHeaderPanel.Material</item>
+        <item name="preferenceListStyle">@style/PreferenceHeaderList.Material</item>
+        <item name="preferenceFragmentListStyle">@style/PreferenceFragmentList.Material</item>
+        <item name="preferenceFragmentPaddingSide">@dimen/preference_fragment_padding_side_material</item>
+        <item name="detailsElementBackground">?attr/colorBackground</item>
+
+        <!-- PreferenceFrameLayout attributes -->
+        <item name="preferenceFrameLayoutStyle">@style/Widget.Material.PreferenceFrameLayout</item>
+
+        <!-- Search widget styles -->
+        <item name="searchWidgetCorpusItemBackground">@color/search_widget_corpus_item_background</item>
+
+        <!-- Action bar styles -->
+        <item name="actionDropDownStyle">@style/Widget.Material.Spinner.DropDown.ActionBar</item>
+        <item name="actionButtonStyle">@style/Widget.Material.ActionButton</item>
+        <item name="actionOverflowButtonStyle">@style/Widget.Material.ActionButton.Overflow</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.Material.PopupMenu.Overflow</item>
+        <item name="actionModeBackground">@drawable/cab_background_top_material</item>
+        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_material</item>
+        <item name="actionModeCloseDrawable">@drawable/ic_ab_back_material</item>
+        <item name="actionBarTabStyle">@style/Widget.Material.ActionBar.TabView</item>
+        <item name="actionBarTabBarStyle">@style/Widget.Material.ActionBar.TabBar</item>
+        <item name="actionBarTabTextStyle">@style/Widget.Material.ActionBar.TabText</item>
+        <item name="actionModeStyle">@style/Widget.Material.ActionMode</item>
+        <item name="actionModeCloseButtonStyle">@style/Widget.Material.ActionButton.CloseMode</item>
+        <item name="actionBarStyle">@style/Widget.Material.ActionBar.Solid</item>
+        <item name="actionBarSize">@dimen/action_bar_default_height_material</item>
+        <item name="actionModePopupWindowStyle">@style/Widget.Material.PopupWindow.ActionMode</item>
+        <item name="actionMenuTextAppearance">@style/TextAppearance.Material.Widget.ActionBar.Menu</item>
+        <item name="actionMenuTextColor">?attr/textColorPrimary</item>
+        <item name="actionBarWidgetTheme">@null</item>
+        <item name="actionBarPopupTheme">?attr/popupTheme</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.Material.ActionBar</item>
+        <item name="actionBarItemBackground">@drawable/action_bar_item_background_material</item>
+
+        <item name="actionModeCutDrawable">@drawable/ic_menu_cut_material</item>
+        <item name="actionModeCopyDrawable">@drawable/ic_menu_copy_material</item>
+        <item name="actionModePasteDrawable">@drawable/ic_menu_paste_material</item>
+        <item name="actionModeSelectAllDrawable">@drawable/ic_menu_selectall_material</item>
+        <item name="actionModeShareDrawable">@drawable/ic_menu_share_material</item>
+        <item name="actionModeFindDrawable">@drawable/ic_menu_find_material</item>
+        <item name="actionModeWebSearchDrawable">@drawable/ic_menu_search_material</item>
+
+        <item name="toolbarStyle">@style/Widget.Material.Toolbar</item>
+
+        <item name="dividerVertical">?attr/listDivider</item>
+        <item name="dividerHorizontal">?attr/listDivider</item>
+        <item name="buttonBarStyle">@style/Widget.Material.ButtonBar</item>
+        <item name="buttonBarButtonStyle">@style/Widget.Material.Button.ButtonBar.AlertDialog</item>
+        <item name="segmentedButtonStyle">@style/Widget.Material.SegmentedButton</item>
+
+        <!-- SearchView attributes -->
+        <item name="searchViewStyle">@style/Widget.Material.SearchView</item>
+        <item name="searchDialogTheme">@style/Theme.Material.SearchBar</item>
+
+        <!-- NumberPicker style-->
+        <item name="numberPickerStyle">@style/Widget.Material.NumberPicker</item>
+
+        <!-- CalendarView style-->
+        <item name="calendarViewStyle">@style/Widget.Material.CalendarView</item>
+
+        <!-- TimePicker style -->
+        <item name="timePickerStyle">@style/Widget.Material.TimePicker</item>
+
+        <!-- TimePicker dialog theme -->
+        <item name="timePickerDialogTheme">@style/ThemeOverlay.Material.Dialog.TimePicker</item>
+
+        <!-- DatePicker style -->
+        <item name="datePickerStyle">@style/Widget.Material.DatePicker</item>
+
+        <!-- DatePicker dialog theme -->
+        <item name="datePickerDialogTheme">@style/ThemeOverlay.Material.Dialog.DatePicker</item>
+
+        <!-- TODO: This belongs in a FastScroll style -->
+        <item name="fastScrollThumbDrawable">@drawable/fastscroll_thumb_material</item>
+        <item name="fastScrollPreviewBackgroundLeft">@drawable/fastscroll_label_left_material</item>
+        <item name="fastScrollPreviewBackgroundRight">@drawable/fastscroll_label_right_material</item>
+        <item name="fastScrollTrackDrawable">@drawable/fastscroll_track_material</item>
+        <item name="fastScrollOverlayPosition">aboveThumb</item>
+
+        <!-- Color palette -->
+        <item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
+        <item name="colorPrimary">@color/primary_material_dark</item>
+        <item name="colorAccent">@color/accent_material_dark</item>
+        <item name="colorEdgeEffect">?attr/colorPrimary</item>
+
+        <item name="colorControlNormal">?attr/textColorSecondary</item>
+        <item name="colorControlActivated">?attr/colorAccent</item>
+
+        <item name="colorControlHighlight">@color/ripple_material_dark</item>
+        <item name="colorButtonNormal">@color/btn_default_material_dark</item>
+        <item name="colorSwitchThumbNormal">@color/switch_thumb_material_dark</item>
+    </style>
+
+    <!-- Material theme (light version). -->
+    <style name="Theme.Material.Light" parent="Theme.Light">
+        <item name="colorForeground">@color/foreground_material_light</item>
+        <item name="colorForegroundInverse">@color/foreground_material_dark</item>
+        <item name="colorBackground">@color/background_material_light</item>
+        <item name="colorBackgroundFloating">@color/background_floating_material_light</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_material_light</item>
+        <item name="disabledAlpha">@dimen/disabled_alpha_material_light</item>
+        <item name="backgroundDimAmount">0.6</item>
+
+        <!-- Text styles -->
+        <item name="textAppearance">@style/TextAppearance.Material</item>
+        <item name="textAppearanceInverse">@style/TextAppearance.Material.Inverse</item>
+
+        <item name="textColorPrimary">@color/primary_text_material_light</item>
+        <item name="textColorPrimaryInverse">@color/primary_text_material_dark</item>
+        <item name="textColorPrimaryActivated">@color/primary_text_inverse_when_activated_material</item>
+        <item name="textColorSecondary">@color/secondary_text_material_light</item>
+        <item name="textColorSecondaryInverse">@color/secondary_text_material_dark</item>
+        <item name="textColorSecondaryActivated">@color/secondary_text_inverse_when_activated_material</item>
+        <item name="textColorTertiary">@color/secondary_text_material_light</item>
+        <item name="textColorTertiaryInverse">@color/secondary_text_material_dark</item>
+        <item name="textColorPrimaryDisableOnly">@color/primary_text_disable_only_material_light</item>
+        <item name="textColorPrimaryInverseDisableOnly">@color/primary_text_disable_only_material_dark</item>
+        <item name="textColorHint">@color/hint_foreground_material_light</item>
+        <item name="textColorHintInverse">@color/hint_foreground_material_dark</item>
+        <item name="textColorHighlight">@color/highlighted_text_material</item>
+        <item name="textColorHighlightInverse">@color/highlighted_text_material</item>
+        <item name="textColorLink">?attr/colorAccent</item>
+        <item name="textColorLinkInverse">?attr/colorAccent</item>
+        <item name="textColorSearchUrl">@color/search_url_text_material_light</item>
+        <item name="textColorAlertDialogListItem">@color/primary_text_material_light</item>
+
+        <item name="textAppearanceLarge">@style/TextAppearance.Material.Large</item>
+        <item name="textAppearanceLargeInverse">@style/TextAppearance.Material.Large.Inverse</item>
+        <item name="textAppearanceMedium">@style/TextAppearance.Material.Medium</item>
+        <item name="textAppearanceMediumInverse">@style/TextAppearance.Material.Medium.Inverse</item>
+        <item name="textAppearanceSmall">@style/TextAppearance.Material.Small</item>
+        <item name="textAppearanceSmallInverse">@style/TextAppearance.Material.Small.Inverse</item>
+        <item name="textAppearanceSearchResultTitle">@style/TextAppearance.Material.SearchResult.Title</item>
+        <item name="textAppearanceSearchResultSubtitle">@style/TextAppearance.Material.SearchResult.Subtitle</item>
+
+        <item name="textAppearanceButton">@style/TextAppearance.Material.Widget.Button</item>
+
+        <item name="editTextColor">?attr/textColorPrimary</item>
+        <item name="editTextBackground">@drawable/edit_text_material</item>
+
+        <item name="candidatesTextStyleSpans">@string/candidates_style</item>
+
+        <item name="textCheckMark">@drawable/indicator_check_mark_light</item>
+        <item name="textCheckMarkInverse">@drawable/indicator_check_mark_dark</item>
+
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.Material.Widget.PopupMenu.Large</item>
+        <item name="textAppearanceSmallPopupMenu">@style/TextAppearance.Material.Widget.PopupMenu.Small</item>
+        <item name="textAppearancePopupMenuHeader">@style/TextAppearance.Material.Widget.PopupMenu.Header</item>
+
+        <!-- Button styles -->
+        <item name="buttonStyle">@style/Widget.Material.Light.Button</item>
+
+        <item name="buttonStyleSmall">@style/Widget.Material.Light.Button.Small</item>
+        <item name="buttonStyleInset">@style/Widget.Material.Light.Button.Inset</item>
+        <item name="buttonStyleToggle">@style/Widget.Material.Light.Button.Toggle</item>
+
+        <item name="switchStyle">@style/Widget.Material.Light.CompoundButton.Switch</item>
+        <item name="mediaRouteButtonStyle">@style/Widget.Material.Light.MediaRouteButton</item>
+
+        <item name="selectableItemBackground">@drawable/item_background_material</item>
+        <item name="selectableItemBackgroundBorderless">@drawable/item_background_borderless_material</item>
+        <item name="borderlessButtonStyle">@style/Widget.Material.Light.Button.Borderless</item>
+        <item name="homeAsUpIndicator">@drawable/ic_ab_back_material</item>
+
+        <!-- List attributes -->
+        <item name="listPreferredItemHeight">64dip</item>
+        <item name="listPreferredItemHeightSmall">48dip</item>
+        <item name="listPreferredItemHeightLarge">80dip</item>
+        <item name="dropdownListPreferredItemHeight">?attr/listPreferredItemHeightSmall</item>
+        <item name="textAppearanceListItem">@style/TextAppearance.Material.Subhead</item>
+        <item name="textAppearanceListItemSmall">@style/TextAppearance.Material.Subhead</item>
+        <item name="textAppearanceListItemSecondary">@style/TextAppearance.Material.Body1</item>
+        <item name="listPreferredItemPaddingLeft">@dimen/list_item_padding_horizontal_material</item>
+        <item name="listPreferredItemPaddingRight">@dimen/list_item_padding_horizontal_material</item>
+        <item name="listPreferredItemPaddingStart">@dimen/list_item_padding_start_material</item>
+        <item name="listPreferredItemPaddingEnd">@dimen/list_item_padding_end_material</item>
+
+        <!-- @hide -->
+        <item name="searchResultListItemHeight">58dip</item>
+        <item name="listDivider">@drawable/list_divider_material</item>
+        <item name="listSeparatorTextViewStyle">@style/Widget.Material.Light.TextView.ListSeparator</item>
+
+        <item name="listChoiceIndicatorSingle">@drawable/btn_radio_material_anim</item>
+        <item name="listChoiceIndicatorMultiple">@drawable/btn_check_material_anim</item>
+
+        <item name="listChoiceBackgroundIndicator">@drawable/list_choice_background_material</item>
+        <item name="activatedBackgroundIndicator">@drawable/activated_background_material</item>
+
+        <item name="listDividerAlertDialog">@null</item>
+
+        <item name="expandableListPreferredItemPaddingLeft">40dip</item>
+        <item name="expandableListPreferredChildPaddingLeft">?attr/expandableListPreferredItemPaddingLeft</item>
+
+        <item name="expandableListPreferredItemIndicatorLeft">3dip</item>
+        <item name="expandableListPreferredItemIndicatorRight">0dip</item>
+        <item name="expandableListPreferredChildIndicatorLeft">?attr/expandableListPreferredItemIndicatorLeft</item>
+        <item name="expandableListPreferredChildIndicatorRight">?attr/expandableListPreferredItemIndicatorRight</item>
+
+        <item name="findOnPageNextDrawable">@drawable/ic_find_next_material</item>
+        <item name="findOnPagePreviousDrawable">@drawable/ic_find_previous_material</item>
+
+        <!-- Gallery attributes -->
+        <item name="galleryItemBackground">@drawable/gallery_item_background</item>
+
+        <!-- Window attributes -->
+        <item name="windowBackground">?attr/colorBackground</item>
+        <item name="windowClipToOutline">true</item>
+        <item name="windowFrame">@null</item>
+        <item name="windowNoTitle">@bool/config_windowNoTitleDefault</item>
+        <item name="windowFullscreen">false</item>
+        <item name="windowOverscan">@bool/config_windowOverscanByDefault</item>
+        <item name="windowIsFloating">false</item>
+        <item name="windowContentOverlay">@null</item>
+        <item name="windowShowWallpaper">false</item>
+        <item name="windowTitleStyle">@style/WindowTitle.Material</item>
+        <item name="windowTitleSize">@dimen/action_bar_default_height_material</item>
+        <item name="windowTitleBackgroundStyle">@style/WindowTitleBackground.Material</item>
+        <item name="windowAnimationStyle">@style/Animation.Material.Activity</item>
+        <item name="windowSoftInputMode">stateUnspecified|adjustUnspecified</item>
+        <item name="windowActionBar">@bool/config_windowActionBarSupported</item>
+        <item name="windowActionModeOverlay">false</item>
+        <item name="windowDrawsSystemBarBackgrounds">true</item>
+        <item name="windowActionBarFullscreenDecorLayout">@layout/screen_toolbar</item>
+        <item name="statusBarColor">?attr/colorPrimaryDark</item>
+        <item name="navigationBarColor">@color/black</item>
+        <item name="windowEnterTransition">@transition/fade</item>
+        <item name="windowSharedElementEnterTransition">@transition/move</item>
+        <item name="windowSharedElementExitTransition">@transition/move</item>
+        <item name="windowContentTransitions">false</item>
+        <item name="windowActivityTransitions">true</item>
+
+        <!-- Dialog attributes -->
+        <item name="dialogTheme">@style/ThemeOverlay.Material.Dialog</item>
+        <item name="dialogTitleIconsDecorLayout">@layout/dialog_title_icons_material</item>
+        <item name="dialogCustomTitleDecorLayout">@layout/dialog_custom_title_material</item>
+        <item name="dialogTitleDecorLayout">@layout/dialog_title_material</item>
+        <item name="dialogPreferredPadding">@dimen/dialog_padding_material</item>
+
+        <!-- AlertDialog attributes -->
+        <item name="alertDialogTheme">@style/ThemeOverlay.Material.Dialog.Alert</item>
+        <item name="alertDialogStyle">@style/AlertDialog.Material.Light</item>
+        <item name="alertDialogCenterButtons">false</item>
+        <item name="alertDialogIcon">@drawable/ic_dialog_alert_material</item>
+
+        <!-- Presentation attributes -->
+        <item name="presentationTheme">@style/Theme.Material.Light.Dialog.Presentation</item>
+
+        <!-- Toast attributes -->
+        <item name="toastFrameBackground">@drawable/toast_frame</item>
+
+        <!-- Panel attributes -->
+        <item name="panelBackground">?attr/colorBackground</item>
+        <item name="panelFullBackground">@drawable/menu_background_fill_parent_width</item>
+        <!-- These three attributes do not seems to be used by the framework. Declared public though -->
+        <item name="panelColorBackground">#000</item>
+        <item name="panelColorForeground">?attr/textColorPrimary</item>
+        <item name="panelTextAppearance">?attr/textAppearance</item>
+
+        <item name="panelMenuIsCompact">true</item>
+        <item name="panelMenuListWidth">250dip</item>
+        <item name="panelMenuListTheme">@style/Theme.Material.Light.CompactMenu</item>
+
+        <!-- Scrollbar attributes -->
+        <item name="scrollbarFadeDuration">250</item>
+        <item name="scrollbarDefaultDelayBeforeFade">400</item>
+        <item name="scrollbarSize">10dp</item>
+        <item name="scrollbarThumbHorizontal">@drawable/scrollbar_handle_material</item>
+        <item name="scrollbarThumbVertical">@drawable/scrollbar_handle_material</item>
+        <item name="scrollbarTrackHorizontal">@null</item>
+        <item name="scrollbarTrackVertical">@null</item>
+
+        <!-- Text selection handle attributes -->
+        <item name="textSelectHandleLeft">@drawable/text_select_handle_left_material</item>
+        <item name="textSelectHandleRight">@drawable/text_select_handle_right_material</item>
+        <item name="textSelectHandle">@drawable/text_select_handle_middle_material</item>
+        <item name="textSelectHandleWindowStyle">@style/Widget.Material.TextSelectHandle</item>
+        <item name="textCursorDrawable">@drawable/text_cursor_material</item>
+
+        <!-- Suggestion window attributes -->
+        <item name="textEditSuggestionItemLayout">@layout/text_edit_suggestion_item_material</item>
+        <item name="textEditSuggestionContainerLayout">@layout/text_edit_suggestion_container_material</item>
+        <item name="textEditSuggestionHighlightStyle">@style/TextAppearance.Material.TextSuggestionHighlight</item>
+
+        <!-- Widget styles -->
+        <item name="absListViewStyle">@style/Widget.Material.Light.AbsListView</item>
+        <item name="autoCompleteTextViewStyle">@style/Widget.Material.Light.AutoCompleteTextView</item>
+        <item name="checkboxStyle">@style/Widget.Material.Light.CompoundButton.CheckBox</item>
+        <item name="checkedTextViewStyle">@style/Widget.Material.Light.CheckedTextView</item>
+        <item name="dropDownListViewStyle">@style/Widget.Material.ListView.DropDown</item>
+        <item name="editTextStyle">@style/Widget.Material.Light.EditText</item>
+        <item name="expandableListViewStyle">@style/Widget.Material.Light.ExpandableListView</item>
+        <item name="expandableListViewWhiteStyle">@style/Widget.Material.Light.ExpandableListView.White</item>
+        <item name="fastScrollStyle">@style/Widget.Material.Light.FastScroll</item>
+        <item name="galleryStyle">@style/Widget.Material.Light.Gallery</item>
+        <item name="gestureOverlayViewStyle">@style/Widget.Material.Light.GestureOverlayView</item>
+        <item name="gridViewStyle">@style/Widget.Material.Light.GridView</item>
+        <item name="imageButtonStyle">@style/Widget.Material.Light.ImageButton</item>
+        <item name="imageWellStyle">@style/Widget.Material.Light.ImageWell</item>
+        <item name="listMenuViewStyle">@style/Widget.Material.ListMenuView</item>
+        <item name="listViewStyle">@style/Widget.Material.Light.ListView</item>
+        <item name="listViewWhiteStyle">@style/Widget.Material.Light.ListView.White</item>
+        <item name="popupWindowStyle">@style/Widget.Material.Light.PopupWindow</item>
+        <item name="progressBarStyle">@style/Widget.Material.Light.ProgressBar</item>
+        <item name="progressBarStyleHorizontal">@style/Widget.Material.Light.ProgressBar.Horizontal</item>
+        <item name="progressBarStyleSmall">@style/Widget.Material.Light.ProgressBar.Small</item>
+        <item name="progressBarStyleSmallTitle">@style/Widget.Material.Light.ProgressBar.Small.Title</item>
+        <item name="progressBarStyleLarge">@style/Widget.Material.Light.ProgressBar.Large</item>
+        <item name="progressBarStyleInverse">@style/Widget.Material.Light.ProgressBar.Inverse</item>
+        <item name="progressBarStyleSmallInverse">@style/Widget.Material.Light.ProgressBar.Small.Inverse</item>
+        <item name="progressBarStyleLargeInverse">@style/Widget.Material.Light.ProgressBar.Large.Inverse</item>
+        <item name="seekBarStyle">@style/Widget.Material.Light.SeekBar</item>
+        <item name="ratingBarStyle">@style/Widget.Material.Light.RatingBar</item>
+        <item name="ratingBarStyleIndicator">@style/Widget.Material.Light.RatingBar.Indicator</item>
+        <item name="ratingBarStyleSmall">@style/Widget.Material.Light.RatingBar.Small</item>
+        <item name="radioButtonStyle">@style/Widget.Material.Light.CompoundButton.RadioButton</item>
+        <item name="scrollViewStyle">@style/Widget.Material.Light.ScrollView</item>
+        <item name="horizontalScrollViewStyle">@style/Widget.Material.Light.HorizontalScrollView</item>
+        <item name="spinnerStyle">?attr/dropDownSpinnerStyle</item>
+        <item name="dropDownSpinnerStyle">@style/Widget.Material.Light.Spinner.DropDown</item>
+        <item name="starStyle">@style/Widget.Material.Light.CompoundButton.Star</item>
+        <item name="tabWidgetStyle">@style/Widget.Material.Light.TabWidget</item>
+        <item name="textViewStyle">@style/Widget.Material.Light.TextView</item>
+        <item name="errorMessageBackground">@drawable/popup_inline_error_holo_light</item>
+        <item name="errorMessageAboveBackground">@drawable/popup_inline_error_above_holo_light</item>
+        <item name="webTextViewStyle">@style/Widget.Material.Light.WebTextView</item>
+        <item name="webViewStyle">@style/Widget.Material.Light.WebView</item>
+        <item name="dropDownItemStyle">@style/Widget.Material.Light.DropDownItem</item>
+        <item name="spinnerDropDownItemStyle">@style/Widget.Material.Light.DropDownItem.Spinner</item>
+        <item name="spinnerItemStyle">@style/Widget.Material.TextView.SpinnerItem</item>
+        <item name="dropDownHintAppearance">@style/TextAppearance.Material.Widget.DropDownHint</item>
+        <item name="keyboardViewStyle">@style/Widget.Material.KeyboardView</item>
+        <item name="quickContactBadgeStyleWindowSmall">@style/Widget.Material.QuickContactBadge.WindowSmall</item>
+        <item name="quickContactBadgeStyleWindowMedium">@style/Widget.Material.QuickContactBadge.WindowMedium</item>
+        <item name="quickContactBadgeStyleWindowLarge">@style/Widget.Material.QuickContactBadge.WindowLarge</item>
+        <item name="quickContactBadgeStyleSmallWindowSmall">@style/Widget.Material.QuickContactBadgeSmall.WindowSmall</item>
+        <item name="quickContactBadgeStyleSmallWindowMedium">@style/Widget.Material.QuickContactBadgeSmall.WindowMedium</item>
+        <item name="quickContactBadgeStyleSmallWindowLarge">@style/Widget.Material.QuickContactBadgeSmall.WindowLarge</item>
+        <item name="listPopupWindowStyle">@style/Widget.Material.Light.ListPopupWindow</item>
+        <item name="popupMenuStyle">@style/Widget.Material.Light.PopupMenu</item>
+        <item name="popupTheme">@null</item>
+        <item name="stackViewStyle">@style/Widget.Material.Light.StackView</item>
+        <item name="activityChooserViewStyle">@style/Widget.Material.Light.ActivityChooserView</item>
+        <item name="fragmentBreadCrumbsStyle">@style/Widget.Material.FragmentBreadCrumbs</item>
+        <item name="contextPopupMenuStyle">@style/Widget.Material.ContextPopupMenu</item>
+
+        <!-- Preference styles -->
+        <item name="preferenceScreenStyle">@style/Preference.Material.PreferenceScreen</item>
+        <item name="preferenceActivityStyle">@style/PreferenceActivity.Material</item>
+        <item name="preferenceFragmentStyle">@style/PreferenceFragment.Material</item>
+        <item name="preferenceCategoryStyle">@style/Preference.Material.Category</item>
+        <item name="preferenceStyle">@style/Preference.Material</item>
+        <item name="preferenceInformationStyle">@style/Preference.Material.Information</item>
+        <item name="checkBoxPreferenceStyle">@style/Preference.Material.CheckBoxPreference</item>
+        <item name="switchPreferenceStyle">@style/Preference.Material.SwitchPreference</item>
+        <item name="seekBarPreferenceStyle">@style/Preference.Material.SeekBarPreference</item>
+        <item name="yesNoPreferenceStyle">@style/Preference.Material.DialogPreference.YesNoPreference</item>
+        <item name="dialogPreferenceStyle">@style/Preference.Material.DialogPreference</item>
+        <item name="seekBarDialogPreferenceStyle">@style/Preference.Material.DialogPreference.SeekBarPreference</item>
+        <item name="editTextPreferenceStyle">@style/Preference.Material.DialogPreference.EditTextPreference</item>
+        <item name="ringtonePreferenceStyle">@style/Preference.Material.RingtonePreference</item>
+        <item name="preferenceLayoutChild">@layout/preference_child_material</item>
+        <item name="preferencePanelStyle">@style/PreferencePanel.Material</item>
+        <item name="preferenceHeaderPanelStyle">@style/PreferenceHeaderPanel.Material</item>
+        <item name="preferenceListStyle">@style/PreferenceHeaderList.Material</item>
+        <item name="preferenceFragmentListStyle">@style/PreferenceFragmentList.Material</item>
+        <item name="preferenceFragmentPaddingSide">@dimen/preference_fragment_padding_side_material</item>
+        <item name="detailsElementBackground">?attr/colorBackground</item>
+
+        <!-- PreferenceFrameLayout attributes -->
+        <item name="preferenceFrameLayoutStyle">@style/Widget.Material.PreferenceFrameLayout</item>
+
+        <!-- Search widget styles -->
+        <item name="searchWidgetCorpusItemBackground">@color/search_widget_corpus_item_background</item>
+
+        <!-- Action bar styles -->
+        <item name="actionDropDownStyle">@style/Widget.Material.Light.Spinner.DropDown.ActionBar</item>
+        <item name="actionButtonStyle">@style/Widget.Material.Light.ActionButton</item>
+        <item name="actionOverflowButtonStyle">@style/Widget.Material.Light.ActionButton.Overflow</item>
+        <item name="actionOverflowMenuStyle">@style/Widget.Material.Light.PopupMenu.Overflow</item>
+        <item name="actionModeBackground">@drawable/cab_background_top_material</item>
+        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_material</item>
+        <item name="actionModeCloseDrawable">@drawable/ic_ab_back_material</item>
+        <item name="actionBarTabStyle">@style/Widget.Material.Light.ActionBar.TabView</item>
+        <item name="actionBarTabBarStyle">@style/Widget.Material.Light.ActionBar.TabBar</item>
+        <item name="actionBarTabTextStyle">@style/Widget.Material.Light.ActionBar.TabText</item>
+        <item name="actionModeStyle">@style/Widget.Material.Light.ActionMode</item>
+        <item name="actionModeCloseButtonStyle">@style/Widget.Material.Light.ActionButton.CloseMode</item>
+        <item name="actionBarStyle">@style/Widget.Material.Light.ActionBar.Solid</item>
+        <item name="actionBarSize">@dimen/action_bar_default_height_material</item>
+        <item name="actionModePopupWindowStyle">@style/Widget.Material.Light.PopupWindow.ActionMode</item>
+        <item name="actionMenuTextAppearance">@style/TextAppearance.Material.Widget.ActionBar.Menu</item>
+        <item name="actionMenuTextColor">?attr/textColorPrimary</item>
+        <item name="actionBarWidgetTheme">@null</item>
+        <item name="actionBarPopupTheme">?attr/popupTheme</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.Material.ActionBar</item>
+        <item name="actionBarItemBackground">@drawable/action_bar_item_background_material</item>
+
+        <item name="actionModeCutDrawable">@drawable/ic_menu_cut_material</item>
+        <item name="actionModeCopyDrawable">@drawable/ic_menu_copy_material</item>
+        <item name="actionModePasteDrawable">@drawable/ic_menu_paste_material</item>
+        <item name="actionModeSelectAllDrawable">@drawable/ic_menu_selectall_material</item>
+        <item name="actionModeShareDrawable">@drawable/ic_menu_share_material</item>
+        <item name="actionModeFindDrawable">@drawable/ic_menu_find_material</item>
+        <item name="actionModeWebSearchDrawable">@drawable/ic_menu_search_material</item>
+
+        <item name="toolbarStyle">@style/Widget.Material.Toolbar</item>
+
+        <item name="dividerVertical">?attr/listDivider</item>
+        <item name="dividerHorizontal">?attr/listDivider</item>
+        <item name="buttonBarStyle">@style/Widget.Material.Light.ButtonBar.AlertDialog</item>
+        <item name="buttonBarButtonStyle">@style/Widget.Material.Light.Button.ButtonBar.AlertDialog</item>
+        <item name="segmentedButtonStyle">@style/Widget.Material.Light.SegmentedButton</item>
+
+        <!-- SearchView attributes -->
+        <item name="searchViewStyle">@style/Widget.Material.Light.SearchView</item>
+        <item name="searchDialogTheme">@style/Theme.Material.Light.SearchBar</item>
+
+        <!-- NumberPicker style-->
+        <item name="numberPickerStyle">@style/Widget.Material.Light.NumberPicker</item>
+
+        <!-- CalendarView style-->
+        <item name="calendarViewStyle">@style/Widget.Material.Light.CalendarView</item>
+
+        <!-- TimePicker style -->
+        <item name="timePickerStyle">@style/Widget.Material.Light.TimePicker</item>
+
+        <!-- TimePicker dialog theme -->
+        <item name="timePickerDialogTheme">@style/ThemeOverlay.Material.Dialog.TimePicker</item>
+
+        <!-- DatePicker style -->
+        <item name="datePickerStyle">@style/Widget.Material.Light.DatePicker</item>
+
+        <!-- DatePicker dialog theme -->
+        <item name="datePickerDialogTheme">@style/ThemeOverlay.Material.Dialog.DatePicker</item>
+
+        <!-- TODO: This belongs in a FastScroll style -->
+        <item name="fastScrollThumbDrawable">@drawable/fastscroll_thumb_material</item>
+        <item name="fastScrollPreviewBackgroundLeft">@drawable/fastscroll_label_left_material</item>
+        <item name="fastScrollPreviewBackgroundRight">@drawable/fastscroll_label_right_material</item>
+        <item name="fastScrollTrackDrawable">@drawable/fastscroll_track_material</item>
+        <item name="fastScrollOverlayPosition">aboveThumb</item>
+
+        <!-- Color palette -->
+        <item name="colorPrimaryDark">@color/primary_dark_material_light</item>
+        <item name="colorPrimary">@color/primary_material_light</item>
+        <item name="colorAccent">@color/accent_material_light</item>
+        <item name="colorEdgeEffect">?attr/colorPrimary</item>
+
+        <item name="colorControlNormal">?attr/textColorSecondary</item>
+        <item name="colorControlActivated">?attr/colorAccent</item>
+
+        <item name="colorControlHighlight">@color/ripple_material_light</item>
+        <item name="colorButtonNormal">@color/btn_default_material_light</item>
+        <item name="colorSwitchThumbNormal">@color/switch_thumb_material_light</item>
+    </style>
+
+    <!-- Variant of the material (light) theme that has a solid (opaque) action bar
+         with an inverse color profile. The dark action bar sharply stands out against
+         the light content. -->
+    <style name="Theme.Material.Light.DarkActionBar">
+        <item name="actionBarWidgetTheme">@null</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.Material.Dark.ActionBar</item>
+        <item name="popupTheme">@style/ThemeOverlay.Material.Light</item>
+
+        <item name="colorPrimaryDark">@color/primary_dark_material_dark</item>
+        <item name="colorPrimary">@color/primary_material_dark</item>
+    </style>
+
+    <!-- Variant of the material (light) theme that has a light status bar background with dark
+         status bar contents. -->
+    <style name="Theme.Material.Light.LightStatusBar">
+        <item name="colorPrimaryDark">@color/primary_dark_material_light_light_status_bar</item>
+        <item name="windowLightStatusBar">true</item>
+    </style>
+
+    <style name="ThemeOverlay" />
+    <style name="ThemeOverlay.Material" />
+
+    <!-- Theme overlay that replaces colors with their light versions but preserves
+         the value of colorAccent, colorPrimary and its variants. -->
+    <style name="ThemeOverlay.Material.Light">
+        <item name="colorForeground">@color/foreground_material_light</item>
+        <item name="colorForegroundInverse">@color/foreground_material_dark</item>
+        <item name="colorBackground">@color/background_material_light</item>
+        <item name="colorBackgroundFloating">@color/background_floating_material_light</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_material_light</item>
+
+        <item name="textColorPrimary">@color/primary_text_material_light</item>
+        <item name="textColorPrimaryInverse">@color/primary_text_material_dark</item>
+        <item name="textColorSecondary">@color/secondary_text_material_light</item>
+        <item name="textColorSecondaryInverse">@color/secondary_text_material_dark</item>
+        <item name="textColorTertiary">@color/secondary_text_material_light</item>
+        <item name="textColorTertiaryInverse">@color/secondary_text_material_dark</item>
+        <item name="textColorPrimaryDisableOnly">@color/primary_text_disable_only_material_light</item>
+        <item name="textColorPrimaryInverseDisableOnly">@color/primary_text_disable_only_material_dark</item>
+        <item name="textColorHint">@color/hint_foreground_material_light</item>
+        <item name="textColorHintInverse">@color/hint_foreground_material_dark</item>
+        <item name="textColorHighlight">@color/highlighted_text_material</item>
+        <item name="textColorHighlightInverse">@color/highlighted_text_material</item>
+        <item name="textColorSearchUrl">@color/search_url_text_material_light</item>
+        <item name="textColorAlertDialogListItem">@color/primary_text_material_light</item>
+
+        <item name="textCheckMark">@drawable/indicator_check_mark_light</item>
+        <item name="textCheckMarkInverse">@drawable/indicator_check_mark_dark</item>
+
+        <item name="colorControlNormal">?attr/textColorSecondary</item>
+        <item name="colorControlHighlight">@color/ripple_material_light</item>
+        <item name="colorButtonNormal">@color/btn_default_material_light</item>
+        <item name="colorSwitchThumbNormal">@color/switch_thumb_material_light</item>
+    </style>
+
+    <!-- Theme overlay that replaces colors with their dark versions but preserves
+         the value of colorAccent, colorPrimary and its variants. -->
+    <style name="ThemeOverlay.Material.Dark">
+        <item name="colorForeground">@color/foreground_material_dark</item>
+        <item name="colorForegroundInverse">@color/foreground_material_light</item>
+        <item name="colorBackground">@color/background_material_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_material_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_material_dark</item>
+
+        <item name="textColorPrimary">@color/primary_text_material_dark</item>
+        <item name="textColorPrimaryInverse">@color/primary_text_material_light</item>
+        <item name="textColorPrimaryDisableOnly">@color/primary_text_disable_only_material_dark</item>
+        <item name="textColorSecondary">@color/secondary_text_material_dark</item>
+        <item name="textColorSecondaryInverse">@color/secondary_text_material_light</item>
+        <item name="textColorTertiary">@color/secondary_text_material_dark</item>
+        <item name="textColorTertiaryInverse">@color/secondary_text_material_light</item>
+        <item name="textColorHint">@color/hint_foreground_material_dark</item>
+        <item name="textColorHintInverse">@color/hint_foreground_material_light</item>
+        <item name="textColorHighlight">@color/highlighted_text_material</item>
+        <item name="textColorHighlightInverse">@color/highlighted_text_material</item>
+        <item name="textColorSearchUrl">@color/search_url_text_material_dark</item>
+        <item name="textColorAlertDialogListItem">@color/primary_text_material_dark</item>
+
+        <item name="textCheckMark">@drawable/indicator_check_mark_dark</item>
+        <item name="textCheckMarkInverse">@drawable/indicator_check_mark_light</item>
+
+        <item name="colorControlNormal">?attr/textColorSecondary</item>
+        <item name="colorControlHighlight">@color/ripple_material_dark</item>
+        <item name="colorButtonNormal">@color/btn_default_material_dark</item>
+        <item name="colorSwitchThumbNormal">@color/switch_thumb_material_dark</item>
+    </style>
+
+    <!-- Theme overlay that replaces the normal control color, which by default is the same as the
+         secondary text color, with the primary text color. -->
+    <style name="ThemeOverlay.Material.ActionBar">
+        <item name="colorControlNormal">?attr/textColorPrimary</item>
+        <item name="searchViewStyle">@style/Widget.Material.SearchView.ActionBar</item>
+    </style>
+
+    <!-- Theme overlay that replaces colors with their dark versions and replaces the normal
+         control color, which by default is the same as the secondary text color, with the primary
+         text color. -->
+    <style name="ThemeOverlay.Material.Dark.ActionBar">
+        <item name="colorControlNormal">?attr/textColorPrimary</item>
+        <item name="searchViewStyle">@style/Widget.Material.SearchView.ActionBar</item>
+    </style>
+
+    <!-- Base theme for overlay dialogs, customize the colours in the actual dialog theme. -->
+    <style name="ThemeOverlay.Material.BaseDialog">
+        <item name="windowFrame">@null</item>
+        <item name="windowTitleStyle">@style/DialogWindowTitle.Material</item>
+        <item name="windowTitleBackgroundStyle">@style/DialogWindowTitleBackground.Material</item>
+        <item name="windowBackground">@drawable/dialog_background_material</item>
+        <item name="windowElevation">@dimen/floating_window_z</item>
+        <item name="windowIsFloating">true</item>
+        <item name="windowContentOverlay">@null</item>
+        <item name="windowAnimationStyle">@style/Animation.Material.Dialog</item>
+        <item name="windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowCloseOnTouchOutside">@bool/config_closeDialogWhenTouchOutside</item>
+
+        <item name="listPreferredItemPaddingLeft">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingRight">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingStart">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingEnd">?attr/dialogPreferredPadding</item>
+
+        <item name="listDivider">@null</item>
+
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+
+        <item name="windowFixedWidthMajor">@null</item>
+        <item name="windowFixedWidthMinor">@null</item>
+        <item name="windowFixedHeightMajor">@null</item>
+        <item name="windowFixedHeightMinor">@null</item>
+    </style>
+
+    <!-- Theme overlay that overrides window properties to display as a dialog. -->
+    <style name="ThemeOverlay.Material.Dialog" parent="ThemeOverlay.Material.BaseDialog">
+        <item name="colorBackgroundCacheHint">@null</item>
+        <item name="colorBackground">?attr/colorBackgroundFloating</item>
+    </style>
+
+    <!-- Theme overlay that overrides window properties to display as a time picker dialog. -->
+    <style name="ThemeOverlay.Material.Dialog.TimePicker">
+        <item name="alertDialogStyle">@style/TimePickerDialog.Material</item>
+    </style>
+
+    <!-- Theme overlay that overrides window properties to display as a date picker dialog. -->
+    <style name="ThemeOverlay.Material.Dialog.DatePicker">
+        <item name="alertDialogStyle">@style/DatePickerDialog.Material</item>
+    </style>
+
+    <style name="ThemeOverlay.Material.Dialog.Alert">
+        <item name="windowMinWidthMajor">@dimen/dialog_min_width_major</item>
+        <item name="windowMinWidthMinor">@dimen/dialog_min_width_minor</item>
+    </style>
+
+    <!-- Variant of the material (dark) theme with no action bar. -->
+    <style name="Theme.Material.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Variant of the material (dark) theme that has no title bar and fills
+         the entire screen.  This theme
+         sets {@link android.R.attr#windowFullscreen} to true.  -->
+    <style name="Theme.Material.NoActionBar.Fullscreen">
+        <item name="windowFullscreen">true</item>
+        <item name="windowContentOverlay">@null</item>
+    </style>
+
+    <!-- Variant of the material (dark) theme that has no title bar and fills
+         the entire screen and extends into the display overscan region.  This theme
+         sets {@link android.R.attr#windowFullscreen} and {@link android.R.attr#windowOverscan}
+         to true. -->
+    <style name="Theme.Material.NoActionBar.Overscan">
+        <item name="windowFullscreen">true</item>
+        <item name="windowOverscan">true</item>
+        <item name="windowContentOverlay">@null</item>
+    </style>
+
+    <!-- Variant of the material (dark) theme that has no title bar and translucent
+         system decor.  This theme sets {@link android.R.attr#windowTranslucentStatus} and
+         {@link android.R.attr#windowTranslucentNavigation} to true. -->
+    <style name="Theme.Material.NoActionBar.TranslucentDecor">
+        <item name="windowTranslucentStatus">true</item>
+        <item name="windowTranslucentNavigation">true</item>
+        <item name="windowContentOverlay">@null</item>
+    </style>
+
+    <!-- Variant of the material (light) theme with no action bar. -->
+    <style name="Theme.Material.Light.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Variant of the material (light) theme that has no title bar and fills
+         the entire screen.  This theme
+         sets {@link android.R.attr#windowFullscreen} to true.  -->
+    <style name="Theme.Material.Light.NoActionBar.Fullscreen">
+        <item name="windowFullscreen">true</item>
+        <item name="windowContentOverlay">@null</item>
+    </style>
+
+    <!-- Variant of the material (light) theme that has no title bar and fills
+         the entire screen and extends into the display overscan region.  This theme
+         sets {@link android.R.attr#windowFullscreen} and {@link android.R.attr#windowOverscan}
+         to true. -->
+    <style name="Theme.Material.Light.NoActionBar.Overscan">
+        <item name="windowFullscreen">true</item>
+        <item name="windowOverscan">true</item>
+        <item name="windowContentOverlay">@null</item>
+    </style>
+
+    <!-- Variant of the material (light) theme that has no title bar and translucent
+         system decor.  This theme sets {@link android.R.attr#windowTranslucentStatus} and
+         {@link android.R.attr#windowTranslucentNavigation} to true. -->
+    <style name="Theme.Material.Light.NoActionBar.TranslucentDecor">
+        <item name="windowTranslucentStatus">true</item>
+        <item name="windowTranslucentNavigation">true</item>
+        <item name="windowContentOverlay">@null</item>
+    </style>
+
+    <!-- Default material dark theme for panel windows.  This removes all extraneous
+         window decorations, so you basically have an empty rectangle in which
+         to place your content.  It makes the window floating, with a transparent
+         background, and turns off dimming behind the window. -->
+    <style name="Theme.Material.Panel">
+        <item name="windowBackground">@color/transparent</item>
+        <item name="colorBackgroundCacheHint">@null</item>
+        <item name="windowFrame">@null</item>
+        <item name="windowContentOverlay">@null</item>
+        <item name="windowAnimationStyle">@null</item>
+        <item name="windowIsFloating">true</item>
+        <item name="backgroundDimEnabled">false</item>
+        <item name="windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Default material light theme for panel windows.  This removes all extraneous
+         window decorations, so you basically have an empty rectangle in which
+         to place your content.  It makes the window floating, with a transparent
+         background, and turns off dimming behind the window. -->
+    <style name="Theme.Material.Light.Panel">
+        <item name="windowBackground">@color/transparent</item>
+        <item name="colorBackgroundCacheHint">@null</item>
+        <item name="windowFrame">@null</item>
+        <item name="windowContentOverlay">@null</item>
+        <item name="windowAnimationStyle">@null</item>
+        <item name="windowIsFloating">true</item>
+        <item name="backgroundDimEnabled">false</item>
+        <item name="windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Material theme for an activity that is to be used for voice interaction.
+         This gives the activity a floating dialog style, to incorporate with the
+         system voice experience. -->
+    <style name="Theme.Material.Voice" parent="@style/Theme.Material.Dialog">
+        <item name="windowAnimationStyle">@style/Animation.VoiceActivity</item>
+        <item name="backgroundDimEnabled">false</item>
+    </style>
+
+    <!-- Material light theme for an activity that is to be used for voice interaction.
+         This gives the activity a floating dialog style, to incorporate with the
+         system voice experience. -->
+    <style name="Theme.Material.Light.Voice" parent="@style/Theme.Material.Light.Dialog">
+        <item name="windowAnimationStyle">@style/Animation.VoiceActivity</item>
+        <item name="backgroundDimEnabled">false</item>
+    </style>
+
+    <!-- Default theme for material style input methods, which is used by the
+         {@link android.inputmethodservice.InputMethodService} class.
+         this inherits from Theme.Panel, but sets up IME appropriate animations
+         and a few custom attributes. -->
+    <style name="Theme.Material.InputMethod" parent="Theme.Material.Light.Panel">
+        <item name="windowAnimationStyle">@style/Animation.InputMethod</item>
+        <item name="imeFullscreenBackground">@drawable/screen_background_selector_light</item>
+        <item name="imeExtractEnterAnimation">@anim/input_method_extract_enter</item>
+        <item name="imeExtractExitAnimation">@anim/input_method_extract_exit</item>
+    </style>
+
+    <!-- Default theme for material style voice interaction, which is used by the
+         {@link android.service.voice.VoiceInteractionSession} class.
+         this inherits from Theme.Panel, but sets up appropriate animations
+         and a few custom attributes. -->
+    <style name="Theme.Material.VoiceInteractionSession"
+           parent="Theme.Material.Light.NoActionBar.TranslucentDecor">
+        <item name="windowBackground">@color/transparent</item>
+        <item name="colorBackgroundCacheHint">@null</item>
+        <item name="windowIsTranslucent">true</item>
+        <item name="windowAnimationStyle">@style/Animation</item>
+    </style>
+
+    <!-- Theme for the search input bar. -->
+    <style name="Theme.Material.SearchBar" parent="Theme.Material.Panel" />
+    <style name="Theme.Material.Light.SearchBar" parent="Theme.Material.Light.Panel" />
+
+    <!-- Menu Themes -->
+    <eat-comment />
+
+    <style name="Theme.Material.CompactMenu">
+        <!-- Menu/item attributes -->
+        <item name="itemTextAppearance">?attr/textAppearanceMedium</item>
+        <item name="listViewStyle">@style/Widget.Material.ListView</item>
+        <item name="windowAnimationStyle">@style/Animation.DropDownUp</item>
+        <item name="background">@null</item>
+        <item name="windowElevation">@dimen/floating_window_z</item>
+    </style>
+
+    <style name="Theme.Material.Light.CompactMenu">
+        <!-- Menu/item attributes -->
+        <item name="itemTextAppearance">?attr/textAppearanceMedium</item>
+        <item name="listViewStyle">@style/Widget.Material.Light.ListView</item>
+        <item name="windowAnimationStyle">@style/Animation.DropDownUp</item>
+        <item name="background">@null</item>
+        <item name="windowElevation">@dimen/floating_window_z</item>
+    </style>
+
+    <!-- Dialog themes for Material -->
+    <eat-comment />
+
+    <style name="Theme.Material.BaseDialog">
+        <item name="colorBackground">?attr/colorBackgroundFloating</item>
+
+        <item name="windowFrame">@null</item>
+        <item name="windowTitleStyle">@style/DialogWindowTitle.Material</item>
+        <item name="windowTitleBackgroundStyle">@style/DialogWindowTitleBackground.Material</item>
+        <item name="windowBackground">@drawable/dialog_background_material</item>
+        <item name="windowElevation">@dimen/floating_window_z</item>
+        <item name="windowIsFloating">true</item>
+        <item name="windowContentOverlay">@null</item>
+        <item name="windowAnimationStyle">@style/Animation.Material.Dialog</item>
+        <item name="windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowCloseOnTouchOutside">@bool/config_closeDialogWhenTouchOutside</item>
+
+        <item name="colorBackgroundCacheHint">@null</item>
+
+        <item name="listPreferredItemPaddingLeft">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingRight">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingStart">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingEnd">?attr/dialogPreferredPadding</item>
+
+        <item name="listDivider">@null</item>
+
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+
+    <!-- Material theme for dialog windows and activities, which is used by the
+         {@link android.app.Dialog} class.  This changes the window to be
+         floating (not fill the entire screen), and puts a frame around its
+         contents.  You can set this theme on an activity if you would like to
+         make an activity that looks like a Dialog. -->
+    <style name="Theme.Material.Dialog" parent="Theme.Material.BaseDialog"/>
+
+    <!-- Variant of Theme.Material.Dialog that has a nice minimum width for
+         a regular dialog. -->
+    <style name="Theme.Material.Dialog.MinWidth">
+        <item name="windowMinWidthMajor">@dimen/dialog_min_width_major</item>
+        <item name="windowMinWidthMinor">@dimen/dialog_min_width_minor</item>
+    </style>
+
+    <!-- Variant of Theme.Material.Dialog that does not include a title bar. -->
+    <style name="Theme.Material.Dialog.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Variant of Theme.Material.Dialog.NoActionBar that has a nice minimum width for
+         a regular dialog. -->
+    <style name="Theme.Material.Dialog.NoActionBar.MinWidth">
+        <item name="windowMinWidthMajor">@dimen/dialog_min_width_major</item>
+        <item name="windowMinWidthMinor">@dimen/dialog_min_width_minor</item>
+    </style>
+
+    <!-- Variant of Theme.Material.Dialog that has a fixed size. -->
+    <style name="Theme.Material.Dialog.FixedSize">
+        <item name="windowFixedWidthMajor">@dimen/dialog_fixed_width_major</item>
+        <item name="windowFixedWidthMinor">@dimen/dialog_fixed_width_minor</item>
+        <item name="windowFixedHeightMajor">@dimen/dialog_fixed_height_major</item>
+        <item name="windowFixedHeightMinor">@dimen/dialog_fixed_height_minor</item>
+    </style>
+
+    <!-- Variant of Theme.Material.Dialog.NoActionBar that has a fixed size. -->
+    <style name="Theme.Material.Dialog.NoActionBar.FixedSize">
+        <item name="windowFixedWidthMajor">@dimen/dialog_fixed_width_major</item>
+        <item name="windowFixedWidthMinor">@dimen/dialog_fixed_width_minor</item>
+        <item name="windowFixedHeightMajor">@dimen/dialog_fixed_height_major</item>
+        <item name="windowFixedHeightMinor">@dimen/dialog_fixed_height_minor</item>
+    </style>
+
+    <!-- Variant of Theme.Material.Dialog that does not include a frame (or background).
+         The view hierarchy of the dialog is responsible for drawing all of
+         its pixels. -->
+    <style name="Theme.Material.Dialog.NoFrame">
+        <item name="windowBackground">@color/transparent</item>
+        <item name="windowElevation">0dp</item>
+        <item name="windowAnimationStyle">@null</item>
+        <item name="backgroundDimEnabled">false</item>
+        <item name="windowIsTranslucent">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowCloseOnTouchOutside">false</item>
+    </style>
+
+    <style name="Theme.Material.Dialog.BaseAlert">
+        <item name="windowMinWidthMajor">@dimen/dialog_min_width_major</item>
+        <item name="windowMinWidthMinor">@dimen/dialog_min_width_minor</item>
+    </style>
+
+    <!-- Material theme for alert dialog windows, which is used by the
+         {@link android.app.AlertDialog} class.  This is basically a dialog
+         but sets the background to empty so it can do two-tone backgrounds.
+         For applications targeting Honeycomb or newer, this is the default
+         AlertDialog theme. -->
+    <style name="Theme.Material.Dialog.Alert" parent="Theme.Material.Dialog.BaseAlert"/>
+
+    <!-- Theme for a window that will be displayed either full-screen on
+         smaller screens (small, normal) or as a dialog on larger screens
+         (large, xlarge). -->
+    <style name="Theme.Material.DialogWhenLarge" parent="@style/Theme.Material" />
+
+    <!-- Theme for a window without a title bar that will be displayed either
+         full-screen on smaller screens (small, normal) or as a dialog on larger screens
+         (large, xlarge). -->
+    <style name="Theme.Material.DialogWhenLarge.NoActionBar" parent="@style/Theme.Material.NoActionBar" />
+
+    <!-- Theme for a presentation window on a secondary display. -->
+    <style name="Theme.Material.Dialog.Presentation" parent="@style/Theme.Material.NoActionBar.Fullscreen" />
+
+    <!-- Light material dialog themes -->
+
+    <style name="Theme.Material.Light.BaseDialog">
+        <item name="colorBackground">?attr/colorBackgroundFloating</item>
+
+        <item name="windowFrame">@null</item>
+        <item name="windowTitleStyle">@style/DialogWindowTitle.Material.Light</item>
+        <item name="windowTitleBackgroundStyle">@style/DialogWindowTitleBackground.Material.Light</item>
+        <item name="windowBackground">@drawable/dialog_background_material</item>
+        <item name="windowElevation">@dimen/floating_window_z</item>
+        <item name="windowIsFloating">true</item>
+        <item name="windowContentOverlay">@null</item>
+        <item name="windowAnimationStyle">@style/Animation.Material.Dialog</item>
+        <item name="windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+        <item name="windowCloseOnTouchOutside">@bool/config_closeDialogWhenTouchOutside</item>
+
+        <item name="colorBackgroundCacheHint">@null</item>
+
+        <item name="listPreferredItemPaddingLeft">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingRight">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingStart">?attr/dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingEnd">?attr/dialogPreferredPadding</item>
+
+        <item name="listDivider">@null</item>
+
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+
+    <!-- Material light theme for dialog windows and activities, which is used by the
+         {@link android.app.Dialog} class.  This changes the window to be
+         floating (not fill the entire screen), and puts a frame around its
+         contents.  You can set this theme on an activity if you would like to
+         make an activity that looks like a Dialog. -->
+    <style name="Theme.Material.Light.Dialog" parent="Theme.Material.Light.BaseDialog"/>
+
+    <!-- Variant of Theme.Material.Light.Dialog that has a nice minimum width for
+         a regular dialog. -->
+    <style name="Theme.Material.Light.Dialog.MinWidth">
+        <item name="windowMinWidthMajor">@dimen/dialog_min_width_major</item>
+        <item name="windowMinWidthMinor">@dimen/dialog_min_width_minor</item>
+    </style>
+
+    <!-- Variant of Theme.Material.Light.Dialog that does not include a title bar. -->
+    <style name="Theme.Material.Light.Dialog.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Variant of Theme.Material.Light.Dialog.NoActionBar that has a nice minimum width for
+         a regular dialog. -->
+    <style name="Theme.Material.Light.Dialog.NoActionBar.MinWidth">
+        <item name="windowMinWidthMajor">@dimen/dialog_min_width_major</item>
+        <item name="windowMinWidthMinor">@dimen/dialog_min_width_minor</item>
+    </style>
+
+    <!-- Variant of Theme.Material.Light.Dialog that has a fixed size. -->
+    <style name="Theme.Material.Light.Dialog.FixedSize">
+        <item name="windowFixedWidthMajor">@dimen/dialog_fixed_width_major</item>
+        <item name="windowFixedWidthMinor">@dimen/dialog_fixed_width_minor</item>
+        <item name="windowFixedHeightMajor">@dimen/dialog_fixed_height_major</item>
+        <item name="windowFixedHeightMinor">@dimen/dialog_fixed_height_minor</item>
+    </style>
+
+    <!-- Variant of Theme.Material.Light.Dialog.NoActionBar that has a fixed size. -->
+    <style name="Theme.Material.Light.Dialog.NoActionBar.FixedSize">
+        <item name="windowFixedWidthMajor">@dimen/dialog_fixed_width_major</item>
+        <item name="windowFixedWidthMinor">@dimen/dialog_fixed_width_minor</item>
+        <item name="windowFixedHeightMajor">@dimen/dialog_fixed_height_major</item>
+        <item name="windowFixedHeightMinor">@dimen/dialog_fixed_height_minor</item>
+    </style>
+
+    <!-- Theme for a window that will be displayed either full-screen on
+         smaller screens (small, normal) or as a dialog on larger screens
+         (large, xlarge). -->
+    <style name="Theme.Material.Light.DialogWhenLarge" parent="@style/Theme.Material.Light" />
+
+    <!-- Theme for a window with a dark title bar that will be displayed either
+         full-screen on smaller screens (small, normal) or as a dialog on larger screens
+         (large, xlarge). -->
+    <style name="Theme.Material.Light.DialogWhenLarge.DarkActionBar" parent="@style/Theme.Material.Light.DarkActionBar" />
+
+    <!-- Theme for a window without an action bar that will be displayed either full-screen
+         on smaller screens (small, normal) or as a dialog on larger screens
+         (large, xlarge). -->
+    <style name="Theme.Material.Light.DialogWhenLarge.NoActionBar" parent="@style/Theme.Material.Light.NoActionBar" />
+
+    <style name="Theme.Material.Light.Dialog.BaseAlert">
+        <item name="windowMinWidthMajor">@dimen/dialog_min_width_major</item>
+        <item name="windowMinWidthMinor">@dimen/dialog_min_width_minor</item>
+    </style>
+
+    <!-- Material light theme for alert dialog windows, which is used by the
+         {@link android.app.AlertDialog} class.  This is basically a dialog
+         but sets the background to empty so it can do two-tone backgrounds.
+         For applications targeting Honeycomb or newer, this is the default
+         AlertDialog theme. -->
+    <style name="Theme.Material.Light.Dialog.Alert" parent="Theme.Material.Light.Dialog.BaseAlert"/>
+
+    <!-- Theme for a presentation window on a secondary display. -->
+    <style name="Theme.Material.Light.Dialog.Presentation" parent="Theme.Material.Light.NoActionBar.Fullscreen" />
+
+    <!-- Default material (dark) for windows that want to have the user's selected
+         wallpaper appear behind them.  -->
+    <style name="Theme.Material.Wallpaper">
+        <item name="windowBackground">@color/transparent</item>
+        <item name="colorBackgroundCacheHint">@null</item>
+        <item name="windowShowWallpaper">true</item>
+    </style>
+
+    <!--Default material (dark) for windows that want to have the user's selected
+         wallpaper appear behind them and without an action bar. -->
+    <style name="Theme.Material.Wallpaper.NoTitleBar">
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Default theme for Settings and activities launched from Settings. -->
+    <style name="Theme.Material.Settings" parent="Theme.Material.Light.DarkActionBar">
+        <item name="colorPrimary">@color/primary_material_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_settings</item>
+        <item name="colorSecondary">@color/secondary_material_settings</item>
+
+        <item name="presentationTheme">@style/Theme.Material.Settings.Dialog.Presentation</item>
+        <item name="searchDialogTheme">@style/Theme.Material.Settings.SearchBar</item>
+        <item name="panelMenuListTheme">@style/Theme.Material.Settings.CompactMenu</item>
+    </style>
+
+    <!-- Default theme for Settings and activities launched from Settings. -->
+    <style name="Theme.Material.Settings.NoActionBar" parent="Theme.Material.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary_material_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_settings</item>
+        <item name="colorSecondary">@color/secondary_material_settings</item>
+
+        <item name="presentationTheme">@style/Theme.Material.Settings.Dialog.Presentation</item>
+        <item name="searchDialogTheme">@style/Theme.Material.Settings.SearchBar</item>
+        <item name="panelMenuListTheme">@style/Theme.Material.Settings.CompactMenu</item>
+    </style>
+
+    <style name="Theme.Material.Settings.BaseDialog" parent="Theme.Material.Light.BaseDialog">
+        <item name="colorPrimary">@color/primary_material_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_settings</item>
+        <item name="colorSecondary">@color/secondary_material_settings</item>
+    </style>
+
+    <style name="Theme.Material.Settings.Dialog" parent="Theme.Material.Settings.BaseDialog" />
+
+    <style name="Theme.Material.Settings.Dialog.BaseAlert" parent="Theme.Material.Light.Dialog.BaseAlert">
+        <item name="colorPrimary">@color/primary_material_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_settings</item>
+        <item name="colorSecondary">@color/secondary_material_settings</item>
+    </style>
+
+    <style name="Theme.Material.Settings.Dialog.Alert" parent="Theme.Material.Settings.Dialog.BaseAlert" />
+
+    <style name="Theme.Material.Settings.DialogWhenLarge" parent="Theme.Material.Light.DialogWhenLarge.DarkActionBar">
+        <item name="colorPrimary">@color/primary_material_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_settings</item>
+        <item name="colorSecondary">@color/secondary_material_settings</item>
+    </style>
+
+    <style name="Theme.Material.Settings.DialogWhenLarge.NoActionBar" parent="Theme.Material.Light.DialogWhenLarge.NoActionBar">
+        <item name="colorPrimary">@color/primary_material_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_settings</item>
+        <item name="colorSecondary">@color/secondary_material_settings</item>
+    </style>
+
+    <style name="Theme.Material.Settings.Dialog.Presentation" parent="Theme.Material.Light.Dialog.Presentation">
+        <item name="colorPrimary">@color/primary_material_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_settings</item>
+        <item name="colorSecondary">@color/secondary_material_settings</item>
+    </style>
+
+    <style name="Theme.Material.Settings.SearchBar" parent="Theme.Material.Light.SearchBar">
+        <item name="colorPrimary">@color/primary_material_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_settings</item>
+        <item name="colorSecondary">@color/secondary_material_settings</item>
+    </style>
+
+    <style name="Theme.Material.Settings.CompactMenu" parent="Theme.Material.Light.CompactMenu">
+        <item name="colorPrimary">@color/primary_material_settings</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_settings</item>
+        <item name="colorSecondary">@color/secondary_material_settings</item>
+    </style>
+</resources>

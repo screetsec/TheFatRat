@@ -12,7 +12,7 @@
 -injars  ../temp/libs
 -outjars  ../temp/bin/classes-processed.jar
 
--libraryjars ../tools/android-sdk-25.0.2/platforms/android.jar
+-libraryjars ../tools/android-sdk/platforms/android.jar
 #-libraryjars /usr/local/android-sdk/add-ons/google_apis-7_r01/libs/maps.jar
 # ...
 
@@ -157,6 +157,7 @@
 
 -keep,allowobfuscation public class net.dirtybox.util.obfuscation.StringObfuscator {
     public static java.lang.String obfuscate(java.lang.String);
+    public static java.lang.String unobfuscate(java.lang.String);
 }
 
 # If you wish, you can let the optimization step remove Android logging calls.

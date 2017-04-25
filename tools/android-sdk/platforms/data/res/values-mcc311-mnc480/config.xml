@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2012, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- CDMA home system id for Verizon -->
+    <string-array translatable="false" name="config_cdma_home_system">
+        <item>64</item>
+        <item>65</item>
+        <item>76</item>
+        <item>77</item>
+        <item>78</item>
+        <item>79</item>
+        <item>80</item>
+        <item>81</item>
+        <item>82</item>
+        <item>83</item>
+    </string-array>
+
+    <!-- Flag indicating whether the IMS service can be turned off. If false then
+        the service will not be turned-off completely (the ImsManager.turnOffIms() will
+        be disabled) but individual Features can be disabled using ImsConfig.setFeatureValue() -->
+    <bool name="imsServiceAllowTurnOff">false</bool>
+
+    <!-- Flag specifying whether VoLTE should be available for carrier: independent of
+         carrier provisioning. If false: hard disabled. If true: then depends on carrier
+         provisioning, availability etc -->
+    <bool name="config_carrier_volte_available">true</bool>
+
+    <!-- Flag specifying whether VT should be available for carrier: independent of
+         carrier provisioning. If false: hard disabled. If true: then depends on carrier
+         provisioning, availability etc -->
+    <bool name="config_carrier_vt_available">true</bool>
+
+    <!-- Flag specifying whether VoLTE availability is based on provisioning -->
+    <bool name="config_carrier_volte_provisioned">true</bool>
+
+    <bool name="config_auto_attach_data_on_creation">false</bool>
+    <!-- service number convert map in roaming network. -->
+    <string-array translatable="false" name="dial_string_replace">
+        <item>"*611:+19085594899,"</item>
+        <item>"*86:+1MDN,"</item>
+    </string-array>
+
+    <!-- Flag indicating whether strict threshold is used, or lenient threshold is used,
+          when evaluating RSRP for LTE antenna bar display
+           0. Strict threshold
+           1. Lenient threshold
+    -->
+    <integer name="config_LTE_RSRP_threshold_type">0</integer>
+
+    <string-array translatable="false" name="config_sms_convert_destination_number_support">
+        <item>true</item>
+    </string-array>
+    <string translatable="false" name="prohibit_manual_network_selection_in_gobal_mode">true</string>
+
+</resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!--
+     Default system bookmarks for AOSP.
+     Bookmarks for vendor apps should be added to a bookmarks resource overlay; not here.
+
+     Typical shortcuts (not necessarily defined here):
+       'a': Calculator
+       'b': Browser
+       'c': Contacts
+       'e': Email
+       'g': GMail
+       'l': Calendar
+       'm': Maps
+       'p': Music
+       's': SMS
+       't': Talk
+       'y': YouTube
+-->
+<bookmarks>
+    <bookmark
+        category="android.intent.category.APP_CALCULATOR"
+        shortcut="a" />
+    <bookmark
+        category="android.intent.category.APP_BROWSER"
+        shortcut="b" />
+    <bookmark
+        category="android.intent.category.APP_CONTACTS"
+        shortcut="c" />
+    <bookmark
+        category="android.intent.category.APP_EMAIL"
+        shortcut="e" />
+    <bookmark
+        category="android.intent.category.APP_CALENDAR"
+        shortcut="l" />
+    <bookmark
+        category="android.intent.category.APP_MAPS"
+        shortcut="m" />
+    <bookmark
+        category="android.intent.category.APP_MUSIC"
+        shortcut="p" />
+    <bookmark
+        category="android.intent.category.APP_MESSAGING"
+        shortcut="s" />
+</bookmarks>

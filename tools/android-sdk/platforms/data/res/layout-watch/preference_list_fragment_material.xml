@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2016 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:layout_removeBorders="true">
+
+    <FrameLayout
+        android:id="@android:id/list_container"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="1">
+        <com.android.internal.widget.WatchHeaderListView
+            android:id="@android:id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            style="?attr/preferenceFragmentListStyle"
+            android:scrollbarStyle="@integer/preference_fragment_scrollbarStyle"
+            android:clipToPadding="false"
+            android:drawSelectorOnTop="false"
+            android:cacheColorHint="@android:color/transparent"
+            android:scrollbarAlwaysDrawVerticalTrack="true">
+             <TextView
+                android:id="@android:id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="@dimen/dialog_padding_material"
+                android:paddingEnd="@dimen/dialog_padding_material"
+                android:paddingBottom="8dp"
+                android:textAppearance="@style/TextAppearance.Material.Title"
+                android:gravity="center" />
+        </com.android.internal.widget.WatchHeaderListView>
+    </FrameLayout>
+
+    <TextView android:id="@android:id/empty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/preference_fragment_padding_side"
+        android:gravity="center"
+        android:visibility="gone" />
+
+    <RelativeLayout android:id="@+id/button_bar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="0"
+        android:visibility="gone">
+
+        <Button android:id="@+id/back_button"
+            android:layout_width="150dip"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dip"
+            android:layout_alignParentStart="true"
+            android:text="@string/back_button_label"
+        />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true">
+
+            <Button android:id="@+id/skip_button"
+                android:layout_width="150dip"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:text="@string/skip_button_label"
+                android:visibility="gone"
+            />
+
+            <Button android:id="@+id/next_button"
+                android:layout_width="150dip"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:text="@string/next_button_label"
+            />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

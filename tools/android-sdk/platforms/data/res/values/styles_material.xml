@@ -1,0 +1,1256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!--
+===============================================================
+                        PLEASE READ
+===============================================================
+
+The Material themes must not be modified in order to pass CTS.
+Many related themes and styles depend on other values defined in this file.
+If you would like to provide custom themes and styles for your device,
+please see styles_device_defaults.xml.
+
+===============================================================
+                        PLEASE READ
+===============================================================
+ -->
+<resources>
+    <!-- Preference styles -->
+    <eat-comment/>
+
+    <style name="Preference.Material">
+        <item name="layout">@layout/preference_material</item>
+    </style>
+
+    <style name="BasePreferenceFragment">
+        <item name="layout">@layout/preference_list_fragment_material</item>
+        <item name="paddingStart">@dimen/preference_fragment_padding_side_material</item>
+        <item name="paddingEnd">@dimen/preference_fragment_padding_side_material</item>
+        <item name="paddingTop">@dimen/preference_fragment_padding_vertical_material</item>
+        <item name="paddingBottom">@dimen/preference_fragment_padding_vertical_material</item>
+        <item name="divider">?attr/listDivider</item>
+        <item name="clipToPadding">@bool/config_preferenceFragmentClipToPadding</item>
+    </style>
+
+    <style name="PreferenceFragment.Material" parent="BasePreferenceFragment"/>
+
+    <style name="PreferenceActivity.Material">
+        <item name="layout">@layout/preference_list_content_material</item>
+        <item name="headerLayout">@layout/preference_header_item_material</item>
+        <item name="headerRemoveIconIfEmpty">true</item>
+    </style>
+
+    <style name="Preference.Material.Information">
+        <item name="layout">@layout/preference_information_material</item>
+        <item name="enabled">false</item>
+        <item name="shouldDisableView">false</item>
+    </style>
+
+    <style name="Preference.Material.Category">
+        <item name="layout">@layout/preference_category_material</item>
+        <!-- The title should not dim if the category is disabled, instead only the preference children should dim. -->
+        <item name="shouldDisableView">false</item>
+        <item name="selectable">false</item>
+    </style>
+
+    <style name="Preference.Material.CheckBoxPreference">
+        <item name="widgetLayout">@layout/preference_widget_checkbox</item>
+    </style>
+
+    <style name="Preference.Material.SwitchPreference">
+        <item name="widgetLayout">@layout/preference_widget_switch</item>
+        <item name="switchTextOn">@string/capital_on</item>
+        <item name="switchTextOff">@string/capital_off</item>
+    </style>
+
+    <style name="Preference.Material.SeekBarPreference">
+        <item name="layout">@layout/preference_widget_seekbar_material</item>
+    </style>
+
+    <style name="Preference.Material.BasePreferenceScreen">
+        <item name="screenLayout">@layout/preference_list_fragment_material</item>
+        <item name="divider">?attr/listDivider</item>
+    </style>
+
+    <style name="Preference.Material.PreferenceScreen" parent="Preference.Material.BasePreferenceScreen"/>
+
+    <style name="Preference.Material.DialogPreference">
+        <item name="positiveButtonText">@string/ok</item>
+        <item name="negativeButtonText">@string/cancel</item>
+    </style>
+
+    <style name="Preference.Material.DialogPreference.YesNoPreference">
+        <item name="positiveButtonText">@string/yes</item>
+        <item name="negativeButtonText">@string/no</item>
+    </style>
+
+    <style name="Preference.Material.DialogPreference.SeekBarPreference">
+        <item name="dialogLayout">@layout/preference_dialog_seekbar_material</item>
+    </style>
+
+    <style name="Preference.Material.DialogPreference.EditTextPreference">
+        <item name="dialogLayout">@layout/preference_dialog_edittext_material</item>
+    </style>
+
+    <style name="Preference.Material.RingtonePreference">
+        <item name="ringtoneType">ringtone</item>
+        <item name="showSilent">true</item>
+        <item name="showDefault">true</item>
+    </style>
+
+    <!-- No margins or background by default. Could be different for x-large screens -->
+    <style name="PreferencePanel.Material">
+        <item name="layout_marginStart">0dip</item>
+        <item name="layout_marginEnd">0dip</item>
+    </style>
+
+    <!-- The attributes are overridden here because the x-large or large resources may have
+         changed the margins and background in the parent PreferencePanel style. -->
+    <style name="PreferencePanel.Material.Dialog">
+        <item name="layout_marginStart">0dip</item>
+        <item name="layout_marginEnd">0dip</item>
+        <item name="layout_marginTop">0dip</item>
+        <item name="layout_marginBottom">0dip</item>
+        <item name="background">@null</item>
+    </style>
+
+    <style name="PreferenceHeaderPanel.Material">
+        <item name="layout_marginStart">@dimen/preference_screen_side_margin_material</item>
+        <item name="layout_marginEnd">@dimen/preference_screen_side_margin_negative_material</item>
+        <item name="paddingTop">@dimen/preference_screen_header_vertical_padding_material</item>
+        <item name="paddingBottom">@dimen/preference_screen_header_vertical_padding_material</item>
+    </style>
+
+    <style name="PreferenceHeaderList.Material">
+        <item name="paddingStart">@dimen/preference_screen_header_padding_side_material</item>
+        <item name="paddingEnd">@dimen/preference_screen_header_padding_side_material</item>
+        <item name="scrollbarStyle">@integer/preference_screen_header_scrollbarStyle</item>
+    </style>
+
+    <style name="PreferenceFragmentList.Material">
+        <item name="paddingStart">@dimen/preference_fragment_padding_side_material</item>
+        <item name="paddingEnd">@dimen/preference_fragment_padding_side_material</item>
+        <item name="paddingTop">@dimen/preference_fragment_padding_vertical_material</item>
+        <item name="paddingBottom">@dimen/preference_fragment_padding_vertical_material</item>
+    </style>
+
+    <!-- Begin Material theme styles -->
+
+    <!-- Text styles -->
+
+    <style name="TextAppearance.Material">
+        <item name="textColor">?attr/textColorPrimary</item>
+        <item name="textColorHint">?attr/textColorHint</item>
+        <item name="textColorHighlight">?attr/textColorHighlight</item>
+        <item name="textColorLink">?attr/textColorLink</item>
+        <item name="textSize">@dimen/text_size_body_1_material</item>
+        <item name="fontFamily">@string/font_family_body_1_material</item>
+        <item name="lineSpacingMultiplier">@dimen/text_line_spacing_multiplier_material</item>
+    </style>
+
+    <style name="TextAppearance.Material.Display4">
+        <item name="textSize">@dimen/text_size_display_4_material</item>
+        <item name="fontFamily">@string/font_family_display_4_material</item>
+        <item name="textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Display3">
+        <item name="textSize">@dimen/text_size_display_3_material</item>
+        <item name="fontFamily">@string/font_family_display_3_material</item>
+        <item name="textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Display2">
+        <item name="textSize">@dimen/text_size_display_2_material</item>
+        <item name="fontFamily">@string/font_family_display_2_material</item>
+        <item name="textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Display1">
+        <item name="textSize">@dimen/text_size_display_1_material</item>
+        <item name="fontFamily">@string/font_family_display_1_material</item>
+        <item name="textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Headline">
+        <item name="textSize">@dimen/text_size_headline_material</item>
+        <item name="fontFamily">@string/font_family_headline_material</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Title">
+        <item name="textSize">@dimen/text_size_title_material</item>
+        <item name="fontFamily">@string/font_family_title_material</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Title.Inverse">
+        <item name="textColor">?attr/textColorPrimaryInverse</item>
+        <item name="textColorHint">?attr/textColorHintInverse</item>
+        <item name="textColorHighlight">?attr/textColorHighlightInverse</item>
+        <item name="textColorLink">?attr/textColorLinkInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Subhead">
+        <item name="textSize">@dimen/text_size_subhead_material</item>
+        <item name="fontFamily">@string/font_family_subhead_material</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Subhead.Inverse">
+        <item name="textColor">?attr/textColorPrimaryInverse</item>
+        <item name="textColorHint">?attr/textColorHintInverse</item>
+        <item name="textColorHighlight">?attr/textColorHighlightInverse</item>
+        <item name="textColorLink">?attr/textColorLinkInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Body2">
+        <item name="textSize">@dimen/text_size_body_2_material</item>
+        <item name="fontFamily">@string/font_family_body_2_material</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Body1">
+        <item name="textSize">@dimen/text_size_body_1_material</item>
+        <item name="fontFamily">@string/font_family_body_1_material</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Caption">
+        <item name="textSize">@dimen/text_size_caption_material</item>
+        <item name="fontFamily">@string/font_family_caption_material</item>
+        <item name="textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Menu">
+        <item name="textSize">@dimen/text_size_menu_material</item>
+        <item name="fontFamily">@string/font_family_menu_material</item>
+    </style>
+
+    <style name="TextAppearance.Material.Menu.Inverse">
+        <item name="textColor">?attr/textColorSecondaryInverse</item>
+        <item name="textColorHint">?attr/textColorHintInverse</item>
+        <item name="textColorHighlight">?attr/textColorHighlightInverse</item>
+        <item name="textColorLink">?attr/textColorLinkInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Button">
+        <item name="textSize">@dimen/text_size_button_material</item>
+        <item name="fontFamily">@string/font_family_button_material</item>
+        <item name="textAllCaps">true</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <!-- Deprecated text styles -->
+
+    <style name="TextAppearance.Material.Inverse">
+        <item name="textColor">?attr/textColorPrimaryInverse</item>
+        <item name="textColorHint">?attr/textColorHintInverse</item>
+        <item name="textColorHighlight">?attr/textColorHighlightInverse</item>
+        <item name="textColorLink">?attr/textColorLinkInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Large">
+        <item name="textSize">@dimen/text_size_large_material</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Large.Inverse">
+        <item name="textColor">?attr/textColorPrimaryInverse</item>
+        <item name="textColorHint">?attr/textColorHintInverse</item>
+        <item name="textColorHighlight">?attr/textColorHighlightInverse</item>
+        <item name="textColorLink">?attr/textColorLinkInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Medium">
+        <item name="textSize">@dimen/text_size_medium_material</item>
+        <item name="textColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Medium.Inverse">
+        <item name="textColor">?attr/textColorSecondaryInverse</item>
+        <item name="textColorHint">?attr/textColorHintInverse</item>
+        <item name="textColorHighlight">?attr/textColorHighlightInverse</item>
+        <item name="textColorLink">?attr/textColorLinkInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Small">
+        <item name="textSize">@dimen/text_size_small_material</item>
+        <item name="textColor">?attr/textColorTertiary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Small.Inverse">
+        <item name="textColor">?attr/textColorTertiaryInverse</item>
+        <item name="textColorHint">?attr/textColorHintInverse</item>
+        <item name="textColorHighlight">?attr/textColorHighlightInverse</item>
+        <item name="textColorLink">?attr/textColorLinkInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.SearchResult" />
+    <style name="TextAppearance.Material.SearchResult.Title" parent="TextAppearance.Material.Title" />
+    <style name="TextAppearance.Material.SearchResult.Subtitle" parent="TextAppearance.Material.Subhead" />
+
+    <style name="TextAppearance.Material.Widget"/>
+    <style name="TextAppearance.Material.Widget.Button" parent="TextAppearance.Material.Button" />
+
+    <style name="TextAppearance.Material.Widget.Button.Inverse">
+        <item name="textColor">?attr/textColorPrimaryInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.Button.Colored">
+        <item name="textColor">@color/btn_colored_text_material</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.Button.Borderless.Colored" parent="TextAppearance.Material.Widget.Button">
+        <item name="textColor">@color/btn_colored_borderless_text_material</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.EditText">
+        <item name="textColor">?attr/textColorPrimaryInverse</item>
+        <item name="textColorHint">?attr/textColorHintInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.Switch" parent="TextAppearance.Material.Button" />
+
+    <style name="TextAppearance.Material.Widget.PopupMenu"/>
+    <style name="TextAppearance.Material.Widget.PopupMenu.Large" parent="TextAppearance.Material.Menu" />
+    <style name="TextAppearance.Material.Widget.PopupMenu.Small" parent="TextAppearance.Material.Menu" />
+    <style name="TextAppearance.Material.Widget.PopupMenu.Header">
+        <item name="fontFamily">@string/font_family_title_material</item>
+        <item name="textSize">@dimen/text_size_menu_header_material</item>
+        <item name="textColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.DropDownHint" parent="TextAppearance.Material.Menu" />
+
+    <style name="TextAppearance.Material.Widget.IconMenu.Item" parent="TextAppearance.Material.Small">
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.TabWidget" parent="TextAppearance.Material.Button">
+        <item name="textColor">@color/tab_indicator_text_material</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.TextView">
+        <item name="textColor">?attr/textColorPrimaryDisableOnly</item>
+        <item name="textColorHint">?attr/textColorHint</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.TextView.PopupMenu" parent="TextAppearance.Material.Menu" />
+    <style name="TextAppearance.Material.Widget.TextView.SpinnerItem" parent="TextAppearance.Material.Menu" />
+
+    <style name="TextAppearance.Material.Widget.DropDownItem" parent="TextAppearance.Material.Menu">
+        <item name="textColor">?attr/textColorPrimaryDisableOnly</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.ActionBar.Title"
+           parent="TextAppearance.Material.Title">
+        <item name="textSize">@dimen/text_size_title_material_toolbar</item>
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+    <style name="TextAppearance.Material.Widget.ActionBar.Title.Inverse"
+           parent="TextAppearance.Material.Title.Inverse">
+        <item name="textSize">@dimen/text_size_title_material_toolbar</item>
+        <item name="textColor">?attr/textColorPrimaryInverse</item>
+    </style>
+    <style name="TextAppearance.Material.Widget.ActionBar.Subtitle"
+           parent="TextAppearance.Material.Subhead">
+        <item name="textSize">@dimen/text_size_subtitle_material_toolbar</item>
+        <item name="textColor">?attr/textColorSecondary</item>
+    </style>
+    <style name="TextAppearance.Material.Widget.ActionBar.Subtitle.Inverse"
+           parent="TextAppearance.Material.Subhead.Inverse">
+        <item name="textSize">@dimen/text_size_subtitle_material_toolbar</item>
+        <item name="textColor">?attr/textColorSecondaryInverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.ActionBar.Menu"
+           parent="TextAppearance.Material.Widget.Button">
+        <item name="textColor">?attr/actionMenuTextColor</item>
+        <item name="textAllCaps">@bool/config_actionMenuItemAllCaps</item>
+    </style>
+    <style name="TextAppearance.Material.Widget.ActionBar.Menu.Inverse"
+           parent="TextAppearance.Material.Widget.Button.Inverse">
+        <item name="textColor">?attr/actionMenuTextColor</item>
+        <item name="textAllCaps">@bool/config_actionMenuItemAllCaps</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.ActionMode"/>
+    <style name="TextAppearance.Material.Widget.ActionMode.Title"
+           parent="TextAppearance.Material.Widget.ActionBar.Title" />
+    <style name="TextAppearance.Material.Widget.ActionMode.Title.Inverse"
+           parent="TextAppearance.Material.Widget.ActionBar.Title.Inverse" />
+    <style name="TextAppearance.Material.Widget.ActionMode.Subtitle"
+           parent="TextAppearance.Material.Widget.ActionBar.Subtitle" />
+    <style name="TextAppearance.Material.Widget.ActionMode.Subtitle.Inverse"
+           parent="TextAppearance.Material.Widget.ActionBar.Subtitle.Inverse" />
+
+    <style name="TextAppearance.Material.Widget.Toolbar.Title"
+           parent="TextAppearance.Material.Widget.ActionBar.Title" />
+    <style name="TextAppearance.Material.Widget.Toolbar.Subtitle"
+           parent="TextAppearance.Material.Widget.ActionBar.Subtitle" />
+
+    <style name="TextAppearance.Material.WindowTitle" parent="TextAppearance.Material.Title" />
+    <style name="TextAppearance.Material.DialogWindowTitle" parent="TextAppearance.Material.Title" />
+
+    <style name="TextAppearance.Material.Widget.Calendar.Day" parent="TextAppearance.Material.Caption">
+        <item name="textColor">?attr/textColorPrimaryActivated</item>
+    </style>
+
+    <style name="TextAppearance.Material.Widget.Calendar.DayOfWeek" parent="TextAppearance.Material.Caption" />
+    <style name="TextAppearance.Material.Widget.Calendar.Month" parent="TextAppearance.Material.Body2" />
+
+    <style name="TextAppearance.Material.TimePicker.TimeLabel" parent="TextAppearance.Material">
+        <item name="textSize">@dimen/timepicker_time_label_size</item>
+        <item name="textColor">@color/primary_text_secondary_when_activated_material_inverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.TimePicker.AmPmLabel" parent="TextAppearance.Material.Button">
+        <item name="textSize">@dimen/timepicker_ampm_label_size</item>
+        <item name="textColor">@color/primary_text_secondary_when_activated_material_inverse</item>
+    </style>
+
+    <style name="TextAppearance.Material.DatePicker.YearLabel" parent="TextAppearance.Material">
+        <item name="textColor">@color/primary_text_secondary_when_activated_material_inverse</item>
+        <item name="textSize">@dimen/date_picker_year_label_size</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Material.DatePicker.DateLabel" parent="TextAppearance.Material">
+        <item name="textColor">@color/primary_text_secondary_when_activated_material_inverse</item>
+        <item name="textSize">@dimen/date_picker_date_label_size</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Material.DatePicker.List.YearLabel" parent="TextAppearance.Material">
+        <item name="textColor">?attr/textColorPrimary</item>
+        <item name="textSize">@dimen/datepicker_list_year_label_size</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.Material.DatePicker.List.YearLabel.Activated">
+        <item name="textColor">?attr/colorControlActivated</item>
+        <item name="textSize">@dimen/datepicker_list_year_activated_label_size</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Material.Notification">
+        <item name="textColor">@color/secondary_text_material_light</item>
+        <item name="textSize">@dimen/notification_text_size</item>
+    </style>
+
+    <style name="TextAppearance.Material.Notification.Reply" />
+
+    <style name="TextAppearance.Material.Notification.Title">
+        <item name="textColor">@color/primary_text_default_material_light</item>
+        <item name="textSize">@dimen/notification_title_text_size</item>
+    </style>
+
+    <style name="TextAppearance.Material.Notification.Line2">
+        <item name="textSize">@dimen/notification_subtext_size</item>
+    </style>
+
+    <style name="TextAppearance.Material.Notification.Info">
+        <item name="textColor">@color/secondary_text_default_material_light</item>
+        <item name="textSize">@dimen/notification_subtext_size</item>
+    </style>
+
+    <style name="TextAppearance.Material.Notification.Time" parent="TextAppearance.Material.Notification.Info" />
+
+    <style name="TextAppearance.Material.Notification.Emphasis">
+        <item name="textColor">#66000000</item>
+    </style>
+
+    <style name="Widget.Material.Notification.ProgressBar" parent="Widget.Material.Light.ProgressBar.Horizontal" />
+
+    <style name="Widget.Material.Notification.MessagingText" parent="Widget.Material.Light.TextView">
+        <item name="layout_width">match_parent</item>
+        <item name="layout_height">wrap_content</item>
+        <item name="ellipsize">end</item>
+        <item name="visibility">gone</item>
+        <item name="textAppearance">@style/TextAppearance.Material.Notification</item>
+    </style>
+
+    <!-- Widget Styles -->
+
+    <style name="Material"/>
+    <style name="Material.Light"/>
+    <style name="Widget.Material" parent="Widget" />
+
+    <!-- Bordered ink button -->
+    <style name="Widget.Material.Button">
+        <item name="background">@drawable/btn_default_material</item>
+        <item name="textAppearance">?attr/textAppearanceButton</item>
+        <item name="minHeight">48dip</item>
+        <item name="minWidth">88dip</item>
+        <item name="stateListAnimator">@anim/button_state_list_anim_material</item>
+        <item name="focusable">true</item>
+        <item name="clickable">true</item>
+        <item name="gravity">center_vertical|center_horizontal</item>
+    </style>
+
+    <!-- Colored bordered ink button -->
+    <style name="Widget.Material.Button.Colored">
+        <item name="background">@drawable/btn_colored_material</item>
+        <item name="textAppearance">@style/TextAppearance.Material.Widget.Button.Colored</item>
+    </style>
+
+    <!-- Small bordered ink button -->
+    <style name="Widget.Material.Button.Small">
+        <item name="minHeight">48dip</item>
+        <item name="minWidth">48dip</item>
+    </style>
+
+    <!-- Borderless ink button -->
+    <style name="Widget.Material.Button.Borderless">
+        <item name="background">@drawable/btn_borderless_material</item>
+        <item name="stateListAnimator">@null</item>
+    </style>
+
+    <!-- Colored borderless ink button -->
+    <style name="Widget.Material.Button.Borderless.Colored">
+        <item name="textAppearance">@style/TextAppearance.Material.Widget.Button.Borderless.Colored</item>
+    </style>
+
+    <!-- Alert dialog button bar button -->
+    <style name="Widget.Material.Button.ButtonBar.AlertDialog" parent="Widget.Material.Button.Borderless.Colored">
+        <item name="minWidth">64dp</item>
+        <item name="minHeight">@dimen/alert_dialog_button_bar_height</item>
+    </style>
+
+    <!-- Small borderless ink button -->
+    <style name="Widget.Material.Button.Borderless.Small">
+        <item name="minHeight">48dip</item>
+        <item name="minWidth">48dip</item>
+    </style>
+
+    <style name="Widget.Material.Button.Inset">
+        <item name="background">@drawable/button_inset</item>
+    </style>
+
+    <style name="Widget.Material.Button.Toggle">
+        <item name="background">@drawable/btn_toggle_material</item>
+        <item name="textOn">@string/capital_on</item>
+        <item name="textOff">@string/capital_off</item>
+    </style>
+
+    <style name="Widget.Material.BaseButtonBar">
+        <item name="background">?attr/colorBackgroundFloating</item>
+    </style>
+
+    <style name="Widget.Material.ButtonBar" parent="Widget.Material.BaseButtonBar">
+        <item name="background">@null</item>
+    </style>
+
+    <style name="Widget.Material.ButtonBar.AlertDialog" />
+
+    <style name="Widget.Material.SearchView">
+        <item name="layout">@layout/search_view</item>
+        <item name="queryBackground">@drawable/textfield_search_material</item>
+        <item name="submitBackground">@drawable/textfield_search_material</item>
+        <item name="closeIcon">@drawable/ic_clear_material</item>
+        <item name="searchIcon">@drawable/ic_search_api_material</item>
+        <item name="searchHintIcon">@drawable/ic_search_api_material</item>
+        <item name="goIcon">@drawable/ic_go_search_api_material</item>
+        <item name="voiceIcon">@drawable/ic_voice_search_api_material</item>
+        <item name="commitIcon">@drawable/ic_commit_search_api_material</item>
+        <item name="suggestionRowLayout">@layout/search_dropdown_item_icons_2line</item>
+    </style>
+
+    <style name="Widget.Material.SearchView.ActionBar">
+        <item name="queryBackground">@empty</item>
+        <item name="submitBackground">@empty</item>
+        <item name="searchHintIcon">@empty</item>
+        <item name="defaultQueryHint">@string/search_hint</item>
+    </style>
+
+    <style name="Widget.Material.SegmentedButton" parent="SegmentedButton">
+        <item name="background">@drawable/btn_group_holo_dark</item>
+    </style>
+
+    <style name="Widget.Material.StackView">
+        <item name="resOutColor">?attr/colorPrimary</item>
+        <item name="clickColor">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.Material.TextView" parent="Widget.TextView"/>
+
+    <style name="Widget.Material.TextView.ListSeparator" parent="Widget.TextView.ListSeparator">
+        <item name="background">@drawable/list_section_divider_material</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <style name="Widget.Material.TextView.SpinnerItem" parent="Widget.TextView.SpinnerItem">
+        <item name="textAppearance">@style/TextAppearance.Material.Widget.TextView.SpinnerItem</item>
+        <item name="paddingStart">8dp</item>
+        <item name="paddingEnd">8dp</item>
+    </style>
+
+    <style name="Widget.Material.CheckedTextView" parent="Widget.CheckedTextView" />
+    <style name="Widget.Material.TextSelectHandle" parent="Widget.TextSelectHandle"/>
+    <style name="Widget.Material.AbsListView" parent="Widget.AbsListView"/>
+
+    <style name="Widget.Material.AutoCompleteTextView" parent="Widget.AutoCompleteTextView">
+        <item name="dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
+        <item name="popupBackground">@drawable/popup_background_material</item>
+        <item name="popupElevation">@dimen/floating_window_z</item>
+    </style>
+
+    <style name="Widget.Material.CompoundButton" parent="Widget.CompoundButton"/>
+
+    <style name="Widget.Material.CompoundButton.CheckBox" parent="Widget.CompoundButton.CheckBox">
+        <item name="background">@drawable/control_background_40dp_material</item>
+    </style>
+
+    <style name="Widget.Material.CompoundButton.RadioButton" parent="Widget.CompoundButton.RadioButton">
+        <item name="background">@drawable/control_background_40dp_material</item>
+    </style>
+
+    <style name="Widget.Material.CompoundButton.Star" parent="Widget.CompoundButton.Star">
+        <item name="button">@drawable/btn_star_material</item>
+        <item name="background">@drawable/control_background_40dp_material</item>
+    </style>
+
+    <style name="Widget.Material.CompoundButton.Switch">
+        <item name="track">@drawable/switch_track_material</item>
+        <item name="thumb">@drawable/switch_thumb_material_anim</item>
+        <item name="switchTextAppearance">@style/TextAppearance.Material.Widget.Switch</item>
+        <item name="textOn">@string/capital_on</item>
+        <item name="textOff">@string/capital_off</item>
+        <item name="background">@drawable/control_background_40dp_material</item>
+        <item name="showText">false</item>
+    </style>
+
+    <style name="Widget.Material.EditText" parent="Widget.EditText"/>
+
+    <style name="Widget.Material.ExpandableListView" parent="Widget.Material.ListView">
+        <item name="groupIndicator">@drawable/expander_group_material</item>
+        <item name="indicatorLeft">?attr/expandableListPreferredItemIndicatorLeft</item>
+        <item name="indicatorRight">?attr/expandableListPreferredItemIndicatorRight</item>
+        <item name="childDivider">?attr/listDivider</item>
+    </style>
+
+    <style name="Widget.Material.ExpandableListView.White"/>
+
+    <style name="Widget.Material.FragmentBreadCrumbs" parent="Widget.FragmentBreadCrumbs">
+        <item name="itemLayout">@layout/fragment_bread_crumb_item_material</item>
+        <item name="itemColor">@color/primary_text_default_material_light</item>
+    </style>
+
+    <style name="Widget.Material.Gallery" parent="Widget.Gallery"/>
+    <style name="Widget.Material.GestureOverlayView" parent="Widget.GestureOverlayView"/>
+
+    <style name="Widget.Material.GridView" parent="Widget.GridView">
+        <item name="listSelector">?attr/listChoiceBackgroundIndicator</item>
+    </style>
+
+    <style name="Widget.Material.CalendarView" parent="Widget.CalendarView">
+        <item name="calendarViewMode">material</item>
+
+        <item name="monthTextAppearance">@style/TextAppearance.Material.Widget.Calendar.Month</item>
+        <item name="weekDayTextAppearance">@style/TextAppearance.Material.Widget.Calendar.DayOfWeek</item>
+        <item name="dateTextAppearance">@style/TextAppearance.Material.Widget.Calendar.Day</item>
+        <item name="daySelectorColor">?attr/colorControlActivated</item>
+        <item name="dayHighlightColor">?attr/colorControlHighlight</item>
+    </style>
+
+    <style name="Widget.Material.ImageButton" parent="Widget.ImageButton">
+        <item name="background">@drawable/btn_default_material</item>
+    </style>
+
+    <style name="Widget.Material.NumberPicker" parent="Widget.NumberPicker">
+        <item name="internalLayout">@layout/number_picker_material</item>
+        <item name="solidColor">@color/transparent</item>
+        <item name="selectionDivider">@drawable/number_picker_divider_material</item>
+        <item name="selectionDividerHeight">2dp</item>
+        <item name="selectionDividersDistance">48dp</item>
+        <item name="internalMinWidth">64dp</item>
+        <item name="internalMaxHeight">180dp</item>
+        <item name="virtualButtonPressedDrawable">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="Widget.Material.TimePicker">
+        <item name="timePickerMode">clock</item>
+        <item name="legacyLayout">@layout/time_picker_legacy_material</item>
+        <!-- Attributes for new-style TimePicker. -->
+        <item name="internalLayout">@layout/time_picker_material</item>
+        <item name="headerTextColor">@color/primary_text_secondary_when_activated_material</item>
+        <item name="headerBackground">#ff555555</item>
+        <item name="numbersTextColor">?attr/textColorPrimaryActivated</item>
+        <item name="numbersInnerTextColor">?attr/textColorSecondaryActivated</item>
+        <item name="numbersSelectorColor">?attr/colorControlActivated</item>
+        <item name="numbersBackgroundColor">#ff555555</item>
+        <item name="amPmTextColor">?attr/textColorSecondary</item>
+    </style>
+
+    <style name="Widget.Material.DatePicker">
+        <item name="datePickerMode">calendar</item>
+        <item name="legacyLayout">@layout/date_picker_legacy_holo</item>
+        <item name="calendarViewShown">true</item>
+        <!-- Attributes for new-style DatePicker. -->
+        <item name="internalLayout">@layout/date_picker_material</item>
+        <item name="headerTextColor">@color/primary_text_secondary_when_activated_material</item>
+        <item name="headerBackground">#ff555555</item>
+    </style>
+
+    <style name="Widget.Material.ActivityChooserView" parent="Widget.ActivityChooserView">
+        <item name="background">@drawable/ab_share_pack_material</item>
+    </style>
+
+    <style name="Widget.Material.ImageWell" parent="Widget.ImageWell"/>
+
+    <style name="Widget.Material.ListView" parent="Widget.ListView">
+        <item name="divider">?attr/listDivider</item>
+        <item name="listSelector">?attr/listChoiceBackgroundIndicator</item>
+    </style>
+
+    <style name="Widget.Material.ListView.DropDown">
+        <item name="divider">@null</item>
+    </style>
+
+    <style name="Widget.Material.ListView.White"/>
+
+    <style name="Widget.Material.ListMenuView">
+        <item name="subMenuArrow">@drawable/ic_arrow_drop_right_black_24dp</item>
+    </style>
+
+    <style name="Widget.Material.PopupWindow" parent="Widget.PopupWindow"/>
+
+    <style name="Widget.Material.PopupWindow.ActionMode">
+        <item name="popupBackground">@drawable/popup_background_material</item>
+        <item name="popupElevation">@dimen/floating_window_z</item>
+        <item name="popupAnimationStyle">@style/Animation.PopupWindow.ActionMode</item>
+    </style>
+
+    <style name="Widget.Material.ProgressBar" parent="Widget.ProgressBar">
+        <item name="indeterminateDrawable">@drawable/progress_medium_material</item>
+    </style>
+
+    <style name="Widget.Material.ProgressBar.Inverse"/>
+
+    <style name="Widget.Material.ProgressBar.Horizontal" parent="Widget.ProgressBar.Horizontal">
+        <item name="progressDrawable">@drawable/progress_horizontal_material</item>
+        <item name="indeterminateDrawable">@drawable/progress_indeterminate_horizontal_material</item>
+        <item name="minHeight">16dip</item>
+        <item name="maxHeight">16dip</item>
+    </style>
+
+    <style name="Widget.Material.ProgressBar.Small" parent="Widget.ProgressBar.Small">
+        <item name="indeterminateDrawable">@drawable/progress_small_material</item>
+    </style>
+
+    <style name="Widget.Material.ProgressBar.Small.Inverse"/>
+    <style name="Widget.Material.ProgressBar.Small.Title"/>
+
+    <style name="Widget.Material.ProgressBar.Large" parent="Widget.ProgressBar.Large">
+        <item name="indeterminateDrawable">@drawable/progress_large_material</item>
+    </style>
+
+    <style name="Widget.Material.ProgressBar.Large.Inverse"/>
+
+    <style name="Widget.Material.SeekBar">
+        <item name="indeterminateOnly">false</item>
+        <item name="progressDrawable">@drawable/seekbar_track_material</item>
+        <item name="indeterminateDrawable">@drawable/seekbar_track_material</item>
+        <item name="thumb">@drawable/seekbar_thumb_material_anim</item>
+        <item name="splitTrack">true</item>
+        <item name="useDisabledAlpha">false</item>
+        <item name="focusable">true</item>
+        <item name="paddingStart">16dip</item>
+        <item name="paddingEnd">16dip</item>
+        <item name="mirrorForRtl">true</item>
+        <item name="background">@drawable/control_background_32dp_material</item>
+    </style>
+
+    <!-- A seek bar with tick marks at each progress value. -->
+    <style name="Widget.Material.SeekBar.Discrete">
+        <item name="tickMark">@drawable/seekbar_tick_mark_material</item>
+    </style>
+
+    <style name="Widget.Material.RatingBar" parent="Widget.RatingBar">
+        <item name="progressDrawable">@drawable/ratingbar_material</item>
+        <item name="indeterminateDrawable">@drawable/ratingbar_material</item>
+    </style>
+
+    <style name="Widget.Material.RatingBar.Indicator" parent="Widget.RatingBar.Indicator">
+        <item name="progressDrawable">@drawable/ratingbar_indicator_material</item>
+        <item name="indeterminateDrawable">@drawable/ratingbar_indicator_material</item>
+        <item name="minHeight">36dp</item>
+        <item name="maxHeight">36dp</item>
+    </style>
+
+    <style name="Widget.Material.RatingBar.Small" parent="Widget.RatingBar.Small">
+        <item name="progressDrawable">@drawable/ratingbar_small_material</item>
+        <item name="indeterminateDrawable">@drawable/ratingbar_small_material</item>
+        <item name="minHeight">16dp</item>
+        <item name="maxHeight">16dp</item>
+    </style>
+
+    <style name="Widget.Material.ScrollView" parent="Widget.ScrollView"/>
+    <style name="Widget.Material.HorizontalScrollView" parent="Widget.HorizontalScrollView"/>
+
+    <style name="Widget.Material.Spinner" parent="Widget.Spinner.DropDown">
+        <item name="background">@drawable/spinner_background_material</item>
+        <item name="dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
+        <item name="popupBackground">@drawable/popup_background_material</item>
+        <item name="popupElevation">@dimen/floating_window_z</item>
+        <item name="popupAnimationStyle">@empty</item>
+        <item name="popupEnterTransition">@transition/popup_window_enter</item>
+        <item name="popupExitTransition">@transition/popup_window_exit</item>
+        <item name="dropDownVerticalOffset">0dip</item>
+        <item name="dropDownHorizontalOffset">0dip</item>
+        <item name="overlapAnchor">true</item>
+        <item name="dropDownWidth">wrap_content</item>
+        <item name="popupPromptView">@layout/simple_dropdown_hint</item>
+        <item name="gravity">start|center_vertical</item>
+        <item name="disableChildrenWhenDisabled">true</item>
+    </style>
+
+    <style name="Widget.Material.Spinner.DropDown"/>
+    <style name="Widget.Material.Spinner.DropDown.ActionBar" />
+
+    <style name="Widget.Material.Spinner.Underlined">
+        <item name="background">@drawable/spinner_textfield_background_material</item>
+    </style>
+
+    <style name="Widget.Material.TabWidget">
+        <item name="textAppearance">@style/TextAppearance.Material.Widget.TabWidget</item>
+        <item name="ellipsize">marquee</item>
+        <item name="singleLine">true</item>
+        <item name="tabStripLeft">@empty</item>
+        <item name="tabStripRight">@empty</item>
+        <item name="tabStripEnabled">false</item>
+        <item name="divider">?attr/dividerVertical</item>
+        <item name="gravity">fill_horizontal|center_vertical</item>
+        <item name="showDividers">none</item>
+        <item name="dividerPadding">8dip</item>
+        <item name="measureWithLargestChild">true</item>
+        <item name="tabLayout">@layout/tab_indicator_material</item>
+    </style>
+
+    <style name="Widget.Material.Tab" parent="Widget.Material.ActionBar.TabView">
+        <item name="background">@drawable/tab_indicator_material</item>
+        <item name="layout_width">0dip</item>
+        <item name="layout_weight">1</item>
+        <item name="minWidth">80dip</item>
+    </style>
+
+    <style name="Widget.Material.TabText" parent="Widget.Material.ActionBar.TabText">
+        <item name="maxWidth">180dip</item>
+    </style>
+
+    <style name="Widget.Material.Toolbar" parent="Widget.Toolbar">
+        <item name="navigationButtonStyle">@style/Widget.Material.Toolbar.Button.Navigation</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Material.Widget.Toolbar.Title</item>
+        <item name="subtitleTextAppearance">@style/TextAppearance.Material.Widget.Toolbar.Subtitle</item>
+        <item name="paddingStart">@dimen/action_bar_default_padding_start_material</item>
+        <item name="paddingEnd">@dimen/action_bar_default_padding_end_material</item>
+    </style>
+
+    <style name="Widget.Material.Toolbar.Button.Navigation" parent="Widget.Material">
+        <item name="background">@drawable/control_background_40dp_material</item>
+        <item name="minWidth">56dp</item>
+        <item name="scaleType">center</item>
+    </style>
+
+    <style name="Widget.Material.WebTextView" parent="Widget.WebTextView"/>
+    <style name="Widget.Material.WebView" parent="Widget.WebView"/>
+
+    <style name="Widget.Material.DropDownItem">
+        <item name="textAppearance">@style/TextAppearance.Material.Widget.DropDownItem</item>
+        <item name="paddingStart">8dp</item>
+        <item name="paddingEnd">8dp</item>
+        <item name="gravity">center_vertical</item>
+    </style>
+
+    <style name="Widget.Material.DropDownItem.Spinner"/>
+
+    <style name="Widget.Material.KeyboardView" parent="Widget.KeyboardView"/>
+    <style name="Widget.Material.QuickContactBadge.WindowSmall" parent="Widget.QuickContactBadge.WindowSmall"/>
+    <style name="Widget.Material.QuickContactBadge.WindowMedium" parent="Widget.QuickContactBadge.WindowMedium"/>
+    <style name="Widget.Material.QuickContactBadge.WindowLarge" parent="Widget.QuickContactBadge.WindowLarge"/>
+    <style name="Widget.Material.QuickContactBadgeSmall.WindowSmall" parent="Widget.QuickContactBadgeSmall.WindowSmall"/>
+    <style name="Widget.Material.QuickContactBadgeSmall.WindowMedium" parent="Widget.QuickContactBadgeSmall.WindowMedium"/>
+    <style name="Widget.Material.QuickContactBadgeSmall.WindowLarge" parent="Widget.QuickContactBadgeSmall.WindowLarge"/>
+
+    <style name="Widget.Material.ListPopupWindow">
+        <item name="dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
+        <item name="popupBackground">@drawable/popup_background_material</item>
+        <item name="popupElevation">@dimen/floating_window_z</item>
+        <item name="popupAnimationStyle">@empty</item>
+        <item name="popupEnterTransition">@transition/popup_window_enter</item>
+        <item name="popupExitTransition">@transition/popup_window_exit</item>
+        <item name="dropDownVerticalOffset">0dip</item>
+        <item name="dropDownHorizontalOffset">0dip</item>
+        <item name="dropDownWidth">wrap_content</item>
+    </style>
+
+    <style name="Widget.Material.PopupMenu" parent="Widget.Material.ListPopupWindow"/>
+
+    <style name="Widget.Material.PopupMenu.Overflow">
+        <item name="overlapAnchor">true</item>
+        <item name="dropDownHorizontalOffset">-4dip</item>
+    </style>
+
+    <style name="Widget.Material.ContextPopupMenu" parent="Widget.Material.ListPopupWindow">
+        <item name="overlapAnchor">true</item>
+    </style>
+
+    <style name="Widget.Material.ActionButton">
+        <item name="background">?attr/actionBarItemBackground</item>
+        <item name="paddingStart">12dp</item>
+        <item name="paddingEnd">12dp</item>
+        <item name="minWidth">@dimen/action_button_min_width_material</item>
+        <item name="minHeight">@dimen/action_button_min_height_material</item>
+        <item name="gravity">center</item>
+        <item name="scaleType">center</item>
+        <item name="maxLines">2</item>
+    </style>
+
+    <style name="Widget.Material.ActionButton.CloseMode">
+        <item name="background">@drawable/control_background_40dp_material</item>
+        <!-- Should match Widget.Material.Toolbar.Button.Navigation minWidth. -->
+        <item name="minWidth">56dp</item>
+    </style>
+
+    <style name="Widget.Material.ActionButton.Overflow">
+        <item name="src">@drawable/ic_menu_moreoverflow_material</item>
+        <item name="background">?attr/actionBarItemBackground</item>
+        <item name="contentDescription">@string/action_menu_overflow_description</item>
+        <item name="minWidth">@dimen/action_button_min_width_overflow_material</item>
+        <item name="minHeight">@dimen/action_button_min_height_material</item>
+        <item name="paddingStart">@dimen/action_bar_overflow_padding_start_material</item>
+        <item name="paddingEnd">@dimen/action_bar_overflow_padding_end_material</item>
+    </style>
+
+    <style name="Widget.Material.ActionBar.TabView" parent="Widget.Material">
+        <item name="gravity">center_horizontal</item>
+        <item name="background">@drawable/tab_indicator_material</item>
+        <item name="paddingStart">16dip</item>
+        <item name="paddingEnd">16dip</item>
+    </style>
+
+    <style name="Widget.Material.ActionBar.TabBar" parent="Widget.Material">
+        <item name="divider">?attr/actionBarDivider</item>
+        <item name="showDividers">middle</item>
+        <item name="dividerPadding">12dip</item>
+    </style>
+
+    <style name="Widget.Material.ActionBar.TabText">
+        <item name="textAppearance">@style/TextAppearance.Material.Widget.TabWidget</item>
+        <item name="ellipsize">marquee</item>
+        <item name="maxLines">2</item>
+    </style>
+
+    <style name="Widget.Material.ActionBar">
+        <item name="background">@null</item>
+        <item name="backgroundStacked">@null</item>
+        <item name="backgroundSplit">@null</item>
+        <item name="displayOptions">showTitle</item>
+        <item name="divider">?attr/dividerVertical</item>
+        <item name="height">?attr/actionBarSize</item>
+        <item name="paddingStart">0dip</item>
+        <item name="paddingTop">0dip</item>
+        <item name="paddingEnd">0dip</item>
+        <item name="paddingBottom">0dip</item>
+        <item name="titleTextStyle">@style/TextAppearance.Material.Widget.ActionBar.Title</item>
+        <item name="subtitleTextStyle">@style/TextAppearance.Material.Widget.ActionBar.Subtitle</item>
+        <item name="progressBarStyle">?attr/progressBarStyleHorizontal</item>
+        <item name="indeterminateProgressStyle">?attr/progressBarStyle</item>
+        <item name="progressBarPadding">32dp</item>
+        <item name="itemPadding">8dp</item>
+        <item name="homeLayout">@layout/action_bar_home_material</item>
+        <item name="gravity">center_vertical</item>
+        <item name="contentInsetStart">@dimen/action_bar_content_inset_material</item>
+        <item name="contentInsetStartWithNavigation">@dimen/action_bar_content_inset_with_nav</item>
+        <item name="contentInsetEnd">@dimen/action_bar_content_inset_material</item>
+        <item name="elevation">@dimen/action_bar_elevation_material</item>
+        <item name="popupTheme">?attr/actionBarPopupTheme</item>
+    </style>
+
+    <style name="Widget.Material.ActionBar.Solid">
+        <item name="background">?attr/colorPrimary</item>
+        <item name="backgroundStacked">?attr/colorPrimary</item>
+        <item name="backgroundSplit">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.Material.ActionMode">
+        <item name="background">?attr/actionModeBackground</item>
+        <item name="backgroundSplit">?attr/actionModeSplitBackground</item>
+        <item name="height">?attr/actionBarSize</item>
+        <item name="titleTextStyle">@style/TextAppearance.Material.Widget.ActionMode.Title</item>
+        <item name="subtitleTextStyle">@style/TextAppearance.Material.Widget.ActionMode.Subtitle</item>
+        <item name="closeItemLayout">@layout/action_mode_close_item_material</item>
+    </style>
+
+    <style name="Widget.Material.FastScroll">
+        <item name="thumbDrawable">?attr/fastScrollThumbDrawable</item>
+        <item name="trackDrawable">?attr/fastScrollTrackDrawable</item>
+        <item name="backgroundLeft">?attr/fastScrollPreviewBackgroundLeft</item>
+        <item name="backgroundRight">?attr/fastScrollPreviewBackgroundRight</item>
+        <item name="position">?attr/fastScrollOverlayPosition</item>
+        <item name="textColor">?attr/fastScrollTextColor</item>
+        <item name="thumbMinWidth">0dp</item>
+        <item name="thumbMinHeight">0dp</item>
+        <item name="textSize">45sp</item>
+        <item name="minWidth">104dp</item>
+        <item name="minHeight">88dp</item>
+        <item name="padding">0dp</item>
+        <item name="thumbPosition">inside</item>
+    </style>
+
+    <style name="Widget.Material.PreferenceFrameLayout">
+        <item name="borderTop">0dip</item>
+        <item name="borderBottom">@dimen/preference_fragment_padding_bottom</item>
+        <item name="borderLeft">?attr/preferenceFragmentPaddingSide</item>
+        <item name="borderRight">?attr/preferenceFragmentPaddingSide</item>
+    </style>
+
+    <style name="Widget.Material.MediaRouteButton" parent ="Widget.Material.ActionButton">
+        <item name="externalRouteEnabledDrawable">@drawable/ic_media_route_material</item>
+        <item name="contentDescription">@string/media_route_button_content_description</item>
+    </style>
+
+    <style name="Widget.Material.SuggestionItem">
+        <item name="textAppearance">@android:style/TextAppearance.Material.Body1</item>
+        <item name="textColor">?attr/textColorSecondary</item>
+        <item name="drawablePadding">8dip</item>
+        <item name="gravity">start|center_vertical</item>
+        <item name="layout_gravity">start|center_vertical</item>
+        <item name="layout_height">48dip</item>
+        <item name="layout_width">match_parent</item>
+        <item name="paddingBottom">8dip</item>
+        <item name="paddingEnd">16dip</item>
+        <item name="paddingStart">16dip</item>
+        <item name="paddingTop">8dip</item>
+        <item name="singleLine">true</item>
+        <item name="textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Material.TextSuggestionHighlight">
+        <item name="textColor">?attr/textColorPrimary</item>
+    </style>
+
+    <style name="Widget.Material.SuggestionButton">
+        <item name="textAppearance">@android:style/TextAppearance.Material.Button</item>
+        <item name="textColor">?attr/colorAccent</item>
+        <item name="drawablePadding">8dip</item>
+        <item name="gravity">start|center_vertical</item>
+        <item name="layout_gravity">start|center_vertical</item>
+        <item name="layout_height">48dip</item>
+        <item name="layout_width">match_parent</item>
+        <item name="paddingBottom">8dip</item>
+        <item name="paddingEnd">16dip</item>
+        <item name="paddingStart">16dip</item>
+        <item name="paddingTop">8dip</item>
+        <item name="singleLine">true</item>
+        <item name="textAllCaps">true</item>
+        <item name="textSize">14sp</item>
+    </style>
+
+    <!-- Light widget styles -->
+
+    <style name="Widget.Material.Light" parent="Widget.Material"/>
+    <style name="Widget.Material.Light.Button" parent="Widget.Material.Button"/>
+    <style name="Widget.Material.Light.Button.Small" parent="Widget.Material.Button.Small"/>
+    <style name="Widget.Material.Light.Button.Borderless" parent="Widget.Material.Button.Borderless"/>
+    <style name="Widget.Material.Light.Button.Borderless.Colored" parent="Widget.Material.Button.Borderless.Colored"/>
+    <style name="Widget.Material.Light.Button.ButtonBar.AlertDialog" parent="Widget.Material.Button.ButtonBar.AlertDialog" />
+    <style name="Widget.Material.Light.Button.Borderless.Small" parent="Widget.Material.Button.Borderless.Small"/>
+    <style name="Widget.Material.Light.Button.Inset" parent="Widget.Material.Button.Inset"/>
+    <style name="Widget.Material.Light.Button.Toggle" parent="Widget.Material.Button.Toggle" />
+    <style name="Widget.Material.Light.ButtonBar" parent="Widget.Material.ButtonBar"/>
+    <style name="Widget.Material.Light.ButtonBar.AlertDialog" parent="Widget.Material.ButtonBar.AlertDialog"/>
+    <style name="Widget.Material.Light.SearchView" parent="Widget.Material.SearchView"/>
+    <style name="Widget.Material.Light.SearchView.ActionBar" parent="Widget.Material.SearchView.ActionBar"/>
+
+    <style name="Widget.Material.Light.SegmentedButton" parent="Widget.Material.SegmentedButton">
+        <item name="background">@drawable/btn_group_holo_light</item>
+    </style>
+
+    <style name="Widget.Material.Light.StackView" parent="Widget.Material.StackView"/>
+    <style name="Widget.Material.Light.TextView" parent="Widget.Material.TextView"/>
+    <style name="Widget.Material.Light.TextView.ListSeparator" parent="Widget.Material.TextView.ListSeparator"/>
+    <style name="Widget.Material.Light.TextView.SpinnerItem" parent="Widget.Material.TextView.SpinnerItem"/>
+    <style name="Widget.Material.Light.CheckedTextView" parent="Widget.Material.CheckedTextView"/>
+    <style name="Widget.Material.Light.TextSelectHandle" parent="Widget.Material.TextSelectHandle"/>
+    <style name="Widget.Material.Light.AbsListView" parent="Widget.Material.AbsListView"/>
+    <style name="Widget.Material.Light.AutoCompleteTextView" parent="Widget.Material.AutoCompleteTextView" />
+    <style name="Widget.Material.Light.CompoundButton" parent="Widget.Material.CompoundButton"/>
+    <style name="Widget.Material.Light.CompoundButton.CheckBox" parent="Widget.Material.CompoundButton.CheckBox"/>
+    <style name="Widget.Material.Light.CompoundButton.RadioButton" parent="Widget.Material.CompoundButton.RadioButton"/>
+    <style name="Widget.Material.Light.CompoundButton.Star" parent="Widget.Material.CompoundButton.Star"/>
+    <style name="Widget.Material.Light.CompoundButton.Switch" parent="Widget.Material.CompoundButton.Switch" />
+    <style name="Widget.Material.Light.ListView.DropDown" parent="Widget.Material.ListView.DropDown"/>
+    <style name="Widget.Material.Light.EditText" parent="Widget.Material.EditText"/>
+    <style name="Widget.Material.Light.ExpandableListView" parent="Widget.Material.ExpandableListView"/>
+    <style name="Widget.Material.Light.ExpandableListView.White" parent="Widget.Material.ExpandableListView.White"/>
+    <style name="Widget.Material.Light.FragmentBreadCrumbs" parent="Widget.Material.FragmentBreadCrumbs" >
+        <item name="itemColor">@color/primary_text_default_material_dark</item>
+    </style>
+    <style name="Widget.Material.Light.Gallery" parent="Widget.Material.Gallery"/>
+    <style name="Widget.Material.Light.GestureOverlayView" parent="Widget.Material.GestureOverlayView"/>
+    <style name="Widget.Material.Light.GridView" parent="Widget.Material.GridView"/>
+    <style name="Widget.Material.Light.ImageButton" parent="Widget.Material.ImageButton"/>
+    <style name="Widget.Material.Light.CalendarView" parent="Widget.Material.CalendarView" />
+    <style name="Widget.Material.Light.NumberPicker" parent="Widget.Material.NumberPicker"/>
+
+    <style name="Widget.Material.Light.TimePicker" parent="Widget.Material.TimePicker">
+        <item name="headerTextColor">@color/primary_text_secondary_when_activated_material_inverse</item>
+        <item name="headerBackground">?attr/colorAccent</item>
+        <item name="numbersBackgroundColor">#ffeeeeee</item>
+    </style>
+
+    <style name="Widget.Material.Light.DatePicker" parent="Widget.Material.DatePicker">
+        <item name="headerTextColor">@color/primary_text_secondary_when_activated_material_inverse</item>
+        <item name="headerBackground">?attr/colorAccent</item>
+    </style>
+
+    <style name="Widget.Material.Light.ActivityChooserView" parent="Widget.Material.ActivityChooserView" />
+    <style name="Widget.Material.Light.ImageWell" parent="Widget.Material.ImageWell"/>
+    <style name="Widget.Material.Light.ListView" parent="Widget.Material.ListView"/>
+    <style name="Widget.Material.Light.ListView.White" parent="Widget.Material.ListView.White"/>
+    <style name="Widget.Material.Light.PopupWindow" parent="Widget.Material.PopupWindow"/>
+    <style name="Widget.Material.Light.PopupWindow.ActionMode" parent="Widget.Material.PopupWindow.ActionMode"/>
+    <style name="Widget.Material.Light.ProgressBar" parent="Widget.Material.ProgressBar"/>
+    <style name="Widget.Material.Light.ProgressBar.Horizontal" parent="Widget.Material.ProgressBar.Horizontal"/>
+    <style name="Widget.Material.Light.ProgressBar.Small" parent="Widget.Material.ProgressBar.Small"/>
+    <style name="Widget.Material.Light.ProgressBar.Small.Title" parent="Widget.Material.ProgressBar.Small.Title"/>
+    <style name="Widget.Material.Light.ProgressBar.Large" parent="Widget.Material.ProgressBar.Large"/>
+    <style name="Widget.Material.Light.ProgressBar.Inverse" parent="Widget.Material.ProgressBar.Inverse"/>
+    <style name="Widget.Material.Light.ProgressBar.Small.Inverse" parent="Widget.Material.ProgressBar.Small.Inverse"/>
+    <style name="Widget.Material.Light.ProgressBar.Large.Inverse" parent="Widget.Material.ProgressBar.Large.Inverse"/>
+    <style name="Widget.Material.Light.SeekBar" parent="Widget.Material.SeekBar"/>
+    <style name="Widget.Material.Light.RatingBar" parent="Widget.Material.RatingBar"/>
+    <style name="Widget.Material.Light.RatingBar.Indicator" parent="Widget.Material.RatingBar.Indicator"/>
+    <style name="Widget.Material.Light.RatingBar.Small" parent="Widget.Material.RatingBar.Small"/>
+    <style name="Widget.Material.Light.ScrollView" parent="Widget.Material.ScrollView"/>
+    <style name="Widget.Material.Light.HorizontalScrollView" parent="Widget.Material.HorizontalScrollView"/>
+    <style name="Widget.Material.Light.Spinner" parent="Widget.Material.Spinner" />
+    <style name="Widget.Material.Light.Spinner.DropDown" parent="Widget.Material.Spinner.DropDown"/>
+    <style name="Widget.Material.Light.Spinner.DropDown.ActionBar" parent="Widget.Material.Spinner.DropDown.ActionBar"/>
+    <style name="Widget.Material.Light.Spinner.Underlined" parent="Widget.Material.Spinner.Underlined" />
+    <style name="Widget.Material.Light.TabWidget" parent="Widget.Material.TabWidget"/>
+    <style name="Widget.Material.Light.WebTextView" parent="Widget.Material.WebTextView"/>
+    <style name="Widget.Material.Light.WebView" parent="Widget.Material.WebView"/>
+    <style name="Widget.Material.Light.DropDownItem" parent="Widget.Material.DropDownItem"/>
+    <style name="Widget.Material.Light.DropDownItem.Spinner" parent="Widget.Material.DropDownItem.Spinner"/>
+    <style name="Widget.Material.Light.KeyboardView" parent="Widget.Material.KeyboardView"/>
+    <style name="Widget.Material.Light.QuickContactBadge.WindowSmall" parent="Widget.Material.QuickContactBadge.WindowSmall"/>
+    <style name="Widget.Material.Light.QuickContactBadge.WindowMedium" parent="Widget.Material.QuickContactBadge.WindowMedium"/>
+    <style name="Widget.Material.Light.QuickContactBadge.WindowLarge" parent="Widget.Material.QuickContactBadge.WindowLarge"/>
+    <style name="Widget.Material.Light.QuickContactBadgeSmall.WindowSmall" parent="Widget.Material.QuickContactBadgeSmall.WindowSmall"/>
+    <style name="Widget.Material.Light.QuickContactBadgeSmall.WindowMedium" parent="Widget.Material.QuickContactBadgeSmall.WindowMedium"/>
+    <style name="Widget.Material.Light.QuickContactBadgeSmall.WindowLarge" parent="Widget.Material.QuickContactBadgeSmall.WindowLarge"/>
+    <style name="Widget.Material.Light.ListPopupWindow" parent="Widget.Material.ListPopupWindow"/>
+    <style name="Widget.Material.Light.PopupMenu" parent="Widget.Material.ListPopupWindow"/>
+    <style name="Widget.Material.Light.PopupMenu.Overflow" parent="Widget.Material.PopupMenu.Overflow"/>
+    <style name="Widget.Material.Light.ActionButton" parent="Widget.Material.ActionButton"/>
+    <style name="Widget.Material.Light.ActionButton.Overflow" parent="Widget.Material.ActionButton.Overflow"/>
+    <style name="Widget.Material.Light.Tab" parent="Widget.Material.Tab"/>
+    <style name="Widget.Material.Light.ActionBar.TabView" parent="Widget.Material.ActionBar.TabView"/>
+    <style name="Widget.Material.Light.ActionBar.TabBar" parent="Widget.Material.ActionBar.TabBar"/>
+    <style name="Widget.Material.Light.ActionBar.TabText" parent="Widget.Material.ActionBar.TabText"/>
+    <style name="Widget.Material.Light.ActionMode" parent="Widget.Material.ActionMode" />
+    <style name="Widget.Material.Light.ActionButton.CloseMode" parent="Widget.Material.ActionButton.CloseMode" />
+    <style name="Widget.Material.Light.ActionBar" parent="Widget.Material.ActionBar" />
+    <style name="Widget.Material.Light.ActionBar.Solid" parent="Widget.Material.ActionBar.Solid" />
+    <style name="Widget.Material.Light.FastScroll" parent="Widget.Material.FastScroll"/>
+    <style name="Widget.Material.Light.MediaRouteButton" parent="Widget.Material.MediaRouteButton" />
+
+    <!-- Animation Styles -->
+
+    <style name="Animation.Material" parent="Animation"/>
+    <style name="Animation.Material.Activity" parent="Animation.Activity"/>
+
+    <style name="Animation.Material.Dialog">
+        <item name="windowEnterAnimation">@anim/popup_enter_material</item>
+        <item name="windowExitAnimation">@anim/popup_exit_material</item>
+    </style>
+
+    <style name="Animation.Material.Popup">
+        <item name="windowEnterAnimation">@anim/popup_enter_material</item>
+        <item name="windowExitAnimation">@anim/popup_exit_material</item>
+    </style>
+
+    <!-- Dialog styles -->
+
+    <style name="AlertDialog.Material" parent="AlertDialog">
+        <item name="fullDark">@empty</item>
+        <item name="topDark">@empty</item>
+        <item name="centerDark">@empty</item>
+        <item name="bottomDark">@empty</item>
+        <item name="fullBright">@empty</item>
+        <item name="topBright">@empty</item>
+        <item name="centerBright">@empty</item>
+        <item name="bottomBright">@empty</item>
+        <item name="bottomMedium">@empty</item>
+        <item name="centerMedium">@empty</item>
+        <item name="layout">@layout/alert_dialog_material</item>
+        <item name="listLayout">@layout/select_dialog_material</item>
+        <item name="progressLayout">@layout/progress_dialog_material</item>
+        <item name="horizontalProgressLayout">@layout/alert_dialog_progress_material</item>
+        <item name="listItemLayout">@layout/select_dialog_item_material</item>
+        <item name="multiChoiceItemLayout">@layout/select_dialog_multichoice_material</item>
+        <item name="singleChoiceItemLayout">@layout/select_dialog_singlechoice_material</item>
+        <item name="controllerType">@integer/config_alertDialogController</item>
+    </style>
+
+    <style name="AlertDialog.Material.Light" />
+
+    <style name="DatePickerDialog.Material" parent="AlertDialog.Material">
+        <item name="showTitle">false</item>
+    </style>
+
+    <style name="TimePickerDialog.Material" parent="AlertDialog.Material">
+        <item name="showTitle">false</item>
+    </style>
+
+    <!-- Window title -->
+    <style name="WindowTitleBackground.Material">
+        <item name="background">@null</item>
+        <item name="paddingStart">16dp</item>
+        <item name="paddingEnd">16dp</item>
+        <item name="paddingTop">16dp</item>
+    </style>
+
+    <style name="WindowTitle.Material">
+        <item name="singleLine">true</item>
+        <item name="textAppearance">@style/TextAppearance.Material.WindowTitle</item>
+        <item name="shadowRadius">0</item>
+        <item name="ellipsize">end</item>
+        <item name="textAlignment">viewStart</item>
+    </style>
+
+    <style name="DialogWindowTitleBackground.Material">
+        <item name="background">@null</item>
+        <item name="paddingStart">?attr/dialogPreferredPadding</item>
+        <item name="paddingEnd">?attr/dialogPreferredPadding</item>
+        <item name="paddingTop">@dimen/dialog_padding_top_material</item>
+    </style>
+
+    <style name="DialogWindowTitleBackground.Material.Light" />
+
+    <style name="DialogWindowTitle.Material">
+        <item name="maxLines">@integer/config_dialogWindowTitleMaxLines</item>
+        <item name="scrollHorizontally">true</item>
+        <item name="textAppearance">@style/TextAppearance.Material.DialogWindowTitle</item>
+    </style>
+
+    <style name="DialogWindowTitle.Material.Light" />
+
+</resources>

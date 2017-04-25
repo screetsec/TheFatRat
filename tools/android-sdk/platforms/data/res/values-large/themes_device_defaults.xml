@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!--
+===============================================================
+                        PLEASE READ
+===============================================================
+This file contains the themes that are the Device Defaults.
+If you want to edit themes to skin your device, do it here.
+We recommend that you do not edit themes.xml and instead edit
+this file.
+
+Editing this file instead of themes.xml will greatly simplify
+merges for future platform versions and CTS compliance will be
+easier.
+===============================================================
+                        PLEASE READ
+===============================================================
+ -->
+<resources>
+    <style name="Theme.DeviceDefault.DialogWhenLarge" parent="@style/Theme.DeviceDefault.Dialog.FixedSize">
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+    <style name="Theme.DeviceDefault.DialogWhenLarge.NoActionBar" parent="@style/Theme.DeviceDefault.Dialog.NoActionBar.FixedSize">
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+    <style name="Theme.DeviceDefault.Light.DialogWhenLarge" parent="@style/Theme.DeviceDefault.Light.Dialog.FixedSize" />
+    <style name="Theme.DeviceDefault.Light.DialogWhenLarge.NoActionBar" parent="@style/Theme.DeviceDefault.Light.Dialog.NoActionBar.FixedSize" />
+</resources>

