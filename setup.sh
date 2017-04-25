@@ -209,68 +209,18 @@ which ruby >> $log 2>&1
 sleep 2
 fi
 
-#Checking if Jarsigner exists
-which jarsigner > /dev/null 2>&1
+#Checking if Openssl exists
+which openssl > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Jarsigner (java)..................[ found ]"
-which jarsigner >> $log 2>&1
-rm -f $config
-#Creating new config file 
-touch $config
-echo "********************************************************************************************************" >> $config
-echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
-echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> $config
-echo "********************************************************************************************************" >> $config
-echo "jarsigner" | tee -a $config >> /dev/null 2>&1
+echo -e $green "[ ✔ ] Openssl...........................[ found ]"
+which openssl >> $log 2>&1
 sleep 2
 else
-echo -e $red "[ X ] Jarsigner (java) -> not found "
-echo -e $yellow "[ ! ] Installing Java "
-xterm -T "☣ INSTALL OPENJDK-8 ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jre openjdk-8-jdk -y "
+echo -e $red "[ X ] Openssl  -> not found "
+echo -e $yellow "[ ! ] Installing Openssl "
+xterm -T "☣ INSTALL OPENSSL ☣" -geometry 100x30 -e "sudo apt-get install openssl -y"
 echo -e $green "[ ✔ ] Done installing ...."
-which jarsigner >> $log 2>&1
-rm -f $config
-#Creating new config file 
-touch $config
-echo "********************************************************************************************************" >> $config
-echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
-echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> $config
-echo "********************************************************************************************************" >> $config
-echo "jarsigner" | tee -a $config >> /dev/null 2>&1
-sleep 2
-fi
-
-#Checking if Unzip exists
-which unzip > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Unzip.............................[ found ]"
-which unzip >> $log 2>&1
-echo "unzip" | tee -a $config >> /dev/null 2>&1
-sleep 2
-else
-echo -e $red "[ X ] Unzip -> not found "
-echo -e $yellow "[ ! ] Installing Unzip "
-xterm -T "☣ INSTALL UNZIP ☣" -geometry 100x30 -e "sudo apt-get install unzip -y "
-echo -e $green "[ ✔ ] Done installing ...."
-which unzip >> $log 2>&1
-echo "unzip" | tee -a $config >> /dev/null 2>&1
-sleep 2
-fi
-
-#Checking if keytool exists
-which keytool > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Keytool (java)....................[ found ]"
-which keytool >> $log 2>&1
-echo "keytool" | tee -a $config >> /dev/null 2>&1
-sleep 2
-else
-echo -e $red "[ X ] Keytool (java) -> not found  "
-echo -e $yellow "[ ! ] Installing Java "
-xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk -y "
-echo -e $green "[ ✔ ] Done installing ...."
-which keytool >> $log 2>&1
-echo "keytool" | tee -a $config >> /dev/null 2>&1
+which openssl >> $log 2>&1
 sleep 2
 fi
 
@@ -280,20 +230,8 @@ xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get instal
 echo -e $green "[ ✔ ] Done installing ...."
 sleep 2
 
-#Adding zipalign path to config
-echo -e $green "[ ✔ ] Zipalign "
-echo "$path/tools/android-sdk-25.0.2/zipalign" >> $log 2>&1
-echo "$path/tools/android-sdk-25.0.2/zipalign" | tee -a $config >> /dev/null 2>&1
-sleep 2
-
-
-#Adding Proguard path to config
-echo -e $green "[ ✔ ] Proguard "
-echo "$path/tools/proguard5.3.2/lib/proguard" >> $log 2>&1
-echo "$path/tools/proguard5.3.2/lib/proguard" | tee -a $config >> /dev/null 2>&1
-sleep 2
-
 xterm -T "☣ INSTALL APKCREATION DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install lib32z1 lib32ncurses5 lib32stdc++6 -y"
+
 #################################
 #inputrepo
 #################################
@@ -317,6 +255,84 @@ echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /
 sleep 2
 xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update" >>$log 2>&1
 
+#Checking if Jarsigner exists
+which jarsigner > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Jarsigner (java)..................[ found ]"
+which jarsigner >> $log 2>&1
+rm -f $config
+#Creating new config file 
+touch $config
+echo "********************************************************************************************************" >> $config
+echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
+echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> $config
+echo "********************************************************************************************************" >> $config
+echo "jarsigner" | tee -a $config >> /dev/null 2>&1
+sleep 2
+else
+echo -e $red "[ X ] Jarsigner (java) -> not found "
+echo -e $yellow "[ ! ] Installing Java "
+xterm -T "☣ INSTALL OPENJDK-8 ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk openjdk-8-jre --force-yes -y "
+echo -e $green "[ ✔ ] Done installing ...."
+which jarsigner >> $log 2>&1
+rm -f $config
+#Creating new config file 
+touch $config
+echo "********************************************************************************************************" >> $config
+echo "** Configuration Paths for TheFatRat , do not delete anything from this file or program will not work **" >> $config
+echo "**       if you need to reconfig your tools path , then run ./setup.sh in (TheFatRat directory) .     **" >> $config
+echo "********************************************************************************************************" >> $config
+echo "jarsigner" | tee -a $config >> /dev/null 2>&1
+sleep 2
+fi
+
+#Checking if Unzip exists
+which unzip > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Unzip.............................[ found ]"
+which unzip >> $log 2>&1
+echo "unzip" | tee -a $config >> /dev/null 2>&1
+sleep 2
+else
+echo -e $red "[ X ] Unzip -> not found "
+echo -e $yellow "[ ! ] Installing Unzip "
+xterm -T "☣ INSTALL UNZIP ☣" -geometry 100x30 -e "sudo apt-get install unzip --force-yes -y "
+echo -e $green "[ ✔ ] Done installing ...."
+which unzip >> $log 2>&1
+echo "unzip" | tee -a $config >> /dev/null 2>&1
+sleep 2
+fi
+
+#Checking if keytool exists
+which keytool > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Keytool (java)....................[ found ]"
+which keytool >> $log 2>&1
+echo "keytool" | tee -a $config >> /dev/null 2>&1
+sleep 2
+else
+echo -e $red "[ X ] Keytool (java) -> not found  "
+echo -e $yellow "[ ! ] Installing Java "
+xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk --force-yes -y "
+echo -e $green "[ ✔ ] Done installing ...."
+which keytool >> $log 2>&1
+echo "keytool" | tee -a $config >> /dev/null 2>&1
+sleep 2
+fi
+
+#Adding zipalign path to config
+echo -e $green "[ ✔ ] Zipalign "
+echo "$path/tools/android-sdk/zipalign" >> $log 2>&1
+echo "$path/tools/android-sdk/zipalign" | tee -a $config >> /dev/null 2>&1
+sleep 2
+
+
+#Adding Proguard path to config
+echo -e $green "[ ✔ ] Proguard "
+echo "$path/tools/proguard5.3.2/lib/proguard" >> $log 2>&1
+echo "$path/tools/proguard5.3.2/lib/proguard" | tee -a $config >> /dev/null 2>&1
+sleep 2
+
 # check if mingw32 exists
 which i586-mingw32msvc-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -326,7 +342,7 @@ sleep 2
 else
 echo -e $red "[ X ] mingw32 compiler  -> not found "
 echo -e $yellow "[ ! ]   Installing Mingw32 "
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 -y"
+xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 --force-yes -y"
 echo -e $green "[ ✔ ] Done installing .... "
 which i586-mingw32msvc-gcc >> $log 2>&1
 sleep 2
@@ -343,22 +359,23 @@ echo -e $red "[ X ] Aapt..........................."
 xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y" >>$log 2>&1
 unlink /usr/local/sbin/aapt > /dev/null 2>&1
 unlink /usr/bin/aapt > /dev/null 2>&1
-ln -s $path/tools/android-sdk-25.0.2/aapt /usr/local/sbin/aapt > /dev/null 2>&1
+ln -s $path/tools/android-sdk/aapt /usr/local/sbin/aapt > /dev/null 2>&1
 echo -e $green "[ ✔ ] Dx & Aapt"
-echo "$path/tools/android-sdk-25.0.2/dx" >> $log 2>&1
-echo "$path/tools/android-sdk-25.0.2/dx" | tee -a $config >> /dev/null 2>&1
-echo "$path/tools/android-sdk-25.0.2/aapt" >> $log 2>&1
-echo "$path/tools/android-sdk-25.0.2/aapt" | tee -a $config >> /dev/null 2>&1
+echo "$path/tools/android-sdk/dx" >> $log 2>&1
+echo "$path/tools/android-sdk/dx" | tee -a $config >> /dev/null 2>&1
+echo "$path/tools/android-sdk/aapt" >> $log 2>&1
+echo "$path/tools/android-sdk/aapt" | tee -a $config >> /dev/null 2>&1
 sleep 2
 else
 echo -e $green "[ ✔ ] Dx & Aapt"
-echo "$path/tools/android-sdk-25.0.2/dx" >> $log 2>&1
-echo "$path/tools/android-sdk-25.0.2/dx" | tee -a $config >> /dev/null 2>&1
-echo "$path/tools/android-sdk-25.0.2/aapt" >> $log 2>&1
-echo "$path/tools/android-sdk-25.0.2/aapt" | tee -a $config >> /dev/null 2>&1
-ln -s $path/tools/android-sdk-25.0.2/aapt /usr/local/sbin/aapt > /dev/null 2>&1
+echo "$path/tools/android-sdk/dx" >> $log 2>&1
+echo "$path/tools/android-sdk/dx" | tee -a $config >> /dev/null 2>&1
+echo "$path/tools/android-sdk/aapt" >> $log 2>&1
+echo "$path/tools/android-sdk/aapt" | tee -a $config >> /dev/null 2>&1
+ln -s $path/tools/android-sdk/aapt /usr/local/sbin/aapt > /dev/null 2>&1
 sleep 2
 fi
+
 
 #Adding Apktool path to config
 xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
@@ -370,21 +387,58 @@ unlink /usr/bin/apktool > /dev/null 2>&1
 ln -s $path/tools/apktool2.2.2/apktool /usr/local/sbin/apktool > /dev/null 2>&1
 sleep 2
 
-#Checking if dex2jar exists
-which d2j-jar2dex > /dev/null 2>&1
+# Removing current installed dex2jar version on user system and setting dex2jar in thirdparty tools
+# Current kali repo uses version 0.95 version while dex2jar it is already in 2.0 version
+echo -e $green "[ * ] Removing any old installed version from dex2jar from your system"
+sleep 2
+xterm -T "☣ Removing Your Current Dex2Jar ☣" -geometry 100x30 -e "sudo apt-get remove --purge dex2jar -y" >>$log 2>&1
+unlink /usr/local/sbin/d2j-baksmali > /dev/null 2>&1
+unlink /usr/local/sbin/d2j-dex-recompute-checksum > /dev/null 2>&1
+unlink /usr/local/sbin/d2j-dex2jar > /dev/null 2>&1
+unlink /usr/local/sbin/d2j-dex2smali > /dev/null 2>&1
+unlink /usr/local/sbin/d2j-jar2dex > /dev/null 2>&1
+unlink /usr/local/sbin/d2j-jar2jasmin > /dev/null 2>&1
+unlink /usr/local/sbin/d2j-jasmin2jar > /dev/null 2>&1
+unlink /usr/local/sbin/d2j-smali > /dev/null 2>&1
+unlink /usr/local/sbin/d2j-std-apk > /dev/null 2>&1
+unlink /usr/bin/d2j-baksmali > /dev/null 2>&1
+unlink /usr/bin/d2j-dex-recompute-checksum > /dev/null 2>&1
+unlink /usr/bin/d2j-dex2jar > /dev/null 2>&1
+unlink /usr/bin/d2j-dex2smali > /dev/null 2>&1
+unlink /usr/bin/d2j-jar2dex > /dev/null 2>&1
+unlink /usr/bin/d2j-jar2jasmin > /dev/null 2>&1
+unlink /usr/bin/d2j-jasmin2jar > /dev/null 2>&1
+unlink /usr/bin/d2j-smali > /dev/null 2>&1
+unlink /usr/bin/d2j-std-apk > /dev/null 2>&1
+rm /usr/bin/d2j-* > /dev/null 2>&1
+rm /usr/sbin/d2j-* > /dev/null 2>&1
+rm /usr/local/bin/d2j-* > /dev/null 2>&1
+rm /usr/local/sbin/d2j-* > /dev/null 2>&1
+echo -e $green "[ * ] Manually Installing Dex2Jar 2.0 "
+cp $path/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
+chmod +x /usr/local/sbin/d2j-baksmali > /dev/null 2>&1
+chmod +x /usr/local/sbin/d2j-dex-recompute-checksum > /dev/null 2>&1
+chmod +x /usr/local/sbin/d2j-dex2jar > /dev/null 2>&1
+chmod +x /usr/local/sbin/d2j-dex2smali > /dev/null 2>&1
+chmod +x /usr/local/sbin/d2j-jar2dex > /dev/null 2>&1
+chmod +x /usr/local/sbin/d2j-jar2jasmin > /dev/null 2>&1
+chmod +x /usr/local/sbin/d2j-jasmin2jar > /dev/null 2>&1
+chmod +x /usr/local/sbin/d2j-smali > /dev/null 2>&1
+chmod +x /usr/local/sbin/d2j-std-apk > /dev/null 2>&1
+rm -rf /usr/local/share/dex2jar > /dev/null 2>&1
+mkdir /usr/local/share/dex2jar > /dev/null 2>&1
+cp -r $path/tools/dex2jar/lib /usr/local/share/dex2jar/lib > /dev/null 2>&1
+which d2j-dex2jar > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Dex2Jar...........................[ found ]"
-which d2j-jar2dex >> $log 2>&1
-echo "d2j-jar2dex" | tee -a $config >> /dev/null 2>&1
+which d2j-dex2jar >> $log 2>&1
+echo "d2j-dex2jar" | tee -a $config >> /dev/null 2>&1
+echo -e $green "[ ✔ ] Dex2Jar 2.0 Installed "
 sleep 2
 else
-echo -e $red "[ X ] Dex2jar  -> not found "
-echo -e $yellow "[ ! ] Installing dex2jar "
-xterm -T "☣ INSTALL DEX2JAR ☣" -geometry 100x30 -e "sudo apt-get install dex2jar --force-yes -y"
-echo -e $green "[ ✔ ] Done installing ...."
-which d2j-jar2dex >> $log 2>&1
-echo "d2j-jar2dex" | tee -a $config >> /dev/null 2>&1
+echo -e $red ""
+echo "There was an issue installing dex2jar in your system , aborting"
 sleep 2
+exit 1
 fi
 
 # check if metasploit-framework its installed
@@ -543,11 +597,12 @@ echo "#!/bin/bash" > /usr/local/sbin/fatrat
 echo $scrp >> /usr/local/sbin/fatrat
 chmod +x /usr/local/sbin/fatrat
 chmod +x fatrat
+chmod +x update
 chmod +x backdoor_apk
-chmod +x $path/tools/android-sdk-25.0.2/zipalign
+chmod +x $path/tools/android-sdk/zipalign
 chmod +x $path/tools/proguard5.3.2/lib/proguard
-chmod +x $path/tools/android-sdk-25.0.2/dx
-chmod +x $path/tools/android-sdk-25.0.2/aapt
+chmod +x $path/tools/android-sdk/dx
+chmod +x $path/tools/android-sdk/aapt
 chmod +x $path/tools/apktool2.2.2/apktool
 which fatrat >> $log 2>&1
 clear
@@ -558,11 +613,12 @@ exit
 fi
 if [ $lnk ==  "1" ];then
 chmod +x fatrat
+chmod +x update
 chmod +x backdoor_apk
-chmod +x $path/tools/android-sdk-25.0.2/zipalign
+chmod +x $path/tools/android-sdk/zipalign
 chmod +x $path/tools/proguard5.3.2/lib/proguard
-chmod +x $path/tools/android-sdk-25.0.2/dx
-chmod +x $path/tools/android-sdk-25.0.2/aapt
+chmod +x $path/tools/android-sdk/dx
+chmod +x $path/tools/android-sdk/aapt
 chmod +x $path/tools/apktool2.2.2/apktool
 zenity --width=100 --height=100 --no-wrap --info --text="To execute fatrat write in fatrat directory (./fatrat) to execute it."
 sleep 2
