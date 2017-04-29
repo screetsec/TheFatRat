@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    
+    <!-- various string resources for Contacts -->
+    <string-array name="common_nicknames">
+        <item>Abigail, Abbie</item>
+        <item>Abigail, Gail, Gayle</item>
+        <item>Abe, Abraham</item>
+        <item>Agatha, Aggie</item>
+        <item>Agatha, Agnes</item>
+        <item>Albert, Al</item>
+        <item>Albert, Bert, Bertie</item>
+        <item>Alexander, Al, Alex</item>
+        <item>Alexander, Al, Alec</item>
+        <item>Alexander, Alex, Lex</item>
+        <item>Alexander, Alex, Sasha</item>
+        <item>Alexandra, Al, Allie, Ally</item>
+        <item>Alexandra, Lex, Lexie</item>
+        <item>Alexandra, Sandra, Sandy</item>
+        <item>Alexandra, Sasha</item>
+        <item>Alf, Alfred, Alfredo, Alfie</item>
+        <item>Alice, Allie, Ally</item>
+        <item>Alison, Allie, Ally</item>
+        <item>Allison, Allie, Ally</item>
+        <item>Amanda, Mandi, Mandy</item>
+        <item>Andrea, Andie</item>
+        <item>Andrew, Andy</item>
+        <item>Andrew, Drew</item>
+        <item>Anne, Annie, Annette</item>
+        <item>Anthony, Tony, Toni, Tone</item>
+        <item>Arthur, Art, Arty</item>
+        <item>Barbara, Barb, Barbie</item>
+        <item>Benjamin, Ben, Benny</item>
+        <item>Benjamin, Benji</item>
+        <item>Bernard, Barnie</item>
+        <item>Bernard, Bern, Bernie</item>
+        <item>Bertram, Bert, Bertie</item>
+        <item>Bradly, Brad</item>
+        <item>Calvin, Cal</item>
+        <item>Catherine, Cat, Cate, Cath, Catie, Cathy, Kat, Kate, Katie, Kathy</item>
+        <item>Carrie, Caroline, Carolyn</item>
+        <item>Charles, Charlie</item>
+        <item>Charles, Chuck</item>
+        <item>Charles, Chaz</item>
+        <item>Charles, Buck</item>
+        <item>Christine, Chrissy, Chrissie</item>
+        <item>Christopher, Chris</item>
+        <item>Clinton, Clint</item>
+        <item>Cynthia, Cindy</item>
+        <item>Cynthia, Cynth</item>
+        <item>Daniel, Dan, Danny</item>
+        <item>David, Dave</item>
+        <item>Deborah, Deb, Debbie</item>
+        <item>Dennis, Den, Denny</item>
+        <item>Dolores, Dolly</item>
+        <item>Donald, Don, Donny</item>
+        <item>Donnatella, Donna</item>
+        <item>Dorothea, Dot, Dotty</item>
+        <item>Dorothy, Dot, Dotty</item>
+        <item>Douglas, Doug</item>
+        <item>Edward, Ed, Eddie</item>
+        <item>Edward, Ned, Neddie, Neddy</item>
+        <item>Edward, Ted, Teddy, Teddie</item>
+        <item>Eleanor, Ella</item>
+        <item>Eleanor, Ellie, Elle</item>
+        <item>Elisabetta, Betta</item>
+        <item>Elizabeth, Beth</item>
+        <item>Elizabeth, Bess, Bessie</item>
+        <item>Elizabeth, Betsy</item>
+        <item>Elizabeth, Betty, Bette</item>
+        <item>Elizabeth, Eliza</item>
+        <item>Elizabeth, Lisa, Liza, Liz</item>
+        <item>Emily, Em, Ems, Emmy</item>
+        <item>Emma, Em, Ems, Emmy</item>
+        <item>Eugene, Gene</item>
+        <item>Fannie, Fanny</item>
+        <item>Florence, Flo</item>
+        <item>Frances, Fran</item>
+        <item>Frances, Francie</item>
+        <item>Francis, Fran</item>
+        <item>Francis, Frank, Frankie</item>
+        <item>Frederick, Fred, Freddy</item>
+        <item>Gabriel, Gabe</item>
+        <item>Gerald, Gerry</item>
+        <item>Gerard, Gerry</item>
+        <item>Gregory, Greg, Gregg</item>
+        <item>Harold, Hal</item>
+        <item>Harold, Harry</item>
+        <item>Henry, Hal</item>
+        <item>Henry, Hank</item>
+        <item>Henry, Harry</item>
+        <item>Herbert, Bert, Bertie</item>
+        <item>Irving, Irv</item>
+        <item>Isabella, Isa</item>
+        <item>Isabella, Izzy</item>
+        <item>Isabella, Bella</item>
+        <item>Jacob, Jake</item>
+        <item>Jacqueline, Jackie</item>
+        <item>James, Jim, Jimmy</item>
+        <item>James, Jamie</item>
+        <item>Janet, Jan</item>
+        <item>Janice, Jan</item>
+        <item>Jason, Jay</item>
+        <item>Jefferson, Jeff</item>
+        <item>Jeffrey, Jeff</item>
+        <item>Jennifer, Jen, Jenny</item>
+        <item>Jerome, Jerry</item>
+        <item>Jessica, Jessie</item>
+        <item>John, Johnny, Jon</item>
+        <item>Jack, Jacky</item>
+        <item>Jonathan, Jon</item>
+        <item>Joseph, Joe, Joey</item>
+        <item>Joshua, Josh</item>
+        <item>Kaitlyn, Cat, Cate, Catie, Cath, Cathy, Kat, Kate, Katie, Kathy</item>
+        <item>Katherine, Cat, Cate, Catie, Cath, Cathy, Kat, Kate, Katie, Kathy</item>
+        <item>Kathleen, Cat, Cate, Catie, Cath, Cathy, Kat, Kate, Katie, Kathy</item>
+        <item>Katrina, Cat, Cate, Catie, Cath, Cathy, Kat, Kate, Katie, Kathy</item>
+        <item>Kenneth, Ken</item>
+        <item>Kevin, Kev</item>
+        <item>Kim, Kimberly</item>
+        <item>Laura, Lauri, Laurie</item>
+        <item>Lauren, Lauri, Laurie</item>
+        <item>Lawrence, Larry</item>
+        <item>Leonard, Leo</item>
+        <item>Leonard, Len, Lenny</item>
+        <item>Leopold, Leo</item>
+        <item>Madeline, Maddie, Maddy</item>
+        <item>Margaret, Marge, Marg</item>
+        <item>Margaret, Maggie, Mags</item>
+        <item>Margaret, Meg</item>
+        <item>Margaret, Peggy</item>
+        <item>Margaret, Greta, Gretchen</item>
+        <item>Martin, Martie, Marty</item>
+        <item>Matthew, Matt, Mattie</item>
+        <item>Maureen, Mo</item>
+        <item>Maurice, Mo</item>
+        <item>Maxwell, Max</item>
+        <item>Maximilian, Maxim, Max</item>
+        <item>Megan, Meg</item>
+        <item>Michael, Mickey, Mick</item>
+        <item>Michael, Mike, Mikey</item>
+        <item>Morris, Mo</item>
+        <item>Nancy, Nan</item>
+        <item>Nathan, Nat</item>
+        <item>Nathan, Nate</item>
+        <item>Nathaniel, Nat</item>
+        <item>Nathaniel, Nate</item>
+        <item>Nicholas, Nick</item>
+        <item>Nicole, Nicky, Nickie, Nikky</item>
+        <item>Pamela, Pam</item>
+        <item>Patricia, Pat, Patty</item>
+        <item>Patricia, Patsy</item>
+        <item>Patricia, Trish, Tricia</item>
+        <item>Patrick, Pat</item>
+        <item>Penelope, Penny</item>
+        <item>Peter, Pete</item>
+        <item>Raymond, Ray</item>
+        <item>Philip, Phil</item>
+        <item>Rebecca, Becca, Becky</item>
+        <item>Richard, Rick</item>
+        <item>Richard, Rich</item>
+        <item>Richard, Dick</item>
+        <item>Robert, Bob, Bobby</item>
+        <item>Robert, Rob, Robbie</item>
+        <item>Rodney. Rod</item>
+        <item>Ronald, Ron, Ronnie</item>
+        <item>Rosemary, Rosie, Rose</item>
+        <item>Russell, Russ</item>
+        <item>Russell, Rusty</item>
+        <item>Ryan, Ry</item>
+        <item>Samantha, Sam</item>
+        <item>Samuel, Sam, Sammy</item>
+        <item>Sophia, Sophie</item>
+        <item>Stephanie, Steph, Stephie</item>
+        <item>Stephen, Steve</item>
+        <item>Steven, Steve</item>
+        <item>Stuart, Stu</item>
+        <item>Susan, Sue</item>
+        <item>Susan, Susie, Suzie</item>
+        <item>Suzanne, Sue</item>
+        <item>Suzanne, Susie, Suzie</item>
+        <item>Tamara, Tammy</item>
+        <item>Theresa, Teresa</item>
+        <item>Theodora, Teddie</item>
+        <item>Theodora, Thea</item>
+        <item>Theodore, Ted, Teddy</item>
+        <item>Theodore, Theo</item>
+        <item>Thomas, Tom, Thom, Tommy</item>
+        <item>Timothy, Tim, Timmy</item>
+        <item>Valerie, Val</item>
+        <item>Veronica, Ronnie, Roni</item>
+        <item>Veronica, Nica, Nikki, Nikka</item>
+        <item>Victor, Vic</item>
+        <item>Victoria, Vicky, Vicki, Vickie</item>
+        <item>Victoria, Tori</item>
+        <item>Vincent, Vince</item>
+        <item>Vincent, Vin, Vinnie</item>
+        <item>Vivian, Vivi</item>
+        <item>Walter, Wally</item>
+        <item>Walter, Walt</item>
+        <item>Wendy, Wen</item>
+        <item>Wendy, Wendel</item>
+        <item>William, Bill, Billy</item>
+        <item>William, Will, Willy</item>
+        <item>William, Liam</item>
+        <item>Yvonna, Vonna</item>
+        <item>Zachary, Zach, Zack, Zac</item>
+    </string-array>
+    <string name="common_name_prefixes">
+        1LT, 1ST, 2LT, 2ND, 3RD, ADMIRAL, CAPT, CAPTAIN, COL, CPT, DR,
+        GEN, GENERAL, LCDR, LT, LTC, LTG, LTJG, MAJ, MAJOR, MG, MR,
+        MRS, MS, PASTOR, PROF, REP, REVEREND, REV, SEN, ST
+    </string>
+    <string name="common_name_suffixes">
+        B.A., BA, D.D.S., DDS, I, II, III, IV, IX, JR., M.A., M.D., MA,
+        MD, MS, PH.D., PHD, SR., V, VI, VII, VIII, X
+    </string>
+    <string name="common_last_name_prefixes">
+        D\', DE, DEL, DI, LA, LE, MC, SAN, ST, TER, VAN, VON
+    </string>
+    <string name="common_name_conjunctions">
+        &amp;, AND, OR
+    </string>
+</resources>

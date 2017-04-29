@@ -1,5 +1,42 @@
 ## CHANGELOG
+* v1.9.3 - Added update script
+* v1.9.3 - Dex2Jar will be installed from now on from Fatrat setup manually on user system (reason: Kali repo still uses old version)
+* v1.9.3 - Updated Android build tools to V.26 RC1 & Android Platform V. 25-R03
+* v1.9.3 - Updated dana travis backdoor-apk to 0.2.2 into fatrat / added openssl in setup
+* v1.9.2 - Msfvenom Android rat will be signed with android certificate , so it can be installed properly
+* v1.9.2 - Implemented Default Lhost & Lport config to fatrat & powerfull shell creator
+* v1.9.2 - Fixed payload in pnwinds option2
+* v1.9.2 - Implemented Stop functions in pnwinds 
+* v1.9.2 - New signing process in old method backdoor apk & option to create listener
+* v1.9.2 - Implemented possibility for user to save msfconsole listeners
+* v1.9.2 - Fixes in Microsploit
+* v1.9.2 - Implemented local ip , public ip & hostname display to powerfull.sh
+* v1.9.2 - Implemented local ip , public ip & hostname display before user set Lhost
+* v1.9.2 - Implemented log creation for microsploit & fixed bugs
+* v1.9.2 - Added effective way to detect user linux distribution
+* v1.9.2 - Setup.sh ( patched )
+* v1.9.2 - bug in microsploit ( patched )
+* v1.9.2 - delt some function and variable 
+* v1.9.1 - v1.9.1 - Implemented Microsploit (Office Exploitation Tool)
+* v1.9b - Implemented Backdoor-apk from Dana James Traversie in this version .{  Less tools to install during setup.sh }
+* v1.9.0 - update script setup.sh
+* v1.9.0 - del some variable and function
+* v1.9.0 - fixed typo and bugs
+* v1.9.0 - Backdoor APKS have a new payload hiding method in rat apk to not be detected .
+* v1.9.0 - APK (5) rat rebuild totally changed .(adapted backdoor-apk script to fatrat to both work together)
+* v1.9.0 - Apktool will not be installed no more by setup.sh , the same thing applies to : dx , zipalign (apktool on debian repo is 2.2.1 , and that version have a bug that gives error on compiling the apks , so , apktool and android tools were updated to latest version 25.0.2 and embeded in (tools) directory of fatrat .
 
+* v1.8.5 - fixed some bugs and double function in setup.sh
+* v1.8.1 - added possibility to configure metasploit , backdoor-factory & searchsploit with manual inputs
+
+*  - added more packages instalations needed for non-pentest distribution & some bugs fixed
+
+* v1.8 - add file pumper in TFR
+* v1.8 - Backdoor with c program for meterpreter reverse_tcp
+* v1.8 - Metasploit staging protocol ( c program )
+* v1.8 - add new features andd update pwnwinds 
+* v1.8 - add some function
+* v1.8 - Fixed bug in fatrat
 * v1.7 - add backdoor ( rar files )
 * v1.7 - Add backdoor ( doc not macro attack)
 * v1.7 - Add new features in optional 1 ( create backdoor with msfvenom )

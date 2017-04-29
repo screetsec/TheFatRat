@@ -1,0 +1,14 @@
+#!/bin/bash
+clear
+cyan='\e[0;36m'
+green='\e[0;32m'
+
+echo -e $cyan "************************************"
+echo -e $cyan "**  $green Updating Fatrat from Github $cyan **"
+echo -e $cyan "************************************"
+sleep 3
+git fetch
+
+echo -e $cyan "*************************"
+echo -e $cyan "**  $green Update Completed $cyan **"
+echo -e $cyan "*************************"

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2011, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources>
+    <dimen name="preference_screen_side_margin">96dp</dimen>
+    <!-- Compensate for double margin : preference_screen_side_margin + 4 (frame background shadow) = -preference_screen_side_margin_negative -->
+    <dimen name="preference_screen_side_margin_negative">-100dp</dimen>
+    <dimen name="preference_widget_width">64dp</dimen>
+    <!-- Preference fragment padding, bottom -->
+    <dimen name="preference_fragment_padding_bottom">48dp</dimen>
+    <!-- Preference fragment padding, sides -->
+    <dimen name="preference_fragment_padding_side">48dp</dimen>
+    <!-- Padding to the left of the preference panel breadcrumb -->
+    <dimen name="preference_breadcrumb_paddingLeft">48dp</dimen>
+    <!-- Padding to the right of the preference panel breadcrumb -->
+    <dimen name="preference_breadcrumb_paddingRight">48dp</dimen>
+</resources>
+

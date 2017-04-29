@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<com.android.internal.widget.AlertDialogLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parentPanel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start|top"
+    android:orientation="vertical">
+
+    <include layout="@layout/alert_dialog_title_material" />
+
+    <FrameLayout
+        android:id="@+id/contentPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp">
+
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Space
+                    android:id="@+id/textSpacerNoTitle"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dialog_padding_top_material" />
+
+                <TextView
+                    android:id="@+id/message"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="?attr/dialogPreferredPadding"
+                    android:paddingStart="?attr/dialogPreferredPadding"
+                    style="@style/TextAppearance.Material.Subhead" />
+
+                <Space
+                    android:id="@+id/textSpacerNoButtons"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dialog_padding_top_material" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/customPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="48dp">
+
+        <FrameLayout
+            android:id="@+id/custom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </FrameLayout>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/alert_dialog_button_bar_material" />
+</com.android.internal.widget.AlertDialogLayout>

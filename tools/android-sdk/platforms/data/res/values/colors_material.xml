@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2014 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- Colors specific to Material themes. -->
+<resources>
+    <color name="foreground_material_dark">@color/white</color>
+    <color name="foreground_material_light">@color/black</color>
+
+    <color name="background_material_dark">@color/material_grey_850</color>
+    <color name="background_material_light">@color/material_grey_50</color>
+    <color name="background_floating_material_dark">@color/material_grey_800</color>
+    <color name="background_floating_material_light">@color/white</color>
+
+    <color name="primary_material_dark">@color/material_grey_900</color>
+    <color name="primary_material_light">@color/material_grey_100</color>
+    <color name="primary_material_settings">@color/material_blue_grey_900</color>
+    <color name="primary_dark_material_dark">@color/black</color>
+    <color name="primary_dark_material_light">@color/material_grey_600</color>
+    <color name="primary_dark_material_light_light_status_bar">@color/material_grey_300</color>
+    <color name="primary_dark_material_settings">@color/material_blue_grey_950</color>
+
+    <color name="secondary_material_settings">@color/material_blue_grey_800</color>
+    <color name="tertiary_material_settings">@color/material_blue_grey_700</color>
+    <color name="quaternary_material_settings">@color/material_blue_grey_200</color>
+
+    <color name="accent_material_light">@color/material_deep_teal_500</color>
+    <color name="accent_material_dark">@color/material_deep_teal_200</color>
+
+    <color name="button_material_dark">#ff5a595b</color>
+    <color name="button_material_light">#ffd6d7d7</color>
+
+    <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
+    <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
+    <color name="switch_thumb_disabled_material_dark">#ff616161</color>
+    <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
+
+    <!-- Text & foreground colors -->
+    <eat-comment />
+
+    <!-- 87% black -->
+    <color name="primary_text_default_material_light">#de000000</color>
+    <!-- 54% black -->
+    <color name="secondary_text_default_material_light">#8a000000</color>
+
+    <!-- 100% white -->
+    <color name="primary_text_default_material_dark">#ffffffff</color>
+    <!-- 70% white -->
+    <color name="secondary_text_default_material_dark">#b3ffffff</color>
+
+    <item name="hint_alpha_material_dark" format="float" type="dimen">0.50</item>
+    <item name="hint_alpha_material_light" format="float" type="dimen">0.38</item>
+
+    <item name="hint_pressed_alpha_material_dark" format="float" type="dimen">0.70</item>
+    <item name="hint_pressed_alpha_material_light" format="float" type="dimen">0.54</item>
+
+    <item name="disabled_alpha_material_light" format="float" type="dimen">0.26</item>
+    <item name="disabled_alpha_material_dark" format="float" type="dimen">0.30</item>
+
+    <item name="highlight_alpha_material_light" format="float" type="dimen">0.12</item>
+    <item name="highlight_alpha_material_dark" format="float" type="dimen">0.20</item>
+    <item name="highlight_alpha_material_colored" format="float" type="dimen">0.26</item>
+
+    <!-- Primary & accent colors -->
+    <eat-comment />
+
+    <color name="material_grey_900">#ff212121</color>
+    <color name="material_grey_850">#ff303030</color>
+    <color name="material_grey_800">#ff424242</color>
+    <color name="material_grey_600">#ff757575</color>
+    <color name="material_grey_300">#ffe0e0e0</color>
+    <color name="material_grey_100">#fff5f5f5</color>
+    <color name="material_grey_50">#fffafafa</color>
+
+    <color name="material_deep_teal_50">#ffe0f2f1</color>
+    <color name="material_deep_teal_100">#ffb2dfdb</color>
+    <color name="material_deep_teal_200">#ff80cbc4</color>
+    <color name="material_deep_teal_300">#ff4db6ac</color>
+    <color name="material_deep_teal_500">#ff009688</color>
+    <color name="material_deep_teal_700">#ff00796b</color>
+
+    <color name="material_blue_grey_200">#ffb0bec5</color>
+    <color name="material_blue_grey_700">#ff455a64</color>
+    <color name="material_blue_grey_800">#ff37474f</color>
+    <color name="material_blue_grey_900">#ff263238</color>
+    <color name="material_blue_grey_950">#ff21272b</color>
+
+    <!-- Time picker defaults when no theme is set -->
+    <eat-comment />
+
+    <color name="timepicker_default_background_material">@color/primary_text_default_material_light</color>
+    <color name="timepicker_default_text_color_material">@color/black</color>
+    <color name="timepicker_default_ampm_selected_background_color_material">@color/material_deep_teal_200</color>
+    <color name="timepicker_default_ampm_unselected_background_color_material">@color/transparent</color>
+    <color name="timepicker_default_selector_color_material">@color/material_deep_teal_200</color>
+    <color name="timepicker_default_numbers_background_color_material">@color/transparent</color>
+
+    <!-- DatePicker colors -->
+    <eat-comment />
+
+    <color name="datepicker_default_header_selector_background_material_light">@color/white</color>
+    <color name="datepicker_default_header_selector_background_material_dark">#ff303030</color>
+
+    <color name="datepicker_default_header_dayofweek_background_color_material_light">#999999</color>
+    <color name="datepicker_default_header_dayofweek_background_color_material_dark">@color/white</color>
+
+    <color name="datepicker_default_normal_text_color_material_light">#ff999999</color>
+    <color name="datepicker_default_normal_text_color_material_dark">@android:color/white</color>
+
+    <color name="datepicker_default_disabled_text_color_material_light">#80999999</color>
+    <color name="datepicker_default_disabled_text_color_material_dark">#80999999</color>
+
+    <color name="datepicker_default_selected_text_color_material_light">#ff33b5e5</color>
+    <color name="datepicker_default_selected_text_color_material_dark">#ff33b5e5</color>
+
+    <color name="datepicker_default_pressed_text_color_material_light">#ff0099cc</color>
+    <color name="datepicker_default_pressed_text_color_material_dark">#ff0099cc</color>
+
+    <color name="datepicker_default_circle_background_color_material_light">@color/material_deep_teal_500</color>
+    <color name="datepicker_default_circle_background_color_material_dark">@color/material_deep_teal_200</color>
+
+    <color name="datepicker_default_view_animator_color_material_light">#fff2f2f2</color>
+    <color name="datepicker_default_view_animator_color_material_dark">#ff303030</color>
+
+</resources>

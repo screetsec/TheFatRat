@@ -1,0 +1,1681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/* //device/apps/common/assets/res/any/strings.xml
+**
+** Copyright 2006, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="byteShort" msgid="8340973892742019101">"بائٹس"</string>
+    <string name="kilobyteShort" msgid="5973789783504771878">"KB"</string>
+    <string name="megabyteShort" msgid="6355851576770428922">"MB"</string>
+    <string name="gigabyteShort" msgid="3259882455212193214">"GB"</string>
+    <string name="terabyteShort" msgid="231613018159186962">"TB"</string>
+    <string name="petabyteShort" msgid="5637816680144990219">"PB"</string>
+    <string name="fileSizeSuffix" msgid="8897567456150907538">"<xliff:g id="NUMBER">%1$s</xliff:g> <xliff:g id="UNIT">%2$s</xliff:g>"</string>
+    <string name="durationDays" msgid="6652371460511178259">"<xliff:g id="DAYS">%1$d</xliff:g> دن"</string>
+    <string name="durationDayHours" msgid="2713107458736744435">"<xliff:g id="DAYS">%1$d</xliff:g> دن <xliff:g id="HOURS">%2$d</xliff:g> گھنٹے"</string>
+    <string name="durationDayHour" msgid="7293789639090958917">"<xliff:g id="DAYS">%1$d</xliff:g> دن <xliff:g id="HOURS">%2$d</xliff:g> گھنٹہ"</string>
+    <string name="durationHours" msgid="4266858287167358988">"<xliff:g id="HOURS">%1$d</xliff:g> گھنٹے"</string>
+    <string name="durationHourMinutes" msgid="9029176248692041549">"<xliff:g id="HOURS">%1$d</xliff:g> گھنٹہ <xliff:g id="MINUTES">%2$d</xliff:g> منٹ"</string>
+    <string name="durationHourMinute" msgid="2741677355177402539">"<xliff:g id="HOURS">%1$d</xliff:g> گھنٹہ <xliff:g id="MINUTES">%2$d</xliff:g> منٹ"</string>
+    <string name="durationMinutes" msgid="3134226679883579347">"<xliff:g id="MINUTES">%1$d</xliff:g> منٹ"</string>
+    <string name="durationMinute" msgid="7155301744174623818">"<xliff:g id="MINUTES">%1$d</xliff:g> منٹ"</string>
+    <string name="durationMinuteSeconds" msgid="1424656185379003751">"<xliff:g id="MINUTES">%1$d</xliff:g> منٹ <xliff:g id="SECONDS">%2$d</xliff:g> سیکنڈ"</string>
+    <string name="durationMinuteSecond" msgid="3989228718067466680">"<xliff:g id="MINUTES">%1$d</xliff:g> منٹ <xliff:g id="SECONDS">%2$d</xliff:g> سیکنڈ"</string>
+    <string name="durationSeconds" msgid="8050088505238241405">"<xliff:g id="SECONDS">%1$d</xliff:g> سیکنڈ"</string>
+    <string name="durationSecond" msgid="985669622276420331">"<xliff:g id="SECONDS">%1$d</xliff:g> سیکنڈ"</string>
+    <string name="untitled" msgid="4638956954852782576">"‏‎&gt;‎بلا عنوان‎&lt;‎"</string>
+    <string name="emptyPhoneNumber" msgid="7694063042079676517">"(کوئی فون نمبر نہیں ہے)"</string>
+    <string name="unknownName" msgid="6867811765370350269">"نامعلوم"</string>
+    <string name="defaultVoiceMailAlphaTag" msgid="2660020990097733077">"صوتی میل"</string>
+    <string name="defaultMsisdnAlphaTag" msgid="2850889754919584674">"MSISDN1"</string>
+    <string name="mmiError" msgid="5154499457739052907">"‏کنکشن مسئلہ یا غلط MMI کوڈ۔"</string>
+    <string name="mmiFdnError" msgid="5224398216385316471">"آپریشن صرف متعین ڈائلنگ نمبرز تک محدود ہے۔"</string>
+    <string name="serviceEnabled" msgid="8147278346414714315">"سروس فعال کی گئی۔"</string>
+    <string name="serviceEnabledFor" msgid="6856228140453471041">"سروس فعال کی گئی برائے:"</string>
+    <string name="serviceDisabled" msgid="1937553226592516411">"سروس غیر فعال کر دی گئی ہے۔"</string>
+    <string name="serviceRegistered" msgid="6275019082598102493">"رجسٹریشن کامیاب رہا۔"</string>
+    <string name="serviceErased" msgid="1288584695297200972">"حذف کرنا کامیاب رہا۔"</string>
+    <string name="passwordIncorrect" msgid="7612208839450128715">"غلط پاس ورڈ۔"</string>
+    <string name="mmiComplete" msgid="8232527495411698359">"‏MMI مکمل۔"</string>
+    <string name="badPin" msgid="9015277645546710014">"‏آپ نے جو پرانا PIN ٹائپ کیا ہے وہ درست نہیں ہے۔"</string>
+    <string name="badPuk" msgid="5487257647081132201">"‏آپ نے جو PUK ٹائپ کیا ہے وہ درست نہیں ہے۔"</string>
+    <string name="mismatchPin" msgid="609379054496863419">"‏آپ نے جو PINs ٹائپ کیے وہ مماثل نہیں ہیں۔"</string>
+    <string name="invalidPin" msgid="3850018445187475377">"‏4 سے 8 نمبرز والا ایک PIN ٹائپ کریں۔"</string>
+    <string name="invalidPuk" msgid="8761456210898036513">"‏8 یا اس سے زیادہ نمبرز والا PUK ٹائپ کریں۔"</string>
+    <string name="needPuk" msgid="919668385956251611">"‏آپ کا SIM کارڈ PUK مقفل ہے۔ PUK کوڈ کو غیر مقفل کرنے کیلئے اسے ٹائپ کریں۔"</string>
+    <string name="needPuk2" msgid="4526033371987193070">"‏SIM کارڈ غیر مسدود کرنے کیلئے PUK2 ٹائپ کریں۔"</string>
+    <string name="enablePin" msgid="209412020907207950">"‏ناکام، SIM/RUIM لاک کو فعال کریں۔"</string>
+    <plurals name="pinpuk_attempts" formatted="false" msgid="1251012001539225582">
+      <item quantity="other">‏آپ کے پاس <xliff:g id="NUMBER_1">%d</xliff:g> کوششیں بچی ہیں، اس کے بعد SIM مقفل ہو جائے گا۔</item>
+      <item quantity="one">‏آپ کے پاس <xliff:g id="NUMBER_0">%d</xliff:g> کوشش بچی ہے، اس کے بعد SIM مقفل ہو جائے گا۔</item>
+    </plurals>
+    <string name="imei" msgid="2625429890869005782">"IMEI"</string>
+    <string name="meid" msgid="4841221237681254195">"MEID"</string>
+    <string name="ClipMmi" msgid="6952821216480289285">"‏ان کمنگ کالر ID"</string>
+    <string name="ClirMmi" msgid="7784673673446833091">"‏آؤٹ گوئنگ کالر ID"</string>
+    <string name="ColpMmi" msgid="3065121483740183974">"‏منسلک لائن ID"</string>
+    <string name="ColrMmi" msgid="4996540314421889589">"‏منسلک لائن ID کی پابندی"</string>
+    <string name="CfMmi" msgid="5123218989141573515">"کال فارورڈنگ"</string>
+    <string name="CwMmi" msgid="9129678056795016867">"کال ویٹنگ"</string>
+    <string name="BaMmi" msgid="455193067926770581">"کال میں رکاوٹ"</string>
+    <string name="PwdMmi" msgid="7043715687905254199">"پاس ورڈ میں تبدیلی"</string>
+    <string name="PinMmi" msgid="3113117780361190304">"‏PIN میں تبدیلی"</string>
+    <string name="CnipMmi" msgid="3110534680557857162">"کال کرنے والا نمبر موجود ہے"</string>
+    <string name="CnirMmi" msgid="3062102121430548731">"کالنگ نمبر محدود ہے"</string>
+    <string name="ThreeWCMmi" msgid="9051047170321190368">"تین طرفہ کالنگ"</string>
+    <string name="RuacMmi" msgid="7827887459138308886">"غیر مطلوبہ پریشان کن کالز کو مسترد کرنا"</string>
+    <string name="CndMmi" msgid="3116446237081575808">"کالنگ نمبر ڈیلیوری"</string>
+    <string name="DndMmi" msgid="1265478932418334331">"پریشان نہ کریں"</string>
+    <string name="CLIRDefaultOnNextCallOn" msgid="429415409145781923">"‏کالر ID کی ڈیفالٹ ترتیب محدود کردہ ہے۔ اگلی کال: محدود کردہ"</string>
+    <string name="CLIRDefaultOnNextCallOff" msgid="3092918006077864624">"‏کالر ID کی ڈیفالٹ ترتیب محدود کردہ ہے۔ اگلی کال: غیر محدود کردہ"</string>
+    <string name="CLIRDefaultOffNextCallOn" msgid="6179425182856418465">"‏کالر ID کی ڈیفالٹ ترتیب غیر محدود کردہ ہے۔ اگلی کال: محدود کردہ"</string>
+    <string name="CLIRDefaultOffNextCallOff" msgid="2567998633124408552">"‏کالر ID کی ڈیفالٹ ترتیب غیر محدود کردہ ہے۔ اگلی کال: غیر محدود کردہ"</string>
+    <string name="serviceNotProvisioned" msgid="8614830180508686666">"سروس فراہم نہیں کی گئی۔"</string>
+    <string name="CLIRPermanent" msgid="3377371145926835671">"‏آپ کالر ID کی ترتیبات تبدیل نہیں کر سکتے ہیں۔"</string>
+    <string name="RestrictedOnData" msgid="8653794784690065540">"ڈیٹا سروس مسدود ہے۔"</string>
+    <string name="RestrictedOnEmergency" msgid="6581163779072833665">"ہنگامی سروس مسدود ہے۔"</string>
+    <string name="RestrictedOnNormal" msgid="4953867011389750673">"صوتی سروس مسدود ہے۔"</string>
+    <string name="RestrictedOnAllVoice" msgid="3396963652108151260">"سبھی صوتی سروسز مسدود کر دی گئی ہیں۔"</string>
+    <string name="RestrictedOnSms" msgid="8314352327461638897">"‏SMS سروس مسدود ہے۔"</string>
+    <string name="RestrictedOnVoiceData" msgid="996636487106171320">"صوتی/ڈیٹا سروسز مسدود کر دی گئی ہیں۔"</string>
+    <string name="RestrictedOnVoiceSms" msgid="1888588152792023873">"‏وائس/SMS سروسز مسدود ہیں۔"</string>
+    <string name="RestrictedOnAll" msgid="5643028264466092821">"‏سبھی صوتی/ڈیٹا/SMS سروسز مسدود کر دی گئی ہیں۔"</string>
+    <string name="peerTtyModeFull" msgid="6165351790010341421">"‏ہمسر نے TTY وضع مکمل کی درخواست کی"</string>
+    <string name="peerTtyModeHco" msgid="5728602160669216784">"‏ہمسر نے TTY وضع HCO کی درخواست کی"</string>
+    <string name="peerTtyModeVco" msgid="1742404978686538049">"‏ہمسر نے TTY وضع VCO کی درخواست کی"</string>
+    <string name="peerTtyModeOff" msgid="3280819717850602205">"‏ہمسر نے TTY وضع آف کی درخواست کی"</string>
+    <string name="serviceClassVoice" msgid="1258393812335258019">"آواز"</string>
+    <string name="serviceClassData" msgid="872456782077937893">"ڈیٹا"</string>
+    <string name="serviceClassFAX" msgid="5566624998840486475">"فیکس"</string>
+    <string name="serviceClassSMS" msgid="2015460373701527489">"SMS"</string>
+    <string name="serviceClassDataAsync" msgid="4523454783498551468">"Async"</string>
+    <string name="serviceClassDataSync" msgid="7530000519646054776">"Sync"</string>
+    <string name="serviceClassPacket" msgid="6991006557993423453">"پیکٹ"</string>
+    <string name="serviceClassPAD" msgid="3235259085648271037">"پیڈ"</string>
+    <string name="roamingText0" msgid="7170335472198694945">"رومنگ انڈیکیٹر آن ہے"</string>
+    <string name="roamingText1" msgid="5314861519752538922">"رومنگ انڈیکیٹر آف ہے"</string>
+    <string name="roamingText2" msgid="8969929049081268115">"چمکدار رومنگ انڈیکیٹر"</string>
+    <string name="roamingText3" msgid="5148255027043943317">"محلے سے باہر"</string>
+    <string name="roamingText4" msgid="8808456682550796530">"عمارت سے باہر"</string>
+    <string name="roamingText5" msgid="7604063252850354350">"رومنگ - ترجیحی سسٹم"</string>
+    <string name="roamingText6" msgid="2059440825782871513">"رومنگ - دستیاب سسٹم"</string>
+    <string name="roamingText7" msgid="7112078724097233605">"رومنگ - الائنس پارٹنر"</string>
+    <string name="roamingText8" msgid="5989569778604089291">"رومنگ - پریمیم پارٹنر"</string>
+    <string name="roamingText9" msgid="7969296811355152491">"رومنگ - مکمل سروس کی فعالیت"</string>
+    <string name="roamingText10" msgid="3992906999815316417">"رومنگ - جزوی سروس کی فعالیت"</string>
+    <string name="roamingText11" msgid="4154476854426920970">"رومنگ بینر آن ہے"</string>
+    <string name="roamingText12" msgid="1189071119992726320">"رومنگ بینر آف"</string>
+    <string name="roamingTextSearching" msgid="8360141885972279963">"سروس کی تلاش کر رہا ہے"</string>
+    <string name="wfcRegErrorTitle" msgid="2301376280632110664">"‏Wi-Fi کالنگ"</string>
+  <string-array name="wfcOperatorErrorAlertMessages">
+    <item msgid="2254967670088539682">"‏Wi-Fi سے کالز کرنے اور پیغامات بھیجنے کیلئے، پہلے اپنے کیریئر سے اس سروس کو ترتیب دینے کیلئے کہیں۔ پھر ترتیبات سے دوبارہ Wi-Fi کالنگ آن کریں۔"</item>
+  </string-array>
+  <string-array name="wfcOperatorErrorNotificationMessages">
+    <item msgid="6177300162212449033">"اپنے کیریئر کے ساتھ رجسٹر کریں"</item>
+  </string-array>
+  <string-array name="wfcSpnFormats">
+    <item msgid="6830082633573257149">"‎%s"</item>
+    <item msgid="4397097370387921767">"‏‎%s Wi-Fi کالنگ"</item>
+  </string-array>
+    <string name="wifi_calling_off_summary" msgid="8720659586041656098">"آف"</string>
+    <string name="wfc_mode_wifi_preferred_summary" msgid="1994113411286935263">"‏Wi-Fi ترجیحی"</string>
+    <string name="wfc_mode_cellular_preferred_summary" msgid="5920549484600758786">"سیلولر ترجیحی"</string>
+    <string name="wfc_mode_wifi_only_summary" msgid="2379919155237869320">"‏صرف Wi-Fi"</string>
+    <string name="cfTemplateNotForwarded" msgid="1683685883841272560">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g> : فارورڈ نہیں کی گئی"</string>
+    <string name="cfTemplateForwarded" msgid="1302922117498590521">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>: <xliff:g id="DIALING_NUMBER">{1}</xliff:g>"</string>
+    <string name="cfTemplateForwardedTime" msgid="9206251736527085256">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>: <xliff:g id="DIALING_NUMBER">{1}</xliff:g> بعد از <xliff:g id="TIME_DELAY">{2}</xliff:g> سیکنڈ"</string>
+    <string name="cfTemplateRegistered" msgid="5073237827620166285">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g> : فارورڈ نہیں کی گئی"</string>
+    <string name="cfTemplateRegisteredTime" msgid="6781621964320635172">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>: فارورڈ نہیں کی گئی"</string>
+    <string name="fcComplete" msgid="3118848230966886575">"خصوصیت کوڈ مکمل۔"</string>
+    <string name="fcError" msgid="3327560126588500777">"کنکشن مسئلہ یا غلط خصوصیت کوڈ۔"</string>
+    <string name="httpErrorOk" msgid="1191919378083472204">"ٹھیک ہے"</string>
+    <string name="httpError" msgid="7956392511146698522">"نیٹ ورک کی ایک خرابی پیش آگئی۔"</string>
+    <string name="httpErrorLookup" msgid="4711687456111963163">"‏URL تلاش نہیں کیا جا سکا۔"</string>
+    <string name="httpErrorUnsupportedAuthScheme" msgid="6299980280442076799">"سائٹ کی توثیقی اسکیم تعاون یافتہ نہیں ہے۔"</string>
+    <string name="httpErrorAuth" msgid="1435065629438044534">"توثیق نہیں ہو سکی۔"</string>
+    <string name="httpErrorProxyAuth" msgid="1788207010559081331">"پراکسی سرور کے ذریعہ توثیق ناکام رہی۔"</string>
+    <string name="httpErrorConnect" msgid="8714273236364640549">"سرور سے مربوط نہیں ہوسکا۔"</string>
+    <string name="httpErrorIO" msgid="2340558197489302188">"سرور کے ساتھ مواصلت نہیں ہو سکی۔ بعد میں دوبارہ کوشش کریں۔"</string>
+    <string name="httpErrorTimeout" msgid="4743403703762883954">"سرور سے کنکشن کا وقت ختم ہوگیا۔"</string>
+    <string name="httpErrorRedirectLoop" msgid="8679596090392779516">"صفحہ میں کافی زیادہ سرور ری ڈائرکٹس شامل ہیں۔"</string>
+    <string name="httpErrorUnsupportedScheme" msgid="5015730812906192208">"پروٹوکول تعاون یافتہ نہیں ہے۔"</string>
+    <string name="httpErrorFailedSslHandshake" msgid="96549606000658641">"ایک محفوظ کنکشن قائم نہیں ہوسکا۔"</string>
+    <string name="httpErrorBadUrl" msgid="3636929722728881972">"‏صفحہ نہیں کھول سکا کیونکہ URL غلط ہے۔"</string>
+    <string name="httpErrorFile" msgid="2170788515052558676">"فائل تک رسائی حاصل نہیں ہوسکی۔"</string>
+    <string name="httpErrorFileNotFound" msgid="6203856612042655084">"درخواست کردہ فائل تلاش نہیں کی جا سکی۔"</string>
+    <string name="httpErrorTooManyRequests" msgid="1235396927087188253">"کافی زیادہ درخواستوں پر کارروائی کی جا رہے ہے۔ بعد میں دوبارہ کوشش کریں۔"</string>
+    <string name="notification_title" msgid="8967710025036163822">"<xliff:g id="ACCOUNT">%1$s</xliff:g> کیلئے سائن ان کی خرابی"</string>
+    <string name="contentServiceSync" msgid="8353523060269335667">"مطابقت پذیری کریں"</string>
+    <string name="contentServiceSyncNotificationTitle" msgid="397743349191901458">"مطابقت پذیری کریں"</string>
+    <string name="contentServiceTooManyDeletesNotificationDesc" msgid="8100981435080696431">"کافی زیادہ <xliff:g id="CONTENT_TYPE">%s</xliff:g> حذف کرتا ہے۔"</string>
+    <string name="low_memory" product="tablet" msgid="6494019234102154896">"ٹیبلیٹ اسٹوریج بھرا ہوا ہے. جگہ خالی کرنے کیلئے کچھ فائلیں حذف کریں۔"</string>
+    <string name="low_memory" product="watch" msgid="4415914910770005166">"دیکھنے کا اسٹوریج بھرا ہوا ہے۔ جگہ خالی کرنے کیلئے کچھ فائلیں حذف کریں۔"</string>
+    <string name="low_memory" product="tv" msgid="516619861191025923">"‏TV اسٹوریج بھرا ہوا ہے۔ جگہ خالی کرنے کیلئے کچھ فائلیں حذف کریں۔"</string>
+    <string name="low_memory" product="default" msgid="3475999286680000541">"فون اسٹوریج بھرا ہوا ہے۔ جگہ خالی کرنے کیلئے کچھ فائلیں حذف کریں۔"</string>
+    <plurals name="ssl_ca_cert_warning" formatted="false" msgid="5106721205300213569">
+      <item quantity="other">سرٹیفیکیٹ کی اتھارٹیز انسٹال ہو گئیں</item>
+      <item quantity="one">سرٹیفکیٹ کی اتھارٹی انسٹال ہو گئی</item>
+    </plurals>
+    <string name="ssl_ca_cert_noti_by_unknown" msgid="4475437862189850602">"ایک نامعلوم فریق ثالث کے لحاظ سے"</string>
+    <string name="ssl_ca_cert_noti_by_administrator" msgid="550758088185764312">"آپ کی دفتری پروفائل کے منتظم کے ذریعے"</string>
+    <string name="ssl_ca_cert_noti_managed" msgid="4030263497686867141">"<xliff:g id="MANAGING_DOMAIN">%s</xliff:g> کے لحاظ سے"</string>
+    <string name="work_profile_deleted" msgid="5005572078641980632">"دفتری پروفائل حذف کر دیا گیا"</string>
+    <string name="work_profile_deleted_description" msgid="6305147513054341102">"گمشدہ منتظم ایپ کی وجہ سے دفتری پروفائل حذف کر دیا گیا۔"</string>
+    <string name="work_profile_deleted_details" msgid="226615743462361248">"دفتری پروفائل کی منتظم ایپ یا تو غائب ہے یا خراب ہے۔ اس کی وجہ سے، آپ کا دفتری پروفائل اور متعلقہ ڈیٹا حذف کر دیے گئے ہیں۔ مدد کیلئے اپنے منتظم سے رابطہ کریں۔"</string>
+    <string name="work_profile_deleted_description_dpm_wipe" msgid="6019770344820507579">"آپ کا دفتری پروفائل اس آلہ پر مزید دستیاب نہیں ہے۔"</string>
+    <string name="factory_reset_warning" msgid="5423253125642394387">"آپ کا آلہ صاف کر دیا جائے گا"</string>
+    <string name="factory_reset_message" msgid="4905025204141900666">"منتظم کی ایپ میں گمشدہ اجزاء ہیں یا وہ خراب ہے اور اسے استعمال نہیں کیا جا سکتا ہے۔ آپ کے آلہ کو اب صاف کر دیا جائے گا۔ مدد کیلئے اپنے منتظم سے رابطہ کریں۔"</string>
+    <string name="me" msgid="6545696007631404292">"میں"</string>
+    <string name="power_dialog" product="tablet" msgid="8545351420865202853">"ٹیبلیٹ کے اختیارات"</string>
+    <string name="power_dialog" product="tv" msgid="6153888706430556356">"‏TV کے اختیارات"</string>
+    <string name="power_dialog" product="default" msgid="1319919075463988638">"فون کے اختیارات"</string>
+    <string name="silent_mode" msgid="7167703389802618663">"خاموش وضع"</string>
+    <string name="turn_on_radio" msgid="3912793092339962371">"وائرلیس آن کریں"</string>
+    <string name="turn_off_radio" msgid="8198784949987062346">"وائرلیس آف کریں"</string>
+    <string name="screen_lock" msgid="799094655496098153">"اسکرین لاک"</string>
+    <string name="power_off" msgid="4266614107412865048">"پاور آف"</string>
+    <string name="silent_mode_silent" msgid="319298163018473078">"رنگر آف ہے"</string>
+    <string name="silent_mode_vibrate" msgid="7072043388581551395">"رنگر مرتعش کریں"</string>
+    <string name="silent_mode_ring" msgid="8592241816194074353">"رنگر آن ہے"</string>
+    <string name="reboot_to_update_title" msgid="6212636802536823850">"‏Android سسٹم اپ ڈیٹ"</string>
+    <string name="reboot_to_update_prepare" msgid="6305853831955310890">"اپ ڈیٹ کرنے کی تیاری ہو رہی ہے…"</string>
+    <string name="reboot_to_update_package" msgid="3871302324500927291">"اپ ڈیٹ پیکج پر کاروائی کی جارہی ہے…"</string>
+    <string name="reboot_to_update_reboot" msgid="6428441000951565185">"دوبارہ شروع ہو رہا ہے…"</string>
+    <string name="reboot_to_reset_title" msgid="4142355915340627490">"فیکٹری ڈیٹا کی دوبارہ ترتیب"</string>
+    <string name="reboot_to_reset_message" msgid="2432077491101416345">"دوبارہ شروع ہو رہا ہے…"</string>
+    <string name="shutdown_progress" msgid="2281079257329981203">"بند ہو رہا ہے…"</string>
+    <string name="shutdown_confirm" product="tablet" msgid="3385745179555731470">"آپ کا ٹیبلیٹ بند ہو جائے گا۔"</string>
+    <string name="shutdown_confirm" product="tv" msgid="476672373995075359">"‏آپ کا TV بند ہو جائے گا۔"</string>
+    <string name="shutdown_confirm" product="watch" msgid="3490275567476369184">"آپ کی گھڑی بند ہو جائے گی۔"</string>
+    <string name="shutdown_confirm" product="default" msgid="649792175242821353">"آپ کا فون بند ہو جائے گا۔"</string>
+    <string name="shutdown_confirm_question" msgid="2906544768881136183">"کیا آپ بند کرنا چاہتے ہیں؟"</string>
+    <string name="reboot_safemode_title" msgid="7054509914500140361">"محفوظ طرز میں ریبوٹ کریں"</string>
+    <string name="reboot_safemode_confirm" msgid="55293944502784668">"کیا آپ محفوظ طرز میں ریبوٹ کرنا چاہتے ہیں؟ یہ آپ کی انسٹال کردہ تیسرے فریق کی سبھی ایپلیکیشنز کو غیر فعال کردے گا۔ دوبارہ آپ کے ریبوٹ کرنے پر وہ بحال ہوجائیں گے۔"</string>
+    <string name="recent_tasks_title" msgid="3691764623638127888">"حالیہ"</string>
+    <string name="no_recent_tasks" msgid="8794906658732193473">"کوئی حالیہ ایپس نہیں ہیں۔"</string>
+    <string name="global_actions" product="tablet" msgid="408477140088053665">"ٹیبلیٹ کے اختیارات"</string>
+    <string name="global_actions" product="tv" msgid="7240386462508182976">"‏TV کے اختیارات"</string>
+    <string name="global_actions" product="default" msgid="2406416831541615258">"فون کے اختیارات"</string>
+    <string name="global_action_lock" msgid="2844945191792119712">"اسکرین لاک"</string>
+    <string name="global_action_power_off" msgid="4471879440839879722">"پاور آف"</string>
+    <string name="global_action_bug_report" msgid="7934010578922304799">"بگ کی اطلاع"</string>
+    <string name="bugreport_title" msgid="2667494803742548533">"بگ کی اطلاع لیں"</string>
+    <string name="bugreport_message" msgid="398447048750350456">"ایک ای میل پیغام کے بطور بھیجنے کیلئے، یہ آپ کے موجودہ آلہ کی حالت کے بارے میں معلومات جمع کرے گا۔ بگ کی اطلاع شروع کرنے سے لے کر بھیجنے کیلئے تیار ہونے تک اس میں تھوڑا وقت لگے گا؛ براہ کرم تحمل سے کام لیں۔"</string>
+    <string name="bugreport_option_interactive_title" msgid="8635056131768862479">"متعامل رپورٹ"</string>
+    <string name="bugreport_option_interactive_summary" msgid="229299488536107968">"زیادہ تر حالات میں اسے استعمال کریں۔ یہ آپ کو رپورٹ کی پیش رفت کا پتہ رکھنے، مسئلہ سے متعلق زیادہ تفصیلات درج کرنے اور اسکرین شاٹس لینے کی اجازت دیتا ہے۔ شاید یہ کچھ ایسے کم استعمال ہونے والے سیکشنز کو خارج کر دے جو اطلاع کرنے میں زیادہ وقت لگاتے ہیں۔"</string>
+    <string name="bugreport_option_full_title" msgid="6354382025840076439">"مکمل رپورٹ"</string>
+    <string name="bugreport_option_full_summary" msgid="7210859858969115745">"جب آپ کا آلہ غیر فعال یا بہت سست ہو یا جب آپ کو تمام رپورٹ سیکشنز درکار ہوں، تو کم سے کم سسٹم مداخلت کیلئے یہ اختیار استعمال کریں۔ یہ آپ کو مزید تفصیلات درج کرنے یا اضافی اسکرین شاٹس لینے کی اجازت نہیں دیتا۔"</string>
+    <plurals name="bugreport_countdown" formatted="false" msgid="6878900193900090368">
+      <item quantity="other">بگ رپورٹ کیلئے <xliff:g id="NUMBER_1">%d</xliff:g> سیکنڈز میں اسکرین شاٹ لیا جائے گا۔</item>
+      <item quantity="one">بگ رپورٹ کیلئے <xliff:g id="NUMBER_0">%d</xliff:g> سیکنڈ میں اسکرین شاٹ لیا جائے گا۔</item>
+    </plurals>
+    <string name="global_action_toggle_silent_mode" msgid="8219525344246810925">"خاموش وضع"</string>
+    <string name="global_action_silent_mode_on_status" msgid="3289841937003758806">"آواز آف ہے"</string>
+    <string name="global_action_silent_mode_off_status" msgid="1506046579177066419">"آواز آن ہے"</string>
+    <string name="global_actions_toggle_airplane_mode" msgid="5884330306926307456">"ہوائی جہاز وضع"</string>
+    <string name="global_actions_airplane_mode_on_status" msgid="2719557982608919750">"ہوائی جہاز وضع آن ہے"</string>
+    <string name="global_actions_airplane_mode_off_status" msgid="5075070442854490296">"ہوائی جہاز وضع آف ہے"</string>
+    <string name="global_action_settings" msgid="1756531602592545966">"ترتیبات"</string>
+    <string name="global_action_assist" msgid="3892832961594295030">"اسسٹ"</string>
+    <string name="global_action_voice_assist" msgid="7751191495200504480">"Voice Assist"</string>
+    <string name="global_action_lockdown" msgid="8751542514724332873">"ابھی مقفل کریں"</string>
+    <string name="status_bar_notification_info_overflow" msgid="5301981741705354993">"‎999+‎"</string>
+    <string name="notification_hidden_text" msgid="1135169301897151909">"مواد مخفی ہیں"</string>
+    <string name="notification_hidden_by_policy_text" msgid="9004631276932584600">"مواد پالیسی کے تحت مخفی ہے"</string>
+    <string name="safeMode" msgid="2788228061547930246">"حفاظتی وضع"</string>
+    <string name="android_system_label" msgid="6577375335728551336">"‏Android سسٹم"</string>
+    <string name="user_owner_label" msgid="1119010402169916617">"ذاتی پر سوئچ کریں"</string>
+    <string name="managed_profile_label" msgid="5289992269827577857">"کام پر سوئچ کریں"</string>
+    <string name="permgrouplab_contacts" msgid="3657758145679177612">"رابطے"</string>
+    <string name="permgroupdesc_contacts" msgid="6951499528303668046">"اپنے رابطوں تک رسائی حاصل کریں"</string>
+    <string name="permgrouplab_location" msgid="7275582855722310164">"مقام"</string>
+    <string name="permgroupdesc_location" msgid="1346617465127855033">"اس آلہ کے مقام تک رسائی حاصل کریں"</string>
+    <string name="permgrouplab_calendar" msgid="5863508437783683902">"کیلنڈر"</string>
+    <string name="permgroupdesc_calendar" msgid="3889615280211184106">"اپنے کیلنڈر تک رسائی حاصل کریں"</string>
+    <string name="permgrouplab_sms" msgid="228308803364967808">"SMS"</string>
+    <string name="permgroupdesc_sms" msgid="4656988620100940350">"‏SMS پیغامات بھیجیں اور دیکھیں"</string>
+    <string name="permgrouplab_storage" msgid="1971118770546336966">"اسٹوریج"</string>
+    <string name="permgroupdesc_storage" msgid="637758554581589203">"اپنے آلہ پر تصاویر، میڈیا اور فائلوں تک رسائی حاصل کریں"</string>
+    <string name="permgrouplab_microphone" msgid="171539900250043464">"مائکروفون"</string>
+    <string name="permgroupdesc_microphone" msgid="4988812113943554584">"آڈیو ریکارڈ کریں"</string>
+    <string name="permgrouplab_camera" msgid="4820372495894586615">"کیمرا"</string>
+    <string name="permgroupdesc_camera" msgid="3250611594678347720">"تصاویر لیں اور ویڈیو ریکارڈ کریں"</string>
+    <string name="permgrouplab_phone" msgid="5229115638567440675">"فون"</string>
+    <string name="permgroupdesc_phone" msgid="6234224354060641055">"فون کالز کریں اور ان کا نظم کریں"</string>
+    <string name="permgrouplab_sensors" msgid="416037179223226722">"جسم سینسرز"</string>
+    <string name="permgroupdesc_sensors" msgid="7147968539346634043">"اپنی علامات حیات کے متعلق سنسر ڈیٹا تک رسائی حاصل کریں"</string>
+    <string name="capability_title_canRetrieveWindowContent" msgid="3901717936930170320">"ونڈو مواد بازیافت کرنے کی"</string>
+    <string name="capability_desc_canRetrieveWindowContent" msgid="3772225008605310672">"کسی ایسی ونڈو کے مواد کا معائنہ کریں جس کے ساتھ آپ تعامل کر رہے ہیں۔"</string>
+    <string name="capability_title_canRequestTouchExploration" msgid="3108723364676667320">"ٹچ کے ذریعے دریافت کریں کو آن کرنے کی"</string>
+    <string name="capability_desc_canRequestTouchExploration" msgid="7543249041581408313">"تھپتھپائے گئے آئٹمز کو باآواز بلند بولا جائے گا اور اشاروں کا استعمال کرکے اسکرین کو دریافت کیا جا سکتا ہے۔"</string>
+    <string name="capability_title_canRequestEnhancedWebAccessibility" msgid="1739881766522594073">"‏بہتر ویب accessibility کو آن کرنے کی"</string>
+    <string name="capability_desc_canRequestEnhancedWebAccessibility" msgid="7881063961507511765">"ایپ کا مواد مزید قابل رسائی بنانے کیلئے اسکرپٹس کو انسٹال کیا جا سکتا ہے۔"</string>
+    <string name="capability_title_canRequestFilterKeyEvents" msgid="2103440391902412174">"آپکے ٹائپ کردہ متن کا مشاہدہ کرنے کی"</string>
+    <string name="capability_desc_canRequestFilterKeyEvents" msgid="7463135292204152818">"اس میں ذاتی ڈیٹا جیسے کریڈٹ کارڈ نمبرز اور پاس ورڈز شامل ہیں۔"</string>
+    <string name="capability_title_canControlMagnification" msgid="3593493281059424855">"ڈسپلے بڑا کرنے کے عمل کو کنٹرول کریں"</string>
+    <string name="capability_desc_canControlMagnification" msgid="4791858203568383773">"ڈسپلے کے زوم کی سطح اور پوزیشن کو کنٹرول کریں۔"</string>
+    <string name="capability_title_canPerformGestures" msgid="7418984730362576862">"اشارے انجام دیں"</string>
+    <string name="capability_desc_canPerformGestures" msgid="8296373021636981249">"تھپتھپانا، سوائپ کرنا، چٹکی بھرنا اور دیگر اشارے انجام دے سکتی ہے"</string>
+    <string name="permlab_statusBar" msgid="7417192629601890791">"اسٹیٹس بار کو غیر فعال یا اس میں ترمیم کریں"</string>
+    <string name="permdesc_statusBar" msgid="8434669549504290975">"ایپ کو اسٹیٹس بار غیر فعال کرنے یا سسٹم آئیکنز شامل کرنے اور ہٹانے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_statusBarService" msgid="4826835508226139688">"بطور اسٹیٹس بار کام لیں"</string>
+    <string name="permdesc_statusBarService" msgid="716113660795976060">"ایپ کو اسٹیٹس بار بننے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_expandStatusBar" msgid="1148198785937489264">"حیثیت بار پھیلائیں/سکیڑیں"</string>
+    <string name="permdesc_expandStatusBar" msgid="6917549437129401132">"ایپ کو اسٹیٹس بار پھیلانے یا سکیڑنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_install_shortcut" msgid="4279070216371564234">"شارٹ کٹس انسٹال کریں"</string>
+    <string name="permdesc_install_shortcut" msgid="8341295916286736996">"کسی ایپلیکیشن کو صارف کی مداخلت کے بغیر ہوم اسکرین شارٹ کٹس شامل کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_uninstall_shortcut" msgid="4729634524044003699">"شارٹ کٹس کو اَن انسٹال کریں"</string>
+    <string name="permdesc_uninstall_shortcut" msgid="6745743474265057975">"ایپلیکیشن کو صارف کی مداخلت کے بغیر ہوم اسکرین شارٹ کٹس ہٹانے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_processOutgoingCalls" msgid="3906007831192990946">"باہر جانے والی کالوں کی سمت دوبارہ طے کریں"</string>
+    <string name="permdesc_processOutgoingCalls" msgid="5156385005547315876">"ایپ کو ایک مختلف نمبر پر کال ری ڈائریکٹ کرنے یا مکمل طور پر کال ختم کر دینے کیلئے اختیار کے ساتھ ایک آؤٹ گوئنگ کال کے دوران ڈائل کیا جا رہا نمبر دیکھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_receiveSms" msgid="8673471768947895082">"‏متنی پیغامات (SMS) حاصل کریں"</string>
+    <string name="permdesc_receiveSms" msgid="6424387754228766939">"‏ایپ کو SMS پیغامات حاصل اور ان پر کارروائی کرنے کی اجازت دیتا ہے۔ اس کا مطلب ہے کہ ایپ آپ کے آلے پر مرسلہ پیغامات آپ کو دکھائے بغیر ان پر نگاہ رکھ یا انہیں حذف کرسکتی ہے۔"</string>
+    <string name="permlab_receiveMms" msgid="1821317344668257098">"‏متنی پیغامات (MMS) حاصل کریں"</string>
+    <string name="permdesc_receiveMms" msgid="533019437263212260">"‏ایپ کو MMS پیغامات حاصل اور ان پر کارروائی کرنے کی اجازت دیتا ہے۔ اس کا مطلب ہے کہ ایپ آپ کے آلے پر مرسلہ پیغامات آپ کو دکھائے بغیر ان پر نگاہ رکھ یا انہیں حذف کرسکتی ہے۔"</string>
+    <string name="permlab_readCellBroadcasts" msgid="1598328843619646166">"سیل کے نشریاتی پیغامات پڑھیں"</string>
+    <string name="permdesc_readCellBroadcasts" msgid="6361972776080458979">"ایپ کو آپ کے آلے کو موصولہ سیل کے نشریاتی پیغامات پڑھنے کی اجازت دیتا ہے۔ سیل کی نشریاتی الرٹس آپ کو ہنگامی حالات سے مطلع کرنے کیلئے کچھ مقامات میں مہیا کی جاتی ہیں۔ نقصان دہ ایپس کوئی ہنگامی سیل کا نشریہ موصول ہونے پر آپ کے آلے کی کارکردگی یا عمل میں خلل ڈال سکتی ہیں۔"</string>
+    <string name="permlab_subscribedFeedsRead" msgid="4756609637053353318">"سبسکرائب کردہ فیڈز پڑھیں"</string>
+    <string name="permdesc_subscribedFeedsRead" msgid="5557058907906144505">"ایپ کو فی الحال مطابقت پذیر کیے ہوئے فیڈز کے بارے میں تفصیلات حاصل کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_sendSms" msgid="7544599214260982981">"‏SMS پیغامات بھیجیں اور دیکھیں"</string>
+    <string name="permdesc_sendSms" msgid="7094729298204937667">"‏ایپ کو SMS پیغامات بھیجنے کی اجازت دیتا ہے۔ اس کے نتیجے میں غیر متوقع چارجز لگ سکتے ہیں۔ نقصان دہ ایپس آپ کی تصدیق کے بغیر پیغامات بھیج کر آپ کی رقم خرچ کروا سکتی ہیں۔"</string>
+    <string name="permlab_readSms" msgid="8745086572213270480">"‏اپنے متنی پیغامات (SMS یا MMS) کو پڑھیں"</string>
+    <string name="permdesc_readSms" product="tablet" msgid="2467981548684735522">"‏ایپ کو آپ کے ٹیبلٹ یا SIM کارڈ میں اسٹور کردہ SMS پیغامات کو پڑھنے کی اجازت دیتا ہے۔ یہ ایپ کو مواد اور رازداری سے قطع نظر سبھی SMS پیغامات پڑھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_readSms" product="tv" msgid="5102425513647038535">"‏ایپ کو آپ کے TV یا SIM کارڈ میں اسٹور کردہ SMS پیغامات پڑھنے کی اجازت دیتا ہے۔ یہ ایپ کو مواد یا رازداری سے قطع نظر سبھی SMS پیغامات پڑھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_readSms" product="default" msgid="3695967533457240550">"‏ایپ کو آپ کے فون یا SIM کارڈ میں اسٹور کردہ SMS پیغامات کو پڑھنے کی اجازت دیتا ہے۔ یہ ایپ کو مواد اور رازداری سے قطع نظر سبھی SMS پیغامات پڑھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_receiveWapPush" msgid="5991398711936590410">"‏متنی پیغامات (WAP) حاصل کریں"</string>
+    <string name="permdesc_receiveWapPush" msgid="748232190220583385">"‏ایپ کو WAP پیغامات حاصل اور ان پر کارروائی کرنے کی اجازت دیتا ہے۔ اس اجازت میں آپ کو مرسلہ پیغامات آپ کو دکھائے بغیر ان پر نگاہ رکھنے یا انہیں حذف کرنے کی اہلیت شامل ہے۔"</string>
+    <string name="permlab_getTasks" msgid="6466095396623933906">"چل رہی ایپس کی بازیافت کریں"</string>
+    <string name="permdesc_getTasks" msgid="7454215995847658102">"ایپ کو موجودہ اور حالیہ چل رہے ٹاسکس کے بارے میں معلومات بازیافت کرنے کی اجازت دیتا ہے۔ یہ ایپ کو اس بارے میں معلومات دریافت کرنے کی اجازت دے سکتا ہے کہ آلہ پر کون سی ایپلیکیشنز استعمال کی جاتی ہیں۔"</string>
+    <string name="permlab_manageProfileAndDeviceOwners" msgid="7918181259098220004">"پروفائل اور آلہ کے مالکان کا نظم کریں"</string>
+    <string name="permdesc_manageProfileAndDeviceOwners" msgid="106894851498657169">"ایپس کو پروفائل کے مالکان اور آلہ کے مالک کو سیٹ کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_reorderTasks" msgid="2018575526934422779">"چل رہی ایپس کو دوبارہ ترتیب دیں"</string>
+    <string name="permdesc_reorderTasks" msgid="7734217754877439351">"ایپ کو پیش منظر یا پس منظر میں ٹاسکس کو منتقل کرنے کی اجازت دیتا ہے۔ ایپ آپ کے ان پٹ کے بغیر یہ کام کرسکتی ہے۔"</string>
+    <string name="permlab_enableCarMode" msgid="5684504058192921098">"کار وضع فعال کریں"</string>
+    <string name="permdesc_enableCarMode" msgid="4853187425751419467">"ایپ کو کار وضع فعال کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_killBackgroundProcesses" msgid="3914026687420177202">"دیگر ایپس بند کریں"</string>
+    <string name="permdesc_killBackgroundProcesses" msgid="4593353235959733119">"ایپ کو دوسرے ایپس کے پس منظر کی کارروائیوں کو ختم کرنے کی اجازت دیتا ہے۔ اس کی وجہ سے دوسرے ایپس کا چلنا بند ہوسکتا ہے۔"</string>
+    <string name="permlab_systemAlertWindow" msgid="3543347980839518613">"دیگر ایپس پر ڈرا کریں"</string>
+    <string name="permdesc_systemAlertWindow" msgid="8584678381972820118">"ایپ کو دوسری ایپلیکیشنز یا صارف انٹرفیس کے حصوں کے اوپر ڈرا کرنے کی اجازت دیتا ہے۔ وہ کسی بھی ایپلیکیشن میں انٹرفیس کے آپ کے استعمال میں خلل ڈال سکتے ہیں یا آپ کے خیال میں آپ دوسری ایپلیکیشنز  میں جو کچھ دیکھ رہے ہیں اسے تبدیل کرسکتے ہیں۔"</string>
+    <string name="permlab_persistentActivity" msgid="8841113627955563938">"ایپ کو ہمیشہ چلاتے رہیں"</string>
+    <string name="permdesc_persistentActivity" product="tablet" msgid="8525189272329086137">"ایپ کو خود اپنے ہی حصوں کو میموری میں استقلال پذیر بنانے کی اجازت دیتا ہے۔ یہ ٹیبلٹ کو سست بناکر دوسری ایپس کیلئے دستیاب میموری کو محدود کرسکتا ہے۔"</string>
+    <string name="permdesc_persistentActivity" product="tv" msgid="5086862529499103587">"‏ایپ کو خود اپنے ہی حصوں کو میموری میں استقلال پذیر بنانے کی اجازت دیتا ہے۔ یہ TV کو سُست بناکر دوسری ایپس کیلئے دستیاب میموری کو محدود کرسکتا ہے۔"</string>
+    <string name="permdesc_persistentActivity" product="default" msgid="4384760047508278272">"ایپ کو خود اپنے ہی حصوں کو میموری میں استقلال پذیر بنانے کی اجازت دیتا ہے۔ یہ فون کو سست بناکر دوسری ایپس کیلئے دستیاب میموری کو محدود کرسکتا ہے۔"</string>
+    <string name="permlab_getPackageSize" msgid="7472921768357981986">"ایپ اسٹوریج کی جگہ کی پیمائش کریں"</string>
+    <string name="permdesc_getPackageSize" msgid="3921068154420738296">"ایپ کو اپنے کوڈ، ڈیٹا اور کیش کے سائزوں کی بازیافت کرنے دیتا ہے"</string>
+    <string name="permlab_writeSettings" msgid="2226195290955224730">"سسٹم کی ترتیبات میں ترمیم کریں"</string>
+    <string name="permdesc_writeSettings" msgid="7775723441558907181">"ایپ کو سسٹم کی ترتیبات ڈيٹا میں ترمیم کرنے کی اجازت دیتا ہے۔ نقصان دہ ایپس آپ کے سسٹم کی کنفیگریشن کو خراب کر سکتی ہیں۔"</string>
+    <string name="permlab_receiveBootCompleted" msgid="5312965565987800025">"شروع ہونے پر چلائیں"</string>
+    <string name="permdesc_receiveBootCompleted" product="tablet" msgid="7390304664116880704">"سسٹم کے بوٹ ہونے کا عمل پورا ہونے کے ساتھ ہی ایپ کو خود سے سٹارٹ ہونے کی اجازت دیتا ہے۔ اس کی وجہ سے ٹیبلٹ کو سٹارٹ ہونے میں زیادہ وقت لگ سکتا ہے اور ایپ کو ہمیشہ چلتی حالت میں رکھنا مجموعی طور پر ٹیبلٹ کی رفتار سست کرنے کی اجازت دے سکتا ہے۔"</string>
+    <string name="permdesc_receiveBootCompleted" product="tv" msgid="4525890122209673621">"‏سسٹم کے بوٹ ہونے کا عمل پورا ہونے کے ساتھ ہی ایپ کو خود کو شروع کرنے کی اجازت دیتا ہے۔ اس کی وجہ سے TV شروع ہونے میں زیادہ وقت لگ سکتا ہے اور ایپ کو ہمیشہ چلتی حالت میں رکھنا مجموعی طور پر ٹیبلٹ کی رفتار سُست کرنے کی اجازت دے سکتا ہے۔"</string>
+    <string name="permdesc_receiveBootCompleted" product="default" msgid="513950589102617504">"سسٹم کے بوٹ ہونے کا عمل پورا ہونے کے ساتھ ہی ایپ کو خود سے سٹارٹ ہونے کی اجازت دیتا ہے۔ اس کی وجہ سے فون کو سٹارٹ ہونے میں زیادہ وقت لگ سکتا ہے اور ایپ کو ہمیشہ چلتی حالت میں رکھنا مجموعی طور پر فون کی رفتار سست کرنے کی اجازت دے سکتا ہے۔"</string>
+    <string name="permlab_broadcastSticky" msgid="7919126372606881614">"چپکنے والا براڈکاسٹ بھیجیں"</string>
+    <string name="permdesc_broadcastSticky" product="tablet" msgid="7749760494399915651">"ایپ کو اسٹیکی براڈکاسٹس بھیجنے کی اجازت دیتا ہے، جو براڈکاسٹ ختم ہونے کے بعد بھی باقی رہتے ہیں۔ حد سے زیادہ استعمال ٹیبلیٹ کو سست یا غیر مستحکم بنا سکتا ہے جس کی وجہ سے یہ میموری کا کافی زیادہ استعمال کر سکتا ہے۔"</string>
+    <string name="permdesc_broadcastSticky" product="tv" msgid="6839285697565389467">"‏ایپ کو اسٹیکی براڈکاسٹس بھیجنے کی اجازت دیتا ہے، جو براڈکاسٹ ختم ہونے کے بعد بھی باقی رہتے ہیں۔ حد سے زیادہ استعمال میموری کے کافی زیادہ استعمال کی وجہ سے TV کو سُست یا غیر مستحکم بنا سکتا ہے۔"</string>
+    <string name="permdesc_broadcastSticky" product="default" msgid="2825803764232445091">"ایپ کو اسٹیکی براڈکاسٹس بھیجنے کی اجازت دیتا ہے، جو براڈکاسٹ ختم ہونے کے بعد بھی باقی رہتے ہیں۔ حد سے زیادہ استعمال فون کو سست یا غیر مستحکم بنا سکتا ہے جس کی وجہ سے یہ میموری کا کافی زیادہ استعمال کر سکتا ہے۔"</string>
+    <string name="permlab_readContacts" msgid="8348481131899886131">"اپنے رابطوں کو پڑھیں"</string>
+    <string name="permdesc_readContacts" product="tablet" msgid="5294866856941149639">"ایپ کو آپ کے ٹیبلٹ پر اسٹور کردہ آپ کے رابطوں، بشمول مخصوص افراد کو دوسرے طریقوں سے جس تعدد سے آپ نے کال، ای میل کیا ہے یا ان کے ساتھ مواصلت کی ہے اس کے بارے میں ڈیٹا کو پڑھنے کی اجازت دیتا ہے۔ یہ اجازت ایپس کو آپ کے رابطے کا ڈیٹا محفوظ کرنے کی اجازت دیتی ہے اور نقصان دہ ایپس آپ کے علم کے بغیر رابطے کے ڈیٹا کا اشتراک کرسکتی ہیں۔"</string>
+    <string name="permdesc_readContacts" product="tv" msgid="1839238344654834087">"‏ایپ کو آپ کے TV پر اسٹور کردہ آپ کے رابطوں، بشمول مخصوص افراد کو دوسرے طریقوں سے جس تعدد سے آپ نے کال، ای میل کیا ہے یا ان کے ساتھ مواصلت کی ہے ان کے بارے میں ڈیٹا پڑھنے کی اجازت دیتا ہے۔ یہ اجازت ایپس کو آپ کے رابطے کا ڈیٹا محفوظ کرنے کی اجازت دیتی ہے اور نقصان دہ ایپس آپ کے علم کے بغیر رابطے کے ڈیٹا کا اشتراک کرسکتی ہیں۔"</string>
+    <string name="permdesc_readContacts" product="default" msgid="8440654152457300662">"ایپ کو آپ کے فون پر اسٹور کردہ آپ کے رابطوں، بشمول مخصوص افراد کو دوسرے طریقوں سے جس تعدد سے آپ نے کال، ای میل کیا ہے یا ان کے ساتھ مواصلت کی ہے اس کے بارے میں ڈیٹا کو پڑھنے کی اجازت دیتا ہے۔ یہ اجازت ایپس کو آپ کے رابطے کا ڈیٹا محفوظ کرنے کی اجازت دیتی ہے اور نقصان دہ ایپس آپ کے علم کے بغیر رابطے کے ڈیٹا کا اشتراک کرسکتی ہیں۔"</string>
+    <string name="permlab_writeContacts" msgid="5107492086416793544">"اپنے رابطوں میں ترمیم کریں"</string>
+    <string name="permdesc_writeContacts" product="tablet" msgid="897243932521953602">"ایپ کو آپ کے ٹیبلٹ پر اسٹور کردہ آپ کے رابطوں، بشمول مخصوص رابطوں کو جس تعدد سے آپ نے کال، ای میل کیا ہے یا دوسرے طریقوں سے ان کے ساتھ مواصلت کی ہے اس کے بارے میں ڈیٹا میں ترمیم کی اجازت دیتا ہے۔ یہ اجازت ایپس کو رابطے کا ڈیٹا حذف کرنے کی اجازت دیتی ہے۔"</string>
+    <string name="permdesc_writeContacts" product="tv" msgid="5438230957000018959">"‏ایپ کو آپ کے TV پر اسٹور کردہ آپ کے رابطوں، بشمول مخصوص رابطوں کو جس تعدد سے آپ نے کال، ای میل کیا ہے یا دوسرے طریقوں سے ان کے ساتھ مواصلت کی ہے ان کے بارے میں ڈیٹا میں ترمیم کی اجازت دیتا ہے۔ یہ اجازت ایپس کو رابطے کا ڈیٹا حذف کرنے کی اجازت دیتی ہے۔"</string>
+    <string name="permdesc_writeContacts" product="default" msgid="589869224625163558">"ایپ کو آپ کے فون پر اسٹور کردہ آپ کے رابطوں، بشمول مخصوص رابطوں کو جس تعدد سے آپ نے کال، ای میل کیا ہے یا دوسرے طریقوں سے ان کے ساتھ مواصلت کی ہے اس کے بارے میں ڈیٹا میں ترمیم کی اجازت دیتا ہے۔ یہ اجازت ایپس کو رابطے کا ڈیٹا حذف کرنے کی اجازت دیتی ہے۔"</string>
+    <string name="permlab_readCallLog" msgid="3478133184624102739">"کال لاگ پڑھیں"</string>
+    <string name="permdesc_readCallLog" product="tablet" msgid="3700645184870760285">"ایپ کو آپ کے ٹیبلیٹ کی کال لاگ، بشمول آنے اور باہر جانے والی کالوں کے بارے میں ڈیٹا کو پڑھنے کی اجازت دیتا ہے۔ یہ اجازت ایپس کو آپ کی کال لاگ کا ڈیٹا محفوظ کرنے دیتی ہے اور نقصان دہ ایپس آپ کی انکاری کے بغیر کال لاگ کے ڈیٹا کا اشتراک کرسکتی ہیں۔"</string>
+    <string name="permdesc_readCallLog" product="tv" msgid="5611770887047387926">"‏انکمنگ اور آؤٹ گوئنگ کالز کے بارے میں ڈیٹا سمیت، ایپ کو آپ کے TV کے کال لاگ پڑھنے کی اجازت دیتا ہے۔ یہ اجازت ایپس کو آپ کا کال لاگ محفوظ کرنے کی اجازت دیتی ہے اور نقصان دہ ایپس آپ کی جانکاری کے بغیر کال لاگ کے ڈیٹا کا اشتراک کرسکتی ہیں۔"</string>
+    <string name="permdesc_readCallLog" product="default" msgid="5777725796813217244">"ایپ کو آپ کے فون کی کال لاگ، بشمول آنے اور باہر جانے والی کالوں کے بارے میں ڈیٹا کو پڑھنے کی اجازت دیتا ہے۔ یہ اجازت ایپس کو آپ کی کال لاگ کا ڈیٹا محفوظ کرنے دیتی ہے اور نقصان دہ ایپس آپ کی جانکاری کے بغیر کال لاگ کے ڈیٹا کا اشتراک کرسکتی ہیں۔"</string>
+    <string name="permlab_writeCallLog" msgid="8552045664743499354">"کال لاگ لکھیں"</string>
+    <string name="permdesc_writeCallLog" product="tablet" msgid="6661806062274119245">"ایپ کو آپ کے ٹیبلٹ کی کال لاگ، بشمول آنے والی اور باہر جانے والی کالوں کے بارے میں ڈیٹا میں ترمیم کرنے کی اجازت دیتا ہے۔ نقصان دہ ایپس آپ کی کال لاگ مٹانے یا اس میں ترمیم کرنے کیلئے اسے استعمال کرسکتی ہیں۔"</string>
+    <string name="permdesc_writeCallLog" product="tv" msgid="4225034892248398019">"‏انکمنگ اور آؤٹ گوئنگ کالز کے بارے میں ڈیٹا سمیت، ایپ کو آپ کے TV کے کال لاگ میں ترمیم کرنے کی اجازت دیتا ہے۔ نقصان دہ ایپس آپ کی کال لاگ مٹانے یا اس میں ترمیم کرنے کیلئے اسے استعمال کرسکتی ہیں۔"</string>
+    <string name="permdesc_writeCallLog" product="default" msgid="683941736352787842">"ایپ کو آپ کے فون کی کال لاگ، بشمول آنے والی اور باہر جانے والی کالوں کے بارے میں ڈیٹا میں ترمیم کرنے کی اجازت دیتا ہے۔ نقصان دہ ایپس آپ کی کال لاگ مٹانے یا اس میں ترمیم کرنے کیلئے اسے استعمال کرسکتی ہیں۔"</string>
+    <string name="permlab_bodySensors" msgid="4683341291818520277">"باڈی سینسرز تک رسائی حاصل کریں (جیسے حرکت قلب شرح مانیٹرز)"</string>
+    <string name="permdesc_bodySensors" product="default" msgid="4380015021754180431">"ان سینسرز سے ڈیٹا تک رسائی حاصل کرنے کی اجازت دیتی ہے جو آپ کی حرکت قلب کی شرح جیسی آپ کی فزیکل صورتحال کو مانیٹر کرتے ہیں۔"</string>
+    <string name="permlab_readCalendar" msgid="5972727560257612398">"کیلنڈر ایونٹس کے ساتھ رازداری کی معلومات پڑھیں"</string>
+    <string name="permdesc_readCalendar" product="tablet" msgid="4216462049057658723">"ایپ کو آپ کے، بشمول آپ کے دوستوں یا ساتھی کارکنان کے ٹیبلٹ پر اسٹور کردہ سبھی کیلنڈر ایونٹس کو پڑھنے کی اجازت دیتا ہے۔ یہ ایپ کو رازداری یا حساسیت سے قطع نظر آپ کے کیلنڈر ڈیٹا کا اشتراک یا اسے محفوظ کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_readCalendar" product="tv" msgid="3191352452242394196">"‏ایپ کو آپ کے TV پر اسٹور کردہ دوستوں اور ساتھی کارکنوں کے کیلنڈر ایونٹس سمیت، سبھی کیلنڈر ایونٹس کو پڑھنے کی اجازت دیتا ہے۔ رازداری یا حساسیت سے قطع نظر، یہ ایپ کو آپ کے کیلنڈر ڈیٹا کا اشتراک یا اسے محفوظ کرنے کی اجازت دے سکتا ہے۔"</string>
+    <string name="permdesc_readCalendar" product="default" msgid="7434548682470851583">"ایپ کو آپ کے، بشمول آپ کے دوستوں یا ساتھی کارکنان کے فون پر اسٹور کردہ سبھی کیلنڈر ایونٹس کو پڑھنے کی اجازت دیتا ہے۔ یہ ایپ کو رازداری یا حساسیت سے قطع نظر آپ کے کیلنڈر ڈیٹا کا اشتراک یا اسے محفوظ کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_writeCalendar" msgid="8438874755193825647">"کیلنڈر ایونٹس شامل یا ان میں ترمیم کریں اور مالک کو بتائے بغیر مہمانوں کو ای میل بھیجیں"</string>
+    <string name="permdesc_writeCalendar" product="tablet" msgid="6679035520113668528">"ایپ کو وہ ایونٹس جن میں آپ اپنے ٹیبلٹ پر ترمیم کرسکتے ہیں، بشمول دوسروں یا ساتھی کارکنوں کے ایونٹس شامل کرنے، ہٹانے، تبدیل کرنے کی اجازت دیتا ہے۔ یہ ایپ کو ایسے پیغامات بھیجنے کی جو کیلنڈر مالکان کی جانب سے آنے والے معلوم پڑتے ہیں یا مالکان کی جانکاری کے بغیر ایونٹس میں ترمیم کرنے کی اجازت دے سکتا ہے۔"</string>
+    <string name="permdesc_writeCalendar" product="tv" msgid="1273290605500902507">"‏ایپ کو وہ ایونٹس جن میں آپ TV پر ترمیم کر سکتے ہیں بشمول دوستوں یا ساتھی کارکنان کے ایونٹس شامل کرنے، ہٹانے، تبدیل کرنے کی اجازت دیتا ہے۔ یہ ایپ کو ایسے پیغامات بھیجنے کی جو کیلنڈر مالکان کی جانب سے آئے ہوئے معلوم پڑتے ہیں، یا مالکان کی جانکاری کے بغیر ایونٹس میں ترمیم کرنے کی اجازت دے سکتا ہے۔"</string>
+    <string name="permdesc_writeCalendar" product="default" msgid="2324469496327249376">"ایپ کو وہ ایونٹس جن میں آپ اپنے فون پر ترمیم کرسکتے ہیں، بشمول دوسروں یا ساتھی کارکنوں کے ایونٹس شامل کرنے، ہٹانے، تبدیل کرنے کی اجازت دیتا ہے۔ یہ ایپ کو ایسے پیغامات بھیجنے کی جو کیلنڈر مالکان کی جانب سے آئے ہوئے معلوم پڑتے ہیں یا مالکان کی جانکاری کے بغیر ایونٹس میں ترمیم کرنے کی اجازت دے سکتا ہے۔"</string>
+    <string name="permlab_accessLocationExtraCommands" msgid="2836308076720553837">"اضافی مقام فراہم کنندہ کی کمانڈز تک رسائی حاصل کریں"</string>
+    <string name="permdesc_accessLocationExtraCommands" msgid="6078307221056649927">"‏ایپ کو اضافی مقام فراہم کنندہ کی کمانڈز تک رسائی حاصل کرنے کی اجازت دیتی ہے۔ یہ ایپ کو GPS یا دوسرے مقام کے مآخذ کے عمل کے ساتھ مداخلت کرنے کی اجازت دے سکتی ہے۔"</string>
+    <string name="permlab_accessFineLocation" msgid="251034415460950944">"‏قطعی مقام تک رسائی حاصل کریں (GPS اور نیٹ ورک پر مبنی)"</string>
+    <string name="permdesc_accessFineLocation" msgid="5295047563564981250">"‏ایپ کو گلوبل پوزیشننگ سسٹم (GPS) یا نیٹ ورک کے مقام کے مآخذ جیسے سیل ٹاورز اور Wi-Fi کا استعمال کرکے آپ کا درست مقام حاصل کرنے کی اجازت دیتا ہے۔ ان مقام کی سروسز کا آن ہونا اور ایپ کو انہیں استعمال کرنے کیلئے آپ کے آلے پر دستیاب ہونا ضروری ہے۔ ایپس تخمینی طور پر آپ کے محل وقوع کا تعین کرنے کیلئے اسے استعمال کرسکتی ہیں اور بیٹری کی اضافی قوت صرف کرسکتی ہیں۔"</string>
+    <string name="permlab_accessCoarseLocation" msgid="7715277613928539434">"تخمینی مقام تک رسائی حاصل کریں (نیٹ ورک پر مبنی)"</string>
+    <string name="permdesc_accessCoarseLocation" msgid="2538200184373302295">"‏ایپ کو آپ کا تخمینی مقام حاصل کرنے کی اجازت دیتا ہے۔ یہ مقام نیٹ ورک کے مقام کے مآخذ جیسے سیل ٹاورز اور Wi-Fi کا استعمال کرکے مقام کی سروسز کے ذریعہ اخذ کیا جاتا ہے۔ ان مقام کی سروسز کا آن ہونا اور آپ کے آلے پر دستیاب ہونا ضروری ہے تاکہ ایپ انہیں استعمال کرسکے۔ ایپس تخمینی طور پر آپ کے محل وقوع کا تعین کرنے کیلئے اسے استعمال کر سکتی ہیں۔"</string>
+    <string name="permlab_modifyAudioSettings" msgid="6095859937069146086">"اپنے آڈیو کی ترتیبات کو تبدیل کریں"</string>
+    <string name="permdesc_modifyAudioSettings" msgid="3522565366806248517">"ایپ کو مجموعی آڈیو ترتیبات جیسے والیوم اور آؤٹ پٹ کیلئے جو اسپیکر استعمال ہوتا ہے اس میں ترمیم کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_recordAudio" msgid="3876049771427466323">"آڈیو ریکارڈ کریں"</string>
+    <string name="permdesc_recordAudio" msgid="4906839301087980680">"ایپ کو مائکرو فون سے آڈیو ریکارڈ کرنے کی اجازت دیتا ہے۔ یہ اجازت ایپ کو کسی بھی وقت آپ کی تصدیق کے بغیر آڈیو ریکارڈ کرنے کی اجازت دیتی ہے۔"</string>
+    <string name="permlab_sim_communication" msgid="2935852302216852065">"‏SIM کو ہدایات بھیجیں"</string>
+    <string name="permdesc_sim_communication" msgid="5725159654279639498">"‏ایپ کو SIM کو کمانڈز بھیجنے کی اجازت دیتا ہے۔ یہ بہت خطرناک ہے۔"</string>
+    <string name="permlab_camera" msgid="3616391919559751192">"تصاویر لیں اور ویڈیوز بنائیں"</string>
+    <string name="permdesc_camera" msgid="8497216524735535009">"ایپ کو کیمرے سے تصویریں لینے اور ویڈیوز بنانے کی اجازت دیتا ہے۔ یہ اجازت ایپ کو آپ کی تصدیق کے بغیر کسی بھی وقت کیمرا استعمال کرنے کی اجازت دیتی ہے۔"</string>
+    <string name="permlab_vibrate" msgid="7696427026057705834">"ارتعاش کو کنٹرول کریں"</string>
+    <string name="permdesc_vibrate" msgid="6284989245902300945">"ایپ کو وائبریٹر کنٹرول کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_callPhone" msgid="3925836347681847954">"براہ راست فون نمبرز پر کال کریں"</string>
+    <string name="permdesc_callPhone" msgid="3740797576113760827">"ایپ کو آپ کی مداخلت کے بغیر فون نمبروں پر کال کرنے کی اجازت دیتا ہے۔ اس کے نتیجے میں غیر متوقع چارجز یا کالیں ہوسکتی ہیں۔ نوٹ کرلیں کہ یہ ایپ کو ہنگامی نمبروں پر کال کرنے کی اجازت نہیں دیتا ہے۔ نقصان دہ ایپس آپ کی تصدیق کے بغیر کالیں کرکے آپ کی رقم صرف کروا سکتے ہیں۔"</string>
+    <string name="permlab_accessImsCallService" msgid="3574943847181793918">"‏IMS کال سروس تک رسائی حاصل کریں"</string>
+    <string name="permdesc_accessImsCallService" msgid="8992884015198298775">"‏آپ کی مداخلت کے بغیر کالیں کرنے کیلئے ایپ کو IMS سروس استعمال کرنے کی اجازت دیتی ہے۔"</string>
+    <string name="permlab_readPhoneState" msgid="9178228524507610486">"فون کے اسٹیٹس اور شناخت کو پڑھیں"</string>
+    <string name="permdesc_readPhoneState" msgid="1639212771826125528">"‏ایپ کو آلے کی فون والی خصوصیات تک رسائی حاصل کرنے کی اجازت دیتا ہے۔ یہ اجازت ایپ کو فون نمبر اور آلے کے IDs کا تعین کرنے، آیا کوئی کال فعال ہے، اور کال کے ذریعہ مربوط ریموٹ نمبر کا تعین کرنے دیتی ہے۔"</string>
+    <string name="permlab_wakeLock" product="tablet" msgid="1531731435011495015">"ٹیبلیٹ کو سلیپ وضع میں جانے سے روکیں"</string>
+    <string name="permlab_wakeLock" product="tv" msgid="2601193288949154131">"‏TV کو سلیپ وضع میں جانے سے روکیں"</string>
+    <string name="permlab_wakeLock" product="default" msgid="573480187941496130">"فون کو سلیپ وضع میں جانے سے روکیں"</string>
+    <string name="permdesc_wakeLock" product="tablet" msgid="7311319824400447868">"ایپ کو ٹیبلیٹ کو سلیپ وضع میں جانے سے روکنے کی اجازت دیتا ہے"</string>
+    <string name="permdesc_wakeLock" product="tv" msgid="3208534859208996974">"‏ایپ کو TV کو سلیپ وضع میں جانے سے روکنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_wakeLock" product="default" msgid="8559100677372928754">"ایپ کو فون کو سلیپ وضع میں جانے سے روکنے کی اجازت دیتا ہے"</string>
+    <string name="permlab_transmitIr" msgid="7545858504238530105">"ٹرانسمیٹ انفراریڈ"</string>
+    <string name="permdesc_transmitIr" product="tablet" msgid="5358308854306529170">"ایپ کو ٹیبلیٹ کا انفراریڈ ٹرانسمیٹر استعمال کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_transmitIr" product="tv" msgid="3926790828514867101">"‏ایپ کو TV کا انفراریڈ ٹرانسمیٹر استعمال کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_transmitIr" product="default" msgid="7957763745020300725">"ایپ کو فون کا انفراریڈ ٹرانسمیٹر استعمال کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_setWallpaper" msgid="6627192333373465143">"وال پیپر سیٹ کریں"</string>
+    <string name="permdesc_setWallpaper" msgid="7373447920977624745">"ایپ کو سسٹم کا وال پیپر سیٹ کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_setWallpaperHints" msgid="3278608165977736538">"اپنے وال پیپر کا سائز ایڈجسٹ کریں"</string>
+    <string name="permdesc_setWallpaperHints" msgid="8235784384223730091">"ایپ کو سسٹم کے وال پیپر سائز کے اشاروں کو سیٹ کرنے کی اجازت دیتا ہے"</string>
+    <string name="permlab_setTimeZone" msgid="2945079801013077340">"ٹائم زون سیٹ کریں"</string>
+    <string name="permdesc_setTimeZone" product="tablet" msgid="1676983712315827645">"ایپ کو ٹیبلیٹ کا ٹائم زون تبدیل کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_setTimeZone" product="tv" msgid="888864653946175955">"‏ایپ کو TV کا ٹائم زون تبدیل کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_setTimeZone" product="default" msgid="4499943488436633398">"ایپ کو فون کا ٹائم زون تبدیل کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_getAccounts" msgid="1086795467760122114">"آلے پر موجود اکاؤنٹس تلاش کریں"</string>
+    <string name="permdesc_getAccounts" product="tablet" msgid="2741496534769660027">"ایپ کو ٹیبلٹ کو معلوم اکاؤنٹس کی فہرست حاصل کرنے کی اجازت دیتا ہے۔ اس میں آپ کی انسٹال کردہ ایپلیکیشنز کے ذریعہ بنائے گئے کوئی بھی اکاؤنٹس شامل ہوسکتے ہیں۔"</string>
+    <string name="permdesc_getAccounts" product="tv" msgid="4190633395633907543">"‏ایپ کو TV کو معلوم اکاؤنٹس کی فہرست حاصل کرنے کی اجازت دیتا ہے۔ اس میں آپ کی انسٹال کردہ ایپلیکیشنز کے بنائے ہوئے کوئی بھی اکاؤنٹس شامل ہو سکتے ہیں۔"</string>
+    <string name="permdesc_getAccounts" product="default" msgid="3448316822451807382">"ایپ کو فون کو معلوم اکاؤنٹس کی فہرست حاصل کرنے کی اجازت دیتا ہے۔ اس میں آپ کی انسٹال کردہ ایپلیکیشنز کے ذریعہ بنائے گئے کوئی بھی اکاؤنٹس شامل ہوسکتے ہیں۔"</string>
+    <string name="permlab_accessNetworkState" msgid="4951027964348974773">"نیٹ ورک کنکشنز دیکھیں"</string>
+    <string name="permdesc_accessNetworkState" msgid="8318964424675960975">"ایپ کو نیٹ ورک کنکشنز کے بارے میں معلومات دیکھنے کی اجازت دیتا ہے جیسے کون سے نیٹ ورکس موجود اور مربوط ہیں۔"</string>
+    <string name="permlab_createNetworkSockets" msgid="7934516631384168107">"پورے نیٹ ورک تک رسائی حاصل کریں"</string>
+    <string name="permdesc_createNetworkSockets" msgid="3403062187779724185">"ایپ کو نیٹ ورک ساکیٹس بنانے اور حسب ضرورت نیٹ ورک پروٹوکولز استعمال کرنے کی اجازت دیتا ہے۔ براؤزر اور دوسری ایپلیکیشنز انٹرنیٹ کو ڈیٹا بھیجنے کا ذریعہ فراہم کرتے ہیں، لہذا انٹرنیٹ کو ڈیٹا بھیجنے کیلئے یہ اجازت درکار نہیں ہوتی ہے۔"</string>
+    <string name="permlab_changeNetworkState" msgid="958884291454327309">"نیٹ ورک کنیکٹوٹی تبدیل کریں"</string>
+    <string name="permdesc_changeNetworkState" msgid="6789123912476416214">"ایپ کو نیٹ ورک کنیکٹوٹی کی حالت تبدیل کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_changeTetherState" msgid="5952584964373017960">"ربط کی گئی کنیکٹوٹی تبدیل کریں"</string>
+    <string name="permdesc_changeTetherState" msgid="1524441344412319780">"ایپ کو مربوط کردہ نیٹ ورک کنیکٹوٹی کی حالت تبدیل کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_accessWifiState" msgid="5202012949247040011">"‏Wi-Fi کنکشنز دیکھیں"</string>
+    <string name="permdesc_accessWifiState" msgid="5002798077387803726">"‏ایپ کو Wi-Fi نیٹ ورکنگ کے بارے میں معلومات، جیسے آیا Wi-Fi فعال ہے اور مربوط Wi-Fi آلات کا نام دیکھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_changeWifiState" msgid="6550641188749128035">"‏Wi-Fi سے مربوط اور غیر مربوط کریں"</string>
+    <string name="permdesc_changeWifiState" msgid="7137950297386127533">"‏ایپ کو Wi-Fi کے رسائی مراکز سے مربوط اور منقطع ہونے اور Wi-Fi نیٹ ورکس کیلئے آلے کی ترتیب میں تبدیلیاں کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_changeWifiMulticastState" msgid="1368253871483254784">"‏Wi-Fi ملٹی کاسٹ ریسپشن کی اجازت دیں"</string>
+    <string name="permdesc_changeWifiMulticastState" product="tablet" msgid="7969774021256336548">"‏ایپ کو صرف آپ کا ٹیبلٹ نہیں، بلکہ ملٹی کاسٹ پتے استعمال کرکے Wi-Fi نیٹ ورک پر موجود سبھی آلات کو مرسلہ پیکٹس وصول کرنے کی اجازت دیتا ہے۔ اس میں غیر ملٹی کاسٹ طرز سے زیادہ قوت استعمال ہوتی ہے۔"</string>
+    <string name="permdesc_changeWifiMulticastState" product="tv" msgid="9031975661145014160">"‏ایپ کو صرف آپ کا TV نہیں، بلکہ ملٹی کاسٹ پتے استعمال کر رہے Wi-Fi نیٹ ورک پر موجود سبھی آلات کو ارسال کردہ پیکٹس وصول کرنے کی اجازت دیتا ہے۔ اس میں غیر ملٹی کاسٹ وضع کی بہ نسبت زیادہ قوت استعمال ہوتی ہے۔"</string>
+    <string name="permdesc_changeWifiMulticastState" product="default" msgid="6851949706025349926">"‏ایپ کو صرف آپ کا فون نہیں، بلکہ ملٹی کاسٹ پتے استعمال کرکے Wi-Fi نیٹ ورک پر موجود سبھی آلات کو مرسلہ پیکٹس وصول کرنے کی اجازت دیتا ہے۔ اس میں غیر ملٹی کاسٹ طرز سے زیادہ قوت استعمال ہوتی ہے۔"</string>
+    <string name="permlab_bluetoothAdmin" msgid="6006967373935926659">"بلوٹوتھ کی ترتیبات تک رسائی حاصل کریں"</string>
+    <string name="permdesc_bluetoothAdmin" product="tablet" msgid="6921177471748882137">"ایپ کو مقامی بلوٹوتھ ٹیبلیٹ کنفیگر کرنے اور ریموٹ آلات دریافت کرنے اور ان کے ساتھ جوڑا بنانے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_bluetoothAdmin" product="tv" msgid="3373125682645601429">"‏ایپ کو مقامی بلوٹوتھ TV کو کنفیگر کرنے اور ریموٹ آلات کو دریافت کرنے اور ان کے ساتھ جوڑا بنانے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_bluetoothAdmin" product="default" msgid="8931682159331542137">"ایپ کو مقامی بلوٹوتھ فون کنفیگر کرنے اور ریموٹ آلات دریافت کرنے اور ان کے ساتھ جوڑا بنانے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_accessWimaxState" msgid="4195907010610205703">"‏WiMAX سے مربوط اور غیر مربوط کریں"</string>
+    <string name="permdesc_accessWimaxState" msgid="6360102877261978887">"‏ایپ کو یہ تعین کرنے کی کہ آیا WiMAX فعال ہے اور کسی مربوط WiMAX نیٹ ورکس کے بارے میں معلومات کا تعین کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_changeWimaxState" msgid="340465839241528618">"‏WiMAX کی حیثیت تبدیل کریں"</string>
+    <string name="permdesc_changeWimaxState" product="tablet" msgid="3156456504084201805">"‏ایپ کو WiMAX نیٹ ورکس سے ٹیبلٹ کو مربوط اور ٹیبلٹ کو منقطع کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_changeWimaxState" product="tv" msgid="6022307083934827718">"‏ایپ کو WiMAX نیٹ ورکس سے TV کو منسلک اور TV کو غیر منسلک کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_changeWimaxState" product="default" msgid="697025043004923798">"‏ایپ کو WiMAX نیٹ ورکس سے فون کو مربوط اور فون کو منقطع کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_bluetooth" msgid="6127769336339276828">"بلوٹوتھ آلات کے ساتھ جوڑا بنائیں"</string>
+    <string name="permdesc_bluetooth" product="tablet" msgid="3480722181852438628">"ایپ کو ٹیبلیٹ پر بلوٹوتھ کی ترتیب دیکھنے اور جوڑا بنائے ہوئے آلات کے ساتھ کنکشنز بنانے اور قبول کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_bluetooth" product="tv" msgid="3974124940101104206">"‏ایپ کو TV پر بلوٹوتھ کی کنفیگریشن دیکھنے اور جوڑا بنائے ہوئے آلات کے ساتھ کنکشنز بنانے اور قبول کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_bluetooth" product="default" msgid="3207106324452312739">"ایپ کو فون پر بلوٹوتھ کی ترتیب دیکھنے اور جوڑا بنائے ہوئے آلات کے ساتھ کنکشنز بنانے اور قبول کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_nfc" msgid="4423351274757876953">"‏Near Field کمیونیکیشن کنٹرول کریں"</string>
+    <string name="permdesc_nfc" msgid="7120611819401789907">"‏ایپ کو Near Field Communication (NFC)‎ ٹیگز، کارڈز اور ریڈرز کے ساتھ مواصلت کرنے کی اجازت دیٹا ہے۔"</string>
+    <string name="permlab_disableKeyguard" msgid="3598496301486439258">"اپنے اسکرین لاک کو غیر فعال کریں"</string>
+    <string name="permdesc_disableKeyguard" msgid="6034203065077122992">"ایپ کو کلیدی لاک اور کسی بھی متعلقہ پاس ورڈ سیکیورٹی کو غیر فعال کرنے کی اجازت دیتا ہے۔ مثلاً، کوئی آنے والی فون کال موصول ہونے کے وقت فون کلیدی لاک کو غیر فعال کرتا ہے، پھر کال پوری ہوجانے پر کلیدی لاک کو دوبارہ فعال کردیتا ہے۔"</string>
+    <string name="permlab_manageFingerprint" msgid="5640858826254575638">"فنگر پرنٹ ہارڈ ویئر کا نظم کریں"</string>
+    <string name="permdesc_manageFingerprint" msgid="178208705828055464">"ایپ کو استعمال کیلئے فنگر پرنٹ کی تمثیلات شامل کرنے اور حذف کرنے کیلئے طریقوں کو کالعدم قرار دینے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_useFingerprint" msgid="3150478619915124905">"فنگر پرنٹ ہارڈ ویئر استعمال کریں"</string>
+    <string name="permdesc_useFingerprint" msgid="9165097460730684114">"ایپ کو توثیق کیلئے فنگر پرنٹ ہارڈ ویئر استعمال کرنے کی اجازت دیتا ہے"</string>
+    <string name="fingerprint_acquired_partial" msgid="735082772341716043">"جزوی فنگر پرنٹ کی شناخت ہوئی۔ براہ کرم دوبارہ کوشش کریں۔"</string>
+    <string name="fingerprint_acquired_insufficient" msgid="4596546021310923214">"فنگر پرنٹ پر کارروائی نہیں کی جا سکی۔ براہ کرم دوبارہ کوشش کریں۔"</string>
+    <string name="fingerprint_acquired_imager_dirty" msgid="1087209702421076105">"فنگر پرنٹ سینسر گندا ہے۔ براہ کرم صاف کریں اور دوبارہ کوشش کریں۔"</string>
+    <string name="fingerprint_acquired_too_fast" msgid="6470642383109155969">"انگلی کو کافی تیزی سے ہٹا لیا گیا۔ براہ کرم دوبارہ کوشش کریں۔"</string>
+    <string name="fingerprint_acquired_too_slow" msgid="59250885689661653">"انگلی کو بہت آہستہ ہٹایا گیا۔ براہ کرم دوبارہ کوشش کریں۔"</string>
+  <string-array name="fingerprint_acquired_vendor">
+  </string-array>
+    <string name="fingerprint_error_hw_not_available" msgid="7955921658939936596">"فنگر پرنٹ ہارڈ ویئر دستیاب نہیں ہے۔"</string>
+    <string name="fingerprint_error_no_space" msgid="1055819001126053318">"فنگر پرنٹ اسٹور نہیں کیا جا سکتا ہے۔ براہ کرم ایک موجودہ فنگر پرنٹ ہٹائیں۔"</string>
+    <string name="fingerprint_error_timeout" msgid="3927186043737732875">"فنگر پرنٹ کی میعاد ختم ہوگئی۔ دوبارہ کوشش کریں۔"</string>
+    <string name="fingerprint_error_canceled" msgid="4402024612660774395">"فنگر پرنٹ کی کارروائی منسوخ ہوگئی۔"</string>
+    <string name="fingerprint_error_lockout" msgid="5536934748136933450">"کافی زیادہ کوششیں کی گئیں۔ بعد میں دوبارہ کوشش کریں۔"</string>
+    <string name="fingerprint_error_unable_to_process" msgid="6107816084103552441">"دوبارہ کوشش کریں۔"</string>
+    <string name="fingerprint_name_template" msgid="5870957565512716938">"انگلی <xliff:g id="FINGERID">%d</xliff:g>"</string>
+  <string-array name="fingerprint_error_vendor">
+  </string-array>
+    <string name="fingerprint_icon_content_description" msgid="2340202869968465936">"فنگر پرنٹ آئیکن"</string>
+    <string name="permlab_readSyncSettings" msgid="6201810008230503052">"مطابقت پذیری کی ترتیبات پڑھیں"</string>
+    <string name="permdesc_readSyncSettings" msgid="2706745674569678644">"‏ایپ کو کسی اکاؤنٹ کیلئے مطابقت پذیری کی ترتیبات پڑھنے کی اجازت دیتا ہے۔ مثلا، یہ تعین کرسکتا ہے کہ آیا People ایپ کسی اکاؤنٹ کے ساتھ مطابقت پذیر ہے۔"</string>
+    <string name="permlab_writeSyncSettings" msgid="5408694875793945314">"مطابقت پذیری آن اور آف ٹوگل کریں"</string>
+    <string name="permdesc_writeSyncSettings" msgid="8956262591306369868">"‏ایپ کو کسی اکاؤنٹ کیلئے مطابقت پذیری کی ترتیبات میں ترمیم کرنے کی اجازت دیتا ہے۔ مثلا، کسی اکاؤنٹ کے ساتھ People ایپ کی مطابقت پذیری فعال کرنے کیلئے اسے استعمال کیا جاسکتا ہے۔"</string>
+    <string name="permlab_readSyncStats" msgid="7396577451360202448">"مطابقت پذیری کے اعداد و شمار پڑھیں"</string>
+    <string name="permdesc_readSyncStats" msgid="1510143761757606156">"ایپ کو کسی اکاؤنٹ کیلئے مطابقت پذیری کے اعداد و شمار، بشمول مطابقت پذیری کے ایونٹس اور جس قدر ڈیٹا مطابقت پذیر ہے اس کی سرگزشت کو پڑھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_sdcardRead" product="nosdcard" msgid="367275095159405468">"‏آپ USB سٹوریج کے مواد کو پڑھیں"</string>
+    <string name="permlab_sdcardRead" product="default" msgid="2188156462934977940">"‏اپنے SD کارڈ کے مواد کو پڑھیں"</string>
+    <string name="permdesc_sdcardRead" product="nosdcard" msgid="3446988712598386079">"‏ایپ کو آپ کے USB اسٹوریج کے مواد کو پڑھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_sdcardRead" product="default" msgid="2607362473654975411">"‏ایپ کو آپ کے SD کارڈ کے مواد کو پڑھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_sdcardWrite" product="nosdcard" msgid="8485979062254666748">"‏اپنے USB سٹوریج کے مواد میں ترمیم یا حذف کریں"</string>
+    <string name="permlab_sdcardWrite" product="default" msgid="8805693630050458763">"‏اپنے SD کارڈ کے مواد میں ترمیم یا انہیں حذف کریں"</string>
+    <string name="permdesc_sdcardWrite" product="nosdcard" msgid="6175406299445710888">"‏ایپ کو USB اسٹوریج پر لکھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permdesc_sdcardWrite" product="default" msgid="4337417790936632090">"‏ایپ کو SD کارڈ پر لکھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_use_sip" msgid="2052499390128979920">"‏SIP کالز کریں/موصول کریں"</string>
+    <string name="permdesc_use_sip" msgid="2297804849860225257">"‏ایپ کو SIP کالز کرنے اور موصول کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_register_sim_subscription" msgid="3166535485877549177">"‏نئے ٹیلی کام SIM کنکشنز رجسٹر کریں"</string>
+    <string name="permdesc_register_sim_subscription" msgid="2138909035926222911">"‏ایپ کو نئے ٹیلی کام SIM کنکشنز کو رجسٹر کرنے کی اجازت دیتی ہے۔"</string>
+    <string name="permlab_register_call_provider" msgid="108102120289029841">"نئے ٹیلی کام کنکشنز رجسٹر کریں"</string>
+    <string name="permdesc_register_call_provider" msgid="7034310263521081388">"ایپ کو نئے ٹیلی کام کنکشنز کو رجسٹر کرنے کی اجازت دیتی ہے۔"</string>
+    <string name="permlab_connection_manager" msgid="1116193254522105375">"ٹیلی کام کنکشنز کا نظم کریں"</string>
+    <string name="permdesc_connection_manager" msgid="5925480810356483565">"ایپ کو ٹیلی کام کنکشنز کا نظم کرنے کی اجازت دیتی ہے۔"</string>
+    <string name="permlab_bind_incall_service" msgid="6773648341975287125">"درون کال اسکرین کے ساتھ تعامل کریں"</string>
+    <string name="permdesc_bind_incall_service" msgid="8343471381323215005">"ایپ کو صارف کے درون کال اسکرین دیکھنے کے وقت اور طریقے کو کنٹرول کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_bind_connection_service" msgid="3557341439297014940">"ٹیلیفونی سروسز کے ساتھ تعامل کریں"</string>
+    <string name="permdesc_bind_connection_service" msgid="4008754499822478114">"کالز کرنے/وصول کرنے کیلئے ایپ کو ٹیلیفونی سروسز کے ساتھ تعامل کرنے دیتا ہے۔"</string>
+    <string name="permlab_control_incall_experience" msgid="9061024437607777619">"ایک درون کال صارف تجربہ فراہم کریں"</string>
+    <string name="permdesc_control_incall_experience" msgid="915159066039828124">"ایپ کو ایک درون کال صارف تجربہ فراہم کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_readNetworkUsageHistory" msgid="7862593283611493232">"تاریخی نیٹ ورک کا استعمال پڑھیں"</string>
+    <string name="permdesc_readNetworkUsageHistory" msgid="7689060749819126472">"ایپ کو مخصوص نیٹ ورکس اور ایپس کیلئے نیٹ ورک کے استعمال کی سرگزشت پڑھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_manageNetworkPolicy" msgid="2562053592339859990">"نیٹ ورک کی پالیسی کا نظم کریں"</string>
+    <string name="permdesc_manageNetworkPolicy" msgid="7537586771559370668">"ایپ کو نیٹ ورک پالیسیوں کا نظم کرنے اور ایپ کیلئے مخصوص اصولوں کی وضاحت کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_modifyNetworkAccounting" msgid="5088217309088729650">"نیٹ ورک کے استعمال کی اکاؤنٹنگ میں ترمیم کریں"</string>
+    <string name="permdesc_modifyNetworkAccounting" msgid="5443412866746198123">"ایپ کو ایپس کے برخلاف حساب کیے جانے والے نیٹ ورک کے استعمال کے طریقے میں ترمیم کرنے کی اجازت دیتا ہے۔ عام ایپس کے ذریعہ استعمال کیلئے نہیں ہے۔"</string>
+    <string name="permlab_accessNotifications" msgid="7673416487873432268">"اطلاعات تک رسائی حاصل کریں"</string>
+    <string name="permdesc_accessNotifications" msgid="458457742683431387">"دوسرے ایپس کے ذریعے شائع کردہ کے بشمول ایپ کو اطلاعات کی بازیابی، تفتیش اور انہیں صاف کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_bindNotificationListenerService" msgid="7057764742211656654">"اطلاع سننے والی سروس کے پابند بنیں"</string>
+    <string name="permdesc_bindNotificationListenerService" msgid="985697918576902986">"حامل کو اطلاع سننے والی سروس کے اعلی سطحی انٹرفیس کا پابند ہونے کی اجازت دیتا ہے۔ عام ایپس کیلئے کبھی بھی اس کی ضرورت نہيں ہونی چاہئے۔"</string>
+    <string name="permlab_bindConditionProviderService" msgid="1180107672332704641">"شرط فراہم کرنے والی ایک سروس کے پابند بنیں"</string>
+    <string name="permdesc_bindConditionProviderService" msgid="1680513931165058425">"حامل کو شرط فراہم کنندہ کی سروس کے اعلی سطحی انٹرفیس کا پابند ہونے کی اجازت دیتا ہے۔ عام ایپس کیلئے کبھی بھی اس کی ضرورت نہيں ہونی چاہئے۔"</string>
+    <string name="permlab_bindDreamService" msgid="4153646965978563462">"ایک ڈریم سروس کا پابند بنیں"</string>
+    <string name="permdesc_bindDreamService" msgid="7325825272223347863">"حامل کو ڈریم سروس کے اعلی سطحی انٹرفیس کا پابند ہونے کی اجازت دیتی ہے۔ عام ایپس کیلئے کبھی بھی اس کی ضرورت نہيں ہونی چاہیے۔"</string>
+    <string name="permlab_invokeCarrierSetup" msgid="3699600833975117478">"کیریئر کے ذریعے فراہم کردہ کنفگریشن ایپ طلب کریں"</string>
+    <string name="permdesc_invokeCarrierSetup" msgid="4159549152529111920">"حامل کو کیریئر کے ذریعے فراہم کردہ کنفگریشن ایپ طلب کرنے کی اجازت دیتا ہے۔ عام ایپس کیلئے کبھی بھی اس کی ضرورت نہيں ہونی چاہئے۔"</string>
+    <string name="permlab_accessNetworkConditions" msgid="8206077447838909516">"نیٹ ورک کی صورت حال کے بارے میں مشاہدے سنیں"</string>
+    <string name="permdesc_accessNetworkConditions" msgid="6899102075825272211">"کسی ایپلیکیشن کو نیٹ ورک حالات پر مشاہدوں کو سننے دیتا ہے۔ عام ایپس کیلئے کبھی بھی اس کی ضرورت نہيں ہونی چاہئے۔"</string>
+    <string name="permlab_setInputCalibration" msgid="4902620118878467615">"ان پٹ آلہ کا کیلیبریشن تبدیل کریں"</string>
+    <string name="permdesc_setInputCalibration" msgid="4527511047549456929">"ایپ کو ٹچ اسکرین کے کیلیبریشن پیرامیٹرز میں ترمیم کرنے کی اجازت دیتا ہے۔ عام ایپس کیلئے کبھی بھی اس کی ضرورت نہيں ہونی چاہئے۔"</string>
+    <string name="permlab_accessDrmCertificates" msgid="7436886640723203615">"‏DRM سرٹیفکیٹس تک رسائی حاصل کریں"</string>
+    <string name="permdesc_accessDrmCertificates" msgid="8073288354426159089">"‏ایک ایپ کو  DRM سرٹیفکیٹس فراہم کرنے اور ان کا استعمال کرنے کی اجازت دیتا ہے۔ عام ایپس کیلئے کبھی بھی اس کی ضرورت نہیں ہوتی ہے۔"</string>
+    <string name="permlab_handoverStatus" msgid="7820353257219300883">"‏Android Beam منتقلی کی صورت حال موصول کریں"</string>
+    <string name="permdesc_handoverStatus" msgid="4788144087245714948">"‏اس ایپلیکیشن کو Android Beam کی حالیہ منتقلیوں کے بارے میں معلومات موصول کرنے کی اجازت دیتا ہے"</string>
+    <string name="permlab_removeDrmCertificates" msgid="7044888287209892751">"‏DRM سرٹیفکیٹس کو ہٹائیں"</string>
+    <string name="permdesc_removeDrmCertificates" msgid="7272999075113400993">"‏ایک ایپلیکیشن کو DRM سرٹیفکیٹس کو ہٹانے کی اجازت دیتا ہے۔ عام ایپس کیلئے کبھی بھی اس کی ضرورت نہیں ہونی چاہیے۔"</string>
+    <string name="permlab_bindCarrierMessagingService" msgid="1490229371796969158">"ایک کیریئر پیغام رسانی سروس کا پابند بنیں"</string>
+    <string name="permdesc_bindCarrierMessagingService" msgid="2762882888502113944">"حامل کو ایک کیریئر پیغام رسانی سروس کے اعلی سطحی انٹرفیس کا پابند ہونے کی اجازت دیتی ہے۔ عام ایپس کیلئے کبھی بھی اس کی ضرورت نہیں ہونی چاہیے۔"</string>
+    <string name="permlab_bindCarrierServices" msgid="3233108656245526783">"کیریئر سروسز کا پابند کریں"</string>
+    <string name="permdesc_bindCarrierServices" msgid="1391552602551084192">"حامل کو کیریئر سروسز کا پابند کرنے کی اجازت دیتا ہے۔ معمول کی ایپس کیلئے کبھی درکار نہیں ہونا چاہیے۔"</string>
+    <string name="permlab_access_notification_policy" msgid="4247510821662059671">"ڈسٹرب نہ کریں تک رسائی حاصل کریں"</string>
+    <string name="permdesc_access_notification_policy" msgid="3296832375218749580">"ایپ کو ڈسٹرب نہ کریں کنفیگریشن لکھنے اور پڑھنے کے قابل کرتا ہے۔"</string>
+    <string name="policylab_limitPassword" msgid="4497420728857585791">"پاس ورڈ کے اصول سیٹ کریں"</string>
+    <string name="policydesc_limitPassword" msgid="2502021457917874968">"‏اسکرین لاک پاس ورڈز اور PINs میں اجازت یافتہ لمبائی اور حروف کو کنٹرول کریں۔"</string>
+    <string name="policylab_watchLogin" msgid="914130646942199503">"اسکرین غیر مقفل کرنے کی کوششیں مانیٹر کریں"</string>
+    <string name="policydesc_watchLogin" product="tablet" msgid="3215729294215070072">"اسکرین کو غیر مقفل کرتے وقت ٹائپ کیے گئے غلط پاس ورڈز کی تعداد مانیٹر کریں اور ٹیبلیٹ کو مقفل کریں یا اگر کافی زیادہ غلط پاس ورڈز ٹائپ کیے گئے ہیں تو ٹیبلیٹ کا سبھی ڈیٹا صاف کریں۔"</string>
+    <string name="policydesc_watchLogin" product="TV" msgid="2707817988309890256">"‏اسکرین کو غیر مقفل کرتے وقت ٹائپ کردہ غلط پاس ورڈز کی تعداد پر نگاہ رکھیں اور اگر بہت زیادہ غلط پاس ورڈز ٹائپ کیے جاتے ہیں تو TV کو مقفل کریں یا TV کا سبھی ڈیٹا مٹائیں۔"</string>
+    <string name="policydesc_watchLogin" product="default" msgid="5712323091846761073">"اسکرین کو غیر مقفل کرتے وقت ٹائپ کیے گئے غلط پاس ورڈز کی تعداد مانیٹر کریں اور فون کو مقفل کریں یا اگر کافی زیادہ غلط پاس ورڈز ٹائپ کیے گئے ہیں تو فون کا سبھی ڈیٹا صاف کریں۔"</string>
+    <string name="policydesc_watchLogin_secondaryUser" product="tablet" msgid="4280246270601044505">"اسکرین کو غیر مقفل کرتے وقت ٹائپ کردہ غلط پاس ورڈز کی تعداد پر نگاہ رکھیں اور اگر بہت زیادہ غلط پاس ورڈز ٹائپ کیے جاتے ہیں تو ٹیبلٹ کو مقفل کریں یا اس صارف کا سبھی ڈیٹا ہٹائیں۔"</string>
+    <string name="policydesc_watchLogin_secondaryUser" product="TV" msgid="3484832653564483250">"‏اسکرین کو غیر مقفل کرتے وقت ٹائپ کردہ غلط پاس ورڈز کی تعداد پر نگاہ رکھیں اور اگر بہت زیادہ غلط پاس ورڈز ٹائپ کیے جاتے ہیں تو TV کو مقفل کریں یا اس صارف کا سبھی ڈیٹا ہٹائیں۔"</string>
+    <string name="policydesc_watchLogin_secondaryUser" product="default" msgid="2185480427217127147">"اسکرین کو غیر مقفل کرتے وقت ٹائپ کردہ غلط پاس ورڈز کی تعداد پر نگاہ رکھیں اور اگر بہت زیادہ غلط پاس ورڈز ٹائپ کیے جاتے ہیں تو فون کو مقفل کریں یا اس صارف کا سبھی ڈیٹا ہٹائیں۔"</string>
+    <string name="policylab_resetPassword" msgid="4934707632423915395">"اسکرین لاک تبدیل کریں"</string>
+    <string name="policydesc_resetPassword" msgid="1278323891710619128">"اسکرین لاک تبدیل کریں۔"</string>
+    <string name="policylab_forceLock" msgid="2274085384704248431">"اسکرین مقفل کریں"</string>
+    <string name="policydesc_forceLock" msgid="1141797588403827138">"اسکرین کب اور کس طرح مقفل ہوتی ہے اس کو کنٹرول کریں۔"</string>
+    <string name="policylab_wipeData" msgid="3910545446758639713">"سبھی ڈیٹا صاف کریں"</string>
+    <string name="policydesc_wipeData" product="tablet" msgid="4306184096067756876">"فیکٹری ڈیٹا کی دوبارہ ترتیب انجام دے کر وارننگ کے بغیر ٹیبلٹ کا ڈیٹا مٹائیں۔"</string>
+    <string name="policydesc_wipeData" product="tv" msgid="5816221315214527028">"‏ایک فیکٹری ڈیٹا ری سیٹ انجام دے کر انتباہ کے بغیر TV کا ڈیٹا مٹائیں۔"</string>
+    <string name="policydesc_wipeData" product="default" msgid="5096895604574188391">"فیکٹری ڈیٹا کی دوبارہ ترتیب انجام دے کر وارننگ کے بغیر فون کا ڈیٹا مٹائیں۔"</string>
+    <string name="policylab_wipeData_secondaryUser" msgid="8362863289455531813">"صارف کا ڈیٹا ہٹائیں"</string>
+    <string name="policydesc_wipeData_secondaryUser" product="tablet" msgid="6336255514635308054">"وارننگ کے بغیر اس ٹیبلٹ پر موجود اس صارف کا ڈیٹا ہٹائیں۔"</string>
+    <string name="policydesc_wipeData_secondaryUser" product="tv" msgid="2086473496848351810">"‏وارننگ کے بغیر اس TV پر موجود اس صارف کا ڈیٹا ہٹائیں۔"</string>
+    <string name="policydesc_wipeData_secondaryUser" product="default" msgid="6787904546711590238">"وارننگ کے بغیر اس فون پر موجود اس صارف کا ڈیٹا ہٹائیں۔"</string>
+    <string name="policylab_setGlobalProxy" msgid="2784828293747791446">"آلہ کی عالمی پراکسی سیٹ کریں"</string>
+    <string name="policydesc_setGlobalProxy" msgid="8459859731153370499">"پالیسی فعال ہونے پر آلہ کی عالمی پراکسی کو استعمال کیے جانے کیلئے سیٹ کریں۔ صرف آلہ کا مالک ہی عالمی پراکسی سیٹ کر سکتا ہے۔"</string>
+    <string name="policylab_expirePassword" msgid="5610055012328825874">"اسکرین لاک پاس ورڈ کی میعاد سیٹ کریں"</string>
+    <string name="policydesc_expirePassword" msgid="5367525762204416046">"‏تبدیل کریں کہ کتنے وقفہ میں اسکرین لاک پاس ورڈ، PIN یا پیٹرن تبدیل ہونا ضروری ہے۔"</string>
+    <string name="policylab_encryptedStorage" msgid="8901326199909132915">"اسٹوریج کی مرموز کاری سیٹ کریں"</string>
+    <string name="policydesc_encryptedStorage" msgid="2637732115325316992">"مطالبہ کریں کہ اسٹور کردہ ایپ کا ڈیٹا مرموز کیا جائے۔"</string>
+    <string name="policylab_disableCamera" msgid="6395301023152297826">"کیمروں کو غیر فعال کریں"</string>
+    <string name="policydesc_disableCamera" msgid="2306349042834754597">"سبھی آلے کے کیمروں کا استعمال روکیں۔"</string>
+    <string name="policylab_disableKeyguardFeatures" msgid="8552277871075367771">"کچھ سکرین قفل خصوصیات غیر فعال کریں"</string>
+    <string name="policydesc_disableKeyguardFeatures" msgid="2044755691354158439">"اسکرین قفل کی کچھ خصوصیات کے استعمال کو روکیں۔"</string>
+  <string-array name="phoneTypes">
+    <item msgid="8901098336658710359">"گھر"</item>
+    <item msgid="869923650527136615">"موبائل"</item>
+    <item msgid="7897544654242874543">"دفتر"</item>
+    <item msgid="1103601433382158155">"دفتر کا فیکس"</item>
+    <item msgid="1735177144948329370">"گھر کا فیکس"</item>
+    <item msgid="603878674477207394">"پیجر"</item>
+    <item msgid="1650824275177931637">"دیگر"</item>
+    <item msgid="9192514806975898961">"حسب ضرورت"</item>
+  </string-array>
+  <string-array name="emailAddressTypes">
+    <item msgid="8073994352956129127">"گھر"</item>
+    <item msgid="7084237356602625604">"دفتر"</item>
+    <item msgid="1112044410659011023">"دیگر"</item>
+    <item msgid="2374913952870110618">"حسب ضرورت"</item>
+  </string-array>
+  <string-array name="postalAddressTypes">
+    <item msgid="6880257626740047286">"گھر"</item>
+    <item msgid="5629153956045109251">"دفتر"</item>
+    <item msgid="4966604264500343469">"دیگر"</item>
+    <item msgid="4932682847595299369">"حسب ضرورت"</item>
+  </string-array>
+  <string-array name="imAddressTypes">
+    <item msgid="1738585194601476694">"گھر"</item>
+    <item msgid="1359644565647383708">"دفتر"</item>
+    <item msgid="7868549401053615677">"دیگر"</item>
+    <item msgid="3145118944639869809">"حسب ضرورت"</item>
+  </string-array>
+  <string-array name="organizationTypes">
+    <item msgid="7546335612189115615">"دفتر"</item>
+    <item msgid="4378074129049520373">"دیگر"</item>
+    <item msgid="3455047468583965104">"حسب ضرورت"</item>
+  </string-array>
+  <string-array name="imProtocols">
+    <item msgid="8595261363518459565">"AIM"</item>
+    <item msgid="7390473628275490700">"Windows Live"</item>
+    <item msgid="7882877134931458217">"Yahoo"</item>
+    <item msgid="5035376313200585242">"Skype"</item>
+    <item msgid="7532363178459444943">"QQ"</item>
+    <item msgid="3713441034299660749">"Google Talk"</item>
+    <item msgid="2506857312718630823">"ICQ"</item>
+    <item msgid="1648797903785279353">"Jabber"</item>
+  </string-array>
+    <string name="phoneTypeCustom" msgid="1644738059053355820">"حسب ضرورت"</string>
+    <string name="phoneTypeHome" msgid="2570923463033985887">"گھر"</string>
+    <string name="phoneTypeMobile" msgid="6501463557754751037">"موبائل"</string>
+    <string name="phoneTypeWork" msgid="8863939667059911633">"دفتر"</string>
+    <string name="phoneTypeFaxWork" msgid="3517792160008890912">"دفتر کا فیکس"</string>
+    <string name="phoneTypeFaxHome" msgid="2067265972322971467">"گھر کا فیکس"</string>
+    <string name="phoneTypePager" msgid="7582359955394921732">"پیجر"</string>
+    <string name="phoneTypeOther" msgid="1544425847868765990">"دیگر"</string>
+    <string name="phoneTypeCallback" msgid="2712175203065678206">"کال بیک"</string>
+    <string name="phoneTypeCar" msgid="8738360689616716982">"کار"</string>
+    <string name="phoneTypeCompanyMain" msgid="540434356461478916">"کمپنی مرکزی"</string>
+    <string name="phoneTypeIsdn" msgid="8022453193171370337">"ISDN"</string>
+    <string name="phoneTypeMain" msgid="6766137010628326916">"مرکزی"</string>
+    <string name="phoneTypeOtherFax" msgid="8587657145072446565">"دیگر فیکس"</string>
+    <string name="phoneTypeRadio" msgid="4093738079908667513">"ریڈیو"</string>
+    <string name="phoneTypeTelex" msgid="3367879952476250512">"ٹیلیکس"</string>
+    <string name="phoneTypeTtyTdd" msgid="8606514378585000044">"TTY TDD"</string>
+    <string name="phoneTypeWorkMobile" msgid="1311426989184065709">"دفتر کا موبائل"</string>
+    <string name="phoneTypeWorkPager" msgid="649938731231157056">"دفتر کا پیجر"</string>
+    <string name="phoneTypeAssistant" msgid="5596772636128562884">"معاون"</string>
+    <string name="phoneTypeMms" msgid="7254492275502768992">"MMS"</string>
+    <string name="eventTypeCustom" msgid="7837586198458073404">"حسب ضرورت"</string>
+    <string name="eventTypeBirthday" msgid="2813379844211390740">"یوم پیدائش"</string>
+    <string name="eventTypeAnniversary" msgid="3876779744518284000">"سالگرہ"</string>
+    <string name="eventTypeOther" msgid="7388178939010143077">"دیگر"</string>
+    <string name="emailTypeCustom" msgid="8525960257804213846">"حسب ضرورت"</string>
+    <string name="emailTypeHome" msgid="449227236140433919">"ہوم"</string>
+    <string name="emailTypeWork" msgid="3548058059601149973">"دفتر"</string>
+    <string name="emailTypeOther" msgid="2923008695272639549">"دیگر"</string>
+    <string name="emailTypeMobile" msgid="119919005321166205">"موبائل"</string>
+    <string name="postalTypeCustom" msgid="8903206903060479902">"حسب ضرورت"</string>
+    <string name="postalTypeHome" msgid="8165756977184483097">"گھر"</string>
+    <string name="postalTypeWork" msgid="5268172772387694495">"دفتر"</string>
+    <string name="postalTypeOther" msgid="2726111966623584341">"دیگر"</string>
+    <string name="imTypeCustom" msgid="2074028755527826046">"حسب ضرورت"</string>
+    <string name="imTypeHome" msgid="6241181032954263892">"گھر"</string>
+    <string name="imTypeWork" msgid="1371489290242433090">"دفتر"</string>
+    <string name="imTypeOther" msgid="5377007495735915478">"دیگر"</string>
+    <string name="imProtocolCustom" msgid="6919453836618749992">"حسب ضرورت"</string>
+    <string name="imProtocolAim" msgid="7050360612368383417">"AIM"</string>
+    <string name="imProtocolMsn" msgid="144556545420769442">"Windows Live"</string>
+    <string name="imProtocolYahoo" msgid="8271439408469021273">"Yahoo"</string>
+    <string name="imProtocolSkype" msgid="9019296744622832951">"Skype"</string>
+    <string name="imProtocolQq" msgid="8887484379494111884">"QQ"</string>
+    <string name="imProtocolGoogleTalk" msgid="493902321140277304">"Hangouts"</string>
+    <string name="imProtocolIcq" msgid="1574870433606517315">"ICQ"</string>
+    <string name="imProtocolJabber" msgid="2279917630875771722">"Jabber"</string>
+    <string name="imProtocolNetMeeting" msgid="8287625655986827971">"NetMeeting"</string>
+    <string name="orgTypeWork" msgid="29268870505363872">"دفتر"</string>
+    <string name="orgTypeOther" msgid="3951781131570124082">"دیگر"</string>
+    <string name="orgTypeCustom" msgid="225523415372088322">"حسب ضرورت"</string>
+    <string name="relationTypeCustom" msgid="3542403679827297300">"حسب ضرورت"</string>
+    <string name="relationTypeAssistant" msgid="6274334825195379076">"معاون"</string>
+    <string name="relationTypeBrother" msgid="8757913506784067713">"بھائی"</string>
+    <string name="relationTypeChild" msgid="1890746277276881626">"بچہ"</string>
+    <string name="relationTypeDomesticPartner" msgid="6904807112121122133">"گھریلو پارٹنر"</string>
+    <string name="relationTypeFather" msgid="5228034687082050725">"والد"</string>
+    <string name="relationTypeFriend" msgid="7313106762483391262">"دوست"</string>
+    <string name="relationTypeManager" msgid="6365677861610137895">"منیجر"</string>
+    <string name="relationTypeMother" msgid="4578571352962758304">"والدہ"</string>
+    <string name="relationTypeParent" msgid="4755635567562925226">"والدین"</string>
+    <string name="relationTypePartner" msgid="7266490285120262781">"پارٹنر"</string>
+    <string name="relationTypeReferredBy" msgid="101573059844135524">"بحوالہ"</string>
+    <string name="relationTypeRelative" msgid="1799819930085610271">"رشتہ دار"</string>
+    <string name="relationTypeSister" msgid="1735983554479076481">"بہن"</string>
+    <string name="relationTypeSpouse" msgid="394136939428698117">"شریک حیات"</string>
+    <string name="sipAddressTypeCustom" msgid="2473580593111590945">"حسب ضرورت"</string>
+    <string name="sipAddressTypeHome" msgid="6093598181069359295">"گھر"</string>
+    <string name="sipAddressTypeWork" msgid="6920725730797099047">"دفتر"</string>
+    <string name="sipAddressTypeOther" msgid="4408436162950119849">"دیگر"</string>
+    <string name="quick_contacts_not_available" msgid="746098007828579688">"یہ رابطہ دیکھنے کیلئے کوئی ایپلیکیشن نہیں ملا۔"</string>
+    <string name="keyguard_password_enter_pin_code" msgid="3037685796058495017">"‏PIN کوڈ ٹائپ کریں"</string>
+    <string name="keyguard_password_enter_puk_code" msgid="4800725266925845333">"‏PUK اور نیا PIN کوڈ ٹائپ کریں"</string>
+    <string name="keyguard_password_enter_puk_prompt" msgid="1341112146710087048">"‏PUK کوڈ"</string>
+    <string name="keyguard_password_enter_pin_prompt" msgid="8027680321614196258">"‏نیا PIN کوڈ"</string>
+    <string name="keyguard_password_entry_touch_hint" msgid="2644215452200037944"><font size="17">"پاسورڈ ٹائپ کرنے کیلئے تھپتھپائیں"</font></string>
+    <string name="keyguard_password_enter_password_code" msgid="1054721668279049780">"غیر مقفل کرنے کیلئے پاس ورڈ ٹائپ کریں"</string>
+    <string name="keyguard_password_enter_pin_password_code" msgid="6391755146112503443">"‏غیر مقفل کرنے کیلئے PIN ٹائپ کریں"</string>
+    <string name="keyguard_password_wrong_pin_code" msgid="2422225591006134936">"‏غلط PIN کوڈ۔"</string>
+    <string name="keyguard_label_text" msgid="861796461028298424">"غیر مقفل کرنے کیلئے، مینو پھر 0 دبائیں۔"</string>
+    <string name="emergency_call_dialog_number_for_display" msgid="696192103195090970">"ہنگامی نمبر"</string>
+    <string name="lockscreen_carrier_default" msgid="6169005837238288522">"کوئی سروس نہیں ہے"</string>
+    <string name="lockscreen_screen_locked" msgid="7288443074806832904">"اسکرین مقفل ہے۔"</string>
+    <string name="lockscreen_instructions_when_pattern_enabled" msgid="46154051614126049">"غیر مقفل کرنے کیلئے مینو دبائیں یا ہنگامی کال کریں۔"</string>
+    <string name="lockscreen_instructions_when_pattern_disabled" msgid="686260028797158364">"غیر مقفل کرنے کیلئے مینو دبائیں۔"</string>
+    <string name="lockscreen_pattern_instructions" msgid="7478703254964810302">"غیر مقفل کرنے کیلئے پیٹرن کو ڈرا کریں"</string>
+    <string name="lockscreen_emergency_call" msgid="5298642613417801888">"ہنگامی"</string>
+    <string name="lockscreen_return_to_call" msgid="5244259785500040021">"کال پر واپس جائیں"</string>
+    <string name="lockscreen_pattern_correct" msgid="9039008650362261237">"صحیح!"</string>
+    <string name="lockscreen_pattern_wrong" msgid="4317955014948108794">"دوبارہ کوشش کریں"</string>
+    <string name="lockscreen_password_wrong" msgid="5737815393253165301">"دوبارہ کوشش کریں"</string>
+    <string name="lockscreen_storage_locked" msgid="9167551160010625200">"تمام خصوصیات اور ڈیٹا کیلئے غیر مقفل کریں"</string>
+    <string name="faceunlock_multiple_failures" msgid="754137583022792429">"چہرہ کے ذریعے غیر مقفل کریں کی زیادہ سے زیادہ کوششوں سے تجاوز کرگیا"</string>
+    <string name="lockscreen_missing_sim_message_short" msgid="5099439277819215399">"‏کوئی SIM کارڈ نہیں ہے"</string>
+    <string name="lockscreen_missing_sim_message" product="tablet" msgid="151659196095791474">"‏ٹیبلیٹ میں کوئی SIM کارڈ نہیں ہے۔"</string>
+    <string name="lockscreen_missing_sim_message" product="tv" msgid="1943633865476989599">"‏TV میں کوئی SIM کارڈ نہیں ہے۔"</string>
+    <string name="lockscreen_missing_sim_message" product="default" msgid="2186920585695169078">"‏فون میں کوئی SIM کارڈ نہیں ہے۔"</string>
+    <string name="lockscreen_missing_sim_instructions" msgid="5372787138023272615">"‏ایک SIM کارڈ داخل کریں۔"</string>
+    <string name="lockscreen_missing_sim_instructions_long" msgid="3526573099019319472">"‏SIM کارڈ غائب ہے یا پڑھنے لائق نہیں ہے۔ ایک SIM کارڈ داخل کریں۔"</string>
+    <string name="lockscreen_permanent_disabled_sim_message_short" msgid="5096149665138916184">"‏ناقابل استعمال SIM کارڈ۔"</string>
+    <string name="lockscreen_permanent_disabled_sim_instructions" msgid="910904643433151371">"‏آپ کا SIM کارڈ مستقل طور پر غیر فعال کر دیا گیا ہے۔\n کسی دوسرے SIM کارڈ کیلئے اپنے وائرلیس سروس فراہم کنندہ سے رابطہ کریں۔"</string>
+    <string name="lockscreen_transport_prev_description" msgid="6300840251218161534">"پچھلا ٹریک"</string>
+    <string name="lockscreen_transport_next_description" msgid="573285210424377338">"اگلا ٹریک"</string>
+    <string name="lockscreen_transport_pause_description" msgid="3980308465056173363">"موقوف کریں"</string>
+    <string name="lockscreen_transport_play_description" msgid="1901258823643886401">"چلائیں"</string>
+    <string name="lockscreen_transport_stop_description" msgid="5907083260651210034">"روکیں"</string>
+    <string name="lockscreen_transport_rew_description" msgid="6944412838651990410">"ریوائینڈ کریں"</string>
+    <string name="lockscreen_transport_ffw_description" msgid="42987149870928985">"تیزی سے فارورڈ کریں"</string>
+    <string name="emergency_calls_only" msgid="6733978304386365407">"صرف ہنگامی کالز"</string>
+    <string name="lockscreen_network_locked_message" msgid="143389224986028501">"نیٹ ورک مقفل ہو گیا"</string>
+    <string name="lockscreen_sim_puk_locked_message" msgid="7441797339976230">"‏SIM کارڈ PUK مقفل ہے۔"</string>
+    <string name="lockscreen_sim_puk_locked_instructions" msgid="8127916255245181063">"رہنمائے صارف دیکھیں یا کسٹمر کیئر سے رابطہ کریں۔"</string>
+    <string name="lockscreen_sim_locked_message" msgid="8066660129206001039">"‏SIM کارڈ مقفل ہے۔"</string>
+    <string name="lockscreen_sim_unlock_progress_dialog_message" msgid="595323214052881264">"‏SIM کارڈ غیر مقفل ہو رہا ہے…"</string>
+    <string name="lockscreen_too_many_failed_attempts_dialog_message" msgid="6481623830344107222">"آپ نے اپنا غیر مقفل کرنے کا پیٹرن <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے ڈرا کیا ہے۔ \n\n <xliff:g id="NUMBER_1">%2$d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="lockscreen_too_many_failed_password_attempts_dialog_message" msgid="2725973286239344555">"آپ نے اپنا پاس ورڈ <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے ٹائپ کیا ہے۔ \n\n <xliff:g id="NUMBER_1">%2$d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="lockscreen_too_many_failed_pin_attempts_dialog_message" msgid="6216672706545696955">"‏آپ نے <xliff:g id="NUMBER_0">%1$d</xliff:g> بار اپنا PIN غلط طریقے سے ٹائپ کیا ہے۔ \n\n <xliff:g id="NUMBER_1">%2$d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="lockscreen_failed_attempts_almost_glogin" product="tablet" msgid="9191611984625460820">"‏آپ نے اپنے غیر مقفل کرنے کے پیٹرن کو <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے ڈرا کیا ہے۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، آپ سے اپنے Google سائن ان کا استعمال کرکے اپنے ٹیبلٹ کو غیر مقفل کرنے کیلئے کہا جائے گا۔ \n\n <xliff:g id="NUMBER_2">%3$d</xliff:g> سیکنڈز بعد دوبارہ کوشش کریں۔"</string>
+    <string name="lockscreen_failed_attempts_almost_glogin" product="tv" msgid="5316664559603394684">"‏آپ نے اپنا غیر مقفل کرنے کا پیٹرن <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے ڈرا کیا ہے۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، آپ سے اپنا Google سائن ان استعمال کرکے اپنا TV غیر مقفل کرنے کو کہا جائے گا۔‎\n\n <xliff:g id="NUMBER_2">%3$d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="lockscreen_failed_attempts_almost_glogin" product="default" msgid="2590227559763762751">"‏آپ نے اپنے غیر مقفل کرنے کے پیٹرن کو <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے ڈرا کیا ہے۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، آپ سے اپنے Google سائن ان کا استعمال کرکے اپنے فون کو غیر مقفل کرنے کیلئے کہا جائے گا۔ \n\n <xliff:g id="NUMBER_2">%3$d</xliff:g> سیکنڈز بعد دوبارہ کوشش کریں۔"</string>
+    <string name="lockscreen_failed_attempts_almost_at_wipe" product="tablet" msgid="6128106399745755604">"آپ نے ٹیبلیٹ کو <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقہ سے غیر مقفل کرنے کی کوشش کی ہے۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، ٹیبلیٹ کو فیکٹری ڈیفالٹ پر ری سیٹ کر دیا جائے گیا اور صارف کا سبھی ڈیٹا ضائع ہو جائے گا۔"</string>
+    <string name="lockscreen_failed_attempts_almost_at_wipe" product="tv" msgid="950408382418270260">"‏آپ نے TV کو غیر مقفل کرنے کیلئے <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے کوششیں کی ہیں۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، TV فیکٹری ڈیفالٹ پر ری سیٹ ہو جائے گا اور صارف کا سبھی ڈیٹا ضائع ہو جائے گا۔"</string>
+    <string name="lockscreen_failed_attempts_almost_at_wipe" product="default" msgid="8603565142156826565">"آپ نے فون کو <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقہ سے غیر مقفل کرنے کی کوشش کی ہے۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، فون کو فیکٹری ڈیفالٹ پر ری سیٹ کر دیا جائے گی اور صارف کا سبھی ڈیٹا ضائع ہو جائے گا۔"</string>
+    <string name="lockscreen_failed_attempts_now_wiping" product="tablet" msgid="280873516493934365">"آپ نے ٹیبلیٹ کو <xliff:g id="NUMBER">%d</xliff:g> بار غلط طریقہ سے غیر مقفل کرنے کی کوشش کی ہے۔ ٹیبلیٹ کو اب فیکٹری ڈیفالٹ پر ری سیٹ کر دیا جائے گیا۔"</string>
+    <string name="lockscreen_failed_attempts_now_wiping" product="tv" msgid="3195755534096192191">"‏آپ نے TV کو غیر مقفل کرنے کیلئے <xliff:g id="NUMBER">%d</xliff:g> بار غلط طریقے سے کوشش کی ہے۔ TV اب فیکٹری ڈیفالٹ پر ری سیٹ ہو جائے گا۔"</string>
+    <string name="lockscreen_failed_attempts_now_wiping" product="default" msgid="3025504721764922246">"آپ نے فون کو <xliff:g id="NUMBER">%d</xliff:g> بار غلط طریقہ سے غیر مقفل کرنے کی کوشش کی ہے۔ فون کو اب فیکٹری ڈیفالٹ پر ری سیٹ کر دیا جائے گیا۔"</string>
+    <string name="lockscreen_too_many_failed_attempts_countdown" msgid="6251480343394389665">"<xliff:g id="NUMBER">%d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="lockscreen_forgot_pattern_button_text" msgid="2626999449610695930">"پیٹرن بھول گئے ہیں؟"</string>
+    <string name="lockscreen_glogin_forgot_pattern" msgid="2588521501166032747">"اکاؤنٹ غیر مقفل"</string>
+    <string name="lockscreen_glogin_too_many_attempts" msgid="2751368605287288808">"پیٹرن کی بہت ساری کوششیں"</string>
+    <string name="lockscreen_glogin_instructions" msgid="3931816256100707784">"‏غیر مقفل کرنے کیلئے، اپنے Google اکاؤنٹ کے ساتھ سائن ان کریں۔"</string>
+    <string name="lockscreen_glogin_username_hint" msgid="8846881424106484447">"صارف نام (ای میل)"</string>
+    <string name="lockscreen_glogin_password_hint" msgid="5958028383954738528">"پاس ورڈ"</string>
+    <string name="lockscreen_glogin_submit_button" msgid="7130893694795786300">"سائن ان کریں"</string>
+    <string name="lockscreen_glogin_invalid_input" msgid="1364051473347485908">"غلط صارف نام یا پاس ورڈ۔"</string>
+    <string name="lockscreen_glogin_account_recovery_hint" msgid="1696924763690379073">"‏اپنا صارف نام یا پاس ورڈ بھول گئے؟\n"<b>"google.com/accounts/recovery"</b>" ملاحظہ کریں۔"</string>
+    <string name="lockscreen_glogin_checking_password" msgid="7114627351286933867">"چیک کیا جا رہا ہے…"</string>
+    <string name="lockscreen_unlock_label" msgid="737440483220667054">"غیر مقفل کریں"</string>
+    <string name="lockscreen_sound_on_label" msgid="9068877576513425970">"آوازیں آن"</string>
+    <string name="lockscreen_sound_off_label" msgid="996822825154319026">"آوازیں آف"</string>
+    <string name="lockscreen_access_pattern_start" msgid="3941045502933142847">"پیٹرن شروع ہو گیا"</string>
+    <string name="lockscreen_access_pattern_cleared" msgid="5583479721001639579">"پیٹرن صاف کر دیا گیا"</string>
+    <string name="lockscreen_access_pattern_cell_added" msgid="6756031208359292487">"سیل شامل کر دیا گیا"</string>
+    <string name="lockscreen_access_pattern_cell_added_verbose" msgid="7264580781744026939">"سیل <xliff:g id="CELL_INDEX">%1$s</xliff:g> شامل ہو گيا"</string>
+    <string name="lockscreen_access_pattern_detected" msgid="4988730895554057058">"پیٹرن مکمل ہو گیا"</string>
+    <string name="lockscreen_access_pattern_area" msgid="400813207572953209">"پیٹرن کا علاقہ۔"</string>
+    <string name="keyguard_accessibility_widget_changed" msgid="5678624624681400191">"‏%1$s۔ ویجیٹ ‎%2$d از ‎%3$d۔"</string>
+    <string name="keyguard_accessibility_add_widget" msgid="8273277058724924654">"ویجیٹ شامل کریں"</string>
+    <string name="keyguard_accessibility_widget_empty_slot" msgid="1281505703307930757">"خالی"</string>
+    <string name="keyguard_accessibility_unlock_area_expanded" msgid="2278106022311170299">"غیر مقفل کرنے کا علاقہ پھیلا دیا گیا۔"</string>
+    <string name="keyguard_accessibility_unlock_area_collapsed" msgid="6366992066936076396">"غیر مقفل کرنے کا علاقہ سکیڑ دیا گیا۔"</string>
+    <string name="keyguard_accessibility_widget" msgid="6527131039741808240">"<xliff:g id="WIDGET_INDEX">%1$s</xliff:g> ویجیٹ۔"</string>
+    <string name="keyguard_accessibility_user_selector" msgid="1226798370913698896">"صارف کا انتخاب کار"</string>
+    <string name="keyguard_accessibility_status" msgid="8008264603935930611">"اسٹیٹس"</string>
+    <string name="keyguard_accessibility_camera" msgid="8904231194181114603">"کیمرا"</string>
+    <string name="keygaurd_accessibility_media_controls" msgid="262209654292161806">"میڈیا کنٹرولز"</string>
+    <string name="keyguard_accessibility_widget_reorder_start" msgid="8736853615588828197">"ویجیٹ دوبارہ ترتیب دینا شروع ہو گیا۔"</string>
+    <string name="keyguard_accessibility_widget_reorder_end" msgid="7170190950870468320">"ویجیٹ دوبارہ ترتیب دینا ختم ہو گیا۔"</string>
+    <string name="keyguard_accessibility_widget_deleted" msgid="4426204263929224434">"ویجیٹ <xliff:g id="WIDGET_INDEX">%1$s</xliff:g> کو حذف کر دیا گیا۔"</string>
+    <string name="keyguard_accessibility_expand_lock_area" msgid="519859720934178024">"غیر مقفل کرنے والے علاقے کو پھیلائیں۔"</string>
+    <string name="keyguard_accessibility_slide_unlock" msgid="2959928478764697254">"سلائیڈ کے ذریعے غیر مقفل کریں۔"</string>
+    <string name="keyguard_accessibility_pattern_unlock" msgid="1490840706075246612">"پیٹرن کے ذریعے غیر مقفل کریں۔"</string>
+    <string name="keyguard_accessibility_face_unlock" msgid="4817282543351718535">"چہرے کے ذریعے غیر مقفل کریں۔"</string>
+    <string name="keyguard_accessibility_pin_unlock" msgid="2469687111784035046">"پن کے ذریعے غیر مقفل کریں۔"</string>
+    <string name="keyguard_accessibility_password_unlock" msgid="7675777623912155089">"پاس ورڈ کے ذریعہ غیر مقفل کریں۔"</string>
+    <string name="keyguard_accessibility_pattern_area" msgid="7679891324509597904">"پیٹرن کا علاقہ۔"</string>
+    <string name="keyguard_accessibility_slide_area" msgid="6736064494019979544">"سلائیڈ کرنے کا علاقہ۔"</string>
+    <string name="password_keyboard_label_symbol_key" msgid="992280756256536042">"‎?123"</string>
+    <string name="password_keyboard_label_alpha_key" msgid="8001096175167485649">"ABC"</string>
+    <string name="password_keyboard_label_alt_key" msgid="1284820942620288678">"ALT"</string>
+    <string name="granularity_label_character" msgid="7336470535385009523">"حرف"</string>
+    <string name="granularity_label_word" msgid="7075570328374918660">"لفظ"</string>
+    <string name="granularity_label_link" msgid="5815508880782488267">"لنک"</string>
+    <string name="granularity_label_line" msgid="5764267235026120888">"لکیر"</string>
+    <string name="factorytest_failed" msgid="5410270329114212041">"فیکٹری ٹیسٹ ناکام رہا"</string>
+    <string name="factorytest_not_system" msgid="4435201656767276723">"‏FACTORY_TEST کارروائی صرف ‎/system/app میں انسٹال کردہ پیکیجز کیلئے تعاون یافتہ ہے۔"</string>
+    <string name="factorytest_no_action" msgid="872991874799998561">"‏ایسا کوئی پیکیج نہیں ملا، جو FACTORY_TEST کارروائی فراہم کرتا ہے۔"</string>
+    <string name="factorytest_reboot" msgid="6320168203050791643">"ریبوٹ کریں"</string>
+    <string name="js_dialog_title" msgid="1987483977834603872">"\"<xliff:g id="TITLE">%s</xliff:g>\" پر موجود صفحہ کے مطابق:"</string>
+    <string name="js_dialog_title_default" msgid="6961903213729667573">"JavaScript"</string>
+    <string name="js_dialog_before_unload_title" msgid="2619376555525116593">"نیویگیشن کی توثیق کریں"</string>
+    <string name="js_dialog_before_unload_positive_button" msgid="3112752010600484130">"یہ صفحہ چھوڑیں"</string>
+    <string name="js_dialog_before_unload_negative_button" msgid="5614861293026099715">"اس صفحہ پر رہیں"</string>
+    <string name="js_dialog_before_unload" msgid="3468816357095378590">"<xliff:g id="MESSAGE">%s</xliff:g>\n\nکیا آپ واقعی اس صفحہ سے باہر نیویگیٹ کرنا چاہتے ہیں؟"</string>
+    <string name="save_password_label" msgid="6860261758665825069">"توثیق کریں"</string>
+    <string name="double_tap_toast" msgid="4595046515400268881">"تجویز: زوم ان اور آؤٹ کیلئے دو بار تھپتھپائیں۔"</string>
+    <string name="autofill_this_form" msgid="4616758841157816676">"آٹوفل"</string>
+    <string name="setup_autofill" msgid="7103495070180590814">"آٹوفل مقرر کریں"</string>
+    <string name="autofill_address_name_separator" msgid="6350145154779706772">" "</string>
+    <string name="autofill_address_summary_name_format" msgid="3268041054899214945">"$1$2$3"</string>
+    <string name="autofill_address_summary_separator" msgid="7483307893170324129">"، "</string>
+    <string name="autofill_address_summary_format" msgid="4874459455786827344">"$1$2$3"</string>
+    <string name="autofill_province" msgid="2231806553863422300">"صوبہ"</string>
+    <string name="autofill_postal_code" msgid="4696430407689377108">"ڈاک کا کوڈ"</string>
+    <string name="autofill_state" msgid="6988894195520044613">"ریاست"</string>
+    <string name="autofill_zip_code" msgid="8697544592627322946">"زپ کوڈ"</string>
+    <string name="autofill_county" msgid="237073771020362891">"کاؤنٹی"</string>
+    <string name="autofill_island" msgid="4020100875984667025">"آئیلینڈ"</string>
+    <string name="autofill_district" msgid="8400735073392267672">"ضلع"</string>
+    <string name="autofill_department" msgid="5343279462564453309">"شعبہ"</string>
+    <string name="autofill_prefecture" msgid="2028499485065800419">"انتظامی حلقہ"</string>
+    <string name="autofill_parish" msgid="8202206105468820057">"پیرش"</string>
+    <string name="autofill_area" msgid="3547409050889952423">"علاقہ"</string>
+    <string name="autofill_emirate" msgid="2893880978835698818">"امارات"</string>
+    <string name="permlab_readHistoryBookmarks" msgid="3775265775405106983">"اپنے ویب بُک مارکس اور سرگزشت کو پڑھیں"</string>
+    <string name="permdesc_readHistoryBookmarks" msgid="8462378226600439658">"‏ایپ کو براؤزر کے ملاحظہ کردہ سبھی URLs اور براؤزر کے سبھی بک مارکس کی سرگزشت پڑھنے کی اجازت دیتا ہے۔ نوٹ: یہ اجازت تیسرے فریق کے براؤزرز یا ویب براؤزنگ کی لیاقتوں والی دوسری ایپلیکیشنز کے ذریعہ نافذ نہیں کی جاسکتی ہے۔"</string>
+    <string name="permlab_writeHistoryBookmarks" msgid="3714785165273314490">"ویب بُک مارکس اور سرگزشت لکھیں"</string>
+    <string name="permdesc_writeHistoryBookmarks" product="tablet" msgid="6825527469145760922">"ایپ کو آپ کے ٹیبلٹ پر اسٹور کردہ براؤزر کی سرگزشت یا بک مارکس میں ترمیم کرنے کی اجازت دیتا ہے۔ یہ ایپ کو براؤزر کا ڈیٹا مٹانے یا اس میں ترمیم کرنے کی اجازت دے سکتا ہے۔ نوٹ: یہ اجازت تیسرے فریق کے براؤزرز یا ویب براؤزنگ کی لیاقتوں والی دیگر ایپلیکیشنز کے ذریعہ نافذ نہیں کی جاسکتی ہے۔"</string>
+    <string name="permdesc_writeHistoryBookmarks" product="tv" msgid="7007393823197766548">"‏ایپ کو آپ کے TV پر اسٹور کردہ براؤزر کی سرگزشت یا بُک مارکس میں ترمیم کرنے کی اجازت دیتا ہے۔ یہ ایپ کو براؤزر کا ڈیٹا مٹانے یا اس میں ترمیم کرنے کی اجازت دے سکتا ہے۔ نوٹ: یہ اجازت تیسرے فریق کے براؤزرز یا ویب براؤزنگ کی اہلیتوں والی دیگر ایپلیکیشنز کے ذریعہ نافذ نہیں کی جاسکتی ہے۔"</string>
+    <string name="permdesc_writeHistoryBookmarks" product="default" msgid="8497389531014185509">"ایپ کو آپ کے فون پر اسٹور کردہ براؤزر کی سرگزشت یا بک مارکس میں ترمیم کرنے کی اجازت دیتا ہے۔ یہ ایپ کو براؤزر کا ڈیٹا مٹانے یا اس میں ترمیم کرنے کی اجازت دے سکتا ہے۔ نوٹ: یہ اجازت تیسرے فریق کے براؤزرز یا ویب براؤزنگ کی لیاقتوں والی دیگر ایپلیکیشنز کے ذریعہ نافذ نہیں کی جاسکتی ہے۔"</string>
+    <string name="permlab_setAlarm" msgid="1379294556362091814">"ایک الارم سیٹ کریں"</string>
+    <string name="permdesc_setAlarm" msgid="316392039157473848">"ایپ کو ایک انسٹال کردہ الارم گھڑی کی ایپ میں ایک الارم سیٹ کرنے کی اجازت دیتا ہے۔ الارم گھڑی کی کچھ ایپس اس خصوصیت کو نافذ نہیں کر سکتی ہیں۔"</string>
+    <string name="permlab_addVoicemail" msgid="5525660026090959044">"صوتی میل شامل کریں"</string>
+    <string name="permdesc_addVoicemail" msgid="6604508651428252437">"ایپ کو آپ کے صوتی میل کے ان باکس میں پیغامات شامل کرنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_writeGeolocationPermissions" msgid="5962224158955273932">"براؤزر کی جغرافیائی مقام کی اجازتوں میں ترمیم کریں"</string>
+    <string name="permdesc_writeGeolocationPermissions" msgid="1083743234522638747">"ایپ کو براؤزر کی جغرافیائی مقام کی اجازتوں میں ترمیم کرنے کی اجازت دیتا ہے۔ نقصان دہ ایپس متنازعہ ویب سائٹس پر مقام کی معلومات بھیجنے کی اجازت دینے کیلئے اس کا استعمال کر سکتی ہیں۔"</string>
+    <string name="save_password_message" msgid="767344687139195790">"کیا آپ چاہتے ہیں کہ براؤزر اس پاس ورڈ کو یاد رکھے؟"</string>
+    <string name="save_password_notnow" msgid="6389675316706699758">"ابھی نہیں"</string>
+    <string name="save_password_remember" msgid="6491879678996749466">"یاد رکھیں"</string>
+    <string name="save_password_never" msgid="8274330296785855105">"کبھی نہیں"</string>
+    <string name="open_permission_deny" msgid="7374036708316629800">"آپ کے پاس یہ صفحہ کھولنے کی اجازت نہیں ہے۔"</string>
+    <string name="text_copied" msgid="4985729524670131385">"متن کو کلپ بورڈ پر کاپی کیا گیا۔"</string>
+    <string name="more_item_label" msgid="4650918923083320495">"مزید"</string>
+    <string name="prepend_shortcut_label" msgid="2572214461676015642">"مینو+"</string>
+    <string name="menu_space_shortcut_label" msgid="2410328639272162537">"space"</string>
+    <string name="menu_enter_shortcut_label" msgid="2743362785111309668">"enter"</string>
+    <string name="menu_delete_shortcut_label" msgid="3658178007202748164">"delete"</string>
+    <string name="search_go" msgid="8298016669822141719">"تلاش کریں"</string>
+    <string name="search_hint" msgid="1733947260773056054">"تلاش کریں…"</string>
+    <string name="searchview_description_search" msgid="6749826639098512120">"تلاش کریں"</string>
+    <string name="searchview_description_query" msgid="5911778593125355124">"استفسار تلاش کریں"</string>
+    <string name="searchview_description_clear" msgid="1330281990951833033">"استفسار صاف کریں"</string>
+    <string name="searchview_description_submit" msgid="2688450133297983542">"استفسار جمع کرائیں"</string>
+    <string name="searchview_description_voice" msgid="2453203695674994440">"صوتی تلاش"</string>
+    <string name="enable_explore_by_touch_warning_title" msgid="7460694070309730149">"ٹچ کرکے دریافت کریں کو فعال کریں؟"</string>
+    <string name="enable_explore_by_touch_warning_message" product="tablet" msgid="8655887539089910577">"<xliff:g id="ACCESSIBILITY_SERVICE_NAME">%1$s</xliff:g> ٹچ کرکے دریافت کریں کو فعال کرنا چاہتی ہے۔ ٹچ کرکے دریافت کریں کے آن ہو جانے پر، آپ کو اپنی انگلی کے نیچے موجود چیزوں کی تفصیلات دکھائی یا سنائی دے سکتی ہیں یا آپ ٹیبلیٹ کے ساتھ تعامل کرنے کیلئے اشارے انجام دے سکتے ہیں۔"</string>
+    <string name="enable_explore_by_touch_warning_message" product="default" msgid="2708199672852373195">"<xliff:g id="ACCESSIBILITY_SERVICE_NAME">%1$s</xliff:g> ٹچ کرکے دریافت کریں کو فعال کرنا چاہتی ہے۔ ٹچ کرکے دریافت کریں کے آن ہو جانے پر، آپ کو اپنی انگلی کے نیچے موجود چیزوں کی تفصیلات دکھائی یا سنائی دے سکتی ہیں یا آپ فون کے ساتھ تعامل کرنے کیلئے اشارے انجام دے سکتے ہیں۔"</string>
+    <string name="oneMonthDurationPast" msgid="7396384508953779925">"1 مہینہ پہلے"</string>
+    <string name="beforeOneMonthDurationPast" msgid="909134546836499826">"1 مہینہ سے زیادہ پہلے"</string>
+    <plurals name="last_num_days" formatted="false" msgid="5104533550723932025">
+      <item quantity="other">گزشتہ <xliff:g id="COUNT_1">%d</xliff:g> دن</item>
+      <item quantity="one">گزشتہ <xliff:g id="COUNT_0">%d</xliff:g> دن</item>
+    </plurals>
+    <string name="last_month" msgid="3959346739979055432">"پچھلے مہینے"</string>
+    <string name="older" msgid="5211975022815554840">"پرانا"</string>
+    <string name="preposition_for_date" msgid="9093949757757445117">"<xliff:g id="DATE">%s</xliff:g> کو"</string>
+    <string name="preposition_for_time" msgid="5506831244263083793">"بوقت <xliff:g id="TIME">%s</xliff:g>"</string>
+    <string name="preposition_for_year" msgid="5040395640711867177">"<xliff:g id="YEAR">%s</xliff:g> میں"</string>
+    <string name="day" msgid="8144195776058119424">"دن"</string>
+    <string name="days" msgid="4774547661021344602">"دن"</string>
+    <string name="hour" msgid="2126771916426189481">"گھنٹہ"</string>
+    <string name="hours" msgid="894424005266852993">"گھنٹے"</string>
+    <string name="minute" msgid="9148878657703769868">"منٹ"</string>
+    <string name="minutes" msgid="5646001005827034509">"منٹس"</string>
+    <string name="second" msgid="3184235808021478">"سیکنڈ"</string>
+    <string name="seconds" msgid="3161515347216589235">"سیکنڈز"</string>
+    <string name="week" msgid="5617961537173061583">"ہفتہ"</string>
+    <string name="weeks" msgid="6509623834583944518">"ہفتے"</string>
+    <string name="year" msgid="4001118221013892076">"سال"</string>
+    <string name="years" msgid="6881577717993213522">"سال"</string>
+    <plurals name="duration_seconds" formatted="false" msgid="4527986939729687805">
+      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> سیکنڈ</item>
+      <item quantity="one">1 سیکنڈ</item>
+    </plurals>
+    <plurals name="duration_minutes" formatted="false" msgid="643786953939956125">
+      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> منٹ</item>
+      <item quantity="one">1 منٹ</item>
+    </plurals>
+    <plurals name="duration_hours" formatted="false" msgid="6826233369186668274">
+      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> گھنٹے</item>
+      <item quantity="one">1 گھنٹہ</item>
+    </plurals>
+    <string name="now_string_shortest" msgid="8912796667087856402">"ابھی"</string>
+    <plurals name="duration_minutes_shortest" formatted="false" msgid="3957499975064245495">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g>m</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g>m</item>
+    </plurals>
+    <plurals name="duration_hours_shortest" formatted="false" msgid="3552182110578602356">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g>h</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g>h</item>
+    </plurals>
+    <plurals name="duration_days_shortest" formatted="false" msgid="5213655532597081640">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g>d</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g>d</item>
+    </plurals>
+    <plurals name="duration_years_shortest" formatted="false" msgid="7848711145196397042">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g>y</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g>y</item>
+    </plurals>
+    <plurals name="duration_minutes_shortest_future" formatted="false" msgid="3277614521231489951">
+      <item quantity="other">‏<xliff:g id="COUNT_1">%d</xliff:g>m میں</item>
+      <item quantity="one">‏<xliff:g id="COUNT_0">%d</xliff:g>m میں</item>
+    </plurals>
+    <plurals name="duration_hours_shortest_future" formatted="false" msgid="2152452368397489370">
+      <item quantity="other">‏<xliff:g id="COUNT_1">%d</xliff:g>h میں</item>
+      <item quantity="one">‏<xliff:g id="COUNT_0">%d</xliff:g>h میں</item>
+    </plurals>
+    <plurals name="duration_days_shortest_future" formatted="false" msgid="8088331502820295701">
+      <item quantity="other">‏<xliff:g id="COUNT_1">%d</xliff:g>d میں</item>
+      <item quantity="one">‏<xliff:g id="COUNT_0">%d</xliff:g>d میں</item>
+    </plurals>
+    <plurals name="duration_years_shortest_future" formatted="false" msgid="2317006667145250301">
+      <item quantity="other">‏<xliff:g id="COUNT_1">%d</xliff:g>y میں</item>
+      <item quantity="one">‏<xliff:g id="COUNT_0">%d</xliff:g>y میں</item>
+    </plurals>
+    <plurals name="duration_minutes_relative" formatted="false" msgid="3178131706192980192">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g> منٹ قبل</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g> منٹ قبل</item>
+    </plurals>
+    <plurals name="duration_hours_relative" formatted="false" msgid="676894109982008411">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g> گھنٹے قبل</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g> گھنٹہ قبل</item>
+    </plurals>
+    <plurals name="duration_days_relative" formatted="false" msgid="2203515825765397130">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g> دن قبل</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g> دن قبل</item>
+    </plurals>
+    <plurals name="duration_years_relative" formatted="false" msgid="4820062134188885734">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g> سال قبل</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g> سال قبل</item>
+    </plurals>
+    <plurals name="duration_minutes_relative_future" formatted="false" msgid="4655043589817680966">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g> منٹ میں</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g> منٹ میں</item>
+    </plurals>
+    <plurals name="duration_hours_relative_future" formatted="false" msgid="8084579714205223891">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g> گھنٹے میں</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g> گھنٹہ میں</item>
+    </plurals>
+    <plurals name="duration_days_relative_future" formatted="false" msgid="333215369363433992">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g> دن میں</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g> دن میں</item>
+    </plurals>
+    <plurals name="duration_years_relative_future" formatted="false" msgid="8644862986413104011">
+      <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g> سال میں</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%d</xliff:g> سال میں</item>
+    </plurals>
+    <string name="VideoView_error_title" msgid="3534509135438353077">"ویڈیو مسئلہ"</string>
+    <string name="VideoView_error_text_invalid_progressive_playback" msgid="3186670335938670444">"یہ ویڈیو اس آلہ پر سلسلہ بندی کیلئے درست نہیں ہے۔"</string>
+    <string name="VideoView_error_text_unknown" msgid="3450439155187810085">"یہ ویڈیو نہیں چل سکتا۔"</string>
+    <string name="VideoView_error_button" msgid="2822238215100679592">"ٹھیک ہے"</string>
+    <string name="relative_time" msgid="1818557177829411417">"<xliff:g id="DATE">%1$s</xliff:g>, <xliff:g id="TIME">%2$s</xliff:g>"</string>
+    <string name="noon" msgid="7245353528818587908">"دوپہر"</string>
+    <string name="Noon" msgid="3342127745230013127">"دوپہر"</string>
+    <string name="midnight" msgid="7166259508850457595">"آدھی رات"</string>
+    <string name="Midnight" msgid="5630806906897892201">"آدھی رات"</string>
+    <string name="elapsed_time_short_format_mm_ss" msgid="4431555943828711473">"<xliff:g id="MINUTES">%1$02d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g>"</string>
+    <string name="elapsed_time_short_format_h_mm_ss" msgid="1846071997616654124">"<xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g>"</string>
+    <string name="selectAll" msgid="6876518925844129331">"سبھی کو منتخب کریں"</string>
+    <string name="cut" msgid="3092569408438626261">"کاٹیں"</string>
+    <string name="copy" msgid="2681946229533511987">"کاپی کریں"</string>
+    <string name="paste" msgid="5629880836805036433">"پیسٹ کریں"</string>
+    <string name="paste_as_plain_text" msgid="5427792741908010675">"سادہ متن کے طور پر پیسٹ کریں"</string>
+    <string name="replace" msgid="5781686059063148930">"تبدیل کریں…"</string>
+    <string name="delete" msgid="6098684844021697789">"حذف کریں"</string>
+    <string name="copyUrl" msgid="2538211579596067402">"‏URL کاپی کریں"</string>
+    <string name="selectTextMode" msgid="1018691815143165326">"متن منتخب کریں"</string>
+    <string name="undo" msgid="7905788502491742328">"کالعدم کریں"</string>
+    <string name="redo" msgid="7759464876566803888">"دوبارہ کریں"</string>
+    <string name="textSelectionCABTitle" msgid="5236850394370820357">"متن کا انتخاب"</string>
+    <string name="addToDictionary" msgid="4352161534510057874">"لغت میں شامل کریں"</string>
+    <string name="deleteText" msgid="6979668428458199034">"حذف کریں"</string>
+    <string name="inputMethod" msgid="1653630062304567879">"اندراج کا طریقہ"</string>
+    <string name="editTextMenuTitle" msgid="4909135564941815494">"متن کی کارروائیاں"</string>
+    <string name="low_internal_storage_view_title" msgid="5576272496365684834">"اسٹوریج کی جگہ ختم ہو رہی ہے"</string>
+    <string name="low_internal_storage_view_text" msgid="6640505817617414371">"ممکن ہے سسٹم کے کچھ فنکشنز کام نہ کریں"</string>
+    <string name="low_internal_storage_view_text_no_boot" msgid="6935190099204693424">"‏سسٹم کیلئے کافی اسٹوریج نہیں ہے۔ اس بات کو یقینی بنائیں کہ آپ کے پاس 250MB خالی جگہ ہے اور دوبارہ شروع کریں۔"</string>
+    <string name="app_running_notification_title" msgid="8718335121060787914">"<xliff:g id="APP_NAME">%1$s</xliff:g> چل رہا ہے"</string>
+    <string name="app_running_notification_text" msgid="1197581823314971177">"مزید معلومات کیلئے یا ایپ کو روکنے کیلئے تھپتھپائیں۔"</string>
+    <string name="ok" msgid="5970060430562524910">"ٹھیک ہے"</string>
+    <string name="cancel" msgid="6442560571259935130">"منسوخ کریں"</string>
+    <string name="yes" msgid="5362982303337969312">"ٹھیک ہے"</string>
+    <string name="no" msgid="5141531044935541497">"منسوخ کریں"</string>
+    <string name="dialog_alert_title" msgid="2049658708609043103">"توجہ دیں"</string>
+    <string name="loading" msgid="7933681260296021180">"لوڈ ہو رہا ہے…"</string>
+    <string name="capital_on" msgid="1544682755514494298">"آن"</string>
+    <string name="capital_off" msgid="6815870386972805832">"آف"</string>
+    <string name="whichApplication" msgid="4533185947064773386">"اس کا استعمال کرکے کارروائی مکمل کریں"</string>
+    <string name="whichApplicationNamed" msgid="8260158865936942783">"‏%1$s کا استعمال کر کے کارروائی مکمل کریں"</string>
+    <string name="whichApplicationLabel" msgid="7425855495383818784">"کارروائی مکمل کریں"</string>
+    <string name="whichViewApplication" msgid="3272778576700572102">"اس کے ساتھ کھولیں"</string>
+    <string name="whichViewApplicationNamed" msgid="2286418824011249620">"‏%1$s کے ساتھ کھولیں"</string>
+    <string name="whichViewApplicationLabel" msgid="2666774233008808473">"کھولیں"</string>
+    <string name="whichEditApplication" msgid="144727838241402655">"اس کے ساتھ ترمیم کریں"</string>
+    <string name="whichEditApplicationNamed" msgid="1775815530156447790">"‏%1$s کے ساتھ ترمیم کریں"</string>
+    <string name="whichEditApplicationLabel" msgid="7183524181625290300">"ترمیم کریں"</string>
+    <string name="whichSendApplication" msgid="6902512414057341668">"اس کے ساتھ اشتراک کریں"</string>
+    <string name="whichSendApplicationNamed" msgid="2799370240005424391">"‏%1$s کے ساتھ اشتراک کریں"</string>
+    <string name="whichSendApplicationLabel" msgid="4579076294675975354">"اشتراک کریں"</string>
+    <string name="whichSendToApplication" msgid="8272422260066642057">"بھیجیں بذریعہ"</string>
+    <string name="whichSendToApplicationNamed" msgid="7768387871529295325">"‏بھیجیں بذریعہ ‎%1$s"</string>
+    <string name="whichSendToApplicationLabel" msgid="8878962419005813500">"بھیجیں"</string>
+    <string name="whichHomeApplication" msgid="4307587691506919691">"‏ایک Home ایپ منتخب کریں"</string>
+    <string name="whichHomeApplicationNamed" msgid="4493438593214760979">"‏%1$s کو Home کے بطور استعمال کریں"</string>
+    <string name="whichHomeApplicationLabel" msgid="809529747002918649">"تصویر کیپچر کریں"</string>
+    <string name="whichImageCaptureApplication" msgid="3680261417470652882">"اس کے ساتھ تصویر کیپچر کریں"</string>
+    <string name="whichImageCaptureApplicationNamed" msgid="8619384150737825003">"‏‎%1$s کے ساتھ تصویر کیپچر کریں"</string>
+    <string name="whichImageCaptureApplicationLabel" msgid="6390303445371527066">"تصویر کیپچر کریں"</string>
+    <string name="alwaysUse" msgid="4583018368000610438">"اس کارروائی کیلئے بطور ڈیفالٹ استعمال کریں۔"</string>
+    <string name="use_a_different_app" msgid="8134926230585710243">"ایک مختلف ایپ استعمال کریں"</string>
+    <string name="clearDefaultHintMsg" msgid="3252584689512077257">"‏سسٹم ترتیبات &gt; ایپس &gt; ڈاؤن لوڈ کردہ میں ڈیفالٹ صاف کریں۔"</string>
+    <string name="chooseActivity" msgid="7486876147751803333">"ایک کارروائی منتخب کریں"</string>
+    <string name="chooseUsbActivity" msgid="6894748416073583509">"‏USB آلہ کیلئے ایک ایپ منتخب کریں"</string>
+    <string name="noApplications" msgid="2991814273936504689">"کوئی ایپس یہ کارروائی نہیں کر سکتی ہیں۔"</string>
+    <string name="aerr_application" msgid="250320989337856518">"<xliff:g id="APPLICATION">%1$s</xliff:g> بند ہو گئی ہے"</string>
+    <string name="aerr_process" msgid="6201597323218674729">"<xliff:g id="PROCESS">%1$s</xliff:g> بند ہو گیا ہے"</string>
+    <string name="aerr_application_repeated" msgid="3146328699537439573">"<xliff:g id="APPLICATION">%1$s</xliff:g> بار بار بند ہوتی ہے"</string>
+    <string name="aerr_process_repeated" msgid="6235302956890402259">"<xliff:g id="PROCESS">%1$s</xliff:g> بار بار بند ہوتی ہے"</string>
+    <string name="aerr_restart" msgid="7581308074153624475">"ایپ دوبارہ کھولیں"</string>
+    <string name="aerr_report" msgid="5371800241488400617">"تاثرات بھیجیں"</string>
+    <string name="aerr_close" msgid="2991640326563991340">"بند کریں"</string>
+    <string name="aerr_mute" msgid="1974781923723235953">"آلہ دوبارہ اسٹارٹ ہونے تک خاموش رکھیں"</string>
+    <string name="aerr_wait" msgid="3199956902437040261">"انتظار کریں"</string>
+    <string name="aerr_close_app" msgid="3269334853724920302">"ایپ بند کریں"</string>
+    <string name="anr_title" msgid="4351948481459135709"></string>
+    <string name="anr_activity_application" msgid="8493290105678066167">"<xliff:g id="APPLICATION">%2$s</xliff:g> جواب نہیں دے رہی ہے"</string>
+    <string name="anr_activity_process" msgid="1622382268908620314">"<xliff:g id="ACTIVITY">%1$s</xliff:g> جواب نہیں دے رہی ہے"</string>
+    <string name="anr_application_process" msgid="6417199034861140083">"<xliff:g id="APPLICATION">%1$s</xliff:g> جواب نہیں دے رہی ہے"</string>
+    <string name="anr_process" msgid="6156880875555921105">"کارروائی <xliff:g id="PROCESS">%1$s</xliff:g> جواب نہیں دے رہی ہے"</string>
+    <string name="force_close" msgid="8346072094521265605">"ٹھیک ہے"</string>
+    <string name="report" msgid="4060218260984795706">"اطلاع دیں"</string>
+    <string name="wait" msgid="7147118217226317732">"انتظار کریں"</string>
+    <string name="webpage_unresponsive" msgid="3272758351138122503">"صفحہ کوئی ریسپانس نہیں دے رہا ہے۔\n\n کیا آپ اسے بند کرنا چاہتے ہیں؟"</string>
+    <string name="launch_warning_title" msgid="1547997780506713581">"ایپ ری ڈائریکٹ کر دی گئی"</string>
+    <string name="launch_warning_replace" msgid="6202498949970281412">"<xliff:g id="APP_NAME">%1$s</xliff:g> ابھی چل رہی ہے۔"</string>
+    <string name="launch_warning_original" msgid="188102023021668683">"<xliff:g id="APP_NAME">%1$s</xliff:g> کو اصل میں شروع کیا گیا تھا۔"</string>
+    <string name="screen_compat_mode_scale" msgid="3202955667675944499">"پیمانہ"</string>
+    <string name="screen_compat_mode_show" msgid="4013878876486655892">"ہمیشہ دکھائیں"</string>
+    <string name="screen_compat_mode_hint" msgid="1064524084543304459">"‏سسٹم ترتیبات &gt; ایپس &gt; ڈاؤن لوڈ کردہ میں اسے دوبارہ فعال کریں۔"</string>
+    <string name="unsupported_display_size_message" msgid="6545327290756295232">"<xliff:g id="APP_NAME">%1$s</xliff:g> میں موجودہ ڈسپلے سائز ترتیبات کی معاونت نہیں ہے اور ہو سکتا ہے غیر متوقع طریقے سے کام کرے۔"</string>
+    <string name="unsupported_display_size_show" msgid="7969129195360353041">"ہمیشہ دکھائیں"</string>
+    <string name="smv_application" msgid="3307209192155442829">"‏ایپ <xliff:g id="APPLICATION">%1$s</xliff:g> (کارروائی <xliff:g id="PROCESS">%2$s</xliff:g>) نے خود نافذ کی گئی StrictMode پالیسی کی خلاف ورزی کی ہے۔"</string>
+    <string name="smv_process" msgid="5120397012047462446">"‏کارروائی <xliff:g id="PROCESS">%1$s</xliff:g> نے اپنی ذاتی طور پر نافذ کردہ StrictMode پلیسی کی خلاف ورزی کی ہے۔"</string>
+    <string name="android_upgrading_title" msgid="1584192285441405746">"‏Android اپ گریڈ ہو رہا ہے…"</string>
+    <string name="android_start_title" msgid="8418054686415318207">"‏Android شروع ہو رہا ہے…"</string>
+    <string name="android_upgrading_fstrim" msgid="8036718871534640010">"اسٹوریج کو بہترین بنایا جا رہا ہے۔"</string>
+    <string name="android_upgrading_notification_title" msgid="8428357096969413169">"‏Android اپ ڈیٹ ختم ہو رہی ہے…"</string>
+    <string name="android_upgrading_notification_body" msgid="5761201379457064286">"اپ گریڈ ختم ہونے تک شاید کچھ ایپس ٹھیک طرح سے کام نہ کریں"</string>
+    <string name="app_upgrading_toast" msgid="3008139776215597053">"<xliff:g id="APPLICATION">%1$s</xliff:g> اپ گریڈ ہو رہی ہے…"</string>
+    <string name="android_upgrading_apk" msgid="7904042682111526169">"ایپ <xliff:g id="NUMBER_0">%1$d</xliff:g> از <xliff:g id="NUMBER_1">%2$d</xliff:g> کو بہتر بنایا جا رہا ہے۔"</string>
+    <string name="android_preparing_apk" msgid="8162599310274079154">"<xliff:g id="APPNAME">%1$s</xliff:g> تیار ہو رہی ہے۔"</string>
+    <string name="android_upgrading_starting_apps" msgid="451464516346926713">"ایپس شروع ہو رہی ہیں۔"</string>
+    <string name="android_upgrading_complete" msgid="1405954754112999229">"بوٹ مکمل ہو رہا ہے۔"</string>
+    <string name="heavy_weight_notification" msgid="9087063985776626166">"<xliff:g id="APP">%1$s</xliff:g> چل رہی ہے"</string>
+    <string name="heavy_weight_notification_detail" msgid="867643381388543170">"ایپ پر سوئچ کرنے کیلئے تھپتھپائیں"</string>
+    <string name="heavy_weight_switcher_title" msgid="7153167085403298169">"ایپس سوئچ کریں؟"</string>
+    <string name="heavy_weight_switcher_text" msgid="7022631924534406403">"ایک دوسری ایپ پہلے سے چل رہی ہے، جس کا بند ہونا ضروری ہے تاکہ آپ ایک نئی ایپ شروع کر سکیں۔"</string>
+    <string name="old_app_action" msgid="493129172238566282">"<xliff:g id="OLD_APP">%1$s</xliff:g> پر واپس جائیں"</string>
+    <string name="old_app_description" msgid="2082094275580358049">"نئی ایپ شروع نہ کریں۔"</string>
+    <string name="new_app_action" msgid="5472756926945440706">"<xliff:g id="OLD_APP">%1$s</xliff:g> شروع کریں"</string>
+    <string name="new_app_description" msgid="1932143598371537340">"محفوظ کیے بغیر پرانی ایپ بند کریں۔"</string>
+    <string name="dump_heap_notification" msgid="2618183274836056542">"<xliff:g id="PROC">%1$s</xliff:g> میموری کی حد سے تجاوز کرگئی"</string>
+    <string name="dump_heap_notification_detail" msgid="6901391084243999274">"ہیپ ڈمپ جمع ہو گیا ہے، اشتراک کرنے کیلئے تھپتھپائیں"</string>
+    <string name="dump_heap_title" msgid="5864292264307651673">"ہیپ ڈمپ کا اشتراک کریں؟"</string>
+    <string name="dump_heap_text" msgid="4809417337240334941">"کارروائی <xliff:g id="PROC">%1$s</xliff:g> اپنی کارروائی کی میموری کی حد <xliff:g id="SIZE">%2$s</xliff:g> سے تجاوز کر گئی ہے۔ آپ کیلئے ایک ہیپ ڈمپ اس کے ڈیولپر سے اشتراک کرنے کیلئے دستیاب ہے۔ احتیاط برتیں: اس ہیپ ڈمپ میں آپ کی ایسی ذاتی معلومات میں سے کوئی بھی شامل ہو سکتی ہے جس تک ایپلیکیشن کو رسائی ہے۔"</string>
+    <string name="sendText" msgid="5209874571959469142">"متن کیلئے ایک کارروائی منتخب کریں"</string>
+    <string name="volume_ringtone" msgid="6885421406845734650">"رنگر والیوم"</string>
+    <string name="volume_music" msgid="5421651157138628171">"میڈیا والیوم"</string>
+    <string name="volume_music_hint_playing_through_bluetooth" msgid="9165984379394601533">"بلوٹوتھ کے ذریعہ چل رہا ہے"</string>
+    <string name="volume_music_hint_silent_ringtone_selected" msgid="8310739960973156272">"خاموش رنگ ٹون متعین ہے"</string>
+    <string name="volume_call" msgid="3941680041282788711">"درون کال والیوم"</string>
+    <string name="volume_bluetooth_call" msgid="2002891926351151534">"بلوٹوتھ درون کال والیوم"</string>
+    <string name="volume_alarm" msgid="1985191616042689100">"الارم والیوم"</string>
+    <string name="volume_notification" msgid="2422265656744276715">"اطلاع کا والیوم"</string>
+    <string name="volume_unknown" msgid="1400219669770445902">"والیوم"</string>
+    <string name="volume_icon_description_bluetooth" msgid="6538894177255964340">"بلوٹوتھ کا والیوم"</string>
+    <string name="volume_icon_description_ringer" msgid="3326003847006162496">"رنگ ٹون کا والیوم"</string>
+    <string name="volume_icon_description_incall" msgid="8890073218154543397">"کال کا والیوم"</string>
+    <string name="volume_icon_description_media" msgid="4217311719665194215">"میڈیا والیوم"</string>
+    <string name="volume_icon_description_notification" msgid="7044986546477282274">"اطلاع کا والیوم"</string>
+    <string name="ringtone_default" msgid="3789758980357696936">"ڈیفالٹ رنگ ٹون"</string>
+    <string name="ringtone_default_with_actual" msgid="8129563480895990372">"ڈیفالٹ رنگ ٹون (<xliff:g id="ACTUAL_RINGTONE">%1$s</xliff:g>)"</string>
+    <string name="ringtone_silent" msgid="7937634392408977062">"کوئی نہیں"</string>
+    <string name="ringtone_picker_title" msgid="3515143939175119094">"رنگ ٹونز"</string>
+    <string name="ringtone_unknown" msgid="5477919988701784788">"نامعلوم رنگ ٹون"</string>
+    <plurals name="wifi_available" formatted="false" msgid="7900333017752027322">
+      <item quantity="other">‏Wi-Fi نیٹ ورکس دستیاب ہیں</item>
+      <item quantity="one">‏Wi-Fi نیٹ ورک دستیاب ہے</item>
+    </plurals>
+    <plurals name="wifi_available_detailed" formatted="false" msgid="1140699367193975606">
+      <item quantity="other">‏عوامی Wi-Fi نیٹ ورکس دستیاب ہیں</item>
+      <item quantity="one">‏عوامی Wi-Fi نیٹ ورک دستیاب ہے</item>
+    </plurals>
+    <string name="wifi_available_sign_in" msgid="9157196203958866662">"‏Wi-Fi نیٹ ورک میں سائن ان کریں"</string>
+    <string name="network_available_sign_in" msgid="1848877297365446605">"نیٹ ورک میں سائن ان کریں"</string>
+    <!-- no translation found for network_available_sign_in_detailed (8000081941447976118) -->
+    <skip />
+    <string name="wifi_no_internet" msgid="8451173622563841546">"‏Wi-Fi کی انٹرنیٹ تک رسائی نہیں ہے"</string>
+    <string name="wifi_no_internet_detailed" msgid="8083079241212301741">"اختیارات کیلئے تھپتھپائیں"</string>
+    <string name="network_switch_metered" msgid="4671730921726992671">"<xliff:g id="NETWORK_TYPE">%1$s</xliff:g> پر سوئچ ہو گیا"</string>
+    <string name="network_switch_metered_detail" msgid="5325661434777870353">"جب <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> کے پاس انٹرنیٹ تک رسائی نہ ہو تو آلہ <xliff:g id="NEW_NETWORK">%1$s</xliff:g> کو استعمال کرتا ہے۔ چارجز کا اطلاق ہو سکتا ہے۔"</string>
+    <string name="network_switch_metered_toast" msgid="5779283181685974304">"<xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> سے <xliff:g id="NEW_NETWORK">%2$s</xliff:g> پر سوئچ ہو گیا"</string>
+  <string-array name="network_switch_type_name">
+    <item msgid="2952042958050315394">"سیلولر ڈیٹا"</item>
+    <item msgid="75483255295529161">"Wi-Fi"</item>
+    <item msgid="6862614801537202646">"بلوٹوتھ"</item>
+    <item msgid="5447331121797802871">"ایتھرنیٹ"</item>
+    <item msgid="8257233890381651999">"VPN"</item>
+  </string-array>
+    <string name="network_switch_type_name_unknown" msgid="4552612897806660656">"نیٹ ورک کی نامعلوم قسم"</string>
+    <string name="wifi_watchdog_network_disabled" msgid="7904214231651546347">"‏Wi-Fi سے مربوط نہیں ہو سکا"</string>
+    <string name="wifi_watchdog_network_disabled_detailed" msgid="5548780776418332675">" اس میں ایک کمزور انٹرنیٹ کنکشن ہے۔"</string>
+    <string name="wifi_connect_alert_title" msgid="8455846016001810172">"کنکشن کی اجازت دیں؟"</string>
+    <string name="wifi_connect_alert_message" msgid="6451273376815958922">"‏ایپلیکیشن ‎%1$s Wifi نیٹ ورک ‎%2$s سے منسلک ہونا چاہتی ہے"</string>
+    <string name="wifi_connect_default_application" msgid="7143109390475484319">"ایک ایپلیکیشن"</string>
+    <string name="wifi_p2p_dialog_title" msgid="97611782659324517">"‏Wi-Fi ڈائریکٹ"</string>
+    <string name="wifi_p2p_turnon_message" msgid="2909250942299627244">"‏Wi-Fi ڈائرکٹ شروع کریں۔ یہ Wi-Fi کلائنٹ/ہاٹ اسپاٹ کو آف کردے گا۔"</string>
+    <string name="wifi_p2p_failed_message" msgid="3763669677935623084">"‏Wi-Fi ڈائرکٹ شروع نہیں کرسکا۔"</string>
+    <string name="wifi_p2p_enabled_notification_title" msgid="2068321881673734886">"‏Wi-Fi Direct آن ہے"</string>
+    <string name="wifi_p2p_enabled_notification_message" msgid="8064677407830620023">"ترتیبات کیلئے تھپتھپائیں"</string>
+    <string name="accept" msgid="1645267259272829559">"قبول کریں"</string>
+    <string name="decline" msgid="2112225451706137894">"مسترد کریں"</string>
+    <string name="wifi_p2p_invitation_sent_title" msgid="1318975185112070734">"دعوت بھیج دی گئی"</string>
+    <string name="wifi_p2p_invitation_to_connect_title" msgid="4958803948658533637">"مربوط ہونے کی دعوت"</string>
+    <string name="wifi_p2p_from_message" msgid="570389174731951769">"منجانب:"</string>
+    <string name="wifi_p2p_to_message" msgid="248968974522044099">"بنام:"</string>
+    <string name="wifi_p2p_enter_pin_message" msgid="5920929550367828970">"‏مطلوبہ PIN ٹائپ کریں:"</string>
+    <string name="wifi_p2p_show_pin_message" msgid="8530563323880921094">"PIN:"</string>
+    <string name="wifi_p2p_frequency_conflict_message" product="tablet" msgid="8012981257742232475">"‏ٹیبلیٹ <xliff:g id="DEVICE_NAME">%1$s</xliff:g> سے مربوط ہونے پر عارضی طور پر Wi-Fi سے منقطع ہو جائے گا"</string>
+    <string name="wifi_p2p_frequency_conflict_message" product="tv" msgid="3087858235069421128">"‏<xliff:g id="DEVICE_NAME">%1$s</xliff:g> سے مربوط رہتے ہوئےTV عارضی طور پر Wi-Fi سے منقطع ہو جائے گا۔"</string>
+    <string name="wifi_p2p_frequency_conflict_message" product="default" msgid="7363907213787469151">"‏فون <xliff:g id="DEVICE_NAME">%1$s</xliff:g> سے مربوط رہنے کے وقت عارضی طور پر Wi-Fi سے منقطع ہوجائے گا"</string>
+    <string name="select_character" msgid="3365550120617701745">"حرف داخل کریں"</string>
+    <string name="sms_control_title" msgid="7296612781128917719">"‏SMS پیغامات بھیج رہا ہے"</string>
+    <string name="sms_control_message" msgid="3867899169651496433">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; بڑی تعداد میں SMS پیغامات بھیج رہی ہے۔ کیا آپ اس ایپ کو پیغامات بھیجتے رہنے کی اجازت دینا چاہتے ہیں؟"</string>
+    <string name="sms_control_yes" msgid="3663725993855816807">"اجازت دیں"</string>
+    <string name="sms_control_no" msgid="625438561395534982">"رد کریں"</string>
+    <string name="sms_short_code_confirm_message" msgid="1645436466285310855">"‏&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; &lt;b&gt;<xliff:g id="DEST_ADDRESS">%2$s</xliff:g>&lt;/b&gt; کو ایک پیغام بھیجنا چاہے گا۔"</string>
+    <string name="sms_short_code_details" msgid="5873295990846059400">"اس کی وجہ سے آپ کے موبائل اکاؤنٹ پر "<b>"چارجز لگ سکتے ہیں"</b>"۔"</string>
+    <string name="sms_premium_short_code_details" msgid="7869234868023975"><b>"اس کی وجہ سے آپ کے موبائل اکاؤنٹ پر چارجز لگیں گے۔"</b></string>
+    <string name="sms_short_code_confirm_allow" msgid="4458878637111023413">"بھیجیں"</string>
+    <string name="sms_short_code_confirm_deny" msgid="2927389840209170706">"منسوخ کریں"</string>
+    <string name="sms_short_code_remember_choice" msgid="5289538592272218136">"میری پسند یاد رکھیں"</string>
+    <string name="sms_short_code_remember_undo_instruction" msgid="4960944133052287484">"آپ اسے ترتیبات &gt; ایپس میں تبدیل کرسکتے ہیں"</string>
+    <string name="sms_short_code_confirm_always_allow" msgid="3241181154869493368">"ہمیشہ اجازت دیں"</string>
+    <string name="sms_short_code_confirm_never_allow" msgid="446992765774269673">"کبھی بھی اجازت نہ دیں"</string>
+    <string name="sim_removed_title" msgid="6227712319223226185">"‏SIM کارڈ ہٹا دیا گیا"</string>
+    <string name="sim_removed_message" msgid="5450336489923274918">"‏سیلولر نیٹ ورک اس وقت تک دستیاب نہیں ہو گا جب تک آپ ایک درست SIM داخل کرکے اسے دوبارہ سٹارٹ نہ کریں۔"</string>
+    <string name="sim_done_button" msgid="827949989369963775">"ہو گیا"</string>
+    <string name="sim_added_title" msgid="3719670512889674693">"‏SIM شامل کیا گیا"</string>
+    <string name="sim_added_message" msgid="7797975656153714319">"سیلولر نیٹ ورک تک رسائی کیلئے اپنا آلہ دوبارہ سٹارٹ کریں۔"</string>
+    <string name="sim_restart_button" msgid="4722407842815232347">"دوبارہ شروع کریں"</string>
+    <string name="carrier_app_dialog_message" msgid="7066156088266319533">"‏آپکی نئی SIM کو ٹھیک طرح سے کام کرنے کیلئے آپ کو اپنے کیرئیر سے کوئی ایپ انسٹال کرکے کھولنا ہوگی۔"</string>
+    <string name="carrier_app_dialog_button" msgid="7900235513678617329">"ایپ حاصل کریں"</string>
+    <string name="carrier_app_dialog_not_now" msgid="6361378684292268027">"ابھی نہیں"</string>
+    <string name="carrier_app_notification_title" msgid="8921767385872554621">"‏نئی SIM داخل ہو گئی"</string>
+    <string name="carrier_app_notification_text" msgid="1132487343346050225">"اسے سیٹ اپ کرنے کیلئے تھپتھپائیں"</string>
+    <string name="time_picker_dialog_title" msgid="8349362623068819295">"وقت سیٹ کریں"</string>
+    <string name="date_picker_dialog_title" msgid="5879450659453782278">"تاریخ سیٹ کریں"</string>
+    <string name="date_time_set" msgid="5777075614321087758">"سیٹ کریں"</string>
+    <string name="date_time_done" msgid="2507683751759308828">"ہو گیا"</string>
+    <string name="perms_new_perm_prefix" msgid="8257740710754301407"><font size="12" fgcolor="#ff33b5e5">"نیا: "</font></string>
+    <string name="perms_description_app" msgid="5139836143293299417">"<xliff:g id="APP_NAME">%1$s</xliff:g> کے ذریعہ فراہم کردہ۔"</string>
+    <string name="no_permissions" msgid="7283357728219338112">"کوئی اجازتیں درکار نہیں ہیں"</string>
+    <string name="perm_costs_money" msgid="4902470324142151116">"اس میں آپ کا پیسہ خرچ ہو سکتا ہے"</string>
+    <string name="dlg_ok" msgid="7376953167039865701">"ٹھیک ہے"</string>
+    <string name="usb_charging_notification_title" msgid="6895185153353640787">"‏USB اس آلے کو چارج کر رہی ہے"</string>
+    <string name="usb_supplying_notification_title" msgid="5310642257296510271">"‏منسلکہ آلے کو USB پاور سپلائی کر رہی ہے"</string>
+    <string name="usb_mtp_notification_title" msgid="8396264943589760855">"‏فائل کی منتقلی کیلئے USB"</string>
+    <string name="usb_ptp_notification_title" msgid="1347328437083192112">"‏تصویر کی منتقلی کیلئے USB"</string>
+    <string name="usb_midi_notification_title" msgid="4850904915889144654">"‏MIDI کیلئے USB"</string>
+    <string name="usb_accessory_notification_title" msgid="7848236974087653666">"‏ایک USB لوازم سے مربوط ہے"</string>
+    <string name="usb_notification_message" msgid="3370903770828407960">"مزید اختیارات کیلئے تھپتھپائیں۔"</string>
+    <string name="adb_active_notification_title" msgid="6729044778949189918">"‏USB ڈیبگ کرنا مربوط ہو گیا"</string>
+    <string name="adb_active_notification_message" msgid="4948470599328424059">"‏USB ڈیبگنگ کو غیر فعال کرنے کیلئے تھپتھپائیں۔"</string>
+    <string name="taking_remote_bugreport_notification_title" msgid="6742483073875060934">"بگ رپورٹ لی جا رہی ہے…"</string>
+    <string name="share_remote_bugreport_notification_title" msgid="4987095013583691873">"بگ رپورٹ کا اشتراک کریں؟"</string>
+    <string name="sharing_remote_bugreport_notification_title" msgid="7572089031496651372">"بگ رپورٹ کا اشتراک ہو رہا ہے…"</string>
+    <string name="share_remote_bugreport_notification_message_finished" msgid="8610614010660772643">"‏آپ کے IT منتظم نے اس آلہ کا مسئلہ حل کرنے میں مدد کیلئے ایک بگ رپورٹ کی درخواست کی ہے۔ ایپس اور ڈیٹا کا اشتراک ہو سکتا ہے۔"</string>
+    <string name="share_remote_bugreport_action" msgid="6249476773913384948">"اشتراک کریں"</string>
+    <string name="decline_remote_bugreport_action" msgid="6230987241608770062">"مسترد کریں"</string>
+    <string name="select_input_method" msgid="8547250819326693584">"کی بورڈ تبدیل کریں"</string>
+    <string name="show_ime" msgid="2506087537466597099">"‏جب فزیکل کی بورڈ فعال ہو تو IME کو اسکرین پر رکھیں"</string>
+    <string name="hardware" msgid="194658061510127999">"ورچوئل کی بورڈ دکھائیں"</string>
+    <string name="select_keyboard_layout_notification_title" msgid="597189518763083494">"فزیکل کی بورڈ کنفیگر کریں"</string>
+    <string name="select_keyboard_layout_notification_message" msgid="8084622969903004900">"زبان اور لے آؤٹ منتخب کرنے کیلئے تھپتھپائیں"</string>
+    <string name="fast_scroll_alphabet" msgid="5433275485499039199">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="fast_scroll_numeric_alphabet" msgid="4030170524595123610">" 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="ext_media_checking_notification_title" msgid="5734005953288045806">"<xliff:g id="NAME">%s</xliff:g> تیار کیا جا رہا ہے"</string>
+    <string name="ext_media_checking_notification_message" msgid="4747432538578886744">"خرابیوں کیلئے چیک کیا جا رہا ہے"</string>
+    <string name="ext_media_new_notification_message" msgid="7589986898808506239">"نئے <xliff:g id="NAME">%s</xliff:g> کا پتا چلا"</string>
+    <string name="ext_media_ready_notification_message" msgid="4083398150380114462">"تصاویر اور میڈیا منتقل کرنے کیلئے"</string>
+    <string name="ext_media_unmountable_notification_title" msgid="8295123366236989588">"خراب شدہ <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="ext_media_unmountable_notification_message" msgid="2343202057122495773">"<xliff:g id="NAME">%s</xliff:g> خراب ہے۔ اسے ٹھیک کرنے کیلئے تھپتھپائیں۔"</string>
+    <string name="ext_media_unsupported_notification_title" msgid="3797642322958803257">"غیر تعاون یافتہ <xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="ext_media_unsupported_notification_message" msgid="6121601473787888589">"یہ آلہ <xliff:g id="NAME">%s</xliff:g> کو سپورٹ نہیں کرتا۔ ایک سپورٹ یافتہ فارمیٹ میں سیٹ اپ کرنے کیلئے تھپتھپائیں۔"</string>
+    <string name="ext_media_badremoval_notification_title" msgid="3206248947375505416">"<xliff:g id="NAME">%s</xliff:g> غیر متوقع طور پر ہٹا دیا گیا"</string>
+    <string name="ext_media_badremoval_notification_message" msgid="380176703346946313">"ڈیٹا ضائع ہونے سے بچانے کیلئے ہٹانے سے پہلے <xliff:g id="NAME">%s</xliff:g> کو اَن ماؤنٹ کریں"</string>
+    <string name="ext_media_nomedia_notification_title" msgid="1704840188641749091">"<xliff:g id="NAME">%s</xliff:g> کو ہٹا دیا گیا"</string>
+    <string name="ext_media_nomedia_notification_message" msgid="6471542972147056586">"<xliff:g id="NAME">%s</xliff:g> کو ہٹا دیا گیا؛ ایک نیا داخل کریں"</string>
+    <string name="ext_media_unmounting_notification_title" msgid="640674168454809372">"ابھی بھی <xliff:g id="NAME">%s</xliff:g> کو خارج کر رہا ہے…"</string>
+    <string name="ext_media_unmounting_notification_message" msgid="4182843895023357756">"نہ ہٹائیں"</string>
+    <string name="ext_media_init_action" msgid="7952885510091978278">"سیٹ اپ کریں"</string>
+    <string name="ext_media_unmount_action" msgid="1121883233103278199">"خارج کریں"</string>
+    <string name="ext_media_browse_action" msgid="8322172381028546087">"دریافت کریں"</string>
+    <string name="ext_media_missing_title" msgid="620980315821543904">"<xliff:g id="NAME">%s</xliff:g> غائب ہے"</string>
+    <string name="ext_media_missing_message" msgid="5761133583368750174">"اس آلہ کو دوبارہ داخل کریں"</string>
+    <string name="ext_media_move_specific_title" msgid="1471100343872375842">"<xliff:g id="NAME">%s</xliff:g> کو منتقل کیا جا رہا ہے"</string>
+    <string name="ext_media_move_title" msgid="1022809140035962662">"ڈیٹا منتقل کیا جا رہا ہے…"</string>
+    <string name="ext_media_move_success_title" msgid="8575300932957954671">"منتقل کرنا مکمل ہوگیا"</string>
+    <string name="ext_media_move_success_message" msgid="4199002148206265426">"ڈیٹا کو <xliff:g id="NAME">%s</xliff:g> پر منتقل کر دیا گیا"</string>
+    <string name="ext_media_move_failure_title" msgid="7613189040358789908">"ڈیٹا منتقل نہیں کیا جا سکا"</string>
+    <string name="ext_media_move_failure_message" msgid="1978096440816403360">"ڈیٹا اصل جگہ پر باقی ہے"</string>
+    <string name="ext_media_status_removed" msgid="6576172423185918739">"ہٹا دیا گیا"</string>
+    <string name="ext_media_status_unmounted" msgid="2551560878416417752">"اخراج شدہ"</string>
+    <string name="ext_media_status_checking" msgid="6193921557423194949">"چیک کیا جا رہا ہے…"</string>
+    <string name="ext_media_status_mounted" msgid="7253821726503179202">"تیار"</string>
+    <string name="ext_media_status_mounted_ro" msgid="8020978752406021015">"صرف پڑھنے کیلئے"</string>
+    <string name="ext_media_status_bad_removal" msgid="8395398567890329422">"غیر محفوظ طریقے سے ہٹا لی گئی"</string>
+    <string name="ext_media_status_unmountable" msgid="805594039236667894">"خراب شدہ"</string>
+    <string name="ext_media_status_unsupported" msgid="4691436711745681828">"غیر تعاون یافتہ"</string>
+    <string name="ext_media_status_ejecting" msgid="5463887263101234174">"اخراج کیا جا رہا ہے…"</string>
+    <string name="ext_media_status_formatting" msgid="1085079556538644861">"فارمیٹ کیا جا رہا ہے…"</string>
+    <string name="ext_media_status_missing" msgid="5638633895221670766">"دلچسپی نہیں ہے"</string>
+    <string name="activity_list_empty" msgid="1675388330786841066">"کوئی مماثل سرگرمیاں نہیں ملیں۔"</string>
+    <string name="permlab_route_media_output" msgid="6243022988998972085">"میڈیا آؤٹ پٹ کی سمت طے کریں"</string>
+    <string name="permdesc_route_media_output" msgid="4932818749547244346">"کسی ایپلیکیشن کو دوسرے خارجی آلات تک میڈیا آؤٹ پٹ کا راستہ بنانے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_readInstallSessions" msgid="3713753067455750349">"انسٹال سیشنز پڑھیں"</string>
+    <string name="permdesc_readInstallSessions" msgid="2049771699626019849">"ایک ایپلیکیشن کو انسٹال سیشنز پڑھنے کی اجازت دیتا ہے۔ یہ اسے فعال پیکیج انسٹالیشنز کے بارے میں تفصیلات دیکھنے کی اجازت دیتا ہے۔"</string>
+    <string name="permlab_requestInstallPackages" msgid="5782013576218172577">"پیکجز انسٹال کرنے کی درخواست کریں"</string>
+    <string name="permdesc_requestInstallPackages" msgid="5740101072486783082">"ایک ایپلیکیشن کو پیکجز انسٹال کرنے کی اجازت دیتی ہے۔"</string>
+    <string name="tutorial_double_tap_to_zoom_message_short" msgid="1311810005957319690">"زوم کنٹرول کیلئے دوبار تھپتھپائیں"</string>
+    <string name="gadget_host_error_inflating" msgid="4882004314906466162">"ویجٹس کو شامل نہیں کرسکا۔"</string>
+    <string name="ime_action_go" msgid="8320845651737369027">"جائیں"</string>
+    <string name="ime_action_search" msgid="658110271822807811">"تلاش کریں"</string>
+    <string name="ime_action_send" msgid="2316166556349314424">"بھیجیں"</string>
+    <string name="ime_action_next" msgid="3138843904009813834">"اگلا"</string>
+    <string name="ime_action_done" msgid="8971516117910934605">"ہو گیا"</string>
+    <string name="ime_action_previous" msgid="1443550039250105948">"پچھلا"</string>
+    <string name="ime_action_default" msgid="2840921885558045721">"عمل میں لائیں"</string>
+    <string name="dial_number_using" msgid="5789176425167573586">"<xliff:g id="NUMBER">%s</xliff:g> کا استعمال کرکے\nنمبر ڈائل کریں"</string>
+    <string name="create_contact_using" msgid="4947405226788104538">"<xliff:g id="NUMBER">%s</xliff:g> کا استعمال کرکے\nرابطہ تخلیق کریں"</string>
+    <string name="grant_credentials_permission_message_header" msgid="2106103817937859662">"مندرجہ ذیل ایک یا زیادہ ایپس کو ابھی اور مستقبل میں آپ کے اکاؤنٹ تک رسائی کی اجازت درکار ہے۔"</string>
+    <string name="grant_credentials_permission_message_footer" msgid="3125211343379376561">"کیا آپ اس درخواست کی اجازت دینا چاہتے ہیں؟"</string>
+    <string name="grant_permissions_header_text" msgid="6874497408201826708">"رسائی کی درخواست"</string>
+    <string name="allow" msgid="7225948811296386551">"اجازت دیں"</string>
+    <string name="deny" msgid="2081879885755434506">"مسترد کریں"</string>
+    <string name="permission_request_notification_title" msgid="6486759795926237907">"اجازت طلب کی گئی"</string>
+    <string name="permission_request_notification_with_subtitle" msgid="8530393139639560189">"اکاؤنٹ <xliff:g id="ACCOUNT">%s</xliff:g> کیلئے\nاجازت طلب کی گئی۔"</string>
+    <string name="forward_intent_to_owner" msgid="1207197447013960896">"آپ اس ایپ کا استعمال اپنے دفتری پروفائل کے باہر کر رہے ہیں"</string>
+    <string name="forward_intent_to_work" msgid="621480743856004612">"آپ اس ایپ کو اپنے دفتری پروفائل میں استعمال کر رہے ہیں"</string>
+    <string name="input_method_binding_label" msgid="1283557179944992649">"اندراج کا طریقہ"</string>
+    <string name="sync_binding_label" msgid="3687969138375092423">"مطابقت پذیری کریں"</string>
+    <string name="accessibility_binding_label" msgid="4148120742096474641">"Accessibility"</string>
+    <string name="wallpaper_binding_label" msgid="1240087844304687662">"وال پیپر"</string>
+    <string name="chooser_wallpaper" msgid="7873476199295190279">"وال پیپر تبدیل کریں"</string>
+    <string name="notification_listener_binding_label" msgid="2014162835481906429">"اطلاع سننے والا"</string>
+    <string name="vr_listener_binding_label" msgid="4316591939343607306">"‏VR سامع"</string>
+    <string name="condition_provider_service_binding_label" msgid="1321343352906524564">"شرط فراہم کنندہ"</string>
+    <string name="notification_ranker_binding_label" msgid="774540592299064747">"اطلاع کی درجہ بندی سروس"</string>
+    <string name="vpn_title" msgid="19615213552042827">"‏VPN فعال ہوگیا"</string>
+    <string name="vpn_title_long" msgid="6400714798049252294">"‏<xliff:g id="APP">%s</xliff:g> کے ذریعہ VPN فعال ہے"</string>
+    <string name="vpn_text" msgid="1610714069627824309">"نیٹ ورک نظم کرنے کیلئے تھپتھپائیں۔"</string>
+    <string name="vpn_text_long" msgid="4907843483284977618">"<xliff:g id="SESSION">%s</xliff:g> سے منسلک ہے۔ نیٹ ورک کا نظم کرنے کیلئے تھپتھپائیں۔"</string>
+    <string name="vpn_lockdown_connecting" msgid="6443438964440960745">"‏ہمیشہ آن VPN مربوط ہو رہا ہے…"</string>
+    <string name="vpn_lockdown_connected" msgid="8202679674819213931">"‏ہمیشہ آن VPN مربوط ہوگیا"</string>
+    <string name="vpn_lockdown_disconnected" msgid="4532298952570796327">"‏ہمیشہ آن VPN غیر منسلک ہو گیا"</string>
+    <string name="vpn_lockdown_error" msgid="6009249814034708175">"‏ہمیشہ آن VPN کی خرابی"</string>
+    <string name="vpn_lockdown_config" msgid="5099330695245008680">"سیٹ اپ کرنے کیلئے تھپتھپائیں"</string>
+    <string name="upload_file" msgid="2897957172366730416">"فائل منتخب کریں"</string>
+    <string name="no_file_chosen" msgid="6363648562170759465">"کوئی فائل منتخب نہیں کی گئی"</string>
+    <string name="reset" msgid="2448168080964209908">"دوبارہ ترتیب دیں"</string>
+    <string name="submit" msgid="1602335572089911941">"جمع کرائیں"</string>
+    <string name="car_mode_disable_notification_title" msgid="3164768212003864316">"کار وضع فعال ہے"</string>
+    <string name="car_mode_disable_notification_message" msgid="6301524980144350051">"کار موڈ سے خارج ہونے کیلئے تھپتھپائیں۔"</string>
+    <string name="tethered_notification_title" msgid="3146694234398202601">"ربط بنانا یا ہاٹ اسپاٹ فعال"</string>
+    <string name="tethered_notification_message" msgid="2113628520792055377">"سیٹ اپ کرنے کیلئے تھپتھپائیں۔"</string>
+    <string name="back_button_label" msgid="2300470004503343439">"واپس جائیں"</string>
+    <string name="next_button_label" msgid="1080555104677992408">"اگلا"</string>
+    <string name="skip_button_label" msgid="1275362299471631819">"نظر انداز کریں"</string>
+    <string name="no_matches" msgid="8129421908915840737">"کوئی مماثلتیں نہیں ہیں"</string>
+    <string name="find_on_page" msgid="1946799233822820384">"صفحہ پر تلاش کریں"</string>
+    <plurals name="matches_found" formatted="false" msgid="1210884353962081884">
+      <item quantity="other"><xliff:g id="INDEX">%d</xliff:g> از <xliff:g id="TOTAL">%d</xliff:g></item>
+      <item quantity="one">1 مماثلت</item>
+    </plurals>
+    <string name="action_mode_done" msgid="7217581640461922289">"ہو گیا"</string>
+    <string name="progress_erasing" product="nosdcard" msgid="4521573321524340058">"‏USB اسٹوریج کو مٹا رہا ہے…"</string>
+    <string name="progress_erasing" product="default" msgid="6596988875507043042">"‏SD کارڈ کو مٹا رہا ہے…"</string>
+    <string name="share" msgid="1778686618230011964">"اشتراک کریں"</string>
+    <string name="find" msgid="4808270900322985960">"تلاش کریں"</string>
+    <string name="websearch" msgid="4337157977400211589">"ویب تلاش"</string>
+    <string name="find_next" msgid="5742124618942193978">"اگلی تلاش کریں"</string>
+    <string name="find_previous" msgid="2196723669388360506">"پچھلی تلاش کریں"</string>
+    <string name="gpsNotifTicker" msgid="5622683912616496172">"<xliff:g id="NAME">%s</xliff:g> سے مقام کی درخواست"</string>
+    <string name="gpsNotifTitle" msgid="5446858717157416839">"مقام کی درخواست"</string>
+    <string name="gpsNotifMessage" msgid="1374718023224000702">"درخواست کردہ بذریعہ <xliff:g id="NAME">%1$s</xliff:g> (<xliff:g id="SERVICE">%2$s</xliff:g>)"</string>
+    <string name="gpsVerifYes" msgid="2346566072867213563">"ہاں"</string>
+    <string name="gpsVerifNo" msgid="1146564937346454865">"نہیں"</string>
+    <string name="sync_too_many_deletes" msgid="5296321850662746890">"حذف کرنے کی حد سے متجاوز ہو گیا"</string>
+    <string name="sync_too_many_deletes_desc" msgid="496551671008694245">"<xliff:g id="TYPE_OF_SYNC">%2$s</xliff:g>، اکاؤنٹ <xliff:g id="ACCOUNT_NAME">%3$s</xliff:g> کیلئے <xliff:g id="NUMBER_OF_DELETED_ITEMS">%1$d</xliff:g> حذف کردہ آئٹمز ہیں۔ آپ کیا کرنا چاہتے ہیں؟"</string>
+    <string name="sync_really_delete" msgid="2572600103122596243">"آئٹمز حذف کریں"</string>
+    <string name="sync_undo_deletes" msgid="2941317360600338602">"تنسیخوں کو رد کریں"</string>
+    <string name="sync_do_nothing" msgid="3743764740430821845">"ابھی کچھ نہ کریں"</string>
+    <string name="choose_account_label" msgid="5655203089746423927">"ایک اکاؤنٹ منتخب کریں"</string>
+    <string name="add_account_label" msgid="2935267344849993553">"ایک اکاؤنٹ شامل کریں"</string>
+    <string name="add_account_button_label" msgid="3611982894853435874">"اکاؤنٹ شامل کریں"</string>
+    <string name="number_picker_increment_button" msgid="2412072272832284313">"بڑھائیں"</string>
+    <string name="number_picker_decrement_button" msgid="476050778386779067">"گھٹائیں"</string>
+    <string name="number_picker_increment_scroll_mode" msgid="5259126567490114216">"<xliff:g id="VALUE">%s</xliff:g> تھپتھپائیں اور دبائے رکھیں۔"</string>
+    <string name="number_picker_increment_scroll_action" msgid="9101473045891835490">"بڑھانے کیلئے اوپر اور گھٹانے کیلئے نیچے سلائیڈ کریں۔"</string>
+    <string name="time_picker_increment_minute_button" msgid="8865885114028614321">"منٹ بڑھائیں"</string>
+    <string name="time_picker_decrement_minute_button" msgid="6246834937080684791">"منٹ گھٹائیں"</string>
+    <string name="time_picker_increment_hour_button" msgid="3652056055810223139">"گھنٹہ بڑھائیں"</string>
+    <string name="time_picker_decrement_hour_button" msgid="1377479863429214792">"گھنٹہ گھٹائیں"</string>
+    <string name="time_picker_increment_set_pm_button" msgid="4147590696151230863">"‏PM سیٹ کریں"</string>
+    <string name="time_picker_decrement_set_am_button" msgid="8302140353539486752">"قبل از دوپہر سیٹ کریں"</string>
+    <string name="date_picker_increment_month_button" msgid="5369998479067934110">"ماہ بڑھائیں"</string>
+    <string name="date_picker_decrement_month_button" msgid="1832698995541726019">"ماہ گھٹائیں"</string>
+    <string name="date_picker_increment_day_button" msgid="7130465412308173903">"دن بڑھائیں"</string>
+    <string name="date_picker_decrement_day_button" msgid="4131881521818750031">"دن گھٹائیں"</string>
+    <string name="date_picker_increment_year_button" msgid="6318697384310808899">"سال بڑھائیں"</string>
+    <string name="date_picker_decrement_year_button" msgid="4482021813491121717">"سال گھٹائیں"</string>
+    <string name="date_picker_prev_month_button" msgid="2858244643992056505">"پچھلا مہینہ"</string>
+    <string name="date_picker_next_month_button" msgid="5559507736887605055">"اگلا مہینہ"</string>
+    <string name="keyboardview_keycode_alt" msgid="4856868820040051939">"Alt"</string>
+    <string name="keyboardview_keycode_cancel" msgid="1203984017245783244">"منسوخ کریں"</string>
+    <string name="keyboardview_keycode_delete" msgid="3337914833206635744">"حذف کریں"</string>
+    <string name="keyboardview_keycode_done" msgid="1992571118466679775">"ہو گیا"</string>
+    <string name="keyboardview_keycode_mode_change" msgid="4547387741906537519">"وضع میں تبدیلی"</string>
+    <string name="keyboardview_keycode_shift" msgid="2270748814315147690">"Shift"</string>
+    <string name="keyboardview_keycode_enter" msgid="2985864015076059467">"Enter"</string>
+    <string name="activitychooserview_choose_application" msgid="2125168057199941199">"ایک ایپ منتخب کریں"</string>
+    <string name="activitychooserview_choose_application_error" msgid="8624618365481126668">"<xliff:g id="APPLICATION_NAME">%s</xliff:g> کو شروع نہیں کر سکا"</string>
+    <string name="shareactionprovider_share_with" msgid="806688056141131819">"اس کے ساتھ اشتراک کریں"</string>
+    <string name="shareactionprovider_share_with_application" msgid="5627411384638389738">"<xliff:g id="APPLICATION_NAME">%s</xliff:g> کے ساتھ اشتراک کریں"</string>
+    <string name="content_description_sliding_handle" msgid="415975056159262248">"سلائیڈنگ ہینڈل۔ ٹچ کریں اور پکڑ کر رکھیں۔"</string>
+    <string name="description_target_unlock_tablet" msgid="3833195335629795055">"غیر مقفل کرنے کیلئے سوائپ کریں۔"</string>
+    <string name="keyboard_headset_required_to_hear_password" msgid="7011927352267668657">"بولی گئی پاس ورڈ کلیدیں سننے کیلئے ایک ہیڈ سیٹ لگائیں۔"</string>
+    <string name="keyboard_password_character_no_headset" msgid="2859873770886153678">"ڈاٹ۔"</string>
+    <string name="action_bar_home_description" msgid="5293600496601490216">"ہوم پر نیویگیٹ کریں"</string>
+    <string name="action_bar_up_description" msgid="2237496562952152589">"اوپر نیویگیٹ کریں"</string>
+    <string name="action_menu_overflow_description" msgid="2295659037509008453">"مزید اختیارات"</string>
+    <string name="action_bar_home_description_format" msgid="7965984360903693903">"%1$s, %2$s"</string>
+    <string name="action_bar_home_subtitle_description_format" msgid="6985546530471780727">"%1$s, %2$s, %3$s"</string>
+    <string name="storage_internal" msgid="3570990907910199483">"اندرونی اشتراک کردہ اسٹوریج"</string>
+    <string name="storage_sd_card" msgid="3282948861378286745">"‏SD کارڈ"</string>
+    <string name="storage_sd_card_label" msgid="6347111320774379257">"‏<xliff:g id="MANUFACTURER">%s</xliff:g> SD کارڈ"</string>
+    <string name="storage_usb_drive" msgid="6261899683292244209">"‏USB ڈرائیو"</string>
+    <string name="storage_usb_drive_label" msgid="4501418548927759953">"‏<xliff:g id="MANUFACTURER">%s</xliff:g> USB ڈرائیو"</string>
+    <string name="storage_usb" msgid="3017954059538517278">"‏USB اسٹوریج"</string>
+    <string name="extract_edit_menu_button" msgid="8940478730496610137">"ترمیم کریں"</string>
+    <string name="data_usage_warning_title" msgid="1955638862122232342">"ڈیٹا کے استعمال کی وارننگ"</string>
+    <string name="data_usage_warning_body" msgid="6660692274311972007">"استعمال اور ترتیبات دیکھنے کیلئے تھپتھپائیں۔"</string>
+    <string name="data_usage_3g_limit_title" msgid="4361523876818447683">"‏2G-3G ڈیٹا کی حد کو پہنچ گیا"</string>
+    <string name="data_usage_4g_limit_title" msgid="4609566827219442376">"‏4G ڈیٹا کی حد کو پہنچ گیا"</string>
+    <string name="data_usage_mobile_limit_title" msgid="557158376602636112">"سیلولر ڈیٹا کی حد کو پہنچ گیا"</string>
+    <string name="data_usage_wifi_limit_title" msgid="5803363779034792676">"‏Wi-Fi ڈیٹا کی حد کو پہنچ گیا"</string>
+    <string name="data_usage_limit_body" msgid="291731708279614081">"باقی دور کیلئے ڈیٹا موقوف کر دیا"</string>
+    <string name="data_usage_3g_limit_snoozed_title" msgid="7026739121138005231">"‏2G-3G ڈیٹا حد سے متجاوز ہو گیا"</string>
+    <string name="data_usage_4g_limit_snoozed_title" msgid="1106562779311209039">"‏4G ڈیٹا حد سے متجاوز ہو گیا"</string>
+    <string name="data_usage_mobile_limit_snoozed_title" msgid="4941346653729943789">"سیلولر ڈیٹا کی حد سے تجاوز کرگیا"</string>
+    <string name="data_usage_wifi_limit_snoozed_title" msgid="8743856006384825974">"‏Wi-Fi ڈیٹا حد سے متجاوز ہو گیا"</string>
+    <string name="data_usage_limit_snoozed_body" msgid="7035490278298441767">"<xliff:g id="SIZE">%s</xliff:g> متعینہ حد سے زیادہ ہے۔"</string>
+    <string name="data_usage_restricted_title" msgid="5965157361036321914">"پس منظر ڈیٹا محدود ہے"</string>
+    <string name="data_usage_restricted_body" msgid="469866376337242726">"حد بندی ہٹانے کیلئے تھپتھپائیں۔"</string>
+    <string name="ssl_certificate" msgid="6510040486049237639">"سیکیورٹی سرٹیفیکیٹ"</string>
+    <string name="ssl_certificate_is_valid" msgid="6825263250774569373">"یہ سرٹیفکیٹ درست ہے۔"</string>
+    <string name="issued_to" msgid="454239480274921032">"جاری کردہ بنام:"</string>
+    <string name="common_name" msgid="2233209299434172646">"عام نام:"</string>
+    <string name="org_name" msgid="6973561190762085236">"تنظیم:"</string>
+    <string name="org_unit" msgid="7265981890422070383">"تنظیمی یونٹ:"</string>
+    <string name="issued_by" msgid="2647584988057481566">"جاری کیا گیا بذریعہ:"</string>
+    <string name="validity_period" msgid="8818886137545983110">"استعمال کی میعاد:"</string>
+    <string name="issued_on" msgid="5895017404361397232">"جاری ہونے کی تاریخ:"</string>
+    <string name="expires_on" msgid="3676242949915959821">"میعاد کا اختتام:"</string>
+    <string name="serial_number" msgid="758814067660862493">"سیریل نمبر:"</string>
+    <string name="fingerprints" msgid="4516019619850763049">"فنگر پرنٹس:"</string>
+    <string name="sha256_fingerprint" msgid="4391271286477279263">"‏SHA-256 فنگر پرنٹ:"</string>
+    <string name="sha1_fingerprint" msgid="7930330235269404581">"‏SHA-1 فنگر پرنٹ:"</string>
+    <string name="activity_chooser_view_see_all" msgid="4292569383976636200">"سبھی دیکھیں"</string>
+    <string name="activity_chooser_view_dialog_title_default" msgid="4710013864974040615">"سرگرمی منتخب کریں"</string>
+    <string name="share_action_provider_share_with" msgid="5247684435979149216">"اس کے ساتھ اشتراک کریں"</string>
+    <string name="sending" msgid="3245653681008218030">"بھیج رہا ہے…"</string>
+    <string name="launchBrowserDefault" msgid="2057951947297614725">"براؤزر شروع کریں؟"</string>
+    <string name="SetupCallDefault" msgid="5834948469253758575">"کال قبول کریں؟"</string>
+    <string name="activity_resolver_use_always" msgid="8017770747801494933">"ہمیشہ"</string>
+    <string name="activity_resolver_use_once" msgid="2404644797149173758">"بس ایک مرتبہ"</string>
+    <string name="activity_resolver_work_profiles_support" msgid="185598180676883455">"‏%1$s دفتری پروفائل کا تعاون نہیں کرتا ہے"</string>
+    <string name="default_audio_route_name" product="tablet" msgid="4617053898167127471">"ٹیبلیٹ"</string>
+    <string name="default_audio_route_name" product="tv" msgid="9158088547603019321">"TV"</string>
+    <string name="default_audio_route_name" product="default" msgid="4239291273420140123">"فون"</string>
+    <string name="default_audio_route_name_headphones" msgid="8119971843803439110">"ہیڈ فونز"</string>
+    <string name="default_audio_route_name_dock_speakers" msgid="6240602982276591864">"ڈاک اسپیکرز"</string>
+    <string name="default_media_route_name_hdmi" msgid="2450970399023478055">"HDMI"</string>
+    <string name="default_audio_route_category_name" msgid="3722811174003886946">"سسٹم"</string>
+    <string name="bluetooth_a2dp_audio_route_name" msgid="8575624030406771015">"بلوٹوتھ آڈیو"</string>
+    <string name="wireless_display_route_description" msgid="9070346425023979651">"وائرلیس ڈسپلے"</string>
+    <string name="media_route_button_content_description" msgid="591703006349356016">"کاسٹ کریں"</string>
+    <string name="media_route_chooser_title" msgid="1751618554539087622">"آلہ سے مربوط ہوں"</string>
+    <string name="media_route_chooser_title_for_remote_display" msgid="3395541745872017583">"اسکرین کو آلہ پر کاسٹ کریں"</string>
+    <string name="media_route_chooser_searching" msgid="4776236202610828706">"آلات تلاش کر رہا ہے…"</string>
+    <string name="media_route_chooser_extended_settings" msgid="87015534236701604">"ترتیبات"</string>
+    <string name="media_route_controller_disconnect" msgid="8966120286374158649">"غیر مربوط کریں"</string>
+    <string name="media_route_status_scanning" msgid="7279908761758293783">"اسکین کر رہا ہے…"</string>
+    <string name="media_route_status_connecting" msgid="6422571716007825440">"مربوط ہو رہا ہے…"</string>
+    <string name="media_route_status_available" msgid="6983258067194649391">"دستیاب"</string>
+    <string name="media_route_status_not_available" msgid="6739899962681886401">"دستیاب نہیں ہے"</string>
+    <string name="media_route_status_in_use" msgid="4533786031090198063">"زیر استعمال"</string>
+    <string name="display_manager_built_in_display_name" msgid="2583134294292563941">"پہلے سے انسٹال کردہ اسکرین"</string>
+    <string name="display_manager_hdmi_display_name" msgid="1555264559227470109">"‏HDMI اسکرین"</string>
+    <string name="display_manager_overlay_display_name" msgid="5142365982271620716">"‏اوور لے ‎#<xliff:g id="ID">%1$d</xliff:g>"</string>
+    <string name="display_manager_overlay_display_title" msgid="652124517672257172">"<xliff:g id="NAME">%1$s</xliff:g>: <xliff:g id="WIDTH">%2$d</xliff:g>x<xliff:g id="HEIGHT">%3$d</xliff:g>, <xliff:g id="DPI">%4$d</xliff:g> dpi"</string>
+    <string name="display_manager_overlay_display_secure_suffix" msgid="6022119702628572080">"، محفوظ"</string>
+    <string name="kg_forgot_pattern_button_text" msgid="8852021467868220608">"پیٹرن بھول گئے"</string>
+    <string name="kg_wrong_pattern" msgid="1850806070801358830">"غلط پیٹرن"</string>
+    <string name="kg_wrong_password" msgid="2333281762128113157">"غلط پاس ورڈ"</string>
+    <string name="kg_wrong_pin" msgid="1131306510833563801">"‏غلط PIN"</string>
+    <string name="kg_too_many_failed_attempts_countdown" msgid="6358110221603297548">"<xliff:g id="NUMBER">%1$d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="kg_pattern_instructions" msgid="398978611683075868">"اپنا پیٹرن ڈرا کریں"</string>
+    <string name="kg_sim_pin_instructions" msgid="2319508550934557331">"‏SIM PIN درج کریں"</string>
+    <string name="kg_pin_instructions" msgid="2377242233495111557">"‏PIN درج کریں"</string>
+    <string name="kg_password_instructions" msgid="5753646556186936819">"پاس ورڈ درج کریں"</string>
+    <string name="kg_puk_enter_puk_hint" msgid="453227143861735537">"‏SIM اب غیر فعال ہوگیا ہے۔ جاری رکھنے کیلئے PUK کوڈ درج کریں۔ تفصیلات کیلئے کیریئر سے رابطہ کریں۔"</string>
+    <string name="kg_puk_enter_pin_hint" msgid="7871604527429602024">"‏پسندیدہ PIN کوڈ درج کریں"</string>
+    <string name="kg_enter_confirm_pin_hint" msgid="325676184762529976">"‏پسندیدہ PIN کوڈ کی توثیق کریں"</string>
+    <string name="kg_sim_unlock_progress_dialog_message" msgid="8950398016976865762">"‏SIM کارڈ غیر مقفل کیا جا رہا ہے…"</string>
+    <string name="kg_password_wrong_pin_code" msgid="1139324887413846912">"‏غلط PIN کوڈ۔"</string>
+    <string name="kg_invalid_sim_pin_hint" msgid="8795159358110620001">"‏ایسا PIN ٹائپ کریں جو 4 تا 8 نمبرز کا ہو۔"</string>
+    <string name="kg_invalid_sim_puk_hint" msgid="6025069204539532000">"‏PUK کوڈ 8 نمبرز کا ہونا چاہئے۔"</string>
+    <string name="kg_invalid_puk" msgid="3638289409676051243">"‏صحیح PUK کوڈ دوبارہ درج کریں۔ بار بار کی کوششیں SIM کو مستقل طور پر غیر فعال کر دیں گی۔"</string>
+    <string name="kg_invalid_confirm_pin_hint" product="default" msgid="7003469261464593516">"‏PIN کوڈز مماثل نہیں ہیں"</string>
+    <string name="kg_login_too_many_attempts" msgid="6486842094005698475">"پیٹرن کی بہت ساری کوششیں"</string>
+    <string name="kg_login_instructions" msgid="1100551261265506448">"‏غیر مقفل کرنے کیلئے، اپنے Google اکاؤنٹ کے ساتھ سائن ان کریں۔"</string>
+    <string name="kg_login_username_hint" msgid="5718534272070920364">"صارف نام (ای میل)"</string>
+    <string name="kg_login_password_hint" msgid="9057289103827298549">"پاس ورڈ"</string>
+    <string name="kg_login_submit_button" msgid="5355904582674054702">"سائن ان کریں"</string>
+    <string name="kg_login_invalid_input" msgid="5754664119319872197">"غلط صارف نام یا پاس ورڈ۔"</string>
+    <string name="kg_login_account_recovery_hint" msgid="5690709132841752974">"‏اپنا صارف نام یا پاس ورڈ بھول گئے؟\n"<b>"google.com/accounts/recovery"</b>" ملاحظہ کریں۔"</string>
+    <string name="kg_login_checking_password" msgid="1052685197710252395">"اکاؤنٹ چیک کیا جا رہا ہے…"</string>
+    <string name="kg_too_many_failed_pin_attempts_dialog_message" msgid="8276745642049502550">"‏آپ نے <xliff:g id="NUMBER_0">%1$d</xliff:g> بار اپنا PIN غلط طریقے سے ٹائپ کیا ہے۔ \n\n <xliff:g id="NUMBER_1">%2$d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="kg_too_many_failed_password_attempts_dialog_message" msgid="7813713389422226531">"آپ نے اپنا پاس ورڈ <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے ٹائپ کیا ہے۔ \n\n <xliff:g id="NUMBER_1">%2$d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="kg_too_many_failed_pattern_attempts_dialog_message" msgid="74089475965050805">"آپ نے اپنا غیر مقفل کرنے کا پیٹرن <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے ڈرا کیا ہے۔ \n\n <xliff:g id="NUMBER_1">%2$d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="kg_failed_attempts_almost_at_wipe" product="tablet" msgid="1575557200627128949">"آپ نے ٹیبلیٹ کو غیر مقفل کرنے کیلئے <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے کوشش کی ہے۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، ٹیبلیٹ فیکٹری ڈیفالٹ پر دوبارہ ترتیب دے دیا جائے گا اور صارف کا سبھی ڈیٹا ضائع ہو جائے گا۔"</string>
+    <string name="kg_failed_attempts_almost_at_wipe" product="tv" msgid="5621231220154419413">"‏آپ نے TV کو غیر مقفل کرنے کیلئے <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے کوشش کی ہے۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، TV فیکٹری ڈیفالٹ پر ری سیٹ ہو جائے گا اور صارف کا سبھی ڈیٹا ضائع ہو جائے گا۔"</string>
+    <string name="kg_failed_attempts_almost_at_wipe" product="default" msgid="4051015943038199910">"آپ نے فون کو غیر مقفل کرنے کیلئے <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے کوشش کی ہے۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، فون فیکٹری ڈیفالٹ پر دوبارہ ترتیب دے دیا جائے گا اور صارف کا سبھی ڈیٹا ضائع ہو جائے گا۔"</string>
+    <string name="kg_failed_attempts_now_wiping" product="tablet" msgid="2072996269148483637">"آپ نے ٹیبلٹ کو غیر مقفل کرنے کیلئے <xliff:g id="NUMBER">%d</xliff:g> بار غلط طریقے سے کوشش کی ہے۔ اب ٹیبلیٹ فیکٹری ڈیفالٹ پر دوبارہ ترتیب دے دیا جائے گا۔"</string>
+    <string name="kg_failed_attempts_now_wiping" product="tv" msgid="4987878286750741463">"‏آپ نے TV کو غیر مقفل کرنے کیلئے <xliff:g id="NUMBER">%d</xliff:g> بار غلط طریقے سے کوششیں کی ہیں۔ TV اب فیکٹری ڈیفالٹ پر ری سیٹ ہو جائے گا۔"</string>
+    <string name="kg_failed_attempts_now_wiping" product="default" msgid="4817627474419471518">"آپ نے فون کو غیر مقفل کرنے کیلئے <xliff:g id="NUMBER">%d</xliff:g> بار غلط طریقے سے کوشش کی ہے۔ اب فون فیکٹری ڈیفالٹ پر دوبارہ ترتیب دے دیا جائے گا۔"</string>
+    <string name="kg_failed_attempts_almost_at_login" product="tablet" msgid="3253575572118914370">"آپ نے اپنا غیر مقفل کرنے کا پیٹرن <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے ڈرا کیا ہے۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، آپ سے ایک ای میل اکاؤنٹ استعمال کرکے اپنا ٹیبلیٹ غیر مقفل کرنے کو کہا جائے گا۔\n\n <xliff:g id="NUMBER_2">%3$d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="kg_failed_attempts_almost_at_login" product="tv" msgid="4224651132862313471">"‏آپ نے اپنا غیر مقفل کرنے کا پیٹرن <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے ڈرا کیا ہے۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، آپ سے ایک ای میل اکاؤنٹ استعمال کرکے اپنا TV غیر مقفل کرنے کو کہا جائے گا۔\n\n <xliff:g id="NUMBER_2">%3$d</xliff:g>‎ سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="kg_failed_attempts_almost_at_login" product="default" msgid="1437638152015574839">"آپ نے اپنا غیر مقفل کرنے کا پیٹرن <xliff:g id="NUMBER_0">%1$d</xliff:g> بار غلط طریقے سے ڈرا کیا ہے۔ <xliff:g id="NUMBER_1">%2$d</xliff:g> مزید ناکام کوششوں کے بعد، آپ سے ایک ای میل اکاؤنٹ استعمال کرکے اپنا فون غیر مقفل کرنے کو کہا جائے گا۔\n\n <xliff:g id="NUMBER_2">%3$d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں۔"</string>
+    <string name="kg_text_message_separator" product="default" msgid="4160700433287233771">" — "</string>
+    <string name="kg_reordering_delete_drop_target_text" msgid="7899202978204438708">"ہٹائیں"</string>
+    <string name="safe_media_volume_warning" product="default" msgid="2276318909314492312">"والیوم کو تجویز کردہ سطح سے زیادہ کریں؟\n\nزیادہ وقت تک اونچی آواز میں سننے سے آپ کی سماعت کو نقصان پہنچ سکتا ہے۔"</string>
+    <string name="continue_to_enable_accessibility" msgid="1626427372316070258">"‏accessibility فعال کرنے کیلئے دو انگلیاں نیچے دبائے رکھیں۔"</string>
+    <string name="accessibility_enabled" msgid="1381972048564547685">"‏Accessibility فعال۔"</string>
+    <string name="enable_accessibility_canceled" msgid="3833923257966635673">"‏Accessibility منسوخ ہوگئی۔"</string>
+    <string name="user_switched" msgid="3768006783166984410">"موجودہ صارف <xliff:g id="NAME">%1$s</xliff:g>۔"</string>
+    <string name="user_switching_message" msgid="2871009331809089783">"<xliff:g id="NAME">%1$s</xliff:g> پر سوئچ کیا جا رہا ہے…"</string>
+    <string name="user_logging_out_message" msgid="8939524935808875155">"<xliff:g id="NAME">%1$s</xliff:g> لاگ آؤٹ ہو رہا ہے…"</string>
+    <string name="owner_name" msgid="2716755460376028154">"مالک"</string>
+    <string name="error_message_title" msgid="4510373083082500195">"خرابی"</string>
+    <string name="error_message_change_not_allowed" msgid="1347282344200417578">"آپ کے منتظم کے ذریعے اس تبدیلی کی اجازت نہیں ہے"</string>
+    <string name="app_not_found" msgid="3429141853498927379">"اس عمل کو ہینڈل کرنے کیلئے کوئی ایپلیکیشن نہیں ملا"</string>
+    <string name="revoke" msgid="5404479185228271586">"منسوخ کریں"</string>
+    <string name="mediasize_iso_a0" msgid="1994474252931294172">"ISO A0"</string>
+    <string name="mediasize_iso_a1" msgid="3333060421529791786">"ISO A1"</string>
+    <string name="mediasize_iso_a2" msgid="3097535991925798280">"ISO A2"</string>
+    <string name="mediasize_iso_a3" msgid="3023213259314236123">"ISO A3"</string>
+    <string name="mediasize_iso_a4" msgid="231745325296873764">"ISO A4"</string>
+    <string name="mediasize_iso_a5" msgid="3484327407340865411">"ISO A5"</string>
+    <string name="mediasize_iso_a6" msgid="4861908487129577530">"ISO A6"</string>
+    <string name="mediasize_iso_a7" msgid="5890208588072936130">"ISO A7"</string>
+    <string name="mediasize_iso_a8" msgid="4319425041085816612">"ISO A8"</string>
+    <string name="mediasize_iso_a9" msgid="4882220529506432008">"ISO A9"</string>
+    <string name="mediasize_iso_a10" msgid="2382866026365359391">"ISO A10"</string>
+    <string name="mediasize_iso_b0" msgid="3651827147402009675">"ISO B0"</string>
+    <string name="mediasize_iso_b1" msgid="6072859628278739957">"ISO B1"</string>
+    <string name="mediasize_iso_b2" msgid="1348731852150380378">"ISO B2"</string>
+    <string name="mediasize_iso_b3" msgid="2612510181259261379">"ISO B3"</string>
+    <string name="mediasize_iso_b4" msgid="695151378838115434">"ISO B4"</string>
+    <string name="mediasize_iso_b5" msgid="4863754285582212487">"ISO B5"</string>
+    <string name="mediasize_iso_b6" msgid="5305816292139647241">"ISO B6"</string>
+    <string name="mediasize_iso_b7" msgid="531673542602786624">"ISO B7"</string>
+    <string name="mediasize_iso_b8" msgid="9164474595708850034">"ISO B8"</string>
+    <string name="mediasize_iso_b9" msgid="282102976764774160">"ISO B9"</string>
+    <string name="mediasize_iso_b10" msgid="4517141714407898976">"ISO B10"</string>
+    <string name="mediasize_iso_c0" msgid="3103521357901591100">"ISO C0"</string>
+    <string name="mediasize_iso_c1" msgid="1231954105985048595">"ISO C1"</string>
+    <string name="mediasize_iso_c2" msgid="927702816980087462">"ISO C2"</string>
+    <string name="mediasize_iso_c3" msgid="835154173518304159">"ISO C3"</string>
+    <string name="mediasize_iso_c4" msgid="5095951985108194011">"ISO C4"</string>
+    <string name="mediasize_iso_c5" msgid="1985397450332305739">"ISO C5"</string>
+    <string name="mediasize_iso_c6" msgid="8147421924174693013">"ISO C6"</string>
+    <string name="mediasize_iso_c7" msgid="8993994925276122950">"ISO C7"</string>
+    <string name="mediasize_iso_c8" msgid="6871178104139598957">"ISO C8"</string>
+    <string name="mediasize_iso_c9" msgid="7983532635227561362">"ISO C9"</string>
+    <string name="mediasize_iso_c10" msgid="5040764293406765584">"ISO C10"</string>
+    <string name="mediasize_na_letter" msgid="2841414839888344296">"لیٹر"</string>
+    <string name="mediasize_na_gvrnmt_letter" msgid="5295836838862962809">"گورنمنٹ لیٹر"</string>
+    <string name="mediasize_na_legal" msgid="8621364037680465666">"لیگل"</string>
+    <string name="mediasize_na_junior_legal" msgid="3309324162155085904">"جونیئر لیگل"</string>
+    <string name="mediasize_na_ledger" msgid="5567030340509075333">"لیجر"</string>
+    <string name="mediasize_na_tabloid" msgid="4571735038501661757">"ٹیبلائڈ"</string>
+    <string name="mediasize_na_index_3x5" msgid="5182901917818625126">"‏انڈیکس کارڈ 3x5"</string>
+    <string name="mediasize_na_index_4x6" msgid="7687620625422312396">"‏انڈیکس کارڈ 4x6"</string>
+    <string name="mediasize_na_index_5x8" msgid="8834215284646872800">"‏انڈیکس کارڈ 5x8"</string>
+    <string name="mediasize_na_monarch" msgid="213639906956550754">"مونارک"</string>
+    <string name="mediasize_na_quarto" msgid="835778493593023223">"کوارٹو"</string>
+    <string name="mediasize_na_foolscap" msgid="1573911237983677138">"فل اسکیپ"</string>
+    <string name="mediasize_chinese_roc_8k" msgid="3626855847189438896">"ROC 8K"</string>
+    <string name="mediasize_chinese_roc_16k" msgid="9182191577022943355">"ROC 16K"</string>
+    <string name="mediasize_chinese_prc_1" msgid="4793232644980170500">"PRC 1"</string>
+    <string name="mediasize_chinese_prc_2" msgid="5404109730975720670">"PRC 2"</string>
+    <string name="mediasize_chinese_prc_3" msgid="1335092253339363526">"PRC 3"</string>
+    <string name="mediasize_chinese_prc_4" msgid="9167997800486569834">"PRC 4"</string>
+    <string name="mediasize_chinese_prc_5" msgid="845875168823541497">"PRC 5"</string>
+    <string name="mediasize_chinese_prc_6" msgid="3220325667692648789">"PRC 6"</string>
+    <string name="mediasize_chinese_prc_7" msgid="1776792138507038527">"PRC 7"</string>
+    <string name="mediasize_chinese_prc_8" msgid="1417176642687456692">"PRC 8"</string>
+    <string name="mediasize_chinese_prc_9" msgid="4785983473123798365">"PRC 9"</string>
+    <string name="mediasize_chinese_prc_10" msgid="7847982299391851899">"PRC 10"</string>
+    <string name="mediasize_chinese_prc_16k" msgid="262793383539980677">"PRC 16K"</string>
+    <string name="mediasize_chinese_om_pa_kai" msgid="5256815579447959814">"Pa Kai"</string>
+    <string name="mediasize_chinese_om_dai_pa_kai" msgid="7336412963441354407">"Dai Pa Kai"</string>
+    <string name="mediasize_chinese_om_jurro_ku_kai" msgid="6324465444100490742">"Jurro Ku Kai"</string>
+    <string name="mediasize_japanese_jis_b10" msgid="1787262845627694376">"JIS B10"</string>
+    <string name="mediasize_japanese_jis_b9" msgid="3336035783663287470">"JIS B9"</string>
+    <string name="mediasize_japanese_jis_b8" msgid="6195398299104345731">"JIS B8"</string>
+    <string name="mediasize_japanese_jis_b7" msgid="1674621886902828884">"JIS B7"</string>
+    <string name="mediasize_japanese_jis_b6" msgid="4170576286062657435">"JIS B6"</string>
+    <string name="mediasize_japanese_jis_b5" msgid="4899297958100032533">"JIS B5"</string>
+    <string name="mediasize_japanese_jis_b4" msgid="4213158129126666847">"JIS B4"</string>
+    <string name="mediasize_japanese_jis_b3" msgid="8513715307410310696">"JIS B3"</string>
+    <string name="mediasize_japanese_jis_b2" msgid="4777690211897131190">"JIS B2"</string>
+    <string name="mediasize_japanese_jis_b1" msgid="4608142385457034603">"JIS B1"</string>
+    <string name="mediasize_japanese_jis_b0" msgid="7587108366572243991">"JIS B0"</string>
+    <string name="mediasize_japanese_jis_exec" msgid="5244075432263649068">"JIS Exec"</string>
+    <string name="mediasize_japanese_chou4" msgid="4941652015032631361">"Chou4"</string>
+    <string name="mediasize_japanese_chou3" msgid="6387319169263957010">"Chou3"</string>
+    <string name="mediasize_japanese_chou2" msgid="1299112025415343982">"Chou2"</string>
+    <string name="mediasize_japanese_hagaki" msgid="8070115620644254565">"Hagaki"</string>
+    <string name="mediasize_japanese_oufuku" msgid="6049065587307896564">"Oufuku"</string>
+    <string name="mediasize_japanese_kahu" msgid="6872696027560065173">"Kahu"</string>
+    <string name="mediasize_japanese_kaku2" msgid="2359077233775455405">"Kaku2"</string>
+    <string name="mediasize_japanese_you4" msgid="2091777168747058008">"You4"</string>
+    <string name="mediasize_unknown_portrait" msgid="3088043641616409762">"نامعلوم پورٹریٹ"</string>
+    <string name="mediasize_unknown_landscape" msgid="4876995327029361552">"نامعلوم لینڈ اسکیپ"</string>
+    <string name="write_fail_reason_cancelled" msgid="7091258378121627624">"منسوخ کر دیا گیا"</string>
+    <string name="write_fail_reason_cannot_write" msgid="8132505417935337724">"مواد لکھنے میں خرابی"</string>
+    <string name="reason_unknown" msgid="6048913880184628119">"نامعلوم"</string>
+    <string name="reason_service_unavailable" msgid="7824008732243903268">"پرنٹ سروس فعال نہیں ہے"</string>
+    <string name="print_service_installed_title" msgid="2246317169444081628">"<xliff:g id="NAME">%s</xliff:g> سروس انسٹال ہو گئی"</string>
+    <string name="print_service_installed_message" msgid="5897362931070459152">"فعال کرنے کیلئے تھپتھپائیں"</string>
+    <string name="restr_pin_enter_admin_pin" msgid="783643731895143970">"‏منتظم کا PIN درج کریں"</string>
+    <string name="restr_pin_enter_pin" msgid="3395953421368476103">"‏PIN درج کریں"</string>
+    <string name="restr_pin_incorrect" msgid="8571512003955077924">"غلط"</string>
+    <string name="restr_pin_enter_old_pin" msgid="1462206225512910757">"‏موجودہ PIN"</string>
+    <string name="restr_pin_enter_new_pin" msgid="5959606691619959184">"‏نیا PIN"</string>
+    <string name="restr_pin_confirm_pin" msgid="8501523829633146239">"‏نئی PIN کی توثیق کریں"</string>
+    <string name="restr_pin_create_pin" msgid="8017600000263450337">"‏تحدیدات میں ترمیم کرنے کیلئے ایک PIN بنائیں"</string>
+    <string name="restr_pin_error_doesnt_match" msgid="2224214190906994548">"‏PINs مماثل نہیں ہیں۔ دوبارہ کوشش کریں۔"</string>
+    <string name="restr_pin_error_too_short" msgid="8173982756265777792">"‏PIN کافی چھوٹا ہے۔ کم از کم 4 ہندسے ہونا ضروری ہے۔"</string>
+    <plurals name="restr_pin_countdown" formatted="false" msgid="9061246974881224688">
+      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> سیکنڈ میں دوبارہ کوشش کریں</item>
+      <item quantity="one">1 سیکنڈ میں دوبارہ کوشش کریں</item>
+    </plurals>
+    <string name="restr_pin_try_later" msgid="973144472490532377">"بعد میں دوبارہ کوشش کریں"</string>
+    <string name="immersive_cling_title" msgid="8394201622932303336">"پوری اسکرین میں دیکھ رہے ہیں"</string>
+    <string name="immersive_cling_description" msgid="3482371193207536040">"خارج ہونے کیلئے اوپر سے نیچے سوائپ کریں۔"</string>
+    <string name="immersive_cling_positive" msgid="5016839404568297683">"سمجھ آ گئی"</string>
+    <string name="done_label" msgid="2093726099505892398">"ہو گیا"</string>
+    <string name="hour_picker_description" msgid="6698199186859736512">"گھنٹوں کا سرکلر سلائیڈر"</string>
+    <string name="minute_picker_description" msgid="8606010966873791190">"منٹس سرکلر سلائیڈر"</string>
+    <string name="select_hours" msgid="6043079511766008245">"گھنٹے منتخب کریں"</string>
+    <string name="select_minutes" msgid="3974345615920336087">"منٹ منتخب کریں"</string>
+    <string name="select_day" msgid="7774759604701773332">"ماہ اور دن منتخب کریں"</string>
+    <string name="select_year" msgid="7952052866994196170">"سال منتخب کریں"</string>
+    <string name="deleted_key" msgid="7659477886625566590">"<xliff:g id="KEY">%1$s</xliff:g> کو حذف کر دیا گیا"</string>
+    <string name="managed_profile_label_badge" msgid="2355652472854327647">"دفتر <xliff:g id="LABEL">%1$s</xliff:g>"</string>
+    <string name="lock_to_app_toast" msgid="1420543809500606964">"اس اسکرین سے پن ہٹانے کیلئے، پیچھے کو تھپتھپائیں اور دبا کر رکھیں۔"</string>
+    <string name="lock_to_app_toast_locked" msgid="9125176335701699164">"ایپ کو پن کر دیا گیا ہے: اس آلہ پر پن ہٹانے کی اجازت نہیں ہے۔"</string>
+    <string name="lock_to_app_start" msgid="6643342070839862795">"اسکرین کو پن کر دیا گیا"</string>
+    <string name="lock_to_app_exit" msgid="8598219838213787430">"اسکرین کا پن ہٹا دیا گیا"</string>
+    <string name="lock_to_app_unlock_pin" msgid="2552556656504331634">"‏پن ہٹانے سے پہلے PIN طلب کریں"</string>
+    <string name="lock_to_app_unlock_pattern" msgid="4182192144797225137">"پن ہٹانے سے پہلے غیر مقفل کرنے کا پیٹرن طلب کریں"</string>
+    <string name="lock_to_app_unlock_password" msgid="6380979775916974414">"پن ہٹانے سے پہلے پاس ورڈ طلب کریں"</string>
+    <string name="package_installed_device_owner" msgid="8420696545959087545">"آپ کے منتظم کی جانب سے انسٹال کر دیا گیا"</string>
+    <string name="package_updated_device_owner" msgid="8856631322440187071">"آپ کے منتظم نے اپ ڈيٹ کر دیا"</string>
+    <string name="package_deleted_device_owner" msgid="7650577387493101353">"آپ کے منتظم کی جانب سے حذف کر دیا گیا"</string>
+    <string name="battery_saver_description" msgid="1960431123816253034">"بیٹری کی میعاد بہتر کرنے میں مدد کرنے کیلئے، بیٹری سیور آپ کے آلہ کی کارکردگی کم کر دیتی ہے اور وائبریشن، مقام کی سروسز اور پس منظر کا بیشتر ڈیٹا محدود کر دیتی ہے۔ ای میل، پیغام رسانی اور مطابقت پذیری پر منحصر دیگر ایپس ممکن ہے اس وقت تک اپ ڈیٹ نہ ہوں جب تک آپ انہیں نہ کھولیں۔\n\nآپ کا آلہ چارج ہوتے وقت بیٹری سیور خود بخود آف ہو جاتی ہے۔"</string>
+    <string name="data_saver_description" msgid="6015391409098303235">"ڈیٹا کے استعمال کو کم کرنے میں مدد کیلئے، ڈیٹا سیور پس منظر میں کچھ ایپس کو ڈیٹا بھیجنے یا موصول کرنے سے روکتا ہے۔ آپ جو ایپ فی الحال استعمال کر رہے ہیں وہ ڈیٹا پر رسائی کر سکتی ہے مگر ہو سکتا ہے ایسا زیادہ نہ ہو۔ اس کا مطلب مثال کے طور پر یہ ہو سکتا ہے کہ تصاویر تھپتھپانے تک ظاہر نہ ہوں۔"</string>
+    <string name="data_saver_enable_title" msgid="4674073932722787417">"ڈیٹا سیور آن کریں؟"</string>
+    <string name="data_saver_enable_button" msgid="7147735965247211818">"آن کریں"</string>
+    <plurals name="zen_mode_duration_minutes_summary" formatted="false" msgid="4367877408072000848">
+      <item quantity="other">‏%1$d منٹ کیلئے (<xliff:g id="FORMATTEDTIME_1">%2$s</xliff:g> تک)</item>
+      <item quantity="one">ایک منٹ کیلئے (تک <xliff:g id="FORMATTEDTIME_0">%2$s</xliff:g>)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_summary_short" formatted="false" msgid="6830154222366042597">
+      <item quantity="other">‏%1$d منٹ کیلئے (<xliff:g id="FORMATTEDTIME_1">%2$s</xliff:g> تک)</item>
+      <item quantity="one">1 منٹ کیلئے (<xliff:g id="FORMATTEDTIME_0">%2$s</xliff:g> تک)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary" formatted="false" msgid="8152974162096743862">
+      <item quantity="other">‏%1$d گھنٹے کیلئے (<xliff:g id="FORMATTEDTIME_1">%2$s</xliff:g> تک)</item>
+      <item quantity="one">ایک گھنٹہ کیلئے (<xliff:g id="FORMATTEDTIME_0">%2$s</xliff:g> تک)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary_short" formatted="false" msgid="4787552595253082371">
+      <item quantity="other">‏‎%1$d گھنٹے کیلئے (<xliff:g id="FORMATTEDTIME_1">%2$s</xliff:g> تک)</item>
+      <item quantity="one">1 گھنٹہ کیلئے (<xliff:g id="FORMATTEDTIME_0">%2$s</xliff:g> تک)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes" formatted="false" msgid="5127407202506485571">
+      <item quantity="other">‏‎%d منٹ کیلئے</item>
+      <item quantity="one">ایک منٹ کیلئے</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_short" formatted="false" msgid="2199350154433426128">
+      <item quantity="other">‏‎%d منٹ کیلئے</item>
+      <item quantity="one">1 منٹ کیلئے</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours" formatted="false" msgid="3938821308277433854">
+      <item quantity="other">‏‎%d گھنٹے کیلئے</item>
+      <item quantity="one">ایک گھنٹہ کیلئے</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_short" formatted="false" msgid="6748277774662434217">
+      <item quantity="other">‏‎%d گھنٹے کیلئے</item>
+      <item quantity="one">1 گھنٹہ کیلئے</item>
+    </plurals>
+    <string name="zen_mode_until" msgid="7336308492289875088">"<xliff:g id="FORMATTEDTIME">%1$s</xliff:g> تک"</string>
+    <string name="zen_mode_alarm" msgid="9128205721301330797">"<xliff:g id="FORMATTEDTIME">%1$s</xliff:g> تک (اگلا الارم)"</string>
+    <string name="zen_mode_forever" msgid="7420011936770086993">"جب تک آپ اسے آف نہ کر دیں"</string>
+    <string name="zen_mode_forever_dnd" msgid="3792132696572189081">"جب تک آپ ڈسڑب نہ کریں کو آف نہیں کر دیتے"</string>
+    <string name="zen_mode_rule_name_combination" msgid="191109939968076477">"<xliff:g id="FIRST">%1$s</xliff:g> / <xliff:g id="REST">%2$s</xliff:g>"</string>
+    <string name="toolbar_collapse_description" msgid="2821479483960330739">"سکیڑیں"</string>
+    <string name="zen_mode_feature_name" msgid="5254089399895895004">"ڈسٹرب نہ کریں"</string>
+    <string name="zen_mode_downtime_feature_name" msgid="2626974636779860146">"ڈاؤن ٹائم"</string>
+    <string name="zen_mode_default_weeknights_name" msgid="3081318299464998143">"ویک نائٹ"</string>
+    <string name="zen_mode_default_weekends_name" msgid="2786495801019345244">"ویک اینڈ"</string>
+    <string name="zen_mode_default_events_name" msgid="8158334939013085363">"ایونٹ"</string>
+    <string name="muted_by" msgid="6147073845094180001">"<xliff:g id="THIRD_PARTY">%1$s</xliff:g> کے ذریعے خاموش کردہ"</string>
+    <string name="system_error_wipe_data" msgid="6608165524785354962">"آپ کے آلہ میں ایک داخلی مسئلہ ہے اور جب تک آپ فیکٹری ڈیٹا کو دوبارہ ترتیب نہیں دے دیتے ہیں، ہوسکتا ہے کہ یہ غیر مستحکم رہے۔"</string>
+    <string name="system_error_manufacturer" msgid="8086872414744210668">"آپ کے آلہ میں ایک داخلی مسئلہ ہے۔ تفصیلات کیلئے اپنے مینوفیکچرر سے رابطہ کریں۔"</string>
+    <string name="stk_cc_ussd_to_dial" msgid="5202342984749947872">"‏USSD درخواست میں ترمیم کر کے DIAL درخواست بنا دی گئی ہے۔"</string>
+    <string name="stk_cc_ussd_to_ss" msgid="2345360594181405482">"‏USSD درخواست میں ترمیم کر کے SS درخواست بنا دی گئی ہے۔"</string>
+    <string name="stk_cc_ussd_to_ussd" msgid="7466087659967191653">"‏USSD درخواست میں ترمیم کر کے نئی USSD درخواست بنا دی گئی ہے۔"</string>
+    <string name="stk_cc_ss_to_dial" msgid="2151304435775557162">"‏SS درخواست میں ترمیم کر کے DIAL درخواست بنا دی گئی ہے۔"</string>
+    <string name="stk_cc_ss_to_ussd" msgid="3951862188105305589">"‏SS درخواست میں ترمیم کر کے USSD درخواست بنا دی گئی ہے۔"</string>
+    <string name="stk_cc_ss_to_ss" msgid="5470768854991452695">"‏SS درخواست میں ترمیم کر کے نئی SS درخواست بنا دی گئی ہے۔"</string>
+    <string name="notification_work_profile_content_description" msgid="4600554564103770764">"دفتری پروفائل"</string>
+    <string name="expand_button_content_description" msgid="5855955413376384681">"پھیلائیں بٹن"</string>
+    <string name="expand_action_accessibility" msgid="5307730695723718254">"پھیلاؤ کو ٹوگل کریں"</string>
+    <string name="usb_midi_peripheral_name" msgid="7221113987741003817">"‏Android USB پیرفرل پورٹ"</string>
+    <string name="usb_midi_peripheral_manufacturer_name" msgid="7176526170008970168">"Android"</string>
+    <string name="usb_midi_peripheral_product_name" msgid="4971827859165280403">"‏USB پیرفرل پورٹ"</string>
+    <string name="floating_toolbar_open_overflow_description" msgid="4797287862999444631">"مزید اختیارات"</string>
+    <string name="floating_toolbar_close_overflow_description" msgid="559796923090723804">"اوورفلو بند کریں"</string>
+    <string name="maximize_button_text" msgid="7543285286182446254">"بڑا کریں"</string>
+    <string name="close_button_text" msgid="3937902162644062866">"بند کریں"</string>
+    <string name="notification_messaging_title_template" msgid="3452480118762691020">"<xliff:g id="CONVERSATION_TITLE">%1$s</xliff:g>: <xliff:g id="SENDER_NAME">%2$s</xliff:g>"</string>
+    <plurals name="selected_count" formatted="false" msgid="7187339492915744615">
+      <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> منتخب کردہ</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> منتخب کردہ</item>
+    </plurals>
+    <string name="importance_from_user" msgid="7318955817386549931">"ان اطلاعات کی اہمیت آپ مقرر کرتے ہیں۔"</string>
+    <string name="importance_from_person" msgid="9160133597262938296">"اس میں موجود لوگوں کی وجہ سے یہ اہم ہے۔"</string>
+    <string name="user_creation_account_exists" msgid="1942606193570143289">"<xliff:g id="APP">%1$s</xliff:g> کو <xliff:g id="ACCOUNT">%2$s</xliff:g> کے ساتھ ایک نیا صارف بنانے کی اجازت دیں؟"</string>
+    <string name="user_creation_adding" msgid="4482658054622099197">"<xliff:g id="APP">%1$s</xliff:g> کو <xliff:g id="ACCOUNT">%2$s</xliff:g> کے ساتھ ایک نیا صارف بنانے کی اجازت دیں (اس اکاؤنٹ کے ساتھ ایک صارف پہلے سے موجود ہے) ؟"</string>
+    <string name="language_selection_title" msgid="2680677278159281088">"ایک زبان شامل کریں"</string>
+    <string name="country_selection_title" msgid="2954859441620215513">"علاقہ کی ترجیح"</string>
+    <string name="search_language_hint" msgid="7042102592055108574">"زبان کا نام ٹائپ کریں"</string>
+    <string name="language_picker_section_suggested" msgid="8414489646861640885">"تجویز کردہ"</string>
+    <string name="language_picker_section_all" msgid="3097279199511617537">"سبھی زبانیں"</string>
+    <!-- no translation found for region_picker_section_all (8966316787153001779) -->
+    <skip />
+    <string name="locale_search_menu" msgid="2560710726687249178">"تلاش"</string>
+    <string name="work_mode_off_title" msgid="8954725060677558855">"کام موڈ آف ہے"</string>
+    <string name="work_mode_off_message" msgid="3286169091278094476">"دفتری پروفائل کو کام کرنے دیں، بشمول ایپس، پس منظر کی مطابقت پذیری اور متعلقہ خصوصیات۔"</string>
+    <string name="work_mode_turn_on" msgid="2062544985670564875">"آن کریں"</string>
+    <string name="new_sms_notification_title" msgid="8442817549127555977">"آپ کے پاس نئے پیغامات ہیں"</string>
+    <string name="new_sms_notification_content" msgid="7002938807812083463">"‏دیکھنے کیلئے SMS ایپ کھولیں"</string>
+    <string name="user_encrypted_title" msgid="9054897468831672082">"کچھ فعالیت محدود ہو سکتی ہے"</string>
+    <string name="user_encrypted_message" msgid="4923292604515744267">"غیرمقفل کرنے کیلئے تھپتھپائیں"</string>
+    <string name="user_encrypted_detail" msgid="5708447464349420392">"صارف کا ڈیٹا مقفل ہے"</string>
+    <string name="profile_encrypted_detail" msgid="3700965619978314974">"دفتری پروفائل مقفل ہے"</string>
+    <string name="profile_encrypted_message" msgid="6964994232310195874">"دفتری پروفائل غیر مقفل کرنے کیلئے تھپتھپائیں"</string>
+    <string name="usb_mtp_launch_notification_title" msgid="8359219638312208932">"<xliff:g id="PRODUCT_NAME">%1$s</xliff:g> سے منسلک"</string>
+    <string name="usb_mtp_launch_notification_description" msgid="8541876176425411358">"فائلوں کو دیکھنے کیلئے تھپتھپائیں"</string>
+    <string name="pin_target" msgid="3052256031352291362">"پن کریں"</string>
+    <string name="unpin_target" msgid="3556545602439143442">"پن ہٹائیں"</string>
+    <string name="app_info" msgid="6856026610594615344">"ایپ کی معلومات"</string>
+    <string name="negative_duration" msgid="5688706061127375131">"−<xliff:g id="TIME">%1$s</xliff:g>"</string>
+    <string name="reset_retail_demo_mode_title" msgid="2370249087943803584">"آلہ ری سیٹ کریں؟"</string>
+    <string name="reset_retail_demo_mode_text" msgid="5481925817590883246">"آلہ ری سیٹ کرنے کیلئے تھپتھپائیں"</string>
+    <string name="demo_starting_message" msgid="5268556852031489931">"ڈیمو شروع ہو رہا ہے…"</string>
+    <string name="demo_restarting_message" msgid="952118052531642451">"آلہ ری سیٹ ہو رہا ہے…"</string>
+    <string name="demo_user_inactivity_timeout_title" msgid="6596109959002331334">"آلہ ری سیٹ کریں؟"</string>
+    <string name="demo_user_inactivity_timeout_countdown" msgid="5675588824402569506">"آپ کی تمام تبدیلیاں ضائع ہو جائیں گی اور ڈیمو <xliff:g id="TIMEOUT">%1$s</xliff:g> سیکنڈز میں دوبارہ شروع ہوگا…"</string>
+    <string name="demo_user_inactivity_timeout_left_button" msgid="5314271347014802475">"منسوخ کریں"</string>
+    <string name="demo_user_inactivity_timeout_right_button" msgid="5019306703066964808">"ابھی ری سیٹ کریں"</string>
+    <string name="audit_safemode_notification" msgid="6416076898350685856">"بغیر کسی حدود کے استعمال کرنے کیلئے اس آلے کو فیکٹری ری سیٹ کریں"</string>
+    <string name="audit_safemode_notification_details" msgid="1860601176690176413">"مزید جاننے کیلئے ٹچ کریں۔"</string>
+    <string name="suspended_widget_accessibility" msgid="6712143096475264190">"غیر فعال کردہ <xliff:g id="LABEL">%1$s</xliff:g>"</string>
+    <string name="conference_call" msgid="3751093130790472426">"کانفرنس کال"</string>
+</resources>

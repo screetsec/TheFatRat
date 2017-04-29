@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <set
+        android:ordering="sequentially" >
+        <objectAnimator
+            android:duration="166"
+            android:propertyName="strokeWidth"
+            android:valueFrom="2.0"
+            android:valueTo="18.0"
+            android:valueType="floatType"
+            android:interpolator="@interpolator/btn_radio_to_on_mtrl_animation_interpolator_0" />
+        <objectAnimator
+            android:duration="16"
+            android:propertyName="strokeWidth"
+            android:valueFrom="18.0"
+            android:valueTo="2.0"
+            android:valueType="floatType"
+            android:interpolator="@android:interpolator/fast_out_slow_in" />
+        <objectAnimator
+            android:duration="316"
+            android:propertyName="strokeWidth"
+            android:valueFrom="2.0"
+            android:valueTo="2.0"
+            android:valueType="floatType"
+            android:interpolator="@android:interpolator/fast_out_slow_in" />
+    </set>
+</set>
