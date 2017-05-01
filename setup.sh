@@ -348,7 +348,7 @@ sleep 2
 else
 echo -e $red "[ X ] mingw-w64 compiler  -> not found "
 echo -e $yellow "[ ! ]   Installing Mingw-64 "
-xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw-64 --force-yes -y"
+xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw-w64 --force-yes -y"
 echo -e $green "[ ✔ ] Done installing .... "
 which i686-w64-mingw32-gcc >> $log 2>&1
 sleep 2
