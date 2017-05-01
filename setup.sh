@@ -24,6 +24,7 @@ else
 echo ""
 fi 
 path=`pwd`
+arch=`uname -m`
 log=$path/logs/setup.log
 config=$path/config/config.path
 
@@ -333,7 +334,30 @@ echo "$path/tools/proguard5.3.2/lib/proguard" >> $log 2>&1
 echo "$path/tools/proguard5.3.2/lib/proguard" | tee -a $config >> /dev/null 2>&1
 sleep 2
 
-# check if mingw32 exists
+# check if mingw32 or mingw-64 exists
+case "$arch" in
+x86_64) 
+echo ""
+echo -e $blue "64Bit OS detected"
+echo ""
+which i686-w64-mingw32-gcc > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Mingw-w64 Compiler..................[ found ]"
+which i686-w64-mingw32-gcc >> $log 2>&1
+sleep 2
+else
+echo -e $red "[ X ] mingw-w64 compiler  -> not found "
+echo -e $yellow "[ ! ]   Installing Mingw-64 "
+xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw-64 --force-yes -y"
+echo -e $green "[ ✔ ] Done installing .... "
+which i686-w64-mingw32-gcc >> $log 2>&1
+sleep 2
+fi
+;;
+i386|i486|i586|i686)
+echo ""
+echo -e $blue "32Bit OS detected"
+echo ""
 which i586-mingw32msvc-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw32 Compiler..................[ found ]"
@@ -347,6 +371,24 @@ echo -e $green "[ ✔ ] Done installing .... "
 which i586-mingw32msvc-gcc >> $log 2>&1
 sleep 2
 fi
+;;
+*)
+echo -e $red "Architecture not Detected , aborting installation"
+echo -e $yellow "Please report into issues on Fatrat github this error : ($arch)" 
+echo ""
+echo -e $green "Press any key to continue"
+read abo
+echo -e $blue "Reactivating you original repositories"
+rm -f /etc/apt/sources.list
+mv /etc/apt/sources.list.backup /etc/apt/sources.list
+#now we can remove the emergency backup securely
+rm -f /etc/apt/sources.list.fatrat
+apt-get clean
+xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
+clear
+exit 0
+;;
+esac
 
 #Adding Dx & Aapt path to config 
 which aapt > /dev/null 2>&1
