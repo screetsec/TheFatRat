@@ -39,6 +39,7 @@ white='\e[1;37m'
 red='\e[1;31m'
 yellow='\e[1;33m'
 blue='\e[1;34m'
+purple='\e[1;35m'
 path=`pwd`
 
 #Check root dulu
@@ -67,6 +68,28 @@ echo "------------------------------------------------------" >> $log
 echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> $log
 echo "------------------------------------------------------" >> $log
 echo "                                                      " >> $log
+echo ""
+case $arch in
+x86_64) 
+echo -e $purple "              64Bit OS detected"
+echo ""
+;;
+i386|i486|i586|i686)
+echo -e $blue "32Bit OS detected"
+echo ""
+;;
+*)
+echo -e $red "Setup will not proceed because none of these archs were detected"
+echo ""
+echo -e $blue "x86_64|i386|i486|i586|i686"
+echo ""
+echo -e $green "Report this arch: $blue $arch $green into fatrat issues on github"
+echo ""
+echo -e "Press any key to continue"
+read abor
+exit 0
+;;
+esac
 #check if xterm is installed
 which xterm > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -337,9 +360,6 @@ sleep 2
 # check if mingw32 or mingw-64 exists
 case "$arch" in
 x86_64) 
-echo ""
-echo -e $blue "64Bit OS detected"
-echo ""
 which i686-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw-w64 Compiler..................[ found ]"
@@ -349,15 +369,42 @@ else
 echo -e $red "[ X ] mingw-w64 compiler  -> not found "
 echo -e $yellow "[ ! ]   Installing Mingw-64 "
 xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw-w64 --force-yes -y"
+which i686-w64-mingw32-gcc > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Done installing .... "
 which i686-w64-mingw32-gcc >> $log 2>&1
 sleep 2
+else
+echo -e $red "It was not possible to detect i686-w64-mingw32-gcc installed in your system ."
+echo -e $yellow "One of these problems occured :"
+echo ""
+echo -e $blue "- Instalation from kali repository on your system failed"
+echo ""
+echo -e $blue "- You have a faulty installation of mingw-w64 in your system
+(try : $green apt-get remove --purge mingw-w64 mingw32 -y && apt-get install -f
+$blue and run setup again in fatrat folder ."
+echo ""
+echo -e $blue "- Your system is 64bit and you recently added into dpkg arch:i386 for some reason"
+echo ""
+echo -e $blue "- /usr/bin folder is not on your system path (not likely)"
+echo ""
+echo -e $yellow "Please report into issues on Fatrat github this error : ($arch)" 
+echo ""
+echo -e $green "Press any key to continue"
+read abo
+echo -e $blue "Reactivating you original repositories"
+rm -f /etc/apt/sources.list
+mv /etc/apt/sources.list.backup /etc/apt/sources.list
+#now we can remove the emergency backup securely
+rm -f /etc/apt/sources.list.fatrat
+apt-get clean
+xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
+clear
+exit 0
+fi
 fi
 ;;
 i386|i486|i586|i686)
-echo ""
-echo -e $blue "32Bit OS detected"
-echo ""
 which i586-mingw32msvc-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw32 Compiler..................[ found ]"
@@ -367,14 +414,44 @@ else
 echo -e $red "[ X ] mingw32 compiler  -> not found "
 echo -e $yellow "[ ! ]   Installing Mingw32 "
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 --force-yes -y"
+which i586-mingw32msvc-gcc > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Done installing .... "
 which i586-mingw32msvc-gcc >> $log 2>&1
 sleep 2
+else
+echo -e $red "It was not possible to detect i586-mingw32msvc-gcc installed in your system ."
+echo -e $yellow "One of these problems occured :"
+echo ""
+echo -e $blue "- Instalation from kali repository on your system failed"
+echo ""
+echo -e $blue "- You have a faulty installation of mingw32 in your system
+(try : $green apt-get remove --purge mingw32 mingw-w64 -y && apt-get install -f
+$blue and run setup again in fatrat folder ."
+echo ""
+echo -e $blue "- Your system is 32bit and you recently added into dpkg arch:x64 for some reason"
+echo ""
+echo -e $blue "- /usr/bin folder is not on your system path (not likely)"
+echo ""
+echo -e $yellow "Please report into issues on Fatrat github this error : ($arch)" 
+echo ""
+echo -e $green "Press any key to continue"
+read abo
+echo -e $blue "Reactivating you original repositories"
+rm -f /etc/apt/sources.list
+mv /etc/apt/sources.list.backup /etc/apt/sources.list
+#now we can remove the emergency backup securely
+rm -f /etc/apt/sources.list.fatrat
+apt-get clean
+xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
+clear
+exit 0
+fi
 fi
 ;;
 *)
-echo -e $red "Architecture not Detected , aborting installation"
-echo -e $yellow "Please report into issues on Fatrat github this error : ($arch)" 
+echo -e $red "Architecture not in list , aborting installation"
+echo -e $yellow "Please report into issues on Fatrat github this Arch : Arch=($arch)" 
 echo ""
 echo -e $green "Press any key to continue"
 read abo
