@@ -47,7 +47,7 @@ if [ $(id -u) != "0" ]; then
 echo -e $red [x]::[not root]: You need to be [root] to run this script.;
       echo ""
    	  sleep 1
-exit
+exit 0
 fi
 resize -s 80 103 > /dev/null 2>&1
 clear
