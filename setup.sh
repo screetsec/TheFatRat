@@ -69,6 +69,24 @@ echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> $log
 echo "------------------------------------------------------" >> $log
 echo "                                                      " >> $log
 echo ""
+fi
+ping -c 1 google.com > /dev/null 2>&1
+  if [ "$?" != 0 ]
+
+then
+    
+    echo -e $red " You are not connected to the Internet"
+    echo -e $red " This script requires an active Internet connection"
+    echo -e $green ""
+    echo -e $green "Press any key to continue"
+    read abor
+    exit 0
+    
+else
+    echo -e $green "Internet connection detected !!"
+    echo ""
+    sleep 1
+fi
 case $arch in
 x86_64|aarch64) 
 echo -e $purple "              64Bit OS detected"
