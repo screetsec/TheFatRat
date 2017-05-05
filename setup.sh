@@ -74,8 +74,8 @@ x86_64|aarch64)
 echo -e $purple "              64Bit OS detected"
 echo ""
 ;;
-i386|i486|i586|i686)
-echo -e $blue "32Bit OS detected"
+i386|i486|i586|i686|armv7l)
+echo -e $blue "                32Bit OS detected"
 echo ""
 ;;
 *)
@@ -404,7 +404,7 @@ exit 0
 fi
 fi
 ;;
-i386|i486|i586|i686)
+i386|i486|i586|i686|armv7l)
 which i586-mingw32msvc-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw32 Compiler..................[ found ]"
