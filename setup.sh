@@ -81,7 +81,7 @@ echo ""
 *)
 echo -e $red "Setup will not proceed because none of these archs were detected"
 echo ""
-echo -e $blue "x86_64|i386|i486|i586|i686"
+echo -e $blue "x86_64|i386|i486|i586|i686|aarch64|armv7l"
 echo ""
 echo -e $green "Report this arch: $blue $arch $green into fatrat issues on github"
 echo ""
