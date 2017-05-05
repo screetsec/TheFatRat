@@ -2,13 +2,26 @@
 clear
 cyan='\e[0;36m'
 green='\e[0;32m'
+ping -c 1 google.com > /dev/null 2>&1
+  if [ "$?" != 0 ]
 
+then
+    
+    echo -e $red [Internet Connection]: OFFLINE!;
+    echo -e $red You need to be connected to internet to be able to update fatrat;
+    sleep 1
+    exit 1
+
+else
+    echo -e $okegreen [✔]::[Internet Connection]: connected!;
+    sleep 1
 echo -e $cyan "************************************"
 echo -e $cyan "**  $green Updating Fatrat from Github $cyan **"
 echo -e $cyan "************************************"
 sleep 3
-git fetch
+git pull
 
 echo -e $cyan "*************************"
 echo -e $cyan "**  $green Update Completed $cyan **"
 echo -e $cyan "*************************"
+fi
