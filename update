@@ -20,7 +20,8 @@ then
     exit 1
 
 else
-    echo -e $okegreen [✔]::[Internet Connection]: connected!;
+    echo -e $green [✔]::[Internet Connection]: connected!;
+    echo ""
     sleep 1
 echo -e $cyan "************************************"
 echo -e $cyan "**  $green Updating Fatrat from Github $cyan **"
