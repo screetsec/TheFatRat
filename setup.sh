@@ -70,7 +70,7 @@ echo "------------------------------------------------------" >> $log
 echo "                                                      " >> $log
 echo ""
 case $arch in
-x86_64) 
+x86_64|aarch64) 
 echo -e $purple "              64Bit OS detected"
 echo ""
 ;;
@@ -359,7 +359,7 @@ sleep 2
 
 # check if mingw32 or mingw-64 exists
 case "$arch" in
-x86_64) 
+x86_64|aarch64) 
 which i686-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw-w64 Compiler..................[ found ]"
