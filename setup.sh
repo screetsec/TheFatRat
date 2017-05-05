@@ -43,7 +43,12 @@ purple='\e[1;35m'
 path=`pwd`
 
 #Check root dulu
-[[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
+if [ $(id -u) != "0" ]; then
+echo -e $red [x]::[not root]: You need to be [root] to run this script.;
+      echo ""
+   	  sleep 1
+exit
+fi
 resize -s 80 103 > /dev/null 2>&1
 clear
 
@@ -69,7 +74,8 @@ echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> $log
 echo "------------------------------------------------------" >> $log
 echo "                                                      " >> $log
 echo ""
-fi
+echo -e $green "Checking for internet connection"
+sleep 2
 ping -c 1 google.com > /dev/null 2>&1
   if [ "$?" != 0 ]
 
