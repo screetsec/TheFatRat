@@ -27,7 +27,7 @@ echo -e $cyan "************************************"
 echo -e $cyan "**  $green Updating Fatrat from Github $cyan **"
 echo -e $cyan "************************************"
 sleep 3
-git fetch
+git pull origin master
 
 echo -e $cyan "*************************"
 echo -e $cyan "**  $green Update Completed $cyan **"
