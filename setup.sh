@@ -734,8 +734,8 @@ lnk=$?
 if [ $lnk ==  "0" ];then
 dir=`pwd` 
 scrp="cd $dir && ./fatrat"
-rm -f /usr/local/sbin/fatrat
-touch /usr/local/sbin/fatrat
+rm -f /usr/local/sbin/fatrat >/dev/null 2>&1
+touch /usr/local/sbin/fatrat >/dev/null 2>&1
 echo "#!/bin/bash" > /usr/local/sbin/fatrat
 echo $scrp >> /usr/local/sbin/fatrat
 chmod +x /usr/local/sbin/fatrat
