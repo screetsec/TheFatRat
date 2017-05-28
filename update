@@ -77,4 +77,3 @@ git pull origin master
 echo -e $cyan "*************************"
 echo -e $cyan "**  $green Update Completed $cyan **"
 echo -e $cyan "*************************"
-fi
