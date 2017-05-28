@@ -1,4 +1,5 @@
 ## CHANGELOG
+* v1.9.4 - Fatrat will be full terminal mode , Powerstage tool added , Setup script rebuilded
 * v1.9.3 - Added update script
 * v1.9.3 - Dex2Jar will be installed from now on from Fatrat setup manually on user system (reason: Kali repo still uses old version)
 * v1.9.3 - Updated Android build tools to V.26 RC1 & Android Platform V. 25-R03

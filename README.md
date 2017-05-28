@@ -1,7 +1,7 @@
 
 # TheFatRat ( Unit for bypass av )
 
-## Update: Version 1.9.3
+## Update: Version 1.9.4
 ## Codename: Whistle
 
 [![Version](https://img.shields.io/badge/TheFatRat-1.9.3-brightgreen.svg?maxAge=259200)]()
@@ -138,7 +138,8 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 - Dracos Linux from Scratch Indonesia ( Penetration os ) Thanksyou , you can see in http://dracos-linux.org/
 - Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
 - peterpt
-- Dana James Traversie https://github.com/dana-at-cp/backdoor-apk 
+- Dana James Traversie https://github.com/dana-at-cp/backdoor-apk
+- z0noxz (Powerstager) https://github.com/z0noxz/powerstager 
 - http://www.kali.org/"
 - Jack Wilder admin in http://www.linuxsec.org
 - source for c program https://github.com/rsmudge
