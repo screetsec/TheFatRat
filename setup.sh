@@ -644,6 +644,8 @@ echo -e $green "[ ✔ ] DX 1.8"
 *)
 xterm -T "☣ Removing Your Current DX ☣" -geometry 100x30 -e "sudo apt-get remove --purge dx -y" >>$log 2>&1
 ln -s "$path/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 2>&1
+chmod +x $path/tools/android-sdk/dx > /dev/null 2>&1
+chmod +x /usr/local/sbin/dx > /dev/null 2>&1
 which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> $log 2>&1
@@ -657,6 +659,8 @@ fi
 esac
 else
 ln -s "$path/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 2>&1
+chmod +x $path/tools/android-sdk/dx > /dev/null 2>&1
+chmod +x /usr/local/sbin/dx > /dev/null 2>&1
 which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> $log 2>&1
@@ -680,6 +684,8 @@ echo -e $green "[ ✔ ] Aapt v0.2-3821160"
 *)
 xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y" >>$log 2>&1
 ln -s "$path/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/null 2>&1
+chmod +x $path/tools/android-sdk/aapt > /dev/null 2>&1
+chmod +x /usr/local/sbin/aapt > /dev/null 2>&1
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> $log 2>&1
@@ -693,6 +699,8 @@ fi
 esac
 else
 ln -s "$path/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/null 2>&1
+chmod +x $path/tools/android-sdk/aapt > /dev/null 2>&1
+chmod +x /usr/local/sbin/aapt > /dev/null 2>&1
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> $log 2>&1
@@ -717,6 +725,8 @@ echo -e $green "[ ✔ ] Apktool v.2.2.2"
 *)
 xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
 ln -s "$path/tools/apktool2.2.2/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
+chmod +x $path/tools/apktool2.2.2/apktool > /dev/null 2>&1
+chmod +x /usr/local/sbin/apktool > /dev/null 2>&1
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Apktool v.2.2.2"
@@ -730,6 +740,8 @@ fi
 esac
 else
 ln -s "$path/tools/apktool2.2.2/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
+chmod +x $path/tools/apktool2.2.2/apktool > /dev/null 2>&1
+chmod +x /usr/local/sbin/apktool > /dev/null 2>&1
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which apktool >> $log 2>&1
