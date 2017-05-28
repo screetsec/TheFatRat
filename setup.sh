@@ -1,9 +1,10 @@
 #!/bin/bash
 
+
+
 function ssplt() {
 
 # check if searchsploit exists
-clear
 which searchsploit > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Searchsploit......................[ found ]"
@@ -113,9 +114,10 @@ ssplt
 esac
 fi
 }
+
+
 #ok
 function bkf() {
-clear
 # Check if backdoor-factory exists
 
 which backdoor-factory > /dev/null 2>&1
@@ -176,9 +178,9 @@ bkf
 esac
 fi
 }
+
 #ok
 function mtspl() {
-clear
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
