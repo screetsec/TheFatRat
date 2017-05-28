@@ -2840,7 +2840,7 @@ esac
                               elif test $fatrat1 == '5'
                               then
                   echo ""
-                  if [ -e $list/*.rc ]
+                  if [ -n "config/listeners/*.rc" ]
                   then 
                   echo -e $orange "+-------------------------+"
                   echo -e $orange "|$okegreen Current saved listeners$orange |"
