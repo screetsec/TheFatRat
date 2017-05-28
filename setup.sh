@@ -58,8 +58,10 @@ rm -f /etc/apt/sources.list.fatrat
 apt-get clean
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 clear
-echo -e $okegreen "Starting diagnostics"
-chmod +x diag.sh
+
+# Currently building the diagnostic script
+#echo -e $okegreen "Starting diagnostics"
+#chmod +x diag.sh > /dev/null 2>&1
 #./diag.sh
 exit
 elif [ "$ct" == "1" ]; then
@@ -93,8 +95,8 @@ rm -f /etc/apt/sources.list.fatrat
 apt-get clean
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 clear
-echo -e $okegreen "Starting diagnostics"
-chmod +x diag.sh
+#echo -e $okegreen "Starting diagnostics"
+#chmod +x diag.sh
 #./diag.sh
 exit
 elif [ "$ct" == "1" ]; then
