@@ -2840,7 +2840,8 @@ esac
                               elif test $fatrat1 == '5'
                               then
                   echo ""
-                  if [ -n "config/listeners/*.rc" ]
+		  chkls=`ls -1 $list/*.rc 2>/dev/null | wc -l`
+                  if [ $chkls != "0" ]
                   then 
                   echo -e $orange "+-------------------------+"
                   echo -e $orange "|$okegreen Current saved listeners$orange |"
