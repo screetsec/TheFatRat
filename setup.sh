@@ -1,29 +1,40 @@
 #!/bin/bash
-
+# In case mingw64 or 32bit are not found then proceed to their instalation according to user linux architecture
 function mingwi() {
 case "$arch" in
 x86_64|aarch64) 
+#double check for mingw64
 which i686-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
+#mingw64 detected
 echo -e $green "[ ✔ ] Mingw-w64 Compiler................[ found ]"
+#write mingw64 location to log file
 which i686-w64-mingw32-gcc >> "$log" 2>&1
+#Write that ming64 was detected to install.log , so user know that mingw is ok
 echo "Mingw64 -> OK" >> "$inst"
 sleep 1
 else
 echo -e $red "[ X ] mingw-w64 compiler  -> not found "
 echo -e $yellow "[ ! ]   Installing Mingw-64 "
+#Mingw64 was not found , install it using kali repository
 xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw-w64 --force-yes -y"
+#After instalation , check again for mingw64
 which i686-w64-mingw32-gcc >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
+#Instalation was succefully
 echo -e $green "[ ✔ ] Mingw64 -> OK"
 echo "Mingw64 -> OK" >> "$inst"
 else
+#Instalation of mingw64 failed
 echo -e $red "[ x ] Mingw64"
+#Write 0 to check file so setup can know in the end that something failed
 echo "0" > "$stp"
+#Write in install.log that Mingw64 instalation was not sucefully  
 echo "Mingw64 -> NOT OK" >> "$inst"
 fi
 fi
 ;;
+#Same procedure as before but for mingw32
 i386|i486|i586|i686|armv7l)
 which i586-mingw32msvc-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -47,11 +58,13 @@ fi
 fi
 ;;
 *)
+#none of the accepted architectures were detected , infor user to create an issue in fatrat git with his linux arch
 echo -e $red "Architecture not in list , aborting installation"
 echo -e $yellow "Please report into issues on Fatrat github this Arch : Arch=($arch)" 
 echo ""
 echo -e $green "Press any key to continue"
 read abo
+# Instalation was aborted , return user sources.list to original
 echo -e $blue "Reactivating you original repositories"
 rm -f /etc/apt/sources.list
 mv /etc/apt/sources.list.backup /etc/apt/sources.list
@@ -64,7 +77,7 @@ exit 0
 ;;
 esac
 }
-
+#Instalation of searchsploit (exploitdb)
 function ssplt() {
 
 # check if searchsploit exists
@@ -130,10 +143,12 @@ ssplt
 esac
 fi
 echo ""
+#Go check the check file exists and read its value
 chk=$path/logs/check
 if [ -f "$chk" ]
 then
 ct=`sed -n 1p $chk`
+#if value of check is 0 theen some package was not installed sucefully 
 if [ "$ct" == "0" ]; then
 clear
 echo -e $red "Fatrat was not able to install some packages"
@@ -151,6 +166,8 @@ rm -rf "$config" >/dev/null 2>&1
 #echo -e $okegreen "Starting diagnostics"
 #chmod +x diag.sh > /dev/null 2>&1
 #./diag.sh
+
+#Display to user the install.log file and inform him what to do
 echo "Was not possible to install The Packages Labeled (Not Ok) in this list above" >> "$inst"
 echo "Try : (apt-get remove --purge <packagename> && apt-get autoremove && apt-get install -f)" >> "$inst"
 echo "before running fatrat setup script again" >> "$inst"
@@ -158,9 +175,11 @@ cat "$inst"
 exit
 elif [ "$ct" == "1" ]; then
 echo ""
+#value in check file is 1 , then everything is ok , delete install.log file and proceed to finish setup
 rm -rf "$inst" >/dev/null 2>&1
 fi
 else
+#in case value in check file is not 0 or 1 then something is wrong
 echo -e $okegreen "Something went very wrong , execute ./setup.sh again"
 rm -rf "$config" >/dev/null 2>&1
 echo ""
@@ -172,8 +191,6 @@ exit
 fi
 }
 
-
-#ok
 function bkf() {
 # Check if backdoor-factory exists
 
@@ -246,7 +263,6 @@ esac
 fi
 }
 
-#ok
 function mtspl() {
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
@@ -351,8 +367,11 @@ fi
 function cont() {
 
 stp="logs/check"
+#remove any previous check file from previous attempts
 rm -rf "$stp" >/dev/null 2>&1
+#starting setup , input 1 value to check file
 echo "1" > "$stp"
+#remove any previous install.log file from previous attempts
 rm -rf "$inst" >/dev/null 2>&1
 
 #check if xterm is installed
@@ -698,13 +717,14 @@ mingwi
 fi
 fi
 
-#Adding Dx & Aapt path to config 
+#Checking for DX and in case exists then check if it is version 1.8 used in fatrat (latest android sdk) 
 which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 dxg=`dx --version 2>&1 | tee temp/dx`
 dxv=`cat temp/dx | awk '{print $3}'` 
 case $dxv in
 1.8)
+#DX exists and it is version 1.8
 rm -rf temp/dx >/dev/null 2>&1
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
@@ -712,6 +732,7 @@ echo -e $green "[ ✔ ] DX 1.8"
 echo "DX -> OK" >> "$inst"
 ;;
 *)
+#DX does not exists or is not 1.8 version
 xterm -T "☣ Removing Your Current DX ☣" -geometry 100x30 -e "sudo apt-get remove --purge dx -y"
 unlink "/usr/local/sbin/dx" > /dev/null 2>&1
 ln -s "$path/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 2>&1
@@ -743,18 +764,20 @@ echo "0" > "$stp"
 echo "DX -> Not OK" >> "$inst"
 fi
 fi
-
+# check if aapt exists and if it is version v0.2-3821160 used in fatrat (android sdk)
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 aptv=`aapt v | awk '{print $5}'`
 case $aptv in
 v0.2-3821160)
+#exists and it is v0.2-3821160
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
 echo -e $green "[ ✔ ] Aapt v0.2-3821160"
 echo "Aapt -> OK" >> "$inst"
 ;;
 *)
+#Aapt does not exists or is not the latest version used in fatrat (android sdk)
 xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y"
 unlink "/usr/local/sbin/aapt" > /dev/null 2>&1
 ln -s "$path/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/null 2>&1
@@ -787,7 +810,7 @@ echo "Aapt -> Not OK" >> "$inst"
 fi
 fi
 
-#Adding Apktool path to config
+#Same procedure used for dx and aapt , but for apktool 2.2.2.
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 apk=`apktool | sed -n 1p | awk '{print $2}'` > /dev/null 2>&1
@@ -830,7 +853,7 @@ echo "0" > "$stp"
 echo "Apktool -> Not OK" >> "$inst"
 fi
 fi
-
+#Same as others before , but dex2jar in this case will be installed directly to user OS , instead be working in fatrat tools
 which d2j-dex2jar > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 dex=`d2j-dex2jar 2>&1 | tee temp/dex`
@@ -845,6 +868,8 @@ echo "Dex2Jar -> OK" >> "$inst"
 ;;
 *)
 rm -rf temp/dex >/dev/null 2>&1
+#Dex2jar does not exists or it is the 2.0 version , so uninstall it & copy dex2jar from
+#fatrat tools folder to /usr/local/sbin 
 xterm -T "☣ Removing Your Current Dex2Jar ☣" -geometry 100x30 -e "sudo apt-get remove --purge dex2jar --force-yes -y" 
 cp $path/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-baksmali" > /dev/null 2>&1
@@ -856,16 +881,20 @@ chmod +x /usr/local/sbin/d2j-jar2jasmin > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-jasmin2jar > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-smali > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-std-apk > /dev/null 2>&1
+#remove any previous version files from dex2jar lib from /usr/local/share and copy the new ones to there from fatrat tools dir
 rm -rf /usr/local/share/dex2jar > /dev/null 2>&1
 mkdir /usr/local/share/dex2jar > /dev/null 2>&1
 cp -r $path/tools/dex2jar/lib "/usr/local/share/dex2jar/lib > /dev/null 2>&1
 which d2j-dex2jar > /dev/null 2>&1
+#After new instalation , check if dex2jar is working
 if [ "$?" -eq "0" ]; then
+#Dex2jar was suceffully installed 
 echo -e $green "[ ✔ ] Dex2Jar 2.0"
 which d2j-dex2jar >> "$log" 2>&1
 echo "d2j-dex2jar" | tee -a "$config" >> /dev/null 2>&1
 echo "Dex2Jar -> OK" >> "$inst"
 else
+#After the instalation something did not worked , place the warnings in logs
 echo -e $red "[ x ] Dex2Jar 2.0"
 echo "0" > "$stp"
 echo "Dex2Jar -> Not OK" >> "$inst"
@@ -873,6 +902,7 @@ fi
 ;;
 esac
 else
+#dex2jar does not exist in user linux OS , proceed with a clean manual installation
 cp $path/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-baksmali" > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-dex-recompute-checksum > /dev/null 2>&1
@@ -977,15 +1007,17 @@ esac
 exit 
 
 }  
-
+#Case ping goggle hostname fails , the this function will load to check what is happening 
 function chknet() {
 echo -e $red "[X] Your Internet is not working correctly!"
 sleep 1
 echo -e $cyan "[*] Checking ...."
+#ping hostname failed , so now will test ping google ip dns server
 ping -c 1 8.8.4.4 > /dev/null 2>&1
 png="$?" 
  if [ $png == "0" ]
 then
+#Ping dns server worked , inform user what happened and proceed with setup
     echo -e $red "[X] Your linux OS is not able to resolve"
     echo -e $red "hostnames over terminal using ping !!"
     echo ""
@@ -1004,6 +1036,7 @@ cont
     sleep 1
 elif [ $png == "1" ]
 then
+#user is only connected to lan and not to the web , abort setup
     echo -e $yellow "You are connected to your local network but not to the web ."
     echo -e $yellow "Check if your router/modem gateway is connected to the web ."
 echo ""
@@ -1019,6 +1052,7 @@ exit 1
 sleep 1
 elif [ $png == "2" ]
 then
+# user is not connected to anywhere , web or lan , abort setup
 echo -e $red "You are not connected to any network ."
 echo ""
 echo -e $cyan "Setup will stop because :"
@@ -1056,6 +1090,7 @@ sleep 2
 else
 echo -e $green ""
 fi 
+#variables for logs and others
 path=`pwd`
 arch=`uname -m`
 inst=$path/logs/install.log
@@ -1065,7 +1100,7 @@ config=$path/config/config.path
 rm -rf "$log" > /dev/null 2>&1
 rm -rf logs/check > /dev/null 2>&1
 
-#This colour
+#terminal text colours code
 cyan='\e[0;36m'
 green='\e[0;32m'
 lightgreen='\e[0;32m'
@@ -1085,6 +1120,7 @@ echo -e $red [x]::[not root]: You need to be [root] to run this script.;
 exit 0
 fi
 echo ""
+# Fixing any possible problems with packages missed/corrupted dependencies on user OS before proceed
 echo -e $green "[ * ] Fixing any possible broken packages in apt management"
 sleep 1
 echo -e $white ""
@@ -1116,6 +1152,7 @@ echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> "$log"
 echo "------------------------------------------------------" >> "$log"
 echo "                                                      " >> "$log"
 echo ""
+#Detect if user OS is 32Bit or 64bit
 case $arch in
 x86_64|aarch64) 
 echo -e $purple "              64Bit OS detected"
@@ -1160,22 +1197,26 @@ echo [local]
 fi
 
 sleep 1
+#First check of setup for internet connection by pinging google hostname
 echo -e $green "[ * ] Checking for internet connection"
 sleep 1
 ping -c 1 google.com > /dev/null 2>&1
 png="$?" 
  if [ $png == "0" ]
 then
+#ping google hostname was succefully , then proceed with setup 
     echo -e $green [ ✔ ]::[Internet Connection]: CONNECTED!;
     sleep 1
     cont
 elif [ $png == "1" ]
 then
+#ping hostname failed , load chknet function
     echo -e $yellow [ X ]::[Internet Connection]: LOCAL ONLY!;
     chknet
     sleep 1
 elif [ $png == "2" ]
 then
+#ping hostname failed , load chknet function
 echo -e $red [ X ]::[Internet Connection]: OFFLINE!;
 chknet
     sleep 1
