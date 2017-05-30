@@ -100,7 +100,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 ```git pull && chmod +x setup.sh && ./setup.sh```
 
 - To Update from 1.9.3 Version and up , execute on your fatrat folder : 
-```./update && chmod +x setup.sh && ./setup.sh```
+```./update && ./setup.sh```
 
 ## Tutorial ?
 
