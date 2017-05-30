@@ -868,7 +868,7 @@ echo "Dex2Jar -> OK" >> "$inst"
 ;;
 *)
 rm -rf temp/dex >/dev/null 2>&1
-#Dex2jar does not exists or it is the 2.0 version , so uninstall it & copy dex2jar from
+#Dex2jar does not exists or it is not the 2.0 version , so uninstall it & copy dex2jar from
 #fatrat tools folder to /usr/local/sbin 
 xterm -T "☣ Removing Your Current Dex2Jar ☣" -geometry 100x30 -e "sudo apt-get remove --purge dex2jar --force-yes -y" 
 cp $path/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
@@ -881,7 +881,8 @@ chmod +x /usr/local/sbin/d2j-jar2jasmin > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-jasmin2jar > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-smali > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-std-apk > /dev/null 2>&1
-#remove any previous version files from dex2jar lib from /usr/local/share and copy the new ones to there from fatrat tools dir
+# remove any previous version files from dex2jar lib from /usr/local/share 
+# and copy the new ones to there from fatrat tools dir
 rm -rf /usr/local/share/dex2jar > /dev/null 2>&1
 mkdir /usr/local/share/dex2jar > /dev/null 2>&1
 cp -r $path/tools/dex2jar/lib "/usr/local/share/dex2jar/lib > /dev/null 2>&1
