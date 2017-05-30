@@ -7,6 +7,7 @@ which i686-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw-w64 Compiler................[ found ]"
 which i686-w64-mingw32-gcc >> "$log" 2>&1
+echo "Mingw64 -> OK" >> "$inst"
 sleep 1
 else
 echo -e $red "[ X ] mingw-w64 compiler  -> not found "
@@ -28,6 +29,7 @@ which i586-mingw32msvc-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw32 Compiler..................[ found ]"
 which i586-mingw32msvc-gcc >> "$log" 2>&1
+echo "Mingw32 -> OK" >> "$inst"
 sleep 1
 else
 echo -e $red "[ X ] mingw32 compiler  -> not found "
