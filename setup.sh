@@ -872,7 +872,7 @@ rm -rf temp/dex >/dev/null 2>&1
 #fatrat tools folder to /usr/local/sbin 
 xterm -T "☣ Removing Your Current Dex2Jar ☣" -geometry 100x30 -e "sudo apt-get remove --purge dex2jar --force-yes -y" 
 cp $path/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-baksmali" > /dev/null 2>&1
+chmod +x /usr/local/sbin/d2j-baksmali > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-dex-recompute-checksum > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-dex2jar > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-dex2smali > /dev/null 2>&1
@@ -905,7 +905,7 @@ esac
 else
 #dex2jar does not exist in user linux OS , proceed with a clean manual installation
 cp $path/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-baksmali" > /dev/null 2>&1
+chmod +x /usr/local/sbin/d2j-baksmali > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-dex-recompute-checksum > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-dex2jar > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-dex2smali > /dev/null 2>&1
