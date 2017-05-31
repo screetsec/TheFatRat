@@ -885,7 +885,7 @@ chmod +x /usr/local/sbin/d2j-std-apk > /dev/null 2>&1
 # and copy the new ones to there from fatrat tools dir
 rm -rf /usr/local/share/dex2jar > /dev/null 2>&1
 mkdir /usr/local/share/dex2jar > /dev/null 2>&1
-cp -r $path/tools/dex2jar/lib "/usr/local/share/dex2jar/lib > /dev/null 2>&1
+cp -r $path/tools/dex2jar/lib /usr/local/share/dex2jar/lib > /dev/null 2>&1
 which d2j-dex2jar > /dev/null 2>&1
 #After new instalation , check if dex2jar is working
 if [ "$?" -eq "0" ]; then
@@ -916,7 +916,7 @@ chmod +x /usr/local/sbin/d2j-smali > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-std-apk > /dev/null 2>&1
 rm -rf /usr/local/share/dex2jar > /dev/null 2>&1
 mkdir /usr/local/share/dex2jar > /dev/null 2>&1
-cp -r $path/tools/dex2jar/lib "/usr/local/share/dex2jar/lib > /dev/null 2>&1
+cp -r $path/tools/dex2jar/lib /usr/local/share/dex2jar/lib > /dev/null 2>&1
 which d2j-dex2jar > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Dex2Jar 2.0"
