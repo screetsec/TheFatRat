@@ -74,7 +74,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 ## Getting Started
 1. ```git clone https://github.com/Screetsec/TheFatRat.git```
 2. ```cd TheFatRat```
-3. ```./setup.sh```
+3. ```chmod +x setup.sh && ./setup.sh```
 
 ## :book: How it works
 
@@ -100,7 +100,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 ```git pull && chmod +x setup.sh && ./setup.sh```
 
 - To Update from 1.9.3 Version and up , execute on your fatrat folder : 
-```./update && ./setup.sh```
+```./update && chmod +x setup.sh && ./setup.sh```
 
 ## Tutorial ?
 
