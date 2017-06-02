@@ -1,10 +1,9 @@
 
 # TheFatRat ( Unit for bypass av )
 
-## Update: Version 1.9.4
-## Codename: Whistle
 
 [![Version](https://img.shields.io/badge/TheFatRat-1.9.4-brightgreen.svg?maxAge=259200)]()
+[![Codename](https://img.shields.io/badge/Whistle-brightgreen.svg)]()
 [![Stage](https://img.shields.io/badge/Release-Stable-brightgreen.svg)]()
 [![Build](https://img.shields.io/badge/Supported_OS-Linux-orange.svg)]()
 
