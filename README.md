@@ -1,5 +1,5 @@
 
-# Thefatrat a massive exploiting tool revealed
+# TheFatRat a Massive Exploiting Tool Revealed
 
 
 [![Version](https://img.shields.io/badge/TheFatRat-1.9.4-brightgreen.svg?maxAge=259200)]()
