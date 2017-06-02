@@ -3,7 +3,7 @@
 
 
 [![Version](https://img.shields.io/badge/TheFatRat-1.9.4-brightgreen.svg?maxAge=259200)]()
-[![Codename](https://img.shields.io/badge/Whistle-brightgreen.svg)]()
+[![Version](https://img.shields.io/badge/Codename-Whistle-red.svg?maxAge=259200)]()
 [![Stage](https://img.shields.io/badge/Release-Stable-brightgreen.svg)]()
 [![Build](https://img.shields.io/badge/Supported_OS-Linux-orange.svg)]()
 
