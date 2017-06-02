@@ -85,10 +85,12 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 * Easy to Use just input your number
 
 
-##  :heavy_exclamation_mark: Requirements
-
-- A linux operating system. We recommend Kali Linux 2 or Kali 2016.1 rolling 
- Cyborg / Parrot / Dracos / BackTrack / Backbox / Devuan and another operating system ( linux )
+## A linux operating system. We recommend :
+- Kali Linux 2 or Kali 2016.1 rolling 
+- Cyborg
+- Parrot 
+- BackTrack 
+- Backbox  
 
 
 
