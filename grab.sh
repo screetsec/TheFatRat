@@ -35,7 +35,7 @@ tmo=`sed -n 4p $conf`
 fi
 
 #Clean metasploit output folder (in case a previous file with same name was created)
-rm -rf $HOME/.msf4/local/*
+rm -rf $HOME/.msf4/local/* >/dev/null 2>&1
 
 # Look for the name of the file to be search in metasploit output in msff
 # msff file will be created by fatrat
@@ -50,6 +50,13 @@ else
 exit 1
 fi
 function outf(){
+clear
+echo -e $orange   "---------------------------------------------------"
+echo -e $orange "|$okegreen       Grab Script 1.0 (fatrat 1.9.4 edition)$orange    |"
+echo -e $orange   "---------------------------------------------------"
+echo -e $okegreen "Second : $sleep  - Timeout : $tmo"
+echo ""
+echo -e $okegreen "Waiting for msfconsole output to be generated in Xterm Window"
 #set directory to search for file , and filename
 out="$HOME/.msf4/local/$var"
 
@@ -62,6 +69,7 @@ then
 #then exits this script
 
 echo "Metasploit did not generated any output or your timeout is short"
+pkill -f Microsploit > /dev/null 2>&1
 exit 1
 fi
 
@@ -70,7 +78,7 @@ if [ -f $out ]; then
 mv $HOME/.msf4/local/$var $path/output/$var
 
 #Look in active processes a process name "Microsploit" and kill it
-pkill -f Microsploit
+pkill -f Microsploit > /dev/null 2>&1
 exit 1
 else
 
