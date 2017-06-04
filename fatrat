@@ -1355,7 +1355,7 @@ function fudwin() {
     echo -e $cyan "Select one tool to create your Windows EXE FUD Rat "
     echo -e $cyan ""
     echo ""
-    echo -e $white "[$okegreen 1$white ]$okegreen -$yellow Powerstager 0.2 by z0noxz $okegreen(NEW)"
+    echo -e $white "[$okegreen 1$white ]$okegreen -$yellow Powerstager 0.2 by z0noxz (powershell) $okegreen(NEW)"
     echo -e $white "[$okegreen 2$white ]$okegreen -$yellow Slow But Powerfull $okegreen(OLD)"
     echo -e $white "[$okegreen 3$white ]$okegreen -$yellow Return to menu"
     echo ""
