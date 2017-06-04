@@ -1,5 +1,6 @@
 ## CHANGELOG
 
+* v1.9.5 - Code missing in fudwin (fixed)
 * v1.9.5 - added dll injection attack 
 * v1.9.5 - update function () creator script into ver 1.3
 * v1.9.4 - Fix in microsploit option 5 , grab script created to get msfconsole generated payload while running
