@@ -1,4 +1,7 @@
 ## CHANGELOG
+
+* v1.9.5 - added dll injection attack 
+* v1.9.5 - update function () creator script into ver 1.3
 * v1.9.4 - Fix in microsploit option 5 , grab script created to get msfconsole generated payload while running
 * v1.9.4 - Fatrat will be full terminal mode , Powerstage tool added , Setup script rebuilded
 * v1.9.3 - Added update script
