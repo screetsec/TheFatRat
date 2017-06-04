@@ -1274,12 +1274,16 @@ echo "file in ($path/output/) with the name $fira.exe ."
 echo -e $okegreen ""
 echo " [✔] FatRat have renamed your old FUD Rat to old_$ren.exe"
 echo ""
+echo -e $cyan "[*] You can find your file in :
+$path/output/old_$ren.exe"
+else
 mv $fstager $path/output/$fira.exe >> $logfud 2>&1
 echo ""
 echo -e $cyan "[*] You can find your file in :
 $chk"
 echo ""
 fi
+
 #Option to create a listener
 echo ""
 echo -e $okegreen "Do you want to create a listener for this configuration"
