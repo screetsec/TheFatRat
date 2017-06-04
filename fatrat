@@ -726,7 +726,7 @@ payload="python/meterpreter/reverse_tcp_ssl"
 *)
 echo ""
 echo -e $red "Wrong input , choose between 1 and 7"
-pldand
+pldmul
 ;;
 esac
 }
