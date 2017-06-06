@@ -25,6 +25,12 @@ import shutil
 import random
 import string
 
+#get msfvenom path
+f = open("../config/config.path","r")
+lines = f.readlines()
+msfvenom = lines[6]
+f.close()
+
 #
 # generate a random string
 #
