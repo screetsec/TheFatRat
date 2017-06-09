@@ -1,5 +1,5 @@
 ## CHANGELOG
-
+* v1.9.5 - Update powerstager to 0.2.5
 * v1.9.5 - Code missing in fudwin (fixed)
 * v1.9.5 - added dll injection attack 
 * v1.9.5 - update function () creator script into ver 1.3
