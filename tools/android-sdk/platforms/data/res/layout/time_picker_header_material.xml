@@ -38,6 +38,7 @@
         android:ellipsize="none"
         android:gravity="right"
         android:focusable="true"
+        android:pointerIcon="hand"
         android:nextFocusForward="@+id/minutes" />
 
     <TextView
@@ -64,6 +65,7 @@
         android:ellipsize="none"
         android:gravity="left"
         android:focusable="true"
+        android:pointerIcon="hand"
         android:nextFocusForward="@+id/am_label" />
 
     <!-- The layout alignment of this view will switch between toRightOf

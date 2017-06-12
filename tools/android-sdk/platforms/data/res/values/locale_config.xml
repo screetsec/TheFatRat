@@ -75,7 +75,7 @@
         <item>ce-RU</item> <!-- Chechen (Russia) -->
         <item>cgg-UG</item> <!-- Chiga (Uganda) -->
         <item>chr-US</item> <!-- Cherokee (United States) -->
-        <item>cs-CZ</item> <!-- Czech (Czech Republic) -->
+        <item>cs-CZ</item> <!-- Czech (Czechia) -->
         <item>cy-GB</item> <!-- Welsh (United Kingdom) -->
         <item>da-DK</item> <!-- Danish (Denmark) -->
         <item>da-GL</item> <!-- Danish (Greenland) -->
@@ -484,6 +484,7 @@
         <item>yav-CM</item> <!-- Yangben (Cameroon) -->
         <item>yo-BJ</item> <!-- Yoruba (Benin) -->
         <item>yo-NG</item> <!-- Yoruba (Nigeria) -->
+        <item>yue-HK</item> <!-- Cantonese (Hong Kong) -->
         <item>zgh-MA</item> <!-- Standard Moroccan Tamazight (Morocco) -->
         <item>zh-Hans-CN</item> <!-- Chinese (Simplified Han,China) -->
         <item>zh-Hans-HK</item> <!-- Chinese (Simplified Han,Hong Kong) -->

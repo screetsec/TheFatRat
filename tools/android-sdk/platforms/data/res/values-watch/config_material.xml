@@ -30,6 +30,10 @@
     <!-- Always overscan by default to ensure onApplyWindowInsets will always be called. -->
     <bool name="config_windowOverscanByDefault">true</bool>
 
-    <!-- Due to the smaller screen size, have dialog titles occupy more than 1 line. -->
-    <integer name="config_dialogWindowTitleMaxLines">3</integer>
+    <!-- Enable windowSwipeToDismiss. -->
+    <bool name="config_windowSwipeToDismiss">true</bool>
+
+    <!-- Style the scrollbars accoridngly. -->
+    <drawable name="config_scrollbarThumbVertical">@drawable/scrollbar_vertical_thumb</drawable>
+    <drawable name="config_scrollbarTrackVertical">@drawable/scrollbar_vertical_track</drawable>
 </resources>

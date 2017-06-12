@@ -48,26 +48,20 @@
          provisioning, availability etc -->
     <bool name="config_carrier_vt_available">true</bool>
 
-    <!-- Flag specifying whether VoLTE availability is based on provisioning -->
-    <bool name="config_carrier_volte_provisioned">true</bool>
-
     <bool name="config_auto_attach_data_on_creation">false</bool>
-    <!-- service number convert map in roaming network. -->
-    <string-array translatable="false" name="dial_string_replace">
-        <item>"*611:+19085594899,"</item>
-        <item>"*86:+1MDN,"</item>
-    </string-array>
 
-    <!-- Flag indicating whether strict threshold is used, or lenient threshold is used,
-          when evaluating RSRP for LTE antenna bar display
-           0. Strict threshold
-           1. Lenient threshold
-    -->
-    <integer name="config_LTE_RSRP_threshold_type">0</integer>
+    <!--Thresholds for LTE dbm in status bar-->
+    <integer-array translatable="false" name="config_lteDbmThresholds">
+        <item>-140</item>    <!-- SIGNAL_STRENGTH_NONE_OR_UNKNOWN -->
+        <item>-115</item>    <!-- SIGNAL_STRENGTH_POOR -->
+        <item>-105</item>    <!-- SIGNAL_STRENGTH_MODERATE -->
+        <item>-95</item>     <!-- SIGNAL_STRENGTH_GOOD -->
+        <item>-85</item>     <!-- SIGNAL_STRENGTH_GREAT -->
+        <item>-44</item>
+    </integer-array>
 
-    <string-array translatable="false" name="config_sms_convert_destination_number_support">
-        <item>true</item>
-    </string-array>
     <string translatable="false" name="prohibit_manual_network_selection_in_gobal_mode">true</string>
+
+    <bool name="config_use_sim_language_file">true</bool>
 
 </resources>

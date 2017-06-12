@@ -1,4 +1,5 @@
 ## CHANGELOG
+* v1.9.5 - Update Android Build Tools -> R26 & Android Platform -> 26-R01
 * v1.9.5 - Update powerstager to 0.2.5
 * v1.9.5 - Code missing in fudwin (fixed)
 * v1.9.5 - added dll injection attack 

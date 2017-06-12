@@ -21,7 +21,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="byteShort" msgid="8340973892742019101">"B"</string>
-    <string name="kilobyteShort" msgid="5973789783504771878">"KB"</string>
+    <string name="kilobyteShort" msgid="7542884022844556968">"KB"</string>
     <string name="megabyteShort" msgid="6355851576770428922">"MB"</string>
     <string name="gigabyteShort" msgid="3259882455212193214">"GB"</string>
     <string name="terabyteShort" msgid="231613018159186962">"TB"</string>
@@ -46,6 +46,7 @@
     <string name="defaultMsisdnAlphaTag" msgid="2850889754919584674">"MSISDN1"</string>
     <string name="mmiError" msgid="5154499457739052907">"接続に問題があるか、MMIコードが正しくありません。"</string>
     <string name="mmiFdnError" msgid="5224398216385316471">"発信番号制限で指定された番号に対してのみ操作できます。"</string>
+    <string name="mmiErrorWhileRoaming" msgid="762488890299284230">"ローミング中はスマートフォンから着信転送設定の変更はできません。"</string>
     <string name="serviceEnabled" msgid="8147278346414714315">"サービスが有効になりました。"</string>
     <string name="serviceEnabledFor" msgid="6856228140453471041">"次のサービスが有効になりました:"</string>
     <string name="serviceDisabled" msgid="1937553226592516411">"サービスが無効になりました。"</string>
@@ -88,14 +89,16 @@
     <string name="CLIRDefaultOffNextCallOff" msgid="2567998633124408552">"既定: 発信者番号通知、次の発信: 通知"</string>
     <string name="serviceNotProvisioned" msgid="8614830180508686666">"提供可能なサービスがありません。"</string>
     <string name="CLIRPermanent" msgid="3377371145926835671">"発信者番号の設定は変更できません。"</string>
-    <string name="RestrictedOnData" msgid="8653794784690065540">"データサービスがブロックされています。"</string>
-    <string name="RestrictedOnEmergency" msgid="6581163779072833665">"緊急サービスがブロックされています。"</string>
-    <string name="RestrictedOnNormal" msgid="4953867011389750673">"音声サービスがブロックされています。"</string>
-    <string name="RestrictedOnAllVoice" msgid="3396963652108151260">"すべての音声サービスがブロックされています。"</string>
-    <string name="RestrictedOnSms" msgid="8314352327461638897">"SMSサービスがブロックされています。"</string>
-    <string name="RestrictedOnVoiceData" msgid="996636487106171320">"音声/データサービスがブロックされています。"</string>
-    <string name="RestrictedOnVoiceSms" msgid="1888588152792023873">"音声/SMSサービスがブロックされています。"</string>
-    <string name="RestrictedOnAll" msgid="5643028264466092821">"すべての音声/データ/SMSサービスがブロックされています。"</string>
+    <string name="RestrictedOnDataTitle" msgid="1322504692764166532">"データサービス停止"</string>
+    <string name="RestrictedOnEmergencyTitle" msgid="1236071219598685236">"緊急通報サービス停止"</string>
+    <string name="RestrictedOnNormalTitle" msgid="3179574012752700984">"音声通話サービス停止"</string>
+    <string name="RestrictedOnAllVoiceTitle" msgid="158800171499150681">"音声通話 / 緊急通報サービス停止"</string>
+    <string name="RestrictedOnDataContent" msgid="8997474569390996587">"この場所では、携帯通信会社によりデータサービスが一時的に停止されています"</string>
+    <string name="RestrictedOnEmergencyContent" msgid="4573217945494650061">"この場所では、携帯通信会社により緊急通報が一時的に停止されています"</string>
+    <string name="RestrictedOnNormalContent" msgid="1579434198284512182">"この場所では、携帯通信会社により音声通話が一時的に停止されています"</string>
+    <string name="RestrictedOnAllVoiceContent" msgid="5243580774142557047">"この場所では、携帯通信会社により音声通話と緊急通報が一時的に停止されています"</string>
+    <string name="NetworkPreferenceSwitchTitle" msgid="4008877505368566980">"ネットワークにアクセスできません"</string>
+    <string name="NetworkPreferenceSwitchSummary" msgid="4164230263214915351">"受信状態を改善するには、[システム] &gt; [ネットワークとインターネット] &gt; [モバイル ネットワーク] &gt; [優先ネットワーク タイプ] で選択したタイプを変更してみてください。"</string>
     <string name="peerTtyModeFull" msgid="6165351790010341421">"ピアから、TTYモードをFULLにするようリクエストされました"</string>
     <string name="peerTtyModeHco" msgid="5728602160669216784">"ピアから、TTYモードをHCOにするようリクエストされました"</string>
     <string name="peerTtyModeVco" msgid="1742404978686538049">"ピアから、TTYモードをVCOにするようリクエストされました"</string>
@@ -135,7 +138,7 @@
   </string-array>
     <string name="wifi_calling_off_summary" msgid="8720659586041656098">"OFF"</string>
     <string name="wfc_mode_wifi_preferred_summary" msgid="1994113411286935263">"Wi-Fi優先"</string>
-    <string name="wfc_mode_cellular_preferred_summary" msgid="5920549484600758786">"モバイル優先"</string>
+    <string name="wfc_mode_cellular_preferred_summary" msgid="1988279625335345908">"モバイル優先"</string>
     <string name="wfc_mode_wifi_only_summary" msgid="2379919155237869320">"Wi-Fiのみ"</string>
     <string name="cfTemplateNotForwarded" msgid="1683685883841272560">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>:転送できません"</string>
     <string name="cfTemplateForwarded" msgid="1302922117498590521">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>:<xliff:g id="DIALING_NUMBER">{1}</xliff:g>"</string>
@@ -173,14 +176,16 @@
       <item quantity="one">認証局がインストールされました</item>
     </plurals>
     <string name="ssl_ca_cert_noti_by_unknown" msgid="4475437862189850602">"不明な第三者"</string>
-    <string name="ssl_ca_cert_noti_by_administrator" msgid="550758088185764312">"仕事用プロファイルの管理者によって監視される場合があります"</string>
+    <string name="ssl_ca_cert_noti_by_administrator" msgid="3541729986326153557">"仕事用プロファイルの管理者からの通知"</string>
     <string name="ssl_ca_cert_noti_managed" msgid="4030263497686867141">"<xliff:g id="MANAGING_DOMAIN">%s</xliff:g>によって監視される場合があります"</string>
     <string name="work_profile_deleted" msgid="5005572078641980632">"仕事用プロファイルが削除されました"</string>
-    <string name="work_profile_deleted_description" msgid="6305147513054341102">"管理アプリがないため仕事用プロファイルが削除されました。"</string>
-    <string name="work_profile_deleted_details" msgid="226615743462361248">"仕事用プロファイルの管理アプリがないか、破損しています。そのため仕事用プロファイルと関連データが削除されました。管理者にサポートをご依頼ください。"</string>
-    <string name="work_profile_deleted_description_dpm_wipe" msgid="6019770344820507579">"お使いの仕事用プロファイルはこの端末で使用できなくなりました"</string>
+    <string name="work_profile_deleted_description" msgid="1100529432509639864">"管理アプリがないため仕事用プロファイルが削除されました"</string>
+    <string name="work_profile_deleted_details" msgid="6307630639269092360">"仕事用プロファイルの管理アプリがないか、破損しています。そのため仕事用プロファイルと関連データが削除されました。管理者にサポートをご依頼ください。"</string>
+    <string name="work_profile_deleted_description_dpm_wipe" msgid="8823792115612348820">"お使いの仕事用プロファイルはこの端末で使用できなくなりました"</string>
+    <string name="network_logging_notification_title" msgid="6399790108123704477">"管理対象の端末"</string>
+    <string name="network_logging_notification_text" msgid="7930089249949354026">"この端末は組織によって管理され、ネットワーク トラフィックが監視される場合があります。詳しくはタップしてください。"</string>
     <string name="factory_reset_warning" msgid="5423253125642394387">"端末のデータが消去されます"</string>
-    <string name="factory_reset_message" msgid="4905025204141900666">"管理アプリの構成要素が不足しているか、アプリが破損しているため、ご利用になれません。端末のデータはこれから消去されます。管理者にサポートをご依頼ください。"</string>
+    <string name="factory_reset_message" msgid="7972496262232832457">"管理アプリを使用できません。端末のデータはこれから消去されます。\n\nご不明な点がある場合は、組織の管理者にお問い合わせください。"</string>
     <string name="me" msgid="6545696007631404292">"自分"</string>
     <string name="power_dialog" product="tablet" msgid="8545351420865202853">"タブレットオプション"</string>
     <string name="power_dialog" product="tv" msgid="6153888706430556356">"テレビのオプション"</string>
@@ -214,6 +219,7 @@
     <string name="global_actions" product="default" msgid="2406416831541615258">"携帯電話オプション"</string>
     <string name="global_action_lock" msgid="2844945191792119712">"画面ロック"</string>
     <string name="global_action_power_off" msgid="4471879440839879722">"電源を切る"</string>
+    <string name="global_action_emergency" msgid="7112311161137421166">"緊急通報"</string>
     <string name="global_action_bug_report" msgid="7934010578922304799">"バグレポート"</string>
     <string name="bugreport_title" msgid="2667494803742548533">"バグレポートを取得"</string>
     <string name="bugreport_message" msgid="398447048750350456">"現在の端末の状態に関する情報が収集され、その内容がメールで送信されます。バグレポートが開始してから送信可能な状態となるまでには多少の時間がかかりますのでご了承ください。"</string>
@@ -238,6 +244,20 @@
     <string name="status_bar_notification_info_overflow" msgid="5301981741705354993">"999+"</string>
     <string name="notification_hidden_text" msgid="1135169301897151909">"コンテンツが非表示"</string>
     <string name="notification_hidden_by_policy_text" msgid="9004631276932584600">"ポリシーによって非表示になっているコンテンツ"</string>
+    <string name="notification_channel_virtual_keyboard" msgid="6969925135507955575">"仮想キーボード"</string>
+    <string name="notification_channel_physical_keyboard" msgid="7297661826966861459">"物理キーボード"</string>
+    <string name="notification_channel_security" msgid="7345516133431326347">"セキュリティ"</string>
+    <string name="notification_channel_car_mode" msgid="3553380307619874564">"運転モード"</string>
+    <string name="notification_channel_account" msgid="7577959168463122027">"アカウントのステータス"</string>
+    <string name="notification_channel_developer" msgid="7579606426860206060">"デベロッパー メッセージ"</string>
+    <string name="notification_channel_updates" msgid="4794517569035110397">"アップデート"</string>
+    <string name="notification_channel_network_status" msgid="5025648583129035447">"ネットワークのステータス"</string>
+    <string name="notification_channel_network_alerts" msgid="2895141221414156525">"ネットワーク通知"</string>
+    <string name="notification_channel_vpn" msgid="8330103431055860618">"VPN のステータス"</string>
+    <string name="notification_channel_device_admin" msgid="1568154104368069249">"端末管理"</string>
+    <string name="notification_channel_alerts" msgid="4496839309318519037">"通知"</string>
+    <string name="notification_channel_retail_mode" msgid="6088920674914038779">"販売店デモ"</string>
+    <string name="notification_channel_usb" msgid="9006850475328924681">"USB 接続"</string>
     <string name="safeMode" msgid="2788228061547930246">"セーフモード"</string>
     <string name="android_system_label" msgid="6577375335728551336">"Androidシステム"</string>
     <string name="user_owner_label" msgid="1119010402169916617">"個人用に切り替える"</string>
@@ -272,6 +292,8 @@
     <string name="capability_desc_canControlMagnification" msgid="4791858203568383773">"画面のズームレベルと位置を制御します。"</string>
     <string name="capability_title_canPerformGestures" msgid="7418984730362576862">"操作の実行"</string>
     <string name="capability_desc_canPerformGestures" msgid="8296373021636981249">"タップ、スワイプ、ピンチ、その他の操作を行えます。"</string>
+    <string name="capability_title_canCaptureFingerprintGestures" msgid="6309568287512278670">"指紋認証センサーでの操作"</string>
+    <string name="capability_desc_canCaptureFingerprintGestures" msgid="7102111919385702482">"端末の指紋認証センサーで行われた操作をキャプチャできます。"</string>
     <string name="permlab_statusBar" msgid="7417192629601890791">"ステータスバーの無効化や変更"</string>
     <string name="permdesc_statusBar" msgid="8434669549504290975">"ステータスバーの無効化、システムアイコンの追加や削除をアプリに許可します。"</string>
     <string name="permlab_statusBarService" msgid="4826835508226139688">"ステータスバーへの表示"</string>
@@ -284,20 +306,22 @@
     <string name="permdesc_uninstall_shortcut" msgid="6745743474265057975">"ユーザー操作なしでホーム画面のショートカットを削除することをアプリに許可します。"</string>
     <string name="permlab_processOutgoingCalls" msgid="3906007831192990946">"発信先の変更"</string>
     <string name="permdesc_processOutgoingCalls" msgid="5156385005547315876">"発信を別の番号に転送するか完全に中止するオプションで、発信中にダイヤルされた番号にアクセスすることをアプリに許可します。"</string>
+    <string name="permlab_answerPhoneCalls" msgid="4077162841226223337">"電話の応答"</string>
+    <string name="permdesc_answerPhoneCalls" msgid="2901889867993572266">"通話着信に応答することをアプリに許可します。"</string>
     <string name="permlab_receiveSms" msgid="8673471768947895082">"テキストメッセージ（SMS）の受信"</string>
     <string name="permdesc_receiveSms" msgid="6424387754228766939">"SMSメッセージの受信と処理をアプリに許可します。これにより、アプリが端末に届いたメッセージを表示することなく監視または削除できるようになります。"</string>
     <string name="permlab_receiveMms" msgid="1821317344668257098">"テキストメッセージ（MMS）の受信"</string>
     <string name="permdesc_receiveMms" msgid="533019437263212260">"MMSメッセージの受信と処理をアプリに許可します。これにより、アプリが端末に届いたメッセージを表示することなく監視または削除できるようになります。"</string>
-    <string name="permlab_readCellBroadcasts" msgid="1598328843619646166">"緊急警報SMSの読み取り"</string>
-    <string name="permdesc_readCellBroadcasts" msgid="6361972776080458979">"端末で受信した緊急警報SMSの読み取りをアプリに許可します。緊急警報は、緊急事態を警告する目的で一部の地域に配信されます。緊急警報の受信時に、悪意のあるアプリによって端末の動作や処理が妨害される恐れがあります。"</string>
+    <string name="permlab_readCellBroadcasts" msgid="1598328843619646166">"緊急速報メール SMS の読み取り"</string>
+    <string name="permdesc_readCellBroadcasts" msgid="6361972776080458979">"端末で受信した緊急速報メール SMS の読み取りをアプリに許可します。緊急速報メールは、緊急事態を警告する目的で一部の地域に配信されます。緊急速報メールの受信時に、悪意のあるアプリによって端末の動作や処理が妨害される恐れがあります。"</string>
     <string name="permlab_subscribedFeedsRead" msgid="4756609637053353318">"登録したフィードの読み取り"</string>
     <string name="permdesc_subscribedFeedsRead" msgid="5557058907906144505">"現在同期されているフィードの詳細を取得することをアプリに許可します。"</string>
     <string name="permlab_sendSms" msgid="7544599214260982981">"SMSメッセージの送信と表示"</string>
     <string name="permdesc_sendSms" msgid="7094729298204937667">"SMSメッセージの送信をアプリに許可します。これにより、予期せぬ料金が発生する可能性があります。悪意のあるアプリが確認なしでメッセージを送信し、料金が発生する恐れがあります。"</string>
     <string name="permlab_readSms" msgid="8745086572213270480">"テキストメッセージ（SMSまたはMMS）の読み取り"</string>
-    <string name="permdesc_readSms" product="tablet" msgid="2467981548684735522">"タブレットまたはSIMカードに保存されているSMSメッセージの読み取りをアプリに許可します。これにより、すべてのSMSメッセージをコンテンツや機密性に関係なくアプリから読み取ることができるようになります。"</string>
-    <string name="permdesc_readSms" product="tv" msgid="5102425513647038535">"テレビまたはSIMカードに保存されているSMSメッセージの読み取りをアプリに許可します。これにより、すべてのSMSメッセージをコンテンツや機密性に関係なくアプリから読み取ることができるようになります。"</string>
-    <string name="permdesc_readSms" product="default" msgid="3695967533457240550">"モバイル端末またはSIMカードに保存されているSMSメッセージの読み取りをアプリに許可します。これにより、すべてのSMSメッセージをコンテンツや機密性に関係なくアプリから読み取ることができるようになります。"</string>
+    <string name="permdesc_readSms" product="tablet" msgid="4741697454888074891">"このアプリは、お使いのタブレットに保存された SMS（テキスト）メッセージをすべて読み取ることができます。"</string>
+    <string name="permdesc_readSms" product="tv" msgid="5796670395641116592">"このアプリは、お使いのテレビに保存された SMS（テキスト）メッセージをすべて読み取ることができます。"</string>
+    <string name="permdesc_readSms" product="default" msgid="6826832415656437652">"このアプリは、お使いのスマートフォンに保存された SMS（テキスト）メッセージをすべて読み取ることができます。"</string>
     <string name="permlab_receiveWapPush" msgid="5991398711936590410">"テキストメッセージ（WAP）の受信"</string>
     <string name="permdesc_receiveWapPush" msgid="748232190220583385">"WAPメッセージの受信と処理をアプリに許可します。これにより、アプリが端末に届いたメッセージを表示することなく監視または削除できるようになります。"</string>
     <string name="permlab_getTasks" msgid="6466095396623933906">"実行中のアプリの取得"</string>
@@ -310,8 +334,12 @@
     <string name="permdesc_enableCarMode" msgid="4853187425751419467">"運転モードを有効にすることをアプリに許可します。"</string>
     <string name="permlab_killBackgroundProcesses" msgid="3914026687420177202">"他のアプリの終了"</string>
     <string name="permdesc_killBackgroundProcesses" msgid="4593353235959733119">"他のアプリのバックグラウンドプロセスを終了することをアプリに許可します。これを許可すると、他のアプリの実行が停止する原因になることがあります。"</string>
-    <string name="permlab_systemAlertWindow" msgid="3543347980839518613">"他のアプリの上に重ねて表示"</string>
-    <string name="permdesc_systemAlertWindow" msgid="8584678381972820118">"他のアプリやユーザーインターフェースの一部の上に重ねて描画することをアプリに許可します。これにより、他のアプリのインターフェースを使用する際に邪魔になったり、他のアプリに表示されていると思われるものが変更されたりする場合があります。"</string>
+    <string name="permlab_systemAlertWindow" msgid="7238805243128138690">"他のアプリの上に重ねて表示"</string>
+    <string name="permdesc_systemAlertWindow" msgid="2393776099672266188">"このアプリは他のアプリの上に重ねて表示したり、画面の他の場所に表示したりできます。これにより、通常のアプリの使用が妨げられたり、他のアプリの表示が変わる場合があります。"</string>
+    <string name="permlab_runInBackground" msgid="7365290743781858803">"バックグラウンドでの実行"</string>
+    <string name="permdesc_runInBackground" msgid="7370142232209999824">"このアプリにバックグラウンドでの実行を許可します。許可すると電池消費量が増える場合があります。"</string>
+    <string name="permlab_useDataInBackground" msgid="8694951340794341809">"バックグラウンドでのデータ使用"</string>
+    <string name="permdesc_useDataInBackground" msgid="6049514223791806027">"このアプリにバックグラウンドでのデータ使用を許可します。許可するとデータ使用量が増える場合があります。"</string>
     <string name="permlab_persistentActivity" msgid="8841113627955563938">"アプリの常時実行"</string>
     <string name="permdesc_persistentActivity" product="tablet" msgid="8525189272329086137">"アプリにその一部をメモリに常駐させることを許可します。これにより他のアプリが使用できるメモリが制限されるため、タブレットの動作が遅くなることがあります。"</string>
     <string name="permdesc_persistentActivity" product="tv" msgid="5086862529499103587">"アプリにその一部をメモリに常駐させることを許可します。これにより他のアプリが使用できるメモリが制限されるため、テレビの動作が遅くなることがあります。"</string>
@@ -337,37 +365,37 @@
     <string name="permdesc_writeContacts" product="tv" msgid="5438230957000018959">"テレビに保存されている連絡先に関するデータの変更をアプリに許可します。このデータには、電話、メール、または他の手段で特定の相手と連絡をとった頻度も含まれます。これにより、アプリが連絡先データを削除できるようになります。"</string>
     <string name="permdesc_writeContacts" product="default" msgid="589869224625163558">"モバイル端末に保存されている連絡先に関するデータの変更をアプリに許可します。このデータには、電話、メール、または他の手段で特定の相手と連絡をとった頻度も含まれます。これにより、アプリが連絡先データを削除できるようになります。"</string>
     <string name="permlab_readCallLog" msgid="3478133184624102739">"通話履歴の読み取り"</string>
-    <string name="permdesc_readCallLog" product="tablet" msgid="3700645184870760285">"タブレットの通話履歴（着信や発信のデータなど）の読み取りをアプリに許可します。これにより、アプリに通話履歴データの保存を許可することになり、悪意のあるアプリによって知らないうちに通話履歴データが共有される恐れがあります。"</string>
-    <string name="permdesc_readCallLog" product="tv" msgid="5611770887047387926">"テレビの通話履歴（着信や発信のデータなど）の読み取りをアプリに許可します。これにより、アプリに通話履歴データの保存を許可することになり、悪意のあるアプリによって知らないうちに通話履歴データが共有される恐れがあります。"</string>
-    <string name="permdesc_readCallLog" product="default" msgid="5777725796813217244">"モバイル端末の通話履歴（着信や発信のデータなど）の読み取りをアプリに許可します。これにより、アプリに通話履歴データの保存を許可することになり、悪意のあるアプリによって知らないうちに通話履歴データが共有される恐れがあります。"</string>
+    <string name="permdesc_readCallLog" msgid="3204122446463552146">"このアプリは通話履歴を読み取ることができます。"</string>
     <string name="permlab_writeCallLog" msgid="8552045664743499354">"通話履歴の書き込み"</string>
     <string name="permdesc_writeCallLog" product="tablet" msgid="6661806062274119245">"タブレットの通話履歴（着信や発信のデータなど）の変更をアプリに許可します。この許可を悪意のあるアプリに利用されると、通話履歴が消去または変更される恐れがあります。"</string>
     <string name="permdesc_writeCallLog" product="tv" msgid="4225034892248398019">"テレビの通話履歴（着信や発信のデータなど）の変更をアプリに許可します。この許可を悪意のあるアプリに利用されると、通話履歴が消去または変更される恐れがあります。"</string>
     <string name="permdesc_writeCallLog" product="default" msgid="683941736352787842">"モバイル端末の通話履歴（着信や発信のデータなど）の変更をアプリに許可します。この許可を悪意のあるアプリに利用されると、通話履歴が消去または変更される恐れがあります。"</string>
     <string name="permlab_bodySensors" msgid="4683341291818520277">"ボディーセンサー（心拍数モニターなど）へのアクセス"</string>
     <string name="permdesc_bodySensors" product="default" msgid="4380015021754180431">"心拍数など、身体状態を監視するセンサーからのデータにアクセスすることをアプリに許可します。"</string>
-    <string name="permlab_readCalendar" msgid="5972727560257612398">"カレンダーの予定と機密情報の読み取り"</string>
-    <string name="permdesc_readCalendar" product="tablet" msgid="4216462049057658723">"タブレットに保存されているカレンダーの予定（友だちや同僚の予定も含めすべて）を読み取ることをアプリに許可します。これにより、アプリがカレンダーのデータを機密性に関係なく共有または保存できるようになる可能性があります。"</string>
-    <string name="permdesc_readCalendar" product="tv" msgid="3191352452242394196">"テレビに保存されているカレンダーの予定（友だちや同僚の予定も含めすべて）を読み取ることをアプリに許可します。これにより、アプリがカレンダーのデータを機密性に関係なく共有または保存できるようになる可能性があります。"</string>
-    <string name="permdesc_readCalendar" product="default" msgid="7434548682470851583">"モバイル端末に保存されているカレンダーの予定（友だちや同僚の予定も含めすべて）を読み取ることをアプリに許可します。これにより、アプリがカレンダーのデータを機密性に関係なく共有または保存できるようになる可能性があります。"</string>
+    <string name="permlab_readCalendar" msgid="6716116972752441641">"カレンダーの予定と詳細を読み取り"</string>
+    <string name="permdesc_readCalendar" product="tablet" msgid="4993979255403945892">"このアプリは、お使いのタブレットに保存されたカレンダーの予定をすべて読み取り、カレンダーのデータを共有したり、保存したりできます。"</string>
+    <string name="permdesc_readCalendar" product="tv" msgid="8837931557573064315">"このアプリは、お使いのテレビに保存されたカレンダーの予定をすべて読み取り、カレンダーのデータを共有したり、保存したりできます。"</string>
+    <string name="permdesc_readCalendar" product="default" msgid="4373978642145196715">"このアプリは、お使いのスマートフォンに保存されたカレンダーの予定をすべて読み取り、カレンダーのデータを共有したり、保存したりできます。"</string>
     <string name="permlab_writeCalendar" msgid="8438874755193825647">"カレンダーの予定の変更や追加を行う、所有者に通知せずにゲストにメールを送信する場合がある"</string>
-    <string name="permdesc_writeCalendar" product="tablet" msgid="6679035520113668528">"ユーザーがタブレットから編集できる予定（友だちや同僚の予定も含む）を追加、削除、変更することをアプリに許可します。これによりアプリは、カレンダーの所有者から発信されたかのようなメッセージを送信したり、所有者の知らないうちに予定を変更したりできるようになる可能性があります。"</string>
-    <string name="permdesc_writeCalendar" product="tv" msgid="1273290605500902507">"ユーザーがテレビから編集できる予定（友だちや同僚の予定も含む）を追加、削除、変更することをアプリに許可します。これによりアプリは、カレンダーの所有者から発信されたかのようなメッセージを送信したり、所有者の知らないうちに予定を変更したりできるようになる可能性があります。"</string>
-    <string name="permdesc_writeCalendar" product="default" msgid="2324469496327249376">"ユーザーがモバイル端末から編集できる予定（友だちや同僚の予定も含む）を追加、削除、変更することをアプリに許可します。これによりアプリは、カレンダーの所有者から発信されたかのようなメッセージを送信したり、所有者の知らないうちに予定を変更したりできるようになる可能性があります。"</string>
+    <string name="permdesc_writeCalendar" product="tablet" msgid="1675270619903625982">"このアプリは、お使いのタブレットでカレンダーの予定を追加、削除、変更できます。また、カレンダーの所有者から発信されたかのように表示されるメッセージを送信したり、所有者に通知することなく予定を変更したりできます。"</string>
+    <string name="permdesc_writeCalendar" product="tv" msgid="9017809326268135866">"このアプリは、お使いのテレビでカレンダーの予定を追加、削除、変更できます。また、カレンダーの所有者から発信されたかのように表示されるメッセージを送信したり、所有者に通知することなく予定を変更したりできます。"</string>
+    <string name="permdesc_writeCalendar" product="default" msgid="7592791790516943173">"このアプリは、お使いのスマートフォンでカレンダーの予定を追加、削除、変更できます。また、カレンダーの所有者から発信されたかのように表示されるメッセージを送信したり、所有者に通知することなく予定を変更したりできます。"</string>
     <string name="permlab_accessLocationExtraCommands" msgid="2836308076720553837">"位置情報提供者の追加コマンドアクセス"</string>
     <string name="permdesc_accessLocationExtraCommands" msgid="6078307221056649927">"位置情報提供元の追加のコマンドにアクセスすることをアプリに許可します。許可すると、アプリがGPSなどの位置情報源の動作を妨害する恐れがあります。"</string>
     <string name="permlab_accessFineLocation" msgid="251034415460950944">"正確な位置情報（GPSとネットワーク基地局）へのアクセス"</string>
-    <string name="permdesc_accessFineLocation" msgid="5295047563564981250">"グローバルポジショニングシステム（GPS）またはネットワーク位置情報源（携帯基地局やWi-Fiなど）を利用して正確な位置情報を取得することをアプリに許可します。これらの位置情報サービスはONの状態にして、端末でアプリがサービスを利用できるようにする必要があります。アプリはこの位置情報を利用してユーザーの現在地を特定できます。また、これにより電池の消費量が増える可能性があります。"</string>
+    <string name="permdesc_accessFineLocation" msgid="5821994817969957884">"このアプリは、ネットワーク位置情報源（携帯基地局や Wi-Fi ネットワークなど）に基づいて、ユーザーの位置情報を取得します。これらの位置情報サービスは ON の状態にして、スマートフォンでアプリがサービスを利用できるようにする必要があります。これにより電池の消費量が増える可能性があります。"</string>
     <string name="permlab_accessCoarseLocation" msgid="7715277613928539434">"おおよその位置情報（ネットワーク基地局）へのアクセス"</string>
-    <string name="permdesc_accessCoarseLocation" msgid="2538200184373302295">"ユーザーのおおよその位置情報を取得することをアプリに許可します。この位置情報はネットワーク位置情報源（携帯基地局やWi-Fiなど）を利用した位置情報サービスから取得されます。これらの位置情報サービスはONの状態にして、端末でアプリがサービスを利用できるようにする必要があります。アプリはこの位置情報を利用してユーザーのおおよその現在地を特定できます。"</string>
+    <string name="permdesc_accessCoarseLocation" product="tablet" msgid="3373266766487862426">"このアプリは、ネットワーク位置情報源（携帯基地局や Wi-Fi ネットワークなど）に基づいて、ユーザーの位置情報を取得します。これらの位置情報サービスは ON の状態にして、タブレットでアプリがサービスを利用できるようにする必要があります。"</string>
+    <string name="permdesc_accessCoarseLocation" product="tv" msgid="1884022719818788511">"このアプリは、ネットワーク位置情報源（携帯基地局や Wi-Fi ネットワークなど）に基づいて、ユーザーの位置情報を取得します。これらの位置情報サービスは ON の状態にして、テレビでアプリがサービスを利用できるようにする必要があります。"</string>
+    <string name="permdesc_accessCoarseLocation" product="default" msgid="7788009094906196995">"このアプリは、ネットワーク位置情報源（携帯基地局や Wi-Fi ネットワークなど）に基づいて、ユーザーの位置情報を取得します。これらの位置情報サービスは ON の状態にして、スマートフォンでアプリがサービスを利用できるようにする必要があります。"</string>
     <string name="permlab_modifyAudioSettings" msgid="6095859937069146086">"音声設定の変更"</string>
     <string name="permdesc_modifyAudioSettings" msgid="3522565366806248517">"音声全般の設定（音量、出力に使用するスピーカーなど）の変更をアプリに許可します。"</string>
     <string name="permlab_recordAudio" msgid="3876049771427466323">"録音"</string>
-    <string name="permdesc_recordAudio" msgid="4906839301087980680">"マイクを使った録音をアプリに許可します。これにより、アプリがいつでも確認なしで録音できるようになります。"</string>
+    <string name="permdesc_recordAudio" msgid="4245930455135321433">"このアプリは、いつでもマイクを使用して録音できます。"</string>
     <string name="permlab_sim_communication" msgid="2935852302216852065">"SIMへのコマンド送信"</string>
     <string name="permdesc_sim_communication" msgid="5725159654279639498">"SIMにコマンドを送信することをアプリに許可します｡この許可は非常に危険です。"</string>
     <string name="permlab_camera" msgid="3616391919559751192">"写真と動画の撮影"</string>
-    <string name="permdesc_camera" msgid="8497216524735535009">"カメラでの写真と動画の撮影をアプリに許可します。これにより、アプリが確認なしでいつでもカメラを使用できるようになります。"</string>
+    <string name="permdesc_camera" msgid="5392231870049240670">"このアプリは、いつでもカメラを使用して写真や動画を撮影できます。"</string>
     <string name="permlab_vibrate" msgid="7696427026057705834">"バイブレーションの制御"</string>
     <string name="permdesc_vibrate" msgid="6284989245902300945">"バイブレーションの制御をアプリに許可します。"</string>
     <string name="permlab_callPhone" msgid="3925836347681847954">"電話番号発信"</string>
@@ -376,6 +404,10 @@
     <string name="permdesc_accessImsCallService" msgid="8992884015198298775">"IMSサービスがユーザー操作なしで電話をかけることをアプリに許可します。"</string>
     <string name="permlab_readPhoneState" msgid="9178228524507610486">"端末情報と ID の読み取り"</string>
     <string name="permdesc_readPhoneState" msgid="1639212771826125528">"端末の電話機能へのアクセスをアプリに許可します。これにより、電話番号、端末ID、通話中かどうか、通話相手の電話番号をアプリから特定できるようになります。"</string>
+    <string name="permlab_manageOwnCalls" msgid="1503034913274622244">"システム経由での通話転送"</string>
+    <string name="permdesc_manageOwnCalls" msgid="6552974537554717418">"通話環境の改善のために、システム経由での通話転送をアプリに許可します。"</string>
+    <string name="permlab_readPhoneNumbers" msgid="6108163940932852440">"電話番号の読み取り"</string>
+    <string name="permdesc_readPhoneNumbers" msgid="8559488833662272354">"端末の電話番号へのアクセスをアプリに許可します。"</string>
     <string name="permlab_wakeLock" product="tablet" msgid="1531731435011495015">"タブレットのスリープを無効化"</string>
     <string name="permlab_wakeLock" product="tv" msgid="2601193288949154131">"テレビのスリープを無効化"</string>
     <string name="permlab_wakeLock" product="default" msgid="573480187941496130">"端末のスリープを無効にする"</string>
@@ -511,11 +543,11 @@
     <string name="permdesc_bindCarrierMessagingService" msgid="2762882888502113944">"携帯通信会社のSMSサービスのトップレベルインターフェースにバインドすることを所有者に許可します。通常のアプリでは不要です。"</string>
     <string name="permlab_bindCarrierServices" msgid="3233108656245526783">"携帯通信会社のサービスへのバインド"</string>
     <string name="permdesc_bindCarrierServices" msgid="1391552602551084192">"携帯通信会社のサービスにバインドすることを所有者に許可します。通常のアプリでは不要です。"</string>
-    <string name="permlab_access_notification_policy" msgid="4247510821662059671">"[通知を非表示]へのアクセス"</string>
-    <string name="permdesc_access_notification_policy" msgid="3296832375218749580">"[通知を非表示]の設定の読み取りと書き込みをアプリに許可します。"</string>
+    <string name="permlab_access_notification_policy" msgid="4247510821662059671">"マナーモードへのアクセス"</string>
+    <string name="permdesc_access_notification_policy" msgid="3296832375218749580">"マナーモード設定の読み取りと書き込みをアプリに許可します。"</string>
     <string name="policylab_limitPassword" msgid="4497420728857585791">"パスワードルールの設定"</string>
     <string name="policydesc_limitPassword" msgid="2502021457917874968">"画面ロックのパスワードとPINの長さと使用できる文字を制御します。"</string>
-    <string name="policylab_watchLogin" msgid="914130646942199503">"画面ロック解除試行の監視"</string>
+    <string name="policylab_watchLogin" msgid="5091404125971980158">"画面ロック解除試行の監視"</string>
     <string name="policydesc_watchLogin" product="tablet" msgid="3215729294215070072">"画面のロック解除に正しくないパスワードを入力した回数を監視し、回数が多すぎる場合はタブレットをロックするかタブレットのデータをすべて消去します。"</string>
     <string name="policydesc_watchLogin" product="TV" msgid="2707817988309890256">"画面のロック解除に入力したパスワードが間違っていた回数を監視し、回数が多すぎる場合はテレビをロックするかテレビのデータをすべて消去します。"</string>
     <string name="policydesc_watchLogin" product="default" msgid="5712323091846761073">"画面のロック解除に正しくないパスワードを入力した回数を監視し、回数が多すぎる場合はモバイル端末をロックするかモバイル端末のデータをすべて消去します。"</string>
@@ -847,18 +879,6 @@
     <string name="weeks" msgid="6509623834583944518">"週間"</string>
     <string name="year" msgid="4001118221013892076">"年"</string>
     <string name="years" msgid="6881577717993213522">"年"</string>
-    <plurals name="duration_seconds" formatted="false" msgid="4527986939729687805">
-      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g>秒</item>
-      <item quantity="one">1秒</item>
-    </plurals>
-    <plurals name="duration_minutes" formatted="false" msgid="643786953939956125">
-      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g>分</item>
-      <item quantity="one">1分</item>
-    </plurals>
-    <plurals name="duration_hours" formatted="false" msgid="6826233369186668274">
-      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g>時間</item>
-      <item quantity="one">1時間</item>
-    </plurals>
     <string name="now_string_shortest" msgid="8912796667087856402">"現在"</string>
     <plurals name="duration_minutes_shortest" formatted="false" msgid="3957499975064245495">
       <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g>分</item>
@@ -946,11 +966,16 @@
     <string name="selectTextMode" msgid="1018691815143165326">"テキストを選択"</string>
     <string name="undo" msgid="7905788502491742328">"元に戻す"</string>
     <string name="redo" msgid="7759464876566803888">"やり直し"</string>
+    <string name="autofill" msgid="3035779615680565188">"自動入力"</string>
     <string name="textSelectionCABTitle" msgid="5236850394370820357">"テキスト選択"</string>
     <string name="addToDictionary" msgid="4352161534510057874">"辞書に追加"</string>
     <string name="deleteText" msgid="6979668428458199034">"削除"</string>
     <string name="inputMethod" msgid="1653630062304567879">"入力方法"</string>
     <string name="editTextMenuTitle" msgid="4909135564941815494">"テキスト操作"</string>
+    <string name="email" msgid="4560673117055050403">"メール"</string>
+    <string name="dial" msgid="4204975095406423102">"電話"</string>
+    <string name="map" msgid="5441053548030107189">"地図"</string>
+    <string name="browse" msgid="6079864138582486027">"ブラウジング"</string>
     <string name="low_internal_storage_view_title" msgid="5576272496365684834">"空き容量わずか"</string>
     <string name="low_internal_storage_view_text" msgid="6640505817617414371">"一部のシステム機能が動作しない可能性があります"</string>
     <string name="low_internal_storage_view_text_no_boot" msgid="6935190099204693424">"システムに十分な容量がありません。250MBの空き容量を確保して再起動してください。"</string>
@@ -1058,18 +1083,12 @@
     <string name="volume_icon_description_media" msgid="4217311719665194215">"メディアの音量"</string>
     <string name="volume_icon_description_notification" msgid="7044986546477282274">"通知音量"</string>
     <string name="ringtone_default" msgid="3789758980357696936">"プリセット着信音"</string>
-    <string name="ringtone_default_with_actual" msgid="8129563480895990372">"端末の基本着信音（<xliff:g id="ACTUAL_RINGTONE">%1$s</xliff:g>）"</string>
+    <string name="ringtone_default_with_actual" msgid="1767304850491060581">"デフォルト（<xliff:g id="ACTUAL_RINGTONE">%1$s</xliff:g>）"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">"なし"</string>
     <string name="ringtone_picker_title" msgid="3515143939175119094">"着信音"</string>
-    <string name="ringtone_unknown" msgid="5477919988701784788">"不明な着信音"</string>
-    <plurals name="wifi_available" formatted="false" msgid="7900333017752027322">
-      <item quantity="other">複数のWi-Fiネットワークが利用できます</item>
-      <item quantity="one">Wi-Fiネットワークが利用できます</item>
-    </plurals>
-    <plurals name="wifi_available_detailed" formatted="false" msgid="1140699367193975606">
-      <item quantity="other">複数のWi-Fiオープンネットワークが利用できます</item>
-      <item quantity="one">Wi-Fiオープンネットワークが利用できます</item>
-    </plurals>
+    <string name="ringtone_picker_title_alarm" msgid="6473325356070549702">"アラーム音"</string>
+    <string name="ringtone_picker_title_notification" msgid="4837740874822788802">"通知音"</string>
+    <string name="ringtone_unknown" msgid="3914515995813061520">"不明"</string>
     <string name="wifi_available_sign_in" msgid="9157196203958866662">"Wi-Fiネットワークにログイン"</string>
     <string name="network_available_sign_in" msgid="1848877297365446605">"ネットワークにログインしてください"</string>
     <!-- no translation found for network_available_sign_in_detailed (8000081941447976118) -->
@@ -1080,7 +1099,7 @@
     <string name="network_switch_metered_detail" msgid="5325661434777870353">"端末で「<xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g>」によるインターネット接続ができない場合に「<xliff:g id="NEW_NETWORK">%1$s</xliff:g>」を使用します。通信料が発生することがあります。"</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"「<xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g>」から「<xliff:g id="NEW_NETWORK">%2$s</xliff:g>」に切り替えました"</string>
   <string-array name="network_switch_type_name">
-    <item msgid="2952042958050315394">"モバイルデータ"</item>
+    <item msgid="3979506840912951943">"モバイルデータ"</item>
     <item msgid="75483255295529161">"Wi-Fi"</item>
     <item msgid="6862614801537202646">"Bluetooth"</item>
     <item msgid="5447331121797802871">"イーサネット"</item>
@@ -1123,10 +1142,10 @@
     <string name="sms_short_code_confirm_always_allow" msgid="3241181154869493368">"常に許可する"</string>
     <string name="sms_short_code_confirm_never_allow" msgid="446992765774269673">"許可しない"</string>
     <string name="sim_removed_title" msgid="6227712319223226185">"SIMカードが取り外されました"</string>
-    <string name="sim_removed_message" msgid="5450336489923274918">"有効なSIMカードを挿入して再起動するまでは、モバイルネットワークは利用できません。"</string>
+    <string name="sim_removed_message" msgid="2333164559970958645">"有効なSIMカードを挿入して再起動するまでは、モバイルネットワークは利用できません。"</string>
     <string name="sim_done_button" msgid="827949989369963775">"完了"</string>
     <string name="sim_added_title" msgid="3719670512889674693">"SIMカードが追加されました"</string>
-    <string name="sim_added_message" msgid="7797975656153714319">"モバイルネットワークにアクセスするには端末を再起動してください。"</string>
+    <string name="sim_added_message" msgid="6599945301141050216">"モバイルネットワークにアクセスするには端末を再起動してください。"</string>
     <string name="sim_restart_button" msgid="4722407842815232347">"再起動"</string>
     <string name="carrier_app_dialog_message" msgid="7066156088266319533">"新しい SIM を正常に動作させるには、携帯通信会社からアプリをダウンロードして起動する必要があります。"</string>
     <string name="carrier_app_dialog_button" msgid="7900235513678617329">"アプリをダウンロード"</string>
@@ -1151,10 +1170,11 @@
     <string name="usb_notification_message" msgid="3370903770828407960">"タップしてその他のオプションを表示します。"</string>
     <string name="adb_active_notification_title" msgid="6729044778949189918">"USBデバッグが接続されました"</string>
     <string name="adb_active_notification_message" msgid="4948470599328424059">"タップして USB デバッグを無効にします。"</string>
+    <string name="adb_active_notification_message" product="tv" msgid="8470296818270110396">"USBデバッグを無効にする場合に選択します。"</string>
     <string name="taking_remote_bugreport_notification_title" msgid="6742483073875060934">"バグレポートを取得しています…"</string>
     <string name="share_remote_bugreport_notification_title" msgid="4987095013583691873">"バグレポートを共有しますか？"</string>
     <string name="sharing_remote_bugreport_notification_title" msgid="7572089031496651372">"バグレポートの共有中…"</string>
-    <string name="share_remote_bugreport_notification_message_finished" msgid="8610614010660772643">"IT 管理者からこの端末のトラブルシューティングに役立てるためバグレポートを共有するようリクエストがありました。アプリやデータが共有されることがあります。"</string>
+    <string name="share_remote_bugreport_notification_message_finished" msgid="6029609949340992866">"管理者からこの端末のトラブルシューティングに役立てるためバグレポートを共有するようリクエストがありました。アプリやデータが共有される場合があります。"</string>
     <string name="share_remote_bugreport_action" msgid="6249476773913384948">"共有する"</string>
     <string name="decline_remote_bugreport_action" msgid="6230987241608770062">"共有しない"</string>
     <string name="select_input_method" msgid="8547250819326693584">"キーボードの変更"</string>
@@ -1164,14 +1184,20 @@
     <string name="select_keyboard_layout_notification_message" msgid="8084622969903004900">"タップして言語とレイアウトを選択してください"</string>
     <string name="fast_scroll_alphabet" msgid="5433275485499039199">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
     <string name="fast_scroll_numeric_alphabet" msgid="4030170524595123610">" 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="alert_windows_notification_channel_name" msgid="3116610965549449803">"<xliff:g id="NAME">%s</xliff:g>を他のアプリの上に重ねて表示"</string>
+    <string name="alert_windows_notification_title" msgid="3697657294867638947">"<xliff:g id="NAME">%s</xliff:g>が他のアプリの上に表示されています"</string>
+    <string name="alert_windows_notification_message" msgid="8917232109522912560">"<xliff:g id="NAME">%s</xliff:g>でこの機能を使用しない場合は、タップして設定を開いて OFF にしてください。"</string>
+    <string name="alert_windows_notification_turn_off_action" msgid="3367294525884949878">"OFF にする"</string>
     <string name="ext_media_checking_notification_title" msgid="5734005953288045806">"<xliff:g id="NAME">%s</xliff:g>を準備中"</string>
     <string name="ext_media_checking_notification_message" msgid="4747432538578886744">"エラーを確認中"</string>
     <string name="ext_media_new_notification_message" msgid="7589986898808506239">"新しい<xliff:g id="NAME">%s</xliff:g>が検出されました"</string>
     <string name="ext_media_ready_notification_message" msgid="4083398150380114462">"写真などのメディア転送用"</string>
     <string name="ext_media_unmountable_notification_title" msgid="8295123366236989588">"<xliff:g id="NAME">%s</xliff:g>は破損しています"</string>
     <string name="ext_media_unmountable_notification_message" msgid="2343202057122495773">"<xliff:g id="NAME">%s</xliff:g>は破損しています。タップして修正してください。"</string>
+    <string name="ext_media_unmountable_notification_message" product="tv" msgid="3941179940297874950">"<xliff:g id="NAME">%s</xliff:g>が破損しています。修正するには選択してください。"</string>
     <string name="ext_media_unsupported_notification_title" msgid="3797642322958803257">"対応していない<xliff:g id="NAME">%s</xliff:g>です"</string>
     <string name="ext_media_unsupported_notification_message" msgid="6121601473787888589">"この端末はこの <xliff:g id="NAME">%s</xliff:g>に対応していません。タップして、対応している形式でセットアップしてください。"</string>
+    <string name="ext_media_unsupported_notification_message" product="tv" msgid="3725436899820390906">"この端末はこの <xliff:g id="NAME">%s</xliff:g>に対応していません。サポートされるフォーマットで設定するには選択してください。"</string>
     <string name="ext_media_badremoval_notification_title" msgid="3206248947375505416">"<xliff:g id="NAME">%s</xliff:g>が不適切に取り外されました"</string>
     <string name="ext_media_badremoval_notification_message" msgid="380176703346946313">"データの喪失を防ぐため<xliff:g id="NAME">%s</xliff:g>を取り外す前にマウントを解除してください。"</string>
     <string name="ext_media_nomedia_notification_title" msgid="1704840188641749091">"<xliff:g id="NAME">%s</xliff:g>が取り外されました"</string>
@@ -1207,6 +1233,10 @@
     <string name="permdesc_readInstallSessions" msgid="2049771699626019849">"インストールセッションの読み取りをアプリに許可します。これにより、アプリはアクティブパッケージのインストールに関する詳細情報を参照できるようになります。"</string>
     <string name="permlab_requestInstallPackages" msgid="5782013576218172577">"インストールパッケージのリクエスト"</string>
     <string name="permdesc_requestInstallPackages" msgid="5740101072486783082">"パッケージのインストールをリクエストすることをアプリケーションに許可します。"</string>
+    <string name="permlab_requestDeletePackages" msgid="1703686454657781242">"パッケージの削除のリクエスト"</string>
+    <string name="permdesc_requestDeletePackages" msgid="3406172963097595270">"パッケージの削除をリクエストすることをアプリに許可します。"</string>
+    <string name="permlab_requestIgnoreBatteryOptimizations" msgid="8021256345643918264">"電池の最適化を無視するかどうかの確認"</string>
+    <string name="permdesc_requestIgnoreBatteryOptimizations" msgid="8359147856007447638">"電池の最適化の無視についてアプリが確認することを許可します。"</string>
     <string name="tutorial_double_tap_to_zoom_message_short" msgid="1311810005957319690">"ダブルタップでズームします"</string>
     <string name="gadget_host_error_inflating" msgid="4882004314906466162">"ウィジェットを追加できませんでした。"</string>
     <string name="ime_action_go" msgid="8320845651737369027">"移動"</string>
@@ -1314,8 +1344,6 @@
     <string name="shareactionprovider_share_with_application" msgid="5627411384638389738">"<xliff:g id="APPLICATION_NAME">%s</xliff:g>と共有"</string>
     <string name="content_description_sliding_handle" msgid="415975056159262248">"スライダーハンドルです。押し続けます。"</string>
     <string name="description_target_unlock_tablet" msgid="3833195335629795055">"ロック解除するにはスワイプします。"</string>
-    <string name="keyboard_headset_required_to_hear_password" msgid="7011927352267668657">"パスワードのキーが音声出力されるのでヘッドセットを接続してください。"</string>
-    <string name="keyboard_password_character_no_headset" msgid="2859873770886153678">"ドット。"</string>
     <string name="action_bar_home_description" msgid="5293600496601490216">"ホームへ移動"</string>
     <string name="action_bar_up_description" msgid="2237496562952152589">"上へ移動"</string>
     <string name="action_menu_overflow_description" msgid="2295659037509008453">"その他のオプション"</string>
@@ -1328,16 +1356,16 @@
     <string name="storage_usb_drive_label" msgid="4501418548927759953">"<xliff:g id="MANUFACTURER">%s</xliff:g>製USBドライブ"</string>
     <string name="storage_usb" msgid="3017954059538517278">"USBストレージ"</string>
     <string name="extract_edit_menu_button" msgid="8940478730496610137">"編集"</string>
-    <string name="data_usage_warning_title" msgid="1955638862122232342">"データ使用の警告"</string>
+    <string name="data_usage_warning_title" msgid="3620440638180218181">"データ使用量に関する通知"</string>
     <string name="data_usage_warning_body" msgid="6660692274311972007">"タップして使用状況と設定を表示します。"</string>
     <string name="data_usage_3g_limit_title" msgid="4361523876818447683">"2G～3Gデータの上限に達しました"</string>
     <string name="data_usage_4g_limit_title" msgid="4609566827219442376">"4Gデータの上限に達しました"</string>
-    <string name="data_usage_mobile_limit_title" msgid="557158376602636112">"モバイルデータの上限に達しました"</string>
+    <string name="data_usage_mobile_limit_title" msgid="6561099244084267376">"モバイルデータの上限に達しました"</string>
     <string name="data_usage_wifi_limit_title" msgid="5803363779034792676">"Wi-Fiデータの上限に達しました"</string>
     <string name="data_usage_limit_body" msgid="291731708279614081">"残りのサイクル中データは一時停止"</string>
     <string name="data_usage_3g_limit_snoozed_title" msgid="7026739121138005231">"2G～3Gデータの上限を超えました"</string>
     <string name="data_usage_4g_limit_snoozed_title" msgid="1106562779311209039">"4Gデータの上限を超えました"</string>
-    <string name="data_usage_mobile_limit_snoozed_title" msgid="4941346653729943789">"モバイルデータの上限を超えました"</string>
+    <string name="data_usage_mobile_limit_snoozed_title" msgid="279240572165412168">"モバイルデータの上限を超えました"</string>
     <string name="data_usage_wifi_limit_snoozed_title" msgid="8743856006384825974">"Wi-Fiデータの上限を超えました"</string>
     <string name="data_usage_limit_snoozed_body" msgid="7035490278298441767">"指定した上限を<xliff:g id="SIZE">%s</xliff:g>超えました。"</string>
     <string name="data_usage_restricted_title" msgid="5965157361036321914">"バックグラウンドデータに上限あり"</string>
@@ -1431,15 +1459,21 @@
     <string name="kg_text_message_separator" product="default" msgid="4160700433287233771">" - "</string>
     <string name="kg_reordering_delete_drop_target_text" msgid="7899202978204438708">"削除"</string>
     <string name="safe_media_volume_warning" product="default" msgid="2276318909314492312">"推奨レベルを超えるまで音量を上げますか？\n\n大音量で長時間聞き続けると、聴力を損なう恐れがあります。"</string>
-    <string name="continue_to_enable_accessibility" msgid="1626427372316070258">"ユーザー補助機能を有効にするには2本の指で押し続けてください。"</string>
-    <string name="accessibility_enabled" msgid="1381972048564547685">"ユーザー補助が有効になりました。"</string>
-    <string name="enable_accessibility_canceled" msgid="3833923257966635673">"ユーザー補助をキャンセルしました。"</string>
+    <string name="accessibility_shortcut_warning_dialog_title" msgid="8404780875025725199">"ユーザー補助機能のショートカットの使用"</string>
+    <string name="accessibility_shortcut_toogle_warning" msgid="7256507885737444807">"ショートカットが ON の場合、両方の音量ボタンを 3 秒間押し続けるとユーザー補助機能が起動します。\n\n現在のユーザー補助機能:\n <xliff:g id="SERVICE_NAME">%1$s</xliff:g>\n\nユーザー補助機能は [設定] &gt; [ユーザー補助] で変更できます。"</string>
+    <string name="disable_accessibility_shortcut" msgid="627625354248453445">"ショートカットを OFF にする"</string>
+    <string name="leave_accessibility_shortcut_on" msgid="7653111894438512680">"ショートカットを使用"</string>
+    <string name="accessibility_shortcut_enabling_service" msgid="7771852911861522636">"ユーザー補助機能のショートカットにより <xliff:g id="SERVICE_NAME">%1$s</xliff:g> は ON になっています"</string>
+    <string name="accessibility_shortcut_disabling_service" msgid="2747243438223109821">"ユーザー補助機能のショートカットにより <xliff:g id="SERVICE_NAME">%1$s</xliff:g> は OFF になっています"</string>
+    <string name="accessibility_button_prompt_text" msgid="4234556536456854251">"[ユーザー補助] ボタンをタップした場合に使用する機能を選択してください。"</string>
+    <string name="accessibility_button_instructional_text" msgid="6942300463612999993">"機能を変更するには、[ユーザー補助] ボタンを押し続けてください。"</string>
+    <string name="accessibility_magnification_chooser_text" msgid="1227146738764986237">"拡大"</string>
     <string name="user_switched" msgid="3768006783166984410">"現在のユーザーは<xliff:g id="NAME">%1$s</xliff:g>です。"</string>
     <string name="user_switching_message" msgid="2871009331809089783">"<xliff:g id="NAME">%1$s</xliff:g>に切り替えています…"</string>
     <string name="user_logging_out_message" msgid="8939524935808875155">"<xliff:g id="NAME">%1$s</xliff:g> をログアウトしています…"</string>
     <string name="owner_name" msgid="2716755460376028154">"所有者"</string>
     <string name="error_message_title" msgid="4510373083082500195">"エラー"</string>
-    <string name="error_message_change_not_allowed" msgid="1347282344200417578">"この変更は管理者によって許可されていません"</string>
+    <string name="error_message_change_not_allowed" msgid="1238035947357923497">"この変更は管理者によって許可されていません"</string>
     <string name="app_not_found" msgid="3429141853498927379">"この操作を行うアプリが見つかりません"</string>
     <string name="revoke" msgid="5404479185228271586">"取り消し"</string>
     <string name="mediasize_iso_a0" msgid="1994474252931294172">"ISO A0"</string>
@@ -1531,7 +1565,7 @@
     <string name="reason_service_unavailable" msgid="7824008732243903268">"印刷サービスが有効ではありません"</string>
     <string name="print_service_installed_title" msgid="2246317169444081628">"「<xliff:g id="NAME">%s</xliff:g>」サービスがインストールされました"</string>
     <string name="print_service_installed_message" msgid="5897362931070459152">"有効にするにはタップしてください"</string>
-    <string name="restr_pin_enter_admin_pin" msgid="783643731895143970">"管理者PINを入力"</string>
+    <string name="restr_pin_enter_admin_pin" msgid="8641662909467236832">"管理者 PIN の入力"</string>
     <string name="restr_pin_enter_pin" msgid="3395953421368476103">"PINを入力"</string>
     <string name="restr_pin_incorrect" msgid="8571512003955077924">"間違っています"</string>
     <string name="restr_pin_enter_old_pin" msgid="1462206225512910757">"現在のPIN"</string>
@@ -1557,16 +1591,18 @@
     <string name="select_year" msgid="7952052866994196170">"年を選択"</string>
     <string name="deleted_key" msgid="7659477886625566590">"<xliff:g id="KEY">%1$s</xliff:g>を削除しました"</string>
     <string name="managed_profile_label_badge" msgid="2355652472854327647">"仕事の<xliff:g id="LABEL">%1$s</xliff:g>"</string>
-    <string name="lock_to_app_toast" msgid="1420543809500606964">"この画面の固定を解除するには [戻る] を押し続けます。"</string>
-    <string name="lock_to_app_toast_locked" msgid="9125176335701699164">"アプリは固定されています。この端末では固定を解除できません。"</string>
+    <string name="managed_profile_label_badge_2" msgid="5048136430082124036">"2 番目の仕事用<xliff:g id="LABEL">%1$s</xliff:g>"</string>
+    <string name="managed_profile_label_badge_3" msgid="2808305070321719040">"3 番目の仕事用<xliff:g id="LABEL">%1$s</xliff:g>"</string>
+    <string name="lock_to_app_toast" msgid="6820571533009838261">"この画面の固定を解除するには [戻る] ボタンと [最近] ボタンを押し続けます"</string>
+    <string name="lock_to_app_toast_locked" msgid="7849470948648628704">"このアプリの固定を解除できません"</string>
     <string name="lock_to_app_start" msgid="6643342070839862795">"画面を固定しました"</string>
     <string name="lock_to_app_exit" msgid="8598219838213787430">"画面固定を解除しました"</string>
     <string name="lock_to_app_unlock_pin" msgid="2552556656504331634">"オフライン再生を解除する前にPINの入力を求める"</string>
     <string name="lock_to_app_unlock_pattern" msgid="4182192144797225137">"画面固定を解除する前にロック解除パターンの入力を求める"</string>
     <string name="lock_to_app_unlock_password" msgid="6380979775916974414">"オフライン再生を解除する前にパスワードの入力を求める"</string>
-    <string name="package_installed_device_owner" msgid="8420696545959087545">"管理者によってインストールされました"</string>
-    <string name="package_updated_device_owner" msgid="8856631322440187071">"管理者によって更新されています"</string>
-    <string name="package_deleted_device_owner" msgid="7650577387493101353">"管理者によって削除されました"</string>
+    <string name="package_installed_device_owner" msgid="6875717669960212648">"管理者によりインストールされています"</string>
+    <string name="package_updated_device_owner" msgid="1847154566357862089">"管理者により更新されています"</string>
+    <string name="package_deleted_device_owner" msgid="2307122077550236438">"管理者により削除されています"</string>
     <string name="battery_saver_description" msgid="1960431123816253034">"バッテリーを長持ちさせるため、バッテリーセーバーは端末のパフォーマンスを抑え、バイブレーション、位置情報サービス、大半のバックグラウンドデータを制限します。メール、SMSや、同期を使用するその他のアプリは、起動しても更新されないことがあります。\n\nバッテリーセーバーは端末の充電中は自動的にOFFになります。"</string>
     <string name="data_saver_description" msgid="6015391409098303235">"データセーバーは、一部のアプリによるバックグラウンドでのデータ送受信を停止することでデータ使用量を抑制します。使用中のアプリからデータにアクセスすることはできますが、その頻度は低くなる場合があります。この影響として、たとえば画像はタップしないと表示されないようになります。"</string>
     <string name="data_saver_enable_title" msgid="4674073932722787417">"データセーバーを ON にしますか？"</string>
@@ -1605,11 +1641,11 @@
     </plurals>
     <string name="zen_mode_until" msgid="7336308492289875088">"<xliff:g id="FORMATTEDTIME">%1$s</xliff:g>まで"</string>
     <string name="zen_mode_alarm" msgid="9128205721301330797">"<xliff:g id="FORMATTEDTIME">%1$s</xliff:g>（次のアラーム）まで"</string>
-    <string name="zen_mode_forever" msgid="7420011936770086993">"ユーザーがOFFにするまで"</string>
-    <string name="zen_mode_forever_dnd" msgid="3792132696572189081">"[通知を非表示]をOFFにするまで"</string>
+    <string name="zen_mode_forever" msgid="1916263162129197274">"マナーモードを OFF にするまで"</string>
+    <string name="zen_mode_forever_dnd" msgid="3792132696572189081">"マナーモードを OFF にするまで"</string>
     <string name="zen_mode_rule_name_combination" msgid="191109939968076477">"<xliff:g id="FIRST">%1$s</xliff:g>/<xliff:g id="REST">%2$s</xliff:g>"</string>
     <string name="toolbar_collapse_description" msgid="2821479483960330739">"折りたたむ"</string>
-    <string name="zen_mode_feature_name" msgid="5254089399895895004">"通知を非表示"</string>
+    <string name="zen_mode_feature_name" msgid="5254089399895895004">"マナーモード"</string>
     <string name="zen_mode_downtime_feature_name" msgid="2626974636779860146">"ダウンタイム"</string>
     <string name="zen_mode_default_weeknights_name" msgid="3081318299464998143">"平日の夜"</string>
     <string name="zen_mode_default_weekends_name" msgid="2786495801019345244">"週末"</string>
@@ -1624,7 +1660,8 @@
     <string name="stk_cc_ss_to_ussd" msgid="3951862188105305589">"SSリクエストはUSSDリクエストに変更されました。"</string>
     <string name="stk_cc_ss_to_ss" msgid="5470768854991452695">"SSリクエストは新しいSSリクエストに変更されました。"</string>
     <string name="notification_work_profile_content_description" msgid="4600554564103770764">"仕事用プロファイル"</string>
-    <string name="expand_button_content_description" msgid="5855955413376384681">"展開ボタン"</string>
+    <string name="expand_button_content_description_collapsed" msgid="3609784019345534652">"展開"</string>
+    <string name="expand_button_content_description_expanded" msgid="8520652707158554895">"折りたたむ"</string>
     <string name="expand_action_accessibility" msgid="5307730695723718254">"展開の切り替え"</string>
     <string name="usb_midi_peripheral_name" msgid="7221113987741003817">"Android USB周辺機器ポート"</string>
     <string name="usb_midi_peripheral_manufacturer_name" msgid="7176526170008970168">"Android"</string>
@@ -1638,6 +1675,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g>件選択済み</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g>件選択済み</item>
     </plurals>
+    <string name="default_notification_channel_label" msgid="6950908610709016902">"その他"</string>
     <string name="importance_from_user" msgid="7318955817386549931">"このような通知の重要度を設定します。"</string>
     <string name="importance_from_person" msgid="9160133597262938296">"関係するユーザーのため、この設定は重要です。"</string>
     <string name="user_creation_account_exists" msgid="1942606193570143289">"<xliff:g id="APP">%1$s</xliff:g> が <xliff:g id="ACCOUNT">%2$s</xliff:g> で新しいユーザーを作成できるようにしますか？"</string>
@@ -1649,8 +1687,8 @@
     <string name="language_picker_section_all" msgid="3097279199511617537">"すべての言語"</string>
     <string name="region_picker_section_all" msgid="8966316787153001779">"すべての地域"</string>
     <string name="locale_search_menu" msgid="2560710726687249178">"検索"</string>
-    <string name="work_mode_off_title" msgid="8954725060677558855">"Work モード OFF"</string>
-    <string name="work_mode_off_message" msgid="3286169091278094476">"仕事用プロファイルで、アプリ、バックグラウンド同期などの関連機能の使用を許可します。"</string>
+    <string name="work_mode_off_title" msgid="2615362773958585967">"Work モード ON"</string>
+    <string name="work_mode_off_message" msgid="2961559609199223594">"これで、アプリ、バックグラウンド同期、関連機能など、仕事用プロファイルが有効になります。"</string>
     <string name="work_mode_turn_on" msgid="2062544985670564875">"ON にする"</string>
     <string name="new_sms_notification_title" msgid="8442817549127555977">"新着メッセージがあります"</string>
     <string name="new_sms_notification_content" msgid="7002938807812083463">"表示するには SMS アプリを開きます"</string>
@@ -1673,8 +1711,46 @@
     <string name="demo_user_inactivity_timeout_countdown" msgid="5675588824402569506">"変更が失われ、<xliff:g id="TIMEOUT">%1$s</xliff:g> 秒後にデモがもう一度開始されます…"</string>
     <string name="demo_user_inactivity_timeout_left_button" msgid="5314271347014802475">"キャンセル"</string>
     <string name="demo_user_inactivity_timeout_right_button" msgid="5019306703066964808">"今すぐリセット"</string>
-    <string name="audit_safemode_notification" msgid="6416076898350685856">"制限なしでこの端末を使用するには初期状態にリセットしてください"</string>
-    <string name="audit_safemode_notification_details" msgid="1860601176690176413">"タップして詳細をご確認ください。"</string>
     <string name="suspended_widget_accessibility" msgid="6712143096475264190">"停止済みの「<xliff:g id="LABEL">%1$s</xliff:g>」"</string>
     <string name="conference_call" msgid="3751093130790472426">"グループ通話"</string>
+    <string name="tooltip_popup_title" msgid="5253721848739260181">"ツールチップ"</string>
+    <string name="app_category_game" msgid="5431836943981492993">"ゲーム"</string>
+    <string name="app_category_audio" msgid="1659853108734301647">"音楽＆オーディオ"</string>
+    <string name="app_category_video" msgid="2728726078629384196">"映画＆動画"</string>
+    <string name="app_category_image" msgid="4867854544519846048">"写真＆画像"</string>
+    <string name="app_category_social" msgid="5842783057834965912">"ソーシャル＆コミュニケーション"</string>
+    <string name="app_category_news" msgid="7496506240743986873">"ニュース＆雑誌"</string>
+    <string name="app_category_maps" msgid="5878491404538024367">"地図＆ナビ"</string>
+    <string name="app_category_productivity" msgid="3742083261781538852">"仕事効率化"</string>
+    <string name="device_storage_monitor_notification_channel" msgid="3295871267414816228">"端末のストレージ"</string>
+    <string name="adb_debugging_notification_channel_tv" msgid="5537766997350092316">"USB デバッグ"</string>
+    <string name="time_picker_hour_label" msgid="2979075098868106450">"時"</string>
+    <string name="time_picker_minute_label" msgid="5168864173796598399">"分"</string>
+    <string name="time_picker_header_text" msgid="143536825321922567">"時刻の設定"</string>
+    <string name="time_picker_input_error" msgid="7574999942502513765">"有効な時刻を入力してください"</string>
+    <string name="time_picker_prompt_label" msgid="7588093983899966783">"時刻を入力"</string>
+    <string name="time_picker_text_input_mode_description" msgid="4148166758173708199">"時刻をテキストで入力するモードに切り替えます。"</string>
+    <string name="time_picker_radial_mode_description" msgid="4953403779779557198">"時刻を時計で入力するモードに切り替えます。"</string>
+    <string name="autofill_picker_accessibility_title" msgid="8469043291648711535">"自動入力のオプション"</string>
+    <string name="autofill_error_cannot_autofill" msgid="7402758580060110371">"コンテンツを自動入力できません"</string>
+    <string name="autofill_save_title" msgid="7081244500504163245">"<xliff:g id="LABEL">%1$s</xliff:g> に保存しますか？"</string>
+    <string name="autofill_save_title_with_type" msgid="4977385733042555659">"<xliff:g id="TYPE">%1$s</xliff:g>を <xliff:g id="LABEL">%2$s</xliff:g> に保存しますか？"</string>
+    <string name="autofill_save_title_with_2types" msgid="8875796560521962098">"<xliff:g id="TYPE_0">%1$s</xliff:g>、<xliff:g id="TYPE_1">%2$s</xliff:g>を <xliff:g id="LABEL">%3$s</xliff:g> に保存しますか？"</string>
+    <string name="autofill_save_title_with_3types" msgid="6889899028382843493">"<xliff:g id="TYPE_0">%1$s</xliff:g>、<xliff:g id="TYPE_1">%2$s</xliff:g>、<xliff:g id="TYPE_2">%3$s</xliff:g>を <xliff:g id="LABEL">%4$s</xliff:g> に保存しますか？"</string>
+    <string name="autofill_save_yes" msgid="6398026094049005921">"はい"</string>
+    <string name="autofill_save_no" msgid="2625132258725581787">"いいえ"</string>
+    <string name="autofill_save_type_password" msgid="5288448918465971568">"パスワード"</string>
+    <string name="autofill_save_type_address" msgid="4936707762193009542">"住所"</string>
+    <string name="autofill_save_type_credit_card" msgid="7127694776265563071">"クレジット カード"</string>
+    <string name="autofill_save_type_username" msgid="239040540379769562">"ユーザー名"</string>
+    <string name="autofill_save_type_email_address" msgid="5752949432129262174">"メールアドレス"</string>
+    <string name="etws_primary_default_message_earthquake" msgid="5541962250262769193">"強い揺れに備えてください"</string>
+    <string name="etws_primary_default_message_tsunami" msgid="1887685943498368548">"沿岸部の方はただちに高台へ避難してください"</string>
+    <string name="etws_primary_default_message_earthquake_and_tsunami" msgid="998797956848445862">"強い揺れと津波に注意してください"</string>
+    <string name="etws_primary_default_message_test" msgid="2709597093560037455">"テスト用緊急速報メール"</string>
+    <string name="etws_primary_default_message_others" msgid="6293148756130398971"></string>
+    <string name="mmcc_authentication_reject" msgid="7729819349669603406">"SIM 使用不可"</string>
+    <string name="mmcc_imsi_unknown_in_hlr" msgid="6321202257374418726">"SIM には対応していません"</string>
+    <string name="mmcc_illegal_ms" msgid="2769452751852211112">"SIM は許可されていません"</string>
+    <string name="mmcc_illegal_me" msgid="4438696681169345015">"電話は許可されていません"</string>
 </resources>

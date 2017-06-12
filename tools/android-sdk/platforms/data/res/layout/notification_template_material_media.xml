@@ -23,6 +23,13 @@
     android:background="#00000000"
     android:tag="media"
     >
+    <ImageView android:id="@+id/right_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:layout_gravity="top|end"
+        android:scaleType="centerCrop"
+    />
     <include layout="@layout/notification_template_header"
         android:layout_width="fill_parent"
         android:layout_height="53dp" />
@@ -61,5 +68,4 @@
             <!-- media buttons will be added here -->
         </LinearLayout>
     </LinearLayout>
-    <include layout="@layout/notification_template_right_icon" />
 </FrameLayout>

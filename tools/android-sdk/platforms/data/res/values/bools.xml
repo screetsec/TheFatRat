@@ -24,4 +24,10 @@
     <bool name="show_ongoing_ime_switcher">true</bool>
     <bool name="action_bar_expanded_action_views_exclusive">true</bool>
     <bool name="target_honeycomb_needs_options_menu">true</bool>
+    <!-- Whether or not to use the drawable/lockscreen_notselected and
+         drawable/lockscreen_selected instead of the generic dots when displaying
+         the LockPatternView.
+         <p>The main purpose is for OEMs to customize the rendering of the
+         lockscreen, setting this to true should come with customized drawables. -->
+    <bool name="use_lock_pattern_drawable">false</bool>
 </resources>

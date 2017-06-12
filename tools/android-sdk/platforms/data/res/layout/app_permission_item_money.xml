@@ -57,14 +57,14 @@
             android:layout_alignParentStart="true"
             android:layout_alignBottom="@+id/perm_money_label"
             android:scaleType="fitCenter"
-            android:tint="@color/perms_costs_money"
+            android:tint="?android:attr/colorError"
             android:tintMode="src_in"
             android:src="@android:drawable/ic_coins_s" />
         <TextView
             android:id="@+id/perm_money_label"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textSize="16sp"
-            android:textColor="@color/perms_costs_money"
+            android:textColor="?android:attr/colorError"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/perm_money_icon"

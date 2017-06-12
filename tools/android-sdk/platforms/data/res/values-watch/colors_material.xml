@@ -14,13 +14,15 @@
      limitations under the License.
 -->
 <resources>
-    <color name="background_material_dark">#ff232e33</color>
-    <color name="background_floating_material_dark">#ff3e5059</color>
+    <color name="background_material_dark">#232E33</color>
+    <color name="background_floating_material_dark">#3E5059</color>
 
-    <color name="accent_material_dark">#ff5e97f6</color>
-    <color name="accent_material_light">#ff4285f4</color>
+    <color name="accent_material_700">#5385DB</color>
+    <color name="accent_material_light">#75A4F5</color>
+    <color name="accent_material_dark">#5E97F6</color>
+    <color name="accent_material_50">#93B7F5</color>
 
-    <color name="primary_material_dark">#4D4D4D</color>
+    <color name="primary_material_dark">#33ffffff</color>
 
-    <color name="button_material_dark">#ff999999</color>
+    <color name="button_material_dark">#ff919699</color>
 </resources>

@@ -17,8 +17,8 @@
 
 <!-- Default configuration for zen mode.  See android.service.notification.ZenModeConfig. -->
 <zen version="2">
-    <!-- Allow starred contacts to go through only. Repeated calls on.
-         Calls, messages, reminders, events off.-->
-    <allow from="2" repeatCallers="true" calls="false" messages="false" reminders="false"
+    <!-- Allow starred contacts to go through only.
+    Repeated calls, calls, messages, reminders, events off. -->
+    <allow from="2" repeatCallers="false" calls="false" messages="false" reminders="false"
            events="false"/>
 </zen>

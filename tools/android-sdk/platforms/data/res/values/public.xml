@@ -2547,6 +2547,7 @@
     <!-- @hide This really shouldn't be public; clients using it should use @* to ref it.  -->
     <public type="style" name="Theme.Leanback.FormWizard" id="0x010302d0" />
 
+    <!-- @hide @SystemApi This shouldn't be public. -->
     <public type="array" name="config_keySystemUuidMapping" id="0x01070005" />
 
     <!-- An interpolator which accelerates fast but decelerates slowly. -->
@@ -2742,4 +2743,106 @@
     <public type="attr" name="showMetadataInPreview" id="0x0101052f" />
     <public type="attr" name="colorSecondary" id="0x01010530" />
 
+  <!-- ===============================================================
+       Resources added in version O of the platform
+
+       NOTE: add <public> elements within a <public-group> like so:
+
+       <public-group type="attr" first-id="0x01010531">
+           <public name="exampleAttr1" />
+           <public name="exampleAttr2" />
+       </public-group>
+
+       To add a new public-group block, choose an id value that is 1 greater
+       than the last of that item above. For example, the last "attr" id
+       value above is 0x01010530, so the public-group of attrs below has
+       the id value of 0x01010531.
+       =============================================================== -->
+    <eat-comment />
+
+    <public type="attr" name="visibleToInstantApps" id="0x01010531" />
+    <public type="attr" name="font" id="0x01010532" />
+    <public type="attr" name="fontWeight" id="0x01010533" />
+    <public type="attr" name="tooltipText" id="0x01010534" />
+    <public type="attr" name="autoSizeTextType" id="0x01010535" />
+    <public type="attr" name="autoSizeStepGranularity" id="0x01010536" />
+    <public type="attr" name="autoSizePresetSizes" id="0x01010537" />
+    <public type="attr" name="autoSizeMinTextSize" id="0x01010538" />
+    <public type="attr" name="min" id="0x01010539" />
+    <public type="attr" name="rotationAnimation" id="0x0101053a" />
+    <public type="attr" name="layout_marginHorizontal" id="0x0101053b" />
+    <public type="attr" name="layout_marginVertical" id="0x0101053c" />
+    <public type="attr" name="paddingHorizontal" id="0x0101053d" />
+    <public type="attr" name="paddingVertical" id="0x0101053e" />
+    <public type="attr" name="fontStyle" id="0x0101053f" />
+    <public type="attr" name="keyboardNavigationCluster" id="0x01010540" />
+    <public type="attr" name="targetProcesses" id="0x01010541" />
+    <public type="attr" name="nextClusterForward" id="0x01010542" />
+    <public type="attr" name="colorError" id="0x01010543" />
+    <public type="attr" name="focusedByDefault" id="0x01010544" />
+    <public type="attr" name="appCategory" id="0x01010545" />
+    <public type="attr" name="autoSizeMaxTextSize" id="0x01010546" />
+    <public type="attr" name="recreateOnConfigChanges" id="0x01010547" />
+    <public type="attr" name="certDigest" id="0x01010548" />
+    <public type="attr" name="splitName" id="0x01010549" />
+    <public type="attr" name="colorMode" id="0x0101054a" />
+    <public type="attr" name="isolatedSplits" id="0x0101054b" />
+    <public type="attr" name="targetSandboxVersion" id="0x0101054c" />
+    <public type="attr" name="canRequestFingerprintGestures" id="0x0101054d" />
+    <public type="attr" name="alphabeticModifiers" id="0x0101054e" />
+    <public type="attr" name="numericModifiers" id="0x0101054f" />
+    <public type="attr" name="fontProviderAuthority" id="0x01010550" />
+    <public type="attr" name="fontProviderQuery" id="0x01010551" />
+    <public type="attr" name="primaryContentAlpha" id="0x01010552" />
+    <public type="attr" name="secondaryContentAlpha" id="0x01010553" />
+    <public type="attr" name="requiredFeature" id="0x01010554" />
+    <public type="attr" name="requiredNotFeature" id="0x01010555" />
+    <public type="attr" name="autofillHints" id="0x01010556" />
+    <public type="attr" name="fontProviderPackage" id="0x01010557" />
+    <public type="attr" name="importantForAutofill" id="0x01010558" />
+    <public type="attr" name="recycleEnabled" id="0x01010559"/>
+    <public type="attr" name="isStatic" id="0x0101055a" />
+    <public type="attr" name="isFeatureSplit" id="0x0101055b" />
+    <public type="attr" name="singleLineTitle" id="0x0101055c" />
+    <public type="attr" name="fontProviderCerts" id="0x0101055d" />
+    <public type="attr" name="iconTint" id="0x0101055e" />
+    <public type="attr" name="iconTintMode" id="0x0101055f" />
+    <public type="attr" name="maxAspectRatio" id="0x01010560"/>
+    <public type="attr" name="iconSpaceReserved" id="0x01010561"/>
+    <public type="attr" name="defaultFocusHighlightEnabled" id="0x01010562" />
+    <public type="attr" name="persistentWhenFeatureAvailable" id="0x01010563"/>
+    <public type="attr" name="windowSplashscreenContent" id="0x01010564" />
+    <!-- @hide @SystemApi -->
+    <public type="attr" name="requiredSystemPropertyName" id="0x01010565" />
+    <!-- @hide @SystemApi -->
+    <public type="attr" name="requiredSystemPropertyValue" id="0x01010566" />
+    <public type="attr" name="justificationMode" id="0x01010567" />
+    <public type="attr" name="autofilledHighlight" id="0x01010568" />
+
+    <public type="id" name="textAssist" id="0x01020041" />
+    <public type="id" name="accessibilityActionMoveWindow" id="0x01020042" />
+    <public type="id" name="autofill" id="0x01020043" />
+
+    <public type="string" name="paste_as_plain_text" id="0x01040019" />
+
+    <public-group type="attr" first-id="0x01010569">
+    </public-group>
+
+    <public-group type="style" first-id="0x010302e0">
+    </public-group>
+
+    <public-group type="id" first-id="0x01020044">
+    </public-group>
+
+    <public-group type="string" first-id="0x0104001a">
+    </public-group>
+
+  <!-- ===============================================================
+       DO NOT ADD UN-GROUPED ITEMS HERE
+
+       Any new items (attrs, styles, ids, etc.) *must* be added in a
+       public-group block, as the preceding comment explains.
+       Items added outside of a group may have their value recalculated
+       every time something new is added to this file.
+       =============================================================== -->
 </resources>

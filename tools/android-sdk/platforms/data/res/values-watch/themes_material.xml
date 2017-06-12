@@ -37,6 +37,7 @@ please see styles_device_defaults.xml.
         <item name="windowAnimationStyle">@style/Animation.InputMethod</item>
         <item name="imeFullscreenBackground">?colorBackground</item>
         <item name="imeExtractEnterAnimation">@anim/input_method_extract_enter</item>
+        <item name="windowSwipeToDismiss">false</item>
     </style>
 
     <!-- Override behaviour to set the theme colours for dialogs, keep them the same. -->
@@ -59,4 +60,17 @@ please see styles_device_defaults.xml.
         <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_material_light</item>
         <item name="windowIsFloating">false</item>
     </style>
+
+    <!-- Force all settings themes to use normal Material theme. -->
+    <style name="Theme.Material.Settings" parent="Theme.Material"/>
+    <style name="Theme.Material.Settings.NoActionBar" parent="Theme.Material"/>
+    <style name="Theme.Material.Settings.BaseDialog" parent="Theme.Material.Dialog"/>
+    <style name="Theme.Material.Settings.Dialog" parent="Theme.Material.Settings.BaseDialog"/>
+    <style name="Theme.Material.Settings.Dialog.BaseAlert" parent="Theme.Material.Dialog.BaseAlert"/>
+    <style name="Theme.Material.Settings.Dialog.Alert" parent="Theme.Material.Settings.Dialog.BaseAlert"/>
+    <style name="Theme.Material.Settings.DialogWhenLarge" parent="Theme.Material.DialogWhenLarge"/>
+    <style name="Theme.Material.Settings.DialogWhenLarge.NoActionBar" parent="Theme.Material.DialogWhenLarge.NoActionBar"/>
+    <style name="Theme.Material.Settings.Dialog.Presentation" parent="Theme.Material.Dialog.Presentation"/>
+    <style name="Theme.Material.Settings.SearchBar" parent="Theme.Material.SearchBar"/>
+    <style name="Theme.Material.Settings.CompactMenu" parent="Theme.Material.CompactMenu"/>
 </resources>

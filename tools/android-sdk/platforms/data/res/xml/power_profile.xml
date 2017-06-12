@@ -91,6 +91,12 @@
   <!-- Current when CPU is idle -->
   <item name="cpu.idle">0.1</item>
 
+  <!-- Memory bandwidth power values in mA at the rail. There must be one value
+       for each bucket defined in the device tree. -->
+  <array name="memory.bandwidths">
+    <value>22.7</value> <!-- mA for bucket: 100mb/s-1.5 GB/s memory bandwidth -->
+  </array>
+
   <!-- This is the battery capacity in mAh (measured at nominal voltage) -->
   <item name="battery.capacity">1000</item>
 

@@ -67,7 +67,4 @@
         <item>"#8"</item>
         <item>"#9"</item>
     </string-array>
-    <!-- Flag indicating whether radio is to be restarted on the error of
-         PDP_FAIL_REGULAR_DEACTIVATION/0x24 -->
-    <bool name="config_restart_radio_on_pdp_fail_regular_deactivation">true</bool>
 </resources>

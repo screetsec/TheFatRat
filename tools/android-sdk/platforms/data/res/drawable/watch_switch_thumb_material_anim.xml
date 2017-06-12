@@ -15,21 +15,79 @@
     android:constantSize="true">
     <item
         android:id="@+id/off"
-        android:drawable="@drawable/watch_switch_thumb_material"
+        android:drawable="@drawable/watch_switch_thumb_mtrl_14w"
         android:state_enabled="false" />
     <item
         android:id="@+id/on"
-        android:drawable="@drawable/watch_switch_thumb_material"
+        android:drawable="@drawable/watch_switch_thumb_mtrl_14w"
         android:state_checked="true" />
     <item
         android:id="@+id/off"
-        android:drawable="@drawable/watch_switch_thumb_material" />
+        android:drawable="@drawable/watch_switch_thumb_mtrl_14w" />
     <transition
-        android:drawable="@drawable/watch_switch_thumb_to_on_anim_mtrl"
         android:fromId="@id/off"
-        android:toId="@id/on" />
+        android:toId="@id/on">
+        <animation-list>
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_14w"
+                android:duration="30" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_15w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_16w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_17w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_18w"
+                android:duration="75" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_17w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_16w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_15w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_14w"
+                android:duration="30" />
+        </animation-list>
+    </transition>
     <transition
-        android:drawable="@drawable/watch_switch_thumb_to_off_anim_mtrl"
         android:fromId="@id/on"
-        android:toId="@id/off" />
+        android:toId="@id/off">
+        <animation-list>
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_14w"
+                android:duration="30" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_15w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_16w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_17w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_18w"
+                android:duration="75" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_17w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_16w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_15w"
+                android:duration="15" />
+            <item
+                android:drawable="@drawable/watch_switch_thumb_mtrl_14w"
+                android:duration="30" />
+        </animation-list>
+    </transition>
 </animated-selector>

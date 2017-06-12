@@ -45,7 +45,7 @@
             android:textColor="?attr/colorAccent"
             android:gravity="center_vertical"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:singleLine="true" />
 
         <TextView
@@ -59,7 +59,7 @@
             android:paddingEnd="?attr/dialogPreferredPadding"
             android:paddingTop="8dp"
             android:layout_below="@id/profile_button"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:paddingBottom="8dp" />
     </RelativeLayout>
 

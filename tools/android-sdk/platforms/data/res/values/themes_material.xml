@@ -48,17 +48,20 @@ please see themes_device_defaults.xml.
         <item name="colorBackgroundFloating">@color/background_floating_material_dark</item>
         <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_material_dark</item>
         <item name="disabledAlpha">@dimen/disabled_alpha_material_dark</item>
+        <item name="primaryContentAlpha">@dimen/primary_content_alpha_material_dark</item>
+        <item name="secondaryContentAlpha">@dimen/secondary_content_alpha_material_dark</item>
         <item name="backgroundDimAmount">0.6</item>
+        <item name="colorError">@color/error_color_material</item>
 
         <!-- Text styles -->
         <item name="textAppearance">@style/TextAppearance.Material</item>
         <item name="textAppearanceInverse">@style/TextAppearance.Material.Inverse</item>
 
-        <item name="textColorPrimary">@color/primary_text_material_dark</item>
+        <item name="textColorPrimary">@color/text_color_primary</item>
         <item name="textColorPrimaryInverse">@color/primary_text_material_light</item>
         <item name="textColorPrimaryActivated">@color/primary_text_inverse_when_activated_material</item>
         <item name="textColorPrimaryDisableOnly">@color/primary_text_disable_only_material_dark</item>
-        <item name="textColorSecondary">@color/secondary_text_material_dark</item>
+        <item name="textColorSecondary">@color/text_color_secondary</item>
         <item name="textColorSecondaryInverse">@color/secondary_text_material_light</item>
         <item name="textColorSecondaryActivated">@color/secondary_text_inverse_when_activated_material</item>
         <item name="textColorTertiary">@color/secondary_text_material_dark</item>
@@ -114,9 +117,9 @@ please see themes_device_defaults.xml.
         <item name="listPreferredItemHeightSmall">48dip</item>
         <item name="listPreferredItemHeightLarge">80dip</item>
         <item name="dropdownListPreferredItemHeight">?attr/listPreferredItemHeightSmall</item>
-        <item name="textAppearanceListItem">@style/TextAppearance.Material.Subhead</item>
-        <item name="textAppearanceListItemSmall">@style/TextAppearance.Material.Subhead</item>
-        <item name="textAppearanceListItemSecondary">@style/TextAppearance.Material.Body1</item>
+        <item name="textAppearanceListItem">@style/TextAppearance.Material.ListItem</item>
+        <item name="textAppearanceListItemSmall">@style/TextAppearance.Material.ListItem</item>
+        <item name="textAppearanceListItemSecondary">@style/TextAppearance.Material.ListItemSecondary</item>
         <item name="listPreferredItemPaddingLeft">@dimen/list_item_padding_horizontal_material</item>
         <item name="listPreferredItemPaddingRight">@dimen/list_item_padding_horizontal_material</item>
         <item name="listPreferredItemPaddingStart">@dimen/list_item_padding_start_material</item>
@@ -175,6 +178,7 @@ please see themes_device_defaults.xml.
         <item name="windowSharedElementExitTransition">@transition/move</item>
         <item name="windowContentTransitions">false</item>
         <item name="windowActivityTransitions">true</item>
+        <item name="windowSwipeToDismiss">@bool/config_windowSwipeToDismiss</item>
 
         <!-- Dialog attributes -->
         <item name="dialogTheme">@style/ThemeOverlay.Material.Dialog</item>
@@ -212,9 +216,9 @@ please see themes_device_defaults.xml.
         <item name="scrollbarDefaultDelayBeforeFade">400</item>
         <item name="scrollbarSize">10dp</item>
         <item name="scrollbarThumbHorizontal">@drawable/scrollbar_handle_material</item>
-        <item name="scrollbarThumbVertical">@drawable/scrollbar_handle_material</item>
+        <item name="scrollbarThumbVertical">@drawable/config_scrollbarThumbVertical</item>
         <item name="scrollbarTrackHorizontal">@null</item>
-        <item name="scrollbarTrackVertical">@null</item>
+        <item name="scrollbarTrackVertical">@drawable/config_scrollbarTrackVertical</item>
 
         <!-- Text selection handle attributes -->
         <item name="textSelectHandleLeft">@drawable/text_select_handle_left_material</item>
@@ -397,6 +401,10 @@ please see themes_device_defaults.xml.
         <item name="colorControlHighlight">@color/ripple_material_dark</item>
         <item name="colorButtonNormal">@color/btn_default_material_dark</item>
         <item name="colorSwitchThumbNormal">@color/switch_thumb_material_dark</item>
+
+        <!-- Tooltip popup properties -->
+        <item name="tooltipForegroundColor">@color/foreground_material_light</item>
+        <item name="tooltipBackgroundColor">@color/tooltip_background_light</item>
     </style>
 
     <!-- Material theme (light version). -->
@@ -407,16 +415,18 @@ please see themes_device_defaults.xml.
         <item name="colorBackgroundFloating">@color/background_floating_material_light</item>
         <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_material_light</item>
         <item name="disabledAlpha">@dimen/disabled_alpha_material_light</item>
+        <item name="primaryContentAlpha">@dimen/primary_content_alpha_material_light</item>
+        <item name="secondaryContentAlpha">@dimen/secondary_content_alpha_material_light</item>
         <item name="backgroundDimAmount">0.6</item>
 
         <!-- Text styles -->
         <item name="textAppearance">@style/TextAppearance.Material</item>
         <item name="textAppearanceInverse">@style/TextAppearance.Material.Inverse</item>
 
-        <item name="textColorPrimary">@color/primary_text_material_light</item>
+        <item name="textColorPrimary">@color/text_color_primary</item>
         <item name="textColorPrimaryInverse">@color/primary_text_material_dark</item>
         <item name="textColorPrimaryActivated">@color/primary_text_inverse_when_activated_material</item>
-        <item name="textColorSecondary">@color/secondary_text_material_light</item>
+        <item name="textColorSecondary">@color/text_color_secondary</item>
         <item name="textColorSecondaryInverse">@color/secondary_text_material_dark</item>
         <item name="textColorSecondaryActivated">@color/secondary_text_inverse_when_activated_material</item>
         <item name="textColorTertiary">@color/secondary_text_material_light</item>
@@ -475,9 +485,9 @@ please see themes_device_defaults.xml.
         <item name="listPreferredItemHeightSmall">48dip</item>
         <item name="listPreferredItemHeightLarge">80dip</item>
         <item name="dropdownListPreferredItemHeight">?attr/listPreferredItemHeightSmall</item>
-        <item name="textAppearanceListItem">@style/TextAppearance.Material.Subhead</item>
-        <item name="textAppearanceListItemSmall">@style/TextAppearance.Material.Subhead</item>
-        <item name="textAppearanceListItemSecondary">@style/TextAppearance.Material.Body1</item>
+        <item name="textAppearanceListItem">@style/TextAppearance.Material.ListItem</item>
+        <item name="textAppearanceListItemSmall">@style/TextAppearance.Material.ListItem</item>
+        <item name="textAppearanceListItemSecondary">@style/TextAppearance.Material.ListItemSecondary</item>
         <item name="listPreferredItemPaddingLeft">@dimen/list_item_padding_horizontal_material</item>
         <item name="listPreferredItemPaddingRight">@dimen/list_item_padding_horizontal_material</item>
         <item name="listPreferredItemPaddingStart">@dimen/list_item_padding_start_material</item>
@@ -536,6 +546,7 @@ please see themes_device_defaults.xml.
         <item name="windowSharedElementExitTransition">@transition/move</item>
         <item name="windowContentTransitions">false</item>
         <item name="windowActivityTransitions">true</item>
+        <item name="windowSwipeToDismiss">@bool/config_windowSwipeToDismiss</item>
 
         <!-- Dialog attributes -->
         <item name="dialogTheme">@style/ThemeOverlay.Material.Dialog</item>
@@ -573,9 +584,9 @@ please see themes_device_defaults.xml.
         <item name="scrollbarDefaultDelayBeforeFade">400</item>
         <item name="scrollbarSize">10dp</item>
         <item name="scrollbarThumbHorizontal">@drawable/scrollbar_handle_material</item>
-        <item name="scrollbarThumbVertical">@drawable/scrollbar_handle_material</item>
+        <item name="scrollbarThumbVertical">@drawable/config_scrollbarThumbVertical</item>
         <item name="scrollbarTrackHorizontal">@null</item>
-        <item name="scrollbarTrackVertical">@null</item>
+        <item name="scrollbarTrackVertical">@drawable/config_scrollbarTrackVertical</item>
 
         <!-- Text selection handle attributes -->
         <item name="textSelectHandleLeft">@drawable/text_select_handle_left_material</item>
@@ -760,6 +771,10 @@ please see themes_device_defaults.xml.
         <item name="colorControlHighlight">@color/ripple_material_light</item>
         <item name="colorButtonNormal">@color/btn_default_material_light</item>
         <item name="colorSwitchThumbNormal">@color/switch_thumb_material_light</item>
+
+        <!-- Tooltip popup properties -->
+        <item name="tooltipForegroundColor">@color/foreground_material_dark</item>
+        <item name="tooltipBackgroundColor">@color/tooltip_background_dark</item>
     </style>
 
     <!-- Variant of the material (light) theme that has a solid (opaque) action bar
@@ -793,9 +808,9 @@ please see themes_device_defaults.xml.
         <item name="colorBackgroundFloating">@color/background_floating_material_light</item>
         <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_material_light</item>
 
-        <item name="textColorPrimary">@color/primary_text_material_light</item>
+        <item name="textColorPrimary">@color/text_color_primary</item>
         <item name="textColorPrimaryInverse">@color/primary_text_material_dark</item>
-        <item name="textColorSecondary">@color/secondary_text_material_light</item>
+        <item name="textColorSecondary">@color/text_color_secondary</item>
         <item name="textColorSecondaryInverse">@color/secondary_text_material_dark</item>
         <item name="textColorTertiary">@color/secondary_text_material_light</item>
         <item name="textColorTertiaryInverse">@color/secondary_text_material_dark</item>
@@ -826,10 +841,10 @@ please see themes_device_defaults.xml.
         <item name="colorBackgroundFloating">@color/background_floating_material_dark</item>
         <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_material_dark</item>
 
-        <item name="textColorPrimary">@color/primary_text_material_dark</item>
+        <item name="textColorPrimary">@color/text_color_primary</item>
         <item name="textColorPrimaryInverse">@color/primary_text_material_light</item>
         <item name="textColorPrimaryDisableOnly">@color/primary_text_disable_only_material_dark</item>
-        <item name="textColorSecondary">@color/secondary_text_material_dark</item>
+        <item name="textColorSecondary">@color/text_color_secondary</item>
         <item name="textColorSecondaryInverse">@color/secondary_text_material_light</item>
         <item name="textColorTertiary">@color/secondary_text_material_dark</item>
         <item name="textColorTertiaryInverse">@color/secondary_text_material_light</item>
@@ -1306,11 +1321,24 @@ please see themes_device_defaults.xml.
         <item name="windowNoTitle">true</item>
     </style>
 
+    <!-- Theme for inflating notifications -->
+    <style name="Theme.Material.Notification" parent="">
+        <item name="notificationHeaderStyle">@style/Notification.Header</item>
+        <item name="notificationHeaderTextAppearance">@style/TextAppearance.Material.Notification.Info</item>
+        <item name="notificationHeaderIconSize">@dimen/notification_header_icon_size</item>
+    </style>
+
+    <!-- Theme for inflating ambient notification -->
+    <style name="Theme.Material.Notification.Ambient">
+        <item name="notificationHeaderTextAppearance">@style/TextAppearance.Material.Notification.Info.Ambient</item>
+        <item name="notificationHeaderIconSize">@dimen/notification_header_icon_size_ambient</item>
+    </style>
+
     <!-- Default theme for Settings and activities launched from Settings. -->
-    <style name="Theme.Material.Settings" parent="Theme.Material.Light.DarkActionBar">
-        <item name="colorPrimary">@color/primary_material_settings</item>
-        <item name="colorPrimaryDark">@color/primary_dark_material_settings</item>
-        <item name="colorSecondary">@color/secondary_material_settings</item>
+    <style name="Theme.Material.Settings" parent="Theme.Material.Light.LightStatusBar">
+        <item name="colorPrimary">@color/primary_material_settings_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_material_settings_light</item>
+        <item name="colorSecondary">@color/secondary_material_settings_light</item>
 
         <item name="presentationTheme">@style/Theme.Material.Settings.Dialog.Presentation</item>
         <item name="searchDialogTheme">@style/Theme.Material.Settings.SearchBar</item>

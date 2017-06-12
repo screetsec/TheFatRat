@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2017 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/top_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/time_picker_prompt_label"
+        android:textAppearance="@style/TextAppearance.Material.TimePicker.PromptLabel" />
+
+    <RelativeLayout
+        android:id="@+id/input_block"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_label"
+        android:layoutDirection="ltr">
+        <EditText
+            android:id="@+id/input_hour"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:textAppearance="@style/TextAppearance.Material.TimePicker.InputField"
+            android:imeOptions="actionNext"/>
+        <TextView
+            android:id="@+id/label_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_hour"
+            android:layout_alignStart="@id/input_hour"
+            android:labelFor="@+id/input_hour"
+            android:text="@string/time_picker_hour_label"/>
+
+        <TextView
+            android:id="@+id/input_separator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/input_hour"
+            android:layout_alignBaseline="@id/input_hour"
+            android:textAppearance="@style/TextAppearance.Material.TimePicker.InputField" />
+
+        <EditText
+            android:id="@+id/input_minute"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/input_hour"
+            android:layout_toEndOf="@id/input_separator"
+            android:inputType="number"
+            android:textAppearance="@style/TextAppearance.Material.TimePicker.InputField" />
+        <TextView
+            android:id="@+id/label_minute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_minute"
+            android:layout_alignStart="@id/input_minute"
+            android:labelFor="@+id/input_minute"
+            android:text="@string/time_picker_minute_label"/>
+
+        <TextView
+            android:visibility="invisible"
+            android:id="@+id/label_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/input_hour"
+            android:layout_alignStart="@id/input_hour"
+            android:textColor="?attr/colorError"
+            android:text="@string/time_picker_input_error" />
+    </RelativeLayout>
+    <Spinner
+        android:id="@+id/am_pm_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@id/input_block"
+        android:layout_alignParentEnd="true"/>
+
+</merge>

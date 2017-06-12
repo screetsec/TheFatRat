@@ -14,5 +14,34 @@
      limitations under the License.
 -->
 <resources>
+    <dimen name="text_size_display_4_material">71sp</dimen>
+    <dimen name="text_size_display_3_material">44sp</dimen>
+    <dimen name="text_size_display_2_material">36sp</dimen>
+    <dimen name="text_size_display_1_material">27sp</dimen>
+    <dimen name="text_size_headline_material">18sp</dimen>
+    <dimen name="text_size_title_material">16sp</dimen>
+    <dimen name="text_size_subhead_material">16sp</dimen>
+    <dimen name="text_size_title_material_toolbar">16dp</dimen>
+    <dimen name="text_size_subtitle_material_toolbar">16dp</dimen>
+    <dimen name="text_size_menu_material">16sp</dimen>
+    <dimen name="text_size_menu_header_material">14sp</dimen>
+    <dimen name="text_size_body_2_material">14sp</dimen>
+    <dimen name="text_size_body_1_material">14sp</dimen>
+    <dimen name="text_size_caption_material">12sp</dimen>
+    <dimen name="text_size_button_material">14sp</dimen>
+
+    <dimen name="text_size_large_material">16sp</dimen>
+    <dimen name="text_size_medium_material">14sp</dimen>
+    <dimen name="text_size_small_material">12sp</dimen>
+
     <item name="text_line_spacing_multiplier_material" format="float" type="dimen">1.2</item>
+
+    <!-- Date and time picker legacy dimens -->
+    <dimen name="picker_top_margin">1dip</dimen>
+    <dimen name="picker_bottom_margin">1dip</dimen>
+
+    <!-- Progress bar dimens -->
+    <dimen name="progress_bar_size_small">16dip</dimen>
+    <dimen name="progress_bar_size_medium">32dip</dimen>
+    <dimen name="progress_bar_size_large">64dip</dimen>
 </resources>

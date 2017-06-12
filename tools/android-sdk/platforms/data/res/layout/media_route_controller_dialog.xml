@@ -47,17 +47,5 @@
                      android:layout_width="match_parent"
                      android:layout_height="wrap_content"
                      android:visibility="gone" />
-
-        <!-- Disconnect button. -->
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      style="?attr/buttonBarStyle">
-            <Button android:id="@+id/media_route_disconnect_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    style="?attr/buttonBarButtonStyle"
-                    android:gravity="center"
-                    android:text="@string/media_route_controller_disconnect" />
-        </LinearLayout>
     </LinearLayout>
 </ScrollView>

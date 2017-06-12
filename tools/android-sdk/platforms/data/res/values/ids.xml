@@ -97,6 +97,7 @@
   <item type="id" name="redo" />
   <item type="id" name="replaceText" />
   <item type="id" name="shareText" />
+  <item type="id" name="textAssist" />
   <item type="id" name="selection_start_handle" />
   <item type="id" name="selection_end_handle" />
   <item type="id" name="insertion_handle" />
@@ -129,4 +130,16 @@
   <item type="id" name="remote_input_tag" />
 
   <item type="id" name="cross_task_transition" />
+
+  <item type="id" name="accessibilityActionClickOnClickableSpan" />
+
+  <!-- ItemTouchHelper uses this id to save a View's original elevation. -->
+  <item type="id" name="item_touch_helper_previous_elevation"/>
+
+  <!-- Accessibility action identifier for {@link android.view.accessibility.AccessibilityNodeInfo.AccessibilityAction#ACTION_MOVE_WINDOW}. -->
+  <item type="id" name="accessibilityActionMoveWindow" />
+
+  <!-- Action used to manually trigger an autofill request -->
+  <item type="id" name="autofill" />
+
 </resources>

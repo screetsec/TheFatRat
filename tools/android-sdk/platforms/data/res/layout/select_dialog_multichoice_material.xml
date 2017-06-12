@@ -26,5 +26,5 @@
     android:paddingStart="@dimen/select_dialog_padding_start_material"
     android:paddingEnd="?attr/dialogPreferredPadding"
     android:drawableStart="?attr/listChoiceIndicatorMultiple"
-    android:drawablePadding="20dp"
+    android:drawablePadding="@dimen/select_dialog_drawable_padding_start_material"
     android:ellipsize="marquee" />

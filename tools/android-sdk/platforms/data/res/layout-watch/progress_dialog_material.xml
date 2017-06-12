@@ -32,14 +32,15 @@
 
         <ProgressBar
             android:id="@id/progress"
-            style="?android:attr/progressBarStyleSmall"
+            style="?android:attr/progressBarStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:max="10000"
-            android:layout_marginEnd="?attr/dialogPreferredPadding" />
+            android:layout_marginEnd="8dp" />
 
         <TextView
             android:id="@+id/message"
+            android:textAppearance="?attr/textAppearanceListItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical" />

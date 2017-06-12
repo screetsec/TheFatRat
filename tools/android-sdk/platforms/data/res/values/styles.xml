@@ -159,6 +159,11 @@ please see styles_device_defaults.xml.
         <item name="windowExitAnimation">@anim/toast_exit</item>
     </style>
 
+    <style name="Animation.Tooltip">
+        <item name="windowEnterAnimation">@anim/tooltip_enter</item>
+        <item name="windowExitAnimation">@anim/tooltip_exit</item>
+    </style>
+
     <style name="Animation.DropDownDown">
         <item name="windowEnterAnimation">@anim/grow_fade_in</item>
         <item name="windowExitAnimation">@anim/shrink_fade_out</item>
@@ -317,6 +322,7 @@ please see styles_device_defaults.xml.
         <item name="scrollbars">vertical</item>
         <item name="fadingEdge">vertical</item>
         <item name="fastScrollStyle">?attr/fastScrollStyle</item>
+        <item name="defaultFocusHighlightEnabled">false</item>
     </style>
 
     <style name="Widget.GestureOverlayView">
@@ -505,6 +511,8 @@ please see styles_device_defaults.xml.
 
     <style name="Widget.CheckedTextView">
         <item name="textAlignment">viewStart</item>
+        <item name="breakStrategy">high_quality</item>
+        <item name="hyphenationFrequency">normal</item>
     </style>
 
     <style name="Widget.TextView.ListSeparator">
@@ -533,6 +541,7 @@ please see styles_device_defaults.xml.
         <item name="gravity">center_vertical</item>
         <item name="breakStrategy">simple</item>
         <item name="hyphenationFrequency">normal</item>
+        <item name="defaultFocusHighlightEnabled">false</item>
     </style>
 
     <style name="Widget.ExpandableListView" parent="Widget.ListView">
@@ -649,11 +658,13 @@ please see styles_device_defaults.xml.
     <style name="Widget.ScrollView">
         <item name="scrollbars">vertical</item>
         <item name="fadingEdge">vertical</item>
+        <item name="focusableInTouchMode">@bool/config_focusScrollContainersInTouchMode</item>
     </style>
 
     <style name="Widget.HorizontalScrollView">
         <item name="scrollbars">horizontal</item>
         <item name="fadingEdge">horizontal</item>
+        <item name="focusableInTouchMode">@bool/config_focusScrollContainersInTouchMode</item>
     </style>
 
     <style name="Widget.ListView" parent="Widget.AbsListView">
@@ -948,6 +959,11 @@ please see styles_device_defaults.xml.
         <item name="fontFamily">sans-serif-condensed</item>
     </style>
 
+    <style name="TextAppearance.Tooltip">
+        <item name="fontFamily">sans-serif</item>
+        <item name="textSize">14sp</item>
+    </style>
+
     <style name="Widget.ActivityChooserView">
         <item name="gravity">center</item>
         <item name="background">@drawable/ab_share_pack_holo_dark</item>
@@ -1238,6 +1254,7 @@ please see styles_device_defaults.xml.
         <item name="contentInsetStart">16dp</item>
         <item name="contentInsetStartWithNavigation">@dimen/action_bar_content_inset_with_nav</item>
         <item name="touchscreenBlocksFocus">true</item>
+        <item name="keyboardNavigationCluster">true</item>
     </style>
 
     <style name="Widget.Toolbar.Button.Navigation" parent="Widget">
@@ -1278,6 +1295,7 @@ please see styles_device_defaults.xml.
     <style name="Widget.ActionButton.Overflow">
         <item name="src">@drawable/ic_menu_more</item>
         <item name="contentDescription">@string/action_menu_overflow_description</item>
+        <item name="tooltipText">@string/action_menu_overflow_description</item>
     </style>
 
     <style name="Widget.ActionButton.CloseMode">
@@ -1460,6 +1478,18 @@ please see styles_device_defaults.xml.
         <item name="minWidth">72dp</item>
         <item name="minHeight">72dp</item>
         <item name="padding">16dp</item>
+    </style>
+
+    <style name="Widget.LockPatternView">
+        <item name="regularColor">@color/lock_pattern_view_regular_color</item>
+        <item name="errorColor">?attr/colorError</item>
+        <item name="successColor">@color/lock_pattern_view_success_color</item>
+    </style>
+
+    <!-- @hide -->
+    <style name="AutofillDatasetPicker">
+        <item name="elevation">4dp</item>
+        <item name="background">@drawable/autofill_dataset_picker_background</item>
     </style>
 
 </resources>

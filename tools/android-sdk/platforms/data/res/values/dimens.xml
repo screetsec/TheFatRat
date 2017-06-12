@@ -64,6 +64,9 @@
          when the user opens homescreen. -->
     <dimen name="docked_stack_minimize_thickness">8dp</dimen>
 
+    <!-- The amount to leave on-screen when the PIP is minimized. -->
+    <dimen name="pip_minimized_visible_size">48dp</dimen>
+
     <!-- Min width for a tablet device -->
     <dimen name="min_xlarge_screen_width">800dp</dimen>
 
@@ -162,6 +165,9 @@
     -->
     <dimen name="notification_content_plus_picture_margin_end">72dp</dimen>
 
+    <!-- The additional margin on the sides of the ambient view. -->
+    <dimen name="notification_extra_margin_ambient">16dp</dimen>
+
     <!-- The height of the notification action list -->
     <dimen name="notification_action_list_height">56dp</dimen>
 
@@ -171,8 +177,22 @@
     <!-- height of the content margin on the bottom -->
     <dimen name="notification_content_margin_bottom">16dp</dimen>
 
-	<!-- The height of the background for a notification header on a group -->
+    <!-- height of the notification header (for icon and package name) -->
+    <dimen name="notification_header_height">48dp</dimen>
+
+    <!-- The height of the background for a notification header on a group -->
     <dimen name="notification_header_background_height">45.5dp</dimen>
+
+    <!-- The top padding for the notification header -->
+    <dimen name="notification_header_padding_top">10dp</dimen>
+    <!-- The bottom padding for the notification header -->
+    <dimen name="notification_header_padding_bottom">11dp</dimen>
+
+    <!-- size (width and height) of the icon in the notification header -->
+    <dimen name="notification_header_icon_size">18dp</dimen>
+
+    <!-- size (width and height) of the icon in the notification header -->
+    <dimen name="notification_header_icon_size_ambient">20dp</dimen>
 
     <!-- Height of a small notification in the status bar -->
     <dimen name="notification_min_height">92dp</dimen>
@@ -188,8 +208,8 @@
     <!-- The minimum height of the content if there are at least two lines or a picture-->
     <dimen name="notification_min_content_height">41dp</dimen>
 
-    <!-- The maximum size of the image in the expanded media notification -->
-    <dimen name="media_notification_expanded_image_max_size">94dp</dimen>
+    <!-- The small size of the image if the height drawing doesn't work anymore -->
+    <dimen name="media_notification_expanded_image_small_size">72dp</dimen>
 
     <!-- The maximum size of the image in the expanded media notification -->
     <dimen name="media_notification_expanded_image_margin_bottom">20dp</dimen>
@@ -456,14 +476,15 @@
 
     <!-- Floating toolbar dimensions -->
     <dimen name="floating_toolbar_height">48dp</dimen>
+    <dimen name="floating_toolbar_menu_image_width">24dp</dimen>
     <dimen name="floating_toolbar_menu_image_button_width">56dp</dimen>
     <dimen name="floating_toolbar_menu_image_button_vertical_padding">12dp</dimen>
-    <dimen name="floating_toolbar_menu_button_side_padding">16dp</dimen>
+    <dimen name="floating_toolbar_menu_button_side_padding">11dp</dimen>
     <dimen name="floating_toolbar_overflow_image_button_width">60dp</dimen>
     <dimen name="floating_toolbar_overflow_side_padding">18dp</dimen>
     <dimen name="floating_toolbar_text_size">14sp</dimen>
     <dimen name="floating_toolbar_menu_button_minimum_width">48dp</dimen>
-    <dimen name="floating_toolbar_preferred_width">328dp</dimen>
+    <dimen name="floating_toolbar_preferred_width">400dp</dimen>
     <dimen name="floating_toolbar_minimum_overflow_height">96dp</dimen>
     <dimen name="floating_toolbar_maximum_overflow_height">192dp</dimen>
     <dimen name="floating_toolbar_horizontal_margin">16dp</dimen>
@@ -471,9 +492,6 @@
     <dimen name="content_rect_bottom_clip_allowance">20dp</dimen>
 
     <dimen name="chooser_grid_padding">0dp</dimen>
-
-    <item type="dimen" format="integer" name="time_picker_column_start_material">0</item>
-    <item type="dimen" format="integer" name="time_picker_column_end_material">1</item>
 
     <item type="dimen" name="aerr_padding_list_top">15dp</item>
     <item type="dimen" name="aerr_padding_list_bottom">8dp</item>
@@ -485,6 +503,41 @@
     <!-- The default minimal size of a resizable task, in both dimensions. -->
     <dimen name="default_minimal_size_resizable_task">220dp</dimen>
 
+    <!-- The default minimal size of a PiP task, in both dimensions. -->
+    <dimen name="default_minimal_size_pip_resizable_task">108dp</dimen>
+
+    <!-- Height of a task when in minimized mode from the top when launcher is resizable. -->
+    <dimen name="task_height_of_minimized_mode">80dp</dimen>
+
     <!-- Minimum "smallest width" of the display for cascading menus to be enabled. -->
     <dimen name="cascading_menus_min_smallest_width">720dp</dimen>
+
+    <!-- Tooltip dimensions. -->
+    <!-- Vertical offset from the edge of the anchor view for a touch-triggered tooltip. -->
+    <dimen name="tooltip_y_offset_touch">16dp</dimen>
+    <!-- Vertical offset from the edge of the anchor view for a non-touch-triggered tooltip. -->
+    <dimen name="tooltip_y_offset_non_touch">0dp</dimen>
+    <!-- The tooltip does not get closer than this to the window edge -->
+    <dimen name="tooltip_margin">8dp</dimen>
+    <!-- Left/right padding of the tooltip text. -->
+    <dimen name="tooltip_horizontal_padding">16dp</dimen>
+    <!-- Top/bottom padding of the tooltip text. -->
+    <dimen name="tooltip_vertical_padding">6.5dp</dimen>
+    <!-- Border corner radius of the tooltip window. -->
+    <dimen name="tooltip_corner_radius">2dp</dimen>
+    <!-- View with the height equal or above this threshold will have a tooltip anchored
+    to the mouse/touch position -->
+    <dimen name="tooltip_precise_anchor_threshold">96dp</dimen>
+    <!-- Extra tooltip offset used when anchoring to the mouse/touch position -->
+    <dimen name="tooltip_precise_anchor_extra_offset">8dp</dimen>
+
+    <!-- The max amount of scroll ItemTouchHelper will trigger if dragged view is out of
+         RecyclerView's bounds.-->
+    <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
+    <dimen name="item_touch_helper_swipe_escape_velocity">120dp</dimen>
+    <dimen name="item_touch_helper_swipe_escape_max_velocity">800dp</dimen>
+
+    <!-- Max width/height of the autofill data set picker as a fraction of the screen width/height -->
+    <dimen name="autofill_dataset_picker_max_size">90%</dimen>
+
 </resources>

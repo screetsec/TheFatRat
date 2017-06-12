@@ -48,12 +48,11 @@
             <include layout="@layout/notification_template_progress" />
             <com.android.internal.widget.ImageFloatingTextView android:id="@+id/big_text"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/notification_text_margin_top"
                 android:paddingBottom="@dimen/notification_content_margin_bottom"
                 android:textAppearance="@style/TextAppearance.Material.Notification"
                 android:singleLine="false"
-                android:layout_weight="1"
                 android:gravity="top"
                 android:visibility="gone"
                 />

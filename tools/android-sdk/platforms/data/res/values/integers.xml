@@ -26,5 +26,12 @@
 
     <integer name="date_picker_mode">1</integer>
     <integer name="time_picker_mode">1</integer>
+
+    <!-- Specifies date picker mode to be 'calendar' -->
+    <integer name="date_picker_mode_material">2</integer>
+
+    <!-- Specifies time picker mode to be 'clock' -->
+    <integer name="time_picker_mode_material">2</integer>
+
     <integer name="date_picker_header_max_lines_material">2</integer>
 </resources>

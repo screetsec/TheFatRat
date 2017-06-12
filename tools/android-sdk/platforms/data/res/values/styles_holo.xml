@@ -660,6 +660,7 @@ please see styles_device_defaults.xml.
         <item name="src">@drawable/ic_menu_moreoverflow_holo_dark</item>
         <item name="background">?attr/actionBarItemBackground</item>
         <item name="contentDescription">@string/action_menu_overflow_description</item>
+        <item name="tooltipText">@string/action_menu_overflow_description</item>
     </style>
 
     <style name="Widget.Holo.ActionButton.TextButton" parent="Widget.Holo.ButtonBar.Button" />
@@ -994,6 +995,7 @@ please see styles_device_defaults.xml.
     <style name="Widget.Holo.Light.ActionButton.Overflow">
         <item name="src">@drawable/ic_menu_moreoverflow_holo_light</item>
         <item name="contentDescription">@string/action_menu_overflow_description</item>
+        <item name="tooltipText">@string/action_menu_overflow_description</item>
     </style>
 
     <style name="Widget.Holo.Light.ActionBar.TabView" parent="Widget.Holo.ActionBar.TabView" />

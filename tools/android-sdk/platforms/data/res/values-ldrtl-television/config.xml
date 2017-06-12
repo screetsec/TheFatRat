@@ -21,7 +21,8 @@
      for TV products.  Do not translate. -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Default bounds [left top right bottom] on screen for picture-in-picture windows. -->
-    <string translatable="false" name="config_defaultPictureInPictureBounds">"112 54 592 324"</string>
+    <!-- The default gravity for the picture-in-picture window.
+         Currently, this maps to Gravity.BOTTOM | Gravity.LEFT -->
+    <integer name="config_defaultPictureInPictureGravity">0x53</integer>
 
 </resources>

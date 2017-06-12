@@ -49,7 +49,7 @@ easier.
          Type.DeviceDefault.Etc (for example, {@code Widget.DeviceDefault.Button} and
          {@code TextAppearance.DeviceDefault.Widget.PopupMenu.Large}).</p>
           -->
-    <style name="Theme.DeviceDefault" parent="Theme.Material" >
+    <style name="Theme.DeviceDefaultBase" parent="Theme.Material" >
         <!-- Text styles -->
         <item name="textAppearance">@style/TextAppearance.DeviceDefault</item>
         <item name="textAppearanceInverse">@style/TextAppearance.DeviceDefault.Inverse</item>
@@ -205,6 +205,8 @@ easier.
         <item name="colorAccent">@color/accent_device_default_dark</item>
 
     </style>
+
+    <style name="Theme.DeviceDefault" parent="Theme.DeviceDefaultBase" />
 
     <!-- Variant of {@link #Theme_DeviceDefault} with no action bar -->
     <style name="Theme.DeviceDefault.NoActionBar" parent="Theme.Material.NoActionBar">
@@ -733,22 +735,27 @@ easier.
 
     <!-- DeviceDefault theme for a window that should look like the Settings app.  -->
     <style name="Theme.DeviceDefault.Settings" parent="Theme.Material.Settings">
+        <!-- action bar -->
+        <item name="actionBarTheme">@style/ThemeOverlay.DeviceDefault.ActionBar.Accent</item>
+        <item name="popupTheme">@style/ThemeOverlay.DeviceDefault.Popup.Light</item>
+
         <!-- Color palette -->
-        <item name="colorPrimary">@color/primary_device_default_settings</item>
-        <item name="colorPrimaryDark">@color/primary_dark_device_default_settings</item>
-        <item name="colorSecondary">@color/secondary_device_default_settings</item>
+        <item name="colorPrimary">@color/primary_device_default_settings_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_settings_light</item>
+        <item name="colorSecondary">@color/secondary_device_default_settings_light</item>
         <item name="colorAccent">@color/accent_device_default_light</item>
+        <item name="colorEdgeEffect">@android:color/black</item>
     </style>
 
-    <!-- DeviceDefault theme for a window that should use Settings theme colors but has
-         a full dark palette (instead of Light with dark action bar like
-         Theme.DeviceDefault.Settings.  -->
-    <style name="Theme.DeviceDefault.Settings.Dark" parent="Theme.Material">
+    <!-- @hide DeviceDefault theme for a window that should use Settings theme colors
+         but has a full dark palette. ONLY USED FOR QUICK SETTINGS THEME -->
+    <style name="Theme.DeviceDefault.QuickSettings" parent="Theme.DeviceDefault.Light">
         <!-- Color palette -->
-        <item name="colorPrimary">@color/primary_device_default_settings</item>
-        <item name="colorPrimaryDark">@color/primary_dark_device_default_settings</item>
-        <item name="colorSecondary">@color/secondary_device_default_settings</item>
-        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_settings_light</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_settings_light</item>
+        <item name="colorSecondary">@color/secondary_device_default_settings_light</item>
+        <item name="colorAccent">@color/accent_device_default_light</item>
+        <item name="colorControlNormal">?attr/textColorPrimary</item>
     </style>
 
     <!-- Variant of {@link #Theme_DeviceDefault_Settings_Dark} with no action bar -->
@@ -784,8 +791,12 @@ easier.
         <item name="colorAccent">@color/accent_device_default_light</item>
     </style>
 
+    <style name="Theme.DeviceDefault.Settings.Dialog.NoActionBar" parent="Theme.DeviceDefault.Light.Dialog.NoActionBar"/>
+
     <!-- Theme used for the intent picker activity. -->
     <style name="Theme.DeviceDefault.Resolver" parent="Theme.Material.Light">
+        <item name="windowEnterTransition">@empty</item>
+        <item name="windowExitTransition">@empty</item>
         <item name="windowIsTranslucent">true</item>
         <item name="windowNoTitle">true</item>
         <item name="windowBackground">@color/transparent</item>
@@ -806,6 +817,15 @@ easier.
     <style name="Theme.DeviceDefault.System" parent="Theme.DeviceDefault.Light.DarkActionBar" />
 
     <style name="ThemeOverlay.DeviceDefault" />
+
+    <!-- @hide Theme overlay that inherits from material actionbar,  and use accent color for
+             primary text -->
+    <style name="ThemeOverlay.DeviceDefault.ActionBar.Accent" parent="ThemeOverlay.Material.ActionBar">
+        <item name="textColorPrimary">@color/btn_colored_borderless_text_material</item>
+    </style>
+
+    <!-- @hide Theme overlay for a light popup in action bar -->
+    <style name="ThemeOverlay.DeviceDefault.Popup.Light" parent="@style/ThemeOverlay.Material.Light" />
 
     <style name="ThemeOverlay.DeviceDefault.Accent">
         <item name="colorAccent">@color/accent_device_default_dark</item>
