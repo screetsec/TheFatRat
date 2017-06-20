@@ -943,7 +943,7 @@ apt-get clean
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 clear
 echo -e $okegreen "Do you want to create a shortcut for fatrat in your system"
-echo -e $okegreen "so you can run fatrat from anywhere in your terminal ?"
+echo -e $okegreen "so you can run fatrat from anywhere in your terminal and desktop ?"
 echo ""
 echo -ne $cyan "Choose y/n : "
 read cho
@@ -958,6 +958,9 @@ rm -f /usr/local/sbin/fatrat
 touch /usr/local/sbin/fatrat
 echo "#!/bin/bash" > /usr/local/sbin/fatrat
 echo $scrp >> /usr/local/sbin/fatrat
+cp $path/config/TheFatRat.desktop /usr/share/applications/TheFatRat.desktop
+mkdir -p /usr/share/icons/TheFatRat
+cp $path/icons/fatrat.ico /usr/share/icons/TheFatRat/icon.ico
 chmod +x /usr/local/sbin/fatrat
 chmod +x fatrat
 chmod +x update
