@@ -959,8 +959,7 @@ touch /usr/local/sbin/fatrat
 echo "#!/bin/bash" > /usr/local/sbin/fatrat
 echo $scrp >> /usr/local/sbin/fatrat
 cp $path/config/TheFatRat.desktop /usr/share/applications/TheFatRat.desktop
-mkdir -p /usr/share/icons/TheFatRat
-cp $path/icons/fatrat.ico /usr/share/icons/TheFatRat/icon.ico
+cp $path/icons/fatrat.ico /usr/share/icons/fatrat.ico
 chmod +x /usr/local/sbin/fatrat
 chmod +x fatrat
 chmod +x update
