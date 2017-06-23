@@ -153,7 +153,7 @@ if [ "$ct" == "0" ]; then
 clear
 echo -e $red "Fatrat was not able to install some packages"
 echo ""
-echo -e $blue "Reactivating your original repositories"
+echo -e $blue "Reactivating you original repositories"
 rm -f /etc/apt/sources.list
 mv /etc/apt/sources.list.backup /etc/apt/sources.list
 #now we can remove the emergency backup securely
@@ -717,22 +717,22 @@ mingwi
 fi
 fi
 
-#Checking for DX and in case exists then check if it is version 1.13 used in fatrat (latest android sdk) 
+#Checking for DX and in case exists then check if it is version 1.8 used in fatrat (latest android sdk) 
 which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 dxg=`dx --version 2>&1 | tee temp/dx`
 dxv=`cat temp/dx | awk '{print $3}'` 
 case $dxv in
-1.13)
-#DX exists and it is version 1.13
+1.8)
+#DX exists and it is version 1.8
 rm -rf temp/dx >/dev/null 2>&1
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.13"
+echo -e $green "[ ✔ ] DX 1.8"
 echo "DX -> OK" >> "$inst"
 ;;
 *)
-#DX does not exists or is not 1.13 version
+#DX does not exists or is not 1.8 version
 xterm -T "☣ Removing Your Current DX ☣" -geometry 100x30 -e "sudo apt-get remove --purge dx -y"
 unlink "/usr/local/sbin/dx" > /dev/null 2>&1
 ln -s "$path/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 2>&1
@@ -740,10 +740,10 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.13"
+echo -e $green "[ ✔ ] DX 1.8"
 echo "DX -> OK" >> "$inst"
 else
-echo -e $red "[ x ] DX 1.13"
+echo -e $red "[ x ] DX 1.8"
 echo "0" > "$stp"
 echo "DX -> Not OK" >> "$inst"
 fi
@@ -756,24 +756,24 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] 1.13"
+echo -e $green "[ ✔ ] DX 1.8"
 echo "DX -> OK" >> "$inst"
 else
-echo -e $red "[ x ] 1.13"
+echo -e $red "[ x ] DX 1.8"
 echo "0" > "$stp"
 echo "DX -> Not OK" >> "$inst"
 fi
 fi
-# check if aapt exists and if it is version v0.2-4062713 used in fatrat (android sdk)
+# check if aapt exists and if it is version v0.2-3821160 used in fatrat (android sdk)
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 aptv=`aapt v | awk '{print $5}'`
 case $aptv in
-v0.2-4062713)
-#exists and it is v0.2-4062713
+v0.2-3821160)
+#exists and it is v0.2-3821160
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-4062713"
+echo -e $green "[ ✔ ] Aapt v0.2-3821160"
 echo "Aapt -> OK" >> "$inst"
 ;;
 *)
@@ -785,10 +785,10 @@ which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] v0.2-4062713"
+echo -e $green "[ ✔ ] Aapt v0.2-3821160"
 echo "Aapt -> OK" >> "$inst"
 else
-echo -e $red "[ x ] v0.2-4062713"
+echo -e $red "[ x ] Aapt v0.2-3821160"
 echo "0" > "$stp"
 echo "Aapt -> Not OK" >> "$inst"
 fi
@@ -801,10 +801,10 @@ which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] v0.2-4062713"
+echo -e $green "[ ✔ ] Aapt v0.2-3821160"
 echo "Aapt -> OK" >> "$inst"
 else
-echo -e $red "[ x ] v0.2-4062713"
+echo -e $red "[ x ] Aapt v0.2-3821160"
 echo "0" > "$stp"
 echo "Aapt -> Not OK" >> "$inst"
 fi
@@ -943,7 +943,7 @@ apt-get clean
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 clear
 echo -e $okegreen "Do you want to create a shortcut for fatrat in your system"
-echo -e $okegreen "so you can run fatrat from anywhere in your terminal ?"
+echo -e $okegreen "so you can run fatrat from anywhere in your terminal and desktop ?"
 echo ""
 echo -ne $cyan "Choose y/n : "
 read cho
@@ -958,6 +958,8 @@ rm -f /usr/local/sbin/fatrat
 touch /usr/local/sbin/fatrat
 echo "#!/bin/bash" > /usr/local/sbin/fatrat
 echo $scrp >> /usr/local/sbin/fatrat
+cp $path/config/TheFatRat.desktop /usr/share/applications/TheFatRat.desktop
+cp $path/icons/fatrat.ico /usr/share/icons/fatrat.ico
 chmod +x /usr/local/sbin/fatrat
 chmod +x fatrat
 chmod +x update
@@ -1147,7 +1149,7 @@ echo "                 |   |     /    /                 "
 echo "                 |___| /\ /____/                  "
 echo "                       \/                         "
 echo ""
-echo -e $blue "         Setup Script for FATRAT 1.9.5       "
+echo -e $blue "         Setup Script for FATRAT 1.9.4       "
 echo "------------------------------------------------------" > "$log"
 echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> "$log"
 echo "------------------------------------------------------" >> "$log"
@@ -1156,11 +1158,11 @@ echo ""
 #Detect if user OS is 32Bit or 64bit
 case $arch in
 x86_64|aarch64) 
-echo -e $yellow "              64Bit OS detected"
+echo -e $purple "              64Bit OS detected"
 echo ""
 ;;
 i386|i486|i586|i686|armv7l)
-echo -e $yellow "                32Bit OS detected"
+echo -e $blue "                32Bit OS detected"
 echo ""
 ;;
 *)

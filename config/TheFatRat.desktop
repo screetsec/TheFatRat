@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=TheFatRat 
+Comment=Massive Exploiting Tool Revealed - An easy tool to generate backdoor & post exploitation attack.
+Exec=gksudo thefatrat
+Icon=/usr/share/icons/fatrat.ico
+Terminal=false
+Type=Application
+StartupNotify=false
