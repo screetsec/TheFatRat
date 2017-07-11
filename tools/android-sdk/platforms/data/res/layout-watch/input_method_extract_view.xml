@@ -49,7 +49,7 @@
             android:layout_width="@dimen/input_extract_action_button_width"
             android:layout_height="@dimen/input_extract_action_button_width"
             android:background="@drawable/input_extract_action_bg_material_dark"
-            android:padding="4dp"
+            android:padding="@dimen/input_extract_action_icon_padding"
             android:scaleType="centerInside" />
     </FrameLayout>
 </android.inputmethodservice.CompactExtractEditLayout>

@@ -21,9 +21,6 @@
      for different hardware and product builds. -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <!-- Sprint need a 70 ms delay for 3way call -->
-    <integer name="config_cdma_3waycall_flash_delay">70</integer>
-
     <!-- An array of CDMA roaming indicators which means international roaming -->
     <integer-array translatable="false" name="config_cdma_international_roaming_indicators" >
         <item>2</item>

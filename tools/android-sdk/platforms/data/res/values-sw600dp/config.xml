@@ -28,7 +28,7 @@
 
     <!-- see comment in values/config.xml -->
     <dimen name="config_prefDialogWidth">580dp</dimen>
-    
+
     <!-- If true, the screen can be rotated via the accelerometer in all 4
          rotations as the default behavior. -->
     <bool name="config_allowAllRotations">true</bool>
@@ -41,5 +41,15 @@
     <dimen name="config_minScalingSpan">32mm</dimen>
 
     <integer name="config_dockedStackDividerSnapMode">1</integer>
+
+    <!-- The snap mode to use for picture-in-picture. These values correspond to constants defined
+         in PipSnapAlgorithm and should not be changed independently.
+             0 - Snap to the four corners
+             1 - Snap to the four corners and the mid-points on the long edge in each orientation
+             2 - Snap anywhere along the edge of the screen
+             3 - Snap anywhere along the edge of the screen and magnet to corners
+             4 - Snap to the long edges in each orientation and magnet to corners
+    -->
+    <integer name="config_pictureInPictureSnapMode">3</integer>
 </resources>
 

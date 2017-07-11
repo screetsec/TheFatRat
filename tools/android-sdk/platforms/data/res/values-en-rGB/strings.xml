@@ -21,7 +21,7 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="byteShort" msgid="8340973892742019101">"B"</string>
-    <string name="kilobyteShort" msgid="5973789783504771878">"KB"</string>
+    <string name="kilobyteShort" msgid="7542884022844556968">"kB"</string>
     <string name="megabyteShort" msgid="6355851576770428922">"MB"</string>
     <string name="gigabyteShort" msgid="3259882455212193214">"GB"</string>
     <string name="terabyteShort" msgid="231613018159186962">"TB"</string>
@@ -46,6 +46,7 @@
     <string name="defaultMsisdnAlphaTag" msgid="2850889754919584674">"MSISDN1"</string>
     <string name="mmiError" msgid="5154499457739052907">"Connection problem or invalid MMI code."</string>
     <string name="mmiFdnError" msgid="5224398216385316471">"Operation is restricted to fixed dialling numbers only."</string>
+    <string name="mmiErrorWhileRoaming" msgid="762488890299284230">"Cannot change call forwarding settings from your phone while you are roaming."</string>
     <string name="serviceEnabled" msgid="8147278346414714315">"Service was enabled."</string>
     <string name="serviceEnabledFor" msgid="6856228140453471041">"Service was enabled for:"</string>
     <string name="serviceDisabled" msgid="1937553226592516411">"Service has been disabled."</string>
@@ -88,14 +89,16 @@
     <string name="CLIRDefaultOffNextCallOff" msgid="2567998633124408552">"Caller ID defaults to not restricted. Next call: Not restricted"</string>
     <string name="serviceNotProvisioned" msgid="8614830180508686666">"Service not provisioned."</string>
     <string name="CLIRPermanent" msgid="3377371145926835671">"You can\'t change the caller ID setting."</string>
-    <string name="RestrictedOnData" msgid="8653794784690065540">"Data service is blocked."</string>
-    <string name="RestrictedOnEmergency" msgid="6581163779072833665">"Emergency service is blocked."</string>
-    <string name="RestrictedOnNormal" msgid="4953867011389750673">"Voice service is blocked."</string>
-    <string name="RestrictedOnAllVoice" msgid="3396963652108151260">"All voice services are blocked."</string>
-    <string name="RestrictedOnSms" msgid="8314352327461638897">"SMS service is blocked."</string>
-    <string name="RestrictedOnVoiceData" msgid="996636487106171320">"Voice/Data services are blocked."</string>
-    <string name="RestrictedOnVoiceSms" msgid="1888588152792023873">"Voice/SMS services are blocked."</string>
-    <string name="RestrictedOnAll" msgid="5643028264466092821">"All voice/data/SMS services are blocked."</string>
+    <string name="RestrictedOnDataTitle" msgid="1322504692764166532">"No data service"</string>
+    <string name="RestrictedOnEmergencyTitle" msgid="1236071219598685236">"No emergency service"</string>
+    <string name="RestrictedOnNormalTitle" msgid="3179574012752700984">"No voice service"</string>
+    <string name="RestrictedOnAllVoiceTitle" msgid="158800171499150681">"No voice/emergency service"</string>
+    <string name="RestrictedOnDataContent" msgid="8997474569390996587">"Your operator has temporarily suspended data service at this location"</string>
+    <string name="RestrictedOnEmergencyContent" msgid="4573217945494650061">"Your operator has temporarily suspended emergency calls at this location"</string>
+    <string name="RestrictedOnNormalContent" msgid="1579434198284512182">"Your operator has temporarily suspended voice calls at this location"</string>
+    <string name="RestrictedOnAllVoiceContent" msgid="5243580774142557047">"Your operator has temporarily suspended voice and emergency calls at this location"</string>
+    <string name="NetworkPreferenceSwitchTitle" msgid="4008877505368566980">"Can’t find network"</string>
+    <string name="NetworkPreferenceSwitchSummary" msgid="4164230263214915351">"To improve reception, try changing the type selected at System &gt; Network &amp; Internet &gt; Mobile networks &gt; Preferred network type."</string>
     <string name="peerTtyModeFull" msgid="6165351790010341421">"Peer requested TTY Mode FULL"</string>
     <string name="peerTtyModeHco" msgid="5728602160669216784">"Peer requested TTY Mode HCO"</string>
     <string name="peerTtyModeVco" msgid="1742404978686538049">"Peer requested TTY Mode VCO"</string>
@@ -135,7 +138,7 @@
   </string-array>
     <string name="wifi_calling_off_summary" msgid="8720659586041656098">"Off"</string>
     <string name="wfc_mode_wifi_preferred_summary" msgid="1994113411286935263">"Wi-Fi preferred"</string>
-    <string name="wfc_mode_cellular_preferred_summary" msgid="5920549484600758786">"Mobile preferred"</string>
+    <string name="wfc_mode_cellular_preferred_summary" msgid="1988279625335345908">"Mobile preferred"</string>
     <string name="wfc_mode_wifi_only_summary" msgid="2379919155237869320">"Wi-Fi only"</string>
     <string name="cfTemplateNotForwarded" msgid="1683685883841272560">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>: Not forwarded"</string>
     <string name="cfTemplateForwarded" msgid="1302922117498590521">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>: <xliff:g id="DIALING_NUMBER">{1}</xliff:g>"</string>
@@ -173,14 +176,16 @@
       <item quantity="one">Certificate authority installed</item>
     </plurals>
     <string name="ssl_ca_cert_noti_by_unknown" msgid="4475437862189850602">"By an unknown third party"</string>
-    <string name="ssl_ca_cert_noti_by_administrator" msgid="550758088185764312">"By your work profile administrator"</string>
+    <string name="ssl_ca_cert_noti_by_administrator" msgid="3541729986326153557">"By your work profile admin"</string>
     <string name="ssl_ca_cert_noti_managed" msgid="4030263497686867141">"By <xliff:g id="MANAGING_DOMAIN">%s</xliff:g>"</string>
     <string name="work_profile_deleted" msgid="5005572078641980632">"Work profile deleted"</string>
-    <string name="work_profile_deleted_description" msgid="6305147513054341102">"Work profile deleted due to missing admin app."</string>
-    <string name="work_profile_deleted_details" msgid="226615743462361248">"The work profile admin app is either missing or corrupted. As a result, your work profile and related data have been deleted. Contact your administrator for assistance."</string>
-    <string name="work_profile_deleted_description_dpm_wipe" msgid="6019770344820507579">"Your work profile is no longer available on this device."</string>
+    <string name="work_profile_deleted_description" msgid="1100529432509639864">"Work profile deleted due to missing admin app"</string>
+    <string name="work_profile_deleted_details" msgid="6307630639269092360">"The work profile admin app is either missing or corrupted. As a result, your work profile and related data have been deleted. Contact your admin for assistance."</string>
+    <string name="work_profile_deleted_description_dpm_wipe" msgid="8823792115612348820">"Your work profile is no longer available on this device"</string>
+    <string name="network_logging_notification_title" msgid="6399790108123704477">"Device is managed"</string>
+    <string name="network_logging_notification_text" msgid="7930089249949354026">"Your organisation manages this device and may monitor network traffic. Tap for details."</string>
     <string name="factory_reset_warning" msgid="5423253125642394387">"Your device will be erased"</string>
-    <string name="factory_reset_message" msgid="4905025204141900666">"The admin app is missing components or corrupted, and can\'t be used. Your device will now be erased. Contact your administrator for assistance."</string>
+    <string name="factory_reset_message" msgid="7972496262232832457">"The admin app can\'t be used. Your device will now be erased.\n\nIf you have questions, contact your organisation\'s admin."</string>
     <string name="me" msgid="6545696007631404292">"Me"</string>
     <string name="power_dialog" product="tablet" msgid="8545351420865202853">"Tablet options"</string>
     <string name="power_dialog" product="tv" msgid="6153888706430556356">"TV options"</string>
@@ -214,6 +219,7 @@
     <string name="global_actions" product="default" msgid="2406416831541615258">"Phone options"</string>
     <string name="global_action_lock" msgid="2844945191792119712">"Screen lock"</string>
     <string name="global_action_power_off" msgid="4471879440839879722">"Power off"</string>
+    <string name="global_action_emergency" msgid="7112311161137421166">"Emergency"</string>
     <string name="global_action_bug_report" msgid="7934010578922304799">"Bug report"</string>
     <string name="bugreport_title" msgid="2667494803742548533">"Take bug report"</string>
     <string name="bugreport_message" msgid="398447048750350456">"This will collect information about your current device state, to send as an email message. It will take a little time from starting the bug report until it is ready to be sent. Please be patient."</string>
@@ -238,6 +244,20 @@
     <string name="status_bar_notification_info_overflow" msgid="5301981741705354993">"999+"</string>
     <string name="notification_hidden_text" msgid="1135169301897151909">"Contents hidden"</string>
     <string name="notification_hidden_by_policy_text" msgid="9004631276932584600">"Contents hidden by policy"</string>
+    <string name="notification_channel_virtual_keyboard" msgid="6969925135507955575">"Virtual keyboard"</string>
+    <string name="notification_channel_physical_keyboard" msgid="7297661826966861459">"Physical keyboard"</string>
+    <string name="notification_channel_security" msgid="7345516133431326347">"Security"</string>
+    <string name="notification_channel_car_mode" msgid="3553380307619874564">"Car mode"</string>
+    <string name="notification_channel_account" msgid="7577959168463122027">"Account status"</string>
+    <string name="notification_channel_developer" msgid="7579606426860206060">"Developer messages"</string>
+    <string name="notification_channel_updates" msgid="4794517569035110397">"Updates"</string>
+    <string name="notification_channel_network_status" msgid="5025648583129035447">"Network status"</string>
+    <string name="notification_channel_network_alerts" msgid="2895141221414156525">"Network alerts"</string>
+    <string name="notification_channel_vpn" msgid="8330103431055860618">"VPN status"</string>
+    <string name="notification_channel_device_admin" msgid="1568154104368069249">"Device administration"</string>
+    <string name="notification_channel_alerts" msgid="4496839309318519037">"Alerts"</string>
+    <string name="notification_channel_retail_mode" msgid="6088920674914038779">"Retail demo"</string>
+    <string name="notification_channel_usb" msgid="9006850475328924681">"USB connection"</string>
     <string name="safeMode" msgid="2788228061547930246">"Safe mode"</string>
     <string name="android_system_label" msgid="6577375335728551336">"Android System"</string>
     <string name="user_owner_label" msgid="1119010402169916617">"Switch to Personal"</string>
@@ -272,6 +292,8 @@
     <string name="capability_desc_canControlMagnification" msgid="4791858203568383773">"Control the display\'s zoom level and positioning."</string>
     <string name="capability_title_canPerformGestures" msgid="7418984730362576862">"Perform gestures"</string>
     <string name="capability_desc_canPerformGestures" msgid="8296373021636981249">"Can tap, swipe, pinch and perform other gestures."</string>
+    <string name="capability_title_canCaptureFingerprintGestures" msgid="6309568287512278670">"Fingerprint gestures"</string>
+    <string name="capability_desc_canCaptureFingerprintGestures" msgid="7102111919385702482">"Can capture gestures performed on the devices fingerprint sensor."</string>
     <string name="permlab_statusBar" msgid="7417192629601890791">"disable or modify status bar"</string>
     <string name="permdesc_statusBar" msgid="8434669549504290975">"Allows the app to disable the status bar or add and remove system icons."</string>
     <string name="permlab_statusBarService" msgid="4826835508226139688">"be the status bar"</string>
@@ -284,6 +306,8 @@
     <string name="permdesc_uninstall_shortcut" msgid="6745743474265057975">"Allows the application to remove Home screen shortcuts without user intervention."</string>
     <string name="permlab_processOutgoingCalls" msgid="3906007831192990946">"reroute outgoing calls"</string>
     <string name="permdesc_processOutgoingCalls" msgid="5156385005547315876">"Allows the app to see the number being dialled during an outgoing call with the option to redirect the call to a different number or abort the call altogether."</string>
+    <string name="permlab_answerPhoneCalls" msgid="4077162841226223337">"answer phone calls"</string>
+    <string name="permdesc_answerPhoneCalls" msgid="2901889867993572266">"Allows the app to answer an incoming phone call."</string>
     <string name="permlab_receiveSms" msgid="8673471768947895082">"receive text messages (SMS)"</string>
     <string name="permdesc_receiveSms" msgid="6424387754228766939">"Allows the app to receive and process SMS messages. This means that the app could monitor or delete messages sent to your device without showing them to you."</string>
     <string name="permlab_receiveMms" msgid="1821317344668257098">"receive text messages (MMS)"</string>
@@ -295,9 +319,9 @@
     <string name="permlab_sendSms" msgid="7544599214260982981">"send and view SMS messages"</string>
     <string name="permdesc_sendSms" msgid="7094729298204937667">"Allows the app to send SMS messages. This may result in unexpected charges. Malicious apps may cost you money by sending messages without your confirmation."</string>
     <string name="permlab_readSms" msgid="8745086572213270480">"read your text messages (SMS or MMS)"</string>
-    <string name="permdesc_readSms" product="tablet" msgid="2467981548684735522">"Allows the app to read SMS messages stored on your tablet or SIM card. This allows the app to read all SMS messages, regardless of content or confidentiality."</string>
-    <string name="permdesc_readSms" product="tv" msgid="5102425513647038535">"Allows the app to read SMS messages stored on your TV or SIM card. This allows the app to read all SMS messages, regardless of content or confidentiality."</string>
-    <string name="permdesc_readSms" product="default" msgid="3695967533457240550">"Allows the app to read SMS messages stored on your phone or SIM card. This allows the app to read all SMS messages, regardless of content or confidentiality."</string>
+    <string name="permdesc_readSms" product="tablet" msgid="4741697454888074891">"This app can read all SMS (text) messages stored on your tablet."</string>
+    <string name="permdesc_readSms" product="tv" msgid="5796670395641116592">"This app can read all SMS (text) messages stored on your TV."</string>
+    <string name="permdesc_readSms" product="default" msgid="6826832415656437652">"This app can read all SMS (text) messages stored on your phone."</string>
     <string name="permlab_receiveWapPush" msgid="5991398711936590410">"receive text messages (WAP)"</string>
     <string name="permdesc_receiveWapPush" msgid="748232190220583385">"Allows the app to receive and process WAP messages. This permission includes the ability to monitor or delete messages sent to you without showing them to you."</string>
     <string name="permlab_getTasks" msgid="6466095396623933906">"retrieve running apps"</string>
@@ -310,8 +334,12 @@
     <string name="permdesc_enableCarMode" msgid="4853187425751419467">"Allows the app to enable the car mode."</string>
     <string name="permlab_killBackgroundProcesses" msgid="3914026687420177202">"close other apps"</string>
     <string name="permdesc_killBackgroundProcesses" msgid="4593353235959733119">"Allows the app to end background processes of other apps. This may cause other apps to stop running."</string>
-    <string name="permlab_systemAlertWindow" msgid="3543347980839518613">"Draw over other apps"</string>
-    <string name="permdesc_systemAlertWindow" msgid="8584678381972820118">"Allows the app to draw on top of other applications or parts of the user interface. They may interfere with your use of the interface in any application, or change what you think you are seeing in other applications."</string>
+    <string name="permlab_systemAlertWindow" msgid="7238805243128138690">"This app can appear on top of other apps"</string>
+    <string name="permdesc_systemAlertWindow" msgid="2393776099672266188">"This app can appear on top of other apps or other parts of the screen. This may interfere with normal app usage and change the way that other apps appear."</string>
+    <string name="permlab_runInBackground" msgid="7365290743781858803">"run in the background"</string>
+    <string name="permdesc_runInBackground" msgid="7370142232209999824">"This app can run in the background. This may drain battery faster."</string>
+    <string name="permlab_useDataInBackground" msgid="8694951340794341809">"use data in the background"</string>
+    <string name="permdesc_useDataInBackground" msgid="6049514223791806027">"This app can use data in the background. This may increase data usage."</string>
     <string name="permlab_persistentActivity" msgid="8841113627955563938">"make app always run"</string>
     <string name="permdesc_persistentActivity" product="tablet" msgid="8525189272329086137">"Allows the app to make parts of itself persistent in memory. This can limit the memory available to other apps, slowing down the tablet."</string>
     <string name="permdesc_persistentActivity" product="tv" msgid="5086862529499103587">"Allows the app to make parts of itself persistent in memory. This can limit memory available to other apps slowing down the TV."</string>
@@ -337,37 +365,37 @@
     <string name="permdesc_writeContacts" product="tv" msgid="5438230957000018959">"Allows the app to modify the data about your contacts stored on your TV, including the frequency with which you\'ve called, emailed or communicated in other ways with specific contacts. This permission allows apps to delete contact data."</string>
     <string name="permdesc_writeContacts" product="default" msgid="589869224625163558">"Allows the app to modify the data about your contacts stored on your phone, including the frequency with which you\'ve called, emailed or communicated in other ways with specific contacts. This permission allows apps to delete contact data."</string>
     <string name="permlab_readCallLog" msgid="3478133184624102739">"read call log"</string>
-    <string name="permdesc_readCallLog" product="tablet" msgid="3700645184870760285">"Allows the app to read your tablet\'s call log, including data about incoming and outgoing calls. This permission allows apps to save your call log data, and malicious apps may share call log data without your knowledge."</string>
-    <string name="permdesc_readCallLog" product="tv" msgid="5611770887047387926">"Allows the app to read your TV\'s call log, including data about incoming and outgoing calls. This permission allows apps to save your call log data, and malicious apps may share call log data without your knowledge."</string>
-    <string name="permdesc_readCallLog" product="default" msgid="5777725796813217244">"Allows the app to read your phone\'s call log, including data about incoming and outgoing calls. This permission allows apps to save your call log data, and malicious apps may share call log data without your knowledge."</string>
+    <string name="permdesc_readCallLog" msgid="3204122446463552146">"This app can read your call history."</string>
     <string name="permlab_writeCallLog" msgid="8552045664743499354">"write call log"</string>
     <string name="permdesc_writeCallLog" product="tablet" msgid="6661806062274119245">"Allows the app to modify your tablet\'s call log, including data about incoming and outgoing calls. Malicious apps may use this to erase or modify your call log."</string>
     <string name="permdesc_writeCallLog" product="tv" msgid="4225034892248398019">"Allows the app to modify your TV\'s call log, including data about incoming and outgoing calls. Malicious apps may use this to erase or modify your call log."</string>
     <string name="permdesc_writeCallLog" product="default" msgid="683941736352787842">"Allows the app to modify your phone\'s call log, including data about incoming and outgoing calls. Malicious apps may use this to erase or modify your call log."</string>
     <string name="permlab_bodySensors" msgid="4683341291818520277">"access body sensors (like heart rate monitors)"</string>
     <string name="permdesc_bodySensors" product="default" msgid="4380015021754180431">"Allows the app to access data from sensors that monitor your physical condition, such as your heart rate."</string>
-    <string name="permlab_readCalendar" msgid="5972727560257612398">"read calendar events plus confidential information"</string>
-    <string name="permdesc_readCalendar" product="tablet" msgid="4216462049057658723">"Allows the app to read all calendar events stored on your tablet, including those of friends or co-workers. This may allow the app to share or save your calendar data, regardless of confidentiality or sensitivity."</string>
-    <string name="permdesc_readCalendar" product="tv" msgid="3191352452242394196">"Allows the app to read all calendar events stored on your TV, including those of friends or co-workers. This may allow the app to share or save your calendar data, regardless of confidentiality or sensitivity."</string>
-    <string name="permdesc_readCalendar" product="default" msgid="7434548682470851583">"Allows the app to read all calendar events stored on your phone, including those of friends or co-workers. This may allow the app to share or save your calendar data, regardless of confidentiality or sensitivity."</string>
+    <string name="permlab_readCalendar" msgid="6716116972752441641">"Read calendar events and details"</string>
+    <string name="permdesc_readCalendar" product="tablet" msgid="4993979255403945892">"This app can read all calendar events stored on your tablet and share or save your calendar data."</string>
+    <string name="permdesc_readCalendar" product="tv" msgid="8837931557573064315">"This app can read all calendar events stored on your TV and share or save your calendar data."</string>
+    <string name="permdesc_readCalendar" product="default" msgid="4373978642145196715">"This app can read all calendar events stored on your phone and share or save your calendar data."</string>
     <string name="permlab_writeCalendar" msgid="8438874755193825647">"add or modify calendar events and send emails to guests without owners\' knowledge"</string>
-    <string name="permdesc_writeCalendar" product="tablet" msgid="6679035520113668528">"Allows the app to add, remove and change events that you can modify on your tablet, including those of friends or co-workers. This may allow the app to send messages that appear to come from calendar owners, or modify events without the owners\' knowledge."</string>
-    <string name="permdesc_writeCalendar" product="tv" msgid="1273290605500902507">"Allows the app to add, remove, change events that you can modify on your TV, including those of friends or co-workers. This may allow the app to send messages that appear to come from calendar owners, or modify events without the owners\' knowledge."</string>
-    <string name="permdesc_writeCalendar" product="default" msgid="2324469496327249376">"Allows the app to add, remove and change events that you can modify on your phone, including those of friends or co-workers. This may allow the app to send messages that appear to come from calendar owners, or modify events without the owners\' knowledge."</string>
+    <string name="permdesc_writeCalendar" product="tablet" msgid="1675270619903625982">"This app can add, remove or change calendar events on your tablet. This app can send messages that may appear to come from calendar owners or change events without notifying their owners."</string>
+    <string name="permdesc_writeCalendar" product="tv" msgid="9017809326268135866">"This app can add, remove or change calendar events on your TV. This app can send messages that may appear to come from calendar owners or change events without notifying their owners."</string>
+    <string name="permdesc_writeCalendar" product="default" msgid="7592791790516943173">"This app can add, remove or change calendar events on your phone. This app can send messages that may appear to come from calendar owners or change events without notifying their owners."</string>
     <string name="permlab_accessLocationExtraCommands" msgid="2836308076720553837">"access extra location provider commands"</string>
     <string name="permdesc_accessLocationExtraCommands" msgid="6078307221056649927">"Allows the app to access extra location provider commands. This may allow the app to interfere with the operation of the GPS or other location sources."</string>
     <string name="permlab_accessFineLocation" msgid="251034415460950944">"access precise location (GPS and network-based)"</string>
-    <string name="permdesc_accessFineLocation" msgid="5295047563564981250">"Allows the app to get your precise location using the Global Positioning System (GPS) or network location sources such as mobile towers and Wi-Fi. These location services must be turned on and available to your device for the app to use them. Apps may use this to determine where you are, and may consume additional battery power."</string>
+    <string name="permdesc_accessFineLocation" msgid="5821994817969957884">"This app can get your location based on GPS or network location sources such as phone masts and Wi-Fi networks. These location services must be turned on and available on your phone for the app to be able to use them. This may increase battery consumption."</string>
     <string name="permlab_accessCoarseLocation" msgid="7715277613928539434">"access approximate location (network-based)"</string>
-    <string name="permdesc_accessCoarseLocation" msgid="2538200184373302295">"Allows the app to get your approximate location. This location is derived by location services using network location sources such as mobile towers and Wi-Fi. These location services must be turned on and available to your device for the app to use them. Apps may use this to determine approximately where you are."</string>
+    <string name="permdesc_accessCoarseLocation" product="tablet" msgid="3373266766487862426">"This app can pick up your location based on network sources such as phone masts and Wi-Fi networks. These location services must be turned on and available on your tablet for the app to be able to use them."</string>
+    <string name="permdesc_accessCoarseLocation" product="tv" msgid="1884022719818788511">"This app can pick up your location based on network sources such as mobile towers and Wi-Fi networks. These location services must be turned on and available on your TV for the app to be able to use them."</string>
+    <string name="permdesc_accessCoarseLocation" product="default" msgid="7788009094906196995">"This app can get your location based on network sources such as phone masts and Wi-Fi networks. These location services must be turned on and available on your phone for the app to be able to use them."</string>
     <string name="permlab_modifyAudioSettings" msgid="6095859937069146086">"change your audio settings"</string>
     <string name="permdesc_modifyAudioSettings" msgid="3522565366806248517">"Allows the app to modify global audio settings such as volume and which speaker is used for output."</string>
     <string name="permlab_recordAudio" msgid="3876049771427466323">"record audio"</string>
-    <string name="permdesc_recordAudio" msgid="4906839301087980680">"Allows the app to record audio with the microphone. This permission allows the app to record audio at any time without your confirmation."</string>
+    <string name="permdesc_recordAudio" msgid="4245930455135321433">"This app can record audio using the microphone at any time."</string>
     <string name="permlab_sim_communication" msgid="2935852302216852065">"send commands to the SIM"</string>
     <string name="permdesc_sim_communication" msgid="5725159654279639498">"Allows the app to send commands to the SIM. This is very dangerous."</string>
     <string name="permlab_camera" msgid="3616391919559751192">"take pictures and videos"</string>
-    <string name="permdesc_camera" msgid="8497216524735535009">"Allows the app to take pictures and videos with the camera. This permission allows the app to use the camera at any time without your confirmation."</string>
+    <string name="permdesc_camera" msgid="5392231870049240670">"This app can take pictures and record videos using the camera at any time."</string>
     <string name="permlab_vibrate" msgid="7696427026057705834">"control vibration"</string>
     <string name="permdesc_vibrate" msgid="6284989245902300945">"Allows the app to control the vibrator."</string>
     <string name="permlab_callPhone" msgid="3925836347681847954">"directly call phone numbers"</string>
@@ -376,6 +404,10 @@
     <string name="permdesc_accessImsCallService" msgid="8992884015198298775">"Allows the app to use the IMS service to make calls without your intervention."</string>
     <string name="permlab_readPhoneState" msgid="9178228524507610486">"read phone status and identity"</string>
     <string name="permdesc_readPhoneState" msgid="1639212771826125528">"Allows the app to access the phone features of the device. This permission allows the app to determine the phone number and device IDs, whether a call is active and the remote number connected by a call."</string>
+    <string name="permlab_manageOwnCalls" msgid="1503034913274622244">"route calls through the system"</string>
+    <string name="permdesc_manageOwnCalls" msgid="6552974537554717418">"Allows the app to route its calls through the system in order to improve the calling experience."</string>
+    <string name="permlab_readPhoneNumbers" msgid="6108163940932852440">"read phone numbers"</string>
+    <string name="permdesc_readPhoneNumbers" msgid="8559488833662272354">"Allows the app to access the phone numbers of the device."</string>
     <string name="permlab_wakeLock" product="tablet" msgid="1531731435011495015">"prevent tablet from sleeping"</string>
     <string name="permlab_wakeLock" product="tv" msgid="2601193288949154131">"prevent TV from sleeping"</string>
     <string name="permlab_wakeLock" product="default" msgid="573480187941496130">"prevent phone from sleeping"</string>
@@ -515,7 +547,7 @@
     <string name="permdesc_access_notification_policy" msgid="3296832375218749580">"Allows the app to read and write Do Not Disturb configuration."</string>
     <string name="policylab_limitPassword" msgid="4497420728857585791">"Set password rules"</string>
     <string name="policydesc_limitPassword" msgid="2502021457917874968">"Control the length and the characters allowed in screen lock passwords and PINs."</string>
-    <string name="policylab_watchLogin" msgid="914130646942199503">"Monitor screen-unlock attempts"</string>
+    <string name="policylab_watchLogin" msgid="5091404125971980158">"Monitor screen unlock attempts"</string>
     <string name="policydesc_watchLogin" product="tablet" msgid="3215729294215070072">"Monitor the number of incorrect passwords typed when unlocking the screen and lock the tablet or erase all the tablet\'s data if too many incorrect passwords are typed."</string>
     <string name="policydesc_watchLogin" product="TV" msgid="2707817988309890256">"Monitor the number of incorrect passwords typed when unlocking the screen, and lock the TV or erase all the TV\'s data if too many incorrect passwords are typed."</string>
     <string name="policydesc_watchLogin" product="default" msgid="5712323091846761073">"Monitor the number of incorrect passwords typed when unlocking the screen and lock the phone or erase all the phone\'s data if too many incorrect passwords are typed."</string>
@@ -847,18 +879,6 @@
     <string name="weeks" msgid="6509623834583944518">"weeks"</string>
     <string name="year" msgid="4001118221013892076">"year"</string>
     <string name="years" msgid="6881577717993213522">"years"</string>
-    <plurals name="duration_seconds" formatted="false" msgid="4527986939729687805">
-      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> seconds</item>
-      <item quantity="one">1 second</item>
-    </plurals>
-    <plurals name="duration_minutes" formatted="false" msgid="643786953939956125">
-      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> minutes</item>
-      <item quantity="one">1 minute</item>
-    </plurals>
-    <plurals name="duration_hours" formatted="false" msgid="6826233369186668274">
-      <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> hours</item>
-      <item quantity="one">1 hour</item>
-    </plurals>
     <string name="now_string_shortest" msgid="8912796667087856402">"now"</string>
     <plurals name="duration_minutes_shortest" formatted="false" msgid="3957499975064245495">
       <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g>m</item>
@@ -946,11 +966,16 @@
     <string name="selectTextMode" msgid="1018691815143165326">"Select text"</string>
     <string name="undo" msgid="7905788502491742328">"Undo"</string>
     <string name="redo" msgid="7759464876566803888">"Redo"</string>
+    <string name="autofill" msgid="3035779615680565188">"Auto-fill"</string>
     <string name="textSelectionCABTitle" msgid="5236850394370820357">"Text selection"</string>
     <string name="addToDictionary" msgid="4352161534510057874">"Add to dictionary"</string>
     <string name="deleteText" msgid="6979668428458199034">"Delete"</string>
     <string name="inputMethod" msgid="1653630062304567879">"Input method"</string>
     <string name="editTextMenuTitle" msgid="4909135564941815494">"Text actions"</string>
+    <string name="email" msgid="4560673117055050403">"Email"</string>
+    <string name="dial" msgid="4204975095406423102">"Phone"</string>
+    <string name="map" msgid="5441053548030107189">"Map"</string>
+    <string name="browse" msgid="6079864138582486027">"Browse"</string>
     <string name="low_internal_storage_view_title" msgid="5576272496365684834">"Storage space running out"</string>
     <string name="low_internal_storage_view_text" msgid="6640505817617414371">"Some system functions may not work"</string>
     <string name="low_internal_storage_view_text_no_boot" msgid="6935190099204693424">"Not enough storage for the system. Make sure that you have 250 MB of free space and restart."</string>
@@ -1058,18 +1083,12 @@
     <string name="volume_icon_description_media" msgid="4217311719665194215">"Media volume"</string>
     <string name="volume_icon_description_notification" msgid="7044986546477282274">"Notification volume"</string>
     <string name="ringtone_default" msgid="3789758980357696936">"Default ringtone"</string>
-    <string name="ringtone_default_with_actual" msgid="8129563480895990372">"Default ringtone (<xliff:g id="ACTUAL_RINGTONE">%1$s</xliff:g>)"</string>
+    <string name="ringtone_default_with_actual" msgid="1767304850491060581">"Default (<xliff:g id="ACTUAL_RINGTONE">%1$s</xliff:g>)"</string>
     <string name="ringtone_silent" msgid="7937634392408977062">"None"</string>
     <string name="ringtone_picker_title" msgid="3515143939175119094">"Ringtones"</string>
-    <string name="ringtone_unknown" msgid="5477919988701784788">"Unknown ringtone"</string>
-    <plurals name="wifi_available" formatted="false" msgid="7900333017752027322">
-      <item quantity="other">Wi-Fi networks available</item>
-      <item quantity="one">Wi-Fi network available</item>
-    </plurals>
-    <plurals name="wifi_available_detailed" formatted="false" msgid="1140699367193975606">
-      <item quantity="other">Open Wi-Fi networks available</item>
-      <item quantity="one">Open Wi-Fi network available</item>
-    </plurals>
+    <string name="ringtone_picker_title_alarm" msgid="6473325356070549702">"Alarm Sounds"</string>
+    <string name="ringtone_picker_title_notification" msgid="4837740874822788802">"Notification Sounds"</string>
+    <string name="ringtone_unknown" msgid="3914515995813061520">"Unknown"</string>
     <string name="wifi_available_sign_in" msgid="9157196203958866662">"Sign in to a Wi-Fi network"</string>
     <string name="network_available_sign_in" msgid="1848877297365446605">"Sign in to network"</string>
     <!-- no translation found for network_available_sign_in_detailed (8000081941447976118) -->
@@ -1080,7 +1099,7 @@
     <string name="network_switch_metered_detail" msgid="5325661434777870353">"Device uses <xliff:g id="NEW_NETWORK">%1$s</xliff:g> when <xliff:g id="PREVIOUS_NETWORK">%2$s</xliff:g> has no Internet access. Charges may apply."</string>
     <string name="network_switch_metered_toast" msgid="5779283181685974304">"Switched from <xliff:g id="PREVIOUS_NETWORK">%1$s</xliff:g> to <xliff:g id="NEW_NETWORK">%2$s</xliff:g>"</string>
   <string-array name="network_switch_type_name">
-    <item msgid="2952042958050315394">"mobile data"</item>
+    <item msgid="3979506840912951943">"mobile data"</item>
     <item msgid="75483255295529161">"Wi-Fi"</item>
     <item msgid="6862614801537202646">"Bluetooth"</item>
     <item msgid="5447331121797802871">"Ethernet"</item>
@@ -1123,10 +1142,10 @@
     <string name="sms_short_code_confirm_always_allow" msgid="3241181154869493368">"Always Allow*"</string>
     <string name="sms_short_code_confirm_never_allow" msgid="446992765774269673">"Never Allow"</string>
     <string name="sim_removed_title" msgid="6227712319223226185">"SIM card removed"</string>
-    <string name="sim_removed_message" msgid="5450336489923274918">"The mobile network will be unavailable until you restart with a valid SIM card inserted."</string>
+    <string name="sim_removed_message" msgid="2333164559970958645">"The mobile network will be unavailable until you restart with a valid SIM card inserted."</string>
     <string name="sim_done_button" msgid="827949989369963775">"Done"</string>
     <string name="sim_added_title" msgid="3719670512889674693">"SIM card added"</string>
-    <string name="sim_added_message" msgid="7797975656153714319">"Restart your device to access the mobile network."</string>
+    <string name="sim_added_message" msgid="6599945301141050216">"Restart your device to access the mobile network."</string>
     <string name="sim_restart_button" msgid="4722407842815232347">"Restart"</string>
     <string name="carrier_app_dialog_message" msgid="7066156088266319533">"To get your new SIM working properly, you\'ll need to install and open an app from your operator."</string>
     <string name="carrier_app_dialog_button" msgid="7900235513678617329">"GET THE APP"</string>
@@ -1151,10 +1170,11 @@
     <string name="usb_notification_message" msgid="3370903770828407960">"Tap for more options."</string>
     <string name="adb_active_notification_title" msgid="6729044778949189918">"USB debugging connected"</string>
     <string name="adb_active_notification_message" msgid="4948470599328424059">"Tap to disable USB debugging."</string>
+    <string name="adb_active_notification_message" product="tv" msgid="8470296818270110396">"Select to disable USB debugging."</string>
     <string name="taking_remote_bugreport_notification_title" msgid="6742483073875060934">"Taking bug report…"</string>
     <string name="share_remote_bugreport_notification_title" msgid="4987095013583691873">"Share bug report?"</string>
     <string name="sharing_remote_bugreport_notification_title" msgid="7572089031496651372">"Sharing bug report…"</string>
-    <string name="share_remote_bugreport_notification_message_finished" msgid="8610614010660772643">"Your IT admin requested a bug report to help troubleshoot this device. Apps and data may be shared."</string>
+    <string name="share_remote_bugreport_notification_message_finished" msgid="6029609949340992866">"Your admin requested a bug report to help troubleshoot this device. Apps and data may be shared."</string>
     <string name="share_remote_bugreport_action" msgid="6249476773913384948">"SHARE"</string>
     <string name="decline_remote_bugreport_action" msgid="6230987241608770062">"DECLINE"</string>
     <string name="select_input_method" msgid="8547250819326693584">"Change keyboard"</string>
@@ -1164,14 +1184,20 @@
     <string name="select_keyboard_layout_notification_message" msgid="8084622969903004900">"Tap to select language and layout"</string>
     <string name="fast_scroll_alphabet" msgid="5433275485499039199">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
     <string name="fast_scroll_numeric_alphabet" msgid="4030170524595123610">" 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="alert_windows_notification_channel_name" msgid="3116610965549449803">"<xliff:g id="NAME">%s</xliff:g> displaying over other apps"</string>
+    <string name="alert_windows_notification_title" msgid="3697657294867638947">"<xliff:g id="NAME">%s</xliff:g> is displaying over other apps"</string>
+    <string name="alert_windows_notification_message" msgid="8917232109522912560">"If you don’t want <xliff:g id="NAME">%s</xliff:g> to use this feature, tap to open settings and turn it off."</string>
+    <string name="alert_windows_notification_turn_off_action" msgid="3367294525884949878">"TURN OFF"</string>
     <string name="ext_media_checking_notification_title" msgid="5734005953288045806">"Preparing <xliff:g id="NAME">%s</xliff:g>"</string>
     <string name="ext_media_checking_notification_message" msgid="4747432538578886744">"Checking for errors"</string>
     <string name="ext_media_new_notification_message" msgid="7589986898808506239">"New <xliff:g id="NAME">%s</xliff:g> detected"</string>
     <string name="ext_media_ready_notification_message" msgid="4083398150380114462">"For transferring photos and media"</string>
     <string name="ext_media_unmountable_notification_title" msgid="8295123366236989588">"Corrupted <xliff:g id="NAME">%s</xliff:g>"</string>
     <string name="ext_media_unmountable_notification_message" msgid="2343202057122495773">"<xliff:g id="NAME">%s</xliff:g> is corrupt. Tap to fix."</string>
+    <string name="ext_media_unmountable_notification_message" product="tv" msgid="3941179940297874950">"<xliff:g id="NAME">%s</xliff:g> is corrupt. Select to fix."</string>
     <string name="ext_media_unsupported_notification_title" msgid="3797642322958803257">"Unsupported <xliff:g id="NAME">%s</xliff:g>"</string>
     <string name="ext_media_unsupported_notification_message" msgid="6121601473787888589">"This device doesn’t support this <xliff:g id="NAME">%s</xliff:g>. Tap to set up in a supported format."</string>
+    <string name="ext_media_unsupported_notification_message" product="tv" msgid="3725436899820390906">"This device doesn’t support this <xliff:g id="NAME">%s</xliff:g>. Select to set up in a supported format."</string>
     <string name="ext_media_badremoval_notification_title" msgid="3206248947375505416">"<xliff:g id="NAME">%s</xliff:g> unexpectedly removed"</string>
     <string name="ext_media_badremoval_notification_message" msgid="380176703346946313">"Unmount <xliff:g id="NAME">%s</xliff:g> before removing to avoid data loss"</string>
     <string name="ext_media_nomedia_notification_title" msgid="1704840188641749091">"Removed <xliff:g id="NAME">%s</xliff:g>"</string>
@@ -1207,6 +1233,10 @@
     <string name="permdesc_readInstallSessions" msgid="2049771699626019849">"Allows an application to read install sessions. This allows it to see details about active package installations."</string>
     <string name="permlab_requestInstallPackages" msgid="5782013576218172577">"request install packages"</string>
     <string name="permdesc_requestInstallPackages" msgid="5740101072486783082">"Allows an application to request installation of packages."</string>
+    <string name="permlab_requestDeletePackages" msgid="1703686454657781242">"request delete packages"</string>
+    <string name="permdesc_requestDeletePackages" msgid="3406172963097595270">"Allows an application to request deletion of packages."</string>
+    <string name="permlab_requestIgnoreBatteryOptimizations" msgid="8021256345643918264">"ask to ignore battery optimisations"</string>
+    <string name="permdesc_requestIgnoreBatteryOptimizations" msgid="8359147856007447638">"Allows an app to ask for permission to ignore battery optimisations for that app."</string>
     <string name="tutorial_double_tap_to_zoom_message_short" msgid="1311810005957319690">"Tap twice for zoom control"</string>
     <string name="gadget_host_error_inflating" msgid="4882004314906466162">"Couldn\'t add widget."</string>
     <string name="ime_action_go" msgid="8320845651737369027">"Go"</string>
@@ -1314,8 +1344,6 @@
     <string name="shareactionprovider_share_with_application" msgid="5627411384638389738">"Share with <xliff:g id="APPLICATION_NAME">%s</xliff:g>"</string>
     <string name="content_description_sliding_handle" msgid="415975056159262248">"Sliding handle. Touch &amp; hold."</string>
     <string name="description_target_unlock_tablet" msgid="3833195335629795055">"Swipe to unlock."</string>
-    <string name="keyboard_headset_required_to_hear_password" msgid="7011927352267668657">"Plug in a headset to hear password keys spoken."</string>
-    <string name="keyboard_password_character_no_headset" msgid="2859873770886153678">"Dot"</string>
     <string name="action_bar_home_description" msgid="5293600496601490216">"Navigate home"</string>
     <string name="action_bar_up_description" msgid="2237496562952152589">"Navigate up"</string>
     <string name="action_menu_overflow_description" msgid="2295659037509008453">"More options"</string>
@@ -1328,16 +1356,16 @@
     <string name="storage_usb_drive_label" msgid="4501418548927759953">"<xliff:g id="MANUFACTURER">%s</xliff:g> USB drive"</string>
     <string name="storage_usb" msgid="3017954059538517278">"USB storage"</string>
     <string name="extract_edit_menu_button" msgid="8940478730496610137">"Edit"</string>
-    <string name="data_usage_warning_title" msgid="1955638862122232342">"Data usage warning"</string>
+    <string name="data_usage_warning_title" msgid="3620440638180218181">"Data usage alert"</string>
     <string name="data_usage_warning_body" msgid="6660692274311972007">"Tap to view usage and settings."</string>
     <string name="data_usage_3g_limit_title" msgid="4361523876818447683">"2G-3G data limit reached"</string>
     <string name="data_usage_4g_limit_title" msgid="4609566827219442376">"4G data limit reached"</string>
-    <string name="data_usage_mobile_limit_title" msgid="557158376602636112">"Mobile data limit reached"</string>
+    <string name="data_usage_mobile_limit_title" msgid="6561099244084267376">"Mobile data limit reached"</string>
     <string name="data_usage_wifi_limit_title" msgid="5803363779034792676">"Wi-Fi data limit reached"</string>
     <string name="data_usage_limit_body" msgid="291731708279614081">"Data paused for rest of cycle"</string>
     <string name="data_usage_3g_limit_snoozed_title" msgid="7026739121138005231">"2G-3G data limit exceeded"</string>
     <string name="data_usage_4g_limit_snoozed_title" msgid="1106562779311209039">"4G data limit exceeded"</string>
-    <string name="data_usage_mobile_limit_snoozed_title" msgid="4941346653729943789">"Mobile data limit exceeded"</string>
+    <string name="data_usage_mobile_limit_snoozed_title" msgid="279240572165412168">"Mobile data limit exceeded"</string>
     <string name="data_usage_wifi_limit_snoozed_title" msgid="8743856006384825974">"Wi-Fi data limit exceeded"</string>
     <string name="data_usage_limit_snoozed_body" msgid="7035490278298441767">"<xliff:g id="SIZE">%s</xliff:g> over specified limit."</string>
     <string name="data_usage_restricted_title" msgid="5965157361036321914">"Background data restricted"</string>
@@ -1431,15 +1459,21 @@
     <string name="kg_text_message_separator" product="default" msgid="4160700433287233771">" — "</string>
     <string name="kg_reordering_delete_drop_target_text" msgid="7899202978204438708">"Remove"</string>
     <string name="safe_media_volume_warning" product="default" msgid="2276318909314492312">"Raise volume above recommended level?\n\nListening at high volume for long periods may damage your hearing."</string>
-    <string name="continue_to_enable_accessibility" msgid="1626427372316070258">"Keep holding down two fingers to enable accessibility."</string>
-    <string name="accessibility_enabled" msgid="1381972048564547685">"Accessibility enabled."</string>
-    <string name="enable_accessibility_canceled" msgid="3833923257966635673">"Accessibility cancelled."</string>
+    <string name="accessibility_shortcut_warning_dialog_title" msgid="8404780875025725199">"Use Accessibility Shortcut?"</string>
+    <string name="accessibility_shortcut_toogle_warning" msgid="7256507885737444807">"When the shortcut is on, pressing both volume buttons for 3 seconds will start an accessibility feature.\n\n Current accessibility feature:\n <xliff:g id="SERVICE_NAME">%1$s</xliff:g>\n\n You can change the feature in Settings &gt; Accessibility."</string>
+    <string name="disable_accessibility_shortcut" msgid="627625354248453445">"Turn off Shortcut"</string>
+    <string name="leave_accessibility_shortcut_on" msgid="7653111894438512680">"Use Shortcut"</string>
+    <string name="accessibility_shortcut_enabling_service" msgid="7771852911861522636">"Accessibility Shortcut turned <xliff:g id="SERVICE_NAME">%1$s</xliff:g> on"</string>
+    <string name="accessibility_shortcut_disabling_service" msgid="2747243438223109821">"Accessibility Shortcut turned <xliff:g id="SERVICE_NAME">%1$s</xliff:g> off"</string>
+    <string name="accessibility_button_prompt_text" msgid="4234556536456854251">"Choose a feature to use when you tap the Accessibility button:"</string>
+    <string name="accessibility_button_instructional_text" msgid="6942300463612999993">"To change features, touch &amp; hold the Accessibility button."</string>
+    <string name="accessibility_magnification_chooser_text" msgid="1227146738764986237">"Magnification"</string>
     <string name="user_switched" msgid="3768006783166984410">"Current user <xliff:g id="NAME">%1$s</xliff:g>."</string>
     <string name="user_switching_message" msgid="2871009331809089783">"Switching to <xliff:g id="NAME">%1$s</xliff:g>…"</string>
     <string name="user_logging_out_message" msgid="8939524935808875155">"Logging out <xliff:g id="NAME">%1$s</xliff:g>…"</string>
     <string name="owner_name" msgid="2716755460376028154">"Owner"</string>
     <string name="error_message_title" msgid="4510373083082500195">"Error"</string>
-    <string name="error_message_change_not_allowed" msgid="1347282344200417578">"This change isn\'t allowed by your administrator"</string>
+    <string name="error_message_change_not_allowed" msgid="1238035947357923497">"This change isn\'t allowed by your admin"</string>
     <string name="app_not_found" msgid="3429141853498927379">"No application found to handle this action"</string>
     <string name="revoke" msgid="5404479185228271586">"Revoke"</string>
     <string name="mediasize_iso_a0" msgid="1994474252931294172">"ISO A0"</string>
@@ -1531,7 +1565,7 @@
     <string name="reason_service_unavailable" msgid="7824008732243903268">"Print service not enabled"</string>
     <string name="print_service_installed_title" msgid="2246317169444081628">"<xliff:g id="NAME">%s</xliff:g> service installed"</string>
     <string name="print_service_installed_message" msgid="5897362931070459152">"Tap to enable"</string>
-    <string name="restr_pin_enter_admin_pin" msgid="783643731895143970">"Enter administrator PIN"</string>
+    <string name="restr_pin_enter_admin_pin" msgid="8641662909467236832">"Enter admin PIN"</string>
     <string name="restr_pin_enter_pin" msgid="3395953421368476103">"Enter PIN"</string>
     <string name="restr_pin_incorrect" msgid="8571512003955077924">"Incorrect"</string>
     <string name="restr_pin_enter_old_pin" msgid="1462206225512910757">"Current PIN:"</string>
@@ -1557,16 +1591,18 @@
     <string name="select_year" msgid="7952052866994196170">"Select year"</string>
     <string name="deleted_key" msgid="7659477886625566590">"<xliff:g id="KEY">%1$s</xliff:g> deleted"</string>
     <string name="managed_profile_label_badge" msgid="2355652472854327647">"Work <xliff:g id="LABEL">%1$s</xliff:g>"</string>
-    <string name="lock_to_app_toast" msgid="1420543809500606964">"To unpin this screen, touch &amp; hold Back."</string>
-    <string name="lock_to_app_toast_locked" msgid="9125176335701699164">"App is pinned: unpinning isn\'t allowed on this device."</string>
+    <string name="managed_profile_label_badge_2" msgid="5048136430082124036">"2nd Work <xliff:g id="LABEL">%1$s</xliff:g>"</string>
+    <string name="managed_profile_label_badge_3" msgid="2808305070321719040">"3rd Work <xliff:g id="LABEL">%1$s</xliff:g>"</string>
+    <string name="lock_to_app_toast" msgid="6820571533009838261">"To unpin this screen, touch &amp; hold Back and Overview buttons"</string>
+    <string name="lock_to_app_toast_locked" msgid="7849470948648628704">"This app can\'t be unpinned"</string>
     <string name="lock_to_app_start" msgid="6643342070839862795">"Screen pinned"</string>
     <string name="lock_to_app_exit" msgid="8598219838213787430">"Screen unpinned"</string>
     <string name="lock_to_app_unlock_pin" msgid="2552556656504331634">"Ask for PIN before unpinning"</string>
     <string name="lock_to_app_unlock_pattern" msgid="4182192144797225137">"Ask for unlock pattern before unpinning"</string>
     <string name="lock_to_app_unlock_password" msgid="6380979775916974414">"Ask for password before unpinning"</string>
-    <string name="package_installed_device_owner" msgid="8420696545959087545">"Installed by your administrator"</string>
-    <string name="package_updated_device_owner" msgid="8856631322440187071">"Updated by your administrator"</string>
-    <string name="package_deleted_device_owner" msgid="7650577387493101353">"Deleted by your administrator"</string>
+    <string name="package_installed_device_owner" msgid="6875717669960212648">"Installed by your admin"</string>
+    <string name="package_updated_device_owner" msgid="1847154566357862089">"Updated by your admin"</string>
+    <string name="package_deleted_device_owner" msgid="2307122077550236438">"Deleted by your admin"</string>
     <string name="battery_saver_description" msgid="1960431123816253034">"To help improve battery life, battery saver reduces your device’s performance and limits vibration, location services and most background data. Email, messaging, and other apps that rely on syncing may not update unless you open them.\n\nBattery saver turns off automatically when your device is charging."</string>
     <string name="data_saver_description" msgid="6015391409098303235">"To help reduce data usage, Data Saver prevents some apps from sending or receiving data in the background. An app that you’re currently using can access data, but may do so less frequently. This may mean, for example, that images don’t display until you tap them."</string>
     <string name="data_saver_enable_title" msgid="4674073932722787417">"Turn on Data Saver?"</string>
@@ -1605,7 +1641,7 @@
     </plurals>
     <string name="zen_mode_until" msgid="7336308492289875088">"Until <xliff:g id="FORMATTEDTIME">%1$s</xliff:g>"</string>
     <string name="zen_mode_alarm" msgid="9128205721301330797">"Until <xliff:g id="FORMATTEDTIME">%1$s</xliff:g> (next alarm)"</string>
-    <string name="zen_mode_forever" msgid="7420011936770086993">"Until you turn this off"</string>
+    <string name="zen_mode_forever" msgid="1916263162129197274">"Until you turn off Do Not Disturb"</string>
     <string name="zen_mode_forever_dnd" msgid="3792132696572189081">"Until you turn off Do Not Disturb"</string>
     <string name="zen_mode_rule_name_combination" msgid="191109939968076477">"<xliff:g id="FIRST">%1$s</xliff:g> / <xliff:g id="REST">%2$s</xliff:g>"</string>
     <string name="toolbar_collapse_description" msgid="2821479483960330739">"Collapse"</string>
@@ -1624,7 +1660,8 @@
     <string name="stk_cc_ss_to_ussd" msgid="3951862188105305589">"SS request is modified to USSD request."</string>
     <string name="stk_cc_ss_to_ss" msgid="5470768854991452695">"SS request is modified to new SS request."</string>
     <string name="notification_work_profile_content_description" msgid="4600554564103770764">"Work profile"</string>
-    <string name="expand_button_content_description" msgid="5855955413376384681">"Expand button"</string>
+    <string name="expand_button_content_description_collapsed" msgid="3609784019345534652">"Expand"</string>
+    <string name="expand_button_content_description_expanded" msgid="8520652707158554895">"Collapse"</string>
     <string name="expand_action_accessibility" msgid="5307730695723718254">"toggle expansion"</string>
     <string name="usb_midi_peripheral_name" msgid="7221113987741003817">"Android USB Peripheral Port"</string>
     <string name="usb_midi_peripheral_manufacturer_name" msgid="7176526170008970168">"Android"</string>
@@ -1638,6 +1675,7 @@
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> selected</item>
       <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> selected</item>
     </plurals>
+    <string name="default_notification_channel_label" msgid="6950908610709016902">"Miscellaneous"</string>
     <string name="importance_from_user" msgid="7318955817386549931">"You set the importance of these notifications."</string>
     <string name="importance_from_person" msgid="9160133597262938296">"This is important because of the people involved."</string>
     <string name="user_creation_account_exists" msgid="1942606193570143289">"Allow <xliff:g id="APP">%1$s</xliff:g> to create a new User with <xliff:g id="ACCOUNT">%2$s</xliff:g> ?"</string>
@@ -1649,8 +1687,8 @@
     <string name="language_picker_section_all" msgid="3097279199511617537">"All languages"</string>
     <string name="region_picker_section_all" msgid="8966316787153001779">"All regions"</string>
     <string name="locale_search_menu" msgid="2560710726687249178">"Search"</string>
-    <string name="work_mode_off_title" msgid="8954725060677558855">"Work mode is OFF"</string>
-    <string name="work_mode_off_message" msgid="3286169091278094476">"Allow work profile to function, including apps, background sync and related features."</string>
+    <string name="work_mode_off_title" msgid="2615362773958585967">"Turn on work mode?"</string>
+    <string name="work_mode_off_message" msgid="2961559609199223594">"This will turn on your work profile, including apps, background sync and related features"</string>
     <string name="work_mode_turn_on" msgid="2062544985670564875">"Turn on"</string>
     <string name="new_sms_notification_title" msgid="8442817549127555977">"You have new messages"</string>
     <string name="new_sms_notification_content" msgid="7002938807812083463">"Open SMS app to view"</string>
@@ -1673,8 +1711,46 @@
     <string name="demo_user_inactivity_timeout_countdown" msgid="5675588824402569506">"You\'ll lose any changes and the demo will start again in <xliff:g id="TIMEOUT">%1$s</xliff:g> seconds…"</string>
     <string name="demo_user_inactivity_timeout_left_button" msgid="5314271347014802475">"Cancel"</string>
     <string name="demo_user_inactivity_timeout_right_button" msgid="5019306703066964808">"Reset now"</string>
-    <string name="audit_safemode_notification" msgid="6416076898350685856">"Factory reset to use this device without restrictions"</string>
-    <string name="audit_safemode_notification_details" msgid="1860601176690176413">"Touch to find out more."</string>
     <string name="suspended_widget_accessibility" msgid="6712143096475264190">"Disabled <xliff:g id="LABEL">%1$s</xliff:g>"</string>
     <string name="conference_call" msgid="3751093130790472426">"Conference Call"</string>
+    <string name="tooltip_popup_title" msgid="5253721848739260181">"Tooltip"</string>
+    <string name="app_category_game" msgid="5431836943981492993">"Games"</string>
+    <string name="app_category_audio" msgid="1659853108734301647">"Music &amp; Audio"</string>
+    <string name="app_category_video" msgid="2728726078629384196">"Movies &amp; Video"</string>
+    <string name="app_category_image" msgid="4867854544519846048">"Photos &amp; Images"</string>
+    <string name="app_category_social" msgid="5842783057834965912">"Social &amp; Communication"</string>
+    <string name="app_category_news" msgid="7496506240743986873">"News &amp; Magazines"</string>
+    <string name="app_category_maps" msgid="5878491404538024367">"Maps &amp; Navigation"</string>
+    <string name="app_category_productivity" msgid="3742083261781538852">"Productivity"</string>
+    <string name="device_storage_monitor_notification_channel" msgid="3295871267414816228">"Device storage"</string>
+    <string name="adb_debugging_notification_channel_tv" msgid="5537766997350092316">"USB debugging"</string>
+    <string name="time_picker_hour_label" msgid="2979075098868106450">"hour"</string>
+    <string name="time_picker_minute_label" msgid="5168864173796598399">"minute"</string>
+    <string name="time_picker_header_text" msgid="143536825321922567">"Set time"</string>
+    <string name="time_picker_input_error" msgid="7574999942502513765">"Enter a valid time"</string>
+    <string name="time_picker_prompt_label" msgid="7588093983899966783">"Type in time"</string>
+    <string name="time_picker_text_input_mode_description" msgid="4148166758173708199">"Switch to text input mode for the time input."</string>
+    <string name="time_picker_radial_mode_description" msgid="4953403779779557198">"Switch to clock mode for the time input."</string>
+    <string name="autofill_picker_accessibility_title" msgid="8469043291648711535">"Auto-fill options"</string>
+    <string name="autofill_error_cannot_autofill" msgid="7402758580060110371">"Contents can’t be auto-filled"</string>
+    <string name="autofill_save_title" msgid="7081244500504163245">"Save to <xliff:g id="LABEL">%1$s</xliff:g>?"</string>
+    <string name="autofill_save_title_with_type" msgid="4977385733042555659">"Save <xliff:g id="TYPE">%1$s</xliff:g> to <xliff:g id="LABEL">%2$s</xliff:g>?"</string>
+    <string name="autofill_save_title_with_2types" msgid="8875796560521962098">"Save <xliff:g id="TYPE_0">%1$s</xliff:g>, <xliff:g id="TYPE_1">%2$s</xliff:g> to <xliff:g id="LABEL">%3$s</xliff:g>?"</string>
+    <string name="autofill_save_title_with_3types" msgid="6889899028382843493">"Save <xliff:g id="TYPE_0">%1$s</xliff:g>, <xliff:g id="TYPE_1">%2$s</xliff:g>, <xliff:g id="TYPE_2">%3$s</xliff:g> to <xliff:g id="LABEL">%4$s</xliff:g>?"</string>
+    <string name="autofill_save_yes" msgid="6398026094049005921">"Save"</string>
+    <string name="autofill_save_no" msgid="2625132258725581787">"No thanks"</string>
+    <string name="autofill_save_type_password" msgid="5288448918465971568">"password"</string>
+    <string name="autofill_save_type_address" msgid="4936707762193009542">"address"</string>
+    <string name="autofill_save_type_credit_card" msgid="7127694776265563071">"credit card"</string>
+    <string name="autofill_save_type_username" msgid="239040540379769562">"username"</string>
+    <string name="autofill_save_type_email_address" msgid="5752949432129262174">"email address"</string>
+    <string name="etws_primary_default_message_earthquake" msgid="5541962250262769193">"Stay calm and seek shelter nearby."</string>
+    <string name="etws_primary_default_message_tsunami" msgid="1887685943498368548">"Evacuate immediately from coastal regions and riverside areas to a safer place such as high ground."</string>
+    <string name="etws_primary_default_message_earthquake_and_tsunami" msgid="998797956848445862">"Stay calm and seek shelter nearby."</string>
+    <string name="etws_primary_default_message_test" msgid="2709597093560037455">"Emergency messages test"</string>
+    <string name="etws_primary_default_message_others" msgid="6293148756130398971"></string>
+    <string name="mmcc_authentication_reject" msgid="7729819349669603406">"SIM not allowed"</string>
+    <string name="mmcc_imsi_unknown_in_hlr" msgid="6321202257374418726">"SIM not provisioned"</string>
+    <string name="mmcc_illegal_ms" msgid="2769452751852211112">"SIM not allowed"</string>
+    <string name="mmcc_illegal_me" msgid="4438696681169345015">"Phone not allowed"</string>
 </resources>

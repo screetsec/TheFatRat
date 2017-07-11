@@ -1,5 +1,5 @@
 <!--
-Copyright (C) 2016 The Android Open Source Project
+Copyright (C) 2017 The Android Open Source Project
 
    Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -14,24 +14,27 @@ Copyright (C) 2016 The Android Open Source Project
     limitations under the License.
 -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-        android:width="512dp"
-        android:height="512dp"
+        android:width="480dp"
+        android:height="480dp"
         android:viewportWidth="48.0"
         android:viewportHeight="48.0">
     <path
-        android:fillColor="#FFc7d4b6"
-        android:pathData="M32.0,12.5l0.0,28.0l12.0,-5.0l0.0,-28.0z"/>
+        android:pathData="M25.0,25.0m-20.5,0.0a20.5,20.5,0,1,1,41.0,0.0a20.5,20.5,0,1,1,-41.0,0.0"
+        android:fillAlpha="0.066"
+        android:fillColor="#000000"/>
     <path
-        android:fillColor="#FFfbd3cb"
-        android:pathData="M4.0,40.5l12.0,-5.0l0.0,-11.0l-12.0,-12.0z"/>
+        android:pathData="M24.0,24.0m-20.0,0.0a20.0,20.0,0,1,1,40.0,0.0a20.0,20.0,0,1,1,-40.0,0.0"
+        android:fillColor="#FFC107"/>
     <path
-        android:fillColor="#40000000"
-        android:pathData="M44.0,35.5l-12.0,-12.0l0.0,-4.0z"/>
+        android:pathData="M44,24.2010101 L33.9004889,14.101499 L14.101499,33.9004889 L24.2010101,44 C29.2525804,43.9497929 34.2887564,41.9975027 38.1431296,38.1431296 C41.9975027,34.2887564 43.9497929,29.2525804 44,24.2010101 Z"
+        android:fillColor="#FE9F00"/>
     <path
-        android:fillColor="#40000000"
-        android:pathData="M4.0,12.5l12.0,12.0l0.0,4.0z"/>
+        android:pathData="M24.0,24.0m-14.0,0.0a14.0,14.0,0,1,1,28.0,0.0a14.0,14.0,0,1,1,-28.0,0.0"
+        android:fillColor="#FED44F"/>
     <path
-        android:fillColor="#FFe0e0d6"
-        android:pathData="M32.0,23.5l-16.0,-16.0l-12.0,5.0l0.0,0.0l12.0,12.0l16.0,16.0l12.0,-5.0l0.0,0.0z"/>
+        android:pathData="M37.7829445,26.469236 L29.6578482,18.3441397 L18.3441397,29.6578482 L26.469236,37.7829445 C29.1911841,37.2979273 31.7972024,36.0037754 33.9004889,33.9004889 C36.0037754,31.7972024 37.2979273,29.1911841 37.7829445,26.469236 Z"
+        android:fillColor="#FFC107"/>
+    <path
+        android:pathData="M24.0,24.0m-8.0,0.0a8.0,8.0,0,1,1,16.0,0.0a8.0,8.0,0,1,1,-16.0,0.0"
+        android:fillColor="#FFFFFF"/>
 </vector>
-

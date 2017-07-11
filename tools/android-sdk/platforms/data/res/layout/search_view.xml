@@ -43,7 +43,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:focusable="true"
-        android:contentDescription="@string/searchview_description_search" />
+        android:contentDescription="@string/searchview_description_search"
+        android:tooltipText="@string/searchview_description_search" />
 
     <LinearLayout
         android:id="@+id/search_edit_frame"

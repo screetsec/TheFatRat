@@ -15,28 +15,16 @@
      limitations under the License.
 -->
 
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layoutDirection="ltr">
-
-    <!-- Provides a background for the time layout that extends into the button bar area. -->
-    <com.android.internal.widget.DrawingSpace
-        android:id="@+id/time_header"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_column="@dimen/time_picker_column_start_material"
-        android:layout_row="0"
-        android:layout_rowSpan="3"
-        android:layout_gravity="center|fill"
-        android:layoutDirection="locale" />
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <RelativeLayout
+        android:id="@+id/time_header"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_column="@dimen/time_picker_column_start_material"
-        android:layout_row="1"
-        android:layout_gravity="center|fill"
+        android:layout_height="match_parent"
+        android:gravity="center"
         android:paddingStart="?attr/dialogPreferredPadding"
         android:paddingEnd="?attr/dialogPreferredPadding">
 
@@ -44,10 +32,8 @@
             android:id="@+id/time_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_centerInParent="true"
             android:paddingTop="@dimen/timepicker_radial_picker_top_margin"
-            android:layout_marginBottom="-12dp">
+            android:orientation="horizontal">
 
             <!-- The hour should always be to the left of the separator,
                  regardless of the current locale's layout direction. -->
@@ -61,6 +47,7 @@
                 android:ellipsize="none"
                 android:gravity="right"
                 android:focusable="true"
+                android:pointerIcon="hand"
                 android:nextFocusForward="@+id/minutes" />
 
             <TextView
@@ -83,6 +70,7 @@
                 android:ellipsize="none"
                 android:gravity="left"
                 android:focusable="true"
+                android:pointerIcon="hand"
                 android:nextFocusForward="@+id/am_label" />
         </LinearLayout>
 
@@ -125,36 +113,69 @@
         </RadioGroup>
     </RelativeLayout>
 
-    <ViewStub
-        android:id="@id/topPanel"
-        android:layout="@layout/alert_dialog_title_material"
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/input_header"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingStart="@dimen/dialog_padding_material"
+        android:paddingEnd="@dimen/dialog_padding_material"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:includeFontPadding="false"
+        android:textAppearance="@style/TextAppearance.Material.TimePicker.InputHeader"
+        android:text="@string/time_picker_header_text"/>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_column="@dimen/time_picker_column_end_material"
-        android:layout_row="0"
-        android:layout_gravity="top|fill_horizontal"
-        android:layoutDirection="locale" />
+        android:orientation="vertical">
 
-    <android.widget.RadialTimePickerView
-        android:id="@+id/radial_picker"
-        android:layout_width="@dimen/timepicker_radial_picker_dimen"
-        android:layout_height="@dimen/timepicker_radial_picker_dimen"
-        android:layout_column="@dimen/time_picker_column_end_material"
-        android:layout_row="1"
-        android:layout_rowWeight="1"
-        android:layout_gravity="center|fill"
-        android:layout_marginTop="@dimen/timepicker_radial_picker_top_margin"
-        android:layout_marginStart="@dimen/timepicker_radial_picker_horizontal_margin"
-        android:layout_marginEnd="@dimen/timepicker_radial_picker_horizontal_margin"
-        android:layoutDirection="locale" />
+        <android.widget.RadialTimePickerView
+            android:id="@+id/radial_picker"
+            android:layout_width="@dimen/timepicker_radial_picker_dimen"
+            android:layout_height="@dimen/timepicker_radial_picker_dimen"
+            android:layout_gravity="center|fill"
+            android:layout_marginTop="@dimen/timepicker_radial_picker_top_margin"
+            android:layout_marginStart="@dimen/timepicker_radial_picker_horizontal_margin"
+            android:layout_marginEnd="@dimen/timepicker_radial_picker_horizontal_margin"
+            android:layoutDirection="locale" />
 
-    <ViewStub
-        android:id="@id/buttonPanel"
-        android:layout="@layout/alert_dialog_button_bar_material"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_column="@dimen/time_picker_column_end_material"
-        android:layout_row="2"
-        android:layout_gravity="bottom|fill_horizontal"
-        android:layoutDirection="locale" />
-</GridLayout>
+        <android.widget.TextInputTimePickerView
+            android:id="@+id/input_mode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="?attr/dialogPreferredPadding"
+            android:paddingEnd="?attr/dialogPreferredPadding"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageButton
+                android:id="@+id/toggle_mode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:padding="12dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:tint="?attr/colorControlNormal"
+                android:src="@drawable/btn_keyboard_key_material"
+                android:contentDescription="@string/time_picker_text_input_mode_description" />
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+            <ViewStub
+                android:id="@id/buttonPanel"
+                android:layout="@layout/alert_dialog_button_bar_material"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layoutDirection="locale" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

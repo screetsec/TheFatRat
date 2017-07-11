@@ -61,11 +61,16 @@ please see styles_device_defaults.xml.
         <item name="divider">@empty</item>
     </style>
 
+    <style name="TextAppearance.Material.ListItem" parent="TextAppearance.Material.Body1" />
+    <style name="TextAppearance.Material.ListItemSecondary" parent="TextAppearance.Material.Caption" />
+
     <style name="Widget.Material.TextView" parent="Widget.TextView">
         <item name="breakStrategy">balanced</item>
     </style>
 
-    <style name="Widget.Material.ButtonBar" parent="Widget.Material.BaseButtonBar" />
+    <style name="TextAppearance.Material.NumberPicker" parent="TextAppearance.Material.Body1">
+        <item name="textSize">@dimen/text_size_medium_material</item>
+    </style>
 
     <!-- Alert dialog button bar button -->
     <style name="Widget.Material.Button.ButtonBar.AlertDialog" parent="Widget.Material.Button.Borderless.Small">
@@ -82,10 +87,18 @@ please see styles_device_defaults.xml.
         <item name="solidColor">@color/transparent</item>
         <item name="selectionDivider">@drawable/numberpicker_selection_divider</item>
         <item name="selectionDividerHeight">2dp</item>
-        <item name="selectionDividersDistance">48dp</item>
-        <item name="internalMinWidth">64dp</item>
-        <item name="internalMaxHeight">180dp</item>
+        <item name="selectionDividersDistance">24dp</item>
+        <item name="internalMinWidth">32dp</item>
+        <item name="internalMaxHeight">90dp</item>
         <item name="virtualButtonPressedDrawable">?selectableItemBackground</item>
         <item name="descendantFocusability">blocksDescendants</item>
+    </style>
+
+    <style name="DialogWindowTitle.Material">
+        <item name="maxLines">@empty</item>
+        <item name="scrollHorizontally">false</item>
+        <item name="textAppearance">@style/TextAppearance.Material.DialogWindowTitle</item>
+        <item name="gravity">center_horizontal|top</item>
+        <item name="ellipsize">end</item>
     </style>
 </resources>

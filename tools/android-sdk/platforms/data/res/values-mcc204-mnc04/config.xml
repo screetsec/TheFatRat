@@ -25,24 +25,15 @@
     -->
     <integer name="config_mobile_mtu">1358</integer>
 
-    <!-- service number convert map in roaming network. -->
-    <!-- [dialstring],[replacement][,optional gid] -->
-    <string-array translatable="false" name="dial_string_replace">
-        <item>"*611:+19085594899,BAE0000000000000"</item>
-        <item>"*86:+1MDN,BAE0000000000000"</item>
-    </string-array>
-
-    <!-- Flag indicating whether strict threshold is used, or lenient threshold is used,
-          when evaluating RSRP for LTE antenna bar display
-           0. Strict threshold
-           1. Lenient threshold
-    -->
-    <integer name="config_LTE_RSRP_threshold_type">0</integer>
-
-    <string-array translatable="false" name="config_sms_convert_destination_number_support">
-        <item>true;BAE0000000000000</item>
-        <item>false</item>
-    </string-array>
+    <!--Thresholds for LTE dbm in status bar-->
+    <integer-array translatable="false" name="config_lteDbmThresholds">
+        <item>-140</item>    <!-- SIGNAL_STRENGTH_NONE_OR_UNKNOWN -->
+        <item>-115</item>    <!-- SIGNAL_STRENGTH_POOR -->
+        <item>-105</item>    <!-- SIGNAL_STRENGTH_MODERATE -->
+        <item>-95</item>     <!-- SIGNAL_STRENGTH_GOOD -->
+        <item>-85</item>     <!-- SIGNAL_STRENGTH_GREAT -->
+        <item>-44</item>
+    </integer-array>
 
     <string translatable="false" name="prohibit_manual_network_selection_in_gobal_mode">true;BAE0000000000000</string>
 </resources>

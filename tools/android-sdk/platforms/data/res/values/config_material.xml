@@ -32,9 +32,16 @@
     <!-- True if windowOverscan should be on by default. -->
     <bool name="config_windowOverscanByDefault">false</bool>
 
-    <!-- Max number of lines for the dialog title. -->
-    <integer name="config_dialogWindowTitleMaxLines">1</integer>
+    <!-- True if windowSwipeToDismiss should be on by default. -->
+    <bool name="config_windowSwipeToDismiss">false</bool>
 
     <!-- True if preference fragment should clip to padding. -->
     <bool name="config_preferenceFragmentClipToPadding">true</bool>
+
+    <!-- The amount to offset when scrolling to a selection in an AlertDialog -->
+    <dimen name="config_alertDialogSelectionScrollOffset">0dp</dimen>
+
+    <!-- Style the scrollbars accoridngly. -->
+    <drawable name="config_scrollbarThumbVertical">@drawable/scrollbar_handle_material</drawable>
+    <drawable name="config_scrollbarTrackVertical">@null</drawable>
 </resources>

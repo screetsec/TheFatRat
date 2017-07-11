@@ -20,8 +20,10 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Suffix added to a number to signify size in bytes. -->
     <string name="byteShort">B</string>
-    <!-- Suffix added to a number to signify size in kilobytes. -->
-    <string name="kilobyteShort">KB</string>
+    <!-- Suffix added to a number to signify size in kilobytes (1000 bytes).
+        If you retain the Latin script for the localization, please use the lowercase
+        'k', as it signifies 1000 bytes as opposed to 1024 bytes. -->
+    <string name="kilobyteShort">kB</string>
     <!-- Suffix added to a number to signify size in megabytes. -->
     <string name="megabyteShort">MB</string>
     <!-- Suffix added to a number to signify size in gigabytes. -->
@@ -30,11 +32,11 @@
     <string name="terabyteShort">TB</string>
     <!-- Suffix added to a number to signify size in petabytes. -->
     <string name="petabyteShort">PB</string>
-    <!-- Format string used to add a suffix like "KB" or "MB" to a number
+    <!-- Format string used to add a suffix like "kB" or "MB" to a number
          to display a size in kilobytes, megabytes, or other size units.
          Some languages (like French) will want to add a space between
          the placeholders. -->
-    <string name="fileSizeSuffix"><xliff:g id="number" example="123">%1$s</xliff:g> <xliff:g id="unit" example="KB">%2$s</xliff:g></string>
+    <string name="fileSizeSuffix"><xliff:g id="number" example="123">%1$s</xliff:g> <xliff:g id="unit" example="MB">%2$s</xliff:g></string>
 
     <!-- [CHAR_LIMIT=10] Suffix added to signify duration in days -->
     <string name="durationDays"><xliff:g id="days">%1$d</xliff:g> days</string>
@@ -101,6 +103,8 @@
     <!-- Displayed when the user dialed an MMI code whose function
          could not be performed because FDN is enabled. This will be displayed in a toast. -->
     <string name="mmiFdnError">Operation is restricted to fixed dialing numbers only.</string>
+    <!-- Displayed when a carrier does not support call forwarding queries when roaming. -->
+    <string name="mmiErrorWhileRoaming">Can not change call forwarding settings from your phone while you are roaming.</string>
 
     <!-- Displayed when a phone feature such as call barring was activated. -->
     <string name="serviceEnabled">Service was enabled.</string>
@@ -185,22 +189,43 @@
     <!-- Displayed to tell the user that they cannot change the caller ID setting. -->
     <string name="CLIRPermanent">You can\'t change the caller ID setting.</string>
 
-    <!-- Displayed to tell the user that data service is blocked by access control. -->
-    <string name="RestrictedOnData">Data service is blocked.</string>
-    <!-- Displayed to tell the user that emergency service is blocked by access control. -->
-    <string name="RestrictedOnEmergency">Emergency service is blocked.</string>
-    <!-- Displayed to tell the user that normal service is blocked by access control. -->
-    <string name="RestrictedOnNormal">Voice service is blocked.</string>
-    <!-- Displayed to tell the user that all emergency and normal voice services are blocked by access control. -->
-    <string name="RestrictedOnAllVoice">All voice services are blocked.</string>
-    <!-- Displayed to tell the user that sms service is blocked by access control. -->
-    <string name="RestrictedOnSms">SMS service is blocked.</string>
-    <!-- Displayed to tell the user that voice/data service is blocked by access control. -->
-    <string name="RestrictedOnVoiceData">Voice/data services are blocked.</string>
-    <!-- Displayed to tell the user that voice and sms service are blocked by access control. -->
-    <string name="RestrictedOnVoiceSms">Voice/SMS services are blocked.</string>
-    <!-- Displayed to tell the user that all service is blocked by access control. -->
-    <string name="RestrictedOnAll">All voice/data/SMS services are blocked.</string>
+    <!-- Notification title to tell the user that data service is blocked by access control. -->
+    <string name="RestrictedOnDataTitle">No data service</string>
+    <!-- Notification title to tell the user that emergency service is blocked by access control. -->
+    <string name="RestrictedOnEmergencyTitle">No emergency service</string>
+    <!-- Notification title to tell the user that normal service is blocked by access control. -->
+    <string name="RestrictedOnNormalTitle">No voice service</string>
+    <!-- Notification title to tell the user that all emergency and normal voice services are blocked by access control. -->
+    <string name="RestrictedOnAllVoiceTitle">No voice/emergency service</string>
+
+    <!-- Notification content to tell the user that data service is blocked by access control. -->
+    <string name="RestrictedOnDataContent">Your carrier has temporarily suspended data service at this location</string>
+    <!-- Notification content to tell the user that emergency service is blocked by access control. -->
+    <string name="RestrictedOnEmergencyContent">Your carrier has temporarily suspended emergency calls at this location</string>
+    <!-- Notification content to tell the user that normal service is blocked by access control. -->
+    <string name="RestrictedOnNormalContent">Your carrier has temporarily suspended voice calls at this location</string>
+    <!-- Notification content to tell the user that all emergency and normal voice services are blocked by access control. -->
+    <string name="RestrictedOnAllVoiceContent">Your carrier has temporarily suspended voice and emergency calls at this location</string>
+
+    <!-- Displayed to tell the user that they should switch their network preference. -->
+    <string name="NetworkPreferenceSwitchTitle">Can\u2019t reach network</string>
+    <!-- Displayed to tell the user that they should switch their network preference. -->
+    <string name="NetworkPreferenceSwitchSummary">To improve reception, try changing the type selected at System &gt; Network &amp; Internet &gt; Mobile networks &gt; Preferred network type."</string>
+
+    <!-- Telephony notification channel name for a channel containing network alert notifications. -->
+    <string name="notification_channel_network_alert">Alerts</string>
+    <!-- Telephony notification channel name for a channel containing call forwarding notifications. -->
+    <string name="notification_channel_call_forward">Call forwarding</string>
+    <!-- Telephony notification channel name for a channel containing emergency callback mode notifications. -->
+    <string name="notification_channel_emergency_callback">Emergency callback mode</string>
+    <!-- Telephony notification channel name for a channel containing mobile data alert notifications. -->
+    <string name="notification_channel_mobile_data_alert">Mobile data alerts</string>
+    <!-- Telephony notification channel name for a channel containing sms notifications. -->
+    <string name="notification_channel_sms">SMS messages</string>
+    <!-- Telephony notification channel name for a channel containing voice mail notifications. -->
+    <string name="notification_channel_voice_mail">Voicemail messages</string>
+    <!-- Telephony notification channel name for a channel containing wifi calling status notifications. -->
+    <string name="notification_channel_wfc">Wi-Fi calling</string>
 
     <!-- Displayed to tell the user that peer changed TTY mode -->
     <string name="peerTtyModeFull">Peer requested TTY Mode FULL</string>
@@ -253,7 +278,7 @@
     <string-array name="wfcOperatorErrorNotificationMessages">
         <item>Register with your carrier</item>
     </string-array>
-    <!-- Template for showing cellular network operator name while WFC is active -->
+    <!-- Template for showing mobile network operator name while WFC is active -->
     <string-array name="wfcSpnFormats">
         <item>%s</item>
         <item>%s Wi-Fi Calling</item>
@@ -262,8 +287,8 @@
     <string name="wifi_calling_off_summary">Off</string>
     <!-- WFC, summary for Wi-Fi Preferred -->
     <string name="wfc_mode_wifi_preferred_summary">Wi-Fi preferred</string>
-    <!-- WFC, summary for Cellular Preferred -->
-    <string name="wfc_mode_cellular_preferred_summary">Cellular preferred</string>
+    <!-- WFC, summary for Mobile data Preferred -->
+    <string name="wfc_mode_cellular_preferred_summary">Mobile preferred</string>
     <!-- WFC, summary for Wi-Fi Only -->
     <string name="wfc_mode_wifi_only_summary">Wi-Fi only</string>
 
@@ -361,7 +386,7 @@
     <string name="ssl_ca_cert_noti_by_unknown">By an unknown third party</string>
     <!-- Content text for a notification. The Title of the notification is "ssl_ca_cert_warning".
          This indicates that an unspecified administrator is doing the monitoring. [CHAR LIMIT=100]-->
-    <string name="ssl_ca_cert_noti_by_administrator">By your work profile administrator</string>
+    <string name="ssl_ca_cert_noti_by_administrator">By your work profile admin</string>
     <!-- Content text for a notification. The Title of the notification is "ssl_ca_cert_warning".
          This indicates who is doing the monitoring. [CHAR LIMIT=100]-->
     <string name="ssl_ca_cert_noti_managed">By <xliff:g id="managing_domain">%s</xliff:g></string>
@@ -372,23 +397,30 @@
     <!-- Content text for a notification. The Title of the notification is "work_profile_deleted",
          i.e. "Work profile deleted". This says that the profile is deleted by the system as a result of
          the current profile owner gone missing. [CHAR LIMIT=100]-->
-    <string name="work_profile_deleted_description">Work profile deleted due to missing admin app.</string>
+    <string name="work_profile_deleted_description">Work profile deleted due to missing admin app</string>
     <!-- Content text for an expanded notification. The Title of the notification is "work_profile_deleted",
          i.e. "Work profile deleted". This further explains that the profile is deleted by the system
          as a result of the current profile admin gone missing. [CHAR LIMIT=NONE]-->
     <string name="work_profile_deleted_details">The work profile admin app is either missing or corrupted.
-         As a result, your work profile and related data have been deleted. Contact your administrator for assistance.</string>
+         As a result, your work profile and related data have been deleted. Contact your admin for assistance.</string>
     <!-- Content text for a notification. The Title of the notification is "work_profile_deleted",
         This indicates that a work profile has been deleted. [CHAR LIMIT=NONE]-->
-    <string name="work_profile_deleted_description_dpm_wipe">Your work profile is no longer available on this device.</string>
+    <string name="work_profile_deleted_description_dpm_wipe">Your work profile is no longer available on this device</string>
+
+    <!-- Content title for a notification. This notification indicates that the device is managed
+         and network logging was activated by a device owner. [CHAR LIMIT=NONE]-->
+    <string name="network_logging_notification_title">Device is managed</string>
+    <!-- Content text for a notification. Tapping opens a dialog with more information on device management and network
+         logging. [CHAR LIMIT=NONE]-->
+    <string name="network_logging_notification_text">Your organization manages this device and may monitor network traffic. Tap for details.</string>
 
     <!-- Factory reset warning dialog strings--> <skip />
     <!-- Shows up in the dialog's title to warn about an impeding factory reset. [CHAR LIMIT=NONE] -->
     <string name="factory_reset_warning">Your device will be erased</string>
     <!-- Text message in the factory reset warning dialog. This says that the the device admin app
          is missing or corrupted. As a result the device will be erased. [CHAR LIMIT=NONE]-->
-    <string name="factory_reset_message">The admin app is missing components or corrupted, and can\'t be used.
-         Your device will now be erased. Contact your administrator for assistance.</string>
+    <string name="factory_reset_message">The admin app can\'t be used. Your device will now be
+        erased.\n\nIf you have questions, contact your organization's admin.</string>
 
     <!-- Display name for any time a piece of data refers to the owner of the phone. For example, this could be used in place of the phone's phone number. -->
     <string name="me">Me</string>
@@ -561,11 +593,87 @@
     <!-- The divider symbol between different parts of the notification header. not translatable [CHAR LIMIT=1] -->
     <string name="notification_header_divider_symbol" translatable="false">•</string>
 
+    <!-- The divider symbol between different parts of the notification header including spaces. not translatable [CHAR LIMIT=3] -->
+    <string name="notification_header_divider_symbol_with_spaces" translatable="false">" • "</string>
+
     <!-- Text shown in place of notification contents when the notification is hidden on a secure lockscreen -->
     <string name="notification_hidden_text">Contents hidden</string>
 
     <!-- Text shown in place of notification contents when the notification is hidden by policy on a secure lockscreen -->
     <string name="notification_hidden_by_policy_text">Contents hidden by policy</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to the virtual keyboard -->
+    <string name="notification_channel_virtual_keyboard">Virtual keyboard</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to the hardware keyboard -->
+    <string name="notification_channel_physical_keyboard">Physical keyboard</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to security -->
+    <string name="notification_channel_security">Security</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to car mode -->
+    <string name="notification_channel_car_mode">Car mode</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to account status -->
+    <string name="notification_channel_account">Account status</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to developers -->
+    <string name="notification_channel_developer">Developer messages</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to system updates -->
+    <string name="notification_channel_updates">Updates</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to network status -->
+    <string name="notification_channel_network_status">Network status</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to network alerts -->
+    <string name="notification_channel_network_alerts">Network alerts</string>
+
+    <!-- Text shown when viewing the channel settings for notification about open nearby wireless networks. -->
+    <string name="notification_channel_network_available">Network available</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to vpn status -->
+    <string name="notification_channel_vpn">VPN status</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to remote device administration -->
+    <string name="notification_channel_device_admin">Device administration</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to important alerts -->
+    <string name="notification_channel_alerts">Alerts</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to being in retail mode -->
+    <string name="notification_channel_retail_mode">Retail demo</string>
+
+    <!-- Text shown when viewing channel settings for notifications related to a usb connection -->
+    <string name="notification_channel_usb">USB connection</string>
+
+    <!-- This is the label for the notification channel settings that controls the behavior
+        of the notification about applications that are running in the background (that is,
+        perhaps confusingly, running foreground services but not the foreground UI on the screen).
+        [CHAR LIMIT=NONE] -->
+    <string name="notification_channel_foreground_service">Apps running in background</string>
+
+    <!-- Label for foreground service notification when one app is running. [CHAR LIMIT=NONE] -->
+    <string name="foreground_service_app_in_background"><xliff:g id="app_name">%1$s</xliff:g> is
+        running in the background</string>
+
+    <!-- Label for foreground service notification when multiple apps are running.
+        [CHAR LIMIT=NONE] -->
+    <string name="foreground_service_apps_in_background"><xliff:g id="number">%1$d</xliff:g> apps
+        are running in the background</string>
+
+    <!-- Content for foreground service notification when one app is running.
+        [CHAR LIMIT=NONE] -->
+    <string name="foreground_service_tap_for_details">Tap for details on battery and
+        data usage</string>
+
+    <!-- Separator for foreground service notification content listing all apps when there
+        are multiple apps running.  The left and right side may both already be compound
+        (constructed using this separator).  Should be kept as short as possible, this is
+        for summary text in the notification where there is not a lot of space.
+        [CHAR LIMIT=NONE] -->
+    <string name="foreground_service_multiple_separator"><xliff:g id="left_side">%1$s</xliff:g>,
+        <xliff:g id="right_side">%2$s</xliff:g></string>
 
     <!-- Displayed to the user to tell them that they have started up the phone in "safe mode" -->
     <string name="safeMode">Safe mode</string>
@@ -636,13 +744,6 @@
     <string name="capability_desc_canRequestTouchExploration">Tapped items will be spoken aloud
         and the screen can be explored using gestures.</string>
 
-    <!-- Title for the capability of an accessibility service to request enhanced web accessibility. -->
-    <string name="capability_title_canRequestEnhancedWebAccessibility">Turn on enhanced web
-        accessibility</string>
-    <!-- Description for the capability of an accessibility service to request enhanced web accessibility. -->
-    <string name="capability_desc_canRequestEnhancedWebAccessibility">Scripts may be installed to
-        make app content more accessible.</string>
-
     <!-- Title for the capability of an accessibility service to request to filter key events. -->
     <string name="capability_title_canRequestFilterKeyEvents">Observe text you type</string>
     <!-- Description for the capability of an accessibility service to request to filter key events. -->
@@ -660,6 +761,12 @@
     <!-- Description for the capability of an accessibility service to perform gestures. -->
     <string name="capability_desc_canPerformGestures">Can tap, swipe, pinch, and perform other
         gestures.</string>
+
+    <!-- Title for the capability of an accessibility service to capture fingerprint gestures. -->
+    <string name="capability_title_canCaptureFingerprintGestures">Fingerprint gestures</string>
+    <!-- Description for the capability of an accessibility service to perform gestures. -->
+    <string name="capability_desc_canCaptureFingerprintGestures">Can capture gestures performed on
+        the device's fingerprint sensor.</string>
 
     <!--  Permissions -->
 
@@ -702,6 +809,11 @@
         the call to a different number or abort the call altogether.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_answerPhoneCalls">answer phone calls</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_answerPhoneCalls">Allows the app to answer an incoming phone call.</string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_receiveSms">receive text messages (SMS)</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permdesc_receiveSms">Allows the app to receive and process SMS
@@ -739,17 +851,11 @@
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_readSms">read your text messages (SMS or MMS)</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_readSms" product="tablet">Allows the app to read SMS
-      messages stored on your tablet or SIM card. This allows the app to read all
-      SMS messages, regardless of content or confidentiality.</string>
+    <string name="permdesc_readSms" product="tablet">This app can read all SMS (text) messages stored on your tablet.</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_readSms" product="tv">Allows the app to read SMS
-      messages stored on your TV or SIM card. This allows the app to read all
-      SMS messages, regardless of content or confidentiality.</string>
+    <string name="permdesc_readSms" product="tv">This app can read all SMS (text) messages stored on your TV.</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_readSms" product="default">Allows the app to read SMS
-      messages stored on your phone or SIM card. This allows the app to read all
-      SMS messages, regardless of content or confidentiality.</string>
+    <string name="permdesc_readSms" product="default">This app can read all SMS (text) messages stored on your phone.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_receiveWapPush">receive text messages (WAP)</string>
@@ -791,12 +897,19 @@
       running.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permlab_systemAlertWindow">draw over other apps</string>
+    <string name="permlab_systemAlertWindow">This app can appear on top of other apps</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_systemAlertWindow">Allows the app to draw on top of other
-        applications or parts of the user interface.  They may interfere with your
-        use of the interface in any application, or change what you think you are
-        seeing in other applications.</string>
+    <string name="permdesc_systemAlertWindow">This app can appear on top of other apps or other parts of the screen. This may interfere with normal app usage and change the way that other apps appear.</string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_runInBackground">run in the background</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_runInBackground">This app can run in the background. This may drain battery faster.</string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_useDataInBackground">use data in the background</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_useDataInBackground">This app can use data in the background. This may increase data usage.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_persistentActivity">make app always run</string>
@@ -902,20 +1015,7 @@
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_readCallLog">read call log</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_readCallLog" product="tablet">Allows the app to read
-     your tablet\'s call log, including data about incoming and outgoing calls.
-     This permission allows apps to save your call log data, and malicious apps
-     may share call log data without your knowledge.</string>
-    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_readCallLog" product="tv">Allows the app to read
-     your TV\'s call log, including data about incoming and outgoing calls.
-     This permission allows apps to save your call log data, and malicious apps
-     may share call log data without your knowledge.</string>
-    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_readCallLog" product="default">Allows the app to read
-      your phone\'s call log, including data about incoming and outgoing calls.
-      This permission allows apps to save your call log data, and malicious apps
-      may share call log data without your knowledge.</string>
+    <string name="permdesc_readCallLog">This app can read your call history.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_writeCallLog">write call log</string>
@@ -929,7 +1029,7 @@
     <string name="permdesc_writeCallLog" product="default">Allows the app to modify your phone\'s call log, including data about incoming and outgoing calls.
         Malicious apps may use this to erase or modify your call log.</string>
 
-    <!-- Title of the body sensors permission, listed so the user can decide whether to allow the application to access body sensor data. [CHAR LIMIT=30] -->
+    <!-- Title of the body sensors permission, listed so the user can decide whether to allow the application to access body sensor data. [CHAR LIMIT=80] -->
     <string name="permlab_bodySensors">access body sensors (like heart rate monitors)
     </string>
     <!-- Description of the body sensors permission, listed so the user can decide whether to allow the application to access data from body sensors. [CHAR LIMIT=NONE] -->
@@ -937,46 +1037,24 @@
     that monitor your physical condition, such as your heart rate.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permlab_readCalendar">read calendar events plus confidential information</string>
+    <string name="permlab_readCalendar">Read calendar events and details</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_readCalendar" product="tablet">Allows the app to read
-       all calendar events stored on your tablet, including those of friends or
-       co-workers. This may allow the app to share or save your calendar data,
-       regardless of confidentiality or sensitivity.</string>
+    <string name="permdesc_readCalendar" product="tablet">This app can read all calendar events stored on your tablet and share or save your calendar data.</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_readCalendar" product="tv">Allows the app to read
-       all calendar events stored on your TV, including those of friends or
-       co-workers. This may allow the app to share or save your calendar data,
-       regardless of confidentiality or sensitivity.</string>
+    <string name="permdesc_readCalendar" product="tv">This app can read all calendar events stored on your TV and share or save your calendar data.</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_readCalendar" product="default">Allows the app to
-       read all calendar events stored on your phone, including those of friends
-       or co-workers. This may allow the app to share or save your calendar data,
-       regardless of confidentiality or sensitivity.</string>
+    <string name="permdesc_readCalendar" product="default">This app can read all calendar events stored on your phone and share or save your calendar data.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_writeCalendar">add or modify calendar events and send email to guests without owners\' knowledge</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_writeCalendar" product="tablet">Allows the app to
-        add, remove, change events that you can modify on your tablet, including
-        those of friends or co-workers. This may allow the app to send messages
-        that appear to come from calendar owners, or modify events without the
-        owners\' knowledge.</string>
+    <string name="permdesc_writeCalendar" product="tablet">This app can add, remove, or change calendar events on your tablet. This app can send messages that may appear to come from calendar owners, or change events without notifying their owners.</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_writeCalendar" product="tv">Allows the app to
-        add, remove, change events that you can modify on your TV, including
-        those of friends or co-workers. This may allow the app to send messages
-        that appear to come from calendar owners, or modify events without the
-        owners\' knowledge.</string>
+    <string name="permdesc_writeCalendar" product="tv">This app can add, remove, or change calendar events on your TV. This app can send messages that may appear to come from calendar owners, or change events without notifying their owners.</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_writeCalendar" product="default">Allows the app to
-        add, remove, change events that you can modify on your phone, including
-        those of friends or co-workers. This may allow the app to send messages
-        that appear to come from calendar owners, or modify events without the
-        owners\' knowledge.</string>
+    <string name="permdesc_writeCalendar" product="default">This app can add, remove, or change calendar events on your phone. This app can send messages that may appear to come from calendar owners, or change events without notifying their owners.</string>
 
-
-    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the applicatfion to do this. -->
     <string name="permlab_accessLocationExtraCommands">access extra location provider commands</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permdesc_accessLocationExtraCommands">Allows the app to access
@@ -987,23 +1065,17 @@
     <string name="permlab_accessFineLocation">access precise location (GPS and
       network-based)</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_accessFineLocation">Allows the app to get your
-      precise location using the Global Positioning System (GPS) or network
-      location sources such as cell towers and Wi-Fi. These location services
-      must be turned on and available to your device for the app to use them.
-      Apps may use this to determine where you are, and may consume additional
-      battery power.</string>
+    <string name="permdesc_accessFineLocation">This app can get your location based on GPS or network location sources such as cell towers and Wi-Fi networks. These location services must be turned on and available on your phone for the app to be able to use them. This may increase battery consumption.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_accessCoarseLocation">access approximate location
       (network-based)</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_accessCoarseLocation">Allows the app to get your
-      approximate location. This location is derived by location services using
-      network location sources such as cell towers and Wi-Fi. These location
-      services must be turned on and available to your device for the app to
-      use them. Apps may use this to determine approximately where you
-      are.</string>
+    <string name="permdesc_accessCoarseLocation" product="tablet">This app can get your location based on network sources such as cell towers and Wi-Fi networks. These location services must be turned on and available on your tablet for the app to be able to use them.</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_accessCoarseLocation" product="tv">This app can get your location based on network sources such as cell towers and Wi-Fi networks. These location services must be turned on and available on your TV for the app to be able to use them.</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_accessCoarseLocation" product="default">This app can get your location based on network sources such as cell towers and Wi-Fi networks. These location services must be turned on and available on your phone for the app to be able to use them.</string>
 
  <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_modifyAudioSettings">change your audio settings</string>
@@ -1013,9 +1085,7 @@
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_recordAudio">record audio</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_recordAudio">Allows the app to record audio with the
-      microphone.  This permission allows the app to record audio at any time
-      without your confirmation.</string>
+    <string name="permdesc_recordAudio">This app can record audio using the microphone at any time.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_sim_communication">send commands to the SIM</string>
@@ -1025,9 +1095,7 @@
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_camera">take pictures and videos</string>
     <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
-    <string name="permdesc_camera">Allows the app to take pictures and videos
-      with the camera.  This permission allows the app to use the camera at any
-      time without your confirmation.</string>
+    <string name="permdesc_camera">This app can take pictures and record videos using the camera at any time.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_vibrate">control vibration</string>
@@ -1055,6 +1123,19 @@
       features of the device.  This permission allows the app to determine the
       phone number and device IDs, whether a call is active, and the remote number
       connected by a call.</string>
+
+    <!-- Title of an application permission.  When granted the user is giving access to a third
+         party app to route its calls through the system. -->
+    <string name="permlab_manageOwnCalls">route calls through the system</string>
+    <!-- Description of an application permission.  When granted the user is giving access to a
+         third party app to route its calls through the system. -->
+    <string name="permdesc_manageOwnCalls">Allows the app to route its calls through the system in
+        order to improve the calling experience.</string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permlab_readPhoneNumbers">read phone numbers</string>
+    <!-- Description of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
+    <string name="permdesc_readPhoneNumbers">Allows the app to access the phone numbers of the device.</string>
 
     <!-- Title of an application permission, listed so the user can choose whether they want to allow the application to do this. -->
     <string name="permlab_wakeLock" product="tablet">prevent tablet from sleeping</string>
@@ -1254,6 +1335,8 @@
     <string name="fingerprint_error_canceled">Fingerprint operation canceled.</string>
     <!-- Generic error message shown when the fingerprint operation fails because too many attempts have been made. -->
     <string name="fingerprint_error_lockout">Too many attempts. Try again later.</string>
+    <!-- Generic error message shown when the fingerprint operation fails because strong authentication is required -->
+    <string name="fingerprint_error_lockout_permanent">Too many attempts. Fingerprint sensor disabled.</string>
     <!-- Generic error message shown when the fingerprint hardware can't recognize the fingerprint -->
     <string name="fingerprint_error_unable_to_process">Try again.</string>
 
@@ -1419,7 +1502,7 @@
     <!-- Description of policy access to limiting the user's password choices -->
     <string name="policydesc_limitPassword">Control the length and the characters allowed in screen lock passwords and PINs.</string>
     <!-- Title of policy access to watch user login attempts -->
-    <string name="policylab_watchLogin">Monitor screen-unlock attempts</string>
+    <string name="policylab_watchLogin">Monitor screen unlock attempts</string>
     <!-- Description of policy access to watch user login attempts -->
     <string name="policydesc_watchLogin" product="tablet">Monitor the number of incorrect passwords
     typed when unlocking the screen, and lock the tablet or erase all the tablet\'s
@@ -1960,7 +2043,7 @@
     <string name="lockscreen_access_pattern_cleared">Pattern cleared</string>
     <!-- Accessibility description sent when user adds a dot to the pattern. [CHAR LIMIT=NONE]  -->
     <string name="lockscreen_access_pattern_cell_added">Cell added</string>
-    <!-- Accessibility description sent when user adds a dot to the pattern. Announces the 
+    <!-- Accessibility description sent when user adds a dot to the pattern. Announces the
     actual cell when headphones are connected [CHAR LIMIT=NONE]  -->
     <string name="lockscreen_access_pattern_cell_added_verbose">
             Cell <xliff:g id="cell_index" example="3">%1$s</xliff:g> added</string>
@@ -2039,6 +2122,12 @@
         FACTORY_TEST action.</string>
     <!-- Button to restart the device after the factory test. -->
     <string name="factorytest_reboot">Reboot</string>
+
+    <!-- Do not translate.  timepicker mode, overridden for watch -->
+    <string name="time_picker_mode" translatable="false">"clock"</string>
+
+    <!-- Do not translate.  datepicker mode, overridden for watch -->
+    <string name="date_picker_mode" translatable="false">"calendar"</string>
 
     <!-- Do not translate.  WebView User Agent string -->
     <string name="web_user_agent" translatable="false">Mozilla/5.0 (Linux; U; <xliff:g id="x">Android %s</xliff:g>)
@@ -2338,7 +2427,7 @@
          It is also used by the home screen's search "widget". It should be short -->
     <string name="search_go">Search</string>
     <!-- Default hint text for the system-wide search UI's text field. [CHAR LIMIT=30] -->
-    <string name="search_hint">Search…</string>
+    <string name="search_hint">Search\u2026</string>
     <!-- SearchView accessibility description for search button [CHAR LIMIT=NONE] -->
     <string name="searchview_description_search">Search</string>
     <!-- SearchView accessibility description for search text field [CHAR LIMIT=NONE] -->
@@ -2417,22 +2506,6 @@
     <string name="year">year</string>
     <!-- Appened to express the value is this unit of time. -->
     <string name="years">years</string>
-
-    <!-- Phrase describing a time duration using seconds [CHAR LIMIT=16] -->
-    <plurals name="duration_seconds">
-        <item quantity="one">1 second</item>
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> seconds</item>
-    </plurals>
-    <!-- Phrase describing a time duration using minutes [CHAR LIMIT=16] -->
-    <plurals name="duration_minutes">
-        <item quantity="one">1 minute</item>
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> minutes</item>
-    </plurals>
-    <!-- Phrase describing a time duration using hours [CHAR LIMIT=16] -->
-    <plurals name="duration_hours">
-        <item quantity="one">1 hour</item>
-        <item quantity="other"><xliff:g id="count">%d</xliff:g> hours</item>
-    </plurals>
 
     <!-- A string denoting the current point in time that should be as short as possible. Abbreviations are preferred to full strings as this might be shown repetitively. It is used in the header of notifications. [CHAR LIMIT=8]-->
     <string name="now_string_shortest">now</string>
@@ -2608,6 +2681,9 @@
     <!-- Item on EditText context menu. This action is used to redo a text edit operation. -->
     <string name="redo">Redo</string>
 
+    <!-- Item on EditText context menu. This action is used to request autofill. -->
+    <string name="autofill">Autofill</string>
+
     <!-- Text selection contextual mode title, displayed in the CAB. [CHAR LIMIT=20] -->
     <string name="textSelectionCABTitle">Text selection</string>
 
@@ -2622,6 +2698,18 @@
 
     <!-- Title for EditText context menu [CHAR LIMIT=20] -->
     <string name="editTextMenuTitle">Text actions</string>
+
+    <!-- Label for item in the text selection menu to trigger an Email app [CHAR LIMIT=20] -->
+    <string name="email">Email</string>
+
+    <!-- Label for item in the text selection menu to trigger a Dialer app [CHAR LIMIT=20] -->
+    <string name="dial">Phone</string>
+
+    <!-- Label for item in the text selection menu to trigger a Map app [CHAR LIMIT=20] -->
+    <string name="map">Maps</string>
+
+    <!-- Label for item in the text selection menu to trigger a Browser app [CHAR LIMIT=20] -->
+    <string name="browse">Browser</string>
 
     <!-- If the device is getting low on internal storage, a notification is shown to the user.  This is the title of that notification. -->
     <string name="low_internal_storage_view_title">Storage space running out</string>
@@ -2898,13 +2986,17 @@
     <!-- Choice in the ringtone picker.  If chosen, the default ringtone will be used. -->
     <string name="ringtone_default">Default ringtone</string>
     <!-- Choice in the ringtone picker.  If chosen, the default ringtone will be used. This fills in the actual ringtone's title into the message. -->
-    <string name="ringtone_default_with_actual">Default ringtone (<xliff:g id="actual_ringtone">%1$s</xliff:g>)</string>
+    <string name="ringtone_default_with_actual">Default (<xliff:g id="actual_ringtone">%1$s</xliff:g>)</string>
     <!-- Choice in the ringtone picker.  If chosen, there will be silence instead of a ringtone played. -->
     <string name="ringtone_silent">None</string>
     <!-- The title of the ringtone picker dialog. -->
     <string name="ringtone_picker_title">Ringtones</string>
+    <!-- The title of the alarm sound picker dialog [CHAR LIMIT=100] -->
+    <string name="ringtone_picker_title_alarm">Alarm sounds</string>
+    <!-- The title of the notification sound picker dialog [CHAR LIMIT=100] -->
+    <string name="ringtone_picker_title_notification">Notification sounds</string>
     <!-- If there is ever a ringtone set for some setting, but that ringtone can no longer be resolved, t his is shown instead.  For example, if the ringtone was on a SD card and it had been removed, this woudl be shown for ringtones on that SD card. -->
-    <string name="ringtone_unknown">Unknown ringtone</string>
+    <string name="ringtone_unknown">Unknown</string>
 
     <!-- A notification is shown when there are open wireless networks nearby.  This is the notification's title. -->
     <plurals name="wifi_available">
@@ -2932,18 +3024,18 @@
     <!-- A notification is shown when the user connects to a Wi-Fi network and the system detects that that network has no Internet access. This is the notification's message. -->
     <string name="wifi_no_internet_detailed">Tap for options</string>
 
-    <!-- A notification might be shown if the device switches to another network type (e.g., cellular data) because it detects that the network it was using (e.g., Wi-Fi) has lost Internet connectivity. This is the notification's title. %1$s is the network type that the device switched to, e.g., cellular data. It is one of the strings in the network_switch_type_name array. -->
+    <!-- A notification might be shown if the device switches to another network type (e.g., mobile data) because it detects that the network it was using (e.g., Wi-Fi) has lost Internet connectivity. This is the notification's title. %1$s is the network type that the device switched to, e.g., cellular data. It is one of the strings in the network_switch_type_name array. -->
     <string name="network_switch_metered">Switched to <xliff:g id="network_type">%1$s</xliff:g></string>
 
-    <!-- A notification might be shown if the device switches to another network type (e.g., cellular data) because it detects that the network it was using (e.g., Wi-Fi) has lost Internet connectivity. This is the notification's message. %1$s is the network that the device switched to, e.g., cellular data. %2$s is the network type the device switched from, e.g., Wi-Fi. Both are strings in the network_switch_type_name array. -->
+    <!-- A notification might be shown if the device switches to another network type (e.g., mobile data) because it detects that the network it was using (e.g., Wi-Fi) has lost Internet connectivity. This is the notification's message. %1$s is the network that the device switched to, e.g., cellular data. %2$s is the network type the device switched from, e.g., Wi-Fi. Both are strings in the network_switch_type_name array. -->
     <string name="network_switch_metered_detail">Device uses <xliff:g id="new_network">%1$s</xliff:g> when <xliff:g id="previous_network">%2$s</xliff:g> has no Internet access. Charges may apply.</string>
 
-    <!-- A toast might be shown if the device switches to another network type (e.g., cellular data) because it detects that the network it was using (e.g., Wi-Fi) has lost Internet connectivity. This is the text of the toast. %1$s is the network that the device switched from, e.g., Wi-Fi. %2$s is the network type the device switched from, e.g., cellular data. Both are strings in the network_switch_type_name array. -->
+    <!-- A toast might be shown if the device switches to another network type (e.g., mobile data) because it detects that the network it was using (e.g., Wi-Fi) has lost Internet connectivity. This is the text of the toast. %1$s is the network that the device switched from, e.g., Wi-Fi. %2$s is the network type the device switched from, e.g., cellular data. Both are strings in the network_switch_type_name array. -->
     <string name="network_switch_metered_toast">Switched from <xliff:g id="previous_network">%1$s</xliff:g> to <xliff:g id="new_network">%2$s</xliff:g></string>
 
     <!-- Network type names used in the network_switch_metered and network_switch_metered_detail strings. These must be kept in the sync with the values NetworkCapabilities.TRANSPORT_xxx values, and in the same order. -->
     <string-array name="network_switch_type_name">
-        <item>cellular data</item>
+        <item>mobile data</item>
         <item>Wi-Fi</item>
         <item>Bluetooth</item>
         <item>Ethernet</item>
@@ -2960,6 +3052,8 @@
 
     <!-- Do not translate. Default access point SSID used for tethering -->
     <string name="wifi_tether_configure_ssid_default" translatable="false">AndroidAP</string>
+    <!-- Do not translate. Default access point SSID used for local only hotspot -->
+    <string name="wifi_localhotspot_configure_ssid_default" translatable="false">AndroidShare</string>
 
     <!-- A notification is shown the first time a connection is attempted on an app owned AP -->
     <!-- title for this message -->
@@ -3027,13 +3121,13 @@
     <!-- See SIM_REMOVED_DIALOG.  This is the title of that dialog. -->
     <string name="sim_removed_title">SIM card removed</string>
     <!-- See SIM_REMOVED_DIALOG.  This is the message of that dialog. -->
-    <string name="sim_removed_message">The cellular network will be unavailable until you restart with a valid SIM card inserted.</string>
+    <string name="sim_removed_message">The mobile network will be unavailable until you restart with a valid SIM card inserted.</string>
     <!-- See SIM_REMOVED_DIALOG.  This is the button of that dialog. -->
     <string name="sim_done_button">Done</string>
     <!-- See SIM_ADDED_DIALOG.  This is the title of that dialog. -->
     <string name="sim_added_title">SIM card added</string>
     <!-- See SIM_ADDED_DIALOG.  This is the message of that dialog. -->
-    <string name="sim_added_message">Restart your device to access the cellular network.</string>
+    <string name="sim_added_message">Restart your device to access the mobile network.</string>
     <!-- See SIM_ADDED_DIALOG.  This is the button of that dialog. -->
     <string name="sim_restart_button">Restart</string>
     <!-- See Carrier_App_Dialog. This is the message of that dialog. -->
@@ -3087,6 +3181,7 @@
     <string name="adb_active_notification_title">USB debugging connected</string>
     <!-- Message of notification shown when ADB is actively connected to the phone. -->
     <string name="adb_active_notification_message">Tap to disable USB debugging.</string>
+    <string name="adb_active_notification_message" product="tv">Select to disable USB debugging.</string>
 
     <!-- Title of notification shown to indicate that bug report is being collected. -->
     <string name="taking_remote_bugreport_notification_title">Taking bug report\u2026</string>
@@ -3095,7 +3190,8 @@
     <!-- Title of notification shown to indicate that bug report is still being collected after sharing was accepted. -->
     <string name="sharing_remote_bugreport_notification_title">Sharing bug report\u2026</string>
     <!-- Message of a notification shown to ask for user consent for sharing a bugreport that was requested remotely by the IT administrator. -->
-    <string name="share_remote_bugreport_notification_message_finished">Your IT admin requested a bug report to help troubleshoot this device. Apps and data may be shared.</string>
+    <string name="share_remote_bugreport_notification_message_finished">Your admin requested a bug
+        report to help troubleshoot this device. Apps and data may be shared.</string>
     <!-- Acceptance label of notification shown to ask for user consent for sharing the remote bugreport. -->
     <string name="share_remote_bugreport_action">SHARE</string>
     <!-- Decline label of notification shown to ask for user consent for sharing the remote bugreport. -->
@@ -3125,6 +3221,21 @@
     <string name="fast_scroll_alphabet">\u0020ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
     <string name="fast_scroll_numeric_alphabet">\u00200123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
 
+    <!-- Alert windows notification strings -->
+    <skip />
+    <!-- Name of notification channel the system post notification to inform the use about apps
+         that are drawing ui on-top of other apps (alert-windows) [CHAR LIMIT=NONE] -->
+    <string name="alert_windows_notification_channel_name">App activity</string>
+    <!-- Notification title when an application is displaying ui on-top of other apps
+         [CHAR LIMIT=30] -->
+    <string name="alert_windows_notification_title"><xliff:g id="name" example="Google Maps">%s</xliff:g> is displaying over other apps</string>
+    <!-- Notification body when an application is displaying ui on-top of other apps
+         [CHAR LIMIT=NONE] -->
+    <string name="alert_windows_notification_message">If you don’t want <xliff:g id="name" example="Google Maps">%s</xliff:g> to use this feature, tap to open settings and turn it off.</string>
+    <!-- Notification action to turn-off app displaying on-top of other apps. [CHAR LIMIT=20] -->
+    <string name="alert_windows_notification_turn_off_action">TURN OFF</string>
+
+
     <!-- External media notification strings -->
     <skip />
 
@@ -3142,11 +3253,15 @@
     <string name="ext_media_unmountable_notification_title">Corrupted <xliff:g id="name" example="SD card">%s</xliff:g></string>
     <!-- Notification body when external media is unmountable (corrupt) [CHAR LIMIT=NONE] -->
     <string name="ext_media_unmountable_notification_message"><xliff:g id="name" example="SD card">%s</xliff:g> is corrupt. Tap to fix.</string>
+    <!-- TV-specifiv notification body when external media is unmountable (corrupt) [CHAR LIMIT=NONE] -->
+    <string name="ext_media_unmountable_notification_message" product="tv"><xliff:g id="name" example="SD card">%s</xliff:g> is corrupt. Select to fix.</string>
 
     <!-- Notification title when external media is unsupported [CHAR LIMIT=30] -->
     <string name="ext_media_unsupported_notification_title">Unsupported <xliff:g id="name" example="SD card">%s</xliff:g></string>
     <!-- Notification body when external media is unsupported [CHAR LIMIT=NONE] -->
     <string name="ext_media_unsupported_notification_message">This device doesn\u2019t support this <xliff:g id="name" example="SD card">%s</xliff:g>. Tap to set up in a supported format.</string>
+    <!-- TV-specific notification body when external media is unsupported [CHAR LIMIT=NONE] -->
+    <string name="ext_media_unsupported_notification_message" product="tv">This device doesn\u2019t support this <xliff:g id="name" example="SD card">%s</xliff:g>. Select to set up in a supported format.</string>
 
     <!-- Notification title when external media is unsafely removed [CHAR LIMIT=30] -->
     <string name="ext_media_badremoval_notification_title"><xliff:g id="name" example="SD card">%s</xliff:g> unexpectedly removed</string>
@@ -3230,6 +3345,16 @@
     <string name="permlab_requestInstallPackages">request install packages</string>
     <!-- Description of an application permission that lets it read install sessions. -->
     <string name="permdesc_requestInstallPackages">Allows an application to request installation of packages.</string>
+
+    <!-- Title of an application permission that lets it read install sessions. -->
+    <string name="permlab_requestDeletePackages">request delete packages</string>
+    <!-- Description of an application permission that lets it read install sessions. -->
+    <string name="permdesc_requestDeletePackages">Allows an application to request deletion of packages.</string>
+
+    <!-- Title of an application permission that lets it ask user to ignore battery optimizations for that app. -->
+    <string name="permlab_requestIgnoreBatteryOptimizations">ask to ignore battery optimizations</string>
+    <!-- Description of an application permission that lets it ask user to ignore battery optimizations for that app-->
+    <string name="permdesc_requestIgnoreBatteryOptimizations">Allows an app to ask for permission to ignore battery optimizations for that app.</string>
 
     <!-- Shown in the tutorial for tap twice for zoom control. -->
     <string name="tutorial_double_tap_to_zoom_message_short">Tap twice for zoom control</string>
@@ -3511,11 +3636,6 @@
     <!-- Description of the unlock handle in the Slide unlock screen for tablets. [CHAR LIMIT=NONE] -->
     <string name="description_target_unlock_tablet">Swipe to unlock.</string>
 
-    <!-- Announce that a headset is required to hear keyboard keys while typing a password. [CHAR LIMIT=NONE] -->
-    <string name="keyboard_headset_required_to_hear_password">Plug in a headset to hear password keys spoken.</string>
-    <!-- The value of a keyboard key announced when accessibility is enabled and no headsed is used. [CHAR LIMIT=NONE] -->
-    <string name="keyboard_password_character_no_headset">Dot.</string>
-
     <!-- Content description for the action bar "home" affordance. [CHAR LIMIT=NONE] -->
     <string name="action_bar_home_description">Navigate home</string>
     <!-- Content description for the action bar "up" affordance. [CHAR LIMIT=NONE] -->
@@ -3562,11 +3682,11 @@
     <string name="data_usage_3g_limit_title">2G-3G data limit reached</string>
     <!-- Notification title when 4G data usage has exceeded limit threshold, and has been disabled. [CHAR LIMIT=32] -->
     <string name="data_usage_4g_limit_title">4G data limit reached</string>
-    <!-- Notification title when mobile data usage has exceeded limit threshold, and has been disabled. [CHAR LIMIT=32] -->
-    <string name="data_usage_mobile_limit_title">Cellular data limit reached</string>
+    <!-- Notification title when mobile data usage has exceeded limit threshold, and has been disabled. [CHAR LIMIT=50] -->
+    <string name="data_usage_mobile_limit_title">Mobile data limit reached</string>
     <!-- Notification title when Wi-Fi data usage has exceeded limit threshold, and has been disabled. [CHAR LIMIT=32] -->
     <string name="data_usage_wifi_limit_title">Wi-Fi data limit reached</string>
-    <!-- Notification body when data usage has exceeded limit threshold, and has been disabled. [CHAR LIMIT=32] -->
+    <!-- Notification body when data usage has exceeded limit threshold, and has been disabled. -->
     <string name="data_usage_limit_body">Data paused for rest of cycle</string>
 
     <!-- Notification title when 2G-3G data usage has exceeded limit threshold. [CHAR LIMIT=32] -->
@@ -3574,15 +3694,15 @@
     <!-- Notification title when 4G data usage has exceeded limit threshold. [CHAR LIMIT=32] -->
     <string name="data_usage_4g_limit_snoozed_title">4G data limit exceeded</string>
     <!-- Notification title when mobile data usage has exceeded limit threshold. [CHAR LIMIT=32] -->
-    <string name="data_usage_mobile_limit_snoozed_title">Cellular data limit exceeded</string>
+    <string name="data_usage_mobile_limit_snoozed_title">Mobile data limit exceeded</string>
     <!-- Notification title when Wi-Fi data usage has exceeded limit threshold. [CHAR LIMIT=32] -->
     <string name="data_usage_wifi_limit_snoozed_title">Wi-Fi data limit exceeded</string>
-    <!-- Notification body when data usage has exceeded limit threshold. [CHAR LIMIT=32] -->
+    <!-- Notification body when data usage has exceeded limit threshold. -->
     <string name="data_usage_limit_snoozed_body"><xliff:g id="size" example="3.8GB">%s</xliff:g> over specified limit.</string>
 
     <!-- Notification title when background data usage is limited. [CHAR LIMIT=32] -->
     <string name="data_usage_restricted_title">Background data restricted</string>
-    <!-- Notification body when background data usage is limited. [CHAR LIMIT=32] -->
+    <!-- Notification body when background data usage is limited. -->
     <string name="data_usage_restricted_body">Tap to remove restriction.</string>
 
     <!-- SSL Certificate dialogs -->
@@ -3862,12 +3982,46 @@
        "Raise volume above recommended level?\n\nListening at high volume for long periods may damage your hearing."
     </string>
 
-    <!-- Text spoken when the user is performing a gesture that will enable accessibility. [CHAR LIMIT=none] -->
-    <string name="continue_to_enable_accessibility">Keep holding down two fingers to enable accessibility.</string>
-    <!-- Text spoken when the user enabled accessibility. [CHAR LIMIT=none] -->
-    <string name="accessibility_enabled">Accessibility enabled.</string>
-    <!-- Text spoken when the user stops preforming a gesture that would enable accessibility. [CHAR LIMIT=none] -->
-    <string name="enable_accessibility_canceled">Accessibility canceled.</string>
+    <!-- Dialog title for dialog shown when the accessibility shortcut is activated, and we want
+     to confirm that the user understands what's going to happen-->
+    <string name="accessibility_shortcut_warning_dialog_title">Use Accessibility Shortcut?</string>
+
+    <!-- Message shown in dialog when user is in the process of enabling the accessibility
+    service via the volume buttons shortcut for the first time. [CHAR LIMIT=none] -->
+    <string name="accessibility_shortcut_toogle_warning">
+        When the shortcut is on, pressing both volume buttons for 3 seconds will start an
+        accessibility feature.\n\n
+        Current accessibility feature:\n
+        <xliff:g id="service_name" example="TalkBack">%1$s</xliff:g>\n\n
+        You can change the feature in Settings > Accessibility.
+    </string>
+
+    <!-- Text in button that turns off the accessibility shortcut -->
+    <string name="disable_accessibility_shortcut">Turn off Shortcut</string>
+
+    <!-- Text in button that closes the warning dialog about the accessibility shortcut, leaving the
+    shortcut enabled.-->
+    <string name="leave_accessibility_shortcut_on">Use Shortcut</string>
+
+    <!-- Text in toast to alert the user that the accessibility shortcut turned on an accessibility
+    service.-->
+    <string name="accessibility_shortcut_enabling_service">Accessibility Shortcut turned
+        <xliff:g id="service_name" example="TalkBack">%1$s</xliff:g> on</string>
+
+    <!-- Text in toast to alert the user that the accessibility shortcut turned off an accessibility
+    service.-->
+    <string name="accessibility_shortcut_disabling_service">Accessibility Shortcut turned
+        <xliff:g id="service_name" example="TalkBack">%1$s</xliff:g> off</string>
+
+    <!-- Text appearing in a prompt at the top of UI allowing the user to select a target service or feature to be assigned to the Accessibility button in the navigation bar. -->
+    <string name="accessibility_button_prompt_text">Choose a feature to use when you tap the Accessibility button:</string>
+
+    <!-- Text describing how to display UI allowing a user to select a target service or feature to be assigned to the Accessibility button in the navigation bar. -->
+    <string name="accessibility_button_instructional_text">To change features, touch &amp; hold the Accessibility button.</string>
+
+    <!-- Text used to describe system navigation features, shown within a UI allowing a user to assign system magnification features to the Accessibility button in the navigation bar. -->
+    <string name="accessibility_magnification_chooser_text">Magnification</string>
+
     <!-- Text spoken when the current user is switched if accessibility is enabled. [CHAR LIMIT=none] -->
     <string name="user_switched">Current user <xliff:g id="name" example="Bob">%1$s</xliff:g>.</string>
     <!-- Message shown when switching to a user [CHAR LIMIT=none] -->
@@ -3879,7 +4033,7 @@
     <!-- Error message title [CHAR LIMIT=35] -->
     <string name="error_message_title">Error</string>
     <!-- Message informing user that the change was disallowed by an administrator. [CHAR LIMIT=none] -->
-    <string name="error_message_change_not_allowed">This change isn\'t allowed by your administrator</string>
+    <string name="error_message_change_not_allowed">This change isn\'t allowed by your admin</string>
     <!-- Message informing user that the requested activity could not be found [CHAR LIMIT=none] -->
     <string name="app_not_found">No application found to handle this action</string>
     <string name="revoke">Revoke</string>
@@ -4082,7 +4236,7 @@
     <string name="print_service_installed_message">Tap to enable</string>
 
     <!-- PIN entry dialog title for entering the administrator PIN [CHAR LIMIT=none] -->
-    <string name="restr_pin_enter_admin_pin">Enter administrator PIN</string>
+    <string name="restr_pin_enter_admin_pin">Enter admin PIN</string>
     <!-- PIN entry dialog label/hint for PIN [CHAR LIMIT=none] -->
     <string name="restr_pin_enter_pin">Enter PIN</string>
     <!-- PIN entry dialog label/hint for incorrect PIN entry [CHAR LIMIT=none] -->
@@ -4149,6 +4303,8 @@
         [CHAR LIMIT=20]
      -->
     <string name="managed_profile_label_badge">Work <xliff:g id="label" example="Email">%1$s</xliff:g></string>
+    <string name="managed_profile_label_badge_2">2nd Work <xliff:g id="label" example="Email">%1$s</xliff:g></string>
+    <string name="managed_profile_label_badge_3">3rd Work <xliff:g id="label" example="Email">%1$s</xliff:g></string>
 
     <!-- DO NOT TRANSLATE -->
     <string name="time_placeholder">--</string>
@@ -4166,9 +4322,11 @@
     <string name="date_picker_day_typeface">sans-serif-medium</string>
 
     <!-- Notify use that they are in Lock-to-app -->
-    <string name="lock_to_app_toast">To unpin this screen, touch &amp; hold Back.</string>
+    <string name="lock_to_app_toast">To unpin this screen, touch &amp; hold Back and Overview
+        buttons</string>
+
     <!-- Notify user that they are locked in lock-to-app mode -->
-    <string name="lock_to_app_toast_locked">App is pinned: Unpinning isn\'t allowed on this device.</string>
+    <string name="lock_to_app_toast_locked">This app can\'t be unpinned</string>
     <!-- Starting lock-to-app indication. -->
     <string name="lock_to_app_start">Screen pinned</string>
     <!-- Exting lock-to-app indication. -->
@@ -4182,11 +4340,11 @@
     <string name="lock_to_app_unlock_password">Ask for password before unpinning</string>
 
     <!-- Notification shown when device owner silently installs a package [CHAR LIMIT=NONE] -->
-    <string name="package_installed_device_owner">Installed by your administrator</string>
+    <string name="package_installed_device_owner">Installed by your admin</string>
     <!-- Notification shown when device owner silently updates a package [CHAR LIMIT=NONE] -->
-    <string name="package_updated_device_owner">Updated by your administrator</string>
+    <string name="package_updated_device_owner">Updated by your admin</string>
     <!-- Notification shown when device owner silently deletes a package [CHAR LIMIT=NONE] -->
-    <string name="package_deleted_device_owner">Deleted by your administrator</string>
+    <string name="package_deleted_device_owner">Deleted by your admin</string>
 
     <!-- [CHAR_LIMIT=NONE] Battery saver: Feature description -->
     <string name="battery_saver_description">To help improve battery life, battery saver reduces your device’s performance and limits vibration, location services, and most background data. Email, messaging, and other apps that rely on syncing may not update unless you open them.\n\nBattery saver turns off automatically when your device is charging.</string>
@@ -4253,7 +4411,7 @@
     <string name="zen_mode_alarm">Until <xliff:g id="formattedTime" example="10:00 PM">%1$s</xliff:g> (next alarm)</string>
 
     <!-- Zen mode condition: no exit criteria. [CHAR LIMIT=NONE] -->
-    <string name="zen_mode_forever">Until you turn this off</string>
+    <string name="zen_mode_forever">Until you turn off Do Not Disturb</string>
 
     <!-- Zen mode condition: no exit criteria, includes the name of the feature for emphasis. [CHAR LIMIT=NONE] -->
     <string name="zen_mode_forever_dnd">Until you turn off Do Not Disturb</string>
@@ -4299,8 +4457,11 @@
     <!-- Content description of the work profile icon in the notification. -->
     <string name="notification_work_profile_content_description">Work profile</string>
 
-    <!-- Content description of the expand button icon in the notification.-->
-    <string name="expand_button_content_description">Expand button</string>
+    <!-- Content description of the expand button icon in the notification when collaped.-->
+    <string name="expand_button_content_description_collapsed">Expand</string>
+
+    <!-- Content description of the expand button icon in the notification when expanded.-->
+    <string name="expand_button_content_description_expanded">Collapse</string>
 
     <!-- Accessibility action description on the expand button. -->
     <string name="expand_action_accessibility">toggle expansion</string>
@@ -4339,6 +4500,8 @@
         <item quantity="other"><xliff:g id="count" example="3">%1$d</xliff:g> selected</item>
     </plurals>
 
+    <string name="default_notification_channel_label">Uncategorized</string>
+
     <string name="importance_from_user">You set the importance of these notifications.</string>
     <string name="importance_from_person">This is important because of the people involved.</string>
 
@@ -4368,9 +4531,10 @@
     <string name="locale_search_menu">Search</string>
 
     <!-- Title for dialog displayed when work profile is turned off. [CHAR LIMIT=30] -->
-    <string name="work_mode_off_title">Work mode is OFF</string>
+    <string name="work_mode_off_title">Turn on work mode?</string>
     <!-- Message displayed in dialog when work profile is turned off. [CHAR LIMIT=NONE] -->
-    <string name="work_mode_off_message">Allow work profile to function, including apps, background sync, and related features.</string>
+    <string name="work_mode_off_message">This will turn on your work profile, including apps,
+        background sync, and related features</string>
     <!-- Title for button to turn on work profile. [CHAR LIMIT=NONE] -->
     <string name="work_mode_turn_on">Turn on</string>
 
@@ -4426,14 +4590,118 @@
     <!-- Text of button to allow user to abort countdown and immediately start another session in retail demo mode [CHAR LIMIT=40] -->
     <string name="demo_user_inactivity_timeout_right_button">Reset now</string>
 
-    <!-- Title of notification shown when device has been forced to safe mode after a security compromise. -->
-    <string name="audit_safemode_notification">Factory reset to use this device without restrictions</string>
-    <!-- Description of notification shown when device has been forced to safe mode after a security compromise. -->
-    <string name="audit_safemode_notification_details">Touch to learn more.</string>
-
     <!-- Accessibilty string added to a widget that has been suspended [CHAR LIMIT=20] -->
     <string name="suspended_widget_accessibility">Disabled <xliff:g id="label" example="Calendar">%1$s</xliff:g></string>
 
     <!-- Label used by Telephony code, assigned as the display name for conference calls [CHAR LIMIT=60] -->
     <string name="conference_call">Conference Call</string>
+
+    <!-- Window title for a tooltip [CHAR LIMIT=NONE] -->
+    <string name="tooltip_popup_title">Tooltip</string>
+
+    <!-- Category title for apps which are primarily games. [CHAR LIMIT=32] -->
+    <string name="app_category_game">Games</string>
+    <!-- Category title for apps which primarily work with audio or music, such as music players. [CHAR LIMIT=32] -->
+    <string name="app_category_audio">Music &amp; Audio</string>
+    <!-- Category title for apps which primarily work with video or movies, such as streaming video apps. [CHAR LIMIT=32] -->
+    <string name="app_category_video">Movies &amp; Video</string>
+    <!-- Category title for apps which primarily work with images or photos, such as camera or gallery apps. [CHAR LIMIT=32] -->
+    <string name="app_category_image">Photos &amp; Images</string>
+    <!-- Category title for apps which are primarily social apps, such as messaging, communication, email, or social network apps. [CHAR LIMIT=32] -->
+    <string name="app_category_social">Social &amp; Communication</string>
+    <!-- Category title for apps which are primarily news apps, such as newspapers, magazines, or sports apps. [CHAR LIMIT=32] -->
+    <string name="app_category_news">News &amp; Magazines</string>
+    <!-- Category title for apps which are primarily maps apps, such as navigation apps. [CHAR LIMIT=32] -->
+    <string name="app_category_maps">Maps &amp; Navigation</string>
+    <!-- Category title for apps which are primarily productivity apps, such as cloud storage or workplace apps. [CHAR LIMIT=32] -->
+    <string name="app_category_productivity">Productivity</string>
+
+    <!-- Channel name for DeviceStorageMonitor notifications -->
+    <string name="device_storage_monitor_notification_channel">Device storage</string>
+    <!-- Channel name for UsbDeviceManager adb debugging notifications -->
+    <string name="adb_debugging_notification_channel_tv">USB debugging</string>
+
+    <!-- Label for the time picker hour input field. [CHAR LIMIT=20] -->
+    <string name="time_picker_hour_label">hour</string>
+    <!-- Label for the time picker minute input field. [CHAR LIMIT=20] -->
+    <string name="time_picker_minute_label">minute</string>
+    <!-- The title for the time picker dialog. [CHAR LIMIT=NONE] -->
+    <string name="time_picker_header_text">Set time</string>
+    <!-- Error shown to the user if they type in invalid hour or minute in the time picker. [CHAR LIMIT=NONE] -->
+    <string name="time_picker_input_error">Enter a valid time</string>
+    <!-- Label shown to the user in time picker to let them know that should type in time. [CHAR LIMIT=NONE] -->
+    <string name="time_picker_prompt_label">Type in time</string>
+    <!-- Accessibility string used for describing the button in time picker that changes the dialog to text input mode. [CHAR LIMIT=NONE] -->
+    <string name="time_picker_text_input_mode_description">Switch to text input mode for the time input.</string>
+    <!-- Accessibility string used for describing the button in time picker that changes the dialog to circular clock mode. [CHAR LIMIT=NONE] -->
+    <string name="time_picker_radial_mode_description">Switch to clock mode for the time input.</string>
+
+    <!-- Accessibility title for the autofill dialog used to select a list of options to autofill an activity. [CHAR LIMIT=NONE] -->
+    <string name="autofill_picker_accessibility_title">Autofill options</string>
+
+    <!-- Accessibility title for the autofill dialog used to ask user to save the information on the screen by sending it to an Autofill Service. [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_accessibility_title">Save for Autofill</string>
+
+    <!-- Toast message shown when user manually request autofill but service could not figure out the data that would autofill the screen contents. [CHAR LIMIT=NONE] -->
+    <string name="autofill_error_cannot_autofill">Contents can\u2019t be autofilled</string>
+
+    <!-- Accessibility string to announce there are no autofill suggestions in the autofill picker. [CHAR LIMIT=NONE] -->
+    <string name="autofill_picker_no_suggestions">No autofill suggestions</string>
+
+    <!-- Accessibility string to announce there are some autofill suggestions in the autofill picker. [CHAR LIMIT=NONE] -->
+    <plurals name="autofill_picker_some_suggestions">
+        <item quantity="one">One autofill suggestion</item>
+        <item quantity="other"><xliff:g id="count" example="Two">%1$s</xliff:g> autofill suggestions</item>
+    </plurals>
+
+    <!-- Title for the autofill save dialog shown when the the contents of the activity can be saved
+         by an autofill service, but the service does not know what the activity represents [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_title">Save to &lt;b><xliff:g id="label" example="MyPass">%1$s</xliff:g>&lt;/b>?</string>
+    <!-- Title for the autofill save dialog shown when the the contents of the activity can be saved
+         by an autofill service, and the service does knows what the activity represents (for example, credit card info) [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_title_with_type">Save <xliff:g id="type" example="Credit Card">%1$s</xliff:g> to &lt;b><xliff:g id="label" example="MyPass">%2$s</xliff:g>&lt;/b>?</string>
+    <!-- Title for the autofill save dialog shown when the the contents of the activity can be saved
+         by an autofill service, and the service does knows what the activity represents, and it represents 2 types of
+         data (for example, password and credit card info) [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_title_with_2types">Save <xliff:g id="type" example="Password">%1$s</xliff:g> and <xliff:g id="type" example="Credit Card">%2$s</xliff:g> to &lt;b><xliff:g id="label" example="MyPass">%3$s</xliff:g>&lt;/b>?</string>
+    <!-- Title for the autofill save dialog shown when the the contents of the activity can be saved
+         by an autofill service, and the service does knows what the activity represents, and it represents 3 types of
+         data (for example, username, password and credit card info) [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_title_with_3types">Save <xliff:g id="type" example="Username">%1$s</xliff:g>, <xliff:g id="type" example="Password">%2$s</xliff:g>, and <xliff:g id="type" example="Credit Card">%3$s</xliff:g> to &lt;b><xliff:g id="label" example="MyPass">%4$s</xliff:g>&lt;/b>?</string>
+    <!-- Label for the autofill save button [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_yes">Save</string>
+    <!-- Label for the autofill cancel button [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_no">No thanks</string>
+
+    <!-- Label for the type of data being saved for autofill when it represent user credentials with a password [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_type_password">password</string>
+    <!-- Label for the type of data being saved for autofill when it represent an address (street, city, etc.) [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_type_address">address</string>
+    <!-- Label for the type of data being saved for autofill when it represents a credit card [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_type_credit_card">credit card</string>
+    <!-- Label for the type of data being saved for autofill when it represents an username [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_type_username">username</string>
+    <!-- Label for the type of data being saved for autofill when it represents an email address [CHAR LIMIT=NONE] -->
+    <string name="autofill_save_type_email_address">email address</string>
+
+    <!-- Primary ETWS (Earthquake and Tsunami Warning System) default message for earthquake -->
+    <string name="etws_primary_default_message_earthquake">Stay calm and seek shelter nearby.</string>
+
+    <!-- Primary ETWS (Earthquake and Tsunami Warning System) default message for Tsunami -->
+    <string name="etws_primary_default_message_tsunami">Evacuate immediately from coastal regions and riverside areas to a safer place such as high ground.</string>
+
+    <!-- Primary ETWS (Earthquake and Tsunami Warning System) default message for earthquake and Tsunami -->
+    <string name="etws_primary_default_message_earthquake_and_tsunami">Stay calm and seek shelter nearby.</string>
+
+    <!-- Primary ETWS (Earthquake and Tsunami Warning System) default message for test -->
+    <string name="etws_primary_default_message_test">Emergency messages test</string>
+
+    <!-- Primary ETWS (Earthquake and Tsunami Warning System) default message for others -->
+    <string name="etws_primary_default_message_others"></string>
+
+    <!-- Title of notification when UE fails to register network with MM reject cause code. -->
+    <string name="mmcc_authentication_reject">SIM not allowed</string>
+    <string name="mmcc_imsi_unknown_in_hlr">SIM not provisioned</string>
+    <string name="mmcc_illegal_ms">SIM not allowed</string>
+    <string name="mmcc_illegal_me">Phone not allowed</string>
 </resources>

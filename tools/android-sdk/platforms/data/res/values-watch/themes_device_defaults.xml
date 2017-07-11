@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Copyright (C) 2014 The Android Open Source Project
+<!-- Copyright (C) 2011 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -18,26 +18,329 @@
 ===============================================================
                         PLEASE READ
 ===============================================================
-This file contains the themes that are the Device Defaults.
-If you want to edit themes to skin your device, do it here.
-We recommend that you do not edit themes.xml and instead edit
-this file.
-
-Editing this file instead of themes.xml will greatly simplify
+This file contains the themes that are the Device Defaults on
+Watch. If you want to edit themes to skin your device, do it
+here. Editing this file instead of themes.xml will greatly simplify
 merges for future platform versions and CTS compliance will be
 easier.
+
+You should also have a look at themes.xml, to
+understand why we define Dialogs and Settings with color
+palette Dark. It's because themes.xml modify Material in
+a similar way.
 ===============================================================
                         PLEASE READ
 ===============================================================
  -->
 <resources>
+    <style name="Theme.DeviceDefault" parent="Theme.DeviceDefaultBase">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault} with no action bar -->
+    <style name="Theme.DeviceDefault.NoActionBar" parent="Theme.Material.NoActionBar">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault} with no action bar and no status bar.  This theme
+         sets {@link android.R.attr#windowFullscreen} to true.  -->
+    <style name="Theme.DeviceDefault.NoActionBar.Fullscreen" parent="Theme.Material.NoActionBar.Fullscreen">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault} with no action bar and no status bar and
+    extending in to overscan region.  This theme
+    sets {@link android.R.attr#windowFullscreen} and {@link android.R.attr#windowOverscan}
+    to true. -->
+    <style name="Theme.DeviceDefault.NoActionBar.Overscan" parent="Theme.Material.NoActionBar.Overscan">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault} that has no title bar and translucent
+         system decor.  This theme sets {@link android.R.attr#windowTranslucentStatus} and
+         {@link android.R.attr#windowTranslucentNavigation} to true. -->
+    <style name="Theme.DeviceDefault.NoActionBar.TranslucentDecor" parent="Theme.Material.NoActionBar.TranslucentDecor">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
     <!-- Theme used for the intent picker activity. -->
-    <style name="Theme.DeviceDefault.Resolver" parent="Theme.Material">
+    <style name="Theme.DeviceDefault.Resolver">
         <item name="colorControlActivated">?attr/colorControlHighlight</item>
         <item name="listPreferredItemPaddingStart">?attr/dialogPreferredPadding</item>
         <item name="listPreferredItemPaddingEnd">?attr/dialogPreferredPadding</item>
     </style>
 
     <!-- Use a dark theme for watches. -->
-    <style name="Theme.DeviceDefault.System" parent="Theme.Material" />
+    <style name="Theme.DeviceDefault.System" />
+
+    <!-- DeviceDefault style for input methods, which is used by the
+         {@link android.inputmethodservice.InputMethodService} class.-->
+    <style name="Theme.DeviceDefault.InputMethod" parent="Theme.DeviceDefault.Panel">
+        <item name="windowAnimationStyle">@style/Animation.InputMethod</item>
+        <item name="imeFullscreenBackground">?colorBackground</item>
+        <item name="imeExtractEnterAnimation">@anim/input_method_extract_enter</item>
+        <item name="windowSwipeToDismiss">false</item>
+    </style>
+
+    <!-- DeviceDefault theme for dialog windows and activities. In contrast to Material, the
+    watch theme is not floating. You can set this theme on an activity if you would like to make
+    an activity that looks like a Dialog.-->
+    <style name="Theme.DeviceDefault.Dialog" parent="Theme.Material.Dialog" >
+        <item name="windowIsFloating">false</item>
+        <item name="windowTitleStyle">@style/DialogWindowTitle.DeviceDefault</item>
+        <item name="windowAnimationStyle">@style/Animation.DeviceDefault.Dialog</item>
+
+        <item name="buttonBarStyle">@style/DeviceDefault.ButtonBar.AlertDialog</item>
+        <item name="borderlessButtonStyle">@style/Widget.DeviceDefault.Button.Borderless.Small</item>
+
+        <item name="textAppearance">@style/TextAppearance.DeviceDefault</item>
+        <item name="textAppearanceInverse">@style/TextAppearance.DeviceDefault.Inverse</item>
+
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for a window that should look like the Settings app.  -->
+    <style name="Theme.DeviceDefault.Settings" parent="Theme.DeviceDefault"/>
+    <style name="Theme.DeviceDefault.Settings.NoActionBar" parent="Theme.DeviceDefault"/>
+    <style name="Theme.DeviceDefault.Settings.BaseDialog" parent="Theme.DeviceDefault.Dialog"/>
+    <style name="Theme.DeviceDefault.Settings.Dialog" parent="Theme.DeviceDefault.Settings.BaseDialog"/>
+    <style name="Theme.DeviceDefault.Settings.DialogWhenLarge" parent="Theme.DeviceDefault.DialogWhenLarge"/>
+    <style name="Theme.DeviceDefault.Settings.DialogWhenLarge.NoActionBar" parent="Theme.DeviceDefault.DialogWhenLarge.NoActionBar"/>
+    <style name="Theme.DeviceDefault.Settings.Dialog.Presentation" parent="Theme.DeviceDefault.Dialog.Presentation"/>
+    <style name="Theme.DeviceDefault.Settings.SearchBar" parent="Theme.DeviceDefault.SearchBar"/>
+
+    <style name="Theme.DeviceDefault.Settings.Dialog.Alert" parent="Theme.Material.Dialog.Alert">
+        <item name="windowIsFloating">false</item>
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Settings.CompactMenu" parent="Theme.Material.CompactMenu">
+        <item name="windowIsFloating">false</item>
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Dialog} that has a nice minimum width for a
+    regular dialog. -->
+    <style name="Theme.DeviceDefault.Dialog.MinWidth" parent="Theme.Material.Dialog.MinWidth">
+        <item name="windowIsFloating">false</item>
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Dialog} without an action bar -->
+    <style name="Theme.DeviceDefault.Dialog.NoActionBar" parent="Theme.Material.Dialog.NoActionBar">
+        <item name="windowIsFloating">false</item>
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- Variant of {@link #Theme_DeviceDefault_Dialog_NoActionBar} that has a nice minimum width
+    for a regular dialog. -->
+    <style name="Theme.DeviceDefault.Dialog.NoActionBar.MinWidth" parent="Theme.Material.Dialog.NoActionBar.MinWidth">
+        <item name="windowIsFloating">false</item>
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+   <!-- DeviceDefault theme for a window that will be displayed either full-screen on smaller
+    screens (small, normal) or as a dialog on larger screens (large, xlarge). -->
+    <style name="Theme.DeviceDefault.DialogWhenLarge" parent="Theme.Material.DialogWhenLarge">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for a window without an action bar that will be displayed either
+    full-screen on smaller screens (small, normal) or as a dialog on larger screens (large,
+    xlarge). -->
+    <style name="Theme.DeviceDefault.DialogWhenLarge.NoActionBar" parent="Theme.Material.DialogWhenLarge.NoActionBar">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for a presentation window on a secondary display. -->
+    <style name="Theme.DeviceDefault.Dialog.Presentation" parent="Theme.Material.Dialog.Presentation">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for panel windows. This removes all extraneous window
+    decorations, so you basically have an empty rectangle in which to place your content. It makes
+    the window floating, with a transparent background, and turns off dimming behind the window. -->
+    <style name="Theme.DeviceDefault.Panel" parent="Theme.Material.Panel">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for windows that want to have the user's selected wallpaper appear
+    behind them. -->
+    <style name="Theme.DeviceDefault.Wallpaper" parent="Theme.Material.Wallpaper">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault theme for windows that want to have the user's selected wallpaper appear
+    behind them and without an action bar. -->
+    <style name="Theme.DeviceDefault.Wallpaper.NoTitleBar" parent="Theme.Material.Wallpaper.NoTitleBar">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <!-- DeviceDefault style for input methods, which is used by the
+         {@link android.service.voice.VoiceInteractionSession} class.-->
+    <style name="Theme.DeviceDefault.VoiceInteractionSession" parent="Theme.Material.VoiceInteractionSession">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Dialog.Alert" parent="Theme.Material.Dialog.Alert">
+        <item name="windowTitleStyle">@style/DialogWindowTitle.DeviceDefault</item>
+
+        <!-- Color palette Dialog -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.SearchBar" parent="Theme.Material.SearchBar">
+        <!-- Color palette Dark -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
+
+    <style name="Theme.DeviceDefault.Dialog.NoFrame" parent="Theme.Material.Dialog.NoFrame">
+        <item name="windowIsFloating">false</item>
+        <!-- Color palette Dialog -->
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackground">?attr/colorBackgroundFloating</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+    </style>
 </resources>

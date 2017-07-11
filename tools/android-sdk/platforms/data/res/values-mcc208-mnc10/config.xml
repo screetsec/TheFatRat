@@ -31,28 +31,4 @@
         <item>[ApnSettingV3]INTERNET NRJ,internetnrj,,,,,,,,,208,10,,DUN,,,true,0,,,,,,,gid,4E</item>
     </string-array>
 
-    <string-array translatable="false" name="config_operatorConsideredNonRoaming">
-        <item>21401</item>
-        <item>21402</item>
-        <item>21403</item>
-        <item>21404</item>
-        <item>21405</item>
-        <item>21406</item>
-        <item>21407</item>
-        <item>21408</item>
-        <item>21409</item>
-        <item>21410</item>
-        <item>21411</item>
-        <item>21412</item>
-        <item>21413</item>
-        <item>21414</item>
-        <item>21415</item>
-        <item>21416</item>
-        <item>21417</item>
-        <item>21418</item>
-        <item>21419</item>
-        <item>21420</item>
-        <item>21421</item>
-    </string-array>
-
 </resources>

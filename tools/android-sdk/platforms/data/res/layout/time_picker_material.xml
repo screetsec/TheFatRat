@@ -34,4 +34,53 @@
         android:layout_marginTop="@dimen/timepicker_radial_picker_top_margin"
         android:layout_marginStart="@dimen/timepicker_radial_picker_horizontal_margin"
         android:layout_marginEnd="@dimen/timepicker_radial_picker_horizontal_margin" />
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/input_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/dialog_padding_material"
+        android:paddingEnd="@dimen/dialog_padding_material"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:includeFontPadding="false"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="34sp"
+        android:textColor="@color/white"
+        android:text="@string/time_picker_header_text"/>
+    <android.widget.TextInputTimePickerView
+        android:id="@+id/input_mode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="?attr/dialogPreferredPadding"
+        android:paddingEnd="?attr/dialogPreferredPadding"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/toggle_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:padding="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:tint="?attr/colorControlNormal"
+            android:src="@drawable/btn_keyboard_key_material"
+            android:contentDescription="@string/time_picker_text_input_mode_description" />
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+        <ViewStub
+            android:id="@id/buttonPanel"
+            android:layout="@layout/alert_dialog_button_bar_material"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layoutDirection="locale" />
+    </LinearLayout>
+
 </LinearLayout>

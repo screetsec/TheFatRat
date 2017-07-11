@@ -45,6 +45,7 @@
             android:padding="8dp"
             android:background="?attr/selectableItemBackground"
             android:textAppearance="@style/TextAppearance.Material.DatePicker.YearLabel"
+            android:pointerIcon="hand"
             android:nextFocusForward="@+id/prev" />
 
         <TextView
@@ -55,6 +56,7 @@
             android:includeFontPadding="false"
             android:gravity="start"
             android:maxLines="@integer/date_picker_header_max_lines_material"
+            android:pointerIcon="hand"
             android:ellipsize="none" />
     </LinearLayout>
 </LinearLayout>

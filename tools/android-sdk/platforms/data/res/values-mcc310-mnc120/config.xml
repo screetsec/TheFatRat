@@ -25,9 +25,6 @@
     -->
     <integer name="config_mobile_mtu">1422</integer>
 
-    <!-- Sprint need a 70 ms delay for 3way call -->
-    <integer name="config_cdma_3waycall_flash_delay">70</integer>
-
     <!-- If this value is true, The mms content-disposition field is supported correctly.
          If false, Content-disposition fragments are ignored -->
     <bool name="config_mms_content_disposition_support">false</bool>

@@ -44,7 +44,7 @@
                 android:paddingEnd="@dimen/dialog_padding_material"
                 android:paddingBottom="8dp"
                 android:textAppearance="@style/TextAppearance.Material.Title"
-                android:gravity="center" />
+                android:gravity="center_horizontal|top" />
         </com.android.internal.widget.WatchHeaderListView>
     </FrameLayout>
 

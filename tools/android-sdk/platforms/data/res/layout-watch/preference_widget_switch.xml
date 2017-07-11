@@ -23,8 +23,9 @@
     android:layout_gravity="center"
     android:thumb="@drawable/watch_switch_thumb_material_anim"
     android:thumbTint="@color/watch_switch_thumb_color_material"
-    android:track="@drawable/watch_switch_track_material"
-    android:trackTint="?android:colorPrimary"
+    android:thumbTintMode="multiply"
+    android:track="@drawable/watch_switch_track_mtrl"
+    android:trackTint="@color/watch_switch_track_color_material"
     android:focusable="false"
     android:clickable="false"
     android:background="@null" />

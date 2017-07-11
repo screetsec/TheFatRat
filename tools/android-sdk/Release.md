@@ -1,1 +1,1 @@
-Android-Build-tools r26-RC1 
+Android-Build-tools r26

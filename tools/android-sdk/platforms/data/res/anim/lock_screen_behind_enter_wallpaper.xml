@@ -16,12 +16,12 @@
   -->
 
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:detachWallpaper="true" android:shareInterpolator="false" android:startOffset="100">
+    android:detachWallpaper="true" android:shareInterpolator="false" >
     <alpha
         android:fromAlpha="0.0" android:toAlpha="1.0"
         android:fillEnabled="true" android:fillBefore="true"
         android:interpolator="@interpolator/decelerate_quint"
-        android:duration="400"/>
+        android:duration="300"/>
 
     <translate android:fromYDelta="11%p" android:toYDelta="0"
         android:fillEnabled="true" android:fillBefore="true" android:fillAfter="true"

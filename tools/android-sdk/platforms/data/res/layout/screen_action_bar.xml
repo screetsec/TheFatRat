@@ -36,6 +36,7 @@ This is an optimized layout for a screen with the Action Bar enabled.
         style="?attr/actionBarStyle"
         android:transitionName="android:action_bar"
         android:touchscreenBlocksFocus="true"
+        android:keyboardNavigationCluster="true"
         android:gravity="top">
         <com.android.internal.widget.ActionBarView
             android:id="@+id/action_bar"
@@ -55,5 +56,6 @@ This is an optimized layout for a screen with the Action Bar enabled.
                   style="?attr/actionBarSplitStyle"
                   android:visibility="gone"
                   android:touchscreenBlocksFocus="true"
+                  android:keyboardNavigationCluster="true"
                   android:gravity="center"/>
 </com.android.internal.widget.ActionBarOverlayLayout>

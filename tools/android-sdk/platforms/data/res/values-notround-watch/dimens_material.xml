@@ -15,12 +15,16 @@
 -->
 <resources>
     <dimen name="dialog_padding_material">8dp</dimen>
-    <dimen name="preference_fragment_padding_vertical_material">0dp</dimen>
+    <dimen name="preference_fragment_padding_vertical_material">8dp</dimen>
 
-    <dimen name="list_item_padding_horizontal_material">16dp</dimen>
-    <dimen name="list_item_padding_start_material">16dp</dimen>
-    <dimen name="list_item_padding_end_material">16dp</dimen>
+    <dimen name="list_item_padding_horizontal_material">8dp</dimen>
+    <dimen name="list_item_padding_start_material">8dp</dimen>
+    <dimen name="list_item_padding_end_material">8dp</dimen>
 
-    <dimen name="dialog_list_padding_top_no_title">8dp</dimen>
-    <dimen name="dialog_list_padding_bottom_no_buttons">8dp</dimen>
+    <dimen name="dialog_list_padding_top_no_title">0dp</dimen>
+    <dimen name="dialog_list_padding_bottom_no_buttons">0dp</dimen>
+
+    <!-- Dialog padding minus control padding, used to fix alignment. -->
+    <dimen name="select_dialog_padding_start_material">8dp</dimen>
+    <dimen name="select_dialog_drawable_padding_start_material">8dp</dimen>
 </resources>

@@ -19,4 +19,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Don't clip on round screens so the list can scroll past the rounded edges. -->
     <bool name="config_preferenceFragmentClipToPadding">false</bool>
+
+    <!-- The amount to offset when scrolling to a selection in an AlertDialog -->
+    <dimen name="config_alertDialogSelectionScrollOffset">@dimen/screen_percentage_15</dimen>
 </resources>

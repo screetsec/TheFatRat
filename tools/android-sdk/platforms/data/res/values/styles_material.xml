@@ -255,6 +255,8 @@ please see styles_device_defaults.xml.
         <item name="textColor">?attr/textColorPrimary</item>
     </style>
 
+    <style name="TextAppearance.Material.NumberPicker" parent="TextAppearance.Material.Body1"/>
+
     <!-- Deprecated text styles -->
 
     <style name="TextAppearance.Material.Inverse">
@@ -424,6 +426,21 @@ please see styles_device_defaults.xml.
         <item name="textColor">@color/primary_text_secondary_when_activated_material_inverse</item>
     </style>
 
+    <style name="TextAppearance.Material.TimePicker.InputHeader" parent="TextAppearance.Material">
+        <item name="textSize">@dimen/text_size_display_1_material</item>
+        <item name="textColor">@color/white</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Material.TimePicker.InputField" parent="TextAppearance.Material">
+        <item name="textSize">@dimen/timepicker_edit_text_size</item>
+    </style>
+
+    <style name="TextAppearance.Material.TimePicker.PromptLabel" parent="TextAppearance.Material">
+        <item name="textSize">@dimen/timepicker_text_size_normal</item>
+        <item name="fontFamily">sans-serif-medium</item>
+    </style>
+
     <style name="TextAppearance.Material.DatePicker.YearLabel" parent="TextAppearance.Material">
         <item name="textColor">@color/primary_text_secondary_when_activated_material_inverse</item>
         <item name="textSize">@dimen/date_picker_year_label_size</item>
@@ -449,14 +466,14 @@ please see styles_device_defaults.xml.
     </style>
 
     <style name="TextAppearance.Material.Notification">
-        <item name="textColor">@color/secondary_text_material_light</item>
+        <item name="textColor">@color/notification_secondary_text_color_light</item>
         <item name="textSize">@dimen/notification_text_size</item>
     </style>
 
     <style name="TextAppearance.Material.Notification.Reply" />
 
     <style name="TextAppearance.Material.Notification.Title">
-        <item name="textColor">@color/primary_text_default_material_light</item>
+        <item name="textColor">@color/notification_primary_text_color_light</item>
         <item name="textSize">@dimen/notification_title_text_size</item>
     </style>
 
@@ -465,15 +482,22 @@ please see styles_device_defaults.xml.
     </style>
 
     <style name="TextAppearance.Material.Notification.Info">
-        <item name="textColor">@color/secondary_text_default_material_light</item>
+        <item name="textColor">@color/notification_secondary_text_color_light</item>
         <item name="textSize">@dimen/notification_subtext_size</item>
     </style>
 
     <style name="TextAppearance.Material.Notification.Time" parent="TextAppearance.Material.Notification.Info" />
 
+    <style name="TextAppearance.Material.Notification.Info.Ambient">
+        <item name="textSize">@dimen/notification_text_size</item>
+    </style>
+
     <style name="TextAppearance.Material.Notification.Emphasis">
         <item name="textColor">#66000000</item>
     </style>
+
+    <style name="TextAppearance.Material.ListItem" parent="TextAppearance.Material.Subhead" />
+    <style name="TextAppearance.Material.ListItemSecondary" parent="TextAppearance.Material.Body1" />
 
     <style name="Widget.Material.Notification.ProgressBar" parent="Widget.Material.Light.ProgressBar.Horizontal" />
 
@@ -548,11 +572,7 @@ please see styles_device_defaults.xml.
         <item name="textOff">@string/capital_off</item>
     </style>
 
-    <style name="Widget.Material.BaseButtonBar">
-        <item name="background">?attr/colorBackgroundFloating</item>
-    </style>
-
-    <style name="Widget.Material.ButtonBar" parent="Widget.Material.BaseButtonBar">
+    <style name="Widget.Material.ButtonBar">
         <item name="background">@null</item>
     </style>
 
@@ -684,7 +704,7 @@ please see styles_device_defaults.xml.
     </style>
 
     <style name="Widget.Material.TimePicker">
-        <item name="timePickerMode">clock</item>
+        <item name="timePickerMode">@integer/time_picker_mode_material</item>
         <item name="legacyLayout">@layout/time_picker_legacy_material</item>
         <!-- Attributes for new-style TimePicker. -->
         <item name="internalLayout">@layout/time_picker_material</item>
@@ -698,7 +718,7 @@ please see styles_device_defaults.xml.
     </style>
 
     <style name="Widget.Material.DatePicker">
-        <item name="datePickerMode">calendar</item>
+        <item name="datePickerMode">@integer/date_picker_mode_material</item>
         <item name="legacyLayout">@layout/date_picker_legacy_holo</item>
         <item name="calendarViewShown">true</item>
         <!-- Attributes for new-style DatePicker. -->
@@ -738,6 +758,10 @@ please see styles_device_defaults.xml.
 
     <style name="Widget.Material.ProgressBar" parent="Widget.ProgressBar">
         <item name="indeterminateDrawable">@drawable/progress_medium_material</item>
+        <item name="minWidth">@dimen/progress_bar_size_medium</item>
+        <item name="maxWidth">@dimen/progress_bar_size_medium</item>
+        <item name="minHeight">@dimen/progress_bar_size_medium</item>
+        <item name="maxHeight">@dimen/progress_bar_size_medium</item>
     </style>
 
     <style name="Widget.Material.ProgressBar.Inverse"/>
@@ -751,6 +775,10 @@ please see styles_device_defaults.xml.
 
     <style name="Widget.Material.ProgressBar.Small" parent="Widget.ProgressBar.Small">
         <item name="indeterminateDrawable">@drawable/progress_small_material</item>
+        <item name="minWidth">@dimen/progress_bar_size_small</item>
+        <item name="maxWidth">@dimen/progress_bar_size_small</item>
+        <item name="minHeight">@dimen/progress_bar_size_small</item>
+        <item name="maxHeight">@dimen/progress_bar_size_small</item>
     </style>
 
     <style name="Widget.Material.ProgressBar.Small.Inverse"/>
@@ -758,6 +786,10 @@ please see styles_device_defaults.xml.
 
     <style name="Widget.Material.ProgressBar.Large" parent="Widget.ProgressBar.Large">
         <item name="indeterminateDrawable">@drawable/progress_large_material</item>
+        <item name="minWidth">@dimen/progress_bar_size_large</item>
+        <item name="maxWidth">@dimen/progress_bar_size_large</item>
+        <item name="minHeight">@dimen/progress_bar_size_large</item>
+        <item name="maxHeight">@dimen/progress_bar_size_large</item>
     </style>
 
     <style name="Widget.Material.ProgressBar.Large.Inverse"/>
@@ -931,6 +963,7 @@ please see styles_device_defaults.xml.
         <item name="src">@drawable/ic_menu_moreoverflow_material</item>
         <item name="background">?attr/actionBarItemBackground</item>
         <item name="contentDescription">@string/action_menu_overflow_description</item>
+        <item name="tooltipText">@string/action_menu_overflow_description</item>
         <item name="minWidth">@dimen/action_button_min_width_overflow_material</item>
         <item name="minHeight">@dimen/action_button_min_height_material</item>
         <item name="paddingStart">@dimen/action_bar_overflow_padding_start_material</item>
@@ -1208,6 +1241,7 @@ please see styles_device_defaults.xml.
         <item name="multiChoiceItemLayout">@layout/select_dialog_multichoice_material</item>
         <item name="singleChoiceItemLayout">@layout/select_dialog_singlechoice_material</item>
         <item name="controllerType">@integer/config_alertDialogController</item>
+        <item name="selectionScrollOffset">@dimen/config_alertDialogSelectionScrollOffset</item>
     </style>
 
     <style name="AlertDialog.Material.Light" />
@@ -1246,11 +1280,19 @@ please see styles_device_defaults.xml.
     <style name="DialogWindowTitleBackground.Material.Light" />
 
     <style name="DialogWindowTitle.Material">
-        <item name="maxLines">@integer/config_dialogWindowTitleMaxLines</item>
+        <item name="maxLines">1</item>
         <item name="scrollHorizontally">true</item>
         <item name="textAppearance">@style/TextAppearance.Material.DialogWindowTitle</item>
     </style>
 
     <style name="DialogWindowTitle.Material.Light" />
+
+    <style name="Notification.Header" parent="">
+        <item name="paddingTop">@dimen/notification_header_padding_top</item>
+        <item name="paddingBottom">@dimen/notification_header_padding_bottom</item>
+        <item name="layout_marginBottom">5dp</item>
+        <item name="paddingStart">@dimen/notification_content_margin_start</item>
+        <item name="paddingEnd">16dp</item>
+    </style>
 
 </resources>

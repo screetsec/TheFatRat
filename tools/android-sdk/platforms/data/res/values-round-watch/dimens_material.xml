@@ -23,4 +23,8 @@
 
     <dimen name="dialog_list_padding_top_no_title">@dimen/screen_percentage_15</dimen>
     <dimen name="dialog_list_padding_bottom_no_buttons">@dimen/screen_percentage_15</dimen>
+
+    <!-- Dialog padding minus control padding, used to fix alignment. -->
+    <dimen name="select_dialog_padding_start_material">@dimen/screen_percentage_15</dimen>
+    <dimen name="select_dialog_drawable_padding_start_material">8dp</dimen>
 </resources>

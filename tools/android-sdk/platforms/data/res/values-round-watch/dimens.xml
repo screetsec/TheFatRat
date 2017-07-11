@@ -24,4 +24,5 @@
     <item name="input_extract_action_margin_bottom" type="fraction">2.1%</item>
     <item name="input_extract_action_button_width" type="dimen">32dp</item>
     <item name="input_extract_action_button_height" type="dimen">32dp</item>
+    <item name="input_extract_action_icon_padding" type="dimen">5dp</item>
 </resources>

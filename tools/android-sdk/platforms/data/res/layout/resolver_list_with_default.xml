@@ -45,6 +45,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="20dp"
+                android:src="@drawable/resolver_icon_placeholder"
                 android:scaleType="fitCenter" />
 
             <TextView

@@ -129,6 +129,7 @@
 
     <!-- Dialog padding minus control padding, used to fix alignment. -->
     <dimen name="select_dialog_padding_start_material">20dp</dimen>
+    <dimen name="select_dialog_drawable_padding_start_material">20dp</dimen>
 
     <dimen name="seekbar_track_background_height_material">2dp</dimen>
     <dimen name="seekbar_track_progress_height_material">2dp</dimen>
@@ -148,6 +149,7 @@
     <dimen name="timepicker_radial_picker_dimen">296dp</dimen>
     <dimen name="timepicker_radial_picker_top_margin">16dp</dimen>
     <dimen name="timepicker_radial_picker_horizontal_margin">16dp</dimen>
+    <dimen name="timepicker_edit_text_size">24sp</dimen>
 
     <!-- Used by RadialTimePicker in clock-style TimePicker. -->
     <dimen name="timepicker_selector_radius">20dp</dimen>
@@ -189,4 +191,13 @@
     <dimen name="day_picker_button_margin_top">0dp</dimen>
 
     <dimen name="datepicker_view_animator_height">226dp</dimen>
+
+    <!-- Date and time picker legacy dimens -->
+    <dimen name="picker_top_margin">16dip</dimen>
+    <dimen name="picker_bottom_margin">16dip</dimen>
+
+    <!-- Progress bar dimens -->
+    <dimen name="progress_bar_size_small">16dip</dimen>
+    <dimen name="progress_bar_size_medium">48dp</dimen>
+    <dimen name="progress_bar_size_large">76dp</dimen>
 </resources>

@@ -45,10 +45,6 @@
 
     <timezone code="am">Asia/Yerevan</timezone>
 
-    <!-- NETHERLANDS ANTILLES, -4:00 -->
-
-    <timezone code="an">America/Curacao</timezone>
-
     <!-- ANGOLA, 1:00 -->
 
     <timezone code="ao">Africa/Luanda</timezone>
@@ -56,7 +52,6 @@
     <!-- ANTARCTICA, 12:00 -->
 
     <timezone code="aq">Antarctica/McMurdo</timezone>
-    <timezone code="aq">Antarctica/South_Pole</timezone>
 
     <!-- ANTARCTICA, 10:00 -->
 
@@ -70,14 +65,21 @@
 
     <timezone code="aq">Antarctica/Davis</timezone>
 
-    <!-- ANTARCTICA, 6:00 -->
+    <!-- ANTARCTICA, 5:00 -->
 
     <timezone code="aq">Antarctica/Mawson</timezone>
+
+    <!-- ANTARCTICA, 6:00 -->
+
     <timezone code="aq">Antarctica/Vostok</timezone>
 
     <!-- ANTARCTICA, 3:00 -->
 
     <timezone code="aq">Antarctica/Syowa</timezone>
+
+    <!-- ANTARCTICA, 0:00 -->
+
+    <timezone code="aq">Antarctica/Troll</timezone>
 
     <!-- ANTARCTICA, -3:00 -->
 
@@ -91,12 +93,14 @@
 
     <timezone code="ar">America/Argentina/Buenos_Aires</timezone>
     <timezone code="ar">America/Argentina/Cordoba</timezone>
+    <timezone code="ar">America/Argentina/Salta</timezone>
     <timezone code="ar">America/Argentina/Jujuy</timezone>
     <timezone code="ar">America/Argentina/Tucuman</timezone>
     <timezone code="ar">America/Argentina/Catamarca</timezone>
     <timezone code="ar">America/Argentina/La_Rioja</timezone>
     <timezone code="ar">America/Argentina/San_Juan</timezone>
     <timezone code="ar">America/Argentina/Mendoza</timezone>
+    <timezone code="ar">America/Argentina/San_Luis</timezone>
     <timezone code="ar">America/Argentina/Rio_Gallegos</timezone>
     <timezone code="ar">America/Argentina/Ushuaia</timezone>
 
@@ -116,6 +120,9 @@
     <timezone code="au">Australia/Hobart</timezone>
     <timezone code="au">Australia/Currie</timezone>
     <timezone code="au">Australia/Lindeman</timezone>
+
+    <!-- AUSTRALIA, 11:00 -->
+    <timezone code="au">Antarctica/Macquarie</timezone>
 
     <!-- AUSTRALIA, 10:30 -->
 
@@ -183,6 +190,10 @@
 
     <timezone code="bj">Africa/Porto-Novo</timezone>
 
+    <!-- Saint Barthélemy, -4:00 -->
+
+    <timezone code="bl">America/St_Barthelemy</timezone>
+
     <!-- BERMUDA, -4:00 -->
 
     <timezone code="bm">Atlantic/Bermuda</timezone>
@@ -194,6 +205,10 @@
     <!-- BOLIVIA, -4:00 -->
 
     <timezone code="bo">America/La_Paz</timezone>
+
+    <!-- Caribbean Netherlands, -4:00 -->
+
+    <timezone code="bq">America/Kralendijk</timezone>
 
     <!-- BRAZIL, -2:00 -->
 
@@ -208,6 +223,7 @@
     <timezone code="br">America/Araguaina</timezone>
     <timezone code="br">America/Maceio</timezone>
     <timezone code="br">America/Bahia</timezone>
+    <timezone code="br">America/Santarem</timezone>
 
     <!-- BRAZIL, -4:00 -->
 
@@ -216,6 +232,9 @@
     <timezone code="br">America/Cuiaba</timezone>
     <timezone code="br">America/Porto_Velho</timezone>
     <timezone code="br">America/Boa_Vista</timezone>
+
+    <!-- BRAZIL, -5:00 -->
+
     <timezone code="br">America/Eirunepe</timezone>
     <timezone code="br">America/Rio_Branco</timezone>
 
@@ -231,7 +250,7 @@
 
     <timezone code="bw">Africa/Gaborone</timezone>
 
-    <!-- BELARUS, 2:00 -->
+    <!-- BELARUS, 3:00 -->
 
     <timezone code="by">Europe/Minsk</timezone>
 
@@ -254,12 +273,10 @@
     <!-- CANADA, -5:00 -->
 
     <timezone code="ca">America/Toronto</timezone>
-    <timezone code="ca">America/Montreal</timezone>
     <timezone code="ca">America/Nipigon</timezone>
     <timezone code="ca">America/Thunder_Bay</timezone>
     <timezone code="ca">America/Iqaluit</timezone>
     <timezone code="ca">America/Pangnirtung</timezone>
-    <timezone code="ca">America/Resolute</timezone>
     <timezone code="ca">America/Atikokan</timezone>
 
     <!-- CANADA, -6:00 -->
@@ -269,6 +286,7 @@
     <timezone code="ca">America/Rankin_Inlet</timezone>
     <timezone code="ca">America/Rainy_River</timezone>
     <timezone code="ca">America/Swift_Current</timezone>
+    <timezone code="ca">America/Resolute</timezone>
 
     <!-- CANADA, -7:00 -->
 
@@ -277,6 +295,8 @@
     <timezone code="ca">America/Yellowknife</timezone>
     <timezone code="ca">America/Inuvik</timezone>
     <timezone code="ca">America/Dawson_Creek</timezone>
+    <timezone code="ca">America/Creston</timezone>
+    <timezone code="ca">America/Fort_Nelson</timezone>
 
     <!-- CANADA, -8:00 -->
 
@@ -316,6 +336,10 @@
 
     <timezone code="ck">Pacific/Rarotonga</timezone>
 
+    <!-- CHILE, -3:00 -->
+
+    <timezone code="cl">America/Punta_Arenas</timezone>
+
     <!-- CHILE, -4:00 -->
 
     <timezone code="cl">America/Santiago</timezone>
@@ -331,10 +355,10 @@
     <!-- CHINA, 8:00 -->
 
     <timezone code="cn">Asia/Shanghai</timezone>
-    <timezone code="cn">Asia/Harbin</timezone>
-    <timezone code="cn">Asia/Chongqing</timezone>
+
+    <!-- CHINA, 6:00 -->
+
     <timezone code="cn">Asia/Urumqi</timezone>
-    <timezone code="cn">Asia/Kashgar</timezone>
 
     <!-- COLOMBIA, -5:00 -->
 
@@ -352,6 +376,10 @@
 
     <timezone code="cv">Atlantic/Cape_Verde</timezone>
 
+    <!-- Curaçao, -4:00 -->
+
+    <timezone code="cw">America/Curacao</timezone>
+
     <!-- CHRISTMAS ISLAND, 7:00 -->
 
     <timezone code="cx">Indian/Christmas</timezone>
@@ -360,6 +388,10 @@
 
     <timezone code="cy">Asia/Nicosia</timezone>
 
+    <!-- CYPRUS, 3:00 -->
+
+    <timezone code="cy">Asia/Famagusta</timezone>
+
     <!-- CZECH REPUBLIC, 1:00 -->
 
     <timezone code="cz">Europe/Prague</timezone>
@@ -367,6 +399,7 @@
     <!-- GERMANY, 1:00 -->
 
     <timezone code="de">Europe/Berlin</timezone>
+    <timezone code="de">Europe/Busingen</timezone>
 
     <!-- DJIBOUTI, 3:00 -->
 
@@ -433,18 +466,18 @@
 
     <timezone code="fj">Pacific/Fiji</timezone>
 
-    <!-- FALKLAND ISLANDS (MALVINAS), -4:00 -->
+    <!-- FALKLAND ISLANDS (MALVINAS), -3:00 -->
 
     <timezone code="fk">Atlantic/Stanley</timezone>
 
     <!-- MICRONESIA, FEDERATED STATES OF, 11:00 -->
 
-    <timezone code="fm">Pacific/Ponape</timezone>
+    <timezone code="fm">Pacific/Pohnpei</timezone>
     <timezone code="fm">Pacific/Kosrae</timezone>
 
     <!-- MICRONESIA, FEDERATED STATES OF, 10:00 -->
 
-    <timezone code="fm">Pacific/Truk</timezone>
+    <timezone code="fm">Pacific/Chuuk</timezone>
 
     <!-- FAROE ISLANDS, 0:00 -->
 
@@ -589,7 +622,7 @@
 
     <!-- INDIA, 5:30 -->
 
-    <timezone code="in">Asia/Calcutta</timezone>
+    <timezone code="in">Asia/Kolkata</timezone>
 
     <!-- BRITISH INDIAN OCEAN TERRITORY, 6:00 -->
 
@@ -659,7 +692,7 @@
 
     <timezone code="kn">America/St_Kitts</timezone>
 
-    <!-- KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF, 9:00 -->
+    <!-- KOREA, DEMOCRATIC PEOPLE'S REPUBLIC OF, 8:30 -->
 
     <timezone code="kp">Asia/Pyongyang</timezone>
 
@@ -685,6 +718,7 @@
     <timezone code="kz">Asia/Aqtau</timezone>
     <timezone code="kz">Asia/Oral</timezone>
     <timezone code="kz">Asia/Aqtobe</timezone>
+    <timezone code="kz">Asia/Atyrau</timezone>
 
     <!-- LAO PEOPLE'S DEMOCRATIC REPUBLIC, 7:00 -->
 
@@ -746,6 +780,10 @@
 
     <timezone code="me">Europe/Podgorica</timezone>
 
+    <!-- Collectivity of Saint Martin, -4:00 -->
+
+    <timezone code="mf">America/Marigot</timezone>
+
     <!-- MADAGASCAR, 3:00 -->
 
     <timezone code="mg">Indian/Antananarivo</timezone>
@@ -765,7 +803,7 @@
 
     <!-- MYANMAR, 6:30 -->
 
-    <timezone code="mm">Asia/Rangoon</timezone>
+    <timezone code="mm">Asia/Yangon</timezone>
 
     <!-- MONGOLIA, 8:00 -->
 
@@ -815,15 +853,21 @@
     <!-- MEXICO, -6:00 -->
 
     <timezone code="mx">America/Mexico_City</timezone>
-    <timezone code="mx">America/Cancun</timezone>
     <timezone code="mx">America/Merida</timezone>
     <timezone code="mx">America/Monterrey</timezone>
+    <timezone code="mx">America/Matamoros</timezone>
+    <timezone code="mx">America/Bahia_Banderas</timezone>
+
+    <!-- MEXICO, -5:00 -->
+
+    <timezone code="mx">America/Cancun</timezone>
 
     <!-- MEXICO, -7:00 -->
 
     <timezone code="mx">America/Chihuahua</timezone>
     <timezone code="mx">America/Hermosillo</timezone>
     <timezone code="mx">America/Mazatlan</timezone>
+    <timezone code="mx">America/Ojinaga</timezone>
 
     <!-- MEXICO, -8:00 -->
 
@@ -872,7 +916,7 @@
 
     <!-- NEPAL, 5:45 -->
 
-    <timezone code="np">Asia/Katmandu</timezone>
+    <timezone code="np">Asia/Kathmandu</timezone>
 
     <!-- NAURU, 12:00 -->
 
@@ -918,6 +962,10 @@
 
     <timezone code="pg">Pacific/Port_Moresby</timezone>
 
+    <!-- PAPUA NEW GUINEA, 11:00 -->
+
+    <timezone code="pg">Pacific/Bougainville</timezone>
+
     <!-- PHILIPPINES, 8:00 -->
 
     <timezone code="ph">Asia/Manila</timezone>
@@ -945,6 +993,7 @@
     <!-- PALESTINE, 2:00 -->
 
     <timezone code="ps">Asia/Gaza</timezone>
+    <timezone code="ps">Asia/Hebron</timezone>
 
     <!-- PORTUGAL, 0:00 -->
 
@@ -987,15 +1036,19 @@
     <!-- RUSSIAN FEDERATION, 11:00 -->
 
     <timezone code="ru">Asia/Magadan</timezone>
+    <timezone code="ru">Asia/Sakhalin</timezone>
+    <timezone code="ru">Asia/Srednekolymsk</timezone>
 
     <!-- RUSSIAN FEDERATION, 10:00 -->
 
     <timezone code="ru">Asia/Vladivostok</timezone>
-    <timezone code="ru">Asia/Sakhalin</timezone>
+    <timezone code="ru">Asia/Ust-Nera</timezone>
 
     <!-- RUSSIAN FEDERATION, 9:00 -->
 
     <timezone code="ru">Asia/Yakutsk</timezone>
+    <timezone code="ru">Asia/Chita</timezone>
+    <timezone code="ru">Asia/Khandyga</timezone>
 
     <!-- RUSSIAN FEDERATION, 8:00 -->
 
@@ -1004,10 +1057,13 @@
     <!-- RUSSIAN FEDERATION, 7:00 -->
 
     <timezone code="ru">Asia/Krasnoyarsk</timezone>
+    <timezone code="ru">Asia/Novosibirsk</timezone>
+    <timezone code="ru">Asia/Barnaul</timezone>
+    <timezone code="ru">Asia/Novokuznetsk</timezone>
+    <timezone code="ru">Asia/Tomsk</timezone>
 
     <!-- RUSSIAN FEDERATION, 6:00 -->
 
-    <timezone code="ru">Asia/Novosibirsk</timezone>
     <timezone code="ru">Asia/Omsk</timezone>
 
     <!-- RUSSIAN FEDERATION, 5:00 -->
@@ -1017,11 +1073,16 @@
     <!-- RUSSIAN FEDERATION, 4:00 -->
 
     <timezone code="ru">Europe/Samara</timezone>
+    <timezone code="ru">Europe/Astrakhan</timezone>
+    <timezone code="ru">Europe/Ulyanovsk</timezone>
+    <timezone code="ru">Europe/Saratov</timezone>
 
     <!-- RUSSIAN FEDERATION, 3:00 -->
 
     <timezone code="ru">Europe/Moscow</timezone>
     <timezone code="ru">Europe/Volgograd</timezone>
+    <timezone code="ru">Europe/Kirov</timezone>
+    <timezone code="ru">Europe/Simferopol</timezone>
 
     <!-- RUSSIAN FEDERATION, 2:00 -->
 
@@ -1091,6 +1152,10 @@
 
     <timezone code="sr">America/Paramaribo</timezone>
 
+    <!-- South Sudan, 3:00 -->
+
+    <timezone code="ss">Africa/Juba</timezone>
+
     <!-- SAO TOME AND PRINCIPE, 0:00 -->
 
     <timezone code="st">Africa/Sao_Tome</timezone>
@@ -1098,6 +1163,10 @@
     <!-- EL SALVADOR, -6:00 -->
 
     <timezone code="sv">America/El_Salvador</timezone>
+
+    <!-- Sint Maarten, -4:00 -->
+
+    <timezone code="sx">America/Lower_Princes</timezone>
 
     <!-- SYRIAN ARAB REPUBLIC, 2:00 -->
 
@@ -1107,7 +1176,7 @@
 
     <timezone code="sz">Africa/Mbabane</timezone>
 
-    <!-- TURKS AND CAICOS ISLANDS, -5:00 -->
+    <!-- TURKS AND CAICOS ISLANDS, -4:00 -->
 
     <timezone code="tc">America/Grand_Turk</timezone>
 
@@ -1131,7 +1200,7 @@
 
     <timezone code="tj">Asia/Dushanbe</timezone>
 
-    <!-- TOKELAU, -10:00 -->
+    <!-- TOKELAU, +13:00 -->
 
     <timezone code="tk">Pacific/Fakaofo</timezone>
 
@@ -1151,7 +1220,7 @@
 
     <timezone code="to">Pacific/Tongatapu</timezone>
 
-    <!-- TURKEY, 2:00 -->
+    <!-- TURKEY, 3:00 -->
 
     <timezone code="tr">Europe/Istanbul</timezone>
 
@@ -1176,7 +1245,6 @@
     <timezone code="ua">Europe/Kiev</timezone>
     <timezone code="ua">Europe/Uzhgorod</timezone>
     <timezone code="ua">Europe/Zaporozhye</timezone>
-    <timezone code="ua">Europe/Simferopol</timezone>
 
     <!-- UGANDA, 3:00 -->
 
@@ -1185,10 +1253,6 @@
     <!-- UNITED STATES MINOR OUTLYING ISLANDS, 12:00 -->
 
     <timezone code="um">Pacific/Wake</timezone>
-
-    <!-- UNITED STATES MINOR OUTLYING ISLANDS, -10:00 -->
-
-    <timezone code="um">Pacific/Johnston</timezone>
 
     <!-- UNITED STATES MINOR OUTLYING ISLANDS, -11:00 -->
 
@@ -1214,12 +1278,13 @@
     <timezone code="us">America/Menominee</timezone>
     <timezone code="us">America/North_Dakota/Center</timezone>
     <timezone code="us">America/North_Dakota/New_Salem</timezone>
+    <timezone code="us">America/Indiana/Tell_City</timezone>
+    <timezone code="us">America/North_Dakota/Beulah</timezone>
 
     <!-- UNITED STATES, -7:00 -->
 
     <timezone code="us">America/Denver</timezone>
     <timezone code="us">America/Boise</timezone>
-    <timezone code="us">America/Shiprock</timezone>
     <timezone code="us">America/Phoenix</timezone>
 
     <!-- UNITED STATES, -8:00 -->
@@ -1232,6 +1297,8 @@
     <timezone code="us">America/Juneau</timezone>
     <timezone code="us">America/Yakutat</timezone>
     <timezone code="us">America/Nome</timezone>
+    <timezone code="us">America/Metlakatla</timezone>
+    <timezone code="us">America/Sitka</timezone>
 
     <!-- UNITED STATES, -10:00 -->
 
@@ -1255,7 +1322,7 @@
 
     <timezone code="vc">America/St_Vincent</timezone>
 
-    <!-- VENEZUELA, -4:30 -->
+    <!-- VENEZUELA, -4:00 -->
 
     <timezone code="ve">America/Caracas</timezone>
 
@@ -1269,7 +1336,7 @@
 
     <!-- VIET NAM, 7:00 -->
 
-    <timezone code="vn">Asia/Saigon</timezone>
+    <timezone code="vn">Asia/Ho_Chi_Minh</timezone>
 
     <!-- VANUATU, 11:00 -->
 
@@ -1279,7 +1346,7 @@
 
     <timezone code="wf">Pacific/Wallis</timezone>
 
-    <!-- SAMOA, -11:00 -->
+    <!-- SAMOA, 13:00 -->
 
     <timezone code="ws">Pacific/Apia</timezone>
 

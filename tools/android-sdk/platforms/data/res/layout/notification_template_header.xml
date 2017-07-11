@@ -17,26 +17,24 @@
 
 <NotificationHeaderView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:theme="@style/Theme.Material.Notification"
     android:id="@+id/notification_header"
     android:orientation="horizontal"
     android:layout_width="wrap_content"
-    android:layout_height="53dp"
+    android:layout_height="@dimen/notification_header_height"
     android:clipChildren="false"
-    android:paddingTop="10dp"
-    android:paddingBottom="16dp"
-    android:paddingStart="@dimen/notification_content_margin_start"
-    android:paddingEnd="16dp">
+    style="?attr/notificationHeaderStyle">
     <com.android.internal.widget.CachingIconView
         android:id="@+id/icon"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
+        android:layout_width="?attr/notificationHeaderIconSize"
+        android:layout_height="?attr/notificationHeaderIconSize"
         android:layout_marginEnd="3dp"
         />
     <TextView
         android:id="@+id/app_name_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Material.Notification.Info"
+        android:textAppearance="?attr/notificationHeaderTextAppearance"
         android:layout_marginStart="3dp"
         android:layout_marginEnd="2dp"
         android:singleLine="true"
@@ -45,7 +43,7 @@
         android:id="@+id/header_text_divider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Material.Notification.Info"
+        android:textAppearance="?attr/notificationHeaderTextAppearance"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:text="@string/notification_header_divider_symbol"
@@ -54,7 +52,7 @@
         android:id="@+id/header_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Material.Notification.Info"
+        android:textAppearance="?attr/notificationHeaderTextAppearance"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:visibility="gone"
@@ -63,7 +61,7 @@
         android:id="@+id/time_divider"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/TextAppearance.Material.Notification.Info"
+        android:textAppearance="?attr/notificationHeaderTextAppearance"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:text="@string/notification_header_divider_symbol"
@@ -96,7 +94,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="1dp"
         android:visibility="gone"
-        android:contentDescription="@string/expand_button_content_description"
+        android:contentDescription="@string/expand_button_content_description_collapsed"
         />
     <ImageView android:id="@+id/profile_badge"
         android:layout_width="@dimen/notification_badge_size"

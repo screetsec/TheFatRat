@@ -35,8 +35,8 @@
 
     <bool name="config_auto_attach_data_on_creation">false</bool>
 
-    <string-array translatable="false" name="config_sms_convert_destination_number_support">
-        <item>true</item>
-    </string-array>
     <string translatable="false" name="prohibit_manual_network_selection_in_gobal_mode">true</string>
+
+    <bool name="config_use_sim_language_file">true</bool>
+
 </resources>

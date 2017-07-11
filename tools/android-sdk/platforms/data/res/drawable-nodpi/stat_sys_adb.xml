@@ -1,5 +1,5 @@
 <!--
-Copyright (C) 2016 The Android Open Source Project
+Copyright (C) 2017 The Android Open Source Project
 
    Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -16,21 +16,17 @@ Copyright (C) 2016 The Android Open Source Project
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
         android:width="24dp"
         android:height="24dp"
-        android:viewportWidth="48.0"
-        android:viewportHeight="48.0">
+        android:viewportWidth="24.0"
+        android:viewportHeight="24.0">
     <path
-        android:fillColor="#A0FFFFFF"
-        android:pathData="M32.0,12.5l0.0,28.0l12.0,-5.0l0.0,-28.0z"/>
+        android:fillColor="#FF000000"
+        android:pathData="M12.0,12.0m-10.0,0.0a10.0,10.0,0,1,1,20.0,0.0a10.0,10.0,0,1,1,-20.0,0.0"
+        android:fillAlpha="0.25"/>
     <path
-        android:fillColor="#A0FFFFFF"
-        android:pathData="M4.0,40.5l12.0,-5.0l0.0,-11.0l-12.0,-12.0z"/>
+        android:fillColor="#FF000000"
+        android:pathData="M12,22 C6.4771525,22 2,17.5228475 2,12 C2,6.4771525 6.4771525,2 12,2 C17.5228475,2 22,6.4771525 22,12 C22,17.5228475 17.5228475,22 12,22 Z M12,18.5 C15.5898509,18.5 18.5,15.5898509 18.5,12 C18.5,8.41014913 15.5898509,5.5 12,5.5 C8.41014913,5.5 5.5,8.41014913 5.5,12 C5.5,15.5898509 8.41014913,18.5 12,18.5 Z"/>
     <path
-        android:fillColor="#40000000"
-        android:pathData="M44.0,35.5l-12.0,-12.0l0.0,-4.0z"/>
-    <path
-        android:fillColor="#40000000"
-        android:pathData="M4.0,12.5l12.0,12.0l0.0,4.0z"/>
-    <path
-        android:fillColor="#FFFFFFFF"
-        android:pathData="M32.0,23.5l-16.0,-16.0l-12.0,5.0l0.0,0.0l12.0,12.0l16.0,16.0l12.0,-5.0l0.0,0.0z"/>
+        android:fillColor="#FF000000"
+        android:pathData="M12,18.5 C8.41014913,18.5 5.5,15.5898509 5.5,12 C5.5,8.41014913 8.41014913,5.5 12,5.5 C15.5898509,5.5 18.5,8.41014913 18.5,12 C18.5,15.5898509 15.5898509,18.5 12,18.5 Z M12,15 C13.6568542,15 15,13.6568542 15,12 C15,10.3431458 13.6568542,9 12,9 C10.3431458,9 9,10.3431458 9,12 C9,13.6568542 10.3431458,15 12,15 Z"
+        android:fillAlpha="0.25"/>
 </vector>

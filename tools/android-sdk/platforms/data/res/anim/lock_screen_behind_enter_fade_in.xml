@@ -22,6 +22,5 @@
     android:interpolator="@interpolator/linear"
     android:fromAlpha="0" android:toAlpha="1"
     android:fillEnabled="true" android:fillBefore="true" android:fillAfter="true"
-    android:duration="250"
-    android:startOffset="100">
+    android:duration="250">
 </alpha>

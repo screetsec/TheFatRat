@@ -24,6 +24,7 @@
     android:layout_width="match_parent">
 
     <LinearLayout
+        android:id="@+id/prefs_container"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="0px"
@@ -64,8 +65,7 @@
                 android:layout_width="0px"
                 android:layout_height="match_parent"
                 android:layout_weight="@integer/preferences_right_pane_weight"
-                android:orientation="vertical"
-                android:visibility="gone" >
+                android:orientation="vertical">
 
             <!-- Breadcrumb inserted here, in certain screen sizes. In others, it will be an
                 empty layout or just padding, and PreferenceActivity will put the breadcrumbs in

@@ -28,6 +28,8 @@ android.intent.category.OPENABLE
 android.intent.category.PREFERENCE
 android.intent.category.SELECTED_ALTERNATIVE
 android.intent.category.TAB
+android.intent.category.TYPED_OPENABLE
 android.intent.category.USAGE_ACCESS_CONFIG
 android.intent.category.VOICE
+android.intent.category.VR_HOME
 android.service.quicksettings.action.QS_TILE_PREFERENCES

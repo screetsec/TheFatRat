@@ -24,7 +24,7 @@
     <LinearLayout
             android:id="@+id/notification_action_list_margin_target"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_marginTop="@dimen/notification_content_margin_top"
             android:clipToPadding="false"
@@ -38,6 +38,7 @@
             android:paddingStart="@dimen/notification_content_margin_start"
             android:paddingEnd="@dimen/notification_content_margin_end"
             android:minHeight="@dimen/notification_min_content_height"
+            android:layout_marginBottom="@dimen/notification_content_margin_bottom"
             android:clipToPadding="false"
             android:orientation="vertical"
             >
@@ -49,9 +50,7 @@
                 android:id="@+id/notification_messaging"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/notification_content_margin_bottom"
-                android:spacing="@dimen/notification_messaging_spacing"
-                android:maxHeight="165dp">
+                android:spacing="@dimen/notification_messaging_spacing" >
                 <com.android.internal.widget.ImageFloatingTextView android:id="@+id/inbox_text0"
                     style="@style/Widget.Material.Notification.MessagingText"
                     />

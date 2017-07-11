@@ -53,8 +53,7 @@
                    android:visibility="gone"
                    android:scaleType="fitCenter"
                    android:layout_below="@id/profile_button"
-                   android:layout_alignParentLeft="true"
-                   />
+                   android:layout_alignParentLeft="true"/>
         <TextView android:id="@+id/title"
                   android:layout_height="wrap_content"
                   android:layout_width="wrap_content"

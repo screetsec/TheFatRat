@@ -22,4 +22,4 @@
       android:gravity="center"
       android:singleLine="true"
       android:background="@null"
-      android:textAppearance="@style/TextAppearance.Material.Body1" />
+      android:textAppearance="@style/TextAppearance.Material.NumberPicker" />
