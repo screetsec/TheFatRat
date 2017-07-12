@@ -106,6 +106,7 @@ chmod +x fatrat
 chmod +x setup.sh
 chmod +x powerfull.sh
 chmod +x grab.sh
+chmod +x update
 echo -e $cyan "*************************"
 echo -e $cyan "**  $green Update Completed $cyan **"
 echo -e $cyan "*************************"
