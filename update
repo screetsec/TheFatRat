@@ -86,7 +86,11 @@ mv $path/config/grab.conf /tmp/frupdate/config/ >/dev/null 2>&1
 mv $path/config/listeners/* /tmp/frupdate/config/listeners/ >/dev/null 2>&1
 mv $path/logs/* /tmp/frupdate/logs/ >/dev/null 2>&1
 mv $path/output/* /tmp/frupdate/output/ >/dev/null 2>&1
-
+rm -f fatrat >/dev/null 2>&1
+rm -f powerfull.sh >/dev/null 2>&1
+rm -f grab.sh >/dev/null 2>&1
+rm -f backdoor_apk >/dev/null 2>&1
+rm -f setup.sh >/dev/null 2>&1
 echo -e $cyan "************************************"
 echo -e $cyan "**  $green Updating Fatrat from Github $cyan **"
 echo -e $cyan "************************************"
