@@ -113,7 +113,12 @@ echo "***********Your current sources.list***************"
 sclst=`cat /etc/apt/sources.list`
 echo $sclst >> "$inst"
 echo "***************Finish sources.list*****************" >> "$inst"
+dist=`uname -a`
+echo "" >> "$inst"
+echo "Your linux distribution :" >> "$inst"
+echo $dist >> "$inst"
 cat "$inst"
+echo -e $lightgreen "This log file can be found in : $inst "
 exit
 fi
 }
@@ -635,10 +640,10 @@ which x86_64-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw64 -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Mingw-w64 -> not found "
-#Powerstager requires mingw64 to work , mingw32 is not required because mingw64 can compile 32 & 64bit
+#Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
 # In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
 
-xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw-w64 mingw32 -y && apt-get autoremove -y && apt-get install mingw-w64 --force-yes -y"
+xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw-w64 mingw32 -y && apt-get autoremove -y && apt-get install mingw-w64 mingw32 --force-yes -y"
 which x86_64-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw-64 Compiler..................[ found ]"
