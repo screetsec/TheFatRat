@@ -201,7 +201,7 @@ sleep 1
 2)
 COMPILER="x86_64-w64-mingw32-gcc"
 echo ""
-echo -e $green "32bit Selected"
+echo -e $green "64bit Selected"
 sleep 1
 ;;
 *)
