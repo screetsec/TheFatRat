@@ -1,82 +1,4 @@
 #!/bin/bash
-# In case mingw64 or 32bit are not found then proceed to their instalation according to user linux architecture
-function mingwi() {
-case "$arch" in
-x86_64|aarch64) 
-#double check for mingw64
-which i686-w64-mingw32-gcc > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-#mingw64 detected
-echo -e $green "[ ✔ ] Mingw-w64 Compiler................[ found ]"
-#write mingw64 location to log file
-which i686-w64-mingw32-gcc >> "$log" 2>&1
-#Write that ming64 was detected to install.log , so user know that mingw is ok
-echo "Mingw64 -> OK" >> "$inst"
-sleep 1
-else
-echo -e $red "[ X ] mingw-w64 compiler  -> not found "
-echo -e $yellow "[ ! ]   Installing Mingw-64 "
-#Mingw64 was not found , install it using kali repository
-xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw-w64 --force-yes -y"
-#After instalation , check again for mingw64
-which i686-w64-mingw32-gcc >> "$log" 2>&1
-if [ "$?" -eq "0" ]; then
-#Instalation was succefully
-echo -e $green "[ ✔ ] Mingw64 -> OK"
-echo "Mingw64 -> OK" >> "$inst"
-else
-#Instalation of mingw64 failed
-echo -e $red "[ x ] Mingw64"
-#Write 0 to check file so setup can know in the end that something failed
-echo "0" > "$stp"
-#Write in install.log that Mingw64 instalation was not sucefully  
-echo "Mingw64 -> NOT OK" >> "$inst"
-fi
-fi
-;;
-#Same procedure as before but for mingw32
-i386|i486|i586|i686|armv7l)
-which i586-mingw32msvc-gcc > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Mingw32 Compiler..................[ found ]"
-which i586-mingw32msvc-gcc >> "$log" 2>&1
-echo "Mingw32 -> OK" >> "$inst"
-sleep 1
-else
-echo -e $red "[ X ] mingw32 compiler  -> not found "
-echo -e $yellow "[ ! ]   Installing Mingw32 "
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 --force-yes -y"
-which i586-mingw32msvc-gcc >> "$log" 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Mingw32 -> OK"
-echo "Mingw32 -> OK" >> "$inst"
-else
-echo -e $red "[ x ] Mingw32"
-echo "0" > "$stp"
-echo "Mingw32 -> NOT OK" >> "$inst"
-fi
-fi
-;;
-*)
-#none of the accepted architectures were detected , infor user to create an issue in fatrat git with his linux arch
-echo -e $red "Architecture not in list , aborting installation"
-echo -e $yellow "Please report into issues on Fatrat github this Arch : Arch=($arch)" 
-echo ""
-echo -e $green "Press any key to continue"
-read abo
-# Instalation was aborted , return user sources.list to original
-echo -e $blue "Reactivating you original repositories"
-rm -f /etc/apt/sources.list
-mv /etc/apt/sources.list.backup /etc/apt/sources.list
-#now we can remove the emergency backup securely
-rm -f /etc/apt/sources.list.fatrat
-apt-get clean
-xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
-clear
-exit 0
-;;
-esac
-}
 #Instalation of searchsploit (exploitdb)
 function ssplt() {
 
@@ -153,7 +75,7 @@ if [ "$ct" == "0" ]; then
 clear
 echo -e $red "Fatrat was not able to install some packages"
 echo ""
-echo -e $blue "Reactivating you original repositories"
+echo -e $blue "Reactivating your original repositories"
 rm -f /etc/apt/sources.list
 mv /etc/apt/sources.list.backup /etc/apt/sources.list
 #now we can remove the emergency backup securely
@@ -186,7 +108,17 @@ echo ""
 echo "Was not possible to install The Packages Labeled (Not Ok) in this list above" >> "$inst"
 echo "Try : (apt-get remove --purge <packagename> && apt-get autoremove && apt-get install -f)" >> "$inst"
 echo "before running fatrat setup script again" >> "$inst"
+echo "" >> "$inst"
+echo "***********Your current sources.list***************"
+sclst=`cat /etc/apt/sources.list`
+echo $sclst >> "$inst"
+echo "***************Finish sources.list*****************" >> "$inst"
+dist=`uname -a`
+echo "" >> "$inst"
+echo "Your linux distribution :" >> "$inst"
+echo $dist >> "$inst"
 cat "$inst"
+echo -e $lightgreen "This log file can be found in : $inst "
 exit
 fi
 }
@@ -701,19 +633,25 @@ sleep 1
 # check if mingw32 or mingw-64 exists 
 # Case not exists then reedirect to mingw instalation depending on arch
 
-which i686-w64-mingw32-gcc > /dev/null 2>&1
+which x86_64-w64-mingw32-gcc >> /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw-w64 Compiler................[ found ]"
-which i686-w64-mingw32-gcc >> "$log" 2>&1
+which x86_64-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw64 -> OK" >> "$inst"
 else
-which i586-mingw32msvc-gcc > /dev/null 2>&1
+echo -e $red "[ X ] Mingw-w64 -> not found "
+#Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
+# In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
+
+xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw-w64 mingw32 -y && apt-get autoremove -y && apt-get install mingw-w64 mingw32 --force-yes -y"
+which x86_64-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Mingw32 Compiler..................[ found ]"
-which i586-mingw32msvc-gcc >> "$log" 2>&1
-echo "Mingw32 -> OK" >> "$inst"
+echo -e $green "[ ✔ ] Mingw-64 Compiler..................[ found ]"
+which x86_64-w64-mingw32-gcc >> "$log" 2>&1
+echo "Mingw64 -> OK" >> "$inst"
 else
-mingwi
+echo "0" > "$stp"
+echo "Mingw-64 -> Not OK" >> "$inst"
 fi
 fi
 
@@ -765,6 +703,7 @@ echo "DX -> Not OK" >> "$inst"
 fi
 fi
 # check if aapt exists and if it is version v0.2-3821160 used in fatrat (android sdk)
+unlink "/usr/local/sbin/aapt" > /dev/null 2>&1
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 aptv=`aapt v | awk '{print $5}'`
@@ -934,7 +873,7 @@ mtspl
 ################################
 # rebackyo repo
 ################################
-echo -e $blue "Reactivating you original repositories"
+echo -e $blue "Reactivating your original repositories"
 rm -f /etc/apt/sources.list
 mv /etc/apt/sources.list.backup /etc/apt/sources.list
 #now we can remove the emergency backup securely
@@ -1149,7 +1088,7 @@ echo "                 |   |     /    /                 "
 echo "                 |___| /\ /____/                  "
 echo "                       \/                         "
 echo ""
-echo -e $blue "         Setup Script for FATRAT 1.9.4       "
+echo -e $blue "         Setup Script for FATRAT 1.9.5       "
 echo "------------------------------------------------------" > "$log"
 echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> "$log"
 echo "------------------------------------------------------" >> "$log"
@@ -1158,11 +1097,11 @@ echo ""
 #Detect if user OS is 32Bit or 64bit
 case $arch in
 x86_64|aarch64) 
-echo -e $purple "              64Bit OS detected"
+echo -e $yellow "              64Bit OS detected"
 echo ""
 ;;
 i386|i486|i586|i686|armv7l)
-echo -e $blue "                32Bit OS detected"
+echo -e $yellow "              32Bit OS detected"
 echo ""
 ;;
 *)

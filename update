@@ -8,6 +8,7 @@ red='\e[1;31m'
 yellow='\e[1;33m'
 blue='\e[1;34m'
 purple='\e[1;35m'
+path=`pwd`
 
 function chknet() {
 echo -e $red "[X] Your Internet is not working correctly!"
@@ -67,13 +68,49 @@ then
 chknet
 fi
 sleep 1
+find . -type f -name "*.md" -exec rm -f {} \; > /dev/null 2>&1
+rm -f $path/temp/* >/dev/null 2>&1
+mkdir /tmp/frupdate > /dev/null 2>&1
+mkdir /tmp/frupdate/autorun > /dev/null 2>&1
+mkdir /tmp/frupdate/backdoored > /dev/null 2>&1
+mkdir /tmp/frupdate/backdoored/output > /dev/null 2>&1
+mkdir /tmp/frupdate/config > /dev/null 2>&1
+mkdir /tmp/frupdate/config/listeners > /dev/null 2>&1
+mkdir /tmp/frupdate/logs > /dev/null 2>&1
+mkdir /tmp/frupdate/output > /dev/null 2>&1
+mv $path/autorun/* /tmp/frupdate/autorun/ >/dev/null 2>&1
+mv $path/backdoored/* /tmp/frupdate/backdoored/ >/dev/null 2>&1
+mv $path/backdoored/output/* /tmp/frupdate/backdoored/output/ >/dev/null 2>&1
+mv $path/config/config.path /tmp/frupdate/config/ >/dev/null 2>&1
+mv $path/config/grab.conf /tmp/frupdate/config/ >/dev/null 2>&1
+mv $path/config/listeners/* /tmp/frupdate/config/listeners/ >/dev/null 2>&1
+mv $path/logs/* /tmp/frupdate/logs/ >/dev/null 2>&1
+mv $path/output/* /tmp/frupdate/output/ >/dev/null 2>&1
+rm -f fatrat >/dev/null 2>&1
+rm -f powerfull.sh >/dev/null 2>&1
+rm -f grab.sh >/dev/null 2>&1
+rm -f backdoor_apk >/dev/null 2>&1
+rm -f setup.sh >/dev/null 2>&1
 echo -e $cyan "************************************"
 echo -e $cyan "**  $green Updating Fatrat from Github $cyan **"
 echo -e $cyan "************************************"
 sleep 3
 git checkout master 
 git pull origin master
-
+mv /tmp/frupdate/autorun/* $path/autorun/ >/dev/null 2>&1
+mv /tmp/frupdate/backdoored/* $path/backdoored/ >/dev/null 2>&1
+mv /tmp/frupdate/backdoored/output/* $path/backdoored/output/ >/dev/null 2>&1
+mv /tmp/frupdate/config/config.path $path/config/ >/dev/null 2>&1
+mv /tmp/frupdate/config/grab.conf $path/config/ >/dev/null 2>&1
+mv /tmp/frupdate/config/listeners/* $path/config/listeners/  >/dev/null 2>&1
+mv /tmp/frupdate/logs/* $path/logs/ >/dev/null 2>&1
+mv /tmp/frupdate/output/* $path/output/ >/dev/null 2>&1
+rm -fr /tmp/frupdate >/dev/null 2>&1
+chmod +x fatrat
+chmod +x setup.sh
+chmod +x powerfull.sh
+chmod +x grab.sh
+chmod +x update
 echo -e $cyan "*************************"
 echo -e $cyan "**  $green Update Completed $cyan **"
 echo -e $cyan "*************************"

