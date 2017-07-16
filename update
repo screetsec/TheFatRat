@@ -86,11 +86,6 @@ mv $path/config/grab.conf /tmp/frupdate/config/ >/dev/null 2>&1
 mv $path/config/listeners/* /tmp/frupdate/config/listeners/ >/dev/null 2>&1
 mv $path/logs/* /tmp/frupdate/logs/ >/dev/null 2>&1
 mv $path/output/* /tmp/frupdate/output/ >/dev/null 2>&1
-rm -f fatrat >/dev/null 2>&1
-rm -f powerfull.sh >/dev/null 2>&1
-rm -f grab.sh >/dev/null 2>&1
-rm -f backdoor_apk >/dev/null 2>&1
-rm -f setup.sh >/dev/null 2>&1
 echo -e $cyan "************************************"
 echo -e $cyan "**  $green Updating Fatrat from Github $cyan **"
 echo -e $cyan "************************************"
@@ -106,11 +101,12 @@ mv /tmp/frupdate/config/listeners/* $path/config/listeners/  >/dev/null 2>&1
 mv /tmp/frupdate/logs/* $path/logs/ >/dev/null 2>&1
 mv /tmp/frupdate/output/* $path/output/ >/dev/null 2>&1
 rm -fr /tmp/frupdate >/dev/null 2>&1
-chmod +x fatrat
-chmod +x setup.sh
-chmod +x powerfull.sh
-chmod +x grab.sh
-chmod +x update
+chmod +x fatrat >/dev/null 2>&1
+chmod +x setup.sh >/dev/null 2>&1 
+chmod +x powerfull.sh >/dev/null 2>&1
+chmod +x grab.sh >/dev/null 2>&1
+chmod +x update >/dev/null 2>&1
+chmod +x backdoor_apk >/dev/null 2>&1
 echo -e $cyan "*************************"
 echo -e $cyan "**  $green Update Completed $cyan **"
 echo -e $cyan "*************************"
