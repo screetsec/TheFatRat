@@ -372,27 +372,6 @@ echo "GCC -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
-# check if monodevelop exists
-which monodevelop > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Monodevelop ......................[ found ]"
-which monodevelop >> "$log" 2>&1
-echo "Monodevelop -> OK" >> "$inst"
-else
-echo -e $red "[ X ] Monodevelop  -> not found "
-echo -e $yellow "[ ! ]  Installing monodevelop "
-xterm -T "☣ INSTALL MONODEVELOP ☣" -geometry 100x30 -e "sudo apt-get install monodevelop -y"
-which monodevelop >> "$log" 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Monodevelop -> OK"
-echo "Monodevelop -> OK" >> "$inst"
-else
-echo -e $red "[ x ] Monodevelop"
-echo "0" > "$stp"
-echo "Monodevelop -> Not OK" >> "$inst"
-fi
-fi
-sleep 1
 #check if apache2 exists
 which apache2 > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -527,7 +506,27 @@ echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/s
 echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update"
-
+sleep 1
+# check if monodevelop exists
+which monodevelop > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Monodevelop ......................[ found ]"
+which monodevelop >> "$log" 2>&1
+echo "Monodevelop -> OK" >> "$inst"
+else
+echo -e $red "[ X ] Monodevelop  -> not found "
+echo -e $yellow "[ ! ]  Installing monodevelop "
+xterm -T "☣ INSTALL MONODEVELOP ☣" -geometry 100x30 -e "sudo apt-get install monodevelop --force-yes -y"
+which monodevelop >> "$log" 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Monodevelop -> OK"
+echo "Monodevelop -> OK" >> "$inst"
+else
+echo -e $red "[ x ] Monodevelop"
+echo "0" > "$stp"
+echo "Monodevelop -> Not OK" >> "$inst"
+fi
+fi
 sleep 1
 #Checking if Jarsigner exists
 which jarsigner > /dev/null 2>&1
@@ -703,7 +702,7 @@ echo "DX -> Not OK" >> "$inst"
 fi
 fi
 # check if aapt exists and if it is version v0.2-3821160 used in fatrat (android sdk)
-unlink "/usr/local/sbin/aapt" > /dev/null 2>&1
+rm /usr/local/sbin/aapt >/dev/null 2>&1
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 aptv=`aapt v | awk '{print $5}'`
@@ -1035,9 +1034,9 @@ fi
 #variables for logs and others
 path=`pwd`
 arch=`uname -m`
-inst=$path/logs/install.log
-log=$path/logs/setup.log
-config=$path/config/config.path
+inst="$path/logs/install.log"
+log="$path/logs/setup.log"
+config="$path/config/config.path"
 #Removing any previous setup log created
 rm -rf "$log" > /dev/null 2>&1
 rm -rf logs/check > /dev/null 2>&1
@@ -1060,6 +1059,13 @@ echo -e $red [x]::[not root]: You need to be [root] to run this script.;
       echo ""
    	  sleep 1
 exit 0
+fi
+#Many fresh installed linux distros do not come with sudo installed
+which sudo > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo ""
+else
+apt-get install sudo -y
 fi
 echo ""
 # Fixing any possible problems with packages missed/corrupted dependencies on user OS before proceed
