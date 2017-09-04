@@ -75,7 +75,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## :book: How it works
 
-* Extract The lalin-master to your home or another folder
+* Extract The TheFatRat-master to your home or another folder
 * chmod +x fatrat
 * chmod +x powerfull.sh
 * And run the tools ( ./fatrat )
