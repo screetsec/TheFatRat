@@ -311,10 +311,10 @@ which xterm > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Xterm.............................[ found ]"
 which xterm >> "$log" 2>&1
-echo "Xterm -> OK" > "$inst"
+echo "xterm -> OK" > "$inst"
 else
 echo ""
-echo -e $red "[ X ] xterm -> not found! "
+echo -e $red "[ X ] Xterm -> not found! "
 echo -e $yellow "[ ! ] Installing Xterm                     "
 echo -e $green ""
 sudo apt-get install xterm -y
@@ -325,7 +325,7 @@ echo "Xterm -> OK" > "$inst"
 else
 echo -e $red "[ x ] Xterm"
 echo "0" > "$stp"
-echo "Xterm -> Not OK" > "$inst"
+echo "xterm -> Not OK" > "$inst"
 fi
 fi
 
@@ -347,7 +347,7 @@ echo "Dns-Utils -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Dns-Utils"
 echo "0" > "$stp"
-echo "Dns-Utils -> Not OK" >> "$inst"
+echo "dns-utils -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -368,7 +368,7 @@ echo "GCC -> OK" >> "$inst"
 else
 echo -e $red "[ x ] GCC"
 echo "0" > "$stp"
-echo "GCC -> Not OK" >> "$inst"
+echo "gcc -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -389,7 +389,7 @@ echo "Apache2 -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Apache2"
 echo "0" > "$stp"
-echo "Apache2 -> Not OK" >> "$inst"
+echo "apache2 -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -412,7 +412,7 @@ echo "Gnome Terminal -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Gnome Terminal"
 echo "0" > "$stp"
-echo "Gnome Terminal -> Not OK" >> "$inst"
+echo "gnome-terminal -> Not OK" >> "$inst"
 fi
 fi
 
@@ -434,7 +434,7 @@ echo "UPX -> OK" >> "$inst"
 else
 echo -e $red "[ x ] UPX Compressor"
 echo "0" > "$stp"
-echo "UPX -> Not OK" >> "$inst"
+echo "upx-ucl -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -455,7 +455,7 @@ echo "Ruby -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Ruby"
 echo "0" > "$stp"
-echo "Ruby -> Not OK" >> "$inst"
+echo "ruby -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -476,7 +476,7 @@ echo "Openssl -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Openssl"
 echo "0" > "$stp"
-echo "Openssl -> Not OK" >> "$inst"
+echo "openssl -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -524,7 +524,7 @@ echo "Monodevelop -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Monodevelop"
 echo "0" > "$stp"
-echo "Monodevelop -> Not OK" >> "$inst"
+echo "monodevelop -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -562,7 +562,7 @@ echo "jarsigner" | tee -a "$config" >> /dev/null 2>&1
 else
 echo -e $red "[ x ] Jarsigner"
 echo "0" > "$stp"
-echo "Jarsigner -> Not OK" >> "$inst"
+echo "jarsigner (openjdk-8-jdk)-> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -586,7 +586,7 @@ echo "Unzip -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Unzip"
 echo "0" > "$stp"
-echo "Unzip -> Not OK" >> "$inst"
+echo "unzip -> Not OK" >> "$inst"
 fi
 fi
 
@@ -610,7 +610,7 @@ echo "Keytool -> OK" >> "$inst"
 else 
 echo -e $red "[ x ] Keytool"
 echo "0" > "$stp"
-echo "Keytool -> Not OK" >> "$inst"
+echo "keytool -> Not OK" >> "$inst"
 fi
 fi
 
@@ -650,7 +650,7 @@ which x86_64-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw64 -> OK" >> "$inst"
 else
 echo "0" > "$stp"
-echo "Mingw-64 -> Not OK" >> "$inst"
+echo "mingw-w64 -> Not OK" >> "$inst"
 fi
 fi
 
@@ -682,7 +682,7 @@ echo "DX -> OK" >> "$inst"
 else
 echo -e $red "[ x ] DX 1.8"
 echo "0" > "$stp"
-echo "DX -> Not OK" >> "$inst"
+echo "dx -> Not OK" >> "$inst"
 fi
 ;;
 esac
@@ -698,7 +698,7 @@ echo "DX -> OK" >> "$inst"
 else
 echo -e $red "[ x ] DX 1.8"
 echo "0" > "$stp"
-echo "DX -> Not OK" >> "$inst"
+echo "dx -> Not OK" >> "$inst"
 fi
 fi
 # check if aapt exists and if it is version v0.2-3821160 used in fatrat (android sdk)
@@ -728,7 +728,7 @@ echo "Aapt -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Aapt v0.2-3821160"
 echo "0" > "$stp"
-echo "Aapt -> Not OK" >> "$inst"
+echo "aapt -> Not OK" >> "$inst"
 fi
 ;;
 esac
@@ -744,7 +744,7 @@ echo "Aapt -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Aapt v0.2-3821160"
 echo "0" > "$stp"
-echo "Aapt -> Not OK" >> "$inst"
+echo "aapt -> Not OK" >> "$inst"
 fi
 fi
 
@@ -772,7 +772,7 @@ echo "Apktool -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Apktool v.2.2.2"
 echo "0" > "$stp"
-echo "Apktool -> Not OK" >> "$inst"
+echo "apktool -> Not OK" >> "$inst"
 fi
 ;;
 esac
@@ -788,7 +788,7 @@ echo "Apktool -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Apktool v.2.2.2"
 echo "0" > "$stp"
-echo "Apktool -> Not OK" >> "$inst"
+echo "apktool -> Not OK" >> "$inst"
 fi
 fi
 #Same as others before , but dex2jar in this case will be installed directly to user OS , instead be working in fatrat tools
@@ -836,7 +836,7 @@ else
 #After the instalation something did not worked , place the warnings in logs
 echo -e $red "[ x ] Dex2Jar 2.0"
 echo "0" > "$stp"
-echo "Dex2Jar -> Not OK" >> "$inst"
+echo "dex2jar -> Not OK" >> "$inst"
 fi
 ;;
 esac
@@ -864,7 +864,7 @@ echo "Dex2Jar -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Dex2Jar 2.0"
 echo "0" > "$stp"
-echo "Dex2Jar -> Not OK" >> "$inst"
+echo "dex2jar -> Not OK" >> "$inst"
 fi
 fi
 mtspl
@@ -1106,14 +1106,14 @@ x86_64|aarch64)
 echo -e $yellow "              64Bit OS detected"
 echo ""
 ;;
-i386|i486|i586|i686|armv7l)
+i386|i486|i586|i686)
 echo -e $yellow "              32Bit OS detected"
 echo ""
 ;;
 *)
 echo -e $red "Setup will not proceed because none of these archs were detected"
 echo ""
-echo -e $blue "x86_64|i386|i486|i586|i686|aarch64|armv7l"
+echo -e $blue "x86_64|i386|i486|i586|i686|aarch64"
 echo ""
 echo -e $green "Report this arch: $blue $arch $green into fatrat issues on github"
 echo ""
