@@ -1022,6 +1022,7 @@ echo "Setup Detected that your previous run was interrupted in middle , fixing y
 sleep 4s
 rm -f /etc/apt/sources.list
 mv /etc/apt/sources.list.fatrat /etc/apt/sources.list
+sudo rm -rf /var/lib/apt/lists/lock
 echo "Your Original repository list was recovered. ;) ..... beginning setup"
 echo ""
 echo "Cleaning previous repositories cache & updating your repository ."
