@@ -1435,24 +1435,35 @@ echo -e $okegreen [✔]::[Terminal]: local ;
 fi
 
 sleep 0.5
-#Checking internet connection by pinging hostname (google)
-#case ping hostname fails then run chknet function
- ping -c 1 google.com > /dev/null 2>&1
-png="$?"
- if [ $png == "0" ]
-then
-    echo -e $okegreen [✔]::[Internet Connection]: CONNECTED!;
-    sleep 0.5
-    cont
-elif [ $png == "1" ]
-then
-    echo -e $yellow [✔]::[Internet Connection]: LOCAL ONLY!;
-    chknet
-elif [ $png == "2" ]
-then
-echo -e $red [✔]::[Internet Connection]: OFFLINE!;
+#Checking internet connection by connecting to google over http 
+#case fails then run chknet function (ping)
+echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+echo -e $red [ X ]::[Internet Connection]: OFFLINE!;
 chknet
+    sleep 1
+else
+echo -e $green [ ✔ ]::[Internet Connection]: CONNECTED!;
+    sleep 1
+    cont
 fi
+
+#ping -c 1 google.com > /dev/null 2>&1
+#png="$?"
+# if [ $png == "0" ]
+#then
+#    echo -e $okegreen [✔]::[Internet Connection]: CONNECTED!;
+#    sleep 0.5
+#    cont
+#elif [ $png == "1" ]
+#then
+#    echo -e $yellow [✔]::[Internet Connection]: LOCAL ONLY!;
+#    chknet
+#elif [ $png == "2" ]
+#then
+#echo -e $red [✔]::[Internet Connection]: OFFLINE!;
+#chknet
+#fi
 
 function Stop() {
   #Stoped Service postgresql & apache
