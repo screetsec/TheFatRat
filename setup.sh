@@ -1145,27 +1145,38 @@ echo [local]
 fi
 
 sleep 1
-#First check of setup for internet connection by pinging google hostname
+#First check of setup for internet connection by connecting to google over http
 echo -e $green "[ * ] Checking for internet connection"
 sleep 1
-ping -c 1 google.com > /dev/null 2>&1
-png="$?" 
- if [ $png == "0" ]
-then
-#ping google hostname was succefully , then proceed with setup 
-    echo -e $green [ ✔ ]::[Internet Connection]: CONNECTED!;
-    sleep 1
-    cont
-elif [ $png == "1" ]
-then
-#ping hostname failed , load chknet function
-    echo -e $yellow [ X ]::[Internet Connection]: LOCAL ONLY!;
-    chknet
-    sleep 1
-elif [ $png == "2" ]
-then
-#ping hostname failed , load chknet function
+echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
+if [ $? -ne 0 ]; then
 echo -e $red [ X ]::[Internet Connection]: OFFLINE!;
 chknet
     sleep 1
+else
+echo -e $green [ ✔ ]::[Internet Connection]: CONNECTED!;
+    sleep 1
+    cont
 fi
+
+#ping -c 1 google.com > /dev/null 2>&1
+#png="$?" 
+# if [ $png == "0" ]
+#then
+#ping google hostname was succefully , then proceed with setup 
+#    echo -e $green [ ✔ ]::[Internet Connection]: CONNECTED!;
+#    sleep 1
+#    cont
+#elif [ $png == "1" ]
+#then
+#ping hostname failed , load chknet function
+#    echo -e $yellow [ X ]::[Internet Connection]: LOCAL ONLY!;
+#    chknet
+#    sleep 1
+#elif [ $png == "2" ]
+#then
+#ping hostname failed , load chknet function
+#echo -e $red [ X ]::[Internet Connection]: OFFLINE!;
+#chknet
+#    sleep 1
+#fi
