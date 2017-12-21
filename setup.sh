@@ -311,10 +311,10 @@ which xterm > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Xterm.............................[ found ]"
 which xterm >> "$log" 2>&1
-echo "Xterm -> OK" > "$inst"
+echo "xterm -> OK" > "$inst"
 else
 echo ""
-echo -e $red "[ X ] xterm -> not found! "
+echo -e $red "[ X ] Xterm -> not found! "
 echo -e $yellow "[ ! ] Installing Xterm                     "
 echo -e $green ""
 sudo apt-get install xterm -y
@@ -325,7 +325,7 @@ echo "Xterm -> OK" > "$inst"
 else
 echo -e $red "[ x ] Xterm"
 echo "0" > "$stp"
-echo "Xterm -> Not OK" > "$inst"
+echo "xterm -> Not OK" > "$inst"
 fi
 fi
 
@@ -347,7 +347,7 @@ echo "Dns-Utils -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Dns-Utils"
 echo "0" > "$stp"
-echo "Dns-Utils -> Not OK" >> "$inst"
+echo "dns-utils -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -368,28 +368,7 @@ echo "GCC -> OK" >> "$inst"
 else
 echo -e $red "[ x ] GCC"
 echo "0" > "$stp"
-echo "GCC -> Not OK" >> "$inst"
-fi
-fi
-sleep 1
-# check if monodevelop exists
-which monodevelop > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Monodevelop ......................[ found ]"
-which monodevelop >> "$log" 2>&1
-echo "Monodevelop -> OK" >> "$inst"
-else
-echo -e $red "[ X ] Monodevelop  -> not found "
-echo -e $yellow "[ ! ]  Installing monodevelop "
-xterm -T "☣ INSTALL MONODEVELOP ☣" -geometry 100x30 -e "sudo apt-get install monodevelop -y"
-which monodevelop >> "$log" 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Monodevelop -> OK"
-echo "Monodevelop -> OK" >> "$inst"
-else
-echo -e $red "[ x ] Monodevelop"
-echo "0" > "$stp"
-echo "Monodevelop -> Not OK" >> "$inst"
+echo "gcc -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -410,7 +389,7 @@ echo "Apache2 -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Apache2"
 echo "0" > "$stp"
-echo "Apache2 -> Not OK" >> "$inst"
+echo "apache2 -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -433,7 +412,7 @@ echo "Gnome Terminal -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Gnome Terminal"
 echo "0" > "$stp"
-echo "Gnome Terminal -> Not OK" >> "$inst"
+echo "gnome-terminal -> Not OK" >> "$inst"
 fi
 fi
 
@@ -455,7 +434,7 @@ echo "UPX -> OK" >> "$inst"
 else
 echo -e $red "[ x ] UPX Compressor"
 echo "0" > "$stp"
-echo "UPX -> Not OK" >> "$inst"
+echo "upx-ucl -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -476,7 +455,7 @@ echo "Ruby -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Ruby"
 echo "0" > "$stp"
-echo "Ruby -> Not OK" >> "$inst"
+echo "ruby -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -497,7 +476,7 @@ echo "Openssl -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Openssl"
 echo "0" > "$stp"
-echo "Openssl -> Not OK" >> "$inst"
+echo "openssl -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -527,7 +506,27 @@ echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/s
 echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update"
-
+sleep 1
+# check if monodevelop exists
+which monodevelop > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Monodevelop ......................[ found ]"
+which monodevelop >> "$log" 2>&1
+echo "Monodevelop -> OK" >> "$inst"
+else
+echo -e $red "[ X ] Monodevelop  -> not found "
+echo -e $yellow "[ ! ]  Installing monodevelop "
+xterm -T "☣ INSTALL MONODEVELOP ☣" -geometry 100x30 -e "sudo apt-get install monodevelop --force-yes -y"
+which monodevelop >> "$log" 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Monodevelop -> OK"
+echo "Monodevelop -> OK" >> "$inst"
+else
+echo -e $red "[ x ] Monodevelop"
+echo "0" > "$stp"
+echo "monodevelop -> Not OK" >> "$inst"
+fi
+fi
 sleep 1
 #Checking if Jarsigner exists
 which jarsigner > /dev/null 2>&1
@@ -563,7 +562,7 @@ echo "jarsigner" | tee -a "$config" >> /dev/null 2>&1
 else
 echo -e $red "[ x ] Jarsigner"
 echo "0" > "$stp"
-echo "Jarsigner -> Not OK" >> "$inst"
+echo "jarsigner (openjdk-8-jdk)-> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -587,7 +586,7 @@ echo "Unzip -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Unzip"
 echo "0" > "$stp"
-echo "Unzip -> Not OK" >> "$inst"
+echo "unzip -> Not OK" >> "$inst"
 fi
 fi
 
@@ -611,7 +610,7 @@ echo "Keytool -> OK" >> "$inst"
 else 
 echo -e $red "[ x ] Keytool"
 echo "0" > "$stp"
-echo "Keytool -> Not OK" >> "$inst"
+echo "keytool -> Not OK" >> "$inst"
 fi
 fi
 
@@ -626,11 +625,11 @@ sleep 1
 
 #Adding Proguard path to config
 echo -e $green "[ ✔ ] Proguard "
-echo "$path/tools/proguard5.3.2/lib/proguard" >> "$log" 2>&1
-echo "$path/tools/proguard5.3.2/lib/proguard" | tee -a "$config" >> /dev/null 2>&1
+echo "$path/tools/proguard5.3.3/lib/proguard" >> "$log" 2>&1
+echo "$path/tools/proguard5.3.3/lib/proguard" | tee -a "$config" >> /dev/null 2>&1
 sleep 1
 
-# check if mingw32 or mingw-64 exists 
+# check if mingw64  
 # Case not exists then reedirect to mingw instalation depending on arch
 
 which x86_64-w64-mingw32-gcc >> /dev/null 2>&1
@@ -643,7 +642,7 @@ echo -e $red "[ X ] Mingw-w64 -> not found "
 #Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
 # In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
 
-xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw-w64 mingw32 -y && apt-get autoremove -y && apt-get install mingw-w64 mingw32 --force-yes -y"
+xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw-w64 -y && apt-get autoremove -y && apt-get install mingw-w64 --force-yes -y"
 which x86_64-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw-64 Compiler..................[ found ]"
@@ -651,7 +650,32 @@ which x86_64-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw64 -> OK" >> "$inst"
 else
 echo "0" > "$stp"
-echo "Mingw-64 -> Not OK" >> "$inst"
+echo "mingw-w64 -> Not OK" >> "$inst"
+fi
+fi
+
+# check if ming32  
+# Case not exists then reedirect to mingw instalation depending on arch
+
+which i586-mingw32msvc-gcc >> /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Mingw-32 Compiler................[ found ]"
+which i586-mingw32msvc-gcc >> "$log" 2>&1
+echo "Mingw32 -> OK" >> "$inst"
+else
+echo -e $red "[ X ] Mingw-32 -> not found "
+#Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
+# In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
+
+xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw32 -y && apt-get autoremove -y && apt-get install mingw32 --force-yes -y"
+which i586-mingw32msvc-gcc > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Mingw-32 Compiler..................[ found ]"
+which i586-mingw32msvc-gcc >> "$log" 2>&1
+echo "Mingw32 -> OK" >> "$inst"
+else
+echo "0" > "$stp"
+echo "mingw-32 -> Not OK" >> "$inst"
 fi
 fi
 
@@ -661,16 +685,16 @@ if [ "$?" -eq "0" ]; then
 dxg=`dx --version 2>&1 | tee temp/dx`
 dxv=`cat temp/dx | awk '{print $3}'` 
 case $dxv in
-1.8)
-#DX exists and it is version 1.8
+1.14)
+#DX exists and it is version 1.14
 rm -rf temp/dx >/dev/null 2>&1
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
+echo -e $green "[ ✔ ] DX 1.14"
 echo "DX -> OK" >> "$inst"
 ;;
 *)
-#DX does not exists or is not 1.8 version
+#DX does not exists or is not 1.14 version
 xterm -T "☣ Removing Your Current DX ☣" -geometry 100x30 -e "sudo apt-get remove --purge dx -y"
 unlink "/usr/local/sbin/dx" > /dev/null 2>&1
 ln -s "$path/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 2>&1
@@ -678,12 +702,12 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
+echo -e $green "[ ✔ ] DX 1.14"
 echo "DX -> OK" >> "$inst"
 else
-echo -e $red "[ x ] DX 1.8"
+echo -e $red "[ x ] DX 1.14"
 echo "0" > "$stp"
-echo "DX -> Not OK" >> "$inst"
+echo "dx -> Not OK" >> "$inst"
 fi
 ;;
 esac
@@ -694,25 +718,25 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
+echo -e $green "[ ✔ ] DX 1.14"
 echo "DX -> OK" >> "$inst"
 else
-echo -e $red "[ x ] DX 1.8"
+echo -e $red "[ x ] DX 1.14"
 echo "0" > "$stp"
-echo "DX -> Not OK" >> "$inst"
+echo "dx -> Not OK" >> "$inst"
 fi
 fi
-# check if aapt exists and if it is version v0.2-3821160 used in fatrat (android sdk)
-unlink "/usr/local/sbin/aapt" > /dev/null 2>&1
+# check if aapt exists and if it is version v0.2-4458339 used in fatrat (android sdk)
+rm /usr/local/sbin/aapt >/dev/null 2>&1
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 aptv=`aapt v | awk '{print $5}'`
 case $aptv in
-v0.2-3821160)
-#exists and it is v0.2-3821160
+v0.2-4458339)
+#exists and it is v0.2-4458339
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
+echo -e $green "[ ✔ ] Aapt v0.2-4458339"
 echo "Aapt -> OK" >> "$inst"
 ;;
 *)
@@ -724,12 +748,12 @@ which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
+echo -e $green "[ ✔ ] Aapt v0.2-4458339"
 echo "Aapt -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Aapt v0.2-3821160"
+echo -e $red "[ x ] Aapt v0.2-4458339"
 echo "0" > "$stp"
-echo "Aapt -> Not OK" >> "$inst"
+echo "aapt -> Not OK" >> "$inst"
 fi
 ;;
 esac
@@ -740,56 +764,56 @@ which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
+echo -e $green "[ ✔ ] Aapt v0.2-4458339"
 echo "Aapt -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Aapt v0.2-3821160"
+echo -e $red "[ x ] Aapt v0.2-4458339"
 echo "0" > "$stp"
-echo "Aapt -> Not OK" >> "$inst"
+echo "aapt -> Not OK" >> "$inst"
 fi
 fi
 
-#Same procedure used for dx and aapt , but for apktool 2.2.2.
+#Same procedure used for dx and aapt , but for apktool 2.3.0
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 apk=`apktool | sed -n 1p | awk '{print $2}'` > /dev/null 2>&1
 case $apk in 
-v.2.2.2)
+v.2.3.0)
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Apktool v.2.2.2"
+echo -e $green "[ ✔ ] Apktool v.2.3.0"
 echo "Apktool -> OK" >> "$inst"
 ;;
 *)
 xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
 unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
-ln -s "$path/tools/apktool2.2.2/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
+ln -s "$path/tools/apktool2.3.0/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Apktool v.2.2.2"
+echo -e $green "[ ✔ ] Apktool v.2.3.0"
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Apktool v.2.2.2"
+echo -e $red "[ x ] Apktool v.2.3.0"
 echo "0" > "$stp"
-echo "Apktool -> Not OK" >> "$inst"
+echo "apktool -> Not OK" >> "$inst"
 fi
 ;;
 esac
 else
 unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
-ln -s "$path/tools/apktool2.2.2/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
+ln -s "$path/tools/apktool2.3.0/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Apktool v.2.2.2"
+echo -e $green "[ ✔ ] Apktool v.2.3.0"
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Apktool v.2.2.2"
+echo -e $red "[ x ] Apktool v.2.3.0"
 echo "0" > "$stp"
-echo "Apktool -> Not OK" >> "$inst"
+echo "apktool -> Not OK" >> "$inst"
 fi
 fi
 #Same as others before , but dex2jar in this case will be installed directly to user OS , instead be working in fatrat tools
@@ -837,7 +861,7 @@ else
 #After the instalation something did not worked , place the warnings in logs
 echo -e $red "[ x ] Dex2Jar 2.0"
 echo "0" > "$stp"
-echo "Dex2Jar -> Not OK" >> "$inst"
+echo "dex2jar -> Not OK" >> "$inst"
 fi
 ;;
 esac
@@ -865,7 +889,7 @@ echo "Dex2Jar -> OK" >> "$inst"
 else
 echo -e $red "[ x ] Dex2Jar 2.0"
 echo "0" > "$stp"
-echo "Dex2Jar -> Not OK" >> "$inst"
+echo "dex2jar -> Not OK" >> "$inst"
 fi
 fi
 mtspl
@@ -1035,9 +1059,9 @@ fi
 #variables for logs and others
 path=`pwd`
 arch=`uname -m`
-inst=$path/logs/install.log
-log=$path/logs/setup.log
-config=$path/config/config.path
+inst="$path/logs/install.log"
+log="$path/logs/setup.log"
+config="$path/config/config.path"
 #Removing any previous setup log created
 rm -rf "$log" > /dev/null 2>&1
 rm -rf logs/check > /dev/null 2>&1
@@ -1060,6 +1084,13 @@ echo -e $red [x]::[not root]: You need to be [root] to run this script.;
       echo ""
    	  sleep 1
 exit 0
+fi
+#Many fresh installed linux distros do not come with sudo installed
+which sudo > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo ""
+else
+apt-get install sudo -y
 fi
 echo ""
 # Fixing any possible problems with packages missed/corrupted dependencies on user OS before proceed
@@ -1100,16 +1131,16 @@ x86_64|aarch64)
 echo -e $yellow "              64Bit OS detected"
 echo ""
 ;;
-i386|i486|i586|i686|armv7l)
+i386|i486|i586|i686)
 echo -e $yellow "              32Bit OS detected"
 echo ""
 ;;
 *)
 echo -e $red "Setup will not proceed because none of these archs were detected"
 echo ""
-echo -e $blue "x86_64|i386|i486|i586|i686|aarch64|armv7l"
+echo -e $blue "x86_64|i386|i486|i586|i686|aarch64"
 echo ""
-echo -e $green "Report this arch: $blue $arch $green into fatrat issues on github"
+echo -e $green "Your linux arch: $blue $arch $green is not supported"
 echo ""
 echo -e "Press any key to continue"
 read abor
@@ -1139,27 +1170,38 @@ echo [local]
 fi
 
 sleep 1
-#First check of setup for internet connection by pinging google hostname
+#First check of setup for internet connection by connecting to google over http
 echo -e $green "[ * ] Checking for internet connection"
 sleep 1
-ping -c 1 google.com > /dev/null 2>&1
-png="$?" 
- if [ $png == "0" ]
-then
-#ping google hostname was succefully , then proceed with setup 
-    echo -e $green [ ✔ ]::[Internet Connection]: CONNECTED!;
-    sleep 1
-    cont
-elif [ $png == "1" ]
-then
-#ping hostname failed , load chknet function
-    echo -e $yellow [ X ]::[Internet Connection]: LOCAL ONLY!;
-    chknet
-    sleep 1
-elif [ $png == "2" ]
-then
-#ping hostname failed , load chknet function
+echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
+if [ $? -ne 0 ]; then
 echo -e $red [ X ]::[Internet Connection]: OFFLINE!;
 chknet
     sleep 1
+else
+echo -e $green [ ✔ ]::[Internet Connection]: CONNECTED!;
+    sleep 1
+    cont
 fi
+
+#ping -c 1 google.com > /dev/null 2>&1
+#png="$?" 
+# if [ $png == "0" ]
+#then
+#ping google hostname was succefully , then proceed with setup 
+#    echo -e $green [ ✔ ]::[Internet Connection]: CONNECTED!;
+#    sleep 1
+#    cont
+#elif [ $png == "1" ]
+#then
+#ping hostname failed , load chknet function
+#    echo -e $yellow [ X ]::[Internet Connection]: LOCAL ONLY!;
+#    chknet
+#    sleep 1
+#elif [ $png == "2" ]
+#then
+#ping hostname failed , load chknet function
+#echo -e $red [ X ]::[Internet Connection]: OFFLINE!;
+#chknet
+#    sleep 1
+#fi

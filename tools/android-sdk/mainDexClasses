@@ -58,7 +58,7 @@ prog="${progdir}"/`basename "${prog}"`
 cd "${oldwd}"
 
 baserules="${progdir}"/mainDexClasses.rules
-if [ ! -r ${baserules} ]; then
+if [ ! -r "${baserules}" ]; then
     echo `basename "$prog"`": can't find mainDexClasses.rules" 1>&2
     exit 1
 fi
@@ -173,7 +173,7 @@ tmpOut=`makeTempJar`
 
 trap cleanTmp 0
 
-${proguard} -injars ${@} -dontwarn -forceprocessing  -outjars ${tmpOut} \
+"${proguard}" -injars ${@} -dontwarn -forceprocessing  -outjars "${tmpOut}" \
   -libraryjars "${shrinkedAndroidJar}" -dontoptimize -dontobfuscate -dontpreverify \
   -include "${baserules}" -include "${extrarules}" 1>/dev/null || exit 10
 

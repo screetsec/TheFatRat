@@ -1,4 +1,5 @@
 ## CHANGELOG
+* v1.9.5 - powerfull.sh was using 64bit mingw for 32bit files , fixed . Updated apktool & android sdk build tools to 27.0.1
 * v1.9.5 - 64bit exe option added in powerfull.sh
 * v1.9.5 - Fixes in backdoor-factory option
 * v1.9.5 - Obfuscation method implemented in powerstager & ability to choose icon for rat EXE in powerstager

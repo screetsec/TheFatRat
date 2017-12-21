@@ -13,3 +13,8 @@
   -keep public class * extends java.lang.annotation.Annotation {
    *;
   }
+# Keep old fashion tests in the main dex or they'll be silently ignored by InstrumentationTestRunner
+  -keep public class * extends android.test.InstrumentationTestCase {
+   <init>();
+  }
+
