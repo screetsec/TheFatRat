@@ -1177,10 +1177,10 @@ sleep 0.5
       echo -e $okegreen [✔]::[Mingw32]: Installation found!;
       COMPILER="i586-mingw32msvc-gcc"
 else
-      which i686-w64-mingw32-gcc > /dev/null 2>&1
+      which x86_64-w64-mingw32-gcc > /dev/null 2>&1
       if [ $? -eq 0 ]; then
       echo -e $okegreen [✔]::[Mingw64]: Installation found!;
-      COMPILER="i686-w64-mingw32-gcc"
+      COMPILER="x86_64-w64-mingw32-gcc"
 else
    echo -e $red [x]::[warning]:this script require mingw32 or 64 installed to work ;
    echo ""
