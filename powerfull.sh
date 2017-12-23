@@ -50,7 +50,7 @@ comp="0"
 # Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
 # You may need to install the following on Kali Linux to compile the C to an Exe - "apt-get install gcc-mingw32"
 # check mingw if exists
-      which i686-w64-mingw32-gcc > /dev/null 2>&1
+      which i586-mingw32msvc-gcc > /dev/null 2>&1
       if [ "$?" -eq "0" ]
       then
       echo [✔]::[mingw32]: installation found!;
@@ -171,7 +171,7 @@ fi
 echo ""
 if [ $comp == "1" ]
 then
-COMPILER="i686-w64-mingw32-gcc"
+COMPILER="i586-mingw32msvc-gcc"
 fi
 if [ $comp == "2" ]
 then
@@ -193,7 +193,7 @@ echo -ne $green "Choose (1 or 2) : " ;tput sgr0
 read archs
 case $archs in 
 1)
-COMPILER="i686-w64-mingw32-gcc"
+COMPILER="i586-mingw32msvc-gcc"
 echo ""
 echo -e $green "32bit Selected"
 sleep 1
@@ -205,7 +205,7 @@ echo -e $green "64bit Selected"
 sleep 1
 ;;
 *)
-COMPILER="i686-w64-mingw32-gcc"
+COMPILER="i586-mingw32msvc-gcc"
 echo ""
 echo -e $green "Invalid Option , setting 32bit as default"
 sleep 1
