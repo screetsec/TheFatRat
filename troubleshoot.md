@@ -47,4 +47,25 @@ backdoor-apk was denvelopen by :
 - Powerstager was denveloped by Z0noxz at : https://github.com/z0noxz/powerstager
 
 
+## PAckage exact names installed by fatart during setup :
+
+- exploitdb (search for vulnerabilities)
+- backdoor-factory ( to merge backdoors in exe files)
+- metasploit-framework (exploitation framework)
+- xterm (Terminal emulator used in fatrat windows)
+- dnsutils (To get your external ip address and dns)
+- gcc (file compiler)
+- apache2 (web server , used to create some exploits )
+- gnome-terminal (terminal emulator used in some fatrat special features)
+- upx-ucl (file compressor)
+- ruby (To run ruby modules used in fatrat)
+- openssl (To create certificates for the apks)
+- zlib1g-dev libmagickwand-dev imagemagick lib32z1 lib32ncurses5 lib32stdc++6 python-pip python-dev build-essential (libraries dependencies for apk tools)
+- Monodevelop (file compiler for some backdoors in fatrat)
+- openjdk-8-jdk and openjdk-8-jre (used by apk tools to sign the apks)
+- unzip (zip extractor)
+- mingw32 (32bit exe compiler for powerstager & others in fatrat)
+- mingw-w64 (32bit exe compiler for powerstager & other in fatrat)
+
+
 
