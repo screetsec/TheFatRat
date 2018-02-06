@@ -42,8 +42,9 @@ After that point , just do (apt-get update && apt-get upgrade) to upgrade your l
 Errors builing rat apks in fatrat .
 
 All tools in fatrat were not made by us , this means that we are unable to help you on that .
-backdoor-apk was denvelopen by Dana James Traversie at : https://github.com/dana-at-cp/backdoor-apk
-Powerstager was denveloped by Z0noxz at : https://github.com/z0noxz/powerstager
+backdoor-apk was denvelopen by : 
+- Dana James Traversie at : https://github.com/dana-at-cp/backdoor-apk
+- Powerstager was denveloped by Z0noxz at : https://github.com/z0noxz/powerstager
 
 
 
