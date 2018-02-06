@@ -47,7 +47,11 @@ backdoor-apk was denvelopen by :
 - Powerstager was denveloped by Z0noxz at : https://github.com/z0noxz/powerstager
 
 
-## PAckage exact names installed by fatart during setup :
+## Running powerstager you get he message (names not found)
+The solution is to install names python module by running in your terminal ( pip install names)
+
+
+## Package exact names installed by fatart during setup :
 
 - exploitdb (search for vulnerabilities)
 - backdoor-factory ( to merge backdoors in exe files)
