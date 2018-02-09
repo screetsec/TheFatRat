@@ -1,4 +1,7 @@
 ## CHANGELOG
+* v1.9.6 - new features added Trodebi ( Trojan debian package - embed in debian package ) 
+* v1.9.6 - updated pwnwinds & add Create Backdoor with C to dll ( custom dll inject )
+* v1.9.6 - removed monodevelop in depend ( people have option to instal it , install manual )
 * v1.9.5 - 64bit exe option added in powerfull.sh
 * v1.9.5 - Fixes in backdoor-factory option
 * v1.9.5 - Obfuscation method implemented in powerstager & ability to choose icon for rat EXE in powerstager
