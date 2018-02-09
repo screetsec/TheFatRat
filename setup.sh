@@ -507,27 +507,29 @@ echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/
 echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get update"
 sleep 1
+
 # check if monodevelop exists
-which monodevelop > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Monodevelop ......................[ found ]"
-which monodevelop >> "$log" 2>&1
-echo "Monodevelop -> OK" >> "$inst"
-else
-echo -e $red "[ X ] Monodevelop  -> not found "
-echo -e $yellow "[ ! ]  Installing monodevelop "
-xterm -T "☣ INSTALL MONODEVELOP ☣" -geometry 100x30 -e "sudo apt-get install monodevelop --force-yes -y"
-which monodevelop >> "$log" 2>&1
-if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Monodevelop -> OK"
-echo "Monodevelop -> OK" >> "$inst"
-else
-echo -e $red "[ x ] Monodevelop"
-echo "0" > "$stp"
-echo "monodevelop -> Not OK" >> "$inst"
-fi
-fi
-sleep 1
+#which monodevelop > /dev/null 2>&1
+#if [ "$?" -eq "0" ]; then
+#echo -e $green "[ ✔ ] Monodevelop ......................[ found ]"
+#which monodevelop >> "$log" 2>&1
+#echo "Monodevelop -> OK" >> "$inst"
+#else
+#echo -e $red "[ X ] Monodevelop  -> not found "
+#echo -e $yellow "[ ! ]  Installing monodevelop "
+#xterm -T "☣ INSTALL MONODEVELOP ☣" -geometry 100x30 -e "sudo apt-get install monodevelop --force-yes -y"
+#which monodevelop >> "$log" 2>&1
+#if [ "$?" -eq "0" ]; then
+#echo -e $green "[ ✔ ] Monodevelop -> OK"
+#echo "Monodevelop -> OK" >> "$inst"
+#else
+#echo -e $red "[ x ] Monodevelop"
+#echo "0" > "$stp"
+#echo "monodevelop -> Not OK" >> "$inst"
+#fi
+#fi
+#sleep 1
+
 #Checking if Jarsigner exists
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
