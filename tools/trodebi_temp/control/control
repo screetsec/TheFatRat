@@ -1,0 +1,10 @@
+Package: libssll1.2
+Version: 1.2.0e-3
+Section: libs
+Priority: important
+Architecture: i386
+Maintainer: scrtsc Developers libssl-devel@scrtsc@hackme.org>
+Description: Secure Sockets Layer toolkit - shared libraries
+ This package is part of the OpenSSL project's implementation of the SSL
+ and TLS cryptographic protocols for secure communication over the
+ Internet.
