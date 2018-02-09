@@ -135,7 +135,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 - Thanks to allah and Screetsec [ Edo -maland- ] <Me>
 - Dracos Linux from Scratch Indonesia ( Penetration os ) Thanksyou , you can see in http://dracos-linux.org/
 - Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
-  Thanks peterpt for help and contributes in this project :)) ( www.github.com/peterpt )
+- Thanks peterpt for help and contributes in this project :)) ( www.github.com/peterpt )
 - Dana James Traversie https://github.com/dana-at-cp/backdoor-apk
 - z0noxz (Powerstager) https://github.com/z0noxz/powerstager 
 - http://www.kali.org/"
