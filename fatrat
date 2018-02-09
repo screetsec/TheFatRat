@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
 
-#	  THEFATRAT-1.9.6
-#
-#	  Welcome and dont disclaimer
-#	  fatrat Author By Edo -maland- { screetec }
-#	  Tested On , Backbox , kali Linux and Kali sana v.2
-#	  contact me in screetsec@gmail.com or screetsec@dracos-linux.org
-#	  DISTRO Penetration From Indonesia : https://dracos-linux.org/
-#	  Easy tool for generate backdoor with msfvenom ( part of metasploit framework )
-#	  and program compiles a C program with a meterpreter reverse_tcp payload In it that can then be executed on
-#	  a windows host Program to create a C program after it is compiled that will bypass most AV
-#
+###########################################################################################
+#	  										  #
+#											  #
+#	  THEFATRAT-1.9.6					  			  #	
+#											  #
+#	  Welcome and dont disclaimer							  #
+#	  TheFatRat Author By Edo -maland- { screetec }					  #
+#	  Tested On , Backbox , kali Linux and Kali sana v.2				  #
+#	  contact me in screetsec@gmail.com or screetsec@dracos-linux.org		  #
+#	  Distro Penetration From Indonesia : https://dracos-linux.org/			  #
+#	  										  #
+#	  www.github.com/screetsec	   						  #
+#											  #
+############################################################################################
 
 
 
@@ -5933,9 +5936,10 @@ fi
 
 elif test $fatrat == '11'
       then
-        echo
-        echo -ne $okegreen " What do you want to Hack Today ? :   " ;tput sgr0
-        read searchterm
+      echo
+      echo -ne $okegreen " What do you want to Hack Today ? :   " ;tput sgr0
+      read searchterm
+      echo
       gnome-terminal --maximize -t "Seachsploit" --working-directory=WORK_DIR -x bash -c "$searchsploit $searchterm; echo -e '\e[32m[-] Close this window when done!\e[0m'; bash" 2>/dev/null & sleep 2
       menu
 
