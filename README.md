@@ -123,6 +123,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 * Backdoor (Virus) 100% Indetectable | TheFatRat : https://www.youtube.com/watch?v=26tSOuPcpZk
 * Backdooring Android with TheFatRat Tool- Kali Linux Tutorial :https://www.youtube.com/watch?v=1SQW9lujjT8
 * Hacking Windows using TheFatRat + Apache2 Server + Ettercap + Metasploit on Kali Linux 2016.2 https://www.youtube.com/watch?v=FlXMslSjnGw
+* TheFatRat 1.9.6 - Trodebi ( Embed Trojan into Debian Package ) https://youtu.be/NCsrcqhUBCc?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
 * ALL VIDEO IN HERE : https://www.youtube.com/results?search_query=thefatrat+backdoor
 
 ## ⭕️ BUG ?
