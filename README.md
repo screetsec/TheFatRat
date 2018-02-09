@@ -2,7 +2,7 @@
 # TheFatRat a Massive Exploiting Tool 
 
 
-[![Version](https://img.shields.io/badge/TheFatRat-1.9.5-brightgreen.svg?maxAge=259200)]()
+[![Version](https://img.shields.io/badge/TheFatRat-1.9.6-brightgreen.svg?maxAge=259200)]()
 [![Version](https://img.shields.io/badge/Codename-Whistle-red.svg?maxAge=259200)]()
 [![Stage](https://img.shields.io/badge/Release-Stable-brightgreen.svg)]()
 [![Build](https://img.shields.io/badge/Supported_OS-Linux-orange.svg)]()
@@ -127,9 +127,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## BUG ?
 
-- Submit new issue
-- pm me in gmail
-- Hey sup ? do you want ask about all my tools ? you can join me in telegram.me/offscreetsec
+- Submit new issue 
 
 
 ## :octocat: Credits
@@ -137,7 +135,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 - Thanks to allah and Screetsec [ Edo -maland- ] <Me>
 - Dracos Linux from Scratch Indonesia ( Penetration os ) Thanksyou , you can see in http://dracos-linux.org/
 - Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
-- peterpt
+  Thanks peterpt for help and contributes in this project :)) ( www.github.com/peterpt )
 - Dana James Traversie https://github.com/dana-at-cp/backdoor-apk
 - z0noxz (Powerstager) https://github.com/z0noxz/powerstager 
 - http://www.kali.org/"
