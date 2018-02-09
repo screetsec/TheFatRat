@@ -1466,7 +1466,7 @@ echo -e $red [ X ]::[Internet Connection]: OFFLINE!;
 chknet
     sleep 1
 else
-echo -e $green [ ✔ ]::[Internet Connection]: CONNECTED!;
+echo -e $okegreen [✔]::[Internet Connection]: CONNECTED!;
     sleep 1
     cont
 fi
