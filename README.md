@@ -93,7 +93,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 
 ## ⭕️ READ
-- if prog.c file to large when create backdoor with powerfull.sh , you can use prog.c.backup and create another backup when you running option 2
+- If prog.c file to large when create backdoor with powerfull.sh , you can use prog.c.backup and create another backup when you running option 2
 
 ## ⭕️ Update Fatrat
 - To update fatrat go to your TheFatRat folder and execute :
@@ -106,7 +106,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 * Screetsec Channel : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
 * Udate thefatrat v1.8 https://youtu.be/6skLV6zPnec?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
-* file Pumper in linux with fatrat https://youtu.be/rHuh5DJ476M?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
+* File Pumper in linux with fatrat https://youtu.be/rHuh5DJ476M?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
 * Kali linux 2016.2 | Setup FatRat and Bypass Windows 10 :https://www.youtube.com/watch?v=mkfKSCxvPec
 * Embed Backdoor Apk Andoird : https://www.youtube.com/watch?v=bZg3gPuLvgs&feature=youtu.be
 * Create Backdoor Php and Reconnect With TheFatRat : https://www.youtube.com/watch?v=gfS55fjd8Fg
@@ -133,8 +133,8 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## ⭕️ Credits
 
-- Thanks to allah and Screetsec [ Edo -maland- ] <Me>
-- Dracos Linux from Scratch Indonesia ( Penetration os ) Thanksyou , you can see in http://dracos-linux.org/
+- Thanks to Allah and Screetsec [ Edo -maland- ] <Me>
+- Dracos Linux from Scratch Indonesia ( Penetration OS ) Thanksyou , you can see in http://dracos-linux.org/
 - Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
 - Thanks peterpt for help and contributes in this project :)) ( www.github.com/peterpt )
 - Dana James Traversie https://github.com/dana-at-cp/backdoor-apk
