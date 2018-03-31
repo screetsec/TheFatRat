@@ -44,8 +44,7 @@ You can use any text editor , if you are familiarized with nano editor , then ru
 and paste the links from your linux distribution from official website in that file , and save it .
 After that point , just do (apt-get update && apt-get upgrade) to upgrade your linux .
 
-#----------------------------------------------------------------------#
-Errors builing rat apks in fatrat .
+## Errors builing rat apks in fatrat .
 
 All tools in fatrat were not made by us , this means that we are unable to help you on that .
 backdoor-apk was denvelopen by : 
