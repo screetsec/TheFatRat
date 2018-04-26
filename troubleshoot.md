@@ -18,7 +18,7 @@ After this point and when finished , all the remains of your faulty mingw instal
 After this point , execute ./setup.sh on fatrat folder , so mingw packages could be correctly installed in your linux
 from the Kali repositories .
 
-Manual install in parrot 
+## Manual install in parrot 
 
 go to https://packages.debian.org/jessie/all/mingw32 and download the package at the bottom of the page. When it downloads, right click it and click Open with GDebi Package Installer, then install it. Do the same for https://packages.debian.org/jessie/all/mingw32-binutils
 
