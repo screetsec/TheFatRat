@@ -13,7 +13,7 @@ An easy tool to generate backdoor and easy tool to post exploitation attack like
 - If this project very help you to penetration testing  and u want support me , you can give me a cup of coffee :)
 - [![Donation](https://img.shields.io/badge/bitcoin-donate-yellow.svg)](https://blockchain.info/id/address/1NuNTXo7Aato7XguFkvwYnTAFV2immXmjS)
 
-# Screenshot
+# Screenshots
 <img src="https://cloud.githubusercontent.com/assets/17976841/25420100/9ee12cf6-2a80-11e7-8dfa-c2e3cfe71366.png" width="55%"></img>
 # ---------------------------------------------------------------
 
@@ -56,7 +56,7 @@ An easy tool to generate backdoor and easy tool to post exploitation attack like
 - You can change the icon autorun file or exe in folder icon ( replace your another ico and replace name with autorun.ico )
 
 
-# HOW CHANGE THE ICONS ?
+# How to change the Icon?
 
 - Copy your icon picture to folder /TheFatrat/icons
 - Change the name into autorun.ico
@@ -82,7 +82,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 * Easy to Use just input your number
 
 
-## ⭕️ A linux operating system. We recommend :
+## ⭕️ Linux operating systems we recommend :
 - Kali Linux 2 or Kali 2016.1 rolling 
 - Cyborg
 - Parrot 
@@ -126,7 +126,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 * TheFatRat 1.9.6 - Trodebi ( Embed Trojan into Debian Package ) https://youtu.be/NCsrcqhUBCc?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
 * ALL VIDEO IN HERE : https://www.youtube.com/results?search_query=thefatrat+backdoor
 
-## ⭕️ BUG ?
+## ⭕️ Found a Bug ?
 
 - Submit new issue 
 
