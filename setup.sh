@@ -501,10 +501,9 @@ cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
 fi
 rm -f /etc/apt/sources.list
 touch /etc/apt/sources.list
-#echo 'deb http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-#echo 'deb-src http://old.kali.org/kali sana main non-free contrib' >> /etc/apt/sources.list
-echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' > /etc/apt/sources.list
-echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' > /etc/apt/sources.list
+#echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+#echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
+echo 'deb https://http.kali.org/kali kali-rolling main non-free contrib' > /etc/apt/sources.list
 xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get update"
 sleep 1
 
