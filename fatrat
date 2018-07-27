@@ -1330,7 +1330,7 @@ echo "|  |  |     | __  |  |  |   __|  |_   _|     |_   _|  _  |  |     ";
 echo "|  |  |-   -|    -|  |  |__   |    | | |  |  | | | |     |  |__   ";
 echo " \___/|_____|__|__|_____|_____|    |_| |_____| |_| |__|__|_____|  ";
 echo "=================================================================="
-echo "       PLEASE DON'T UPLOAD BACKDOOT TO WWW.VIRUSTOTAL.COM "
+echo "       PLEASE DON'T UPLOAD BACKDOOR TO WWW.VIRUSTOTAL.COM "
 echo "    YOU CAN UPLOAD OUTPUT/BACKDOOR FILE TO WWW.NODISTRIBUTE.COM   "
 echo "=================================================================="
 echo ""
