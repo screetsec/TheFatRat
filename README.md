@@ -8,7 +8,9 @@
 [![Build](https://img.shields.io/badge/Supported_OS-Linux-orange.svg)]()
 
 <img align="left" width="120" height="120" src="https://user-images.githubusercontent.com/17976841/36041771-38fbbb26-0dfc-11e8-8074-181cc778011c.png">
-An Easy tool to Generate Backdoor for bypass AV and Easy Tool to post exploitation attack like browser attack,dll . This tool compiles a malware with popular payload  and then the compiled malware can be execute on windows, android, mac . 
+
+An Easy tool to Generate Backdoor for bypass AV and Easy Tool For Post exploitation attack like browser attack,dll . This tool compiles a malware with popular payload  and then the compiled malware can be execute on windows, android, mac . 
+
 The malware that created with this tool also have an ability to bypass most AV software protection . 
         
 ### Donate
