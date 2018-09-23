@@ -584,7 +584,7 @@ sleep 1
 echo -e $green "[ ! ] Installing tools dependencies"
 which pacman > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' base-devel imagemagick lib32-ncurses lib32-zlib lib32-libstdc++5 lsb-release python"
+xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' base-devel imagemagick lib32-ncurses lib32-zlib lib32-libstdc++5 lsb-release python python-names"
 else
 xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick lib32z1 lib32ncurses5 lib32stdc++6 python-pip python-dev build-essential -y && pip install names"
 fi
