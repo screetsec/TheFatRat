@@ -88,6 +88,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## ⭕️ Linux operating systems we recommend :
 - Kali Linux 2 or Kali 2016.1 rolling 
+- BlackArch Linux 
 - Cyborg
 - Parrot 
 - BackTrack 
