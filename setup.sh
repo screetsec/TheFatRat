@@ -377,12 +377,7 @@ echo ""
 echo -e $red "[ X ] Xterm -> not found! "
 echo -e $yellow "[ ! ] Installing Xterm                     "
 echo -e $green ""
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-sudo pacman -Sy --needed --noconfirm --overwrite '*' xterm
-else
-sudo apt-get install xterm -y
-fi
+(sudo apt-get install xterm -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' xterm 2>/dev/null)
 which xterm >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Xterm -> OK"
@@ -404,12 +399,7 @@ echo "Dns-Utils -> OK" >> "$inst"
 else
 echo -e $red "[ X ] dnsutils -> not found! "
 echo -e $yellow "[ ! ]  Installing dnsutils"
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL BIND-TOOLS ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' bind-tools"
-else
-xterm -T "☣ INSTALL DNSUTILS ☣" -geometry 100x30 -e "sudo apt-get install dnsutils -y"
-fi
+xterm -T "☣ INSTALL DNSUTILS ☣" -geometry 100x30 -e "(sudo apt-get install dnsutils -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' bind-tools 2>/dev/null)"
 which dig >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Dns-Utils -> OK"
@@ -430,12 +420,7 @@ echo "GCC -> OK" >> "$inst"
 else
 echo -e $red "[ X ] gcc compiler      -> not found "
 echo -e $yellow "[ ! ]   Installing gcc "
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL GCC COMPILLER ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' gcc"
-else
-xterm -T "☣ INSTALL GCC COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install gcc -y"
-fi
+xterm -T "☣ INSTALL GCC COMPILLER ☣" -geometry 100x30 -e "(sudo apt-get install gcc -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' gcc 2>/dev/null)"
 which gcc >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] GCC -> OK"
@@ -456,12 +441,7 @@ echo "Apache2 -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Apache2 -> not found  "
 echo -e $yellow "[ ! ]    Installing apache2 "
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL APACHE2 ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' apache"
-else
-xterm -T "☣ INSTALL APACHE2 ☣" -geometry 100x30 -e "sudo apt-get install apache2 -y"
-fi
+xterm -T "☣ INSTALL APACHE2 ☣" -geometry 100x30 -e "(sudo apt-get install apache2 -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' apache 2>/dev/null)"
 which apache2 >> "$log" 2>&1 || which httpd >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Apache2 -> OK"
@@ -484,12 +464,7 @@ echo "Gnome Terminal -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Gnome-terminal-> not found "
 echo -e $yellow "[ ! ] Installing gnome-terminal "
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL GNOME-TERMINAL ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' gnome-terminal"
-else
-xterm -T "☣ INSTALL GNOME-TERMINAL ☣" -geometry 100x30 -e "sudo apt-get install gnome-terminal -y"
-fi
+xterm -T "☣ INSTALL GNOME-TERMINAL ☣" -geometry 100x30 -e "(sudo apt-get install gnome-terminal -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' gnome-terminal 2>/dev/null)"
 which gnome-terminal >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Gnome Terminal -> OK"
@@ -511,12 +486,7 @@ echo "UPX -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Upx compressor  -> not found "
 echo -e $yellow "[ ! ] Installing upx-compressor "
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL UPX COMPRESSOR ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' upx"
-else
-xterm -T "☣ INSTALL UPX COMPRESSOR ☣" -geometry 100x30 -e "sudo apt-get install upx-ucl -y"
-fi
+xterm -T "☣ INSTALL UPX COMPRESSOR ☣" -geometry 100x30 -e "(sudo apt-get install upx-ucl -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' upx 2>/dev/null)"
 which upx >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] UPX Compressor -> OK"
@@ -537,12 +507,7 @@ echo "Ruby -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Ruby  -> not found "
 echo -e $yellow "[ ! ] Installing Ruby "
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL Ruby ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' ruby-nokogiri"
-else
-xterm -T "☣ INSTALL Ruby ☣" -geometry 100x30 -e "sudo apt-get install ruby -y && gem install nokogiri"
-fi
+xterm -T "☣ INSTALL Ruby ☣" -geometry 100x30 -e "((sudo apt-get install ruby -y && gem install nokogiri) 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' ruby-nokogiri 2>/dev/null)"
 which ruby >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Ruby -> OK"
@@ -563,12 +528,7 @@ echo "Openssl -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Openssl  -> not found "
 echo -e $yellow "[ ! ] Installing Openssl "
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL OPENSSL ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' openssl"
-else
-xterm -T "☣ INSTALL OPENSSL ☣" -geometry 100x30 -e "sudo apt-get install openssl -y"
-fi
+xterm -T "☣ INSTALL OPENSSL ☣" -geometry 100x30 -e "(sudo apt-get install openssl -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' openssl 2>/dev/null)"
 which openssl >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Openssl -> OK"
@@ -582,12 +542,7 @@ fi
 sleep 1
 #installing dependencies for ruby script 
 echo -e $green "[ ! ] Installing tools dependencies"
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' base-devel imagemagick lib32-ncurses lib32-zlib lib32-libstdc++5 lsb-release python python-names"
-else
-xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick lib32z1 lib32ncurses5 lib32stdc++6 python-pip python-dev build-essential -y && pip install names"
-fi
+xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "((sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick lib32z1 lib32ncurses5 lib32stdc++6 python-pip python-dev build-essential -y && pip install names) 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' base-devel imagemagick lib32-ncurses lib32-zlib lib32-libstdc++5 lsb-release python python-names 2>/dev/null)"
 sleep 1
 
 #################################
@@ -654,12 +609,7 @@ echo "jarsigner" | tee -a "$config" >> /dev/null 2>&1
 else
 echo -e $red "[ X ] Jarsigner (java) -> not found "
 echo -e $yellow "[ ! ] Installing Java "
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL OPENJDK-8 ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' jdk8-openjdk jre8-openjdk"
-else
-xterm -T "☣ INSTALL OPENJDK-8 ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk openjdk-8-jre --force-yes -y "
-fi
+xterm -T "☣ INSTALL OPENJDK-8 ☣" -geometry 100x30 -e "(sudo apt-get install openjdk-8-jdk openjdk-8-jre --force-yes -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' jdk8-openjdk jre8-openjdk 2>/dev/null)"
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Jarsigner -> OK"
@@ -691,12 +641,7 @@ echo "Unzip -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Unzip -> not found "
 echo -e $yellow "[ ! ] Installing Unzip "
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL UNZIP ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' unzip"
-else
-xterm -T "☣ INSTALL UNZIP ☣" -geometry 100x30 -e "sudo apt-get install unzip --force-yes -y "
-fi
+xterm -T "☣ INSTALL UNZIP ☣" -geometry 100x30 -e "(sudo apt-get install unzip --force-yes -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' unzip 2>/dev/null)"
 which unzip >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo "unzip" | tee -a "$config" >> /dev/null 2>&1
@@ -720,12 +665,7 @@ echo "Keytool -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Keytool (java) -> not found  "
 echo -e $yellow "[ ! ] Installing Java "
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' jre8-openjdk"
-else
-xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk --force-yes -y "
-fi
+xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "(sudo apt-get install openjdk-8-jdk --force-yes -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' jre8-openjdk 2>/dev/null)"
 which keytool >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo "keytool" | tee -a "$config" >> /dev/null 2>&1
@@ -766,12 +706,7 @@ echo -e $red "[ X ] Mingw-w64 -> not found "
 #Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
 # In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
 
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' mingw-w64-gcc"
-else
-xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw* -y && apt-get autoremove -y && apt-get install mingw* --force-yes -y"
-fi
+xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "((sudo apt-get remove --purge mingw* -y && apt-get autoremove -y && apt-get install mingw* --force-yes -y) 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' mingw-w64-gcc 2>/dev/null)"
 which x86_64-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw-64 Compiler..................[ found ]"
@@ -796,12 +731,7 @@ echo -e $red "[ X ] Mingw-32 -> not found "
 #Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
 # In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
 
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' mingw-w64-gcc"
-else
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw* -y && apt-get autoremove -y && apt-get install mingw* --force-yes -y"
-fi
+xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "((sudo apt-get remove --purge mingw* -y && apt-get autoremove -y && apt-get install mingw* --force-yes -y) 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' mingw-w64-gcc 2>/dev/null)"
 which i686-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw-32 Compiler..................[ found ]"
@@ -829,10 +759,7 @@ echo "DX -> OK" >> "$inst"
 ;;
 *)
 #DX does not exists or is not 1.8 version
-which pacman > /dev/null 2>&1
-if [ "$?" -ne "0" ]; then
-xterm -T "☣ Removing Your Current DX ☣" -geometry 100x30 -e "sudo apt-get remove --purge dx -y"
-fi
+xterm -T "☣ Removing Your Current DX ☣" -geometry 100x30 -e "sudo apt-get remove --purge dx -y 2>/dev/null"
 unlink "/usr/local/sbin/dx" > /dev/null 2>&1
 ln -s "$path/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 2>&1
 which dx > /dev/null 2>&1
@@ -878,10 +805,7 @@ echo "Aapt -> OK" >> "$inst"
 ;;
 *)
 #Aapt does not exists or is not the latest version used in fatrat (android sdk)
-which pacman > /dev/null 2>&1
-if [ "$?" -ne "0" ]; then
-xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y"
-fi
+xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y 2>/dev/null"
 unlink "/usr/local/sbin/aapt" > /dev/null 2>&1
 ln -s "$path/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/null 2>&1
 which aapt > /dev/null 2>&1
@@ -925,10 +849,7 @@ echo -e $green "[ ✔ ] Apktool v.2.2.2"
 echo "Apktool -> OK" >> "$inst"
 ;;
 *)
-which pacman > /dev/null 2>&1
-if [ "$?" -ne "0" ]; then
-xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
-fi
+xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y 2>/dev/null"
 unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
 ln -s "$path/tools/apktool2.2.2/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
 which apktool > /dev/null 2>&1
@@ -976,10 +897,7 @@ echo "Dex2Jar -> OK" >> "$inst"
 rm -rf temp/dex >/dev/null 2>&1
 #Dex2jar does not exists or it is not the 2.0 version , so uninstall it & copy dex2jar from
 #fatrat tools folder to /usr/local/sbin 
-which pacman > /dev/null 2>&1
-if [ "$?" -ne "0" ]; then
-xterm -T "☣ Removing Your Current Dex2Jar ☣" -geometry 100x30 -e "sudo apt-get remove --purge dex2jar --force-yes -y" 
-fi
+xterm -T "☣ Removing Your Current Dex2Jar ☣" -geometry 100x30 -e "sudo apt-get remove --purge dex2jar --force-yes -y 2>/dev/null"
 cp $path/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-baksmali > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-dex-recompute-checksum > /dev/null 2>&1
@@ -1242,12 +1160,7 @@ which sudo > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo ""
 else
-which pacman > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-pacman -Sy --needed --noconfirm --overwrite '*' sudo
-else
-apt-get install sudo -y
-fi
+(apt-get install sudo -y 2>/dev/null) || (pacman -Sy --needed --noconfirm --overwrite '*' sudo 2>/dev/null)
 echo ""
 fi
 # Fixing any possible problems with packages missed/corrupted dependencies on user OS before proceed
