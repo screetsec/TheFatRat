@@ -1100,7 +1100,7 @@ fi
 
 cont() {
 # check apache if exists
-      which apache2 > /dev/null 2>&1 | which httpd > /dev/null 2>&1
+      which apache2 > /dev/null 2>&1 || which httpd > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
       echo -e $okegreen [✔]::[Apache2 Server $distro ]: Installation found!;
 else
@@ -4438,7 +4438,7 @@ PwnWinds
 					echo ""
 					echo -e $okegreen""
 					echo -e $okegreen " Starting Apache Server wait ..."
-					/etc/init.d/apache2 start > /dev/null 2>&1 | /usr/bin/systemctl start httpd > /dev/null 2>&1
+					/etc/init.d/apache2 start > /dev/null 2>&1 || /usr/bin/systemctl start httpd > /dev/null 2>&1
 					echo ""
 					  echo -e $okegreen""
 					  echo -e $yellow "  Your local IPV4 address is : $lanip"
