@@ -448,10 +448,10 @@ fi
 fi
 sleep 1
 #check if apache2 exists
-which apache2 > /dev/null 2>&1
+which apache2 > /dev/null 2>&1 | which httpd > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Apache2 ..........................[ found ]"
-which apache2 >> "$log" 2>&1
+which apache2 >> "$log" 2>&1 | which httpd >> "$log" 2>&1
 echo "Apache2 -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Apache2 -> not found  "
@@ -462,7 +462,7 @@ xterm -T "☣ INSTALL APACHE2 ☣" -geometry 100x30 -e "sudo pacman -Sy --needed
 else
 xterm -T "☣ INSTALL APACHE2 ☣" -geometry 100x30 -e "sudo apt-get install apache2 -y"
 fi
-which apache2 >> "$log" 2>&1
+which apache2 >> "$log" 2>&1 | which httpd >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Apache2 -> OK"
 echo "Apache2 -> OK" >> "$inst"
@@ -594,11 +594,11 @@ sleep 1
 #inputrepo
 #################################
 
+which pacman > /dev/null 2>&1
+if [ "$?" -ne "0" ]; then
 cp /etc/apt/sources.list /etc/apt/sources.list.backup # backup
 # Second backup created in case user stops the script after this point , then on next startup this script will
 # copy the already changed sources file before as backup , and user lost his original sources lists
-which pacman > /dev/null 2>&1
-if [ "$?" -ne "0" ]; then
 file="/etc/apt/sources.list.fatrat"
 if [ -f "$file" ]
 then
