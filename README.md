@@ -9,7 +9,7 @@
 
 <img align="left" width="120" height="120" src="https://user-images.githubusercontent.com/17976841/36041771-38fbbb26-0dfc-11e8-8074-181cc778011c.png">
 
-An Easy tool to Generate Backdoor for bypass AV and Easy Tool For Post exploitation attack like browser attack,dll . This tool compiles a malware with popular payload  and then the compiled malware can be execute on windows, android, mac . 
+An Easy tool to Generate Backdoor for bypass AV and Easy Tool For Post exploitation attack like browser attack, etc . This tool compiles a malware with popular payload and then the compiled malware can be execute on windows, android, mac . 
 
 The malware that created with this tool also have an ability to bypass most AV software protection . 
         
@@ -27,7 +27,7 @@ The malware that created with this tool also have an ability to bypass most AV s
 
 - Create backdoor for windows , linux , mac and android
 
-- bypass antivirus backdoorr
+- Bypass antivirus backdoorr
 
 - Checks for metasploit service and starts if not present
 
@@ -151,5 +151,5 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## ⭕️ Disclaimer
 
-***Note: modifications, changes, or alterations to this sourcecode is acceptable, however,any public releases utilizing this code must be approved by writen this tool ( Edo -m- ).***
+***Note: modifications, changes, or alterations to this sourcecode is acceptable, however, any public releases utilizing this code must be approved by writen this tool ( Edo -m- ).***
 
