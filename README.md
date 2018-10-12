@@ -68,16 +68,16 @@ The malware that created with this tool also have an ability to bypass most AV s
 - Done
 
 
-## ⭕️ Changelog
+## Changelog
 Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 
-## ⭕️ Getting Started
+## Getting Started
 1. ```git clone https://github.com/Screetsec/TheFatRat.git```
 2. ```cd TheFatRat```
 3. ```chmod +x setup.sh && ./setup.sh```
 
-## ⭕️ How it works
+## How it works
 
 * Extract The lalin-master to your home or another folder
 * chmod +x fatrat
@@ -86,7 +86,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 * Easy to Use just input your number
 
 
-## ⭕️ Linux operating systems we recommend :
+## Linux operating systems we recommend :
 - Kali Linux 2 or Kali 2016.1 rolling 
 - Cyborg
 - Parrot 
@@ -96,17 +96,17 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 
 
-## ⭕️ READ
+## READ
 - if prog.c file to large when create backdoor with powerfull.sh , you can use prog.c.backup and create another backup when you running option 2
 
-## ⭕️ Update Fatrat
+## Update Fatrat
 - To update fatrat go to your TheFatRat folder and execute :
 ```git pull && chmod +x setup.sh && ./setup.sh```
 
 - To Update from 1.9.3 Version and up , execute on your fatrat folder : 
 ```./update && chmod +x setup.sh && ./setup.sh```
 
-## ⭕️ Tutorial ?
+## Tutorial ?
 
 * Screetsec Channel : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
 * Udate thefatrat v1.8 https://youtu.be/6skLV6zPnec?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
@@ -130,12 +130,12 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 * TheFatRat 1.9.6 - Trodebi ( Embed Trojan into Debian Package ) https://youtu.be/NCsrcqhUBCc?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
 * ALL VIDEO IN HERE : https://www.youtube.com/results?search_query=thefatrat+backdoor
 
-## ⭕️ Found a Bug ?
+## Found a Bug ?
 
 - Submit new issue 
 
 
-## ⭕️ Credits
+## Credits
 
 - Thanks to allah and Screetsec [ Edo -maland- ] <Me>
 - Dracos Linux from Scratch Indonesia ( Penetration os ) Thanksyou , you can see in http://dracos-linux.org/
@@ -151,5 +151,5 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## ⭕️ Disclaimer
 
-***Note: modifications, changes, or alterations to this sourcecode is acceptable, however,any public releases utilizing this code must be approved by writen this tool ( Edo -m- ).***
+***Note: modifications, changes, or alterations to this sourcecode is acceptable, however,any public releases utilizing this code must be approved by writen this tool ( Edo maland ).***
 
