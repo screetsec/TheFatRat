@@ -15,7 +15,8 @@ echo ""
 echo -e $okegreen "Select one of the options bellow"
 echo -e $orange "+-------------------------------------------------+"
 echo -e $orange "|$white [$okegreen 1$white ]$yellow Setup Searchsploit Path Manually$orange          |"
-echo -e $orange "|$white [$okegreen 2$white ]$yellow Install Searchsploit from Kali Repository$orange |"
+echo -e $orange "|$white [$okegreen 2$white ]$yellow Install Searchsploit from BlackArch Repository$orange |"
+echo -e $orange "|$white [$okegreen 3$white ]$yellow Install Searchsploit from Kali Repository$orange |"
 echo -e $orange "+-------------------------------------------------+"
 echo ""
 echo -ne $okegreen "Option : ";tput sgr0
@@ -48,6 +49,20 @@ fi
 #ok
 2)
 echo -e $yellow "[ ! ]  Installing Searchsploit "
+xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' searchsploit"
+which searchsploit > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Searchsploit"
+echo "searchsploit" | tee -a "$config" "$log" > /dev/null 2>&1
+echo "Searchsploit -> OK" >> "$inst"
+else
+echo "0" > "$stp"
+echo "Searchsploit -> Not OK" >> "$inst"
+fi
+;;
+
+3)
+echo -e $yellow "[ ! ]  Installing Searchsploit "
 xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
 which searchsploit > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -59,6 +74,7 @@ echo "0" > "$stp"
 echo "Searchsploit -> Not OK" >> "$inst"
 fi
 ;;
+
 *)
 ssplt
 ;;
@@ -141,7 +157,8 @@ echo ""
 echo -e $green "Select one of the options bellow"
 echo -e $orange "+-----------------------------------------------------+"
 echo -e $orange "|$white [$okegreen 1$white ]$yellow Setup Backdoor-Factory Path Manually$orange          |"
-echo -e $orange "|$white [$okegreen 2$white ]$yellow Install Backdoor-Factory from Kali Repository$orange |"
+echo -e $orange "|$white [$okegreen 2$white ]$yellow Install Backdoor-Factory from BlackArch Repository$orange |"
+echo -e $orange "|$white [$okegreen 3$white ]$yellow Install Backdoor-Factory from Kali Repository$orange |"
 echo -e $orange "+-----------------------------------------------------+"
 echo ""
 echo -ne $green "Option : ";tput sgr0
@@ -173,6 +190,22 @@ ssplt
 ;;
 
 2)
+echo -e $yellow "[ ! ] Installing backdoor-factory "
+xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' backdoor-factory"
+which backdoor-factory > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Backdoor-Factory -> OK"
+echo "backdoor-factory" | tee -a "$config" "$log" > /dev/null 2>&1
+echo "Backdoor-factory -> OK" >> "$inst"
+else
+echo -e $red "[ X ] backdoor-factory"
+echo "0" > "$stp"
+echo "Backdoor-factory -> Not OK" >> "$inst"
+ssplt
+fi
+;;
+
+3)
 echo -e $yellow "[ ! ] Installing backdoor-factory "
 xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory --force-yes -y"
 which backdoor-factory > /dev/null 2>&1
@@ -214,7 +247,8 @@ echo ""
 echo -e $okegreen "Select one of the options bellow"
 echo -e $orange "+---------------------------------------------------------+"
 echo -e $orange "|$white [$okegreen 1$white ]$yellow Setup Metasploit Framework Path Manually$orange          |"
-echo -e $orange "|$white [$okegreen 2$white ]$yellow Install Metasploit Framework from Kali Repository$orange |"
+echo -e $orange "|$white [$okegreen 2$white ]$yellow Install Metasploit Framework from BlackArch Repository$orange |"
+echo -e $orange "|$white [$okegreen 3$white ]$yellow Install Metasploit Framework from Kali Repository$orange |"
 echo -e $orange "+---------------------------------------------------------+"
 echo ""
 echo -ne $okegreen "Option : ";tput sgr0
@@ -264,6 +298,32 @@ bkf
 ;;
 
 2)
+echo -e $yellow "[ ! ] Installing Metasploit-Framework  "
+xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo pacman -Sy --needed --noconfirm --overwrite '*' metasploit"
+which msfconsole > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Metasploit (msfconsole) -> OK"
+echo "msfconsole" | tee -a "$config" "$log" > /dev/null 2>&1
+echo "Metasploit (msfconsole) -> OK" >> "$inst"
+else
+echo -e $red "[ x ] Metasploit (msfconsole)"
+echo "Metasploit (msfconsole) -> Not OK" >> "$inst"
+echo "0" > "$stp"
+fi
+which msfvenom > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e $green "[ ✔ ] Metasploit (msfvenom) -> OK"
+echo "msfvenom" | tee -a "$config" "$log" > /dev/null 2>&1
+echo "Metasploit (msfvenom) -> OK" >> "$inst"
+else
+echo -e $red "[ x ] Metasploit (msfvenom)"
+echo "0" > "$stp"
+echo "Metasploit (msfvenom) -> Not OK" >> "$inst"
+fi
+bkf
+;;
+
+3)
 echo -e $yellow "[ ! ] Installing Metasploit-Framework  "
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
 which msfconsole > /dev/null 2>&1
@@ -317,7 +377,7 @@ echo ""
 echo -e $red "[ X ] Xterm -> not found! "
 echo -e $yellow "[ ! ] Installing Xterm                     "
 echo -e $green ""
-sudo apt-get install xterm -y
+(sudo apt-get install xterm -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' xterm 2>/dev/null)
 which xterm >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Xterm -> OK"
@@ -339,7 +399,7 @@ echo "Dns-Utils -> OK" >> "$inst"
 else
 echo -e $red "[ X ] dnsutils -> not found! "
 echo -e $yellow "[ ! ]  Installing dnsutils"
-xterm -T "☣ INSTALL DNSUTILS ☣" -geometry 100x30 -e "sudo apt-get install dnsutils -y"
+xterm -T "☣ INSTALL DNSUTILS ☣" -geometry 100x30 -e "(sudo apt-get install dnsutils -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' bind-tools 2>/dev/null)"
 which dig >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Dns-Utils -> OK"
@@ -360,7 +420,7 @@ echo "GCC -> OK" >> "$inst"
 else
 echo -e $red "[ X ] gcc compiler      -> not found "
 echo -e $yellow "[ ! ]   Installing gcc "
-xterm -T "☣ INSTALL GCC COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install gcc -y"
+xterm -T "☣ INSTALL GCC COMPILLER ☣" -geometry 100x30 -e "(sudo apt-get install gcc -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' gcc 2>/dev/null)"
 which gcc >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] GCC -> OK"
@@ -373,16 +433,16 @@ fi
 fi
 sleep 1
 #check if apache2 exists
-which apache2 > /dev/null 2>&1
+which apache2 > /dev/null 2>&1 || which httpd > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Apache2 ..........................[ found ]"
-which apache2 >> "$log" 2>&1
+which apache2 >> "$log" 2>&1 || which httpd >> "$log" 2>&1
 echo "Apache2 -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Apache2 -> not found  "
 echo -e $yellow "[ ! ]    Installing apache2 "
-xterm -T "☣ INSTALL APACHE2 ☣" -geometry 100x30 -e "sudo apt-get install apache2 -y"
-which apache2 >> "$log" 2>&1
+xterm -T "☣ INSTALL APACHE2 ☣" -geometry 100x30 -e "(sudo apt-get install apache2 -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' apache 2>/dev/null)"
+which apache2 >> "$log" 2>&1 || which httpd >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Apache2 -> OK"
 echo "Apache2 -> OK" >> "$inst"
@@ -404,7 +464,7 @@ echo "Gnome Terminal -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Gnome-terminal-> not found "
 echo -e $yellow "[ ! ] Installing gnome-terminal "
-xterm -T "☣ INSTALL GNOME-TERMINAL ☣" -geometry 100x30 -e "sudo apt-get install gnome-terminal -y"
+xterm -T "☣ INSTALL GNOME-TERMINAL ☣" -geometry 100x30 -e "(sudo apt-get install gnome-terminal -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' gnome-terminal 2>/dev/null)"
 which gnome-terminal >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Gnome Terminal -> OK"
@@ -426,7 +486,7 @@ echo "UPX -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Upx compressor  -> not found "
 echo -e $yellow "[ ! ] Installing upx-compressor "
-xterm -T "☣ INSTALL UPX COMPRESSOR ☣" -geometry 100x30 -e "sudo apt-get install upx-ucl -y"
+xterm -T "☣ INSTALL UPX COMPRESSOR ☣" -geometry 100x30 -e "(sudo apt-get install upx-ucl -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' upx 2>/dev/null)"
 which upx >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] UPX Compressor -> OK"
@@ -447,7 +507,7 @@ echo "Ruby -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Ruby  -> not found "
 echo -e $yellow "[ ! ] Installing Ruby "
-xterm -T "☣ INSTALL Ruby ☣" -geometry 100x30 -e "sudo apt-get install ruby -y && gem install nokogiri"
+xterm -T "☣ INSTALL Ruby ☣" -geometry 100x30 -e "((sudo apt-get install ruby -y && gem install nokogiri) 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' ruby-nokogiri 2>/dev/null)"
 which ruby >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Ruby -> OK"
@@ -468,7 +528,7 @@ echo "Openssl -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Openssl  -> not found "
 echo -e $yellow "[ ! ] Installing Openssl "
-xterm -T "☣ INSTALL OPENSSL ☣" -geometry 100x30 -e "sudo apt-get install openssl -y"
+xterm -T "☣ INSTALL OPENSSL ☣" -geometry 100x30 -e "(sudo apt-get install openssl -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' openssl 2>/dev/null)"
 which openssl >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Openssl -> OK"
@@ -482,13 +542,15 @@ fi
 sleep 1
 #installing dependencies for ruby script 
 echo -e $green "[ ! ] Installing tools dependencies"
-xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick lib32z1 lib32ncurses5 lib32stdc++6 python-pip python-dev build-essential -y && pip install names"
+xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "((sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick lib32z1 lib32ncurses5 lib32stdc++6 python-pip python-dev build-essential -y && pip install names) 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' base-devel imagemagick lib32-ncurses lib32-zlib lib32-libstdc++5 lsb-release python python-names 2>/dev/null)"
 sleep 1
 
 #################################
 #inputrepo
 #################################
 
+which pacman > /dev/null 2>&1
+if [ "$?" -ne "0" ]; then
 cp /etc/apt/sources.list /etc/apt/sources.list.backup # backup
 # Second backup created in case user stops the script after this point , then on next startup this script will
 # copy the already changed sources file before as backup , and user lost his original sources lists
@@ -506,6 +568,7 @@ touch /etc/apt/sources.list
 echo 'deb https://http.kali.org/kali kali-rolling main non-free contrib' > /etc/apt/sources.list
 xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get update"
 sleep 1
+fi
 
 # check if monodevelop exists
 #which monodevelop > /dev/null 2>&1
@@ -546,7 +609,7 @@ echo "jarsigner" | tee -a "$config" >> /dev/null 2>&1
 else
 echo -e $red "[ X ] Jarsigner (java) -> not found "
 echo -e $yellow "[ ! ] Installing Java "
-xterm -T "☣ INSTALL OPENJDK-8 ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk openjdk-8-jre --force-yes -y "
+xterm -T "☣ INSTALL OPENJDK-8 ☣" -geometry 100x30 -e "(sudo apt-get install openjdk-8-jdk openjdk-8-jre --force-yes -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' jdk8-openjdk jre8-openjdk 2>/dev/null)"
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Jarsigner -> OK"
@@ -578,7 +641,7 @@ echo "Unzip -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Unzip -> not found "
 echo -e $yellow "[ ! ] Installing Unzip "
-xterm -T "☣ INSTALL UNZIP ☣" -geometry 100x30 -e "sudo apt-get install unzip --force-yes -y "
+xterm -T "☣ INSTALL UNZIP ☣" -geometry 100x30 -e "(sudo apt-get install unzip --force-yes -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' unzip 2>/dev/null)"
 which unzip >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo "unzip" | tee -a "$config" >> /dev/null 2>&1
@@ -602,7 +665,7 @@ echo "Keytool -> OK" >> "$inst"
 else
 echo -e $red "[ X ] Keytool (java) -> not found  "
 echo -e $yellow "[ ! ] Installing Java "
-xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk --force-yes -y "
+xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "(sudo apt-get install openjdk-8-jdk --force-yes -y 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' jre8-openjdk 2>/dev/null)"
 which keytool >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo "keytool" | tee -a "$config" >> /dev/null 2>&1
@@ -643,7 +706,7 @@ echo -e $red "[ X ] Mingw-w64 -> not found "
 #Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
 # In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
 
-xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw* -y && apt-get autoremove -y && apt-get install mingw* --force-yes -y"
+xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "((sudo apt-get remove --purge mingw* -y && apt-get autoremove -y && apt-get install mingw* --force-yes -y) 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' mingw-w64-gcc 2>/dev/null)"
 which x86_64-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw-64 Compiler..................[ found ]"
@@ -668,7 +731,7 @@ echo -e $red "[ X ] Mingw-32 -> not found "
 #Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
 # In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
 
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw* -y && apt-get autoremove -y && apt-get install mingw* --force-yes -y"
+xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "((sudo apt-get remove --purge mingw* -y && apt-get autoremove -y && apt-get install mingw* --force-yes -y) 2>/dev/null) || (sudo pacman -Sy --needed --noconfirm --overwrite '*' mingw-w64-gcc 2>/dev/null)"
 which i686-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e $green "[ ✔ ] Mingw-32 Compiler..................[ found ]"
@@ -696,7 +759,7 @@ echo "DX -> OK" >> "$inst"
 ;;
 *)
 #DX does not exists or is not 1.8 version
-xterm -T "☣ Removing Your Current DX ☣" -geometry 100x30 -e "sudo apt-get remove --purge dx -y"
+xterm -T "☣ Removing Your Current DX ☣" -geometry 100x30 -e "sudo apt-get remove --purge dx -y 2>/dev/null"
 unlink "/usr/local/sbin/dx" > /dev/null 2>&1
 ln -s "$path/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 2>&1
 which dx > /dev/null 2>&1
@@ -742,7 +805,7 @@ echo "Aapt -> OK" >> "$inst"
 ;;
 *)
 #Aapt does not exists or is not the latest version used in fatrat (android sdk)
-xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y"
+xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y 2>/dev/null"
 unlink "/usr/local/sbin/aapt" > /dev/null 2>&1
 ln -s "$path/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/null 2>&1
 which aapt > /dev/null 2>&1
@@ -786,7 +849,7 @@ echo -e $green "[ ✔ ] Apktool v.2.2.2"
 echo "Apktool -> OK" >> "$inst"
 ;;
 *)
-xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
+xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y 2>/dev/null"
 unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
 ln -s "$path/tools/apktool2.2.2/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
 which apktool > /dev/null 2>&1
@@ -834,7 +897,7 @@ echo "Dex2Jar -> OK" >> "$inst"
 rm -rf temp/dex >/dev/null 2>&1
 #Dex2jar does not exists or it is not the 2.0 version , so uninstall it & copy dex2jar from
 #fatrat tools folder to /usr/local/sbin 
-xterm -T "☣ Removing Your Current Dex2Jar ☣" -geometry 100x30 -e "sudo apt-get remove --purge dex2jar --force-yes -y" 
+xterm -T "☣ Removing Your Current Dex2Jar ☣" -geometry 100x30 -e "sudo apt-get remove --purge dex2jar --force-yes -y 2>/dev/null"
 cp $path/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-baksmali > /dev/null 2>&1
 chmod +x /usr/local/sbin/d2j-dex-recompute-checksum > /dev/null 2>&1
@@ -898,6 +961,8 @@ mtspl
 ################################
 # rebackyo repo
 ################################
+which pacman > /dev/null 2>&1
+if [ "$?" -ne "0" ]; then 
 echo -e $blue "Reactivating your original repositories"
 rm -f /etc/apt/sources.list
 mv /etc/apt/sources.list.backup /etc/apt/sources.list
@@ -905,6 +970,7 @@ mv /etc/apt/sources.list.backup /etc/apt/sources.list
 rm -f /etc/apt/sources.list.fatrat
 apt-get clean
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
+fi
 clear
 echo -e $okegreen "Do you want to create a shortcut for fatrat in your system"
 echo -e $okegreen "so you can run fatrat from anywhere in your terminal and desktop ?"
@@ -1041,6 +1107,8 @@ fi
 
 
 #Fail safe for original user sources.list in case setup was interrupted in middle last time
+which pacman > /dev/null 2>&1
+if [ "$?" -ne "0" ]; then
 file="/etc/apt/sources.list.fatrat"
 if [ -f "$file" ]
 then
@@ -1056,7 +1124,8 @@ sudo apt-get clean && apt-get update -y
 sleep 2
 else
 echo -e $green ""
-fi 
+fi
+fi
 #variables for logs and others
 path=`pwd`
 arch=`uname -m`
@@ -1091,15 +1160,18 @@ which sudo > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo ""
 else
-apt-get install sudo -y
-fi
+(apt-get install sudo -y 2>/dev/null) || (pacman -Sy --needed --noconfirm --overwrite '*' sudo 2>/dev/null)
 echo ""
+fi
 # Fixing any possible problems with packages missed/corrupted dependencies on user OS before proceed
+which pacman > /dev/null 2>&1
+if [ "$?" -ne "0" ]; then
 echo -e $green "[ * ] Fixing any possible broken packages in apt management"
 sleep 1
 echo -e $white ""
 sudo apt-get install -f -y && sudo apt-get autoremove -y
 sleep 1
+fi
 echo ""
 echo -e $yellow "[ ✔ ] Done ! ....Proceeding with setup"
 echo ""

@@ -1100,7 +1100,7 @@ fi
 
 cont() {
 # check apache if exists
-      which apache2 > /dev/null 2>&1
+      which apache2 > /dev/null 2>&1 || which httpd > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
       echo -e $okegreen [✔]::[Apache2 Server $distro ]: Installation found!;
 else
@@ -1157,7 +1157,9 @@ fi
 sleep 0.5
 
 #another apache2 locate
-    if [ "$distro" = "Ubuntu" ]; then
+    if [ "$distro" = "Arch" ]; then
+      apache2="/srv/http"
+    elif [ "$distro" = "Ubuntu" ]; then
       apache2="/var/www"
     elif [ "$distro" = "Kali" ]; then
       apache2="/var/www/html"
@@ -1386,7 +1388,10 @@ else
 fi
 
 #Started Service postgresql & apache
-if [ "$distro" = "Kali" ]; then
+if [ "$distro" = "Arch" ]; then
+/usr/bin/systemctl start postgresql > /dev/null 2>&1
+/usr/bin/systemctl start httpd > /dev/null 2>&1
+elif [ "$distro" = "Kali" ]; then
 /etc/init.d/postgresql start > /dev/null 2>&1
 /etc/init.d/metasploit start > /dev/null 2>&1
 /etc/init.d/apache2 start > /dev/null 2>&1
@@ -1490,7 +1495,10 @@ fi
 
 function Stop() {
   #Stoped Service postgresql & apache
-  if [ "$distro" = "Kali" ]; then
+  if [ "$distro" = "Arch" ]; then
+  /usr/bin/systemctl stop postgresql > /dev/null 2>&1
+  /usr/bin/systemctl stop httpd > /dev/null 2>&1
+  elif [ "$distro" = "Kali" ]; then
   /etc/init.d/postgresql stop > /dev/null 2>&1
   /etc/init.d/metasploit stop > /dev/null 2>&1
   /etc/init.d/apache2 stop > /dev/null 2>&1
@@ -4430,7 +4438,7 @@ PwnWinds
 					echo ""
 					echo -e $okegreen""
 					echo -e $okegreen " Starting Apache Server wait ..."
-					/etc/init.d/apache2 start > /dev/null 2>&1
+					/etc/init.d/apache2 start > /dev/null 2>&1 || /usr/bin/systemctl start httpd > /dev/null 2>&1
 					echo ""
 					  echo -e $okegreen""
 					  echo -e $yellow "  Your local IPV4 address is : $lanip"
