@@ -3582,7 +3582,7 @@ fi
 						fi
 					#setupexe
 					echo""
-					echo -ne $okegreen "  Are u want Use custom exe file backdoor ( y/n ): " ;tput sgr0
+					echo -ne $okegreen "  Would you like to use a custom exe for backdoor ( y/n ): " ;tput sgr0
 					read exe
 						if [ $exe != 'y' ] && [ $exe != 'Y' ]
 							then
