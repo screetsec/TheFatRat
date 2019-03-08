@@ -27,7 +27,7 @@ The malware that created with this tool also have an ability to bypass most AV s
 
 - Create backdoor for windows , linux , mac and android
 
-- bypass antivirus backdoorr
+- bypass antivirus backdoor
 
 - Checks for metasploit service and starts if not present
 
