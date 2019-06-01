@@ -1,4 +1,5 @@
 ## CHANGELOG
+* v1.9.7 - Version control added to file instead in source code , fixed all pwnwinds backdoor payload options
 * v1.9.6 - fixes in pwnwinds and in setup
 * v1.9.6 - new features added Trodebi ( Trojan debian package - embed in debian package ) 
 * v1.9.6 - updated pwnwinds & add Create Backdoor with C to dll ( custom dll inject )
