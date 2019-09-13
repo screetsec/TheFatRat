@@ -1719,7 +1719,7 @@ case $fwin in
     read -p '   Please enter the base name for output files : ' fira
     #Go make a check if user inputed any value or not
     invalid
-    if [[ -f "$fira ]]
+    if [[ -f "$fira" ]]
     then
     echo "Filename already exists , choose another name"
     sleep 5
