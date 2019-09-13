@@ -1719,6 +1719,18 @@ case $fwin in
     read -p '   Please enter the base name for output files : ' fira
     #Go make a check if user inputed any value or not
     invalid
+    if [[ -f "$fira ]]
+    then
+    echo "Filename already exists , choose another name"
+    sleep 5
+    fudwin
+    elif [[ -d "$fira" ]]
+    then
+    echo "There is a directory with that name , choose another name"
+    sleep 5
+    fudwin
+    fi
+    
     #From invalid , a variable will return with 0 or 1 , if 1 then abort & return to fudwin menu
     if [ $err == "1" ]
     then
