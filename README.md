@@ -8,7 +8,7 @@
 [![Build](https://img.shields.io/badge/Supported_OS-Linux-orange.svg)]()
 [![Available](https://img.shields.io/badge/Blackarch-Linux-red.svg?maxAge=259200)]()
 [![Documentation](https://img.shields.io/badge/CEHv10-eccouncil-blue.svg?maxAge=259200)](https://github.com/ManhNho/CEHv10/tree/master/Slides)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)]
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-yellow.svg?style=flat)]()
 
 <img align="left" width="120" height="120" src="https://user-images.githubusercontent.com/17976841/36041771-38fbbb26-0dfc-11e8-8074-181cc778011c.png">
 
@@ -109,7 +109,12 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 - To Update from 1.9.3 Version and up , execute on your fatrat folder : 
 ```./update && chmod +x setup.sh && ./setup.sh```
 
-## Tutorial ?
+## Documentation
+Documentation Available in Modules CEH v9 and V10 , Download source here 
+- [CEHv10 Module 17 Hacking Mobile Platforms.pdf](https://github.com/ManhNho/CEHv10/blob/master/Slides/CEHv10%20Module%2017%20Hacking%20Mobile%20Platforms.pdf)
+- [CEHv10 Module 17 Hacking Mobile Platforms.pdf](https://github.com/ManhNho/CEHv10/blob/master/Labs/CEHv10%20Module%2017%20Hacking%20Mobile%20Platforms.pdf)
+
+## Tutorial 
 
 * Screetsec Channel : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
 * Udate thefatrat v1.8 https://youtu.be/6skLV6zPnec?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
