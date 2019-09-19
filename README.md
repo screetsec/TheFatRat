@@ -29,27 +29,16 @@ The malware that created with this tool also have an ability to bypass most AV s
 # Automating metasploit functions
 
 - Create backdoor for windows , linux , mac and android
-
-- bypass antivirus backdoorr
-
+- bypass antivirus backdoor
 - Checks for metasploit service and starts if not present
-
 - Easily craft meterpreter reverse_tcp payloads for Windows, Linux, Android and Mac and another
-
 - Start multiple meterpreter reverse_tcp listners
-
 - Fast Search in searchsploit
-
 - Bypass AV
-
 - File pumper
-
 - Create backdoor with another techniq
-
 - Autorunscript for listeners ( easy to use )
-
 - Drop into Msfconsole
-
 - Some other fun stuff :)
 
 
@@ -98,7 +87,6 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 - Devuan
 
 
-
 ## READ
 - if prog.c file to large when create backdoor with powerfull.sh , you can use prog.c.backup and create another backup when you running option 2
 
@@ -111,7 +99,7 @@ Be sure to check out the [Changelog] and Read CHANGELOG.md
 
 ## Documentation
 Documentation Available in Modules CEH v9 and V10 , Download source here 
-- [CEHv10 Module 17 Hacking Mobile Platforms.pdf](https://github.com/ManhNho/CEHv10/blob/master/Slides/CEHv10%20Module%2017%20Hacking%20Mobile%20Platforms.pdf)
+- [CEHv10 Module 06 System Hacking.pdf](https://github.com/ManhNho/CEHv10/blob/master/Labs/CEHv10%20Module%2006%20System%20Hacking.pdf)
 - [CEHv10 Module 17 Hacking Mobile Platforms.pdf](https://github.com/ManhNho/CEHv10/blob/master/Labs/CEHv10%20Module%2017%20Hacking%20Mobile%20Platforms.pdf)
 
 ## Tutorial 
@@ -137,11 +125,6 @@ Documentation Available in Modules CEH v9 and V10 , Download source here
 * Hacking Windows using TheFatRat + Apache2 Server + Ettercap + Metasploit on Kali Linux 2016.2 https://www.youtube.com/watch?v=FlXMslSjnGw
 * TheFatRat 1.9.6 - Trodebi ( Embed Trojan into Debian Package ) https://youtu.be/NCsrcqhUBCc?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
 * ALL VIDEO IN HERE : https://www.youtube.com/results?search_query=thefatrat+backdoor
-
-## Found a Bug ?
-
-- Submit new issue 
-
 
 ## Credits
 
