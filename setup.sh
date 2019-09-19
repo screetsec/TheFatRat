@@ -1258,6 +1258,13 @@ echo [local]
 fi
 
 sleep 1
+which nc > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo ""
+else
+sudo apt-get install netcat -y > /dev/null 2>&1
+fi
+sleep 1
 #First check of setup for internet connection by connecting to google over http
 echo -e $green "[ * ] Checking for internet connection"
 sleep 1
