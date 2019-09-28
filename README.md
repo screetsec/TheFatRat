@@ -54,7 +54,7 @@ cd TheFatRat
 	- [How To Download & Install TheFatRat](https://www.youtube.com/watch?v=FsSgJFxyzFQ)
 	- [TheFatRat 1.9.6 - Trodebi ( Embed Trojan into Debian Package )](https://www.youtube.com/watch?v=NCsrcqhUBCc&feature=youtu.be&list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8)
 	- [hacking windows 10 with TheFatRat](https://www.youtube.com/watch?v=bFXVAXRXE9Q )
-	- [Hacking Windows using TheFatRat + Apache2 Server + Ettercap + Metasploit]([https://www.youtube.com/watch?v=FlXMslSjnGw](https://www.youtube.com/watch?v=FlXMslSjnGw))
+	- [Hacking Windows using TheFatRat + Apache2 Server + Ettercap + Metasploit]([https://www.youtube.com/watch?v=FlXMslSjnGw](https://www.youtube.com/watch?v=FlXMslSjnGw)
 	- [Hacking with a Microsoft Office Word Document from TheFatRat](https://www.youtube.com/watch?v=lglOXojT84M)
 	- [XSS to powershell attack and bypass Antivirus using BeEF + TheFatRat + Metasploit](https://www.youtube.com/watch?v=pbvg7pgxVjo)
 	- [TheFatRat - Hacking Over WAN - Embedding Payload in Original Android APK - Without Port Forwarding](https://www.youtube.com/watch?v=XLNigYZ5-fM)
