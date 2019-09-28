@@ -910,6 +910,7 @@ cp $path/config/TheFatRat.desktop /usr/share/applications/TheFatRat.desktop
 cp $path/icons/TheFatRat.ico /usr/share/icons/TheFatRat.ico
 chmod +x /usr/local/sbin/fatrat
 chmod +x fatrat
+chmod +x powerfull.sh
 chmod +x update
 chmod +x backdoor_apk
 chmod +x $path/tools/power.py
@@ -927,6 +928,7 @@ fi
 
 n|no|No|NO)
 chmod +x fatrat
+chmod +x powerfull.sh
 chmod +x update
 chmod +x backdoor_apk
 chmod +x $path/tools/power.py
@@ -942,6 +944,7 @@ echo -e $green "Instalation completed , To execute fatrat write in fatrat direct
 
 *)
 chmod +x fatrat
+chmod +x powerfull.sh
 chmod +x update
 chmod +x backdoor_apk
 chmod +x $path/tools/power.py
