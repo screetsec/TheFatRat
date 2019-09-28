@@ -63,12 +63,6 @@ if [ ! -r ${baserules} ]; then
     exit 1
 fi
 
-extrarules="${progdir}"/mainDexClassesNoAapt.rules
-if [ ! -r ${extrarules} ]; then
-    echo `basename "$prog"`": can't find mainDexClassesNoAapt.rules" 1>&2
-    exit 1
-fi
-
 jarfile=dx.jar
 libdir="$progdir"
 
@@ -156,9 +150,6 @@ if expr "x$1" : 'x--output' >/dev/null; then
 elif expr "x$1" : 'x--disable-annotation-resolution-workaround' >/dev/null; then
     disableKeepAnnotated=$1
     shift 1
-elif expr "x$1" : "x--aapt-rules" >/dev/null; then
-    extrarules=$2
-    shift 2
 else
     break
 fi
@@ -175,6 +166,6 @@ trap cleanTmp 0
 
 ${proguard} -injars ${@} -dontwarn -forceprocessing  -outjars ${tmpOut} \
   -libraryjars "${shrinkedAndroidJar}" -dontoptimize -dontobfuscate -dontpreverify \
-  -include "${baserules}" -include "${extrarules}" 1>/dev/null || exit 10
+  -include "${baserules}" 1>/dev/null || exit 10
 
 java -cp "$jarpath" com.android.multidex.MainDexListBuilder ${disableKeepAnnotated} "${tmpOut}" ${@} ||  exit 11

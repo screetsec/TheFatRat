@@ -1,4 +1,6 @@
 ## CHANGELOG
+* v1.9.7 - Output folder for all generated files in fatrat will now be in $Home/Fatrat_Generated
+* V1.9.7 - Removed dex2jar , proguard , not needed anymore for new backdoor_apk , updated backdoor_apk to 0.2.4a and all tools
 * v1.9.7 - APKtool updated to 2.4.0
 * v1.9.7 - Version control added to file instead in source code , fixed all pwnwinds backdoor payload options
 * v1.9.6 - fixes in pwnwinds and in setup

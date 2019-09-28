@@ -1,3 +1,0 @@
-# Default app categories used if neither the package nor installer sets anything
-# First column is package name, second column is raw ApplicationInfo.CATEGORY value
-com.android.printspooler,7

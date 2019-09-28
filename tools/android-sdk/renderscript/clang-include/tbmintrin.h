@@ -36,57 +36,57 @@
                                            (unsigned int)(b)))
 
 static __inline__ unsigned int __DEFAULT_FN_ATTRS
-__blcfill_u32(unsigned int __a)
+__blcfill_u32(unsigned int a)
 {
-  return __a & (__a + 1);
+  return a & (a + 1);
 }
 
 static __inline__ unsigned int __DEFAULT_FN_ATTRS
-__blci_u32(unsigned int __a)
+__blci_u32(unsigned int a)
 {
-  return __a | ~(__a + 1);
+  return a | ~(a + 1);
 }
 
 static __inline__ unsigned int __DEFAULT_FN_ATTRS
-__blcic_u32(unsigned int __a)
+__blcic_u32(unsigned int a)
 {
-  return ~__a & (__a + 1);
+  return ~a & (a + 1);
 }
 
 static __inline__ unsigned int __DEFAULT_FN_ATTRS
-__blcmsk_u32(unsigned int __a)
+__blcmsk_u32(unsigned int a)
 {
-  return __a ^ (__a + 1);
+  return a ^ (a + 1);
 }
 
 static __inline__ unsigned int __DEFAULT_FN_ATTRS
-__blcs_u32(unsigned int __a)
+__blcs_u32(unsigned int a)
 {
-  return __a | (__a + 1);
+  return a | (a + 1);
 }
 
 static __inline__ unsigned int __DEFAULT_FN_ATTRS
-__blsfill_u32(unsigned int __a)
+__blsfill_u32(unsigned int a)
 {
-  return __a | (__a - 1);
+  return a | (a - 1);
 }
 
 static __inline__ unsigned int __DEFAULT_FN_ATTRS
-__blsic_u32(unsigned int __a)
+__blsic_u32(unsigned int a)
 {
-  return ~__a | (__a - 1);
+  return ~a | (a - 1);
 }
 
 static __inline__ unsigned int __DEFAULT_FN_ATTRS
-__t1mskc_u32(unsigned int __a)
+__t1mskc_u32(unsigned int a)
 {
-  return ~__a | (__a + 1);
+  return ~a | (a + 1);
 }
 
 static __inline__ unsigned int __DEFAULT_FN_ATTRS
-__tzmsk_u32(unsigned int __a)
+__tzmsk_u32(unsigned int a)
 {
-  return ~__a & (__a - 1);
+  return ~a & (a - 1);
 }
 
 #ifdef __x86_64__
@@ -95,57 +95,57 @@ __tzmsk_u32(unsigned int __a)
                                                  (unsigned long long)(b)))
 
 static __inline__ unsigned long long __DEFAULT_FN_ATTRS
-__blcfill_u64(unsigned long long __a)
+__blcfill_u64(unsigned long long a)
 {
-  return __a & (__a + 1);
+  return a & (a + 1);
 }
 
 static __inline__ unsigned long long __DEFAULT_FN_ATTRS
-__blci_u64(unsigned long long __a)
+__blci_u64(unsigned long long a)
 {
-  return __a | ~(__a + 1);
+  return a | ~(a + 1);
 }
 
 static __inline__ unsigned long long __DEFAULT_FN_ATTRS
-__blcic_u64(unsigned long long __a)
+__blcic_u64(unsigned long long a)
 {
-  return ~__a & (__a + 1);
+  return ~a & (a + 1);
 }
 
 static __inline__ unsigned long long __DEFAULT_FN_ATTRS
-__blcmsk_u64(unsigned long long __a)
+__blcmsk_u64(unsigned long long a)
 {
-  return __a ^ (__a + 1);
+  return a ^ (a + 1);
 }
 
 static __inline__ unsigned long long __DEFAULT_FN_ATTRS
-__blcs_u64(unsigned long long __a)
+__blcs_u64(unsigned long long a)
 {
-  return __a | (__a + 1);
+  return a | (a + 1);
 }
 
 static __inline__ unsigned long long __DEFAULT_FN_ATTRS
-__blsfill_u64(unsigned long long __a)
+__blsfill_u64(unsigned long long a)
 {
-  return __a | (__a - 1);
+  return a | (a - 1);
 }
 
 static __inline__ unsigned long long __DEFAULT_FN_ATTRS
-__blsic_u64(unsigned long long __a)
+__blsic_u64(unsigned long long a)
 {
-  return ~__a | (__a - 1);
+  return ~a | (a - 1);
 }
 
 static __inline__ unsigned long long __DEFAULT_FN_ATTRS
-__t1mskc_u64(unsigned long long __a)
+__t1mskc_u64(unsigned long long a)
 {
-  return ~__a | (__a + 1);
+  return ~a | (a + 1);
 }
 
 static __inline__ unsigned long long __DEFAULT_FN_ATTRS
-__tzmsk_u64(unsigned long long __a)
+__tzmsk_u64(unsigned long long a)
 {
-  return ~__a & (__a - 1);
+  return ~a & (a - 1);
 }
 #endif
 
