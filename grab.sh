@@ -75,7 +75,7 @@ fi
 
 #File was created by metasploit , copy it to final destination , kill msfconsole window and auto-close this script
 if [ -f $out ]; then
-mv $HOME/.msf4/local/$var $path/output/$var
+mv $HOME/.msf4/local/$var $HOME/Fatrat_Generated/$var
 
 #Look in active processes a process name "Microsploit" and kill it
 pkill -f Microsploit > /dev/null 2>&1

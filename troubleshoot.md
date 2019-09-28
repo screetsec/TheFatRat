@@ -70,7 +70,7 @@ The solution is to install names python module by running in your terminal ( pip
 - ruby (To run ruby modules used in fatrat)
 - openssl (To create certificates for the apks)
 - zlib1g-dev libmagickwand-dev imagemagick lib32z1 lib32ncurses5 lib32stdc++6 python-pip python-dev build-essential (libraries dependencies for apk tools)
-- Monodevelop (file compiler for some backdoors in fatrat)
+- Mono-MCS (file compiler for some backdoors in fatrat)
 - openjdk-8-jdk and openjdk-8-jre (used by apk tools to sign the apks)
 - unzip (zip extractor)
 - mingw32 (32bit exe compiler for powerstager & others in fatrat)

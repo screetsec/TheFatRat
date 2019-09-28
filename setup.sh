@@ -644,12 +644,6 @@ echo "$path/tools/android-sdk/zipalign" | tee -a "$config" >> /dev/null 2>&1
 sleep 1
 
 
-#Adding Proguard path to config
-echo -e $green "[ ✔ ] Proguard "
-echo "$path/tools/proguard5.3.2/lib/proguard" >> "$log" 2>&1
-echo "$path/tools/proguard5.3.2/lib/proguard" | tee -a "$config" >> /dev/null 2>&1
-sleep 1
-
 # check if mingw32 or mingw-64 exists 
 # Case not exists then reedirect to mingw instalation depending on arch
 
@@ -699,19 +693,19 @@ echo "0" > "$stp"
 echo "mingw-32 -> Not OK" >> "$inst"
 fi
 fi
-
-#Checking for DX and in case exists then check if it is version 1.8 used in fatrat (latest android sdk) 
+sleep 1
+#Checking for DX and in case exists then check if it is version 1.12 used in fatrat (latest android sdk) 
 which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 dxg=`dx --version 2>&1 | tee temp/dx`
 dxv=`cat temp/dx | awk '{print $3}'` 
 case $dxv in
-1.8)
-#DX exists and it is version 1.8
+1.12)
+#DX exists and it is version 1.12
 rm -rf temp/dx >/dev/null 2>&1
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
+echo -e $green "[ ✔ ] DX 1.12"
 echo "DX -> OK" >> "$inst"
 ;;
 *)
@@ -723,10 +717,10 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
+echo -e $green "[ ✔ ] DX 1.12"
 echo "DX -> OK" >> "$inst"
 else
-echo -e $red "[ x ] DX 1.8"
+echo -e $red "[ x ] DX 1.12"
 echo "0" > "$stp"
 echo "dx -> Not OK" >> "$inst"
 fi
@@ -739,25 +733,26 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.8"
+echo -e $green "[ ✔ ] DX 1.12"
 echo "DX -> OK" >> "$inst"
 else
-echo -e $red "[ x ] DX 1.8"
+echo -e $red "[ x ] DX 1.12"
 echo "0" > "$stp"
 echo "dx -> Not OK" >> "$inst"
 fi
 fi
-# check if aapt exists and if it is version v0.2-3821160 used in fatrat (android sdk)
+sleep 1
+# check if aapt exists and if it is version v0.2-3544217 used in fatrat (android sdk)
 rm /usr/local/sbin/aapt >/dev/null 2>&1
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 aptv=`aapt v | awk '{print $5}'`
 case $aptv in
-v0.2-3821160)
-#exists and it is v0.2-3821160
+v0.2-3544217)
+#exists and it is v0.2-3544217
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
+echo -e $green "[ ✔ ] Aapt v0.2-3544217"
 echo "Aapt -> OK" >> "$inst"
 ;;
 *)
@@ -769,10 +764,10 @@ which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
+echo -e $green "[ ✔ ] Aapt v0.2-3544217"
 echo "Aapt -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Aapt v0.2-3821160"
+echo -e $red "[ x ] Aapt v0.2-3544217"
 echo "0" > "$stp"
 echo "aapt -> Not OK" >> "$inst"
 fi
@@ -785,15 +780,15 @@ which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3821160"
+echo -e $green "[ ✔ ] Aapt v0.2-3544217"
 echo "Aapt -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Aapt v0.2-3821160"
+echo -e $red "[ x ] Aapt v0.2-3544217"
 echo "0" > "$stp"
 echo "aapt -> Not OK" >> "$inst"
 fi
 fi
-
+sleep 1
 #Same procedure used for dx and aapt , but for apktool 2.4.0.
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -837,80 +832,49 @@ echo "0" > "$stp"
 echo "apktool -> Not OK" >> "$inst"
 fi
 fi
-#Same as others before , but dex2jar in this case will be installed directly to user OS , instead be working in fatrat tools
-which d2j-dex2jar > /dev/null 2>&1
+
+sleep 1
+# Installing baksmali 2.3.3 
+which baksmali > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-dex=`d2j-dex2jar 2>&1 | tee temp/dex`
-d2j=`cat temp/dex | sed -n 19p | awk '{print $2}' | cut -f1 -d','` 
-case $d2j in
-reader-2.0)
-rm -rf temp/dex >/dev/null 2>&1
-which d2j-dex2jar >> "$log" 2>&1
-echo "d2j-dex2jar" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Dex2Jar 2.0"
-echo "Dex2Jar -> OK" >> "$inst"
+bsvs=$(baksmali --version | sed -n 1p | awk '{print$2}')
+case $bsvs in
+2.3.3)
+which baksmali >> "$log" 2>&1
+echo "baksmali" | tee -a "$config" >> /dev/null 2>&1
+echo -e $green "[ ✔ ] Baksmali v.2.3.3"
+echo "Baksmali -> OK" >> "$inst"
 ;;
 *)
-rm -rf temp/dex >/dev/null 2>&1
-#Dex2jar does not exists or it is not the 2.0 version , so uninstall it & copy dex2jar from
-#fatrat tools folder to /usr/local/sbin 
-xterm -T "☣ Removing Your Current Dex2Jar ☣" -geometry 100x30 -e "sudo apt-get remove --purge dex2jar --force-yes -y" 
-cp $path/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-baksmali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex-recompute-checksum > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex2jar > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex2smali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jar2dex > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jar2jasmin > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jasmin2jar > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-smali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-std-apk > /dev/null 2>&1
-# remove any previous version files from dex2jar lib from /usr/local/share 
-# and copy the new ones to there from fatrat tools dir
-rm -rf /usr/local/share/dex2jar > /dev/null 2>&1
-mkdir /usr/local/share/dex2jar > /dev/null 2>&1
-cp -r $path/tools/dex2jar/lib /usr/local/share/dex2jar/lib > /dev/null 2>&1
-which d2j-dex2jar > /dev/null 2>&1
-#After new instalation , check if dex2jar is working
+xterm -T "☣ REMOVE OLD BAKSMALI ☣" -geometry 100x30 -e "sudo apt-get remove --purge baksmali -y"
+unlink "/usr/local/sbin/baksmali" > /dev/null 2>&1
+ln -s "$path/tools/baksmali233/baksmali" "/usr/local/sbin/baksmali" > /dev/null 2>&1
+which baksmali > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-#Dex2jar was suceffully installed 
-echo -e $green "[ ✔ ] Dex2Jar 2.0"
-which d2j-dex2jar >> "$log" 2>&1
-echo "d2j-dex2jar" | tee -a "$config" >> /dev/null 2>&1
-echo "Dex2Jar -> OK" >> "$inst"
+echo -e $green "[ ✔ ] Baksmali v.2.3.3"
+which baksmali >> "$log" 2>&1
+echo "baksmali" | tee -a "$config" >> /dev/null 2>&1
+echo "Baksmali -> OK" >> "$inst"
 else
-#After the instalation something did not worked , place the warnings in logs
-echo -e $red "[ x ] Dex2Jar 2.0"
+echo -e $red "[ x ] Baksmali v.2.3.3"
 echo "0" > "$stp"
-echo "dex2jar -> Not OK" >> "$inst"
+echo "baksmali -> Not OK" >> "$inst"
 fi
 ;;
 esac
 else
-#dex2jar does not exist in user linux OS , proceed with a clean manual installation
-cp $path/tools/dex2jar/* /usr/local/sbin/ > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-baksmali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex-recompute-checksum > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex2jar > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-dex2smali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jar2dex > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jar2jasmin > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-jasmin2jar > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-smali > /dev/null 2>&1
-chmod +x /usr/local/sbin/d2j-std-apk > /dev/null 2>&1
-rm -rf /usr/local/share/dex2jar > /dev/null 2>&1
-mkdir /usr/local/share/dex2jar > /dev/null 2>&1
-cp -r $path/tools/dex2jar/lib /usr/local/share/dex2jar/lib > /dev/null 2>&1
-which d2j-dex2jar > /dev/null 2>&1
+unlink "/usr/local/sbin/baksmali" > /dev/null 2>&1
+ln -s "$path/tools/baksmali233/baksmali" "/usr/local/sbin/baksmali" > /dev/null 2>&1
+which baksmali > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Dex2Jar 2.0"
-which d2j-dex2jar >> "$log" 2>&1
-echo "d2j-dex2jar" | tee -a "$config" >> /dev/null 2>&1
-echo "Dex2Jar -> OK" >> "$inst"
+which baksmali >> "$log" 2>&1
+echo "baksmali" | tee -a "$config" >> /dev/null 2>&1
+echo -e $green "[ ✔ ] Baksmali v.2.3.3"
+echo "Baksmali -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Dex2Jar 2.0"
+echo -e $red "[ x ] Baksmali v.2.3.3"
 echo "0" > "$stp"
-echo "dex2jar -> Not OK" >> "$inst"
+echo "baksmali -> Not OK" >> "$inst"
 fi
 fi
 mtspl
@@ -950,10 +914,10 @@ chmod +x update
 chmod +x backdoor_apk
 chmod +x $path/tools/power.py
 chmod +x $path/tools/android-sdk/zipalign
-chmod +x $path/tools/proguard5.3.2/lib/proguard
+chmod +x $path/tools/baksmali233/baksmali
 chmod +x $path/tools/android-sdk/dx
 chmod +x $path/tools/android-sdk/aapt
-chmod +x $path/tools/apktool2.2.2/apktool
+chmod +x $path/tools/apktool2.4.0/apktool
 which fatrat >> "$log" 2>&1
 clear
 echo ""
@@ -967,10 +931,10 @@ chmod +x update
 chmod +x backdoor_apk
 chmod +x $path/tools/power.py
 chmod +x $path/tools/android-sdk/zipalign
-chmod +x $path/tools/proguard5.3.2/lib/proguard
+chmod +x $path/tools/baksmali233/baksmali
 chmod +x $path/tools/android-sdk/dx
 chmod +x $path/tools/android-sdk/aapt
-chmod +x $path/tools/apktool2.2.2/apktool
+chmod +x $path/tools/apktool2.4.0/apktool
 clear
 echo ""
 echo -e $green "Instalation completed , To execute fatrat write in fatrat directory (./fatrat)"
@@ -982,10 +946,10 @@ chmod +x update
 chmod +x backdoor_apk
 chmod +x $path/tools/power.py
 chmod +x $path/tools/android-sdk/zipalign
-chmod +x $path/tools/proguard5.3.2/lib/proguard
+chmod +x $path/tools/baksmali233/baksmali
 chmod +x $path/tools/android-sdk/dx
 chmod +x $path/tools/android-sdk/aapt
-chmod +x $path/tools/apktool2.2.2/apktool
+chmod +x $path/tools/apktool2.4.0/apktool
 clear
 echo ""
 echo -e $green "Instalation completed , To execute fatrat write in fatrat directory (./fatrat)"
@@ -1207,7 +1171,7 @@ echo "                 |   |     /    /                 "
 echo "                 |___| /\ /____/                  "
 echo "                       \/                         "
 echo ""
-echo -e $blue "         Setup Script for FATRAT 1.9.5       "
+echo -e $blue "         Setup Script for FATRAT 1.9.7       "
 echo "------------------------------------------------------" > "$log"
 echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> "$log"
 echo "------------------------------------------------------" >> "$log"
