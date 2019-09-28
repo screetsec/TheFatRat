@@ -5,9 +5,9 @@
 [![Version](https://img.shields.io/badge/Codename-Whistle-red.svg?maxAge=259200)]()
 [![Stage](https://img.shields.io/badge/Release-Stable-brightgreen.svg)]()
 [![Build](https://img.shields.io/badge/Supported_OS-Linux-orange.svg)]()
-[![Available](https://img.shields.io/badge/Blackarch-Linux-red.svg?maxAge=259200)]()
+[![Available](https://img.shields.io/badge/Available-BlackArch-red.svg?maxAge=259200)]()
 [![Documentation](https://img.shields.io/badge/CEHv10-eccouncil-blue.svg?maxAge=259200)](https://github.com/ManhNho/CEHv10/tree/master/Slides)
-[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-yellow.svg?style=flat)]()
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-blue.svg?style=flat)]()
 
 
 ###  A Massive Exploiting Tool
