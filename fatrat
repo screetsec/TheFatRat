@@ -79,10 +79,35 @@ echo ""
 echo -e "$orange""Restart fatrat"
 exit 1
 fi
+
+# Create new target directory in main user root for fatrat generated files
 output="$HOME/Fatrat_Generated"
 if [[ ! -d "$output" ]]
 then
 mkdir "$output" >/dev/null 2>&1
+fi
+
+# Create safe measures for old versions
+lstdir="$path/output"
+if [[ -d "$lstdir" ]]
+then
+cp "$lstdir/*" "$output/" >/dev/null 2>&1
+rm -rf "$lstdir" >/dev/null 2>&1
+aplst="$path/backdoored"
+if [[ -d "$aplst" ]]
+then
+cp "$aplst/*" "$output/" >/dev/null 2>&1
+rm -rf "$aplst" >/dev/null 2>&1
+fi
+echo -e "$okegreen""All your old generated files in fatrat are now located in :"
+echo -e "$orange""$output"
+echo ""
+rm "$path/config/config.path"  >/dev/null 2>&1
+echo ""
+echo "Setup for fatrat must run again due to version upgrades"
+read -rsp $'Press [ENTER] key to Continue\n' -n 1 key
+./setup.sh
+exit 0
 fi
 codename=Whistle
 OS=`uname` #

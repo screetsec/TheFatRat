@@ -5,53 +5,53 @@ function ssplt() {
 # check if searchsploit exists
 which searchsploit > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Searchsploit......................[ found ]"
+echo -e "$green" "[ ✔ ] Searchsploit......................[ found ]"
 echo "searchsploit" | tee -a "$config" "$log" > /dev/null 2>&1
 echo "Searchsploit -> OK" >> "$inst"
 sleep 1
 else
-echo -e $red "[ X ] searchsploit  -> not found"
+echo -e "$red" "[ X ] searchsploit  -> not found"
 echo ""
-echo -e $okegreen "Select one of the options bellow"
-echo -e $orange "+-------------------------------------------------+"
-echo -e $orange "|$white [$okegreen 1$white ]$yellow Setup Searchsploit Path Manually$orange          |"
-echo -e $orange "|$white [$okegreen 2$white ]$yellow Install Searchsploit from Kali Repository$orange |"
-echo -e $orange "+-------------------------------------------------+"
+echo -e "$green" "Select one of the options bellow"
+echo -e "$orange" "+-------------------------------------------------+"
+echo -e "$orange" "|$white [$green 1$white ]$yellow Setup Searchsploit Path Manually$orange          |"
+echo -e "$orange" "|$white [$green 2$white ]$yellow Install Searchsploit from Kali Repository$orange |"
+echo -e "$orange" "+-------------------------------------------------+"
 echo ""
-echo -ne $okegreen "Option : ";tput sgr0
-read q1
+echo -ne "$green" "Option : ";tput sgr0
+read -r q1
 case $q1 in
  
 1)
 echo ""
-echo -e $green "Enter The Path of your Searchsploit instalation"
-echo -e $cyan "ex : /opt/searchsploit/searchsploit"
+echo -e "$green" "Enter The Path of your Searchsploit instalation"
+echo -e "$cyan" "ex : /opt/searchsploit/searchsploit"
 echo ""
-echo -ne $green "PATH : ";tput sgr0
+echo -ne "$green" "PATH : ";tput sgr0
 read sspp
-if [ ! -f $sspp ]
+if [ ! -f "$sspp" ]
 then
 echo ""
-echo -e $red "It was not possible to found searchsploit executable in : $sspp"
+echo -e "$red" "It was not possible to found searchsploit executable in : $sspp"
 echo ""
-echo -e $green "Make sure you write the right path of your instalation"
+echo -e "$green" "Make sure you write the right path of your instalation"
 echo ""
-echo -e $okegreen "Press [ENTER] key to try again ."
-read cont
+echo -e "$green" "Press [ENTER] key to try again ."
+read -r cont
 ssplt
 else
-echo "bash $sspp" | tee -a "$config" "$log" > /dev/null 2>&1
+echo bash "$sspp" | tee -a "$config" "$log" > /dev/null 2>&1
 echo "Searchsploit -> OK" >> "$inst"
 fi
 ;;
 
 #ok
 2)
-echo -e $yellow "[ ! ]  Installing Searchsploit "
+echo -e "$yellow" "[ ! ]  Installing Searchsploit "
 xterm -T "☣ INSTALL SEARCHSPLOIT ☣" -geometry 100x30 -e "sudo apt-get install exploitdb --force-yes -y"
 which searchsploit > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Searchsploit"
+echo -e "$green" "[ ✔ ] Searchsploit"
 echo "searchsploit" | tee -a "$config" "$log" > /dev/null 2>&1
 echo "Searchsploit -> OK" >> "$inst"
 else
@@ -66,16 +66,16 @@ esac
 fi
 echo ""
 #Go check the check file exists and read its value
-chk=$path/logs/check
+chk="$path/logs/check"
 if [ -f "$chk" ]
 then
-ct=`sed -n 1p $chk`
+ct=`sed -n 1p "$chk"`
 #if value of check is 0 theen some package was not installed sucefully 
 if [ "$ct" == "0" ]; then
 clear
-echo -e $red "Fatrat was not able to install some packages"
+echo -e "$red" "Fatrat was not able to install some packages"
 echo ""
-echo -e $blue "Reactivating your original repositories"
+echo -e "$blue" "Reactivating your original repositories"
 rm -f /etc/apt/sources.list
 mv /etc/apt/sources.list.backup /etc/apt/sources.list
 #now we can remove the emergency backup securely
@@ -98,7 +98,7 @@ rm -rf "$inst" >/dev/null 2>&1
 fi
 else
 #in case value in check file is not 0 or 1 then something is wrong
-echo -e $okegreen "Something went very wrong , execute ./setup.sh again"
+echo -e "$green" "Something went very wrong , execute ./setup.sh again"
 rm -rf "$config" >/dev/null 2>&1
 echo ""
 echo "Was not possible to install The Packages Labeled (Not Ok) in this list above" >> "$inst"
@@ -107,14 +107,14 @@ echo "before running fatrat setup script again" >> "$inst"
 echo "" >> "$inst"
 echo "***********Your current sources.list***************"
 sclst=`cat /etc/apt/sources.list`
-echo $sclst >> "$inst"
+echo "$sclst" >> "$inst"
 echo "***************Finish sources.list*****************" >> "$inst"
 dist=`uname -a`
 echo "" >> "$inst"
 echo "Your linux distribution :" >> "$inst"
-echo $dist >> "$inst"
+echo "$dist" >> "$inst"
 cat "$inst"
-echo -e $lightgreen "This log file can be found in : $inst "
+echo -e "$lightgreen" "This log file can be found in : $inst "
 exit
 fi
 }
@@ -124,43 +124,43 @@ function bkf() {
 
 which backdoor-factory > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Backdoor-Factory..................[ found ]"
+echo -e "$green" "[ ✔ ] Backdoor-Factory..................[ found ]"
 echo "backdoor-factory" | tee -a "$config" "$log" > /dev/null 2>&1
 echo "Backdoor-Factory -> OK" >> "$inst"
 sleep 1
 ssplt
 else
-echo -e $red "[ X ] backdoor-factory  -> not found "
+echo -e "$red" "[ X ] backdoor-factory  -> not found "
 echo ""
 
 echo ""
-echo -e $green "Select one of the options bellow"
-echo -e $orange "+-----------------------------------------------------+"
-echo -e $orange "|$white [$okegreen 1$white ]$yellow Setup Backdoor-Factory Path Manually$orange          |"
-echo -e $orange "|$white [$okegreen 2$white ]$yellow Install Backdoor-Factory from Kali Repository$orange |"
-echo -e $orange "+-----------------------------------------------------+"
+echo -e "$green" "Select one of the options bellow"
+echo -e "$orange" "+-----------------------------------------------------+"
+echo -e "$orange" "|$white [$okegreen 1$white ]$yellow Setup Backdoor-Factory Path Manually$orange          |"
+echo -e "$orange" "|$white [$okegreen 2$white ]$yellow Install Backdoor-Factory from Kali Repository$orange |"
+echo -e "$orange" "+-----------------------------------------------------+"
 echo ""
-echo -ne $green "Option : ";tput sgr0
-read q2
-case $q2 in
+echo -ne "$green" "Option : ";tput sgr0
+read -r q2
+case "$q2" in
 
 1)
 echo ""
-echo -e $green "Enter The Path of your backdoor-factory instalation"
-echo -e $cyan "ex : /opt/backdoor-factory/backdoor.py"
+echo -e "$green" "Enter The Path of your backdoor-factory instalation"
+echo -e "$cyan" "ex : /opt/backdoor-factory/backdoor.py"
 echo ""
-echo -ne $green "PATH : ";tput sgr0
-read msp
-bkdf=$msp
-if [ ! -f $bkdf ]
+echo -ne "$green" "PATH : ";tput sgr0
+read -r msp
+bkdf="$msp"
+if [ ! -f "$bkdf" ]
 then
 echo ""
-echo -e $red "It was not possible to found backdoor-factory executable in : $bkdf"
+echo -e "$red" "It was not possible to found backdoor-factory executable in : $bkdf"
 echo ""
-echo -e $green "Make sure you write the right path of your instalation"
+echo -e "$green" "Make sure you write the right path of your instalation"
 echo ""
-echo -e $green "Press [ENTER] key to try again ."
-read cont
+echo -e "$green" "Press [ENTER] key to try again ."
+read -r cont
 bkf
 fi
 echo "python2 $bkdf" | tee -a "$config" "$log" > /dev/null 2>&1
@@ -169,15 +169,15 @@ ssplt
 ;;
 
 2)
-echo -e $yellow "[ ! ] Installing backdoor-factory "
+echo -e "$yellow" "[ ! ] Installing backdoor-factory "
 xterm -T "☣ INSTALL BACKDOOR-FACTORY ☣" -geometry 100x30 -e "sudo apt-get install backdoor-factory --force-yes -y"
 which backdoor-factory > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Backdoor-Factory -> OK"
+echo -e "$green" "[ ✔ ] Backdoor-Factory -> OK"
 echo "backdoor-factory" | tee -a "$config" "$log" > /dev/null 2>&1
 echo "Backdoor-factory -> OK" >> "$inst"
 else
-echo -e $red "[ X ] backdoor-factory"
+echo -e "$red" "[ X ] backdoor-factory"
 echo "0" > "$stp"
 echo "Backdoor-factory -> Not OK" >> "$inst"
 ssplt
@@ -195,64 +195,64 @@ function mtspl() {
 # check if metasploit-framework its installed
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Metasploit-Framework..............[ found ]"
+echo -e "$green" "[ ✔ ] Metasploit-Framework..............[ found ]"
 echo "msfconsole" | tee -a "$config" "$log" >> /dev/null 2>&1
 echo "msfvenom" | tee -a "$config" "$log" >> /dev/null 2>&1
 echo "Metasploit -> OK" >> "$inst"
 sleep 1
 bkf
 else
-echo -e $red "[ X ] metasploit-framework -> not found "
+echo -e "$red" "[ X ] metasploit-framework -> not found "
 
 # Providing manual input to user in case metasploit was installed from git and is not on system path
 
 echo ""
-echo -e $okegreen "Select one of the options bellow"
-echo -e $orange "+---------------------------------------------------------+"
-echo -e $orange "|$white [$okegreen 1$white ]$yellow Setup Metasploit Framework Path Manually$orange          |"
-echo -e $orange "|$white [$okegreen 2$white ]$yellow Install Metasploit Framework from Kali Repository$orange |"
-echo -e $orange "+---------------------------------------------------------+"
+echo -e "$green" "Select one of the options bellow"
+echo -e "$orange" "+---------------------------------------------------------+"
+echo -e "$orange" "|$white [$okegreen 1$white ]$yellow Setup Metasploit Framework Path Manually$orange          |"
+echo -e "$orange" "|$white [$okegreen 2$white ]$yellow Install Metasploit Framework from Kali Repository$orange |"
+echo -e "$orange" "+---------------------------------------------------------+"
 echo ""
-echo -ne $okegreen "Option : ";tput sgr0
-read q3
-case $q3 in
+echo -ne "$green" "Option : ";tput sgr0
+read -r q3
+case "$q3" in
 1)
 echo ""
-echo -e $green "Enter The Path of your metasploit instalation"
-echo -e $cyan "ex : /opt/metasploit-framework"
+echo -e "$green" "Enter The Path of your metasploit instalation"
+echo -e "$cyan" "ex : /opt/metasploit-framework"
 echo ""
-echo -ne $green "PATH : ";tput sgr0
-read msp
-msfc=$msp/msfconsole
-msfv=$msp/msfvenom
-if [ ! -f $msfc ]
+echo -ne "$green" "PATH : ";tput sgr0
+read -r msp
+msfc="$msp/msfconsole"
+msfv="$msp/msfvenom"
+if [ ! -f "$msfc" ]
 then
 echo ""
-echo -e $red "It was not possible to found msfconsole in : $msfc"
+echo -e "$red" "It was not possible to found msfconsole in : $msfc"
 echo ""
-echo -e $green "Make sure you write the right path of your instalation"
+echo -e "$green" "Make sure you write the right path of your instalation"
 echo ""
-echo -e $green "Press [ENTER] key to try again ."
-read cont
+echo -e "$green" "Press [ENTER] key to try again ."
+read -r cont
 mtspl
 fi
-if [ ! -f $msfv ]
+if [ ! -f "$msfv" ]
 then
 echo ""
-echo -e $red "It was not possible to found msfvenom in : $msfv"
+echo -e "$red" "It was not possible to found msfvenom in : $msfv"
 echo ""
-echo -e $green "Make sure you write the right path of your instalation"
+echo -e "$green" "Make sure you write the right path of your instalation"
 echo ""
-echo -e $green "Press [ENTER] key to try again ."
-read cont
+echo -e "$green" "Press [ENTER] key to try again ."
+read -r cont
 mtspl
 fi
 #Creation of symlinks to metasploit manual path in /usr/local/sbin to avoid changes in fatrat scripts
 
 unlink /usr/local/sbin/msfconsole > /dev/null 2>&1
 unlink /usr/local/sbin/msfvenom > /dev/null 2>&1
-ln -s $msfc /usr/local/sbin/msfconsole > /dev/null 2>&1
-ln -s $msfv /usr/local/sbin/msfvenom > /dev/null 2>&1
+ln -s "$msfc" /usr/local/sbin/msfconsole > /dev/null 2>&1
+ln -s "$msfv" /usr/local/sbin/msfvenom > /dev/null 2>&1
 echo "msfconsole" | tee -a "$config" "$log" > /dev/null 2>&1
 echo "msfvenom" | tee -a "$config" "$log" > /dev/null 2>&1
 echo "Metasploit -> OK" >> "$inst"
@@ -260,25 +260,25 @@ bkf
 ;;
 
 2)
-echo -e $yellow "[ ! ] Installing Metasploit-Framework  "
+echo -e "$yellow" "[ ! ] Installing Metasploit-Framework  "
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework --force-yes -y"
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Metasploit (msfconsole) -> OK"
+echo -e "$green" "[ ✔ ] Metasploit (msfconsole) -> OK"
 echo "msfconsole" | tee -a "$config" "$log" > /dev/null 2>&1
 echo "Metasploit (msfconsole) -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Metasploit (msfconsole)"
+echo -e "$red" "[ x ] Metasploit (msfconsole)"
 echo "Metasploit (msfconsole) -> Not OK" >> "$inst"
 echo "0" > "$stp"
 fi
 which msfvenom > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Metasploit (msfvenom) -> OK"
+echo -e "$green" "[ ✔ ] Metasploit (msfvenom) -> OK"
 echo "msfvenom" | tee -a "$config" "$log" > /dev/null 2>&1
 echo "Metasploit (msfvenom) -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Metasploit (msfvenom)"
+echo -e "$red" "[ x ] Metasploit (msfvenom)"
 echo "0" > "$stp"
 echo "Metasploit (msfvenom) -> Not OK" >> "$inst"
 fi
@@ -305,21 +305,21 @@ rm -rf "$inst" >/dev/null 2>&1
 #check if xterm is installed
 which xterm > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Xterm.............................[ found ]"
+echo -e "$green" "[ ✔ ] Xterm.............................[ found ]"
 which xterm >> "$log" 2>&1
 echo "xterm -> OK" > "$inst"
 else
 echo ""
-echo -e $red "[ X ] Xterm -> not found! "
-echo -e $yellow "[ ! ] Installing Xterm                     "
-echo -e $green ""
+echo -e "$red" "[ X ] Xterm -> not found! "
+echo -e "$yellow" "[ ! ] Installing Xterm                     "
+echo -e "$green" ""
 sudo apt-get install xterm -y
 which xterm >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Xterm -> OK"
+echo -e "$green" "[ ✔ ] Xterm -> OK"
 echo "Xterm -> OK" > "$inst"
 else
-echo -e $red "[ x ] Xterm"
+echo -e "$red" "[ x ] Xterm"
 echo "0" > "$stp"
 echo "xterm -> Not OK" > "$inst"
 fi
@@ -329,19 +329,19 @@ sleep 1
 #check if dig its installed
 which dig > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Dns-Utils ........................[ found ]"
+echo -e "$green" "[ ✔ ] Dns-Utils ........................[ found ]"
 which dig >> "$log" 2>&1
 echo "Dns-Utils -> OK" >> "$inst"
 else
-echo -e $red "[ X ] dnsutils -> not found! "
-echo -e $yellow "[ ! ]  Installing dnsutils"
+echo -e "$red" "[ X ] dnsutils -> not found! "
+echo -e "$yellow" "[ ! ]  Installing dnsutils"
 xterm -T "☣ INSTALL DNSUTILS ☣" -geometry 100x30 -e "sudo apt-get install dnsutils -y"
 which dig >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Dns-Utils -> OK"
+echo -e "$green" "[ ✔ ] Dns-Utils -> OK"
 echo "Dns-Utils -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Dns-Utils"
+echo -e "$red" "[ x ] Dns-Utils"
 echo "0" > "$stp"
 echo "dns-utils -> Not OK" >> "$inst"
 fi
@@ -352,19 +352,19 @@ sleep 1
 # Mono mcs and devel required to compile program.cs in pwnwinds
 which mcs > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Mono-Denvelop Utils ..............[ found ]"
+echo -e "$green" "[ ✔ ] Mono-Denvelop Utils ..............[ found ]"
 which mcs >> "$log" 2>&1
 echo "Mono-Denvelop Utils -> OK" >> "$inst"
 else
-echo -e $red "[ X ] Mono-Denvelop Utils -> not found! "
-echo -e $yellow "[ ! ]  Installing Mono-Denvelop Utils"
+echo -e "$red" "[ X ] Mono-Denvelop Utils -> not found! "
+echo -e "$yellow" "[ ! ]  Installing Mono-Denvelop Utils"
 xterm -T "☣ INSTALL DNSUTILS ☣" -geometry 100x30 -e "sudo apt-get install mono-mcs mono-devel -y"
 which mcs >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Mono-Denvelop Utils -> OK"
+echo -e "$green" "[ ✔ ] Mono-Denvelop Utils -> OK"
 echo "Mono-Denvelop Utils -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Mono-Denvelop Utils"
+echo -e "$red" "[ x ] Mono-Denvelop Utils"
 echo "0" > "$stp"
 echo "Mono-Denvelop Utils -> Not OK" >> "$inst"
 fi
@@ -374,19 +374,19 @@ sleep 1
 # check if gcc exists
 which gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Gcc compiler......................[ found ]"
+echo -e "$green" "[ ✔ ] Gcc compiler......................[ found ]"
 which gcc >> "$log" 2>&1
 echo "GCC -> OK" >> "$inst"
 else
-echo -e $red "[ X ] gcc compiler      -> not found "
-echo -e $yellow "[ ! ]   Installing gcc "
+echo -e "$red" "[ X ] gcc compiler      -> not found "
+echo -e "$yellow" "[ ! ]   Installing gcc "
 xterm -T "☣ INSTALL GCC COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install gcc -y"
 which gcc >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] GCC -> OK"
+echo -e "$green" "[ ✔ ] GCC -> OK"
 echo "GCC -> OK" >> "$inst"
 else
-echo -e $red "[ x ] GCC"
+echo -e "$red" "[ x ] GCC"
 echo "0" > "$stp"
 echo "gcc -> Not OK" >> "$inst"
 fi
@@ -395,19 +395,19 @@ sleep 1
 #check if apache2 exists
 which apache2 > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Apache2 ..........................[ found ]"
+echo -e "$green" "[ ✔ ] Apache2 ..........................[ found ]"
 which apache2 >> "$log" 2>&1
 echo "Apache2 -> OK" >> "$inst"
 else
-echo -e $red "[ X ] Apache2 -> not found  "
-echo -e $yellow "[ ! ]    Installing apache2 "
+echo -e "$red" "[ X ] Apache2 -> not found  "
+echo -e "$yellow" "[ ! ]    Installing apache2 "
 xterm -T "☣ INSTALL APACHE2 ☣" -geometry 100x30 -e "sudo apt-get install apache2 -y"
 which apache2 >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Apache2 -> OK"
+echo -e "$green" "[ ✔ ] Apache2 -> OK"
 echo "Apache2 -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Apache2"
+echo -e "$red" "[ x ] Apache2"
 echo "0" > "$stp"
 echo "apache2 -> Not OK" >> "$inst"
 fi
@@ -418,19 +418,19 @@ sleep 1
 #gnome terminal is used in main script to run searchsploit
 which gnome-terminal > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Gnome Terminal....................[ found ]"
+echo -e "$green" "[ ✔ ] Gnome Terminal....................[ found ]"
 which gnome-terminal >> "$log" 2>&1
 echo "Gnome Terminal -> OK" >> "$inst"
 else
-echo -e $red "[ X ] Gnome-terminal-> not found "
-echo -e $yellow "[ ! ] Installing gnome-terminal "
+echo -e "$red" "[ X ] Gnome-terminal-> not found "
+echo -e "$yellow" "[ ! ] Installing gnome-terminal "
 xterm -T "☣ INSTALL GNOME-TERMINAL ☣" -geometry 100x30 -e "sudo apt-get install gnome-terminal -y"
 which gnome-terminal >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Gnome Terminal -> OK"
+echo -e "$green" "[ ✔ ] Gnome Terminal -> OK"
 echo "Gnome Terminal -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Gnome Terminal"
+echo -e "$red" "[ x ] Gnome Terminal"
 echo "0" > "$stp"
 echo "gnome-terminal -> Not OK" >> "$inst"
 fi
@@ -440,19 +440,19 @@ fi
 sleep 1
 which upx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] UPX Compressor....................[ found ]"
+echo -e "$green" "[ ✔ ] UPX Compressor....................[ found ]"
 which upx >> "$log" 2>&1
 echo "UPX -> OK" >> "$inst"
 else
-echo -e $red "[ X ] Upx compressor  -> not found "
-echo -e $yellow "[ ! ] Installing upx-compressor "
+echo -e "$red" "[ X ] Upx compressor  -> not found "
+echo -e "$yellow" "[ ! ] Installing upx-compressor "
 xterm -T "☣ INSTALL UPX COMPRESSOR ☣" -geometry 100x30 -e "sudo apt-get install upx-ucl -y"
 which upx >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] UPX Compressor -> OK"
+echo -e "$green" "[ ✔ ] UPX Compressor -> OK"
 echo "UPX -> OK" >> "$inst"
 else
-echo -e $red "[ x ] UPX Compressor"
+echo -e "$red" "[ x ] UPX Compressor"
 echo "0" > "$stp"
 echo "upx-ucl -> Not OK" >> "$inst"
 fi
@@ -461,19 +461,19 @@ sleep 1
 #Checking if Ruby exists
 which ruby > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Ruby..............................[ found ]"
+echo -e "$green" "[ ✔ ] Ruby..............................[ found ]"
 which ruby >> "$log" 2>&1
 echo "Ruby -> OK" >> "$inst"
 else
-echo -e $red "[ X ] Ruby  -> not found "
-echo -e $yellow "[ ! ] Installing Ruby "
+echo -e "$red" "[ X ] Ruby  -> not found "
+echo -e "$yellow" "[ ! ] Installing Ruby "
 xterm -T "☣ INSTALL Ruby ☣" -geometry 100x30 -e "sudo apt-get install ruby -y && gem install nokogiri"
 which ruby >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Ruby -> OK"
+echo -e "$green" "[ ✔ ] Ruby -> OK"
 echo "Ruby -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Ruby"
+echo -e "$red" "[ x ] Ruby"
 echo "0" > "$stp"
 echo "ruby -> Not OK" >> "$inst"
 fi
@@ -482,26 +482,26 @@ sleep 1
 #Checking if Openssl exists
 which openssl > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Openssl...........................[ found ]"
+echo -e "$green" "[ ✔ ] Openssl...........................[ found ]"
 which openssl >> "$log" 2>&1
 echo "Openssl -> OK" >> "$inst"
 else
-echo -e $red "[ X ] Openssl  -> not found "
-echo -e $yellow "[ ! ] Installing Openssl "
+echo -e "$red" "[ X ] Openssl  -> not found "
+echo -e "$yellow" "[ ! ] Installing Openssl "
 xterm -T "☣ INSTALL OPENSSL ☣" -geometry 100x30 -e "sudo apt-get install openssl -y"
 which openssl >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Openssl -> OK"
+echo -e "$green" "[ ✔ ] Openssl -> OK"
 echo "Openssl -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Openssl"
+echo -e "$red" "[ x ] Openssl"
 echo "0" > "$stp"
 echo "openssl -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
 #installing dependencies for ruby script 
-echo -e $green "[ ! ] Installing tools dependencies"
+echo -e "$green" "[ ! ] Installing tools dependencies"
 xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install zlib1g-dev libmagickwand-dev imagemagick lib32z1 lib32ncurses5 lib32stdc++6 python-pip python-dev build-essential -y && pip install names"
 sleep 1
 
@@ -552,7 +552,7 @@ sleep 1
 #Checking if Jarsigner exists
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Jarsigner (java)..................[ found ]"
+echo -e "$green" "[ ✔ ] Jarsigner (java)..................[ found ]"
 which jarsigner >> "$log" 2>&1
 echo "Jarsigner -> OK" >> "$inst"
 rm -f "$config"
@@ -564,12 +564,12 @@ echo "**       if you need to reconfig your tools path , then run ./setup.sh in 
 echo "********************************************************************************************************" >> "$config"
 echo "jarsigner" | tee -a "$config" >> /dev/null 2>&1
 else
-echo -e $red "[ X ] Jarsigner (java) -> not found "
-echo -e $yellow "[ ! ] Installing Java "
+echo -e "$red" "[ X ] Jarsigner (java) -> not found "
+echo -e "$yellow" "[ ! ] Installing Java "
 xterm -T "☣ INSTALL OPENJDK-8 ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk openjdk-8-jre --force-yes -y "
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Jarsigner -> OK"
+echo -e "$green" "[ ✔ ] Jarsigner -> OK"
 which jarsigner >> "$log" 2>&1
 echo "Jarsigner -> OK" >> "$inst"
 rm -f "$config"
@@ -581,7 +581,7 @@ echo "**       if you need to reconfig your tools path , then run ./setup.sh in 
 echo "********************************************************************************************************" >> "$config"
 echo "jarsigner" | tee -a "$config" >> /dev/null 2>&1
 else
-echo -e $red "[ x ] Jarsigner"
+echo -e "$red" "[ x ] Jarsigner"
 echo "0" > "$stp"
 echo "jarsigner (openjdk-8-jdk)-> Not OK" >> "$inst"
 fi
@@ -591,21 +591,21 @@ sleep 1
 #Checking if Unzip exists
 which unzip > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Unzip.............................[ found ]"
+echo -e "$green" "[ ✔ ] Unzip.............................[ found ]"
 which unzip >> "$log" 2>&1
 echo "unzip" | tee -a "$config" >> /dev/null 2>&1
 echo "Unzip -> OK" >> "$inst"
 else
-echo -e $red "[ X ] Unzip -> not found "
-echo -e $yellow "[ ! ] Installing Unzip "
+echo -e "$red" "[ X ] Unzip -> not found "
+echo -e "$yellow" "[ ! ] Installing Unzip "
 xterm -T "☣ INSTALL UNZIP ☣" -geometry 100x30 -e "sudo apt-get install unzip --force-yes -y "
 which unzip >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo "unzip" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Unzip -> OK"
+echo -e "$green" "[ ✔ ] Unzip -> OK"
 echo "Unzip -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Unzip"
+echo -e "$red" "[ x ] Unzip"
 echo "0" > "$stp"
 echo "unzip -> Not OK" >> "$inst"
 fi
@@ -615,21 +615,21 @@ sleep 1
 #Checking if keytool exists
 which keytool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Keytool (java)....................[ found ]"
+echo -e "$green" "[ ✔ ] Keytool (java)....................[ found ]"
 which keytool >> "$log" 2>&1
 echo "keytool" | tee -a "$config" >> /dev/null 2>&1
 echo "Keytool -> OK" >> "$inst"
 else
-echo -e $red "[ X ] Keytool (java) -> not found  "
-echo -e $yellow "[ ! ] Installing Java "
+echo -e "$red" "[ X ] Keytool (java) -> not found  "
+echo -e "$yellow" "[ ! ] Installing Java "
 xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk --force-yes -y "
 which keytool >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo "keytool" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Keytool -> OK"
+echo -e "$green" "[ ✔ ] Keytool -> OK"
 echo "Keytool -> OK" >> "$inst"
 else 
-echo -e $red "[ x ] Keytool"
+echo -e "$red" "[ x ] Keytool"
 echo "0" > "$stp"
 echo "keytool -> Not OK" >> "$inst"
 fi
@@ -638,7 +638,7 @@ fi
 sleep 1
 
 #Adding zipalign path to config
-echo -e $green "[ ✔ ] Zipalign "
+echo -e "$green" "[ ✔ ] Zipalign "
 echo "$path/tools/android-sdk/zipalign" >> "$log" 2>&1
 echo "$path/tools/android-sdk/zipalign" | tee -a "$config" >> /dev/null 2>&1
 sleep 1
@@ -649,18 +649,18 @@ sleep 1
 
 which x86_64-w64-mingw32-gcc >> /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Mingw-w64 Compiler................[ found ]"
+echo -e "$green" "[ ✔ ] Mingw-w64 Compiler................[ found ]"
 which x86_64-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw64 -> OK" >> "$inst"
 else
-echo -e $red "[ X ] Mingw-w64 -> not found "
+echo -e "$red" "[ X ] Mingw-w64 -> not found "
 #Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
 # In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
 
 xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw* -y && apt-get autoremove -y && apt-get install -f -y && apt-get install mingw* --force-yes -y"
 which x86_64-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Mingw-64 Compiler..................[ found ]"
+echo -e "$green" "[ ✔ ] Mingw-64 Compiler..................[ found ]"
 which x86_64-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw64 -> OK" >> "$inst"
 else
@@ -674,18 +674,18 @@ fi
 
 which i686-w64-mingw32-gcc >> /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Mingw-32 Compiler................[ found ]"
+echo -e "$green" "[ ✔ ] Mingw-32 Compiler.................[ found ]"
 which i686-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw32 -> OK" >> "$inst"
 else
-echo -e $red "[ X ] Mingw-32 -> not found "
+echo -e "$red" "[ X ] Mingw-32 -> not found "
 #Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
 # In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
 
 xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge mingw* -y && apt-get autoremove -y && apt-get install -f -y && apt-get install mingw* --force-yes -y"
 which i686-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Mingw-32 Compiler..................[ found ]"
+echo -e "$green" "[ ✔ ] Mingw-32 Compiler..................[ found ]"
 which i686-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw32 -> OK" >> "$inst"
 else
@@ -697,15 +697,15 @@ sleep 1
 #Checking for DX and in case exists then check if it is version 1.12 used in fatrat (latest android sdk) 
 which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-dxg=`dx --version 2>&1 | tee temp/dx`
-dxv=`cat temp/dx | awk '{print $3}'` 
-case $dxv in
+dxg=$(dx --version 2>&1 | tee temp/dx)
+dxv=$(cat temp/dx | awk '{print $3}') 
+case "$dxv" in
 1.12)
 #DX exists and it is version 1.12
 rm -rf temp/dx >/dev/null 2>&1
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.12"
+echo -e "$green" "[ ✔ ] DX 1.12...........................[ found ]"
 echo "DX -> OK" >> "$inst"
 ;;
 *)
@@ -717,10 +717,10 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.12"
+echo -e "$green" "[ ✔ ] DX 1.12.........................[Installed]"
 echo "DX -> OK" >> "$inst"
 else
-echo -e $red "[ x ] DX 1.12"
+echo -e "$red" "[ x ] DX 1.12"
 echo "0" > "$stp"
 echo "dx -> Not OK" >> "$inst"
 fi
@@ -733,41 +733,42 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] DX 1.12"
+echo -e "$green" "[ ✔ ] DX 1.12.........................[Installed]"
 echo "DX -> OK" >> "$inst"
 else
-echo -e $red "[ x ] DX 1.12"
+echo -e "$red" "[ x ] DX 1.12"
 echo "0" > "$stp"
 echo "dx -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
 # check if aapt exists and if it is version v0.2-3544217 used in fatrat (android sdk)
-rm /usr/local/sbin/aapt >/dev/null 2>&1
+
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 aptv=`aapt v | awk '{print $5}'`
-case $aptv in
+case "$aptv" in
 v0.2-3544217)
 #exists and it is v0.2-3544217
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3544217"
+echo -e "$green" "[ ✔ ] Aapt v0.2-3544217.................[ found ]"
 echo "Aapt -> OK" >> "$inst"
 ;;
 *)
 #Aapt does not exists or is not the latest version used in fatrat (android sdk)
 xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y"
 unlink "/usr/local/sbin/aapt" > /dev/null 2>&1
+rm /usr/local/sbin/aapt >/dev/null 2>&1
 ln -s "$path/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/null 2>&1
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3544217"
+echo -e "$green" "[ ✔ ] Aapt v0.2-3544217..................[Installed]"
 echo "Aapt -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Aapt v0.2-3544217"
+echo -e "$red" "[ x ] Aapt v0.2-3544217"
 echo "0" > "$stp"
 echo "aapt -> Not OK" >> "$inst"
 fi
@@ -780,10 +781,10 @@ which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Aapt v0.2-3544217"
+echo -e "$green" "[ ✔ ] Aapt v0.2-3544217.................[Installed]"
 echo "Aapt -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Aapt v0.2-3544217"
+echo -e "$red" "[ x ] Aapt v0.2-3544217"
 echo "0" > "$stp"
 echo "aapt -> Not OK" >> "$inst"
 fi
@@ -793,11 +794,11 @@ sleep 1
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 apk=`apktool | sed -n 1p | awk '{print $2}'` > /dev/null 2>&1
-case $apk in 
+case "$apk" in 
 v.2.4.0)
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Apktool v.2.4.0"
+echo -e "$green" "[ ✔ ] Apktool v.2.4.0..................[ found ]"
 echo "Apktool -> OK" >> "$inst"
 ;;
 *)
@@ -806,12 +807,12 @@ unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
 ln -s "$path/tools/apktool2.4.0/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Apktool v.2.4.0"
+echo -e "$green" "[ ✔ ] Apktool v.2.4.0..................[Installed]"
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Apktool v.2.4.0"
+echo -e "$red" "[ x ] Apktool v.2.4.0"
 echo "0" > "$stp"
 echo "apktool -> Not OK" >> "$inst"
 fi
@@ -824,10 +825,10 @@ which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Apktool v.2.4.0"
+echo -e "$green" "[ ✔ ] Apktool v.2.4.0..................[Installed]"
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Apktool v.2.4.0"
+echo -e "$red" "[ x ] Apktool v.2.4.0"
 echo "0" > "$stp"
 echo "apktool -> Not OK" >> "$inst"
 fi
@@ -838,11 +839,11 @@ sleep 1
 which baksmali > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 bsvs=$(baksmali --version | sed -n 1p | awk '{print$2}')
-case $bsvs in
+case "$bsvs" in
 2.3.3)
 which baksmali >> "$log" 2>&1
 echo "baksmali" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Baksmali v.2.3.3"
+echo -e "$green" "[ ✔ ] Baksmali v.2.3.3..................[ found ]"
 echo "Baksmali -> OK" >> "$inst"
 ;;
 *)
@@ -851,12 +852,12 @@ unlink "/usr/local/sbin/baksmali" > /dev/null 2>&1
 ln -s "$path/tools/baksmali233/baksmali" "/usr/local/sbin/baksmali" > /dev/null 2>&1
 which baksmali > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e $green "[ ✔ ] Baksmali v.2.3.3"
+echo -e "$green" "[ ✔ ] Baksmali v.2.3.3..................[Installed]"
 which baksmali >> "$log" 2>&1
 echo "baksmali" | tee -a "$config" >> /dev/null 2>&1
 echo "Baksmali -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Baksmali v.2.3.3"
+echo -e "$red" "[ x ] Baksmali v.2.3.3"
 echo "0" > "$stp"
 echo "baksmali -> Not OK" >> "$inst"
 fi
@@ -869,10 +870,10 @@ which baksmali > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which baksmali >> "$log" 2>&1
 echo "baksmali" | tee -a "$config" >> /dev/null 2>&1
-echo -e $green "[ ✔ ] Baksmali v.2.3.3"
+echo -e "$green" "[ ✔ ] Baksmali v.2.3.3..................[Installed]"
 echo "Baksmali -> OK" >> "$inst"
 else
-echo -e $red "[ x ] Baksmali v.2.3.3"
+echo -e "$red" "[ x ] Baksmali v.2.3.3"
 echo "0" > "$stp"
 echo "baksmali -> Not OK" >> "$inst"
 fi
@@ -882,7 +883,7 @@ mtspl
 ################################
 # rebackyo repo
 ################################
-echo -e $blue "Reactivating your original repositories"
+echo -e "$blue" "Reactivating your original repositories"
 rm -f /etc/apt/sources.list
 mv /etc/apt/sources.list.backup /etc/apt/sources.list
 #now we can remove the emergency backup securely
@@ -890,24 +891,24 @@ rm -f /etc/apt/sources.list.fatrat
 apt-get clean
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 clear
-echo -e $okegreen "Do you want to create a shortcut for fatrat in your system"
-echo -e $okegreen "so you can run fatrat from anywhere in your terminal and desktop ?"
+echo -e "$green" "Do you want to create a shortcut for fatrat in your system"
+echo -e "$green" "so you can run fatrat from anywhere in your terminal and desktop ?"
 echo ""
-echo -ne $cyan "Choose y/n : "
-read cho
-case $cho in
+echo -ne "$cyan" "Choose y/n : "
+read -r cho
+case "$cho" in
 
 y|Y|Yes|yes|YES)
 lnk=$?
-if [ $lnk ==  "0" ];then
+if [ "$lnk" ==  "0" ];then
 dir=`pwd` 
 scrp="cd $dir && ./fatrat"
 rm -f /usr/local/sbin/fatrat
 touch /usr/local/sbin/fatrat
 echo "#!/bin/bash" > /usr/local/sbin/fatrat
-echo $scrp >> /usr/local/sbin/fatrat
-cp $path/config/TheFatRat.desktop /usr/share/applications/TheFatRat.desktop
-cp $path/icons/TheFatRat.ico /usr/share/icons/TheFatRat.ico
+echo "$scrp" >> /usr/local/sbin/fatrat
+cp "$path/config/TheFatRat.desktop" /usr/share/applications/TheFatRat.desktop
+cp "$path/icons/TheFatRat.ico" /usr/share/icons/TheFatRat.ico
 chmod +x /usr/local/sbin/fatrat
 chmod +x fatrat
 chmod +x powerfull.sh
@@ -922,7 +923,7 @@ chmod +x $path/tools/apktool2.4.0/apktool
 which fatrat >> "$log" 2>&1
 clear
 echo ""
-echo -e $green "Instalation completed , To execute fatrat write anywhere in your terminal (fatrat)"
+echo -e "$green" "Instalation completed , To execute fatrat write anywhere in your terminal (fatrat)"
 fi
 ;;
 
@@ -939,7 +940,7 @@ chmod +x $path/tools/android-sdk/aapt
 chmod +x $path/tools/apktool2.4.0/apktool
 clear
 echo ""
-echo -e $green "Instalation completed , To execute fatrat write in fatrat directory (./fatrat)"
+echo -e "$green" "Instalation completed , To execute fatrat write in fatrat directory (./fatrat)"
 ;;
 
 *)
@@ -955,7 +956,7 @@ chmod +x $path/tools/android-sdk/aapt
 chmod +x $path/tools/apktool2.4.0/apktool
 clear
 echo ""
-echo -e $green "Instalation completed , To execute fatrat write in fatrat directory (./fatrat)"
+echo -e "$green" "Instalation completed , To execute fatrat write in fatrat directory (./fatrat)"
 ;;
 esac
 exit 
@@ -963,58 +964,58 @@ exit
 }  
 #Case ping goggle hostname fails , the this function will load to check what is happening 
 function chknet() {
-echo -e $red "[X] Your Internet is not working correctly!"
+echo -e "$red" "[X] Your Internet is not working correctly!"
 sleep 1
-echo -e $cyan "[*] Checking ...."
+echo -e "$cyan" "[*] Checking ...."
 #ping hostname failed , so now will test ping google ip dns server
 ping -c 1 8.8.4.4 > /dev/null 2>&1
 png="$?" 
- if [ $png == "0" ]
+ if [ "$png" == "0" ]
 then
 #Ping dns server worked , inform user what happened and proceed with setup
-    echo -e $red "[X] Your linux OS is not able to resolve"
-    echo -e $red "hostnames over terminal using ping !!"
+    echo -e "$red" "[X] Your linux OS is not able to resolve"
+    echo -e "$red" "hostnames over terminal using ping !!"
     echo ""
-    echo -e $yellow "Search on the web : (unable to resolve hostnames ping) to find a solution"
+    echo -e "$yellow" "Search on the web : (unable to resolve hostnames ping) to find a solution"
 echo ""
-echo -e $green "Setup will continue , but is not garantee that apt package management
+echo -e "$green" "Setup will continue , but is not garantee that apt package management
 may work properly , or even if it can resolve hostnames ."
 echo ""
-echo -e $cyan "Setup will continue because :"
-echo -e $green "Ping google.com =$red Failed"
-echo -e $green "Ping google DNS = Success"
+echo -e "$cyan" "Setup will continue because :"
+echo -e "$green" "Ping google.com =$red Failed"
+echo -e "$green" "Ping google DNS = Success"
 echo ""
-echo -e $green "Press [ENTER] key to continue"
+echo -e "$green" "Press [ENTER] key to continue"
 read continue
 cont
     sleep 1
-elif [ $png == "1" ]
+elif [ "$png" == "1" ]
 then
 #user is only connected to lan and not to the web , abort setup
-    echo -e $yellow "You are connected to your local network but not to the web ."
-    echo -e $yellow "Check if your router/modem gateway is connected to the web ."
+    echo -e "$yellow" "You are connected to your local network but not to the web ."
+    echo -e "$yellow" "Check if your router/modem gateway is connected to the web ."
 echo ""
-echo -e $green "Setup will not continue , you are only connected to your local lan."
+echo -e "$green" "Setup will not continue , you are only connected to your local lan."
 echo ""
-echo -e $cyan "Setup will stop because :"
-echo -e $green "Ping google.com =$red Failed"
-echo -e $green "Ping google DNS =$red Failed"
+echo -e "$cyan" "Setup will stop because :"
+echo -e "$green" "Ping google.com =$red Failed"
+echo -e "$green" "Ping google DNS =$red Failed"
 echo ""
-echo -e $green "Press [ENTER] key to continue"
-read continue
+echo -e "$green" "Press [ENTER] key to continue"
+read -r continue
 exit 1
 sleep 1
-elif [ $png == "2" ]
+elif [ "$png" == "2" ]
 then
 # user is not connected to anywhere , web or lan , abort setup
-echo -e $red "You are not connected to any network ."
+echo -e "$red" "You are not connected to any network ."
 echo ""
-echo -e $cyan "Setup will stop because :"
-echo -e $green "Ping google.com =$red Failed"
-echo -e $green "Ping google DNS =$red Failed"
+echo -e "$cyan" "Setup will stop because :"
+echo -e "$green" "Ping google.com =$red Failed"
+echo -e "$green" "Ping google DNS =$red Failed"
 echo ""
-echo -e $green "Press [ENTER] key to continue"
-read continue
+echo -e "$green" "Press [ENTER] key to continue"
+read -r continue
 exit 1
     sleep 1
 fi
@@ -1103,15 +1104,15 @@ mv /etc/apt/sources.list.fatrat /etc/apt/sources.list
 echo "Your Original repository list was recovered. ;) ..... beginning setup"
 echo ""
 echo "Cleaning previous repositories cache & updating your repository ."
-echo -e $yellow ""
+echo -e "$yellow" ""
 sudo apt-get clean && apt-get update -y
 sleep 2
 else
-echo -e $green ""
+echo -e "$green" ""
 fi 
 #variables for logs and others
 path=`pwd`
-arch=`uname -m`
+arch=$(uname -m)
 inst="$path/logs/install.log"
 log="$path/logs/setup.log"
 aptlog="$path/logs/apt.log"
@@ -1128,13 +1129,11 @@ white='\e[0;37m'
 red='\e[0;31m'
 yellow='\033[0;33m'
 blue='\033[0;34m'
-purple='\033[0;35m'
 orange='\e[38;5;166m'
-path=`pwd`
 
 #Check root dulu
 if [ $(id -u) != "0" ]; then
-echo -e $red [x]::[not root]: You need to be [root] to run this script.;
+echo -e "$red" [x]::[not root]: You need to be [root] to run this script.;
       echo ""
    	  sleep 1
 exit 0
@@ -1160,7 +1159,7 @@ echo ""
 sleep 2
 clear
 #Banner dong biar keren
-echo -e $green ""
+echo -e "$green" ""
 echo "___________         __  __________          __    "
 echo "\_   _____/_____  _/  |_\______   \_____  _/  |_  "
 echo " |    __)  \__  \ \   __\|       _/\__  \ \   __\ "
@@ -1174,51 +1173,51 @@ echo "                 |   |     /    /                 "
 echo "                 |___| /\ /____/                  "
 echo "                       \/                         "
 echo ""
-echo -e $blue "         Setup Script for FATRAT 1.9.7       "
+echo -e "$blue" "         Setup Script for FATRAT 1.9.7       "
 echo "------------------------------------------------------" > "$log"
 echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> "$log"
 echo "------------------------------------------------------" >> "$log"
 echo "                                                      " >> "$log"
 echo ""
 #Detect if user OS is 32Bit or 64bit
-case $arch in
+case "$arch" in
 x86_64|aarch64) 
-echo -e $yellow "              64Bit OS detected"
+echo -e "$yellow" "              64Bit OS detected"
 echo ""
 ;;
 i386|i486|i586|i686)
-echo -e $yellow "              32Bit OS detected"
+echo -e "$yellow" "              32Bit OS detected"
 echo ""
 ;;
 *)
-echo -e $red "Setup will not proceed because none of these archs were detected"
+echo -e "$red" "Setup will not proceed because none of these archs were detected"
 echo ""
-echo -e $blue "x86_64|i386|i486|i586|i686|aarch64"
+echo -e "$blue" "x86_64|i386|i486|i586|i686|aarch64"
 echo ""
-echo -e $green "Your linux arch: $blue $arch $green is not supported"
+echo -e "$green" "Your linux arch: $blue $arch $green is not supported"
 echo ""
 echo -e "Press any key to continue"
-read abor
+read -r abor
 exit 0
 ;;
 esac
-echo -e $green "Checking type of shell ...."
+echo -e "$green" "Checking type of shell ...."
 sleep 1
 
 #Check if user is using a remote shell or a local terminal
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
   echo "[remote]"
 echo ""
-    echo -e $red "Fatrat & Setup does not work over a remote secure shell ."
+    echo -e "$red" "Fatrat & Setup does not work over a remote secure shell ."
     echo ""
-echo -e $green "If you want to Install Fatrat on a remote computer then "
-echo -e $green "use a remote desktop connection like (rdesktop) or (vnc) "
+echo -e "$green" "If you want to Install Fatrat on a remote computer then "
+echo -e "$green" "use a remote desktop connection like (rdesktop) or (vnc) "
 echo ""
-echo -e $green "Press [ENTER] key to exit"
-read abor
+echo -e "$green" "Press [ENTER] key to exit"
+read -r abor
 exit 1
 else
-echo [local]
+echo "[local]"
   case $(ps -o comm= -p $PPID) in
     sshd|*/sshd) SESSION_TYPE=remote/ssh;;
   esac
@@ -1233,15 +1232,15 @@ sudo apt-get install netcat -y > /dev/null 2>&1
 fi
 sleep 1
 #First check of setup for internet connection by connecting to google over http
-echo -e $green "[ * ] Checking for internet connection"
+echo -e "$green" "[ * ] Checking for internet connection"
 sleep 1
 echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-echo -e $red [ X ]::[Internet Connection]: OFFLINE!;
+echo -e "$red" [ X ]::[Internet Connection]: OFFLINE!;
 chknet
     sleep 1
 else
-echo -e $green [ ✔ ]::[Internet Connection]: CONNECTED!;
+echo -e "$green" [ ✔ ]::[Internet Connection]: CONNECTED!;
     sleep 1
     cont
 fi
