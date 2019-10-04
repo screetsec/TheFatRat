@@ -200,7 +200,7 @@ echo "Fatrat detected that exists a default config file
 with the following values :"
 echo ""
 lh=$(sed -n 1p "$confd")
-lp=$(sed -n 2p "$confd")`
+lp=$(sed -n 2p "$confd")
 echo "LHOST : $lh "
 echo "LPORT : $lp "
 echo ""
