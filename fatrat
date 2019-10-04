@@ -48,7 +48,7 @@ fi
 
 #SAMARAN TAMPAN
 #Variables
-path=`pwd`
+path=$(pwd)
 if [[ -f "$path/release" ]]
 then
 Versi=$(sed -n 1p < "$path/release")
@@ -120,34 +120,34 @@ dave='python tools/trusted_2_6.py'
 B='tools/prog.cs'
 C='tools/dad.c'
 apache='tools/apache.c'
-paycom='$output/payload.c'
-pdfcom='$output/pdf.c'
-bcom='$output/Program.cs'
-pdfcom='$output/pdf.c'
+paycom="${output}/payload.c"
+pdfcom="${output}/pdf.c"
+bcom="${output}/Program.cs"
+pdfcom="${output}/pdf.c"
 pstager='tools/power.py'
-apachecom='$output/apache_com.c'
-out='$output/ip.txt'
+apachecom="${output}/apache_com.c"
+out="${output}/ip.txt"
 pump='tools/pump.py'
 dllcustom='temp/dll_cus.c'
 reverse1='temp/reverse1.c'
 stag='temp/stag.c'
-apkconfig=$path/config/apk.tmp
+apkconfig="${path}/config/apk.tmp"
 unzip=unzip
-temp=$path/temp
+temp="${path}/temp"
 file="config/config.path"
 grab="config/grab.conf"
-meterp="$path/temp/meterpreter.rc"
+meterp="${path}/temp/meterpreter.rc"
 outf="app_backdoor.apk"
-msploit=$path/logs/msploit.log
+msploit="${path}/logs/msploit.log"
 lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
 lanip6=`ip addr | grep 'state UP' -A4 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
 publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
 hostn=`host $publicip | awk '{print $5}' | sed 's/.$//'`
-list=$path/config/listeners
-log=$path/logs/apk-old.log
-pwind=$path/logs/pwind.log
-defcon=$path/config/conf.def
-logfud=$path/logs/fudwin.log
+list="${path}/config/listeners"
+log="${path}/logs/apk-old.log"
+pwind="${path}/logs/pwind.log"
+defcon="${path}/config/conf.def"
+logfud="${path}/logs/fudwin.log"
 # spinner for Metasploit Generator
 spinlong ()
 {
