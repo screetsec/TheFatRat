@@ -106,7 +106,7 @@ echo ""
 echo -n "* - Creating Temporary Directory for config files...."
 find . -type f -name "*.md" -exec rm -f {} \; > /dev/null 2>&1
 tmpdir="$HOME/frtemp"
-mkdir tmpdir="$HOME/frtemp" >/dev/null 2>&1
+mkdir "$tmpdir" >/dev/null 2>&1
 rm -f "$path/temp/*" >/dev/null 2>&1
 mkdir "$tmpdir/autorun/" >/dev/null 2>&1
 mkdir "$tmpdir/config" > /dev/null 2>&1
