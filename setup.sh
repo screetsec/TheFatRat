@@ -523,8 +523,9 @@ rm -f /etc/apt/sources.list
 touch /etc/apt/sources.list
 #echo 'deb http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
 #echo 'deb-src http://http.kali.org/kali kali-rolling main contrib non-free' >> /etc/apt/sources.list
-echo 'deb https://http.kali.org/kali kali-rolling main non-free contrib' > /etc/apt/sources.list
-xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get update"
+echo "deb http://deb.debian.org/debian/ jessie main contrib non-free" > /etc/apt/sources.list
+echo "deb https://http.kali.org/kali kali-rolling main non-free contrib" >> /etc/apt/sources.list
+xterm -T "☣ UPDATING KALI REPO ☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update"
 sleep 1
 
 # check if monodevelop exists
