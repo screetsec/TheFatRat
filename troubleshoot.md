@@ -25,11 +25,9 @@ go to https://packages.debian.org/jessie/all/mingw32 and download the package at
 then run ./setup.py again. FatRat will install in Parrot.
 
 ## This procedure is the same for all other packages that may give an error on output as (Not OK) , except these ones :
-- proguard
 - dx (from android sdk)
 - aapt (from android sdk)
 - apktool
-- dex2jar
 * these packages come in fatrat instalation folder .
 #-------------------------------------------------------------------------------------#
 
@@ -55,6 +53,9 @@ backdoor-apk was denvelopen by :
 ## Running powerstager you get he message (names not found)
 The solution is to install names python module by running in your terminal ( pip install names)
 
+## Running Powerstager you get the message (IOError: [Errno 2] No such file or directory: )
+the solution for this problem is to downgrade your mingw packages , check this topic : 
+https://github.com/Screetsec/TheFatRat/issues/391
 
 ## Package exact names installed by fatart during setup :
 
