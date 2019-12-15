@@ -5575,7 +5575,7 @@ echo '}' >> $path/temp/build.c
 
 ls icons/icon.res >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-    $COMPILER -Wall -mwindows icons/icon.res $path/temp/build.c -o "$OUTPUTNAME"
+    $COMPILER -Wall -mwindows $path/temp/build.c -o "$OUTPUTNAME"
 else
     $COMPILER -Wall -mwindows $path/temp/build.c -o "$OUTPUTNAME"
 fi
