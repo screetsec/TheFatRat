@@ -4,8 +4,9 @@
 
 
 ### Packages installation (using setup.sh)
-- fatrat creates a log file during the setup that is stored in TheFatRat/logs/install.log
-if your issue is related to setup then make sure you upload to your issue in github this file .
+- fatrat creates a log file during the setup that is stored in TheFatRat/logs/apt.log
+if your issue is related to setup then make sure you upload to your issue in github this file and 
+install.log also in same directory .
 
 ### Using fatrat
 - Microsploit
