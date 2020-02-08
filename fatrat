@@ -1073,16 +1073,16 @@ clear
 if [ -f "$file" ]
 then
 #config file exists , then load tools paths to specific variables
-msfconsole=`sed -n 13p $file`
-msfvenom=`sed -n 14p $file`
-backdoor=`sed -n 15p $file`
-searchsploit=`sed -n 16p $file`
-aapt=`sed -n 10p $file`
-apktool=`sed -n 11p $file`
+msfconsole=`sed -n 14p $file`
+msfvenom=`sed -n 15p $file`
+backdoor=`sed -n 16p $file`
+searchsploit=`sed -n 17p $file`
+aapt=`sed -n 11p $file`
+apktool=`sed -n 12p $file`
 keytool=`sed -n 7p $file`
 sign=`sed -n 5p $file`
-dx=`sed -n 9p $file`
-baksmali=`sed -n 12p $file`
+dx=`sed -n 10p $file`
+baksmali=`sed -n 13p $file`
 else
 #config file does not exist
 	echo -e $red"Configuration file does not exists , run setup.sh first for config ."
