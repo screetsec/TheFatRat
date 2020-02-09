@@ -567,7 +567,7 @@ echo "jarsigner" | tee -a "$config" >> /dev/null 2>&1
 else
 echo -e "$red" "[ X ] Jarsigner (java) -> not found "
 echo -e "$yellow" "[ ! ] Installing Java "
-xterm -T "☣ INSTALL OPENJDK-8 ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk openjdk-8-jre --force-yes -y "
+xterm -T "☣ INSTALL default-jdk ☣" -geometry 100x30 -e "sudo apt-get install default-jdk default-jre --force-yes -y "
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e "$green" "[ ✔ ] Jarsigner -> OK"
@@ -584,7 +584,7 @@ echo "jarsigner" | tee -a "$config" >> /dev/null 2>&1
 else
 echo -e "$red" "[ x ] Jarsigner"
 echo "0" > "$stp"
-echo "jarsigner (openjdk-8-jdk)-> Not OK" >> "$inst"
+echo "jarsigner (default-jdk)-> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -623,7 +623,7 @@ echo "Keytool -> OK" >> "$inst"
 else
 echo -e "$red" "[ X ] Keytool (java) -> not found  "
 echo -e "$yellow" "[ ! ] Installing Java "
-xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo apt-get install openjdk-8-jdk --force-yes -y "
+xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo apt-get install default-jdk --force-yes -y "
 which keytool >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo "keytool" | tee -a "$config" >> /dev/null 2>&1
