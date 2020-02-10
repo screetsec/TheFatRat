@@ -1076,6 +1076,11 @@ cat "/etc/apt/sources.list" >> "$aptlog"
 else
 echo "sources.list file was not found in user OS" >> "$aptlog"
 fi
+echo "-----------------------------------" >> "$aptlog"
+echo "User Linux Distribution"
+echo "-----------------------------------" >> "$aptlog"
+uname -a >> "$aptlog"
+echo "-----------------------------------" >> "$aptlog"
 echo "Done"
 echo ""
 echo -e "$yellow""A report was created in :"
