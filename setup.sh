@@ -1081,6 +1081,19 @@ echo "User Linux Distribution"
 echo "-----------------------------------" >> "$aptlog"
 uname -a >> "$aptlog"
 echo "-----------------------------------" >> "$aptlog"
+echo "         Access User Level         " >> "$aptlog"
+echo "-----------------------------------" >> "$aptlog"
+if [ "$(whoami)" == "root" ] ; then
+echo "User is root level"
+else
+which sudo > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then 
+sudo -l >> "$aptlog"
+else
+echo "Sudo not installed , unable to determine user rights" >> "$aptlog"
+fi
+fi
+echo "-----------------------------------" >> "$aptlog"
 echo "Done"
 echo ""
 echo -e "$yellow""A report was created in :"
