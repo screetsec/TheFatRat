@@ -77,6 +77,7 @@ All notable changes to this project will be documented in this [file](https://gi
 - [z0noxz](https://github.com/z0noxz/powerstager) - Powerstager
 - [TrustedSec](https://github.com/trustedsec/unicorn) - Unicorn
 - [Raphael Mudge](https://github.com/rsmudge) - External Source
+- [astr0baby](https://astr0baby.wordpress.com) - Reference Source
 - [NgeSEC](https://ngesec.id/) Community
 - [Gauli(dot)Net](https://gauli.net/) - Lab Penetration
 
