@@ -5449,7 +5449,7 @@ echo -e $cyan"==================================================================
 echo -e $cyan""
 # Set Output filename
 echo
-echo -n -e "TYPE THE DESIRED OUTPUT FILENAME : $okegreen" ;
+echo -n -e "TYPE THE DESIRED OUTPUT FILENAME (APP.exe) : $okegreen" ;
 read OUTPUTNAME
 echo ""
 echo ""
