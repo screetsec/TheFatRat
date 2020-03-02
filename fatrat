@@ -6154,7 +6154,7 @@ elif test $fatrat == '11'
 	      sleep 2
 	      echo ""
 	      echo -e $red"  [*] $cyan Cleaning $path/*.exe or apk"
-	      rm *.exe *.apk .* >/dev/null 2>&1
+	      rm *.exe *.apk >/dev/null 2>&1
 	      sleep 2
 	      echo ""
 	      echo -ne $red"  [*] $cyan Folders cleaned, press [ENTER] key to return to the main menu."
