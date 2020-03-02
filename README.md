@@ -47,8 +47,8 @@ cd TheFatRat
 
 ## Documentation
 - Documentation Available in Modules CEH v9 and V10 , Download source here 
-	- [CEHv10 Module 06 System Hacking.pdf](https://github.com/ManhNho/CEHv10/blob/master/Labs/CEHv10%20Module%2006%20System%20Hacking.pdf)
-	- [CEHv10 Module 17 Hacking Mobile Platforms.pdf](https://github.com/ManhNho/CEHv10/blob/master/Labs/CEHv10%20Module%2017%20Hacking%20Mobile%20Platforms.pdf)
+	- [CEHv10 Module 06 System Hacking.pdf](https://github.com/khanhnnvn/CEHv10/blob/master/Labs/CEHv10%20Module%2006%20System%20Hacking.pdf)
+	- [CEHv10 Module 17 Hacking Mobile Platforms.pdf](https://github.com/khanhnnvn/CEHv10/blob/master/Labs/CEHv10%20Module%2017%20Hacking%20Mobile%20Platforms.pdf)
 - Published in International Journal of Cyber-Security and Digital Forensics
 	- [Malware Analysis Of Backdoor Creator : TheFatRat](https://www.researchgate.net/publication/323574673_MALWARE_ANALYSIS_OF_BACKDOOR_CREATOR_FATRAT)
 - Youtube Videos 
