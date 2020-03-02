@@ -1623,7 +1623,7 @@ if [ -f $fstager ]; then
 	sleep 2
 else
 	echo -e $red ""
-	echo "[x] There was an error creating your FUD rat with Powerstager ."
+	echo " [x] There was an error creating your FUD rat with Powerstager ."
 	echo -e $okegreen ""
 	echo "Press [ENTER] key to continue to return to fatrat menu"
 	read rmenu
@@ -1798,7 +1798,7 @@ rm -rf $logfud > /dev/null 2>&1
 			    fi
 		    	    
 			    echo ""
-			    read -p '   Please enter the base name for output files : ' fira
+			    read -p '   Please enter the base name for output files(App.exe) : ' fira
 			    #Go make a check if user inputed any value or not
 			    invalid
 			    
@@ -1842,7 +1842,7 @@ which x86_64-w64-mingw32-gcc >> $logfud 2>&1
 			echo -e $orange "  |$okegreen Current icons list$orange |"
 			echo -e $orange "  +--------------------+"
 				for liste in icons/*.ico; do
-                  			echo ${liste##*/}
+                  			echo ${liste##*/} | sed 's/^/   /g'
     				done
 					echo -e $orange "  +---------------------+"
 					echo ""
@@ -1926,7 +1926,7 @@ elif [ $choice == "2" ]; then
 		echo -e $orange "  |$okegreen Current icons list$orange |"
 		echo -e $orange "  +--------------------+"
 	for liste in icons/*.ico; do
-                echo ${liste##*/}
+                echo ${liste##*/} | sed 's/^/   /g'
    	done
 		echo -e $orange "  +---------------------+"
 		echo ""
