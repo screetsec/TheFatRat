@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 
-###########################################################################################
-#	  										  #
-#											  #
-#	  THEFATRAT-1.9.7.#dev					  			  #	
-#											  #
-#	  Welcome and dont disclaimer							  #
-#	  TheFatRat Author By Edo -maland- { screetec }					  #
-#	  Tested On , Backbox , kali Linux and Kali sana v.2				  #
-#	  contact me in screetsec@gmail.com or screetsec@dracos-linux.org		  #
-#	  Distro Penetration From Indonesia : https://dracos-linux.org/			  #
-#	  										  #
-#	  www.github.com/screetsec	   						  #
-#											  #
-############################################################################################
-
+#-Metadata----------------------------------------------------#
+#  Filename: TheFatRat(v1.9.7#dev)       (Update: 2020-02-03) #
+#-Info--------------------------------------------------------#
+#  TheFatRat - A Massive Exploiting Tool                      #
+#-Author(s)---------------------------------------------------#
+#  Edo maland ~ @screetsec                                    #
+#-Operating System--------------------------------------------#
+#  Designed for & tested on: Linux 	                      #
+#  Reported working : Ubuntu 16                               #
+#	   	    : Parrot 				      #
+#	   	    : BlackArch				      #
+#                   : Kali Linux 			      #
+#		    : Backbox     			      #
+#  Available on BlackArch Linux                               #
+#-Licence-----------------------------------------------------#
+#  GNU General Public License v3.0                            #
+#-------------------------------------------------------------#
 
 
 #COLOUR
