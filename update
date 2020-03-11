@@ -1,5 +1,6 @@
-#!/bin/bash
-clear
+#!/usr/bin/env bash
+
+# Define Colours
 cyan='\e[0;36m'
 green='\e[0;32m'
 lightgreen='\e[1;32m'
@@ -11,95 +12,95 @@ purple='\e[1;35m'
 path=`pwd`
 
 function chknet() {
-echo -e $red "[X] Your Internet is not working correctly!"
-sleep 1
-echo -e $cyan "[*] Checking ...."
-ping -c 1 8.8.4.4 > /dev/null 2>&1
-png="$?" 
- if [ $png == "0" ]
-then
+ echo -e $red "[X] Your Internet is not working correctly!"
+ sleep 1
+ echo -e $cyan "[*] Checking ...."
+ ping -c 1 8.8.4.4 > /dev/null 2>&1
+ png="$?" 
+ 
+ if [ $png == "0" ]; then
     echo -e $red "[X] Your linux OS is not able to resolve"
     echo -e $red "hostnames over terminal using ping !!"
     echo ""
     echo -e $yellow "Search on the web : (unable to resolve hostnames ping) to find a solution"
-echo ""
-echo -e $green "Update will continue , but is not garantee that cloud work properly."
-echo ""
-echo -e $cyan "Update will continue because :"
-echo -e $green "Ping google.com =$red Failed"
-echo -e $green "Ping google DNS = Success"
-echo ""
-echo -e $green "Press [ENTER] key to continue"
-read continue
+    echo ""
+    echo -e $green "Update will continue , but is not garantee that cloud work properly."
+    echo ""
+    echo -e $cyan "Update will continue because :"
+    echo -e $green "Ping google.com =$red Failed"
+    echo -e $green "Ping google DNS = Success"
+    echo ""
+    echo -e $green "Press [ENTER] key to continue"
+    read continue
     sleep 1
-elif [ $png == "1" ]
-then
+ elif [ $png == "1" ]; then
     echo -e $yellow "You are connected to your local network but not to the web ."
     echo -e $yellow "Check if your router/modem gateway is connected to the web ."
-echo ""
-echo -e $green "Update will not continue , you are only connected to your local lan."
-echo ""
-echo -e $cyan "Update will stop because :"
-echo -e $green "Ping google.com =$red Failed"
-echo -e $green "Ping google DNS =$red Failed"
-echo ""
-echo -e $green "Press [ENTER] key to continue"
-read continue
-exit 1
-sleep 1
-elif [ $png == "2" ]
-then
-echo -e $red "You are not connected to any network ."
-echo ""
-echo -e $cyan "Update will stop because :"
-echo -e $green "Ping google.com =$red Failed"
-echo -e $green "Ping google DNS =$red Failed"
-echo ""
-echo -e $green "Press [ENTER] key to continue"
-read continue
-exit 1
+    echo ""
+    echo -e $green "Update will not continue , you are only connected to your local lan."
+    echo ""
+    echo -e $cyan "Update will stop because :"
+    echo -e $green "Ping google.com =$red Failed"
+    echo -e $green "Ping google DNS =$red Failed"
+    echo ""
+    echo -e $green "Press [ENTER] key to continue"
+    read continue
+    exit 1
     sleep 1
-fi
+elif [ $png == "2" ]; then
+    echo -e $red "You are not connected to any network ."
+    echo ""
+    echo -e $cyan "Update will stop because :"
+    echo -e $green "Ping google.com =$red Failed"
+    echo -e $green "Ping google DNS =$red Failed"
+    echo ""
+    echo -e $green "Press [ENTER] key to continue"
+    read continue
+    exit 1
+    sleep 1
+ fi
 }
+
 which nc > /dev/null 2>&1
-      if [[ "$?" -ne "0" ]]; then
+ if [[ "$?" -ne "0" ]]; then
       echo "Installing netcat"
       apt-get install netcat -y > /dev/null 2>&1
       which nc > /dev/null 2>&1
-      if [[ "$?" -ne "0" ]]; then
+   if [[ "$?" -ne "0" ]]; then
       echo "Unable to Install Netcat"
       echo "Make Sure you are connected to the Internet"
       echo "before running Update for Fatrat"
       echo ""
       sleep 5
       exit 0
-      fi
-      fi
+    fi
+ fi
+ 
 which git > /dev/null 2>&1
-      if [[ "$?" -ne "0" ]]; then
+ if [[ "$?" -ne "0" ]]; then
       echo "Installing netcat"
       apt-get install git -y > /dev/null 2>&1
       which git > /dev/null 2>&1
-      if [[ "$?" -ne "0" ]]; then
+    if [[ "$?" -ne "0" ]]; then
       echo "Unable to Install Git"
       echo "Make Sure you are connected to the Internet"
       echo "before running Update for Fatrat"
       echo ""
       sleep 5
       exit 0
-      fi
-      fi      
+    fi
+ fi      
       
- echo ""     
+echo ""     
 echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
-if [[ $? -ne 0 ]]; then
-echo -e "$red" [ X ]::[Internet Connection]: OFFLINE!;
-chknet
+ if [[ $? -ne 0 ]]; then
+    echo -e "$red" [ X ]::[Internet Connection]: OFFLINE!;
+    chknet
     sleep 1
-else
-echo -e "$green" [✔]::[Internet Connection]: CONNECTED!;
+ else
+     echo -e "$green" [✔]::[Internet Connection]: CONNECTED!;
     sleep 1
-fi
+ fi
 
 sleep 1
 echo ""
