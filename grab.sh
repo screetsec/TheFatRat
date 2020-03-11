@@ -23,15 +23,14 @@ file=temp/msff #Filename to search in metasploit output folder
 conf=config/grab.conf #Maximum time to wait for all process to be done
 
 #If timeout configuration file does not exist then abort script
-if [ ! -f "$conf" ]
-then
-echo "Timeout configuration was not found"
-echo "Aborting"
-exit
+if [ ! -f "$conf" ]; then
+  echo "Timeout configuration was not found"
+  echo "Aborting"
+  exit
 else
 
-#timeout configuration file found , read the 4th line
-tmo=`sed -n 4p $conf`
+  #timeout configuration file found , read the 4th line
+  tmo=`sed -n 4p $conf`
 fi
 
 #Clean metasploit output folder (in case a previous file with same name was created)
@@ -40,15 +39,15 @@ rm -rf $HOME/.msf4/local/* >/dev/null 2>&1
 # Look for the name of the file to be search in metasploit output in msff
 # msff file will be created by fatrat
 
-if [ -f "$file" ]
-then
+if [ -f "$file" ]; then
 
-#msff file exists then read 1st line (filename to search)
-var=`sed -n 1p $file`
+#msf file exists then read 1st line (filename to search)
+  var=`sed -n 1p $file`
 else
-#msff does not exist , abort
-exit 1
+  #msf does not exist , abort
+  exit 1
 fi
+
 function outf(){
 clear
 echo -e $orange   "---------------------------------------------------"
@@ -62,24 +61,23 @@ out="$HOME/.msf4/local/$var"
 
 #sleep variable is equal to itself + 1 second
 sleep=$((sleep+1))
-if [ $sleep == "$tmo" ] 
-then
+if [ $sleep == "$tmo" ] ; then
 
 #in case timeout value achieved without any metasploit output file created
 #then exits this script
 
-echo "Metasploit did not generated any output or your timeout is short"
-pkill -f Microsploit > /dev/null 2>&1
-exit 1
+  echo "Metasploit did not generated any output or your timeout is short"
+  pkill -f Microsploit > /dev/null 2>&1
+  exit 1
 fi
 
 #File was created by metasploit , copy it to final destination , kill msfconsole window and auto-close this script
 if [ -f $out ]; then
-mv $HOME/.msf4/local/$var $HOME/Fatrat_Generated/$var
+  mv $HOME/.msf4/local/$var $HOME/Fatrat_Generated/$var
 
-#Look in active processes a process name "Microsploit" and kill it
-pkill -f Microsploit > /dev/null 2>&1
-exit 1
+  #Look in active processes a process name "Microsploit" and kill it
+  pkill -f Microsploit > /dev/null 2>&1
+  exit 1
 else
 
 #metasploit output file was not yet found , wait 1 second
@@ -98,9 +96,8 @@ echo -e $okegreen "Waiting for msfconsole output to be generated in Xterm Window
 echo -e $orange "Max waiting time = $tmo seconds"
 #if the current value from msff is empty then abort this script
 #this will mean that msff file exists but does not have anything written
-if [ -z "$var" ]
-then 
-exit 1
+if [ -z "$var" ]; then 
+  exit 1
 fi
 
 #set sleep variable to 1 second
