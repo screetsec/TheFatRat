@@ -15,7 +15,11 @@
 ![Banner](https://user-images.githubusercontent.com/17976841/65820028-6ae17e00-e24e-11e9-894f-35836481cc2c.png)
 
 **TheFatRat** is an exploiting tool which compiles a malware with famous payload, and then the compiled maware can be executed on Linux , Windows , Mac and Android. **TheFatRat** Provides An Easy way to create Backdoors and Payload which can bypass most anti-virus. 
-        
+ 
+ ## Information
+ This tool is for educational purpose only, usage of TheFatRat for attacking targets without prior mutual consent is illegal.
+Developers assume no liability and are not responsible for any misuse or damage cause by this program.
+
  ## Features !
  - Fully Automating MSFvenom & Metasploit.
 - Local or remote listener Generation.
@@ -68,6 +72,15 @@ All notable changes to this project will be documented in this [file](https://gi
 
 ### About issues
 - Read the [document](https://github.com/Screetsec/TheFatRat/blob/master/issues.md) before making an issue
+
+## Alternative Best Tool - Generating Backdoor & Bypass 
+- [Veil-Framework /Veil](https://github.com/Veil-Framework/Veil) - Veil Framework 
+- [Shellter](https://www.shellterproject.com/download/) - Shellter AV Evasion Artware
+- [Unicorn](https://github.com/trustedsec/unicorn) - Trustedsec 
+- [MSFvenom Payload Creator (MSFPC)](https://github.com/g0tmi1k/msfpc) - g0tmi1k
+- [Venom](https://github.com/r00t-3xp10it/venom) - Pedro Ubuntu
+- [Phantom-Evasion](https://github.com/oddcod3/Phantom-Evasion) - Diego Cornacchini
+
 
 ## Credits & Thanks
 - [Offensive Security](https://www.offensive-security.com/) - Offensive Security
