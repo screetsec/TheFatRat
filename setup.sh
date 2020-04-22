@@ -796,24 +796,24 @@ which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 apk=`apktool | sed -n 1p | awk '{print $2}'` > /dev/null 2>&1
 case "$apk" in 
-v.2.4.0)
+v.2.4.1)
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Apktool v.2.4.0..................[ found ]"
+echo -e "$green" "[ ✔ ] Apktool v.2.4.1..................[ found ]"
 echo "Apktool -> OK" >> "$inst"
 ;;
 *)
 xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
 unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
-ln -s "$path/tools/apktool2.4.0/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
+ln -s "$path/tools/apktool2.4.1/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Apktool v.2.4.0..................[Installed]"
+echo -e "$green" "[ ✔ ] Apktool v.2.4.1..................[Installed]"
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Apktool v.2.4.0"
+echo -e "$red" "[ x ] Apktool v.2.4.1"
 echo "0" > "$stp"
 echo "apktool -> Not OK" >> "$inst"
 fi
@@ -821,15 +821,15 @@ fi
 esac
 else
 unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
-ln -s "$path/tools/apktool2.4.0/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
+ln -s "$path/tools/apktool2.4.1/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Apktool v.2.4.0..................[Installed]"
+echo -e "$green" "[ ✔ ] Apktool v.2.4.1..................[Installed]"
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Apktool v.2.4.0"
+echo -e "$red" "[ x ] Apktool v.2.4.1"
 echo "0" > "$stp"
 echo "apktool -> Not OK" >> "$inst"
 fi
