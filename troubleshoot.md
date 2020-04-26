@@ -22,6 +22,7 @@ from the Kali repositories .
 * - look here https://github.com/Screetsec/TheFatRat/issues/391
 
 Install mingw 4.9.1 version from Debian Repository
+
 1st - add this line to /etc/apt/sources.list
 deb http://ftp.debian.org/debian jessie main
 
