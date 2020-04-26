@@ -26,10 +26,10 @@ Install mingw 4.9.1 version from Debian Repository
 deb http://ftp.debian.org/debian jessie main
 
 2nd - remove all your mingw versions , write  this in your terminal
-apt-get remove --purge *mingw* -y && apt-get autoremove -y
+apt-get remove --purge \*mingw\* -y && apt-get autoremove -y
 
 3rd - update your repositories and install mingw from jessie
-apt-get update && apt-get install -t jessie *mingw* -f -y
+apt-get update && apt-get install -t jessie \*mingw\* -f -y
 
 ## Manual install in parrot 
 
