@@ -21,7 +21,7 @@ from the Kali repositories .
 - If you recently installed fatrat then you probably will have an issue with powerstager with error I/O when it tries to write the backdoor output file , to solve that issue you must add debian jessie repositories to your file /etc/apt/sources.list and deisable any new repository there , then uninstall and remove your current mingw instalation and run setup.sh from fatrat again .
 * - look here https://github.com/Screetsec/TheFatRat/issues/391
 
-Install mingw 4.9.1 version from Debian Repository
+# Install mingw 4.9.1 version from Debian Repository required for Powerstager
 
 1st - add this line to /etc/apt/sources.list
 
