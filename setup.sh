@@ -912,15 +912,6 @@ cp "$path/config/TheFatRat.desktop" /usr/share/applications/TheFatRat.desktop
 cp "$path/icons/TheFatRat.ico" /usr/share/icons/TheFatRat.ico
 chmod +x /usr/local/sbin/fatrat
 chmod +x fatrat
-chmod +x powerfull.sh
-chmod +x update
-chmod +x backdoor_apk
-chmod +x $path/tools/power.py
-chmod +x $path/tools/android-sdk/zipalign
-chmod +x $path/tools/baksmali233/baksmali
-chmod +x $path/tools/android-sdk/dx
-chmod +x $path/tools/android-sdk/aapt
-chmod +x $path/tools/apktool2.4.0/apktool
 which fatrat >> "$log" 2>&1
 clear
 echo ""
@@ -930,15 +921,6 @@ fi
 
 n|no|No|NO)
 chmod +x fatrat
-chmod +x powerfull.sh
-chmod +x update
-chmod +x backdoor_apk
-chmod +x $path/tools/power.py
-chmod +x $path/tools/android-sdk/zipalign
-chmod +x $path/tools/baksmali233/baksmali
-chmod +x $path/tools/android-sdk/dx
-chmod +x $path/tools/android-sdk/aapt
-chmod +x $path/tools/apktool2.4.0/apktool
 clear
 echo ""
 echo -e "$green" "Instalation completed , To execute fatrat write in fatrat directory (./fatrat)"
@@ -946,15 +928,6 @@ echo -e "$green" "Instalation completed , To execute fatrat write in fatrat dire
 
 *)
 chmod +x fatrat
-chmod +x powerfull.sh
-chmod +x update
-chmod +x backdoor_apk
-chmod +x $path/tools/power.py
-chmod +x $path/tools/android-sdk/zipalign
-chmod +x $path/tools/baksmali233/baksmali
-chmod +x $path/tools/android-sdk/dx
-chmod +x $path/tools/android-sdk/aapt
-chmod +x $path/tools/apktool2.4.0/apktool
 clear
 echo ""
 echo -e "$green" "Instalation completed , To execute fatrat write in fatrat directory (./fatrat)"
@@ -1176,6 +1149,22 @@ echo -ne "$green""Checking necessary packages with your current repositories ...
 chkpkg
 echo ""
 sleep 2
+echo -ne "$green""* - Checking file permissions ..."
+chmod +x powerfull.sh
+chmod +x update
+chmod +x backdoor_apk
+chmod +x tools/power.py
+chmod +x tools/android-sdk/zipalign
+chmod +x tools/baksmali233/baksmali
+chmod +x tools/android-sdk/dx
+chmod +x tools/android-sdk/aapt
+chmod +x tools/apktool2.4.1/apktool
+chmod +x tools/android-string-obfuscator/lib/aso
+chmod +x tools/pump.py
+chmod +x tools/pw_exec.py
+chmod +x tools/trusted_2_6.py
+echo "Done"
+sleep 0.5
 clear
 #Banner dong biar keren
 echo -e "$green" ""
