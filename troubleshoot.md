@@ -100,4 +100,5 @@ Execute chk_tools inside fatrat folder and fix whatever is wrong manually
 ```
 chmod +x chk_tools && ./chk_tools
 ```
+<img src="https://i.postimg.cc/MHHbfLVT/chktools.png" width="55%"></img>
 
