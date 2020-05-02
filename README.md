@@ -43,6 +43,15 @@ chmod +x setup.sh && ./setup.sh
 cd TheFatRat
 ./update && chmod +x setup.sh && ./setup.sh
 ```
+### Troubleshoot on fatrat
+chk_tools script to use in case of problems in setup.sh of fatrat
+this script will check if everything is in the right version to run fatrat
+and will also provide you a solution for the problem
+```
+cd TheFatRat
+chmod +x chk_tools 
+./chk_tools
+```
 
 ## Tools Overview
 | Front View | Sample Feature	|
