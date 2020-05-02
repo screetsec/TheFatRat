@@ -1,4 +1,5 @@
 ## CHANGELOG
+* v1.9.7 - Added chk_tools script to verify tools and libraries versions to run fatrat , Script will also provide solutions
 * v1.9.7 - Upgraded Apktool to 2.4.1 version
 * v1.9.7 - Output folder for all generated files in fatrat will now be in $Home/Fatrat_Generated
 * V1.9.7 - Removed dex2jar , proguard , not needed anymore for new backdoor_apk , updated backdoor_apk to 0.2.4a and all tools
