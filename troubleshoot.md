@@ -94,5 +94,8 @@ https://github.com/Screetsec/TheFatRat/issues/391
 - mingw32 (32bit exe compiler for powerstager & others in fatrat)
 - mingw-w64 (32bit exe compiler for powerstager & other in fatrat)
 
+## If nothing Works !!!
+Execute chk_tools inside fatrat folder and fix whatever is wrong manually
+chmod +x chk_tools && ./chk_tools
 
 
