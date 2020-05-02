@@ -96,6 +96,8 @@ https://github.com/Screetsec/TheFatRat/issues/391
 
 ## If nothing Works !!!
 Execute chk_tools inside fatrat folder and fix whatever is wrong manually
+- Inside fatrat folder execute :
+```
 chmod +x chk_tools && ./chk_tools
-
+```
 
