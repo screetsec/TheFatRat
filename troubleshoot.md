@@ -102,3 +102,7 @@ chmod +x chk_tools && ./chk_tools
 ```
 <img src="https://i.postimg.cc/MHHbfLVT/chktools.png" width="55%"></img>
 
+
+## How to Access root folder on kali 2020/21
+https://github.com/Screetsec/TheFatRat/issues/421#issuecomment-593453573
+
