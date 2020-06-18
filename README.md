@@ -30,6 +30,9 @@ Developers assume no liability and are not responsible for any misuse or damage 
 - The ability to detect external IP & Interface address .
 - Automatically creates AutoRun files for USB / CDROM exploitation
 
+### But it's shit! And your implementation sucks!
+- Yes, you're probably correct. Feel free to "Not use it" 
+
 
 ## Installation
 Instructions on how to install *TheFatRat*
