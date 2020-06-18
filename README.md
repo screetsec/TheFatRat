@@ -31,7 +31,7 @@ Developers assume no liability and are not responsible for any misuse or damage 
 - Automatically creates AutoRun files for USB / CDROM exploitation
 
 ### But it's shit! And your implementation sucks!
-- Yes, you're probably correct. Feel free to "Not use it" 
+- Yes, you're probably correct. Feel free to "Not use it" and there is a pull button to "Make it better". 
 
 
 ## Installation
@@ -46,7 +46,7 @@ chmod +x setup.sh && ./setup.sh
 cd TheFatRat
 ./update && chmod +x setup.sh && ./setup.sh
 ```
-### Troubleshoot on fatrat
+### Troubleshoot on TheFatRat
 chk_tools script to use in case of problems in setup.sh of fatrat
 this script will check if everything is in the right version to run fatrat
 and will also provide you a solution for the problem
