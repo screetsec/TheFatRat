@@ -92,6 +92,7 @@ All notable changes to this project will be documented in this [file](https://gi
 - [MSFvenom Payload Creator (MSFPC)](https://github.com/g0tmi1k/msfpc) - g0tmi1k
 - [Venom](https://github.com/r00t-3xp10it/venom) - Pedro Ubuntu
 - [Phantom-Evasion](https://github.com/oddcod3/Phantom-Evasion) - Diego Cornacchini
+- [Android APK and Payload Combiner](https://github.com/bkstephen/android_apk_and_payload_combiner) - bkstephen
 
 
 ## Credits & Thanks
