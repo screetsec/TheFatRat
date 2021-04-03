@@ -708,7 +708,7 @@ fi
 rm -f /etc/apt/sources.list
 touch /etc/apt/sources.list
 echo "deb http://deb.debian.org/debian/ jessie main contrib non-free" > /etc/apt/sources.list
-xterm -T "☣ UPDATING REPOSITORIES DEDIAN JESSIE☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update -y | tee -a $mingw"
+xterm -T "☣ UPDATING REPOSITORIES DEBIAN JESSIE☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update -y | tee -a $mingw"
 sleep 1
 
 # check if mingw32 or mingw-64 exists 
