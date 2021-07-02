@@ -1555,7 +1555,7 @@ sleep 0.5
 fi
 
 #Checking if user is using a local terminal or a remote shell
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] && [ -z "$(xdpyinfo 2>/dev/null)" ]; then
 	echo -e $red [✔]::[Terminal]: remote ;
 	echo ""
 	echo -e $red "Fatrat & Setup does not work over a remote secure shell ."

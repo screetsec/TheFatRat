@@ -1288,7 +1288,7 @@ echo -e "$green" "Checking type of shell ...."
 sleep 1
 
 #Check if user is using a remote shell or a local terminal
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ] && [ -z "$(xdpyinfo 2>/dev/null)" ]; then
   echo "[remote]"
 echo ""
     echo -e "$red" "Fatrat & Setup does not work over a remote secure shell ."
