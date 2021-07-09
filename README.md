@@ -83,7 +83,7 @@ chmod +x chk_tools
 All notable changes to this project will be documented in this [file](https://github.com/Screetsec/thefatrat/blob/master/CHANGELOG.md).
 
 ### About issues
-- Read the [document](https://github.com/Screetsec/TheFatRat/blob/master/issues.md) before making an issue
+- Read the [document](https://github.com/Screetsec/TheFatRat/blob/master/ISSUES.md) before making an issue
 
 ## Alternative Best Tool - Generating Backdoor & Bypass 
 - [Veil-Framework /Veil](https://github.com/Veil-Framework/Veil) - Veil Framework 
@@ -107,6 +107,6 @@ All notable changes to this project will be documented in this [file](https://gi
 - [Gauli(dot)Net](https://gauli.net/) - Lab Penetration
 
 ## License
-TheFatRat is made with 🖤 by Edo Maland & All [Contributors](https://github.com/Screetsec/TheFatRat/graphs/contributors). See the **License** file for more details.
+TheFatRat is made with 🖤 by Edo Maland & All [Contributors](https://github.com/Screetsec/TheFatRat/graphs/contributors). See the [**License**](https://github.com/j3soon-pr/TheFatRat/blob/master/LICENSE) file for more details.
 
 
