@@ -21,7 +21,8 @@ orange='\e[38;5;166m'
 path=`pwd` #Set path variable
 file=temp/msff #Filename to search in metasploit output folder
 conf=config/grab.conf #Maximum time to wait for all process to be done
-
+cvar="config/config.path"
+output=$(sed -n 17p ${cvar})
 #If timeout configuration file does not exist then abort script
 if [ ! -f "$conf" ]; then
   echo "Timeout configuration was not found"
@@ -73,7 +74,7 @@ fi
 
 #File was created by metasploit , copy it to final destination , kill msfconsole window and auto-close this script
 if [ -f $out ]; then
-  mv $HOME/.msf4/local/$var $HOME/Fatrat_Generated/$var
+  mv $HOME/.msf4/local/$var $output/$var
 
   #Look in active processes a process name "Microsploit" and kill it
   pkill -f Microsploit > /dev/null 2>&1

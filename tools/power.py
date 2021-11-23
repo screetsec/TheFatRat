@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 import os
 import sys
 import getopt
@@ -12,7 +12,7 @@ import random
 import base64
 import time
 import datetime
-import urllib
+import urllib.parse
 import hashlib
 import readline
 import signal

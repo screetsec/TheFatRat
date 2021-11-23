@@ -163,7 +163,7 @@ echo -e "$green" "Press [ENTER] key to try again ."
 read -r cont
 bkf
 fi
-echo "python2 $bkdf" | tee -a "$config" "$log" > /dev/null 2>&1
+echo "python3 $bkdf" | tee -a "$config" "$log" > /dev/null 2>&1
 echo "Backdoor-factory -> OK" >> "$inst"
 ssplt
 ;;
@@ -176,6 +176,7 @@ if [ "$?" -eq "0" ]; then
 echo -e "$green" "[ ✔ ] Backdoor-Factory -> OK"
 echo "backdoor-factory" | tee -a "$config" "$log" > /dev/null 2>&1
 echo "Backdoor-factory -> OK" >> "$inst"
+ssplt
 else
 echo -e "$red" "[ X ] backdoor-factory"
 echo "0" > "$stp"
@@ -190,6 +191,40 @@ bkf
 esac
 fi
 }
+
+function crtdir() {
+	echo ""
+echo -e "$green""Write output directory for fatrat generated files or press enter to default."
+echo -e "$orange""Default :$yellow $HOME/Fatrat_Generated"	
+echo ""
+echo -ne "$orange""Write: $green"
+read -r pth	
+if [[ -z "$pth" ]]
+then
+echo "$HOME/Fatrat_Generated" | tee -a "$config" "$log" > /dev/null 2>&1
+mkdir $HOME/Fatrat_Generated > /dev/null 2>&1
+else
+mkdir -p "$pth" > /dev/null 2>&1
+if [[ ! -d "$pth" ]] 
+then
+echo ""
+echo -e "$red""There was an error creating $pth , default directory will be assigned"
+echo -ne "$green""Press ENTER to continue"
+echo "$HOME/Fatrat_Generated" | tee -a "$config" "$log" > /dev/null 2>&1
+mkdir $HOME/Fatrat_Generated > /dev/null 2>&1
+else
+echo "$pth" | tee -a "$config" "$log" > /dev/null 2>&1
+echo ""
+echo -e "$orange""All fatrat generated files will be stored in :"
+echo -e "$green""$pth"
+echo ""
+echo -ne "$green""Press ENTER to continue"
+read rsp
+clear
+fi
+fi	
+}
+
 
 function mtspl() {
 # check if metasploit-framework its installed
@@ -264,23 +299,23 @@ echo -e "$yellow" "[ ! ] Installing Metasploit-Framework  "
 xterm -T "☣ INSTALL METASPLOIT-FRAMEWORK ☣" -geometry 100x30 -e "sudo apt-get install metasploit-framework  -y"
 which msfconsole > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Metasploit (msfconsole) -> OK"
+echo -e "$green" "[ ✔ ] Metasploit - msfconsole -> OK"
 echo "msfconsole" | tee -a "$config" "$log" > /dev/null 2>&1
-echo "Metasploit (msfconsole) -> OK" >> "$inst"
+echo "Metasploit - msfconsole -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Metasploit (msfconsole)"
-echo "Metasploit (msfconsole) -> Not OK" >> "$inst"
+echo -e "$red" "[ x ] Metasploit - msfconsole"
+echo "Metasploit - msfconsole -> Not OK" >> "$inst"
 echo "0" > "$stp"
 fi
 which msfvenom > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Metasploit (msfvenom) -> OK"
+echo -e "$green" "[ ✔ ] Metasploit \(msfvenom\) -> OK"
 echo "msfvenom" | tee -a "$config" "$log" > /dev/null 2>&1
-echo "Metasploit (msfvenom) -> OK" >> "$inst"
+echo "Metasploit - msfvenom -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Metasploit (msfvenom)"
+echo -e "$red" "[ x ] Metasploit - msfvenom"
 echo "0" > "$stp"
-echo "Metasploit (msfvenom) -> Not OK" >> "$inst"
+echo "Metasploit - msfvenom -> Not OK" >> "$inst"
 fi
 bkf
 ;;
@@ -358,7 +393,7 @@ echo "Mono-Denvelop Utils -> OK" >> "$inst"
 else
 echo -e "$red" "[ X ] Mono-Denvelop Utils -> not found! "
 echo -e "$yellow" "[ ! ]  Installing Mono-Denvelop Utils"
-xterm -T "☣ INSTALL DNSUTILS ☣" -geometry 100x30 -e "sudo apt-get install mono-mcs mono-devel -y"
+xterm -T "☣ INSTALL MONODENVELOP-UTILS ☣" -geometry 100x30 -e "sudo apt-get install mono-mcs mono-devel -y"
 which mcs >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e "$green" "[ ✔ ] Mono-Denvelop Utils -> OK"
@@ -478,6 +513,50 @@ echo "0" > "$stp"
 echo "ruby -> Not OK" >> "$inst"
 fi
 fi
+
+sleep 1
+#Checking if python3 exists
+which python3 > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e "$green" "[ ✔ ] Python3...........................[ found ]"
+which ruby >> "$log" 2>&1
+echo "Python3 -> OK" >> "$inst"
+else
+echo -e "$red" "[ X ] Python3  -> not found "
+echo -e "$yellow" "[ ! ] Installing Python3 "
+xterm -T "☣ INSTALL Python3 ☣" -geometry 100x30 -e "sudo apt-get install python3 -y"
+which python3 >> "$log" 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e "$green" "[ ✔ ] Python3 -> OK"
+echo "Python3 -> OK" >> "$inst"
+else
+echo -e "$red" "[ x ] Python3"
+echo "0" > "$stp"
+echo "Python3 -> Not OK" >> "$inst"
+fi
+fi
+sleep 1
+#Checking if python3-pip exists
+which pip3 > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e "$green" "[ ✔ ] Python3-Pip.......................[ found ]"
+xterm -T "☣ INSTALL Python3 module names ☣" -geometry 100x30 -e "sudo pip3 install names -y"
+which pip3 >> "$log" 2>&1
+echo "Python3-pip -> OK" >> "$inst"
+else
+echo -e "$red" "[ X ] Python3-pip  -> not found "
+echo -e "$yellow" "[ ! ] Installing Python3-pip "
+xterm -T "☣ INSTALL Python3-pip ☣" -geometry 100x30 -e "sudo apt-get install python3-pip -y && pip3 install names"
+which pip3 >> "$log" 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e "$green" "[ ✔ ] Python3-Pip -> OK"
+echo "Python3-Pip -> OK" >> "$inst"
+else
+echo -e "$red" "[ x ] Python3-Pip"
+echo "0" > "$stp"
+echo "Python3-Pip -> Not OK" >> "$inst"
+fi
+fi
 sleep 1
 #Checking if Openssl exists
 which openssl > /dev/null 2>&1
@@ -505,28 +584,10 @@ echo -e "$green" "[ ! ] Installing tools dependencies"
 xterm -T "☣ INSTALL DEPENDENCIES ☣" -geometry 100x30 -e "sudo apt-get install lib32z1 lib32ncurses5 lib32stdc++6 python-pip python-dev build-essential -y && pip install names"
 sleep 1
 
-#################################
-#inputrepo
-#################################
-
-cp /etc/apt/sources.list /etc/apt/sources.list.backup # backup
-# Second backup created in case user stops the script after this point , then on next startup this script will
-# copy the already changed sources file before as backup , and user lost his original sources lists
-file="/etc/apt/sources.list.fatrat"
-if [ ! -f "$file" ]
-then
-cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
-fi
-rm -f /etc/apt/sources.list
-touch /etc/apt/sources.list
-echo "deb http://deb.debian.org/debian/ jessie main contrib non-free" > /etc/apt/sources.list
-xterm -T "☣ UPDATING REPOSITORIES DEDIAN JESSIE☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update"
-sleep 1
-
 #Checking if Jarsigner exists
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Jarsigner (java)..................[ found ]"
+echo -e "$green" "[ ✔ ] Jarsigner from java...............[ found ]"
 which jarsigner >> "$log" 2>&1
 echo "Jarsigner -> OK" >> "$inst"
 rm -f "$config"
@@ -538,9 +599,9 @@ echo "**       if you need to reconfig your tools path , then run ./setup.sh in 
 echo "********************************************************************************************************" >> "$config"
 echo "jarsigner" | tee -a "$config" >> /dev/null 2>&1
 else
-echo -e "$red" "[ X ] Jarsigner (java) -> not found "
+echo -e "$red" "[ X ] Jarsigner from java -> not found "
 echo -e "$yellow" "[ ! ] Installing Java "
-xterm -T "☣ INSTALL default-jdk ☣" -geometry 100x30 -e "sudo apt-get install default-jdk default-jre  -y "
+xterm -T "☣ INSTALL default-jdk ☣" -geometry 100x30 -e "sudo apt-get install default-jdk default-jre  -y | tee -a $mingw"
 which jarsigner > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e "$green" "[ ✔ ] Jarsigner -> OK"
@@ -557,7 +618,7 @@ echo "jarsigner" | tee -a "$config" >> /dev/null 2>&1
 else
 echo -e "$red" "[ x ] Jarsigner"
 echo "0" > "$stp"
-echo "jarsigner (default-jdk)-> Not OK" >> "$inst"
+echo "jarsigner from default-jdk-> Not OK" >> "$inst"
 fi
 fi
 sleep 1
@@ -589,14 +650,14 @@ sleep 1
 #Checking if keytool exists
 which keytool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Keytool (java)....................[ found ]"
+echo -e "$green" "[ ✔ ] Keytool from java.................[ found ]"
 which keytool >> "$log" 2>&1
 echo "keytool" | tee -a "$config" >> /dev/null 2>&1
 echo "Keytool -> OK" >> "$inst"
 else
-echo -e "$red" "[ X ] Keytool (java) -> not found  "
+echo -e "$red" "[ X ] Keytool from java -> not found  "
 echo -e "$yellow" "[ ! ] Installing Java "
-xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo apt-get install default-jdk  -y "
+xterm -T "☣ INSTALL JAVA ☣" -geometry 100x30 -e "sudo apt-get install default-jdk default-jre -y | tee -a $mingw"
 which keytool >> "$log" 2>&1
 if [ "$?" -eq "0" ]; then
 echo "keytool" | tee -a "$config" >> /dev/null 2>&1
@@ -612,11 +673,43 @@ fi
 sleep 1
 
 #Adding zipalign path to config
-echo -e "$green" "[ ✔ ] Zipalign "
-echo "$path/tools/android-sdk/zipalign" >> "$log" 2>&1
+which zipalign > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e "$green" "[ ✔ ] Zipalign..........................[ found ]"
+which zipalign >> "$log" 2>&1
+echo "Zipalign -> OK" >> "$inst"
 echo "$path/tools/android-sdk/zipalign" | tee -a "$config" >> /dev/null 2>&1
+else
+ln -s "$path/tools/android-sdk/zipalign" "/usr/local/sbin/zipalign" > /dev/null 2>&1
+which zipalign > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo -e "$green" "[ ✔ ] Zipalign..........................[ found ]"
+which zipalign >> "$log" 2>&1
+echo "$path/tools/android-sdk/zipalign" | tee -a "$config" >> /dev/null 2>&1
+else
+echo "0" > "$stp"
+echo "Zipalign -> Not OK" >> "$inst"
+fi
+fi
 sleep 1
 
+#################################
+#inputrepo
+#################################
+
+cp /etc/apt/sources.list /etc/apt/sources.list.backup # backup
+# Second backup created in case user stops the script after this point , then on next startup this script will
+# copy the already changed sources file before as backup , and user lost his original sources lists
+file="/etc/apt/sources.list.fatrat"
+if [ ! -f "$file" ]
+then
+cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
+fi
+rm -f /etc/apt/sources.list
+touch /etc/apt/sources.list
+echo "deb http://deb.debian.org/debian/ jessie main contrib non-free" > /etc/apt/sources.list
+xterm -T "☣ UPDATING REPOSITORIES DEDIAN JESSIE☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update -y | tee -a $mingw"
+sleep 1
 
 # check if mingw32 or mingw-64 exists 
 # Case not exists then reedirect to mingw instalation depending on arch
@@ -631,7 +724,7 @@ echo -e "$red" "[ X ] Mingw-w64 -> not found "
 #Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
 # In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
 
-xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge *mingw* -y && apt-get autoremove -y && apt-get install *mingw* -y"
+xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install *mingw* -y | tee -a $mingw"
 which x86_64-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e "$green" "[ ✔ ] Mingw-64 Compiler..................[ found ]"
@@ -656,7 +749,7 @@ echo -e "$red" "[ X ] Mingw-32 -> not found "
 #Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
 # In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
 
-xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get remove --purge *mingw* -y && apt-get autoremove -y && apt-get install *mingw* -y"
+xterm -T "☣ INSTALL MINGW32 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 mingw-w64 -y | tee -a $mingw"
 which i686-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo -e "$green" "[ ✔ ] Mingw-32 Compiler..................[ found ]"
@@ -667,7 +760,8 @@ echo "0" > "$stp"
 echo "mingw-32 -> Not OK" >> "$inst"
 fi
 fi
-sleep 1
+sleep 0.5
+
 #Checking for DX and in case exists then check if it is version 1.12 used in fatrat (latest android sdk) 
 which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
@@ -691,7 +785,7 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] DX 1.12.........................[Installed]"
+echo -e "$green" "[ ✔ ] DX 1.12...........................[Installed]"
 echo "DX -> OK" >> "$inst"
 else
 echo -e "$red" "[ x ] DX 1.12"
@@ -707,7 +801,7 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] DX 1.12.........................[Installed]"
+echo -e "$green" "[ ✔ ] DX 1.12...........................[Installed]"
 echo "DX -> OK" >> "$inst"
 else
 echo -e "$red" "[ x ] DX 1.12"
@@ -781,7 +875,7 @@ unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
 ln -s "$path/tools/apktool2.4.1/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Apktool v.2.4.1..................[Installed]"
+echo -e "$green" "[ ✔ ] Apktool v.2.4.1...................[Installed]"
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
 echo "Apktool -> OK" >> "$inst"
@@ -799,7 +893,7 @@ which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Apktool v.2.4.1..................[Installed]"
+echo -e "$green" "[ ✔ ] Apktool v.2.4.1...................[Installed]"
 echo "Apktool -> OK" >> "$inst"
 else
 echo -e "$red" "[ x ] Apktool v.2.4.1"
@@ -869,6 +963,7 @@ rm -f /etc/apt/sources.list.fatrat
 apt-get clean
 xterm -T "☣ UPDATE YOUR REPO ☣" -geometry 100x30 -e "sudo apt-get update "
 clear
+crtdir
 echo -e "$green" "Do you want to create a shortcut for fatrat in your system"
 echo -e "$green" "so you can run fatrat from anywhere in your terminal and desktop ?"
 echo ""
@@ -892,7 +987,7 @@ chmod +x fatrat
 which fatrat >> "$log" 2>&1
 clear
 echo ""
-echo -e "$green" "Instalation completed , To execute fatrat write anywhere in your terminal (fatrat)"
+echo -e "$green" "Instalation completed , To execute fatrat write anywhere in your terminal fatrat"
 fi
 ;;
 
@@ -900,14 +995,14 @@ n|no|No|NO)
 chmod +x fatrat
 clear
 echo ""
-echo -e "$green" "Instalation completed , To execute fatrat write in fatrat directory (./fatrat)"
+echo -e "$green" "Instalation completed , To execute fatrat write in fatrat directory ./fatrat"
 ;;
 
 *)
 chmod +x fatrat
 clear
 echo ""
-echo -e "$green" "Instalation completed , To execute fatrat write in fatrat directory (./fatrat)"
+echo -e "$green" "Instalation completed , To execute fatrat write in fatrat directory ./fatrat"
 ;;
 esac
 exit 
@@ -927,7 +1022,7 @@ then
     echo -e "$red" "[X] Your linux OS is not able to resolve"
     echo -e "$red" "hostnames over terminal using ping !!"
     echo ""
-    echo -e "$yellow" "Search on the web : (unable to resolve hostnames ping) to find a solution"
+    echo -e "$yellow" "Search on the web : unable to resolve hostnames ping to find a solution"
 echo ""
 echo -e "$green" "Setup will continue , but is not garantee that apt package management
 may work properly , or even if it can resolve hostnames ."
@@ -1086,10 +1181,12 @@ inst="$path/logs/install.log"
 log="$path/logs/setup.log"
 aptlog="$path/logs/apt.log"
 config="$path/config/config.path"
+mingw="$path/logs/aptdebug.log"
 #Removing any previous setup log created
 rm -rf "$log" > /dev/null 2>&1
 rm -rf logs/check > /dev/null 2>&1
 rm -rf "$aptlog" > /dev/null 2>&1
+rm -rf "$mingw" > /dev/null 2>&1
 #terminal text colours code
 cyan='\033[0;36m'
 green='\033[0;32m'
@@ -1130,6 +1227,7 @@ echo -ne "$green""* - Checking file permissions ..."
 chmod +x powerfull.sh
 chmod +x update
 chmod +x backdoor_apk
+chmod +x chk_tools
 chmod +x tools/power.py
 chmod +x tools/android-sdk/zipalign
 chmod +x tools/baksmali233/baksmali
@@ -1160,7 +1258,7 @@ echo "                       \/                         "
 echo ""
 echo -e "$blue" "         Setup Script for FATRAT 1.9.7       "
 echo "------------------------------------------------------" > "$log"
-echo "| Tools paths configured in (setup.sh) for TheFatRat |" >> "$log"
+echo "| Tools paths configured in setup.sh for TheFatRat |" >> "$log"
 echo "------------------------------------------------------" >> "$log"
 echo "                                                      " >> "$log"
 echo ""
@@ -1196,7 +1294,7 @@ echo ""
     echo -e "$red" "Fatrat & Setup does not work over a remote secure shell ."
     echo ""
 echo -e "$green" "If you want to Install Fatrat on a remote computer then "
-echo -e "$green" "use a remote desktop connection like (rdesktop) or (vnc) "
+echo -e "$green" "use a remote desktop connection like rdesktop or vnc) "
 echo ""
 echo -e "$green" "Press [ENTER] key to exit"
 read -r abor

@@ -96,20 +96,27 @@ echo "[✔]"
 else
 echo -e "$green""[${red}x$green]$orange Solution:$green apt-get install openssl"
 fi
-echo -ne "$green""* - Checking$cyan Python-pip$green (Module Installer)...."
-which pip > /dev/null 2>&1
+echo -ne "$green""* - Checking$cyan Python3$green (Programming)............"
+which python3 > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+echo "[✔]"
+else
+echo -e "$green""[${red}x$green]$orange Solution:$green apt-get install python3"
+fi
+echo -ne "$green""* - Checking$cyan Python-pip3$green (Module Installer)..."
+which pip3 > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 echo "[✔]"
 echo -ne "$green""* - Checking$cyan names$green (python module)............"
-chkvs=$(pip list | grep "names")
+chkvs=$(pip3 list | grep "names")
 if [[ ! -z "$chkvs" ]]
 then
 echo "[✔]"
 else
-echo -e "$green""[${red}x$green]$orange Solution:$green pip install names"
+echo -e "$green""[${red}x$green]$orange Solution:$green pip3 install names"
 fi
 else
-echo -e "$green""[${red}x$green]$orange Solution:$green apt-get install python-pip"
+echo -e "$green""[${red}x$green]$orange Solution:$green apt-get install python3-pip"
 fi
 echo -ne "$green""* - Checking$cyan Build-Essential$green (Cross Compiler)."
 chkvs=$(apt-cache policy build-essential | grep "Installed" | awk '{print$2}')

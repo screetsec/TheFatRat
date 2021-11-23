@@ -1,4 +1,9 @@
 ## CHANGELOG
+* v1.9.7 - Bugs and more bugs solved in setup and chk_tools , implemented python3 in install and pip3 for original powerstager and solved theissues during a clean install in kali of fatrat the problems related to mingw issues from jessie repo from debian
+* v1.9.7 - Implemented capability to test apk before going further with payload
+* v1.9.7 - Added MsfVenom capability to embbed directly a payload into an apk , added option on ap backdoor menu
+* v1.9.7 - Implemented otion in setup to allow user to select output directory of fatrat generated files
+* v1.9.7 - Added tested apks that work with backdoor-apk 
 * v1.9.7 - Added chk_tools script to verify tools and libraries versions to run fatrat , Script will also provide solutions
 * v1.9.7 - Upgraded Apktool to 2.4.1 version
 * v1.9.7 - Output folder for all generated files in fatrat will now be in $Home/Fatrat_Generated
