@@ -34,19 +34,19 @@ Developers assume no liability and are not responsible for any misuse or damage 
 - Yes, you're probably correct. Feel free to "Not use it" and there is a pull button to "Make it better". 
 
 
-## Installation
+# Installation
 Instructions on how to install *TheFatRat*
 ```bash
 git clone https://github.com/Screetsec/TheFatRat.git
 cd TheFatRat
 ```
-# Before setup
+## Before setup
 We recommend to run chk_tools before setup to avoid mingw incompatible versions to run fudwin option
 ```bash
 chmod +x chk_tools && ./chk_tools
 ```
 Follow the instructions in chk_tools for mingw and then after that run setup
-# Setup
+## Setup
 ```bash
 chmod +x setup.sh && ./setup.sh
 ```
