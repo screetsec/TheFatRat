@@ -31,14 +31,16 @@ rm /tmp/expkeys.log && mv /tmp/expkeystmp.log /tmp/expkeys.log
 cntk=$(wc -l /tmp/expkeys.log | awk '{print$1}' | sed 's/ //g')
 if [[ "$cntk" == "0" ]]
 then
-echo "No Keys to be processed"
+echo "Done"
 else
+echo "Error"
 echo "Unable to process key for $dist"
 echo ""
 fi
 }	
 
 function repokey () {
+echo -ne "$green" "[ ? ] Update Jessie/Kali Repo Public Key."
 apt-get update &> /tmp/aptkey.log 
 awk '{print $1}' RS='NO_PUBKEY' /tmp/aptkey.log | sed '1d' > /tmp/expkeys.log
 awk '{print $1}' RS='EXPKEYSIG' /tmp/aptkey.log | sed '1d' >> /tmp/expkeys.log
@@ -47,7 +49,7 @@ rm /tmp/expkeys.log && mv /tmp/expkeystmp.log /tmp/expkeys.log
 cntk=$(wc -l /tmp/expkeys.log | awk '{print$1}' | sed 's/ //g')
 if [[ "$cntk" == "0" ]]
 then
-echo "No Keys to be processed"
+echo "Done"
 fi
 for i in $(seq $cntk)
 do
@@ -57,15 +59,16 @@ kout=$(grep -w "Total number processed:" /tmp/gtkey.log  | awk -F'Total number p
 dist=$(grep -o '".*"' /tmp/gtkey.log | sed 's/"//g')
 if [[ "$kout" == "1" ]]
 then
+echo "Done"
 echo "Succefull Key processed for $dist" 
 else
 rchk
 fi
 done
-exit 0	
+
 }
 function mingwchk () {
-echo -ne "$green" "[ ? ] ....Checking Mingw Version.................."	
+echo -ne "$green" "[ ? ] Checking Mingw Version............"	
 which x86_64-w64-mingw32-gcc >> /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 chkvs=$(x86_64-w64-mingw32-gcc --version | sed -n 1p | awk '{print$3}')
@@ -86,6 +89,8 @@ read -r sel
 optmingw 
 ;;
 esac
+else
+echo "Not Installed"
 fi
 }	
 
@@ -806,7 +811,7 @@ sleep 1
 
 which x86_64-w64-mingw32-gcc >> /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Mingw-w64 Compiler................[ found ]"
+echo -e "$green" "[ ✔ ] Mingw-w64 Compiler...............[ found ]"
 which x86_64-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw64 -> OK" >> "$inst"
 else
@@ -1039,6 +1044,7 @@ fi
 rm -f /etc/apt/sources.list
 touch /etc/apt/sources.list
 echo "deb https://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list
+repokey
 xterm -T "☣ UPDATING KALI REPOSITORIES ☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update"
 sleep 1
 mtspl
