@@ -39,15 +39,6 @@ Instructions on how to install *TheFatRat*
 ```bash
 git clone https://github.com/Screetsec/TheFatRat.git
 cd TheFatRat
-```
-## Before setup
-We recommend to run chk_tools before setup to avoid mingw incompatible versions to run fudwin option
-```bash
-chmod +x chk_tools && ./chk_tools
-```
-Follow the instructions in chk_tools for mingw and then after that run setup
-## Setup
-```bash
 chmod +x setup.sh && ./setup.sh
 ```
 ### Update 
