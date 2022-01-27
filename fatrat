@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #-Metadata----------------------------------------------------#
-#  Filename: TheFatRat(v1.9.7#dev)       (Update: 2020-02-03) #
+#  Filename: TheFatRat(v1.9.8#dev)       (Update: 2022-01-27) #
 #-Info--------------------------------------------------------#
 #  TheFatRat - A Massive Exploiting Tool                      #
 #-Author(s)---------------------------------------------------#
@@ -132,7 +132,7 @@ else
 fi
 
 # VARIABLE GLOBAL
-codename=Whistle
+codename=Target
 OS=$(uname) # Detect Distro
 distro="$dist0"
 disrov="$rlname"

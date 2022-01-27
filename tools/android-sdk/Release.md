@@ -1,1 +1,1 @@
-Android-Build-tools r25.0.2
+Android-Build-tools r30.0.1

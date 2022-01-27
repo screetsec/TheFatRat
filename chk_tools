@@ -267,7 +267,7 @@ if [ "$?" -eq "0" ]; then
 dxg=$(dx --version  2>&1 | tee temp/dx > /dev/null 2>&1)
 chkvs=$(grep "version" < temp/dx | awk '{print $3}') 
 case "$chkvs" in
-1.12)
+1.16)
 echo "[✔]"
 ;;
 *)
@@ -293,7 +293,7 @@ which aapt >> /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 chkvs=$(aapt v | grep "Android" | awk '{print $5}') 
 case "$chkvs" in
-v0.2-3544217)
+v0.2-6625208)
 echo "[✔]"
 ;;
 *)
@@ -318,7 +318,7 @@ which apktool >> /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 chkvs=$(apktool --version | awk '{print$1}') 
 case "$chkvs" in
-2.4.1)
+2.6.0)
 echo "[✔]"
 ;;
 *)
