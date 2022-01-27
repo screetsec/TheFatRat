@@ -1,5 +1,99 @@
 #!/bin/bash
 #Instalation of searchsploit (exploitdb)
+function optmingw () {
+case $sel in
+y|Y|yes|YES|Yes)
+echo -n "Removing mingw as requested..."	
+xterm -T "☣ REMOVING MINGW ☣" -geometry 100x30 -e "apt remove --purge *mingw* -y && apt autoremove -y"
+which x86_64-w64-mingw32-gcc >> /dev/null 2>&1
+if [ "$?" != "0" ]; then
+echo "Done"
+else
+echo "Error"
+echo ""
+echo "Setup was unable to remove mingw Installation"
+fi
+;;
+n|N|No|NO)
+echo "Setup will not remove current mingw installation"
+echo "However you will encounter issues running Fudwin"
+echo -n "in fatrat menu , press ENTER to resume setup"
+read -rsp var	
+;;
+esac	
+}	
+rchk () {
+apt-get update &> /tmp/aptkey.log 
+awk '{print $1}' RS='NO_PUBKEY' /tmp/aptkey.log | sed '1d' > /tmp/expkeys.log
+awk '{print $1}' RS='EXPKEYSIG' /tmp/aptkey.log | sed '1d' >> /tmp/expkeys.log
+sort /tmp/expkeys.log | uniq > /tmp/expkeystmp.log
+rm /tmp/expkeys.log && mv /tmp/expkeystmp.log /tmp/expkeys.log
+cntk=$(wc -l /tmp/expkeys.log | awk '{print$1}' | sed 's/ //g')
+if [[ "$cntk" == "0" ]]
+then
+echo "Done"
+else
+echo "Error"
+echo "Unable to process key for $dist"
+echo ""
+fi
+}	
+
+function repokey () {
+echo -ne "$green" "[ ? ] Update Jessie/Kali Repo Public Key."
+apt-get update &> /tmp/aptkey.log 
+awk '{print $1}' RS='NO_PUBKEY' /tmp/aptkey.log | sed '1d' > /tmp/expkeys.log
+awk '{print $1}' RS='EXPKEYSIG' /tmp/aptkey.log | sed '1d' >> /tmp/expkeys.log
+cat /tmp/expkeys.log | sort | uniq > /tmp/expkeystmp.log
+rm /tmp/expkeys.log && mv /tmp/expkeystmp.log /tmp/expkeys.log
+cntk=$(wc -l /tmp/expkeys.log | awk '{print$1}' | sed 's/ //g')
+if [[ "$cntk" == "0" ]]
+then
+echo "Done"
+fi
+for i in $(seq $cntk)
+do
+gtkey=$(sed -n ${i}p /tmp/expkeys.log)
+apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $gtkey &> /tmp/gtkey.log 
+kout=$(grep -w "Total number processed:" /tmp/gtkey.log  | awk -F'Total number processed:' '{print $2}' | sed 's/ //g')
+dist=$(grep -o '".*"' /tmp/gtkey.log | sed 's/"//g')
+if [[ "$kout" == "1" ]]
+then
+echo "Done"
+echo "Succefull Key processed for $dist" 
+else
+rchk
+fi
+done
+
+}
+function mingwchk () {
+echo -ne "$green" "[ ? ] Checking Mingw Version............"	
+which x86_64-w64-mingw32-gcc >> /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+chkvs=$(x86_64-w64-mingw32-gcc --version | sed -n 1p | awk '{print$3}')
+case $chkvs in
+4.9.1)
+echo "[✔]"
+;;
+6.3.0)
+echo "[✔]"
+;;
+*)
+echo "Error"
+echo ""
+echo "TheFatRat detected an incorrent version of mingw installed"
+echo "Do you wish to remove it and install the approriate one ?"
+echo -n "Choose (yes/no) : "
+read -r sel
+optmingw 
+;;
+esac
+else
+echo "Not Installed"
+fi
+}	
+
 function ssplt() {
 
 # check if searchsploit exists
@@ -359,7 +453,7 @@ echo "0" > "$stp"
 echo "xterm -> Not OK" > "$inst"
 fi
 fi
-
+mingwchk
 sleep 1
 #check if dig its installed
 which dig > /dev/null 2>&1
@@ -708,8 +802,8 @@ fi
 rm -f /etc/apt/sources.list
 touch /etc/apt/sources.list
 echo "deb http://deb.debian.org/debian/ jessie main contrib non-free" > /etc/apt/sources.list
-chmod +x repokey
-xterm -T "☣ UPDATING REPOSITORIES DEDIAN JESSIE☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && ./repokey && sudo apt-get update -y | tee -a $mingw"
+repokey
+xterm -T "☣ UPDATING REPOSITORIES DEDIAN JESSIE☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update -y | tee -a $mingw"
 sleep 1
 
 # check if mingw32 or mingw-64 exists 
@@ -717,7 +811,7 @@ sleep 1
 
 which x86_64-w64-mingw32-gcc >> /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Mingw-w64 Compiler................[ found ]"
+echo -e "$green" "[ ✔ ] Mingw-w64 Compiler...............[ found ]"
 which x86_64-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw64 -> OK" >> "$inst"
 else
@@ -950,6 +1044,7 @@ fi
 rm -f /etc/apt/sources.list
 touch /etc/apt/sources.list
 echo "deb https://http.kali.org/kali kali-rolling main non-free contrib" > /etc/apt/sources.list
+repokey
 xterm -T "☣ UPDATING KALI REPOSITORIES ☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update"
 sleep 1
 mtspl
@@ -1306,7 +1401,6 @@ echo "[local]"
     sshd|*/sshd) SESSION_TYPE=remote/ssh;;
   esac
 fi
-
 sleep 1
 which nc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then

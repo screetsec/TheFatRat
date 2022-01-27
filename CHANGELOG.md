@@ -1,4 +1,5 @@
 ## CHANGELOG
+* v1.9.7 - Fixes in Setup , now it detects if incorrect version of mingw is installed and also updates automatically public keys for jessie repository before installing correct version of mingw for fudwin
 * v1.9.7 - Bugs and more bugs solved in setup and chk_tools , implemented python3 in install and pip3 for original powerstager and solved theissues during a clean install in kali of fatrat the problems related to mingw issues from jessie repo from debian
 * v1.9.7 - Implemented capability to test apk before going further with payload
 * v1.9.7 - Added MsfVenom capability to embbed directly a payload into an apk , added option on ap backdoor menu
