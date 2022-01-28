@@ -31,16 +31,16 @@ rm /tmp/expkeys.log && mv /tmp/expkeystmp.log /tmp/expkeys.log
 cntk=$(wc -l /tmp/expkeys.log | awk '{print$1}' | sed 's/ //g')
 if [[ "$cntk" == "0" ]]
 then
-echo "Done"
+echo "[ Done ]"
 else
-echo "Error"
+echo "[ Error ]"
 echo "Unable to process key for $dist"
 echo ""
 fi
 }	
 
 function repokey () {
-echo -ne "$green" "[ ? ] Update Jessie/Kali Repo Public Key."
+echo -ne "$green" "[ ? ] Update Jessie/Kali Repo Public Key"
 apt-get update &> /tmp/aptkey.log 
 awk '{print $1}' RS='NO_PUBKEY' /tmp/aptkey.log | sed '1d' > /tmp/expkeys.log
 awk '{print $1}' RS='EXPKEYSIG' /tmp/aptkey.log | sed '1d' >> /tmp/expkeys.log
@@ -49,17 +49,17 @@ rm /tmp/expkeys.log && mv /tmp/expkeystmp.log /tmp/expkeys.log
 cntk=$(wc -l /tmp/expkeys.log | awk '{print$1}' | sed 's/ //g')
 if [[ "$cntk" == "0" ]]
 then
-echo "Done"
+echo "[ Done ]"
 fi
 for i in $(seq $cntk)
 do
 gtkey=$(sed -n ${i}p /tmp/expkeys.log)
-apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $gtkey &> /tmp/gtkey.log 
+xterm -T "☣ CHECK PUBKEY ☣" -geometry 100x30 -e "apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $gtkey &> /tmp/gtkey.log" 
 kout=$(grep -w "Total number processed:" /tmp/gtkey.log  | awk -F'Total number processed:' '{print $2}' | sed 's/ //g')
 dist=$(grep -o '".*"' /tmp/gtkey.log | sed 's/"//g')
 if [[ "$kout" == "1" ]]
 then
-echo "Done"
+echo "[ Done ]"
 echo "Succefull Key processed for $dist" 
 else
 rchk
@@ -811,7 +811,7 @@ sleep 1
 
 which x86_64-w64-mingw32-gcc >> /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Mingw-w64 Compiler...............[ found ]"
+echo -e "$green" "[ ✔ ] Mingw-w64 Compiler................[ found ]"
 which x86_64-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw64 -> OK" >> "$inst"
 else
@@ -819,10 +819,10 @@ echo -e "$red" "[ X ] Mingw-w64 -> not found "
 #Powerstager requires mingw64 to work , mingw32 is required because powerfull.sh requires it for 32bit fud exe compiling
 # In case mingw64 not found then remove any previously mingw32 & 64 bit faulty instalations and install mingw64 
 
-xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install *mingw* -y | tee -a $mingw"
+xterm -T "☣ INSTALL MINGW64 COMPILLER ☣" -geometry 100x30 -e "sudo apt-get install mingw32 mingw-w64 -y | tee -a $mingw"
 which x86_64-w64-mingw32-gcc > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Mingw-64 Compiler..................[ found ]"
+echo -e "$green" "[ ✔ ] Mingw-64 Compiler.................[ found ]"
 which x86_64-w64-mingw32-gcc >> "$log" 2>&1
 echo "Mingw64 -> OK" >> "$inst"
 else
@@ -863,16 +863,16 @@ if [ "$?" -eq "0" ]; then
 dxg=$(dx --version 2>&1 | tee temp/dx)
 dxv=$(grep "version" < temp/dx | awk '{print $3}') 
 case "$dxv" in
-1.12)
-#DX exists and it is version 1.12
+1.16)
+#DX exists and it is version 1.16
 rm -rf temp/dx >/dev/null 2>&1
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] DX 1.12...........................[ found ]"
+echo -e "$green" "[ ✔ ] DX 1.16...........................[ found ]"
 echo "DX -> OK" >> "$inst"
 ;;
 *)
-#DX does not exists or is not 1.12 version
+#DX does not exists or is not 1.16 version
 xterm -T "☣ Removing Your Current DX ☣" -geometry 100x30 -e "sudo apt-get remove --purge dx -y"
 unlink "/usr/local/sbin/dx" > /dev/null 2>&1
 ln -s "$path/tools/android-sdk/dx" "/usr/local/sbin/dx" > /dev/null 2>&1
@@ -880,10 +880,10 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] DX 1.12...........................[Installed]"
+echo -e "$green" "[ ✔ ] DX 1.16...........................[Installed]"
 echo "DX -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] DX 1.12"
+echo -e "$red" "[ x ] DX 1.16"
 echo "0" > "$stp"
 echo "dx -> Not OK" >> "$inst"
 fi
@@ -896,10 +896,10 @@ which dx > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which dx >> "$log" 2>&1
 echo "dx" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] DX 1.12...........................[Installed]"
+echo -e "$green" "[ ✔ ] DX 1.16...........................[Installed]"
 echo "DX -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] DX 1.12"
+echo -e "$red" "[ x ] DX 1.16"
 echo "0" > "$stp"
 echo "dx -> Not OK" >> "$inst"
 fi
@@ -911,27 +911,30 @@ which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 aptv=`aapt v | awk '{print $5}'`
 case "$aptv" in
-v0.2-3544217)
-#exists and it is v0.2-3544217
+v0.2-6625208)
+#exists and it is v0.2-6625208
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Aapt v0.2-3544217.................[ found ]"
+echo -e "$green" "[ ✔ ] Aapt v0.2-6625208.................[ found ]"
 echo "Aapt -> OK" >> "$inst"
 ;;
 *)
 #Aapt does not exists or is not the latest version used in fatrat (android sdk)
 xterm -T "☣ Removing Your Current Aapt ☣" -geometry 100x30 -e "sudo apt-get remove --purge aapt -y"
 unlink "/usr/local/sbin/aapt" > /dev/null 2>&1
+unlink "/usr/local/sbin/aapt2" > /dev/null 2>&1
 rm /usr/local/sbin/aapt >/dev/null 2>&1
+rm /usr/local/sbin/aapt2 >/dev/null 2>&1
 ln -s "$path/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/null 2>&1
+ln -s "$path/tools/android-sdk/aapt2" "/usr/local/sbin/aapt2" > /dev/null 2>&1
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Aapt v0.2-3544217..................[Installed]"
+echo -e "$green" "[ ✔ ] Aapt v0.2-6625208..................[Installed]"
 echo "Aapt -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Aapt v0.2-3544217"
+echo -e "$red" "[ x ] Aapt v0.2-6625208"
 echo "0" > "$stp"
 echo "aapt -> Not OK" >> "$inst"
 fi
@@ -939,43 +942,45 @@ fi
 esac
 else
 unlink "/usr/local/sbin/aapt" > /dev/null 2>&1
+unlink "/usr/local/sbin/aapt2" > /dev/null 2>&1
 ln -s "$path/tools/android-sdk/aapt" "/usr/local/sbin/aapt" > /dev/null 2>&1
+ln -s "$path/tools/android-sdk/aapt2" "/usr/local/sbin/aapt2" > /dev/null 2>&1
 which aapt > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which aapt >> "$log" 2>&1
 echo "aapt" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Aapt v0.2-3544217.................[Installed]"
+echo -e "$green" "[ ✔ ] Aapt v0.2-6625208.................[Installed]"
 echo "Aapt -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Aapt v0.2-3544217"
+echo -e "$red" "[ x ] Aapt v0.2-6625208"
 echo "0" > "$stp"
 echo "aapt -> Not OK" >> "$inst"
 fi
 fi
 sleep 1
-#Same procedure used for dx and aapt , but for apktool 2.4.0.
+#Same procedure used for dx and aapt , but for apktool 2.6.0.
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 apk=`apktool | sed -n 1p | awk '{print $2}'` > /dev/null 2>&1
 case "$apk" in 
-v.2.4.1)
+v.2.6.0)
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Apktool v.2.4.1..................[ found ]"
+echo -e "$green" "[ ✔ ] Apktool v.2.6.0..................[ found ]"
 echo "Apktool -> OK" >> "$inst"
 ;;
 *)
 xterm -T "☣ REMOVE OLD APKTOOL ☣" -geometry 100x30 -e "sudo apt-get remove --purge apktool -y"
 unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
-ln -s "$path/tools/apktool2.4.1/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
+ln -s "$path/tools/apktool/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
-echo -e "$green" "[ ✔ ] Apktool v.2.4.1...................[Installed]"
+echo -e "$green" "[ ✔ ] Apktool v.2.6.0...................[Installed]"
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Apktool v.2.4.1"
+echo -e "$red" "[ x ] Apktool v.2.6.0"
 echo "0" > "$stp"
 echo "apktool -> Not OK" >> "$inst"
 fi
@@ -983,15 +988,15 @@ fi
 esac
 else
 unlink "/usr/local/sbin/apktool" > /dev/null 2>&1
-ln -s "$path/tools/apktool2.4.1/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
+ln -s "$path/tools/apktool/apktool" "/usr/local/sbin/apktool" > /dev/null 2>&1
 which apktool > /dev/null 2>&1
 if [ "$?" -eq "0" ]; then
 which apktool >> "$log" 2>&1
 echo "apktool" | tee -a "$config" >> /dev/null 2>&1
-echo -e "$green" "[ ✔ ] Apktool v.2.4.1...................[Installed]"
+echo -e "$green" "[ ✔ ] Apktool v.2.6.0...................[Installed]"
 echo "Apktool -> OK" >> "$inst"
 else
-echo -e "$red" "[ x ] Apktool v.2.4.1"
+echo -e "$red" "[ x ] Apktool v.2.6.0"
 echo "0" > "$stp"
 echo "apktool -> Not OK" >> "$inst"
 fi
@@ -1329,7 +1334,7 @@ chmod +x tools/android-sdk/zipalign
 chmod +x tools/baksmali233/baksmali
 chmod +x tools/android-sdk/dx
 chmod +x tools/android-sdk/aapt
-chmod +x tools/apktool2.4.1/apktool
+chmod +x tools/apktool/apktool
 chmod +x tools/android-string-obfuscator/lib/aso
 chmod +x tools/pump.py
 chmod +x tools/pw_exec.py
