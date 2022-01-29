@@ -14,7 +14,7 @@ echo ""
 echo "Setup was unable to remove mingw Installation"
 fi
 ;;
-n|N|No|NO)
+n|N|No|NO|no)
 echo "Setup will not remove current mingw installation"
 echo "However you will encounter issues running Fudwin"
 echo -n "in fatrat menu , press ENTER to resume setup"
@@ -83,7 +83,7 @@ echo "[✔]"
 echo "Error"
 echo ""
 echo "TheFatRat detected an incorrent version of mingw installed"
-echo "Do you wish to remove it and install the approriate one ?"
+echo "Do you wish to remove it and install the apropriate one ?"
 echo -n "Choose (yes/no) : "
 read -r sel
 optmingw 
