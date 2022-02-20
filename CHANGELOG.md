@@ -1,4 +1,18 @@
 ## CHANGELOG
+* v1.9.8 - Upgraded android sdk tools to 30.0.1 & apktool to 2.6.0
+* v1.9.7 - Fixes in Setup , now it detects if incorrect version of mingw is installed and also updates automatically public keys for jessie repository before installing correct version of mingw for fudwin
+* v1.9.7 - Bugs and more bugs solved in setup and chk_tools , implemented python3 in install and pip3 for original powerstager and solved theissues during a clean install in kali of fatrat the problems related to mingw issues from jessie repo from debian
+* v1.9.7 - Implemented capability to test apk before going further with payload
+* v1.9.7 - Added MsfVenom capability to embbed directly a payload into an apk , added option on ap backdoor menu
+* v1.9.7 - Implemented otion in setup to allow user to select output directory of fatrat generated files
+* v1.9.7 - Added tested apks that work with backdoor-apk 
+* v1.9.7 - Added chk_tools script to verify tools and libraries versions to run fatrat , Script will also provide solutions
+* v1.9.7 - Upgraded Apktool to 2.4.1 version
+* v1.9.7 - Output folder for all generated files in fatrat will now be in $Home/Fatrat_Generated
+* V1.9.7 - Removed dex2jar , proguard , not needed anymore for new backdoor_apk , updated backdoor_apk to 0.2.4a and all tools
+* v1.9.7 - APKtool updated to 2.4.0
+* v1.9.7 - Version control added to file instead in source code , fixed all pwnwinds backdoor payload options
+* v1.9.6 - fixes in pwnwinds and in setup
 * v1.9.6 - new features added Trodebi ( Trojan debian package - embed in debian package ) 
 * v1.9.6 - updated pwnwinds & add Create Backdoor with C to dll ( custom dll inject )
 * v1.9.6 - removed monodevelop in depend ( people have option to instal it , install manual )

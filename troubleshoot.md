@@ -18,6 +18,23 @@ After this point and when finished , all the remains of your faulty mingw instal
 After this point , execute ./setup.sh on fatrat folder , so mingw packages could be correctly installed in your linux
 from the Kali repositories .
 
+- If you recently installed fatrat then you probably will have an issue with powerstager with error I/O when it tries to write the backdoor output file , to solve that issue you must add debian jessie repositories to your file /etc/apt/sources.list and deisable any new repository there , then uninstall and remove your current mingw instalation and run setup.sh from fatrat again .
+* - look here https://github.com/Screetsec/TheFatRat/issues/391
+
+# Install mingw 4.9.1 version from Debian Repository required for Powerstager
+
+1st - add this line to /etc/apt/sources.list
+
+deb http://ftp.debian.org/debian jessie main
+
+2nd - remove all your mingw versions , write  this in your terminal
+
+apt-get remove --purge \*mingw\* -y && apt-get autoremove -y
+
+3rd - update your repositories and install mingw from jessie
+
+apt-get update && apt-get install -t jessie \*mingw\* -f -y
+
 ## Manual install in parrot 
 
 go to https://packages.debian.org/jessie/all/mingw32 and download the package at the bottom of the page. When it downloads, right click it and click Open with GDebi Package Installer, then install it. Do the same for https://packages.debian.org/jessie/all/mingw32-binutils
@@ -25,11 +42,9 @@ go to https://packages.debian.org/jessie/all/mingw32 and download the package at
 then run ./setup.py again. FatRat will install in Parrot.
 
 ## This procedure is the same for all other packages that may give an error on output as (Not OK) , except these ones :
-- proguard
 - dx (from android sdk)
 - aapt (from android sdk)
 - apktool
-- dex2jar
 * these packages come in fatrat instalation folder .
 #-------------------------------------------------------------------------------------#
 
@@ -55,6 +70,9 @@ backdoor-apk was denvelopen by :
 ## Running powerstager you get he message (names not found)
 The solution is to install names python module by running in your terminal ( pip install names)
 
+## Running Powerstager you get the message (IOError: [Errno 2] No such file or directory: )
+the solution for this problem is to downgrade your mingw packages , check this topic : 
+https://github.com/Screetsec/TheFatRat/issues/391
 
 ## Package exact names installed by fatart during setup :
 
@@ -70,11 +88,21 @@ The solution is to install names python module by running in your terminal ( pip
 - ruby (To run ruby modules used in fatrat)
 - openssl (To create certificates for the apks)
 - zlib1g-dev libmagickwand-dev imagemagick lib32z1 lib32ncurses5 lib32stdc++6 python-pip python-dev build-essential (libraries dependencies for apk tools)
-- Monodevelop (file compiler for some backdoors in fatrat)
+- Mono-MCS (file compiler for some backdoors in fatrat)
 - openjdk-8-jdk and openjdk-8-jre (used by apk tools to sign the apks)
 - unzip (zip extractor)
 - mingw32 (32bit exe compiler for powerstager & others in fatrat)
 - mingw-w64 (32bit exe compiler for powerstager & other in fatrat)
 
+## If nothing Works !!!
+Execute chk_tools inside fatrat folder and fix whatever is wrong manually
+- Inside fatrat folder execute :
+```
+chmod +x chk_tools && ./chk_tools
+```
+<img src="https://i.postimg.cc/MHHbfLVT/chktools.png" width="55%"></img>
 
+
+## How to Access root folder on kali 2020/21
+https://github.com/Screetsec/TheFatRat/issues/421#issuecomment-593453573
 

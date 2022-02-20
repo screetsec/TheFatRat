@@ -1,151 +1,112 @@
 
-# TheFatRat a Massive Exploiting Tool 
+# TheFatRat 
 
-[![Version](https://img.shields.io/badge/TheFatRat-1.9.6-brightgreen.svg?maxAge=259200)]()
-[![Version](https://img.shields.io/badge/Codename-Whistle-red.svg?maxAge=259200)]()
-[![Stage](https://img.shields.io/badge/Release-Stable-brightgreen.svg)]()
+[![Version](https://img.shields.io/badge/TheFatRat-1.9.8-brightgreen.svg?maxAge=259200)]()
+[![Version](https://img.shields.io/badge/Codename-Target-red.svg?maxAge=259200)]()
+[![Stage](https://img.shields.io/badge/Release-Testing-brightgreen.svg)]()
 [![Build](https://img.shields.io/badge/Supported_OS-Linux-orange.svg)]()
-
-<img align="left" width="120" height="120" src="https://user-images.githubusercontent.com/17976841/36041771-38fbbb26-0dfc-11e8-8074-181cc778011c.png">
-An easy tool to generate backdoor and easy tool to post exploitation attack like browser attack,dll . This tool compiles a malware with popular payload  and then the compiled malware can be execute on windows, android, mac . The malware that created with this tool also have an ability to bypass most AV software protection . 
-        
-### Donate
-- If this project very help you to penetration testing  and u want support me , you can give me a cup of coffee :)
-- [![Donation](https://img.shields.io/badge/bitcoin-donate-yellow.svg)](https://blockchain.info/id/address/1NuNTXo7Aato7XguFkvwYnTAFV2immXmjS)
-
-# Screenshot
-<img src="https://cloud.githubusercontent.com/assets/17976841/25420100/9ee12cf6-2a80-11e7-8dfa-c2e3cfe71366.png" width="55%"></img>
-# ---------------------------------------------------------------
-
-<img src="https://cloud.githubusercontent.com/assets/17976841/18483870/39cb46ba-7a10-11e6-859b-1c1baa3c1b0a.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483871/39cb81ca-7a10-11e6-84f3-1683067fa4f5.png" width="32%"></img> <img src="https://cloud.githubusercontent.com/assets/17976841/18483873/39d54372-7a10-11e6-890f-41803a33b9c9.png" width="32%"></img>
-
-# Automating metasploit functions
-
-- Create backdoor for windows , linux , mac and android
-
-- bypass antivirus backdoorr
-
-- Checks for metasploit service and starts if not present
-
-- Easily craft meterpreter reverse_tcp payloads for Windows, Linux, Android and Mac and another
-
-- Start multiple meterpreter reverse_tcp listners
-
-- Fast Search in searchsploit
-
-- Bypass AV
-
-- File pumper
-
-- Create backdoor with another techniq
-
-- Autorunscript for listeners ( easy to use )
-
-- Drop into Msfconsole
-
-- Some other fun stuff :)
+[![Available](https://img.shields.io/badge/Available-BlackArch-red.svg?maxAge=259200)]()
+[![Documentation](https://img.shields.io/badge/CEHv10-eccouncil-blue.svg?maxAge=259200)](https://github.com/ManhNho/CEHv10/tree/master/Slides)
+[![Contributions Welcome](https://img.shields.io/badge/contributions-welcome-blue.svg?style=flat)]()
 
 
+###  A Massive Exploiting Tool
 
-# Autorun Backdoor
+![Banner](https://user-images.githubusercontent.com/17976841/65820028-6ae17e00-e24e-11e9-894f-35836481cc2c.png)
 
-- Autorun work if the victim disabled uac ( user acces control ) or low uac ( WINDOWS )
-- What is uac ? you can visit ( http://www.digitalcitizen.life/uac-why-you-should-never-turn-it-off )
-- I have also created 3 AutoRun files
-- Simply copy these files to a CD or USB
-- You can change the icon autorun file or exe in folder icon ( replace your another ico and replace name with autorun.ico )
+**TheFatRat** is an exploiting tool which compiles a malware with famous payload, and then the compiled maware can be executed on Linux , Windows , Mac and Android. **TheFatRat** Provides An Easy way to create Backdoors and Payload which can bypass most anti-virus. 
+ 
+ ## Information
+ This tool is for educational purpose only, usage of TheFatRat for attacking targets without prior mutual consent is illegal.
+Developers assume no liability and are not responsible for any misuse or damage cause by this program.
 
+ ## Features !
+ - Fully Automating MSFvenom & Metasploit.
+- Local or remote listener Generation.
+- Easily Make Backdoor by category Operating System.
+- Generate payloads in Various formats.
+- Bypass anti-virus backdoors.
+- File pumper that you can use for increasing the size of your files.
+- The ability to detect external IP & Interface address .
+- Automatically creates AutoRun files for USB / CDROM exploitation
 
-# HOW CHANGE THE ICONS ?
-
-- Copy your icon picture to folder /TheFatrat/icons
-- Change the name into autorun.ico
-- And Replace
-- Done
-
-
-## ⭕️ Changelog
-Be sure to check out the [Changelog] and Read CHANGELOG.md
-
-
-## ⭕️ Getting Started
-1. ```git clone https://github.com/Screetsec/TheFatRat.git```
-2. ```cd TheFatRat```
-3. ```chmod +x setup.sh && ./setup.sh```
-
-## ⭕️ How it works
-
-* Extract The lalin-master to your home or another folder
-* chmod +x fatrat
-* chmod +x powerfull.sh
-* And run the tools ( ./fatrat )
-* Easy to Use just input your number
+### But it's shit! And your implementation sucks!
+- Yes, you're probably correct. Feel free to "Not use it" and there is a pull button to "Make it better". 
 
 
-## ⭕️ A linux operating system. We recommend :
-- Kali Linux 2 or Kali 2016.1 rolling 
-- Cyborg
-- Parrot 
-- BackTrack 
-- Backbox 
-- Devuan
+# Installation
+Instructions on how to install *TheFatRat*
+```bash
+git clone https://github.com/Screetsec/TheFatRat.git
+cd TheFatRat
+chmod +x setup.sh && ./setup.sh
+```
+### Update 
+```bash
+cd TheFatRat
+./update && chmod +x setup.sh && ./setup.sh
+```
+### Troubleshoot on TheFatRat
+chk_tools script to use in case of problems in setup.sh of fatrat
+this script will check if everything is in the right version to run fatrat
+and will also provide you a solution for the problem
+```
+cd TheFatRat
+chmod +x chk_tools 
+./chk_tools
+```
+
+## Tools Overview
+| Front View | Sample Feature	|
+| ------------  | ------------ |
+|![Index](https://cloud.githubusercontent.com/assets/17976841/25420100/9ee12cf6-2a80-11e7-8dfa-c2e3cfe71366.png)|![f](https://user-images.githubusercontent.com/17976841/65820886-91a4b200-e258-11e9-9a00-1e5905f6be16.jpg)
+
+## Documentation
+- Documentation Available in Modules CEH v9 and V10 , Download source here 
+	- [CEHv10 Module 06 System Hacking.pdf](https://github.com/khanhnnvn/CEHv10/blob/master/Labs/CEHv10%20Module%2006%20System%20Hacking.pdf)
+	- [CEHv10 Module 17 Hacking Mobile Platforms.pdf](https://github.com/khanhnnvn/CEHv10/blob/master/Labs/CEHv10%20Module%2017%20Hacking%20Mobile%20Platforms.pdf)
+- Published in International Journal of Cyber-Security and Digital Forensics
+	- [Malware Analysis Of Backdoor Creator : TheFatRat](https://www.researchgate.net/publication/323574673_MALWARE_ANALYSIS_OF_BACKDOOR_CREATOR_FATRAT)
+- Youtube Videos 
+	- [How To Download & Install TheFatRat](https://www.youtube.com/watch?v=FsSgJFxyzFQ)
+	- [TheFatRat 1.9.6 - Trodebi ( Embed Trojan into Debian Package )](https://www.youtube.com/watch?v=NCsrcqhUBCc&feature=youtu.be&list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8)
+	- [hacking windows 10 with TheFatRat](https://www.youtube.com/watch?v=bFXVAXRXE9Q )
+	- [Hacking Windows using TheFatRat + Apache2 Server + Ettercap + Metasploit](https://www.youtube.com/watch?v=FlXMslSjnGw)
+	- [Hacking with a Microsoft Office Word Document from TheFatRat](https://www.youtube.com/watch?v=lglOXojT84M)
+	- [XSS to powershell attack and bypass Antivirus using BeEF + TheFatRat + Metasploit](https://www.youtube.com/watch?v=pbvg7pgxVjo)
+	- [TheFatRat - Hacking Over WAN - Embedding Payload in Original Android APK - Without Port Forwarding](https://www.youtube.com/watch?v=XLNigYZ5-fM)
+	- [How To Automatically Embed Payloads In APK's - Evil-Droid, Thefatrat & Apkinjector](https://www.youtube.com/watch?v=C_Og6LnEZSg)
+	- [Bind FUD Payload with JPG and Hack over WAN with TheFatRat](https://www.youtube.com/watch?v=VPl1TMCAIy8)
 
 
+## Changelog
+All notable changes to this project will be documented in this [file](https://github.com/Screetsec/thefatrat/blob/master/CHANGELOG.md).
 
-## ⭕️ READ
-- if prog.c file to large when create backdoor with powerfull.sh , you can use prog.c.backup and create another backup when you running option 2
+### About issues
+- Read the [document](https://github.com/Screetsec/TheFatRat/blob/master/issues.md) before making an issue
 
-## ⭕️ Update Fatrat
-- To update fatrat go to your TheFatRat folder and execute :
-```git pull && chmod +x setup.sh && ./setup.sh```
-
-- To Update from 1.9.3 Version and up , execute on your fatrat folder : 
-```./update && chmod +x setup.sh && ./setup.sh```
-
-## ⭕️ Tutorial ?
-
-* Screetsec Channel : https://www.youtube.com/channel/UCpK9IXzLMfVFp9NUfDzxFfw
-* Udate thefatrat v1.8 https://youtu.be/6skLV6zPnec?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
-* file Pumper in linux with fatrat https://youtu.be/rHuh5DJ476M?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
-* Kali linux 2016.2 | Setup FatRat and Bypass Windows 10 :https://www.youtube.com/watch?v=mkfKSCxvPec
-* Embed Backdoor Apk Andoird : https://www.youtube.com/watch?v=bZg3gPuLvgs&feature=youtu.be
-* Create Backdoor Php and Reconnect With TheFatRat : https://www.youtube.com/watch?v=gfS55fjd8Fg
-* THEFATRAT:BACKDOOR CREATOR & BYPASS ANTIVIRUS AND INSTALL. : https://www.youtube.com/watch?v=C4YHVKPw6Zo
-* Exploit Windows 7/8/10 using Thefatrat ( option 2 ) : https://www.youtube.com/watch?v=-WbKOxIl_f4
-* How to hack android device with FatRat on kali linux 2 :https://www.youtube.com/watch?v=yUuwnu-NUXE
-* Kali Linux Tools - TheFatRat Tool For Generate Backdoor with MsfVenom : https://www.youtube.com/watch?v=7PMfPbrM0o4
-* FUD 100 % Backdoor With TheFatRat pt.1 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=8lJBwclFwJI
-* FUD 100 % Backdoor With TheFatRat pt.2 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=t7E6DZPhLLk&t=17s
-* FUD 100 % Backdoor With TheFatRat pt.3 [ PwnWinds ] [ Bypass Antivirus ] : https://www.youtube.com/watch?v=wCzsD6vt9CQ
-* TheFatrat Backdoor Undetectable by Antivirus Kali linux part 3 :https://www.youtube.com/watch?v=wuOCDn0NvWc
-* 1000 % FUD Backdoor with TheFatRat Tool : https://www.youtube.com/watch?v=vPXWv0jaBEQ
-* How To Use TheFatRat To Create Backdoor In Kali Rolling [FUD 100%] : https://www.youtube.com/watch?v=26tSOuPcpZk
-* Backdoor (Virus) 100% Indetectable | TheFatRat : https://www.youtube.com/watch?v=26tSOuPcpZk
-* Backdooring Android with TheFatRat Tool- Kali Linux Tutorial :https://www.youtube.com/watch?v=1SQW9lujjT8
-* Hacking Windows using TheFatRat + Apache2 Server + Ettercap + Metasploit on Kali Linux 2016.2 https://www.youtube.com/watch?v=FlXMslSjnGw
-* TheFatRat 1.9.6 - Trodebi ( Embed Trojan into Debian Package ) https://youtu.be/NCsrcqhUBCc?list=PLbyfDadg3caj6nc3KBk375lKWDOjiCmb8
-* ALL VIDEO IN HERE : https://www.youtube.com/results?search_query=thefatrat+backdoor
-
-## ⭕️ BUG ?
-
-- Submit new issue 
+## Alternative Best Tool - Generating Backdoor & Bypass 
+- [Veil-Framework /Veil](https://github.com/Veil-Framework/Veil) - Veil Framework 
+- [Shellter](https://www.shellterproject.com/download/) - Shellter AV Evasion Artware
+- [Unicorn](https://github.com/trustedsec/unicorn) - Trustedsec 
+- [MSFvenom Payload Creator (MSFPC)](https://github.com/g0tmi1k/msfpc) - g0tmi1k
+- [Venom](https://github.com/r00t-3xp10it/venom) - Pedro Ubuntu
+- [Phantom-Evasion](https://github.com/oddcod3/Phantom-Evasion) - Diego Cornacchini
 
 
-## ⭕️ Credits
+## Credits & Thanks
+- [Offensive Security](https://www.offensive-security.com/) - Offensive Security
+- [dracOs Linux](https://dracos-linux.org/) - Penetration Testing OS From Indonesia
+- [peterpt](https://github.com/peterpt) - Maintainer & Contributor
+- [Dana James Traversie](https://github.com/dana-at-cp/backdoor-apk) - backdoor_apk
+- [z0noxz](https://github.com/z0noxz/powerstager) - Powerstager
+- [TrustedSec](https://github.com/trustedsec/unicorn) - Unicorn
+- [Raphael Mudge](https://github.com/rsmudge) - External Source
+- [astr0baby](https://astr0baby.wordpress.com) - Reference Source
+- [NgeSEC](https://ngesec.id/) Community
+- [Gauli(dot)Net](https://gauli.net/) - Lab Penetration
 
-- Thanks to allah and Screetsec [ Edo -maland- ] <Me>
-- Dracos Linux from Scratch Indonesia ( Penetration os ) Thanksyou , you can see in http://dracos-linux.org/
-- Offensive Security for the awesome OS ( http://www.offensive-security.com/ )
-- Thanks peterpt for help and contributes in this project :)) ( www.github.com/peterpt )
-- Dana James Traversie https://github.com/dana-at-cp/backdoor-apk
-- z0noxz (Powerstager) https://github.com/z0noxz/powerstager 
-- http://www.kali.org/"
-- Jack Wilder admin in http://www.linuxsec.org
-- source for c program https://github.com/rsmudge
-- And another open sources tool in github
-- Uptodate new tools hacking visit http://www.kitploit.com
+## License
+TheFatRat is made with 🖤 by Edo Maland & All [Contributors](https://github.com/Screetsec/TheFatRat/graphs/contributors). See the **License** file for more details.
 
-## ⭕️ Disclaimer
-
-***Note: modifications, changes, or alterations to this sourcecode is acceptable, however,any public releases utilizing this code must be approved by writen this tool ( Edo -m- ).***
 

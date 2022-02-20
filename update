@@ -1,5 +1,6 @@
-#!/bin/bash
-clear
+#!/usr/bin/env bash
+
+# Define Colours
 cyan='\e[0;36m'
 green='\e[0;32m'
 lightgreen='\e[1;32m'
@@ -11,102 +12,143 @@ purple='\e[1;35m'
 path=`pwd`
 
 function chknet() {
-echo -e $red "[X] Your Internet is not working correctly!"
-sleep 1
-echo -e $cyan "[*] Checking ...."
-ping -c 1 8.8.4.4 > /dev/null 2>&1
-png="$?" 
- if [ $png == "0" ]
-then
+ echo -e $red "[X] Your Internet is not working correctly!"
+ sleep 1
+ echo -e $cyan "[*] Checking ...."
+ ping -c 1 8.8.4.4 > /dev/null 2>&1
+ png="$?" 
+ 
+ if [ $png == "0" ]; then
     echo -e $red "[X] Your linux OS is not able to resolve"
     echo -e $red "hostnames over terminal using ping !!"
     echo ""
     echo -e $yellow "Search on the web : (unable to resolve hostnames ping) to find a solution"
-echo ""
-echo -e $green "Update will continue , but is not garantee that cloud work properly."
-echo ""
-echo -e $cyan "Update will continue because :"
-echo -e $green "Ping google.com =$red Failed"
-echo -e $green "Ping google DNS = Success"
-echo ""
-echo -e $green "Press [ENTER] key to continue"
-read continue
+    echo ""
+    echo -e $green "Update will continue , but is not garantee that cloud work properly."
+    echo ""
+    echo -e $cyan "Update will continue because :"
+    echo -e $green "Ping google.com =$red Failed"
+    echo -e $green "Ping google DNS = Success"
+    echo ""
+    echo -e $green "Press [ENTER] key to continue"
+    read continue
     sleep 1
-elif [ $png == "1" ]
-then
+ elif [ $png == "1" ]; then
     echo -e $yellow "You are connected to your local network but not to the web ."
     echo -e $yellow "Check if your router/modem gateway is connected to the web ."
-echo ""
-echo -e $green "Update will not continue , you are only connected to your local lan."
-echo ""
-echo -e $cyan "Update will stop because :"
-echo -e $green "Ping google.com =$red Failed"
-echo -e $green "Ping google DNS =$red Failed"
-echo ""
-echo -e $green "Press [ENTER] key to continue"
-read continue
-exit 1
-sleep 1
-elif [ $png == "2" ]
-then
-echo -e $red "You are not connected to any network ."
-echo ""
-echo -e $cyan "Update will stop because :"
-echo -e $green "Ping google.com =$red Failed"
-echo -e $green "Ping google DNS =$red Failed"
-echo ""
-echo -e $green "Press [ENTER] key to continue"
-read continue
-exit 1
+    echo ""
+    echo -e $green "Update will not continue , you are only connected to your local lan."
+    echo ""
+    echo -e $cyan "Update will stop because :"
+    echo -e $green "Ping google.com =$red Failed"
+    echo -e $green "Ping google DNS =$red Failed"
+    echo ""
+    echo -e $green "Press [ENTER] key to continue"
+    read continue
+    exit 1
     sleep 1
-fi
+elif [ $png == "2" ]; then
+    echo -e $red "You are not connected to any network ."
+    echo ""
+    echo -e $cyan "Update will stop because :"
+    echo -e $green "Ping google.com =$red Failed"
+    echo -e $green "Ping google DNS =$red Failed"
+    echo ""
+    echo -e $green "Press [ENTER] key to continue"
+    read continue
+    exit 1
+    sleep 1
+ fi
 }
-ping -c 1 google.com > /dev/null 2>&1
-png="$?"
-  if [ $png != 0 ]
-then
-chknet
-fi
+
+which nc > /dev/null 2>&1
+ if [[ "$?" -ne "0" ]]; then
+      echo "Installing netcat"
+      apt-get install netcat -y > /dev/null 2>&1
+      which nc > /dev/null 2>&1
+   if [[ "$?" -ne "0" ]]; then
+      echo "Unable to Install Netcat"
+      echo "Make Sure you are connected to the Internet"
+      echo "before running Update for Fatrat"
+      echo ""
+      sleep 5
+      exit 0
+    fi
+ fi
+ 
+which git > /dev/null 2>&1
+ if [[ "$?" -ne "0" ]]; then
+      echo "Installing netcat"
+      apt-get install git -y > /dev/null 2>&1
+      which git > /dev/null 2>&1
+    if [[ "$?" -ne "0" ]]; then
+      echo "Unable to Install Git"
+      echo "Make Sure you are connected to the Internet"
+      echo "before running Update for Fatrat"
+      echo ""
+      sleep 5
+      exit 0
+    fi
+ fi      
+      
+echo ""     
+echo -e "GET http://google.com HTTP/1.0\n\n" | nc google.com 80 > /dev/null 2>&1
+ if [[ $? -ne 0 ]]; then
+    echo -e "$red" [ X ]::[Internet Connection]: OFFLINE!;
+    chknet
+    sleep 1
+ else
+     echo -e "$green" [✔]::[Internet Connection]: CONNECTED!;
+    sleep 1
+ fi
+
 sleep 1
+echo ""
+echo -n "* - Creating Temporary Directory for config files...."
 find . -type f -name "*.md" -exec rm -f {} \; > /dev/null 2>&1
-rm -f $path/temp/* >/dev/null 2>&1
-mkdir /tmp/frupdate > /dev/null 2>&1
-mkdir /tmp/frupdate/autorun > /dev/null 2>&1
-mkdir /tmp/frupdate/backdoored > /dev/null 2>&1
-mkdir /tmp/frupdate/backdoored/output > /dev/null 2>&1
-mkdir /tmp/frupdate/config > /dev/null 2>&1
-mkdir /tmp/frupdate/config/listeners > /dev/null 2>&1
-mkdir /tmp/frupdate/logs > /dev/null 2>&1
-mkdir /tmp/frupdate/output > /dev/null 2>&1
-mv $path/autorun/* /tmp/frupdate/autorun/ >/dev/null 2>&1
-mv $path/backdoored/* /tmp/frupdate/backdoored/ >/dev/null 2>&1
-mv $path/backdoored/output/* /tmp/frupdate/backdoored/output/ >/dev/null 2>&1
-mv $path/config/config.path /tmp/frupdate/config/ >/dev/null 2>&1
-mv $path/config/grab.conf /tmp/frupdate/config/ >/dev/null 2>&1
-mv $path/config/listeners/* /tmp/frupdate/config/listeners/ >/dev/null 2>&1
-mv $path/logs/* /tmp/frupdate/logs/ >/dev/null 2>&1
-mv $path/output/* /tmp/frupdate/output/ >/dev/null 2>&1
-echo -e $cyan "************************************"
-echo -e $cyan "**  $green Updating Fatrat from Github $cyan **"
-echo -e $cyan "************************************"
-sleep 3
+tmpdir="$HOME/frtemp"
+mkdir "$tmpdir" >/dev/null 2>&1
+rm -f "$path/temp/*" >/dev/null 2>&1
+mkdir "$tmpdir/autorun/" >/dev/null 2>&1
+mkdir "$tmpdir/config" > /dev/null 2>&1
+mkdir "$tmpdir/config/listeners" > /dev/null 2>&1
+mkdir "$tmpdir/logs" > /dev/null 2>&1
+echo "Done"
+sleep 1
+echo -n "* - Moving config files to Temporary Folder...."
+mv "$path/autorun/*" "$tmpdir/autorun/" >/dev/null 2>&1
+mv "$path/config/config.path" "$tmpdir/config/" >/dev/null 2>&1
+mv "$path/config/listeners/*" "$tmpdir/config/listeners/" >/dev/null 2>&1
+mv "$path/logs/*" "$tmpdir/logs/" >/dev/null 2>&1
+echo "Done"
+sleep 1
+echo -n "* - Updating Fatrat from Github...."
+sleep 1
 git reset HEAD --hard
 git pull origin master
-mv /tmp/frupdate/autorun/* $path/autorun/ >/dev/null 2>&1
-mv /tmp/frupdate/backdoored/* $path/backdoored/ >/dev/null 2>&1
-mv /tmp/frupdate/backdoored/output/* $path/backdoored/output/ >/dev/null 2>&1
-mv /tmp/frupdate/config/config.path $path/config/ >/dev/null 2>&1
-mv /tmp/frupdate/config/grab.conf $path/config/ >/dev/null 2>&1
-mv /tmp/frupdate/config/listeners/* $path/config/listeners/  >/dev/null 2>&1
-mv /tmp/frupdate/logs/* $path/logs/ >/dev/null 2>&1
-mv /tmp/frupdate/output/* $path/output/ >/dev/null 2>&1
-rm -fr /tmp/frupdate >/dev/null 2>&1
+echo "Done"
+sleep 1
+echo -n "* - Moving config files again to Fatrat Directory...."
+mv "$tmpdir/autorun/*" "$path/autorun/" >/dev/null 2>&1
+mv "$tmpdir/config/config.path" "$path/config/" >/dev/null 2>&1
+mv "$tmpdir/config/grab.conf" "$path/config/" >/dev/null 2>&1
+mv "$tmpdir/config/listeners/*" "$path/config/listeners/"  >/dev/null 2>&1
+mv "$tmpdir/logs/*" "$path/logs/" >/dev/null 2>&1
+sleep 1
+echo "Done"
+echo "* - Removing temporary directory...."
+rm -fr "$tmpdir/" >/dev/null 2>&1
+sleep 1
+echo "Done"
+echo "* - Applying Execution Permissions to fatrat scripts...."
 chmod +x fatrat >/dev/null 2>&1
 chmod +x setup.sh >/dev/null 2>&1 
 chmod +x powerfull.sh >/dev/null 2>&1
 chmod +x grab.sh >/dev/null 2>&1
 chmod +x update >/dev/null 2>&1
 chmod +x backdoor_apk >/dev/null 2>&1
-echo -e $cyan "*************************"
-echo -e $cyan "**  $green Update Completed $cyan **"
-echo -e $cyan "*************************"
+sleep 1
+echo "Done"
+echo ""
+echo "Update complete , you can run fatrat now"
+exit 0

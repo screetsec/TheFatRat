@@ -12,7 +12,7 @@ import random
 import base64
 import time
 import datetime
-import urllib
+import urllib.parse
 import hashlib
 import readline
 import signal

