@@ -17,8 +17,8 @@ python2-minimal
 python3
 python3-pip
 build-essential
-openjdk-8-jdk
-openjdk-8-jre
+default-jdk
+default-jre
 unzip
 mingw32
 mingw-w64
