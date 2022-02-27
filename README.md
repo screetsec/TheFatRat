@@ -14,7 +14,7 @@
 
 ![Banner](https://user-images.githubusercontent.com/17976841/65820028-6ae17e00-e24e-11e9-894f-35836481cc2c.png)
 
-**TheFatRat** is an exploiting tool which compiles a malware with famous payload, and then the compiled maware can be executed on Linux , Windows , Mac and Android. **TheFatRat** Provides An Easy way to create Backdoors and Payload which can bypass most anti-virus. 
+**TheFatRat** is an exploiting tool which compiles a malware with famous payload, and then the compiled malware can be executed on Linux , Windows , Mac and Android. **TheFatRat** Provides An Easy way to create Backdoors and Payload which can bypass most anti-virus. 
  
  ## Information
  This tool is for educational purpose only, usage of TheFatRat for attacking targets without prior mutual consent is illegal.
