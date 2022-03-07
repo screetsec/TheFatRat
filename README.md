@@ -107,6 +107,6 @@ All notable changes to this project will be documented in this [file](https://gi
 - [Gauli(dot)Net](https://gauli.net/) - Lab Penetration
 
 ## License
-TheFatRat is made with 🖤 by Edo Maland & All [Contributors](https://github.com/Screetsec/TheFatRat/graphs/contributors). See the **License** file for more details.
+TheFatRat is made with 🖤 by Edo Maland & All [Contributors](https://github.com/Screetsec/TheFatRat/graphs/contributors). See the [**License**](https://github.com/screetsec/TheFatRat/blob/master/LICENSE) file for more details.
 
 
