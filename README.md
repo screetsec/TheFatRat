@@ -14,16 +14,16 @@
 
 ![Banner](https://user-images.githubusercontent.com/17976841/65820028-6ae17e00-e24e-11e9-894f-35836481cc2c.png)
 
-**TheFatRat** is an exploiting tool which compiles a malware with famous payload, and then the compiled maware can be executed on Linux , Windows , Mac and Android. **TheFatRat** Provides An Easy way to create Backdoors and Payload which can bypass most anti-virus. 
+**TheFatRat** is an exploiting tool which compiles malware with famous payloads to be executed on Linux, Windows, Mac and Android. **TheFatRat** provides an easy way to create backdoors and payloads which can bypass most anti-viruses. 
  
  ## Information
  This tool is for educational purpose only, usage of TheFatRat for attacking targets without prior mutual consent is illegal.
 Developers assume no liability and are not responsible for any misuse or damage cause by this program.
 
- ## Features !
- - Fully Automating MSFvenom & Metasploit.
-- Local or remote listener Generation.
-- Easily Make Backdoor by category Operating System.
+ ## Features!
+- Fully automating msfvenom & Metasploit.
+- Local or remote listener generation.
+- Easily make backdoor with categorized.
 - Generate payloads in Various formats.
 - Bypass anti-virus backdoors.
 - File pumper that you can use for increasing the size of your files.
@@ -31,7 +31,7 @@ Developers assume no liability and are not responsible for any misuse or damage 
 - Automatically creates AutoRun files for USB / CDROM exploitation
 
 ### But it's shit! And your implementation sucks!
-- Yes, you're probably correct. Feel free to "Not use it" and there is a pull button to "Make it better". 
+- Yes, you're probably correct. Feel free to "not use it". And if you want to "make it better" create a pull request. 
 
 
 # Installation
@@ -41,15 +41,14 @@ git clone https://github.com/Screetsec/TheFatRat.git
 cd TheFatRat
 chmod +x setup.sh && ./setup.sh
 ```
-### Update 
+### Updates
 ```bash
 cd TheFatRat
 ./update && chmod +x setup.sh && ./setup.sh
 ```
-### Troubleshoot on TheFatRat
-chk_tools script to use in case of problems in setup.sh of fatrat
-this script will check if everything is in the right version to run fatrat
-and will also provide you a solution for the problem
+### Troubleshooting on TheFatRat
+Use the chk_tools script in case of problems on setting up TheFatRat using setup.sh.
+This script will check if your packages are on their supported versions to run TheFatRat and will also provide you the solutions for your problems.
 ```
 cd TheFatRat
 chmod +x chk_tools 
@@ -62,7 +61,7 @@ chmod +x chk_tools
 |![Index](https://cloud.githubusercontent.com/assets/17976841/25420100/9ee12cf6-2a80-11e7-8dfa-c2e3cfe71366.png)|![f](https://user-images.githubusercontent.com/17976841/65820886-91a4b200-e258-11e9-9a00-1e5905f6be16.jpg)
 
 ## Documentation
-- Documentation Available in Modules CEH v9 and V10 , Download source here 
+- Documentation available in modules CEH v9 and V10, download source here 
 	- [CEHv10 Module 06 System Hacking.pdf](https://github.com/khanhnnvn/CEHv10/blob/master/Labs/CEHv10%20Module%2006%20System%20Hacking.pdf)
 	- [CEHv10 Module 17 Hacking Mobile Platforms.pdf](https://github.com/khanhnnvn/CEHv10/blob/master/Labs/CEHv10%20Module%2017%20Hacking%20Mobile%20Platforms.pdf)
 - Published in International Journal of Cyber-Security and Digital Forensics
@@ -83,7 +82,7 @@ chmod +x chk_tools
 All notable changes to this project will be documented in this [file](https://github.com/Screetsec/thefatrat/blob/master/CHANGELOG.md).
 
 ### About issues
-- Read the [document](https://github.com/Screetsec/TheFatRat/blob/master/issues.md) before making an issue
+- Read [issues.md](https://github.com/Screetsec/TheFatRat/blob/master/issues.md) before making an issue
 
 ## Alternative Best Tool - Generating Backdoor & Bypass 
 - [Veil-Framework /Veil](https://github.com/Veil-Framework/Veil) - Veil Framework 
@@ -107,6 +106,6 @@ All notable changes to this project will be documented in this [file](https://gi
 - [Gauli(dot)Net](https://gauli.net/) - Lab Penetration
 
 ## License
-TheFatRat is made with 🖤 by Edo Maland & All [Contributors](https://github.com/Screetsec/TheFatRat/graphs/contributors). See the **License** file for more details.
+TheFatRat is made with 🖤 by Edo Maland & all [contributors](https://github.com/Screetsec/TheFatRat/graphs/contributors). See the **License** file for more details.
 
 
