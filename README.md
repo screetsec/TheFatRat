@@ -23,15 +23,15 @@ Developers assume no liability and are not responsible for any misuse or damage 
  ## Features!
 - Fully automating msfvenom & Metasploit.
 - Local or remote listener generation.
-- Easily make backdoor with categorized.
-- Generate payloads in Various formats.
-- Bypass anti-virus backdoors.
-- File pumper that you can use for increasing the size of your files.
-- The ability to detect external IP & Interface address .
-- Automatically creates AutoRun files for USB / CDROM exploitation
+- Easily make backdoors with categorized operating systems.
+- Generate payloads in various formats.
+- Bypass anti-viruses.
+- File pumper for increasing exploit file sizes.
+- Detect external IP & interface addresses.
+- Automatically create AutoRun files for USB / CDROM exploitation
 
 ### But it's shit! And your implementation sucks!
-- Yes, you're probably correct. Feel free to "not use it". And if you want to "make it better" create a pull request. 
+- Yes, you're probably correct. Feel free to not use it. And if you want to make it better create a pull request. 
 
 
 # Installation
