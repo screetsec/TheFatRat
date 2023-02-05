@@ -1,25 +1,41 @@
+"""
+File pumper. Increase file size with null byte(s) at the end of the file.
+"""
+
 import sys
-#python fpump.py [file] [size] [-mb/-kb]
+import os
+
+# python pump.py [file] [size] [-mb/-kb]
+
+# Also refer to KiB/MiB
+KB = 1024
+MB = KB * 1024
 
 if len(sys.argv) < 4:
- sys.exit('[-] Missing argument!\n[+] Usage: python pumper.py [file] [size] [-mb/-kb]')
+    sys.stderr.write('[-] Missing argument!\n')
+    sys.stderr.write('[+] Usage: python pumper.py [file] [size] [-mb/-kb]\n')
+    exit(1)
 
-fp = sys.argv[1]
+fileName = sys.argv[1]
 size = int(sys.argv[2])
-tp = sys.argv[3]
+unit = sys.argv[3]
 
-f = open(fp, 'ab')
-if tp == '-kb':
-    b_size = size * 1024
-elif tp == '-mb':
-    b_size = size * 1048576
-else:
-    sys.exit('[-] Use -mb or -kb!')
+if not os.path.exists(fileName):
+    sys.stderr.write('[-] File {!r} is not exists!\n'.format(fileName))
+    exit(1)
 
-bufferSize = 256
-for i in range(b_size/bufferSize):
-    f.write(str('0' * bufferSize))
+if unit != '-mb' and unit != '-kb':
+    sys.stderr.write('[-] Use -mb or -kb!\n')
+    exit(1)
 
-f.close()
+with open(fileName, 'ab') as fp:
+    if unit == '-kb':
+        blockSize = size * KB
+    elif unit == '-mb':
+        blockSize = size * MB
 
-print '[+] Finished pumping', fp, 'with', size, tp
+    bufferSize = 256
+    for i in range(blockSize // bufferSize):
+        fp.write(('\0' * bufferSize).encode('utf-8'))
+
+print('[+] Finished pumping {!r} with {}{}'.format(fileName, size, unit[1:]))
