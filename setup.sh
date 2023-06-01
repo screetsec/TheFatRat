@@ -40,7 +40,7 @@ fi
 }	
 
 function repokey () {
-echo -ne "$green" "[ ? ] Update Jessie/Kali Repo Public Key"
+echo -ne "$green" "[ ? ] Update bullseye/Kali Repo Public Key"
 apt-get update &> /tmp/aptkey.log 
 awk '{print $1}' RS='NO_PUBKEY' /tmp/aptkey.log | sed '1d' > /tmp/expkeys.log
 awk '{print $1}' RS='EXPKEYSIG' /tmp/aptkey.log | sed '1d' >> /tmp/expkeys.log
@@ -822,9 +822,9 @@ cp /etc/apt/sources.list /etc/apt/sources.list.fatrat
 fi
 rm -f /etc/apt/sources.list
 touch /etc/apt/sources.list
-echo "deb http://deb.debian.org/debian/ jessie main contrib non-free" > /etc/apt/sources.list
+echo "deb http://ftp.de.debian.org/debian bullseye main" > /etc/apt/sources.list
 repokey
-xterm -T "☣ UPDATING REPOSITORIES DEDIAN JESSIE☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update -y | tee -a $mingw"
+xterm -T "☣ UPDATING REPOSITORIES DEDIAN BULLSEYE☣" -geometry 100x30 -e "sudo apt-get clean && sudo apt-get clean cache && sudo apt-get update -y | tee -a $mingw"
 sleep 1
 
 # check if mingw32 or mingw-64 exists 
