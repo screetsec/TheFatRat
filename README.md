@@ -37,7 +37,7 @@ Developers assume no liability and are not responsible for any misuse or damage 
 # Installation
 Instructions on how to install *TheFatRat Cyber E*
 ```bash
-git clone https://github.com/Screetsec/TheFatRat.git
+git clone https://github.com/ladyCyb3r/TheFatRatCyberEdition.git
 cd TheFatRat
 chmod +x setup.sh && ./setup.sh
 ```
