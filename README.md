@@ -1,5 +1,5 @@
 
-# TheFatRat 
+# TheFatRat Cyber Edition
 
 [![Version](https://img.shields.io/badge/TheFatRat-1.9.8-brightgreen.svg?maxAge=259200)]()
 [![Version](https://img.shields.io/badge/Codename-Target-red.svg?maxAge=259200)]()
@@ -12,7 +12,7 @@
 
 ###  A Massive Exploiting Tool
 
-![Banner](https://user-images.githubusercontent.com/17976841/65820028-6ae17e00-e24e-11e9-894f-35836481cc2c.png)
+![Banner](https://media.licdn.com/dms/image/C5616AQE-Pgpi38tpyw/profile-displaybackgroundimage-shrink_200_800/0/1607000262613?e=2147483647&v=beta&t=Jl4HU9ZfDygtiRJyefnSOo3br_8Uzptl7ejC-OU9VuY)
 
 **TheFatRat** is an exploiting tool which compiles a malware with famous payload, and then the compiled maware can be executed on Linux , Windows , Mac and Android. **TheFatRat** Provides An Easy way to create Backdoors and Payload which can bypass most anti-virus. 
  
@@ -35,9 +35,9 @@ Developers assume no liability and are not responsible for any misuse or damage 
 
 
 # Installation
-Instructions on how to install *TheFatRat*
+Instructions on how to install *TheFatRat Cyber E*
 ```bash
-git clone https://github.com/Screetsec/TheFatRat.git
+git clone https://github.com/ladyCyb3r/TheFatRatCyberEdition.git
 cd TheFatRat
 chmod +x setup.sh && ./setup.sh
 ```
@@ -59,7 +59,7 @@ chmod +x chk_tools
 ## Tools Overview
 | Front View | Sample Feature	|
 | ------------  | ------------ |
-|![Index](https://cloud.githubusercontent.com/assets/17976841/25420100/9ee12cf6-2a80-11e7-8dfa-c2e3cfe71366.png)|![f](https://user-images.githubusercontent.com/17976841/65820886-91a4b200-e258-11e9-9a00-1e5905f6be16.jpg)
+|![Index](https://1.bp.blogspot.com/-6Bpv3TLRpUo/V5zIoieg4BI/AAAAAAAAF7g/dxNLURzYnj0svrqvfZTK37RmORRx9CGHACLcB/s1600/TheFatRat_01.png)|![f](https://media.geeksforgeeks.org/wp-content/uploads/20210318162712/6.PNG)
 
 ## Documentation
 - Documentation Available in Modules CEH v9 and V10 , Download source here 
@@ -94,19 +94,5 @@ All notable changes to this project will be documented in this [file](https://gi
 - [Phantom-Evasion](https://github.com/oddcod3/Phantom-Evasion) - Diego Cornacchini
 
 
-## Credits & Thanks
-- [Offensive Security](https://www.offensive-security.com/) - Offensive Security
-- [dracOs Linux](https://dracos-linux.org/) - Penetration Testing OS From Indonesia
-- [peterpt](https://github.com/peterpt) - Maintainer & Contributor
-- [Dana James Traversie](https://github.com/dana-at-cp/backdoor-apk) - backdoor_apk
-- [z0noxz](https://github.com/z0noxz/powerstager) - Powerstager
-- [TrustedSec](https://github.com/trustedsec/unicorn) - Unicorn
-- [Raphael Mudge](https://github.com/rsmudge) - External Source
-- [astr0baby](https://astr0baby.wordpress.com) - Reference Source
-- [NgeSEC](https://ngesec.id/) Community
-- [Gauli(dot)Net](https://gauli.net/) - Lab Penetration
-
-## License
-TheFatRat is made with 🖤 by Edo Maland & All [Contributors](https://github.com/Screetsec/TheFatRat/graphs/contributors). See the **License** file for more details.
 
 
